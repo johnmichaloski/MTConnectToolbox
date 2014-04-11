@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <script>
+            window.onload = function() {
+                document.getElementById( "javascriptEnabled" ).innerHTML = "Yes, I can use JavaScript!";  
+                
+                var storeButton = document.getElementById( "storeContent" );
+                var loadButton = document.getElementById( "loadContent" );
+                
+                storeButton.addEventListener( "click", storeContent );
+                loadButton.addEventListener( "click", loadContent );
+                submitButton.addEventListener( "click", formSubmitted );
+            };
+            
+            function storeContent() {
+                var content = document.getElementById( "contentToStore" ).value;
+                localStorage.setItem( "theContent", content );
+                loadContent();
+            }
+            
+            function loadContent() {
+                var content = localStorage.getItem( "theContent" );
+                document.getElementById( "storedContent" ).innerHTML = content;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Untrusted.html</h1>
+        <h2>JavaScript enabled?</h2>
+        <section><article id="javascriptEnabled">No, JavaScript is not enabled</article></section>
+        <h2>Forms allowed?</h2>
+        <section>
+            <form action="untrusted.html">
+                <input type="text" name="username" />
+                <input id="formSubmit" type="submit"/>
+            </form>
+        </section>
+        <h2>Same Origin allowed?</h2>
+        <h5>This demo just works if allow-scripts is enabled too</h5>
+        <p>Type something into the textbox and store it to the local storage. You can also load from local storage the last saved value.</p>
+        <section>
+            <article id="storedContent">No content stored so far</article>
+            <input id="contentToStore" type="text"/>
+            <button id="storeContent">Store Content</button>
+            <button id="loadContent">Load Content</button>
+        </section>
+        <h2>Top Navigation?</h2>
+        <section>
+            <article>
+                Follow this <a href="http://kouder.net" target="_top">link</a> will override the complete page.
+            </article>
+        </section>
+        <h2>Allow Popups (Just IE10)</h2>
+        <section>
+            <article>
+                Open this <a href="http://kouder.net" target="_blank">link</a> in a new window.
+            </article>
+        </section>
+    </body>
+</html>

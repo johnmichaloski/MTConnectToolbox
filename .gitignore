@@ -1,0 +1,33 @@
+<<<<<<< HEAD
+=======
+*.obj
+*.ilk
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.rsp
+*.pch
+*.ncb
+*.user
+*.manifest
+*.pdb
+*.idb
+*.suo
+*.dll
+*.idb
+*.log
+*.exg
+*.dlx
+*.tlog
+Copy*.*
+*.opensdf
+*.sdf
+~*.*
+*.ipch
+*.msi
+*.msx
+*.dll
+*.lib
+*.exe
+>>>>>>> 352b2c2430392443c49cd6840fdc93f1050afb6d

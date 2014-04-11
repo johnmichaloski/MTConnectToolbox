@@ -1,0 +1,72 @@
+// MtConnectDashboard.idl : IDL source for MtConnectDashboard.exe
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (MtConnectDashboard.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+//import "docobj.idl";
+//import "exdisp.idl";
+
+[
+	object,
+	uuid(4250C680-68DF-4151-A5D3-FB1F887F1211),
+	dual,
+	nonextensible,
+	helpstring("ICMTConnectTrayIcon Interface"),
+	pointer_default(unique)
+]
+interface ICMTConnectTrayIcon : IDispatch{
+	[id(1), helpstring("method SetHeaderColumns")] HRESULT SetHeaderColumns(BSTR csv);
+	[id(3), helpstring("method Clear")] HRESULT Clear(void);
+	[id(5), helpstring("method GetPointerBrowser")] HRESULT GetPointerBrowser([out,retval] IUnknown** pWebBrowser);
+	[id(6), helpstring("method SetTrayIconColor")] HRESULT SetTrayIconColor(BSTR traycolor, [in] VARIANT_BOOL flashing);
+	[id(7), helpstring("set tooltip for tray icon")] HRESULT SetTooltip(BSTR bstr);
+	[id(8), helpstring("method CreateTabWindow")] HRESULT CreateTabWindow(BSTR name);
+	[id(9), helpstring("method AddRow")] HRESULT AddRow([in] BSTR csvFields, [in] BSTR csvValues);
+	[id(10), helpstring("sets the mtconnect agent url")] HRESULT SetIpAddr(BSTR ipaddr);
+	[id(11), helpstring("method AddFaultRow")] HRESULT AddFaultRow([in] BSTR csvFields, [in] BSTR csvValues);
+<<<<<<< HEAD
+	[id(12), helpstring("method AddFaultRow")] HRESULT Types([in] BSTR csvFields, [in] BSTR csvTypes);
+	[id(13), helpstring("method AddFaultRow")] HRESULT Formats([in] BSTR csvFields, [in] BSTR csvFormats);
+=======
+	[id(12), helpstring("method Types")] HRESULT Types([in] BSTR csvFields, [in] BSTR csvTypes);
+	[id(13), helpstring("method Formats")] HRESULT Formats([in] BSTR csvFields, [in] BSTR csvFormats);
+>>>>>>> 352b2c2430392443c49cd6840fdc93f1050afb6d
+	[id(14), helpstring("method CreateAlarmTab")] HRESULT CreateAlarmTab([in] BSTR name);
+	[id(15), helpstring("method SetFaultColumns")] HRESULT SetFaultColumns(BSTR csv);
+
+};
+
+[
+	uuid(44220923-6EDE-4d93-B376-720CD69ED0A6),
+	version(1.0),
+	helpstring("MtConnectDashboard 1.0 Type Library")
+]
+library MtConnectDashboardLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+//	importlib("shdocvw.dll");
+	
+	[	
+		uuid(E16BBA79-46DD-4114-AE31-051064BD1513),
+		helpstring("_IDboardNotificationEvents Interface")
+	]
+	dispinterface _IDboardNotificationEvents
+	{
+		properties:
+		methods:
+			[id(1), helpstring("method Reset")] HRESULT Reset(BSTR items);
+	};
+	[
+		uuid(EF0FE7A0-A9EF-4323-B6D8-6F7110B0A5CE),
+		helpstring("CMTConnectTrayIcon Class")
+	]
+	coclass CMTConnectTrayIcon
+	{
+		[default] interface ICMTConnectTrayIcon;
+		[default, source] dispinterface _IDboardNotificationEvents;
+	};
+};

@@ -1,0 +1,273 @@
+
+
+SELECT update_time
+FROM information_schema.tables
+WHERE table_schema='mydb'
+AND table_name='mytable';
+
+
+whether the connection to the database is still alive...
+
+SQLHDBC m_hConn;
+
+...
+
+SQLINTEGER siDead = SQL_CD_FALSE;
+
+::SQLGetConnectAttr(m_hConn
+,SQL_ATTR_CONNECTION_DEAD
+,&siDead //SQL_CD_TRUE or SQL_CD_FALSE
+,sizeof(siDead)
+,NULL);
+
+if (siDead == SQL_CD_TRUE)
+{
+//Database connection is dead
+}
+
+INSERT INTO `Factory`.`Programs`(Timestamp,Machine,Shift,program,Duration,Machining,Faulted,RpmTotal) VALUES('2013-01-31 16:43:02.000','M1',2,'FLANGE_CAM.NGC',00:00:00,00:00:00,00:00:01,)
+
+Severity  RaisedBy  Description  Program  RaisedAt  ResolvedAt  TBF  TTR  
+Warning M1 HydraulicTemp-OIL TEMPERATURE HIGH FLANGE_CAM.NGC 2013-01-30T14:22:43Z 2013-01-30T14:25:41Z 00:10:23 00:02:58 
+
+CREATE TABLE IF NOT EXISTS `Factory`.`Programs`(
+Id INTEGER PRIMARY KEY AUTO_INCREMENT,
+`Timestamp` TIMESTAMP NULL , 
+`Machine` VARCHAR(255) NULL DEFAULT '', 
+`Shift` INT(11) NULL DEFAULT 0, 
+`program` VARCHAR(255) NULL DEFAULT '', 
+`Duration` TIME NULL , 
+`Machining` TIME NULL , 
+`Faulted` TIME NULL , 
+`RpmTotal` INT(11) NULL DEFAULT 0) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+COM Notes:
+
+INTO `Factory`.`Programs`(Timestamp,Machine,Shift,program,Duration,Machining,Faulted,RpmTotal) 
+VALUES('2013-01-31 17:18:57.000','M1',2,'FLANGE_CAM.NGC',00:00:28,00:00:28,00:00:00,0)
+First-chance exception at 0x7c812afb in MtConnectDboard.exe: Microsoft C++ exception: std::exception at memory location 0x0191e938..
+CEchoService::serviceThread() exception SQLExecDirect INSERT INTO has FAILED!! Error Code=-1
+http://www.javascriptkit.com/script/script2/dyndateselector.shtml
+
+style="background-image:url(images/smile.gif); background-repeat:repeat;">
+
+http://resources.esri.com/help/9.3/arcgisdesktop/com/com/vcpp/events.htm
+<BR>Start: <input id="demo1" type="text" size="25"><a href="javascript:NewCal('demo1','ddmmyyyy')"><img src="cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
+<BR>Stop: <input id="demo1" type="text" size="25"><a href="javascript:NewCal('demo1','ddmmyyyy')"><img src="cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
+
+
+To automatically generate new connection point methods, each time you add a new method to the _ITestEvents interface, 
+you need to right click the CTest class and select Add / Add Connection Point, 
+then select the _ITestEvents interface into the "Implement connection points" list.
+
+string WhatIWasSearchingFor = webBrowser1.Document.Window.Frames["theNameOfTheFrame"].Document.GetElementById("theIDofTheSpecificValueIWasLookingFor");
+
+HRESULT getFrameDocumentById(IHTMLDocument2* topLevelDocument,
+                             LPOLESTR frameId,
+                             IHTMLDocument2** frameDocument)
+{
+   HRESULT hresult = E_FAIL;
+   CComPtr<IOleContainer> container;
+   HRESULT hr = topLevelDocument->QueryInterface(IID_IOleContainer,
+                                                 (void**)&container);
+   if (hr == S_OK) 
+   {
+      CComPtr<IEnumUnknown> enumerator;
+      // Get an enumerator for the frames 
+      hr = container->EnumObjects(OLECONTF_EMBEDDINGS, &enumerator);
+      if (hr == S_OK) 
+      {
+         CComPtr<IUnknown> unk;
+         ULONG uFetched;
+         // Enumerate and refresh all the frames
+         for (UINT i = 0; S_OK == enumerator->Next(1, &unk,
+              &uFetched); i++) 
+         {
+            CComPtr<IWebBrowser2> browser;
+            // QI for IWebBrowser here to see if we have an embedded
+            // browser
+            hr = unk->QueryInterface(IID_IWebBrowser2,
+                                     (void**)&browser);
+            if (hr == S_OK) 
+            { 
+               CComPtr<IHTMLElement> htmlElement;
+               unk->QueryInterface(IID_IHTMLElement,
+                                   (void**)&htmlElement);
+               CComBSTR id;
+               if (SUCCEEDED(htmlElement->get_id(&id)) && id)
+               {
+                  CComPtr<IDispatch> disp;
+                  browser->get_Document(&disp);
+                  if (disp != NULL )
+                  { 
+                     CComPtr<IHTMLDocument2> frameDoc;
+                     hr = disp->QueryInterface( IID_IHTMLDocument2,
+                                               (void**)&frameDoc);
+                        if (hr == S_OK)
+                        {
+                           if (!wcscmp(id, frameId))
+                           {
+                              *frameDocument = frameDoc;
+                              (*frameDocument)->AddRef();
+                              hresult = S_OK;
+                              break;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+   return hresult;
+}
+
+#import "C:\winnt\system32\mshtml.tlb" // location of mshtml.tlb
+
+   void CMyClass::ExecuteScriptFunction()
+   {
+      // m_WebBrowser is an instance of IWebBrowser2
+      MSHTML::IHTMLDocument2Ptr spDoc(m_WebBrowser.GetDocument());
+
+      if (spDoc)
+      {
+         IDispatchPtr spDisp(spDoc->GetScript());
+         if (spDisp)
+         {
+            // Evaluate is the name of the script function.
+            OLECHAR FAR* szMember = L"evaluate";
+            DISPID dispid;
+
+            HRESULT hr = spDisp->GetIDsOfNames(IID_NULL, &szMember, 1,
+                                           LOCALE_SYSTEM_DEFAULT, &dispid);
+
+            if (SUCCEEDED(hr))
+            {
+               COleVariant vtResult;
+               static BYTE parms[] = VTS_BSTR;
+
+               COleDispatchDriver dispDriver(spDisp, FALSE);
+
+               dispDriver.InvokeHelper(dispid, DISPATCH_METHOD, VT_VARIANT,
+                                       (void*)&vtResult, parms,
+                                       "5+Math.sin(9)");
+            }
+         }
+      }
+   }
+				
+
+The following is the HTML for the Web page that contains the evaluate function:
+<HTML>
+  <HEAD>
+    <TITLE>Evaluate</TITLE>
+
+    <SCRIPT>
+      function evaluate(x)
+      {
+         alert("hello")
+         return eval(x)
+      }
+   </SCRIPT>
+  </HEAD>
+
+  <BODY>
+  </BODY>
+</HTML>
+
+
+#if 0
+std::string CHtmlTableSnapshots::CreateHtmlDocument()
+{
+	std::string html;
+	html += "<HTML>\n";
+	html += "<HEAD><STYLE>" + HtmlStyle() + "</STYLE>"; 
+	html +=" <title>MTConnect Data Trace</title>";
+	html +="</HEAD>\n";
+	html +="<BODY>\n";
+
+	html += "<DIV id=""Header""> MTConnect Readings</DIV>\n";
+	html += "<DIV id=""Device""> Loading... </DIV>\n";
+
+	//html +="<input type=\"button\" value=\"BACK\" onClick=\"window.location='http://back.com' \">";
+	//html +="<input type=\"button\" value=\"FWD\" onClick=\"window.location='http://fwd.com' \">";
+	//html +="<input type=\"button\" value=\"RUN\" onClick=\"window.location='http://run.com' \">";
+
+	html += "</BODY>\n";
+	html += "</HTML>\n";
+	return html;
+}
+
+std::string CHtmlTableSnapshots::HtmlStyle()
+{
+	std::string style;
+	style+= "P\n";
+	style+= "{\n";
+	style+= "	FONT-FAMILY: ""Myriad"", sans-serif;\n";
+//	style+= "	FONT-SIZE: 70%;\n";
+	style+= "	LINE-HEIGHT: 12pt;\n";
+	style+= "	MARGIN-BOTTOM: 0px;\n";
+	style+= "	MARGIN-LEFT: 10px;\n";
+	style+= "	MARGIN-TOP: 10px\n";
+	style+= "}\n";
+
+	style+= "H1\n";
+	style+= "{\n";
+	style+= "	BACKGROUND-COLOR: #003366;\n";
+	style+= "	BORDER-BOTTOM: #336699 6px solid;\n";
+	style+= "	COLOR: #ffffff;\n";
+	style+= "	FONT-SIZE: 130%;\n";
+	style+= "	FONT-WEIGHT: normal;\n";
+	style+= "	MARGIN: 0em 0em 0em -20px;\n";
+	style+= "	PADDING-BOTTOM: 8px;\n";
+	style+= "	PADDING-LEFT: 30px;\n";
+	style+= "	PADDING-TOP: 16px\n";
+	style+= "}\n";
+	style+= "table.gridtable {\n";
+	style+= " 	BACKGROUND-COLOR: #f0f0e0;\n";
+	style+= "	BORDER-BOTTOM: #ffffff 0px solid;\n";
+	style+= "	BORDER-COLLAPSE: collapse;\n";
+	style+= "	BORDER-LEFT: #ffffff 0px solid;\n";
+	style+= "	BORDER-RIGHT: #ffffff 0px solid;\n";
+	style+= "	BORDER-TOP: #ffffff 0px solid;\n";
+	//style+= "	FONT-SIZE: 70%;\n";
+	style+= "	FONT-SIZE: 9pt;\n";
+	style+= "	MARGIN-LEFT: 10px\n";
+	style+= "  }\n";
+
+	style+= "table.gridtable td {\n";
+	style+= "	BACKGROUND-COLOR: #e7e7ce;\n";
+	style+= "	BORDER-BOTTOM: #ffffff 1px solid;\n";
+	style+= "	BORDER-LEFT: #ffffff 1px solid;\n";
+	style+= "	BORDER-RIGHT: #ffffff 1px solid;\n";
+	style+= "	BORDER-TOP: #ffffff 1px solid;\n";
+	style+= "	PADDING-LEFT: 3px\n";
+	style+= "  }\n";
+	style+= "table.gridtable th {\n";
+	style+= "	BACKGROUND-COLOR: #cecf9c;\n";
+	style+= "	BORDER-BOTTOM: #ffffff 1px solid;\n";
+	style+= "	BORDER-LEFT: #ffffff 1px solid;\n";
+	style+= "	BORDER-RIGHT: #ffffff 1px solid;\n";
+	style+= "	BORDER-TOP: #ffffff 1px solid;\n";
+	style+= "	COLOR: #000000;\n";
+	style+= "	FONT-WEIGHT: bold\n";
+	style+= "  }\n";
+
+	style+= "table.histogram {\n";
+	style+= " 	BACKGROUND-COLOR: #f0f0e0;\n";
+	style+= "	border-width: 0px;\n";
+	style+= "	BORDER-COLLAPSE: collapse;\n";
+	style+= "	padding: 0px;\n";
+	//style+= "	FONT-SIZE: 70%;\n";
+	style+= "	FONT-SIZE: 9pt;\n";
+	style+= "	MARGIN-LEFT: 0px\n";
+	style+= "  }\n";
+	style+= "table.histogram td {\n";
+	style+= "	BORDER-BOTTOM: #ffffff 0px solid;\n";
+	style+= "	BORDER-LEFT: #ffffff 0px solid;\n";
+	style+= "	BORDER-RIGHT: #ffffff 0px solid;\n";
+	style+= "	BORDER-TOP: #ffffff 0px solid;\n";
+	style+= "	PADDING-LEFT: 0px\n";
+	style+= "  }\n";
+	return style;
+}
+#endif

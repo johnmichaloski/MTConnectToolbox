@@ -1,0 +1,939 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml"
+xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:w="urn:schemas-microsoft-com:office:word"
+xmlns:m="http://schemas.microsoft.com/office/2004/12/omml"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=windows-1252">
+<meta name=ProgId content=Word.Document>
+<meta name=Generator content="Microsoft Word 12">
+<meta name=Originator content="Microsoft Word 12">
+<link rel=File-List
+href="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/filelist.xml">
+<link rel=Edit-Time-Data
+href="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<link rel=themeData
+href="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/themedata.thmx">
+<link rel=colorSchemeMapping
+href="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/colorschememapping.xml">
+<!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>0</w:Zoom>
+  <w:TrackMoves/>
+  <w:TrackFormatting/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>X-NONE</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:DoNotExpandShiftReturn/>
+   <w:BreakWrappedTables/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:DontVertAlignCellWithSp/>
+   <w:DontBreakConstrainedForcedTables/>
+   <w:DontVertAlignInTxbx/>
+   <w:Word11KerningPairs/>
+   <w:CachedColBalance/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-alt:"Calisto MT";
+	mso-font-charset:0;
+	mso-generic-font-family:roman;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1107304683 0 0 159 0;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;
+	mso-font-alt:Calibri;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:-1610611985 1073750139 0 0 159 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-alt:"Arial Black";
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:1627400839 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:Verdana;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:536871559 0 0 0 415 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:"Calibri","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-bidi-font-family:"Times New Roman";}
+h1
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	font-weight:bold;}
+h2
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;}
+code
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	font-family:"Courier New";
+	mso-ascii-font-family:"Courier New";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;
+	mso-hansi-font-family:"Courier New";
+	mso-bidi-font-family:"Courier New";}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:Calibri;
+	mso-fareast-theme-font:minor-latin;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	font-family:"Times New Roman","serif";
+	mso-ascii-font-family:"Times New Roman";
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	font-weight:bold;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+span.EmailStyle23
+	{mso-style-type:personal;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	font-family:"Calibri","sans-serif";
+	mso-ascii-font-family:Calibri;
+	mso-hansi-font-family:Calibri;
+	color:windowtext;}
+span.apple-converted-space
+	{mso-style-name:apple-converted-space;
+	mso-style-unhide:no;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;}
+@page WordSection1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.0in 1.0in 1.0in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.WordSection1
+	{page:WordSection1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="1026"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+</head>
+
+<body lang=EN-US link=blue vlink=purple style='tab-interval:.5in'>
+
+<div class=WordSection1>
+
+<p class=MsoNormal style='margin-left:120.0pt;text-indent:-120.0pt;tab-stops:
+120.0pt;mso-layout-grid-align:none;text-autospace:none'><b><span
+style='mso-bidi-font-family:Calibri;color:black'>From:<span style='mso-tab-count:
+1'>                                         </span></span></b><span
+style='mso-bidi-font-family:Calibri;color:black'>Michaloski, John L.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:120.0pt;text-indent:-120.0pt;tab-stops:
+120.0pt;mso-layout-grid-align:none;text-autospace:none'><b><span
+style='mso-bidi-font-family:Calibri;color:black'>Sent:<span style='mso-tab-count:
+1'>                                           </span></span></b><span
+style='mso-bidi-font-family:Calibri;color:black'>Monday, August 06, 2012 2:29
+PM<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:120.0pt;text-indent:-120.0pt;tab-stops:
+120.0pt;mso-layout-grid-align:none;text-autospace:none'><b><span
+style='mso-bidi-font-family:Calibri;color:black'>To:<span style='mso-tab-count:
+1'>                                               </span></span></b><span
+style='mso-bidi-font-family:Calibri;color:black'>Michaloski, John L.<o:p></o:p></span></p>
+
+<p class=MsoNormal style='margin-left:120.0pt;text-indent:-120.0pt;tab-stops:
+120.0pt;mso-layout-grid-align:none;text-autospace:none'><b><span
+style='mso-bidi-font-family:Calibri;color:black'>Subject:<span
+style='mso-tab-count:1'>                                     </span></span></b><span
+style='mso-bidi-font-family:Calibri;color:black'>Creating your MSI installer
+using Visual Studio 2008<o:p></o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+<h1 style='margin:0in;margin-bottom:.0001pt;mso-line-height-alt:15.6pt;
+background:white'><span style='font-size:16.0pt;font-family:"Arial","sans-serif";
+mso-fareast-font-family:"Times New Roman";color:black;font-weight:normal'>HOW
+TO: Creating your MSI installer using Visual Studio 2008<o:p></o:p></span></h1>
+
+<p class=MsoNormal style='line-height:10.6pt;background:white'><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:#666666'>Submitted
+by<span class=apple-converted-space>&nbsp;</span><a
+href="http://appdeveloper.intel.com/en-us/user/21873" title="View user profile."><span
+style='color:#666666;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0in;
+padding:0in'>norman-chou</span></a><span class=apple-converted-space>&nbsp;</span>on
+October 08 2010 02:30:40 PM<o:p></o:p></span></p>
+
+<h2 style='margin-top:0in;margin-right:0in;margin-bottom:3.0pt;margin-left:
+0in;line-height:15.6pt;background:white;z-index:0'><span style='font-size:13.0pt;
+font-family:"Verdana","sans-serif";mso-fareast-font-family:"Times New Roman";
+color:black;font-weight:normal'>So you want to create an MSI installer...<o:p></o:p></span></h2>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>As we know from reading the
+Application Packaging Requirements Guide
+(http://appdeveloper.intel.com/en-us/article/packaging-requirements), we must
+provide our entry in a MSI format for Windows entries. I have received numerous
+requests for assistance in doing this. Here is a simple step by step to create
+your MSI installer.<o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:12.0pt;background:white;
+z-index:0'><span style='font-size:9.0pt;font-family:"Verdana","sans-serif";
+color:black'>There are new updates to validation and Intel AppUp that will
+affect the app installer design. For example, we now allow EXE files and
+validation does not require silent installs.&nbsp; Review the new changes:<span
+class=apple-converted-space>&nbsp;</span><a
+href="http://appdeveloper.intel.com/en-us/article/improvements-validation-and-appup"><span
+style='color:#0860A8;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0in;
+padding:0in'>here</span></a><o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:12.0pt;background:white;
+z-index:0'><b><span style='font-size:9.0pt;font-family:"Verdana","sans-serif";
+color:black'>Step 1</span></b><span class=apple-converted-space><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>&nbsp;</span></span><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>Create a
+Setup and Deployment Project<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>Let's create our new project.
+Right click on your solution in the Solution Explorer on the right hand side of
+your Visual Studio IDE and select Add -&gt; New Project. From the list of
+project types, choose Other Project Types -&gt; Setup and Deployment -&gt;
+Setup Project.<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Picture_x0020_1" o:spid="_x0000_i1025" type="#_x0000_t75"
+ alt="http://appdeveloper.intel.com/sites/files/SetDeployProj_v2.PNG" style='width:418.5pt;
+ height:385.5pt'>
+ <v:imagedata src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image001.png"
+  o:href="cid:image001.png@01CD73DF.DA46D9B0"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=558 height=514
+src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image002.jpg"
+alt="http://appdeveloper.intel.com/sites/files/SetDeployProj_v2.PNG" v:shapes="Picture_x0020_1"><![endif]><o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_2" o:spid="_x0000_i1026" type="#_x0000_t75" alt="http://appdeveloper.intel.com/sites/files/SetProjDlg_v2.PNG"
+ style='width:405.75pt;height:364.5pt'>
+ <v:imagedata src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image003.png"
+  o:href="cid:image002.png@01CD73DF.DA46D9B0"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=541 height=486
+src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image004.jpg"
+alt="http://appdeveloper.intel.com/sites/files/SetProjDlg_v2.PNG" v:shapes="Picture_x0020_2"><![endif]><o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:12.0pt;background:white;
+z-index:0'><b><span style='font-size:9.0pt;font-family:"Verdana","sans-serif";
+color:black'>Step 2</span></b><span class=apple-converted-space><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>&nbsp;</span></span><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>Setup
+Properties<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>We would like everyone to know
+who created this installer. Click on your new Setup and Deployment project in
+the solutions explorer. Now you will see in the Properties windows (Just below
+the Solutions Explorer usually), settings for Manufacturer, Author, and Title.
+Fill these in as appropriate.<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_3" o:spid="_x0000_i1027" type="#_x0000_t75" alt="http://appdeveloper.intel.com/sites/files/Property_v2.PNG"
+ style='width:450pt;height:413.25pt'>
+ <v:imagedata src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image005.png"
+  o:href="cid:image003.png@01CD73DF.DA46D9B0"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=600 height=551
+src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image006.jpg"
+alt="http://appdeveloper.intel.com/sites/files/Property_v2.PNG" v:shapes="Picture_x0020_3"><![endif]><o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:12.0pt;background:white;
+z-index:0'><b><span style='font-size:9.0pt;font-family:"Verdana","sans-serif";
+color:black'>Step 3</span></b><span class=apple-converted-space><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>&nbsp;</span></span><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>Add
+Project Output &amp; Content<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>We want to include our project
+.exe and all required content files. Right click on your Setup and Deployment
+project in the Solution Explorer and choose View -&gt; File System. Right click
+on the Application Folder node and choose Add -&gt; Project Output. Choose
+Primary Output, this will include your .exe. Repeat this step and choose
+Content Files if your project has required content such as images, audio, etc.<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_4" o:spid="_x0000_i1028" type="#_x0000_t75" alt="http://appdeveloper.intel.com/sites/files/PrimaryOut1_v2.PNG"
+ style='width:438.75pt;height:327pt'>
+ <v:imagedata src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image007.png"
+  o:href="cid:image004.png@01CD73DF.DA46D9B0"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=585 height=436
+src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image008.jpg"
+alt="http://appdeveloper.intel.com/sites/files/PrimaryOut1_v2.PNG" v:shapes="Picture_x0020_4"><![endif]><o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_5" o:spid="_x0000_i1029" type="#_x0000_t75" alt="http://appdeveloper.intel.com/sites/files/PrimaryOut2_v2.PNG"
+ style='width:243.75pt;height:290.25pt'>
+ <v:imagedata src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image009.png"
+  o:href="cid:image005.png@01CD73DF.DA46D9B0"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=325 height=387
+src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image010.jpg"
+alt="http://appdeveloper.intel.com/sites/files/PrimaryOut2_v2.PNG" v:shapes="Picture_x0020_5"><![endif]><o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>* Special Note: In your
+Application project, ensure all required files are marked as Content. This can
+be done by selecting the file in the Solution Explorer and setting the Content
+property to True.<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>We need to include our icon to
+use in our shortcut later. Right click on the Application Folder node and
+choose Add -&gt; File. Browse to your icon file and click OK.<o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:12.0pt;background:white;
+z-index:0'><b><span style='font-size:9.0pt;font-family:"Verdana","sans-serif";
+color:black'>Step 4</span></b><span class=apple-converted-space><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>&nbsp;</span></span><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>Create
+Shortcuts<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>Having shortcuts in the app
+significantly improves user experience. It's best to have the app easily
+accessible to the end user. This can be done with various shortcuts on the
+device. Fortunately this is quite simple. With the Setup and Deployment File System
+tab still open, right click in the right hand pane to bring up a context menu.
+Choose Create New Shortcut. From this dialogue, navigate into the Application
+Folder, and choose Primary Output from &quot;Project name&quot; (Active). This
+will point the shortcut to your .exe. Click OK to accept this selection.<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_6" o:spid="_x0000_i1030" type="#_x0000_t75" alt="http://appdeveloper.intel.com/sites/files/ShortCut_v2.PNG"
+ style='width:450pt;height:444.75pt'>
+ <v:imagedata src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image011.png"
+  o:href="cid:image006.png@01CD73DF.DA46D9B0"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=600 height=593
+src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image012.jpg"
+alt="http://appdeveloper.intel.com/sites/files/ShortCut_v2.PNG" v:shapes="Picture_x0020_6"><![endif]><o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_7" o:spid="_x0000_i1031" type="#_x0000_t75" alt="http://appdeveloper.intel.com/sites/files/ShortCut2_v2.PNG"
+ style='width:442.5pt;height:649.5pt'>
+ <v:imagedata src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image013.png"
+  o:href="cid:image007.png@01CD73DF.DA46D9B0"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=590 height=866
+src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image014.jpg"
+alt="http://appdeveloper.intel.com/sites/files/ShortCut2_v2.PNG" v:shapes="Picture_x0020_7"><![endif]><o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>Let's give that shortcut an
+icon as well. Click on the shortcut you just created in the right hand pane.
+From the Properties window you may select an icon. Click Browse, and navigate
+to the Application Folder, and select the icon you added to the File System
+back in Step 3.<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_8" o:spid="_x0000_i1032" type="#_x0000_t75" alt="http://appdeveloper.intel.com/sites/files/IconsBrowse_v2.PNG"
+ style='width:447.75pt;height:543pt'>
+ <v:imagedata src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image015.png"
+  o:href="cid:image008.png@01CD73DF.DA46D9B0"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=597 height=724
+src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image016.jpg"
+alt="http://appdeveloper.intel.com/sites/files/IconsBrowse_v2.PNG" v:shapes="Picture_x0020_8"><![endif]><o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>If you wish to have a shortcut
+in the users Start Menu, repeat the steps above, substituting the User's
+Programs Menu node instead of User's Desktop node.<o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:12.0pt;background:white;
+z-index:0'><b><span style='font-size:9.0pt;font-family:"Verdana","sans-serif";
+color:black'>Step 5a</span></b><span class=apple-converted-space><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>&nbsp;</span></span><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>C++
+Runtime (CRT) for<span class=apple-converted-space>&nbsp;</span><b>apps using
+C++ SDK</b><o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_9" o:spid="_x0000_i1033" type="#_x0000_t75" alt="http://appdeveloper.intel.com/sites/files/C_Output_v2.PNG"
+ style='width:398.25pt;height:444.75pt'>
+ <v:imagedata src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image017.png"
+  o:href="cid:image009.png@01CD73DF.DA46D9B0"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=531 height=593
+src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image018.jpg"
+alt="http://appdeveloper.intel.com/sites/files/C_Output_v2.PNG" v:shapes="Picture_x0020_9"><![endif]><o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>&nbsp;The some apps require the
+C++ Runtime to execute, please include this if needed. Fortunately our Setup
+and Deployment project makes this an easy addition. Right click on your Setup
+and Deployment project in the Solution Explorer and choose Add -&gt; Merge
+Module. You want to add two merge modules, one for CRT Release, and one for CRT
+Debug. These are labeled:<o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:12.0pt;background:white;
+z-index:0'><span style='font-size:9.0pt;font-family:"Verdana","sans-serif";
+color:black'>Microsoft_VC90_CRT_x86.msm<br>
+Microsoft_VC90_DebugCRT_x86.msm<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>* Special Note: If your
+application requires additional merge modules or runtime that is not
+automatically detected, this would be the time to add them.<o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:12.0pt;background:white;
+z-index:0'><b><span style='font-size:9.0pt;font-family:"Verdana","sans-serif";
+color:black'>Step 5b</span></b><span class=apple-converted-space><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>&nbsp;</span></span><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>Additional
+Include files for<span class=apple-converted-space>&nbsp;</span><b>apps using
+.NET SDK</b><o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>If you are using .NET SDK, you
+don't need the CRT files as shown above in step 5a. However, you need to make
+sure you app is compiled for .NET framework 3.5.<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>Your additional include files
+MAY look like the image below.<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_10" o:spid="_x0000_i1034" type="#_x0000_t75" alt="http://appdeveloper.intel.com/sites/files/dotNET_Output_v2.PNG"
+ style='width:402pt;height:389.25pt'>
+ <v:imagedata src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image019.png"
+  o:href="cid:image010.png@01CD73DF.DA46D9B0"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=536 height=519
+src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image020.jpg"
+alt="http://appdeveloper.intel.com/sites/files/dotNET_Output_v2.PNG" v:shapes="Picture_x0020_10"><![endif]><o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:12.0pt;background:white;
+z-index:0'><b><span style='font-size:9.0pt;font-family:"Verdana","sans-serif";
+color:black'>Step 6</span></b><span class=apple-converted-space><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>&nbsp;</span></span><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'>Build<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>The easiest part of this
+exercise. Right click on your Setup and Deployment project and choose Build. If
+all went well, you will have a nicely packaged MSI in your output folder ready
+to upload to the App Store.<o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:12.0pt;background:white;
+z-index:0'><b><span style='font-size:9.0pt;font-family:"Verdana","sans-serif";
+color:black'>DETAILS ON SILENT INSTALL REQUIREMENT</span></b><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'><o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>Good user experience is
+minmizing user input. If the app can install without interaction, it is often
+much cleaner and simpler. Intel AppUp validation does not require silent installs,
+but it can easily be done.<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>You need remove the following
+dialogs from your project.<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'><!--[if gte vml 1]><v:shape
+ id="Picture_x0020_11" o:spid="_x0000_i1035" type="#_x0000_t75" alt="http://appdeveloper.intel.com/sites/files/SilentInstall_v2.PNG"
+ style='width:371.25pt;height:327.75pt'>
+ <v:imagedata src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image021.png"
+  o:href="cid:image011.png@01CD73DF.DA46D9B0"/>
+</v:shape><![endif]--><![if !vml]><img border=0 width=495 height=437
+src="Creating%20your%20MSI%20installer%20using%20Visual%20Studio%202008_files/image022.jpg"
+alt="http://appdeveloper.intel.com/sites/files/SilentInstall_v2.PNG" v:shapes="Picture_x0020_11"><![endif]><o:p></o:p></span></p>
+
+<p style='margin:0in;margin-bottom:.0001pt;line-height:12.0pt;background:white;
+z-index:0'><span style='font-size:9.0pt;font-family:"Verdana","sans-serif";
+color:black'>Example:<span class=apple-converted-space>&nbsp;</span></span><code><span
+style='font-size:8.5pt;color:black'>c:\MyApp.msi /qn</span></code><span
+style='font-size:9.0pt;font-family:"Verdana","sans-serif";color:black'><o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>If it installs without
+displaying any user interface, you have created a silent install. Windows UAC
+and progress install bar is part of the silent install category.<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>You will need to delete some
+dialogs in your project.<o:p></o:p></span></p>
+
+<p style='margin-top:0in;margin-right:0in;margin-bottom:7.5pt;margin-left:0in;
+line-height:12.0pt;background:white;z-index:0'><span style='font-size:9.0pt;
+font-family:"Verdana","sans-serif";color:black'>If you have any problems please
+do not hesitate to ask. Best of luck!<o:p></o:p></span></p>
+
+<p class=MsoNormal><o:p>&nbsp;</o:p></p>
+
+</div>
+
+</body>
+
+</html>

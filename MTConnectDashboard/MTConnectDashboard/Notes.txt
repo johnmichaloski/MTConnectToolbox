@@ -1,0 +1,359 @@
+
+
+1	2010-03-18 09:55:45	m25709mazak1	0	1137	00:03:26	00:03:26
+2	2010-03-18 09:59:57	m25709mazak1	0	1137	00:04:07	00:04:07
+3	2010-03-18 10:18:32	m25709mazak1	0	1137	00:18:19	00:18:19
+4	2010-03-18 10:19:57	m25709mazak1	0	1264	00:01:24	00:01:24
+5	2010-03-18 10:20:39	m25709mazak1	0	1264	00:00:42	00:00:42
+6	2010-03-18 10:47:11	m25709mazak1	0	1264	00:26:12	00:26:12
+7	2010-03-18 10:59:52	m25709mazak1	0	1264	00:12:31	00:12:31
+=============
+1	2010-03-18 15:03:53	m25709mazak2	1	77777777	01:13:44	01:13:44
+2	2010-03-19 14:50:35	m25709mazak2	0	77777777	01:28:47	01:28:47
+3	2010-03-23 14:33:10	m25709mazak2	0	77777777	03:55:20	03:55:20
+4	2010-03-24 06:47:18	m25709mazak2	0	77777777	00:00:21	00:00:21
+5	2010-03-24 06:48:00	m25709mazak2	0				00:00:42	00:00:42
+6	2010-03-24 09:48:30	m25709mazak2	0	77777777	02:23:20	02:23:20
+7	2010-03-25 11:54:47	m25709mazak2	0				00:00:20	00:00:20
+========================
+1	2010-03-18 10:11:52	m25709mazak3	0	1137	00:19:19	00:19:19
+2	2010-03-18 10:13:16	m25709mazak3	0	1263	00:01:23	00:01:23
+3	2010-03-18 10:14:19	m25709mazak3	0	1263	00:01:02	00:01:02
+4	2010-03-18 10:40:49	m25709mazak3	0	1263	00:26:08	00:26:08
+5	2010-03-18 10:45:04	m25709mazak3	0	1263	00:04:12	00:04:12
+6	2010-03-18 10:50:01	m25709mazak3	0	1263	00:04:53	00:04:53
+7	2010-03-18 10:55:17	m25709mazak3	0	1263	00:05:12	00:05:12
+
+
+================
+
+	char  * colormap[5] = { "red", "blue", "green", "yellow", "black"};
+
+
+int CCMTConnectTrayIcon::GetState()
+{
+	int state;
+	// Determine current status, then save
+	if(stricmp(_datamap["power"].c_str(), "OFF")==0)
+		state= 4; 
+	else  if(stricmp(_datamap["mode"].c_str(), "MANUAL")==0) 
+		state=1;
+	else if(stricmp(_datamap["mode"].c_str(), "AUTO")==0 
+		&& (stricmp(_datamap["execution"].c_str(), "RUNNING")==0 || stricmp(_datamap["execution"].c_str(), "EXECUTING")==0 ))
+		state=2;
+	else if(stricmp(_datamap["mode"].c_str(), "AUTO")==0 
+		&& stricmp(_datamap["execution"].c_str(), "PAUSED")==0  )
+		state=3;
+	else  state=0;
+	return state;
+}
+
+
+
+
+std::greater<std::vector<std::string>>
+	void OnPageActivated(int nPage)
+	{
+		NMHDR nmhdr = { 0 };
+		nmhdr.hwndFrom = m_hWnd;
+		nmhdr.idFrom = nPage;
+		nmhdr.code = TBVN_PAGEACTIVATED;
+		::SendMessage(GetParent(), WM_NOTIFY, GetDlgCtrlID(), (LPARAM)&nmhdr);
+	}
+
+SELECT update_time
+FROM information_schema.tables
+WHERE table_schema='mydb'
+AND table_name='mytable';
+
+
+whether the connection to the database is still alive...
+
+SQLHDBC m_hConn;
+
+...
+
+SQLINTEGER siDead = SQL_CD_FALSE;
+
+::SQLGetConnectAttr(m_hConn
+,SQL_ATTR_CONNECTION_DEAD
+,&siDead //SQL_CD_TRUE or SQL_CD_FALSE
+,sizeof(siDead)
+,NULL);
+
+if (siDead == SQL_CD_TRUE)
+{
+//Database connection is dead
+}
+
+INSERT INTO `Factory`.`Programs`(Timestamp,Machine,Shift,program,Duration,Machining,Faulted,RpmTotal) VALUES('2013-01-31 16:43:02.000','M1',2,'FLANGE_CAM.NGC',00:00:00,00:00:00,00:00:01,)
+
+Severity  RaisedBy  Description  Program  RaisedAt  ResolvedAt  TBF  TTR  
+Warning M1 HydraulicTemp-OIL TEMPERATURE HIGH FLANGE_CAM.NGC 2013-01-30T14:22:43Z 2013-01-30T14:25:41Z 00:10:23 00:02:58 
+
+CREATE TABLE IF NOT EXISTS `Factory`.`Programs`(
+Id INTEGER PRIMARY KEY AUTO_INCREMENT,
+`Timestamp` TIMESTAMP NULL , 
+`Machine` VARCHAR(255) NULL DEFAULT '', 
+`Shift` INT(11) NULL DEFAULT 0, 
+`program` VARCHAR(255) NULL DEFAULT '', 
+`Duration` TIME NULL , 
+`Machining` TIME NULL , 
+`Faulted` TIME NULL , 
+`RpmTotal` INT(11) NULL DEFAULT 0) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+COM Notes:
+
+INTO `Factory`.`Programs`(Timestamp,Machine,Shift,program,Duration,Machining,Faulted,RpmTotal) 
+VALUES('2013-01-31 17:18:57.000','M1',2,'FLANGE_CAM.NGC',00:00:28,00:00:28,00:00:00,0)
+First-chance exception at 0x7c812afb in MtConnectDboard.exe: Microsoft C++ exception: std::exception at memory location 0x0191e938..
+CEchoService::serviceThread() exception SQLExecDirect INSERT INTO has FAILED!! Error Code=-1
+http://www.javascriptkit.com/script/script2/dyndateselector.shtml
+
+style="background-image:url(images/smile.gif); background-repeat:repeat;">
+
+http://resources.esri.com/help/9.3/arcgisdesktop/com/com/vcpp/events.htm
+<BR>Start: <input id="demo1" type="text" size="25"><a href="javascript:NewCal('demo1','ddmmyyyy')"><img src="cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
+<BR>Stop: <input id="demo1" type="text" size="25"><a href="javascript:NewCal('demo1','ddmmyyyy')"><img src="cal.gif" width="16" height="16" border="0" alt="Pick a date"></a>
+
+
+To automatically generate new connection point methods, each time you add a new method to the _ITestEvents interface, 
+you need to right click the CTest class and select Add / Add Connection Point, 
+then select the _ITestEvents interface into the "Implement connection points" list.
+
+string WhatIWasSearchingFor = webBrowser1.Document.Window.Frames["theNameOfTheFrame"].Document.GetElementById("theIDofTheSpecificValueIWasLookingFor");
+
+HRESULT getFrameDocumentById(IHTMLDocument2* topLevelDocument,
+                             LPOLESTR frameId,
+                             IHTMLDocument2** frameDocument)
+{
+   HRESULT hresult = E_FAIL;
+   CComPtr<IOleContainer> container;
+   HRESULT hr = topLevelDocument->QueryInterface(IID_IOleContainer,
+                                                 (void**)&container);
+   if (hr == S_OK) 
+   {
+      CComPtr<IEnumUnknown> enumerator;
+      // Get an enumerator for the frames 
+      hr = container->EnumObjects(OLECONTF_EMBEDDINGS, &enumerator);
+      if (hr == S_OK) 
+      {
+         CComPtr<IUnknown> unk;
+         ULONG uFetched;
+         // Enumerate and refresh all the frames
+         for (UINT i = 0; S_OK == enumerator->Next(1, &unk,
+              &uFetched); i++) 
+         {
+            CComPtr<IWebBrowser2> browser;
+            // QI for IWebBrowser here to see if we have an embedded
+            // browser
+            hr = unk->QueryInterface(IID_IWebBrowser2,
+                                     (void**)&browser);
+            if (hr == S_OK) 
+            { 
+               CComPtr<IHTMLElement> htmlElement;
+               unk->QueryInterface(IID_IHTMLElement,
+                                   (void**)&htmlElement);
+               CComBSTR id;
+               if (SUCCEEDED(htmlElement->get_id(&id)) && id)
+               {
+                  CComPtr<IDispatch> disp;
+                  browser->get_Document(&disp);
+                  if (disp != NULL )
+                  { 
+                     CComPtr<IHTMLDocument2> frameDoc;
+                     hr = disp->QueryInterface( IID_IHTMLDocument2,
+                                               (void**)&frameDoc);
+                        if (hr == S_OK)
+                        {
+                           if (!wcscmp(id, frameId))
+                           {
+                              *frameDocument = frameDoc;
+                              (*frameDocument)->AddRef();
+                              hresult = S_OK;
+                              break;
+                        }
+                     }
+                  }
+               }
+            }
+         }
+      }
+   }
+   return hresult;
+}
+
+#import "C:\winnt\system32\mshtml.tlb" // location of mshtml.tlb
+
+   void CMyClass::ExecuteScriptFunction()
+   {
+      // m_WebBrowser is an instance of IWebBrowser2
+      MSHTML::IHTMLDocument2Ptr spDoc(m_WebBrowser.GetDocument());
+
+      if (spDoc)
+      {
+         IDispatchPtr spDisp(spDoc->GetScript());
+         if (spDisp)
+         {
+            // Evaluate is the name of the script function.
+            OLECHAR FAR* szMember = L"evaluate";
+            DISPID dispid;
+
+            HRESULT hr = spDisp->GetIDsOfNames(IID_NULL, &szMember, 1,
+                                           LOCALE_SYSTEM_DEFAULT, &dispid);
+
+            if (SUCCEEDED(hr))
+            {
+               COleVariant vtResult;
+               static BYTE parms[] = VTS_BSTR;
+
+               COleDispatchDriver dispDriver(spDisp, FALSE);
+
+               dispDriver.InvokeHelper(dispid, DISPATCH_METHOD, VT_VARIANT,
+                                       (void*)&vtResult, parms,
+                                       "5+Math.sin(9)");
+            }
+         }
+      }
+   }
+				
+
+The following is the HTML for the Web page that contains the evaluate function:
+<HTML>
+  <HEAD>
+    <TITLE>Evaluate</TITLE>
+
+    <SCRIPT>
+      function evaluate(x)
+      {
+         alert("hello")
+         return eval(x)
+      }
+   </SCRIPT>
+  </HEAD>
+
+  <BODY>
+  </BODY>
+</HTML>
+
+
+#if 0
+std::string CHtmlTableSnapshots::CreateHtmlDocument()
+{
+	std::string html;
+	html += "<HTML>\n";
+	html += "<HEAD><STYLE>" + HtmlStyle() + "</STYLE>"; 
+	html +=" <title>MTConnect Data Trace</title>";
+	html +="</HEAD>\n";
+	html +="<BODY>\n";
+
+	html += "<DIV id=""Header""> MTConnect Readings</DIV>\n";
+	html += "<DIV id=""Device""> Loading... </DIV>\n";
+
+	//html +="<input type=\"button\" value=\"BACK\" onClick=\"window.location='http://back.com' \">";
+	//html +="<input type=\"button\" value=\"FWD\" onClick=\"window.location='http://fwd.com' \">";
+	//html +="<input type=\"button\" value=\"RUN\" onClick=\"window.location='http://run.com' \">";
+
+	html += "</BODY>\n";
+	html += "</HTML>\n";
+	return html;
+}
+
+std::string CHtmlTableSnapshots::HtmlStyle()
+{
+	std::string style;
+	style+= "P\n";
+	style+= "{\n";
+	style+= "	FONT-FAMILY: ""Myriad"", sans-serif;\n";
+//	style+= "	FONT-SIZE: 70%;\n";
+	style+= "	LINE-HEIGHT: 12pt;\n";
+	style+= "	MARGIN-BOTTOM: 0px;\n";
+	style+= "	MARGIN-LEFT: 10px;\n";
+	style+= "	MARGIN-TOP: 10px\n";
+	style+= "}\n";
+
+	style+= "H1\n";
+	style+= "{\n";
+	style+= "	BACKGROUND-COLOR: #003366;\n";
+	style+= "	BORDER-BOTTOM: #336699 6px solid;\n";
+	style+= "	COLOR: #ffffff;\n";
+	style+= "	FONT-SIZE: 130%;\n";
+	style+= "	FONT-WEIGHT: normal;\n";
+	style+= "	MARGIN: 0em 0em 0em -20px;\n";
+	style+= "	PADDING-BOTTOM: 8px;\n";
+	style+= "	PADDING-LEFT: 30px;\n";
+	style+= "	PADDING-TOP: 16px\n";
+	style+= "}\n";
+	style+= "table.gridtable {\n";
+	style+= " 	BACKGROUND-COLOR: #f0f0e0;\n";
+	style+= "	BORDER-BOTTOM: #ffffff 0px solid;\n";
+	style+= "	BORDER-COLLAPSE: collapse;\n";
+	style+= "	BORDER-LEFT: #ffffff 0px solid;\n";
+	style+= "	BORDER-RIGHT: #ffffff 0px solid;\n";
+	style+= "	BORDER-TOP: #ffffff 0px solid;\n";
+	//style+= "	FONT-SIZE: 70%;\n";
+	style+= "	FONT-SIZE: 9pt;\n";
+	style+= "	MARGIN-LEFT: 10px\n";
+	style+= "  }\n";
+
+	style+= "table.gridtable td {\n";
+	style+= "	BACKGROUND-COLOR: #e7e7ce;\n";
+	style+= "	BORDER-BOTTOM: #ffffff 1px solid;\n";
+	style+= "	BORDER-LEFT: #ffffff 1px solid;\n";
+	style+= "	BORDER-RIGHT: #ffffff 1px solid;\n";
+	style+= "	BORDER-TOP: #ffffff 1px solid;\n";
+	style+= "	PADDING-LEFT: 3px\n";
+	style+= "  }\n";
+	style+= "table.gridtable th {\n";
+	style+= "	BACKGROUND-COLOR: #cecf9c;\n";
+	style+= "	BORDER-BOTTOM: #ffffff 1px solid;\n";
+	style+= "	BORDER-LEFT: #ffffff 1px solid;\n";
+	style+= "	BORDER-RIGHT: #ffffff 1px solid;\n";
+	style+= "	BORDER-TOP: #ffffff 1px solid;\n";
+	style+= "	COLOR: #000000;\n";
+	style+= "	FONT-WEIGHT: bold\n";
+	style+= "  }\n";
+
+	style+= "table.histogram {\n";
+	style+= " 	BACKGROUND-COLOR: #f0f0e0;\n";
+	style+= "	border-width: 0px;\n";
+	style+= "	BORDER-COLLAPSE: collapse;\n";
+	style+= "	padding: 0px;\n";
+	//style+= "	FONT-SIZE: 70%;\n";
+	style+= "	FONT-SIZE: 9pt;\n";
+	style+= "	MARGIN-LEFT: 0px\n";
+	style+= "  }\n";
+	style+= "table.histogram td {\n";
+	style+= "	BORDER-BOTTOM: #ffffff 0px solid;\n";
+	style+= "	BORDER-LEFT: #ffffff 0px solid;\n";
+	style+= "	BORDER-RIGHT: #ffffff 0px solid;\n";
+	style+= "	BORDER-TOP: #ffffff 0px solid;\n";
+	style+= "	PADDING-LEFT: 0px\n";
+	style+= "  }\n";
+	return style;
+}
+#endif
+
+		std::string sSummaryHeader;
+		//	sSummaryHeader+= "<p><input type=button  class=\"btn\" onClick=\"window.location.href='http://localhost/Reset'\" value='Reset'></p>\n";
+		sSummaryHeader+="<H1>Machine Summaries</H1><BR>" + Time.GetTimeStamp(today);
+		pCNCSummaryView->SetElementId("Header", sSummaryHeader );
+
+
+
+			
+
+//DECLARE_REGISTRY_RESOURCEID(IDR_CMTCONNECTTRAYICON)
+//DECLARE_CLASSFACTORY_SINGLETON(CCMTConnectTrayIcon)
+//
+//BEGIN_COM_MAP(CCMTConnectTrayIcon)
+//	COM_INTERFACE_ENTRY(ICMTConnectTrayIcon)
+//	COM_INTERFACE_ENTRY(IDispatch)
+//	COM_INTERFACE_ENTRY(IConnectionPointContainer)
+//END_COM_MAP()
+//
+//BEGIN_CONNECTION_POINT_MAP(CCMTConnectTrayIcon)
+//	CONNECTION_POINT_ENTRY(__uuidof(_IDboardNotificationEvents))
+//END_CONNECTION_POINT_MAP()
+
+
+	//DECLARE_PROTECT_FINAL_CONSTRUCT()

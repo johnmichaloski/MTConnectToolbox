@@ -1,0 +1,241 @@
+<html>
+<head>
+<style>
+P 
+{ 
+	font-family: Verdana,sans-serif;
+	FONT-SIZE: 70%; 
+	LINE-HEIGHT: 12pt;
+	MARGIN-BOTTOM: 0px; 
+	MARGIN-LEFT: 10px; 
+	MARGIN-TOP: 10px;
+}
+
+H1 
+{ 
+	BACKGROUND-COLOR: #003366; 
+	BORDER-BOTTOM: #336699 6px solid; 
+	COLOR: #ffffff; 
+	FONT-SIZE: 130%;
+	FONT-WEIGHT: normal;
+	MARGIN: 0em 0em 0em -20px; 
+	PADDING-BOTTOM: 8px;
+	PADDING-LEFT: 30px; 
+	PADDING-TOP: 16px 
+}
+table {
+ 	BACKGROUND-COLOR: #f0f0e0; 
+	BORDER-BOTTOM: #ffffff 0px solid; 
+	BORDER-COLLAPSE: collapse;
+	BORDER-LEFT: #ffffff 0px solid;
+	BORDER-RIGHT: #ffffff 0px solid;
+	BORDER-TOP: #ffffff 0px solid; 
+	FONT-SIZE: 70%;
+	MARGIN-LEFT: 10px
+  }
+
+td { 
+	BACKGROUND-COLOR: #e7e7ce; 
+	BORDER-BOTTOM: #ffffff 1px solid;
+	BORDER-LEFT: #ffffff 1px solid; 
+	BORDER-RIGHT: #ffffff 1px solid;
+	BORDER-TOP: #ffffff 1px solid;
+	PADDING-LEFT: 3px 
+  } 
+th {
+	BACKGROUND-COLOR: #cecf9c;
+	BORDER-BOTTOM: #ffffff 1px solid;
+	BORDER-LEFT: #ffffff 1px solid;
+	BORDER-RIGHT: #ffffff 1px solid;
+	BORDER-TOP: #ffffff 1px solid;
+	COLOR: #000000;
+	FONT-WEIGHT: bold 
+  }
+</style>
+<script type="text/javascript">
+
+// http://www.bloggingdeveloper.com?author=bloggingdeveloper
+//file:///C:/Program%20Files/NIST/proj/MTConnect/Nist/VBS/Javascript/mt5jsmtconnect.html?url=agent.mtconnect.org
+//var author_value = getQuerystring('author');
+function getQuerystring(key, default_)
+{
+  if (default_==null) default_=""; 
+  key = key.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+  var regex = new RegExp("[\\?&]"+key+"=([^&#]*)");
+  var qs = regex.exec(window.location.href);
+  if(qs == null)
+    return default_;
+  else
+    return qs[1];
+}
+
+function sleep(ms)
+{
+	var dt = new Date();
+	dt.setTime(dt.getTime() + ms);
+	while (new Date().getTime() < dt.getTime());
+}
+function Lookup(key) 
+{ 
+  return(this[key]); 
+} 
+ 
+ 
+ 
+ 
+function Delete() 
+{ 
+  for (c=0; c < Delete.arguments.length; c++) 
+  { 
+    this[Delete.arguments[c]] = null; 
+  } 
+  // Adjust the keys (not terribly efficient) 
+  var keys = new Array() 
+  for (var i=0; i<this.Keys.length; i++) 
+  { 
+    if(this[this.Keys[i]] != null) 
+      keys[keys.length] = this.Keys[i]; 
+  } 
+  this.Keys = keys; 
+} 
+ 
+ 
+function Add() 
+{ 
+  for (c=0; c < Add.arguments.length; c+=2) 
+  { 
+    // Add the property 
+    this[Add.arguments[c]] = Add.arguments[c+1]; 
+    // And add it to the keys array 
+    this.Keys[this.Keys.length] = Add.arguments[c]; 
+  } 
+} 
+
+function Clear()
+{
+  for (c=0; c < this.Keys.length; c++) 
+  { 
+    this[this.Keys[c]] = null; 
+  } 
+
+  this.Keys = new Array(); 
+
+}
+ 
+function Dictionary() 
+{ 
+  this.Add = Add; 
+  this.Lookup = Lookup; 
+  this.Delete = Delete; 
+   this.Clear = Clear; 
+ this.Keys = new Array(); 
+}
+
+function SetDiv(id, str)
+{
+  	var x=document.getElementById(id);
+	x.innerHtml  = str;
+}
+
+function updatetable(machine)
+{
+
+
+	var tmp="";
+	var  xmlDoc1 = new ActiveXObject("Msxml2.DOMDocument.3.0");
+	xmlDoc1.async = false;
+	xmlDoc1.setProperty( "ServerHTTPRequest", true);
+	xmlDoc1.load("http://"+machine+"/current");
+
+	var rootNode = xmlDoc1.documentElement;
+	var nodes = rootNode.selectNodes("//DeviceStream");
+	for (var i=0;i<nodes.length;i++) 
+	{
+   		var userDict = new Dictionary();
+  	  	tmp= tmp+  "<P>" + nodes[i].getAttribute("name");
+		var items=new Array(); 
+		items[0] = ".//Samples";
+		items[1] = ".//Events";
+		items[2] = ".//Condition";
+		for(var ii=0; ii<3; ii++)
+		{
+  		var samples = nodes(i).selectNodes(items[ii]);
+		for (var j=0;j<samples.length;j++) 
+		{
+			var sample = samples(j);
+			for( var k=0; k< sample.childNodes.length; k++)
+			{
+				var child = samples(j).childNodes(k);
+				if(child.getAttribute("name") != null)
+				{
+					userDict.Add(child.getAttribute("name") ,child.text )
+
+				}
+				else if(child.getAttribute("dataItemId") != null)
+				{
+					userDict.Add(child.getAttribute("dataItemId") ,child.text )
+				}
+
+			}
+
+		}
+		}
+		tmp= tmp+  "<TABLE> ";
+		var keys = userDict.Keys
+		keys.sort(function(x,y)
+		{
+      			var a = String(x).toUpperCase();
+      			var b = String(y).toUpperCase();
+      			if (a > b)
+         			return 1
+      			if (a < b)
+        			 return -1
+      			return 0;
+    		});
+
+
+		for(var k=0; k<keys.length; k++)
+		{
+			tmp= tmp+  "<tr><td>"+ keys[k] + "</td> <td>"+ userDict.Lookup(keys[k]) +"</td> </tr>\n";
+		} 
+
+		tmp= tmp+  "</TABLE> ";
+
+	}
+	return tmp;
+}
+
+function timedRefresh(timeoutPeriod) {
+	setTimeout("location.reload(true);",timeoutPeriod);
+}
+
+
+function myTimer()
+{
+var machine = getQuerystring('url', '127.0.0.1');
+var x=updatetable(machine);
+document.getElementById("Device").innerHTML=x;
+}
+
+
+</script>
+
+
+</head>
+<body>
+<H1> MTConnect Readings</H1>
+<DIV id="Device"> 
+
+
+
+<script type="text/javascript">
+myTimer();
+window.setInterval(myTimer,2000);
+</script>
+
+
+
+
+
+</body>
+</html>

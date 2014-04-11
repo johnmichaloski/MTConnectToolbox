@@ -1,0 +1,23 @@
+HKCR
+{
+	MtConnectDboardGui.DboardNotification.1 = s 'DboardNotification Class'
+	{
+		CLSID = s '{BA7CF1AF-DEDB-42EC-AE5F-6F758F3D46C7}'
+	}
+	MtConnectDboardGui.DboardNotification = s 'DboardNotification Class'
+	{
+		CLSID = s '{BA7CF1AF-DEDB-42EC-AE5F-6F758F3D46C7}'
+		CurVer = s 'MtConnectDboardGui.DboardNotification.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {BA7CF1AF-DEDB-42EC-AE5F-6F758F3D46C7} = s 'DboardNotification Class'
+		{
+			ProgID = s 'MtConnectDboardGui.DboardNotification.1'
+			VersionIndependentProgID = s 'MtConnectDboardGui.DboardNotification'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			'TypeLib' = s '{44220923-6EDE-4d93-B376-720CD69ED0A6}'
+		}
+	}
+}

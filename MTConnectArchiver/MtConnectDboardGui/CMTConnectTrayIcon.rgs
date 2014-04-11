@@ -1,0 +1,23 @@
+HKCR
+{
+	MtConnectDboardGui.CMTConnectTrayIcon.1 = s 'CMTConnect Dashboard TrayIcon Class'
+	{
+		CLSID = s '{EF0FE7A0-A9EF-4323-B6D8-6F7110B0A5CE}'
+	}
+	MtConnectDboardGui.CMTConnectTrayIcon = s 'CMTConnect Dashboard TrayIcon Class'
+	{
+		CLSID = s '{EF0FE7A0-A9EF-4323-B6D8-6F7110B0A5CE}'
+		CurVer = s 'MtConnectDboardGui.CMTConnectTrayIcon.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {EF0FE7A0-A9EF-4323-B6D8-6F7110B0A5CE} = s 'CMTConnect Dashboard TrayIcon Class'
+		{
+			ProgID = s 'MtConnectDboardGui.CMTConnectTrayIcon.1'
+			VersionIndependentProgID = s 'MtConnectDboardGui.CMTConnectTrayIcon'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			'TypeLib' = s '{44220923-6EDE-4d93-B376-720CD69ED0A6}'
+		}
+	}
+}

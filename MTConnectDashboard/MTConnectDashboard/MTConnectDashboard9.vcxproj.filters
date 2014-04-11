@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{65f2ea34-5456-4cb3-9eb1-a75307f7e654}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{1e7a1454-1db7-4d4c-8bec-d94b5432ca84}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{fe8e47b0-b770-484f-a199-6cbb6ca31ff0}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;jpg;jpeg;jpe;manifest</Extensions>
+    </Filter>
+    <Filter Include="NIST">
+      <UniqueIdentifier>{950e227d-83a2-4f4b-810d-d6479427c623}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="AboutDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CMTConnectTrayIcon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFrm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MtConnectDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SiteImpl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WTLHtmlView.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NIST\OdbcArchiver.cpp">
+      <Filter>NIST</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NIST\url.cpp">
+      <Filter>NIST</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NIST\DataDictionary.cpp">
+      <Filter>NIST</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="_IDboardNotificationEvents_CP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AboutDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CMTConnectTrayIcon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFrm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SiteImpl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WTLHtmlView.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\Config.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\File.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\OdbcArchiver.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\url.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\StdStringFcn.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\DataDictionary.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\ElTime.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\Logger.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="CDummy.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\cii.JPG">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\clear.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="CMTConnectTrayIcon.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="DboardNotification.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\idle.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\idr_main.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\MtConnectDashboard.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MtConnectDashboard.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\rt_html1.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\rt_html2.bin">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\stop.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\cii.png" />
+    <None Include="res\cssStyle.html" />
+    <None Include="res\datetimepicker.js" />
+    <None Include="res\FaultHistory.html" />
+    <None Include="res\html2.htm" />
+    <None Include="res\mt5jsmtconnect.html" />
+    <None Include="Notes.txt" />
+    <None Include="ChangeLog.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MtConnectDashboard.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

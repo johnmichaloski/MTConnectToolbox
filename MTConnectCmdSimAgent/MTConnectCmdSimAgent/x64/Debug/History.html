@@ -1,0 +1,164 @@
+<HTML>
+<HEAD>
+ <title>Example Ch 6 Arena</title>
+<STYLE>
+table.gridtable {
+  BACKGROUND-COLOR: #f0f0e0;
+ BORDER-BOTTOM: #ffffff 0px solid;
+ BORDER-COLLAPSE: collapse;
+ BORDER-LEFT: #ffffff 0px solid;
+ BORDER-RIGHT: #ffffff 0px solid;
+ BORDER-TOP: #ffffff 0px solid;
+ FONT-SIZE: 9pt;
+ MARGIN-LEFT: 10px
+  }
+table.gridtable td {
+ BACKGROUND-COLOR: #e7e7ce;
+ BORDER-BOTTOM: #ffffff 1px solid;
+ BORDER-LEFT: #ffffff 1px solid;
+ BORDER-RIGHT: #ffffff 1px solid;
+ BORDER-TOP: #ffffff 1px solid;
+ PADDING-LEFT: 3px
+  }
+table.gridtable th {
+ BACKGROUND-COLOR: #cecf9c;
+ BORDER-BOTTOM: #ffffff 1px solid;
+ BORDER-LEFT: #ffffff 1px solid;
+ BORDER-RIGHT: #ffffff 1px solid;
+ BORDER-TOP: #ffffff 1px solid;
+ COLOR: #000000;
+ FONT-WEIGHT: bold
+  }
+table.histogram {
+ 	BACKGROUND-COLOR: #f0f0e0;
+	border-width: 0px;
+	BORDER-COLLAPSE: collapse;
+	padding: 0px;
+	FONT-SIZE: 9pt;
+	MARGIN-LEFT: 0px
+	MARGIN-RIGHT: 0px
+	height:100px;
+  }
+table.histogram td {
+	BORDER-BOTTOM: #ffffff 0px solid;
+	BORDER-LEFT: #ffffff 0px solid;
+	BORDER-RIGHT: #ffffff 0px solid;
+	BORDER-TOP: #ffffff 0px solid;
+	PADDING: 0px;
+	height:100px;
+	margin: 0px;
+  }
+</STYLE>
+<BR><TABLE  class="gridtable"><TR style="height:20x"> <TH> Machine</TH><TH> Histogram</TH></TR><TR><TD>r1</TD><TD cellpadding=0 cellspacing=0 border=0 height=60px width=600px>
+<table id="myTable"  style='empty-cells: show; width=600px height=60px; border-width: 0px; cellpadding=0; cellspacing=0; border=0;'><tr style=' PADDING:0px; height=50px'>
+<td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:11px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:94px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:94px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:88px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:17px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:94px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:23px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:105px; '>&nbsp;</td></tr>
+ </table>	
+<TD/>
+
+</TR><TR><TD>r2</TD><TD cellpadding=0 cellspacing=0 border=0 height=60px width=600px>
+<table id="myTable"  style='empty-cells: show; width=600px height=60px; border-width: 0px; cellpadding=0; cellspacing=0; border=0;'><tr style=' PADDING:0px; height=50px'>
+<td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:11px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:94px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:23px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:70px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:23px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:29px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:23px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:11px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:17px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:88px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:23px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:23px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:82px; '>&nbsp;</td></tr>
+ </table>	
+<TD/>
+
+</TR><TR><TD>r3old</TD><TD cellpadding=0 cellspacing=0 border=0 height=60px width=600px>
+<table id="myTable"  style='empty-cells: show; width=600px height=60px; border-width: 0px; cellpadding=0; cellspacing=0; border=0;'><tr style=' PADDING:0px; height=50px'>
+<td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:11px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:141px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:23px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:311px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:35px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:64px; '>&nbsp;</td></tr>
+ </table>	
+<TD/>
+
+</TR><TR><TD>r3new</TD><TD cellpadding=0 cellspacing=0 border=0 height=60px width=600px>
+<table id="myTable"  style='empty-cells: show; width=600px height=60px; border-width: 0px; cellpadding=0; cellspacing=0; border=0;'><tr style=' PADDING:0px; height=50px'>
+<td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:11px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:300px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:29px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:35px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:88px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:35px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:17px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:47px; '>&nbsp;</td></tr>
+ </table>	
+<TD/>
+
+</TR><TR><TD>r4</TD><TD cellpadding=0 cellspacing=0 border=0 height=60px width=600px>
+<table id="myTable"  style='empty-cells: show; width=600px height=60px; border-width: 0px; cellpadding=0; cellspacing=0; border=0;'><tr style=' PADDING:0px; height=50px'>
+<td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:11px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:170px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:35px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:29px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:23px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:64px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:23px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:176px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:green; 	 width:35px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:black; 	 width:5px; '>&nbsp;</td><td style=' height:50px; PADDING:0px; margin:0px; background-color:blue; 	 width:5px; '>&nbsp;</td></tr>
+ </table>	
+<TD/>
+
+</TR></TABLE>
+<H1>Legend</h1><TABLE  class="gridtable"><TR style="height:20x"> <TH> Off</TH><TH>Idle</TH><TH> Faulted</TH><TH> Busy</TH></TR><TR style="height:20x"> <TD  style='background-color:black;'>&nbsp;</TD><TD style='background-color:blue;'>&nbsp;</TD> <TD style='background-color:red;'>&nbsp;</TD> <TD style='background-color:green;'>&nbsp;</TD> </TR><HTML>
+<HEAD>
+ <title>Example Ch 6 Arena</title>
+<STYLE>
+table.gridtable {
+  BACKGROUND-COLOR: #f0f0e0;
+ BORDER-BOTTOM: #ffffff 0px solid;
+ BORDER-COLLAPSE: collapse;
+ BORDER-LEFT: #ffffff 0px solid;
+ BORDER-RIGHT: #ffffff 0px solid;
+ BORDER-TOP: #ffffff 0px solid;
+ FONT-SIZE: 9pt;
+ MARGIN-LEFT: 10px
+  }
+table.gridtable td {
+ BACKGROUND-COLOR: #e7e7ce;
+ BORDER-BOTTOM: #ffffff 1px solid;
+ BORDER-LEFT: #ffffff 1px solid;
+ BORDER-RIGHT: #ffffff 1px solid;
+ BORDER-TOP: #ffffff 1px solid;
+ PADDING-LEFT: 3px
+  }
+table.gridtable th {
+ BACKGROUND-COLOR: #cecf9c;
+ BORDER-BOTTOM: #ffffff 1px solid;
+ BORDER-LEFT: #ffffff 1px solid;
+ BORDER-RIGHT: #ffffff 1px solid;
+ BORDER-TOP: #ffffff 1px solid;
+ COLOR: #000000;
+ FONT-WEIGHT: bold
+  }
+table.histogram {
+ 	BACKGROUND-COLOR: #f0f0e0;
+	border-width: 0px;
+	BORDER-COLLAPSE: collapse;
+	padding: 0px;
+	FONT-SIZE: 9pt;
+	MARGIN-LEFT: 0px
+	MARGIN-RIGHT: 0px
+	height:100px;
+  }
+table.histogram td {
+	BORDER-BOTTOM: #ffffff 0px solid;
+	BORDER-LEFT: #ffffff 0px solid;
+	BORDER-RIGHT: #ffffff 0px solid;
+	BORDER-TOP: #ffffff 0px solid;
+	PADDING: 0px;
+	height:100px;
+	margin: 0px;
+  }
+</STYLE>
+<BR><TABLE  class="gridtable"><TR style="height:20x"> <TH> Machine</TH><TH> Setup</TH></TR><TR><TD>r1</TD><TD cellpadding=0 cellspacing=0 border=0 height=40px width=600px>
+<table id="myTable"  style='empty-cells: show; width=600px height=40px; border-width: 0px; cellpadding=0; cellspacing=0; border=0;'><tr style=' height=30px'>
+<td style=' height:30px; PADDING:0px; margin:0px; background-color:green; 	 width:63px; '>&nbsp;</td><td style=' height:30px; PADDING:0px; margin:0px; background-color:blue; 	 width:536px; '>&nbsp;</td></tr>
+ </table>	
+<TD/>
+
+</TR><TR><TD>r2</TD><TD cellpadding=0 cellspacing=0 border=0 height=40px width=600px>
+<table id="myTable"  style='empty-cells: show; width=600px height=40px; border-width: 0px; cellpadding=0; cellspacing=0; border=0;'><tr style=' height=30px'>
+<td style=' height:30px; PADDING:0px; margin:0px; background-color:green; 	 width:81px; '>&nbsp;</td><td style=' height:30px; PADDING:0px; margin:0px; background-color:blue; 	 width:518px; '>&nbsp;</td></tr>
+ </table>	
+<TD/>
+
+</TR><TR><TD>r3old</TD><TD cellpadding=0 cellspacing=0 border=0 height=40px width=600px>
+<table id="myTable"  style='empty-cells: show; width=600px height=40px; border-width: 0px; cellpadding=0; cellspacing=0; border=0;'><tr style=' height=30px'>
+<td style=' height:30px; PADDING:0px; margin:0px; background-color:green; 	 width:22px; '>&nbsp;</td><td style=' height:30px; PADDING:0px; margin:0px; background-color:blue; 	 width:577px; '>&nbsp;</td></tr>
+ </table>	
+<TD/>
+
+</TR><TR><TD>r3new</TD><TD cellpadding=0 cellspacing=0 border=0 height=40px width=600px>
+<table id="myTable"  style='empty-cells: show; width=600px height=40px; border-width: 0px; cellpadding=0; cellspacing=0; border=0;'><tr style=' height=30px'>
+<td style=' height:30px; PADDING:0px; margin:0px; background-color:green; 	 width:38px; '>&nbsp;</td><td style=' height:30px; PADDING:0px; margin:0px; background-color:blue; 	 width:561px; '>&nbsp;</td></tr>
+ </table>	
+<TD/>
+
+</TR><TR><TD>r4</TD><TD cellpadding=0 cellspacing=0 border=0 height=40px width=600px>
+<table id="myTable"  style='empty-cells: show; width=600px height=40px; border-width: 0px; cellpadding=0; cellspacing=0; border=0;'><tr style=' height=30px'>
+<td style=' height:30px; PADDING:0px; margin:0px; background-color:green; 	 width:43px; '>&nbsp;</td><td style=' height:30px; PADDING:0px; margin:0px; background-color:blue; 	 width:556px; '>&nbsp;</td></tr>
+ </table>	
+<TD/>
+
+</TR></body></html>

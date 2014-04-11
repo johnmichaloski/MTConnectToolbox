@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="..\NIST\Registry.cpp" />
+    <ClCompile Include="MTConnectStreamsParser.cpp" />
+    <ClCompile Include="service.cpp" />
+    <ClCompile Include="Snapshots.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="..\NIST\AlarmHandler.cpp">
+      <Filter>NIST</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NIST\DataDictionary.cpp">
+      <Filter>NIST</Filter>
+    </ClCompile>
+    <ClCompile Include="..\NIST\OdbcArchiver.cpp">
+      <Filter>NIST</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Math\SimMath.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Math\rv.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Math\mtrand.cpp">
+      <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="MtConnectArchiver.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\NIST\Registry.h" />
+    <ClInclude Include="MTConnectStreamsParser.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="service.hpp" />
+    <ClInclude Include="ShdrParser.h" />
+    <ClInclude Include="Snapshots.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="..\NIST\AlarmHandler.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Math\adevs_rand.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\DataDictionary.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\Config.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\File.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\Logger.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\OdbcArchiver.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Math\RunningStat.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Math\SimMath.h">
+      <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\StdStringFcn.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="CsvParser.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="authenticate.txt" />
+    <None Include="Notes.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Math">
+      <UniqueIdentifier>{b9406efc-fac6-4770-b3de-a060c9085f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NIST">
+      <UniqueIdentifier>{03a2d799-5dd1-4af3-b513-7430deb849ea}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

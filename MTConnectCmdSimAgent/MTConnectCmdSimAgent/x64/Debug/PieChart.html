@@ -1,0 +1,170 @@
+<HTML>
+<HEAD>
+ <title>Example Ch 6 Arena</title>
+<STYLE>
+table.gridtable {
+  BACKGROUND-COLOR: #f0f0e0;
+ BORDER-BOTTOM: #ffffff 0px solid;
+ BORDER-COLLAPSE: collapse;
+ BORDER-LEFT: #ffffff 0px solid;
+ BORDER-RIGHT: #ffffff 0px solid;
+ BORDER-TOP: #ffffff 0px solid;
+ FONT-SIZE: 9pt;
+ MARGIN-LEFT: 10px
+  }
+table.gridtable td {
+ BACKGROUND-COLOR: #e7e7ce;
+ BORDER-BOTTOM: #ffffff 1px solid;
+ BORDER-LEFT: #ffffff 1px solid;
+ BORDER-RIGHT: #ffffff 1px solid;
+ BORDER-TOP: #ffffff 1px solid;
+ PADDING-LEFT: 3px
+  }
+table.gridtable th {
+ BACKGROUND-COLOR: #cecf9c;
+ BORDER-BOTTOM: #ffffff 1px solid;
+ BORDER-LEFT: #ffffff 1px solid;
+ BORDER-RIGHT: #ffffff 1px solid;
+ BORDER-TOP: #ffffff 1px solid;
+ COLOR: #000000;
+ FONT-WEIGHT: bold
+  }
+table.histogram {
+ 	BACKGROUND-COLOR: #f0f0e0;
+	border-width: 0px;
+	BORDER-COLLAPSE: collapse;
+	padding: 0px;
+	FONT-SIZE: 9pt;
+	MARGIN-LEFT: 0px
+	MARGIN-RIGHT: 0px
+	height:100px;
+  }
+table.histogram td {
+	BORDER-BOTTOM: #ffffff 0px solid;
+	BORDER-LEFT: #ffffff 0px solid;
+	BORDER-RIGHT: #ffffff 0px solid;
+	BORDER-TOP: #ffffff 0px solid;
+	PADDING: 0px;
+	height:100px;
+	margin: 0px;
+  }
+</STYLE>
+<script language="javascript" src="./js/graphael/raphael.js" type="text/javascript"></script>
+<script language="javascript" src="./js/graphael/g.raphael.js" type="text/javascript"></script>
+<script language="javascript" src="./js/graphael/g.pie.js" type="text/javascript"></script> 
+<script language="javascript" src="./js/graphael/g.line.js" type="text/javascript"></script> 
+</HEAD>
+<table border="0">
+<tr><td><div id="InlinePieChart1"></div>
+<script type="text/javascript">
+var values = [  0.0000,3240.0000,  0.0000,1440.0000,  0.0000,  0.0000,  0.0000,720.0000,  0.0000 ];
+var r2 = Raphael("InlinePieChart1");
+var pie = r2.piechart(320, 240, 100, values,                { legend: ["%.%  -  blocked","%.%  -  busy","%.%  -  down","%.%  -  idle","%.%  -  off","%.%  -  ready","%.%  -  repair","%.%  -  setup","%.%  -  starved"],	legendpos: "west"});
+ r2.text(320, 100, "r1, State Use").attr({ font: "20px sans-serif" });	            pie.hover(function () {
+	                this.sector.stop();
+	                this.sector.scale(1.1, 1.1, this.cx, this.cy);
+	                if (this.label) {
+	                    this.label[0].stop();
+	                    this.label[0].attr({ r: 7.5 });
+	                    this.label[1].attr({ "font-weight": 800 });
+	                 }
+	             }, function () {
+	                this.sector.animate({ transform: 's1 1 ' + this.cx + ' ' + this.cy }, 500, "bounce");
+	                if (this.label) {
+	                   this.label[0].animate({ r: 5 }, 500, "bounce");
+	                   this.label[1].attr({ "font-weight": 400 });
+	               }
+	           });
+
+</script>
+</td><td><div id="InlinePieChart2"></div>
+<script type="text/javascript">
+var values = [  0.0000,2760.0000,  0.0000,2280.0000,  0.0000,  0.0000,  0.0000,960.0000,  0.0000 ];
+var r3 = Raphael("InlinePieChart2");
+var pie = r3.piechart(320, 240, 100, values,                { legend: ["%.%  -  blocked","%.%  -  busy","%.%  -  down","%.%  -  idle","%.%  -  off","%.%  -  ready","%.%  -  repair","%.%  -  setup","%.%  -  starved"],	legendpos: "west"});
+ r3.text(320, 100, "r2, State Use").attr({ font: "20px sans-serif" });	            pie.hover(function () {
+	                this.sector.stop();
+	                this.sector.scale(1.1, 1.1, this.cx, this.cy);
+	                if (this.label) {
+	                    this.label[0].stop();
+	                    this.label[0].attr({ r: 7.5 });
+	                    this.label[1].attr({ "font-weight": 800 });
+	                 }
+	             }, function () {
+	                this.sector.animate({ transform: 's1 1 ' + this.cx + ' ' + this.cy }, 500, "bounce");
+	                if (this.label) {
+	                   this.label[0].animate({ r: 5 }, 500, "bounce");
+	                   this.label[1].attr({ "font-weight": 400 });
+	               }
+	           });
+
+</script>
+</td><td><div id="InlinePieChart3"></div>
+<script type="text/javascript">
+var values = [  0.0000,600.0000,  0.0000,5280.0000,  0.0000,  0.0000,  0.0000,240.0000,  0.0000 ];
+var r4 = Raphael("InlinePieChart3");
+var pie = r4.piechart(320, 240, 100, values,                { legend: ["%.%  -  blocked","%.%  -  busy","%.%  -  down","%.%  -  idle","%.%  -  off","%.%  -  ready","%.%  -  repair","%.%  -  setup","%.%  -  starved"],	legendpos: "west"});
+ r4.text(320, 100, "r3old, State Use").attr({ font: "20px sans-serif" });	            pie.hover(function () {
+	                this.sector.stop();
+	                this.sector.scale(1.1, 1.1, this.cx, this.cy);
+	                if (this.label) {
+	                    this.label[0].stop();
+	                    this.label[0].attr({ r: 7.5 });
+	                    this.label[1].attr({ "font-weight": 800 });
+	                 }
+	             }, function () {
+	                this.sector.animate({ transform: 's1 1 ' + this.cx + ' ' + this.cy }, 500, "bounce");
+	                if (this.label) {
+	                   this.label[0].animate({ r: 5 }, 500, "bounce");
+	                   this.label[1].attr({ "font-weight": 400 });
+	               }
+	           });
+
+</script>
+</td></tr>
+<tr><td><div id="InlinePieChart4"></div>
+<script type="text/javascript">
+var values = [  0.0000,1200.0000,  0.0000,4560.0000,  0.0000,  0.0000,  0.0000,420.0000,  0.0000 ];
+var r5 = Raphael("InlinePieChart4");
+var pie = r5.piechart(320, 240, 100, values,                { legend: ["%.%  -  blocked","%.%  -  busy","%.%  -  down","%.%  -  idle","%.%  -  off","%.%  -  ready","%.%  -  repair","%.%  -  setup","%.%  -  starved"],	legendpos: "west"});
+ r5.text(320, 100, "r3new, State Use").attr({ font: "20px sans-serif" });	            pie.hover(function () {
+	                this.sector.stop();
+	                this.sector.scale(1.1, 1.1, this.cx, this.cy);
+	                if (this.label) {
+	                    this.label[0].stop();
+	                    this.label[0].attr({ r: 7.5 });
+	                    this.label[1].attr({ "font-weight": 800 });
+	                 }
+	             }, function () {
+	                this.sector.animate({ transform: 's1 1 ' + this.cx + ' ' + this.cy }, 500, "bounce");
+	                if (this.label) {
+	                   this.label[0].animate({ r: 5 }, 500, "bounce");
+	                   this.label[1].attr({ "font-weight": 400 });
+	               }
+	           });
+
+</script>
+</td><td><div id="InlinePieChart5"></div>
+<script type="text/javascript">
+var values = [  0.0000,1200.0000,  0.0000,4560.0000,  0.0000,  0.0000,  0.0000,480.0000,  0.0000 ];
+var r6 = Raphael("InlinePieChart5");
+var pie = r6.piechart(320, 240, 100, values,                { legend: ["%.%  -  blocked","%.%  -  busy","%.%  -  down","%.%  -  idle","%.%  -  off","%.%  -  ready","%.%  -  repair","%.%  -  setup","%.%  -  starved"],	legendpos: "west"});
+ r6.text(320, 100, "r4, State Use").attr({ font: "20px sans-serif" });	            pie.hover(function () {
+	                this.sector.stop();
+	                this.sector.scale(1.1, 1.1, this.cx, this.cy);
+	                if (this.label) {
+	                    this.label[0].stop();
+	                    this.label[0].attr({ r: 7.5 });
+	                    this.label[1].attr({ "font-weight": 800 });
+	                 }
+	             }, function () {
+	                this.sector.animate({ transform: 's1 1 ' + this.cx + ' ' + this.cy }, 500, "bounce");
+	                if (this.label) {
+	                   this.label[0].animate({ r: 5 }, 500, "bounce");
+	                   this.label[1].attr({ "font-weight": 400 });
+	               }
+	           });
+
+</script>
+</td></tr></table>
+</body></html>

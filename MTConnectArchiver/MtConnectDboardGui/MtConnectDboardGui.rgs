@@ -1,0 +1,11 @@
+HKCR
+{
+	NoRemove AppID
+	{
+		{12ABE1FD-D87D-4ACD-9ACA-78E5E41906BD} = s 'MtConnectDboardGui'
+		'MtConnectDboardGui.EXE'
+		{
+			val AppID = s {12ABE1FD-D87D-4ACD-9ACA-78E5E41906BD}
+		}
+	}
+}

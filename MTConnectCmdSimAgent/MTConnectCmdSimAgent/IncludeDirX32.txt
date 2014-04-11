@@ -1,0 +1,9 @@
+-I"C:\Program Files\NIST\src\boost_1_54_0"
+-I.
+-I"C:\Users\michalos\Documents\GitHub\MTConnectToolbox\MTConnectCmdSimAgent\MTConnectAgent\agent"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectToolbox\MTConnectCmdSimAgent\MTConnectAgent\lib"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectToolbox\MTConnectCmdSimAgent\MTConnectAgent\win32\libxml2-2.7.7\include"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectToolbox\MTConnectCmdSimAgent\MTConnectAgent"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectToolbox\MTConnectCmdSimAgent\NIST"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectToolbox\MTConnectCmdSimAgent\Math"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectToolbox\MTConnectCmdSimAgent"

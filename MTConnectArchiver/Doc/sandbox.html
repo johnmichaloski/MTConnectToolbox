@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title></title>
+        <script>
+            window.onload = function() {
+                if( "sandbox" in document.createElement("iframe") ) {
+                    sandboxSupported = true;
+                    var element = document.getElementById( "support" );
+                    element.setAttribute( "style", "display: none;" );
+                } else {
+                    var element = document.getElementById( "options" );
+                    element.setAttribute( "style", "display: none;" );
+                }
+                
+                var checkboxes = document.getElementsByTagName( "input" );
+                for( i = 0; i < checkboxes.length; i++ )
+                {
+                    checkboxes[i].addEventListener("click", reloadSandboxedFrame );
+                }
+                
+                reloadSandboxedFrame();
+            };
+            
+            function reloadSandboxedFrame() {
+                if( !sandboxSupported ) { return; }
+                var checkboxes = document.getElementsByTagName( "input" );
+                var sandbox = "";
+                for( i = 0; i < checkboxes.length; i++ ) {
+                    if( checkboxes[i].checked ) {
+                        sandbox += checkboxes[i].value + " ";
+                    }
+                }
+
+                var iframe = document.getElementById( "theFrame" );
+                if( !iframe ) {
+                    iframe = document.createElement( "iframe" );                    
+                    iframe.setAttribute( "id", "theFrame" );
+                    iframe.setAttribute( "scrolling", "no" );
+                    iframe.setAttribute( "width", "100%" );
+                    iframe.setAttribute( "height", "600" );
+                    document.getElementById("page").appendChild(iframe);
+                }
+                iframe.setAttribute( "sandbox", sandbox );
+                iframe.setAttribute( "src", "untrusted.html" );
+            }
+        </script>
+    </head>
+    <body id="page">
+        <h1>HTML5 IFrame Sandbox Demo</h1>
+        <article>
+            <h2 id="support">Your browser does not support the sandbox attribute!</h2>
+        </article>
+        <section id="options">
+            <h3>Options to modify the sandbox</h3>
+            <p>Checking an option will reload the page in the IFRAME below with the modified sandbox</p>
+            <input name="allowJavaScript" type="checkbox" value="allow-scripts" />Allow JavaScript<br/>
+            <input name="allowForms" type="checkbox" value="allow-forms" />Allow Forms<br/>
+            <input name="allowSameOrigin" type="checkbox" value="allow-same-origin" />Allow Same Origin<br/>
+            <input name="allowTopNavigation" type="checkbox" value="allow-top-navigation" />Allow Top Navigation<br/>
+            <input name="allowPopups" type="checkbox" value="ms-allow-popups" />Allow Popups (Just IE10)<br/>            
+            <h3>Untrusted.html hosted in a sandboxed IFRAME</h3>
+        </section>
+    </body>
+</html>

@@ -1,0 +1,154 @@
+ERROR: Cannot process Event next in state faulted
+
+	workorders = new CWorkOrders( _cmsd);
+	Factory.CreateResourcesByPart(_cmsd);
+
+	workorders->InitAllJobs((Job *)  _cmsd->workorders->at(0).get());// there may be multiple workorders - but only 1st counts in our world
+	workorders->InitJobsStats((Job *)  _cmsd->workorders->at(0).get()) ;  // FIXME: verify works
+
+	std::string nMaxQueueSize = _cmsd->workorders->at(0)->GetPropertyValue("MaxQueueSize");
+	CWorkOrders::MaxQueueSize=ConvertString<int>(nMaxQueueSize,2);
+ 	workorders->Run(workorders);
+
+
+static void SetupFactory()
+{
+	Resource * r1 = Resource::Create<Resource>("r1");
+	r1->name = "M1";
+	Resource * r2 = Resource::Create<Resource>("r2");
+	r2->name = "M2";
+	Resource * r3old = Resource::Create<Resource>("r3old");
+	r3old->name = "M3Old";
+	Resource * r3new = Resource::Create<Resource>("r3new");
+	r3new->name = "M3New";
+	Resource * r4 = Resource::Create<Resource>("r4");
+	r4->name = "M4";
+
+	Cell * c1 = Cell::Create<Cell>("c1");
+	c1->name = "C1";
+	c1->resourceIds.push_back("r1");
+	Cell * c2 = Cell::Create<Cell>("c2");
+	c2->name = "C2";
+	c2->resourceIds.push_back("r2");
+	Cell * c3 = Cell::Create<Cell>("c3");
+	c3->name = "C3";
+	c3->resourceIds.push_back("r3old");
+	c3->resourceIds.push_back("r3new");
+	Cell * c4 = Cell::Create<Cell>("c4");
+	c4->name = "C4";
+	c4->resourceIds.push_back("r4");
+
+	///////////////////////////////////////////////////
+	Process * pp1p1= Process::Create<Process>("pp1p1");
+	Process * pp1p2= Process::Create<Process>("pp1p2");
+	Process * pp1p3= Process::Create<Process>("pp1p3");
+	Process * pp1p4= Process::Create<Process>("pp1p4");
+
+	pp1p1->resourcesRequired.push_back("c1");
+	pp1p1->AddProperty("Program","Setup1","","Setup pp1 for process 1");
+	pp1p1->AddProperty("Program","Machine1","","Machining pp1 in process 1");
+
+	pp1p2->resourcesRequired.push_back("c2");
+	pp1p2->AddProperty("Program","Setup2","","Setup for pp1 process 2");
+	pp1p2->AddProperty("Program","Machine2","","Machining pp1 in process 2");
+
+	pp1p3->resourcesRequired.push_back("c3");
+	pp1p3->AddProperty("Program","Setup1","","Setup for pp1 process 3");
+	pp1p3->AddProperty("Program","Machine1","","Machining pp1 in process 3");
+
+	pp1p3->resourcesRequired.push_back("c4");
+	pp1p3->AddProperty("Program","Setup2","","Setup for pp1 process 4");
+	pp1p3->AddProperty("Program","Machine2","","Machining pp1 in process 4");
+
+
+	Process * pp2p1= Process::Create<Process>("pp2p1");
+	Process * pp2p2= Process::Create<Process>("pp2p2");
+	Process * pp2p3= Process::Create<Process>("pp2p3");
+	Process * pp2p4= Process::Create<Process>("pp2p4");
+	Process * pp2p5= Process::Create<Process>("pp2p5");
+
+	pp2p1->resourcesRequired.push_back("c1");
+	pp2p1->AddProperty("Program","Setup1","","Setup pp1 for process 1");
+	pp2p1->AddProperty("Program","Machine1","","Machining pp1 in process 1");
+
+	pp2p2->resourcesRequired.push_back("c2");
+	pp2p2->AddProperty("Program","Setup2","","Setup for pp1 process 2");
+	pp2p2->AddProperty("Program","Machine2","","Machining pp1 in process 2");
+
+	pp2p3->resourcesRequired.push_back("c4");
+	pp2p3->AddProperty("Program","Setup1","","Setup for pp1 process 3");
+	pp2p3->AddProperty("Program","Machine1","","Machining pp1 in process 3");
+
+	pp2p4->resourcesRequired.push_back("c2");
+	pp2p4->AddProperty("Program","Setup1","","Setup for pp1 process 3");
+	pp2p4->AddProperty("Program","Machine1","","Machining pp1 in process 3");
+	
+	pp2p5->resourcesRequired.push_back("c3");
+	pp2p5->AddProperty("Program","Setup3","","Setup for pp1 process 3");
+	pp2p5->AddProperty("Program","Machine3","","Machining pp1 in process 3");
+
+	Process * pp3p1= Process::Create<Process>("pp2p1");
+	Process * pp3p2= Process::Create<Process>("pp2p2");
+	Process * pp3p3= Process::Create<Process>("pp2p3");
+
+	pp3p1->resourcesRequired.push_back("c2");
+	pp3p1->AddProperty("Program","Setup2","","Setup for pp1 process 3");
+	pp3p1->AddProperty("Program","Machine2","","Machining pp1 in process 3");
+
+	pp3p2->resourcesRequired.push_back("c1");
+	pp3p2->AddProperty("Program","Setup2","","Setup for pp1 process 2");
+	pp3p2->AddProperty("Program","Machine2","","Machining pp1 in process 2");
+
+	pp3p3->resourcesRequired.push_back("c3");
+	pp3p3->AddProperty("Program","Setup1","","Setup for pp1 process 3");
+	pp3p3->AddProperty("Program","Machine1","","Machining pp1 in process 3");
+
+	///////////////////////////////////////////////////
+	ProcessPlan * pp1= ProcessPlan::Create<ProcessPlan>("pp1");
+	ProcessPlan * pp2= ProcessPlan::Create<ProcessPlan>("pp2");
+	ProcessPlan * pp3= ProcessPlan::Create<ProcessPlan>("pp3");
+
+	pp1->processes.push_back(pp1p1); pp1->processIds.push_back(pp1p1->identifier);
+	pp1->processes.push_back(pp1p2); pp1->processIds.push_back(pp1p2->identifier);
+	pp1->processes.push_back(pp1p3); pp1->processIds.push_back(pp1p3->identifier);
+	pp1->processes.push_back(pp1p4); pp1->processIds.push_back(pp1p4->identifier);
+
+	pp2->processes.push_back(pp2p1); pp2->processIds.push_back(pp2p1->identifier);
+	pp2->processes.push_back(pp2p2); pp2->processIds.push_back(pp2p2->identifier);
+	pp2->processes.push_back(pp2p3); pp2->processIds.push_back(pp2p3->identifier);
+	pp2->processes.push_back(pp2p4); pp2->processIds.push_back(pp2p4->identifier);
+	pp2->processes.push_back(pp2p4); pp2->processIds.push_back(pp2p5->identifier);
+
+	pp3->processes.push_back(pp2p2); pp2->processIds.push_back(pp2p2->identifier);
+	pp3->processes.push_back(pp2p1); pp2->processIds.push_back(pp2p1->identifier);
+	pp3->processes.push_back(pp2p3); pp2->processIds.push_back(pp2p3->identifier);
+
+
+	Part * bracket = Part::Create<Part>("bracket");
+	Part * shim = Part::Create<Part>("shim");
+	Part * bodyjoint = Part::Create<Part>("bodyjoint");
+
+	bracket->processplanidentifier="pp1";
+	shim->processplanidentifier="pp2";
+	bodyjoint->processplanidentifier="pp3";
+
+	Job * job1 = Job::Create<Job>("job1");
+	job1->partIds.push_back("bracket");
+	job1->partIds.push_back("shim");
+	job1->partIds.push_back("bodyjoint");
+	job1->partQuantity.push_back("100");
+	job1->partQuantity.push_back("75");
+	job1->partQuantity.push_back("50");
+
+
+	CFactoryIntegrator factory;
+	//std::vector<Resource * > shimCells=factory.GetJobResources("shim") ;
+	Resource* resource = factory.FindResourceByName("M2");
+	Cell* cell = factory.FindCellById("c2");
+	Resource * res1= factory.FindResourceById("r1");	
+	Part * shim1= factory.FindPartById("shim");
+	ProcessPlan* pp = factory.FindProcessPlanById("pp1");
+	//CostAllocation *  factory.FindCostByName(bstr_t name) ;
+	Job * workorder = factory.FindJobById("job1") ;
+
+}

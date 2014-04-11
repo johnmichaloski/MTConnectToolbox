@@ -1,0 +1,23 @@
+HKCR
+{
+	MtConnectDboardGui.CDummy.1 = s 'CDummy Class'
+	{
+		CLSID = s '{CFEE379C-3E2A-475C-9F04-5A959713730A}'
+	}
+	MtConnectDboardGui.CDummy = s 'CDummy Class'
+	{
+		CLSID = s '{CFEE379C-3E2A-475C-9F04-5A959713730A}'
+		CurVer = s 'MtConnectDboardGui.CDummy.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CFEE379C-3E2A-475C-9F04-5A959713730A} = s 'CDummy Class'
+		{
+			ProgID = s 'MtConnectDboardGui.CDummy.1'
+			VersionIndependentProgID = s 'MtConnectDboardGui.CDummy'
+			ForceRemove 'Programmable'
+			LocalServer32 = s '%MODULE%'
+			'TypeLib' = s '{44220923-6EDE-4d93-B376-720CD69ED0A6}'
+		}
+	}
+}
