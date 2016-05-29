@@ -1,8 +1,0 @@
-2/21/2014 9:26:35 AM
-* 
-
-
-2/21/2014 9:26:35 AM
-
-* added shift, getcurrent shift, start, end
-* read db rows till > now

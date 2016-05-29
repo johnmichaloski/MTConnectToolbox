@@ -1,1 +1,0 @@
-MtConnectDboard.exe debug
