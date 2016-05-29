@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="MTCSiemensAgent.cpp" />
+    <ClCompile Include="OpcAdapter.cpp" />
+    <ClCompile Include="MtcOpcAgent.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="ping.cpp" />
+    <ClCompile Include="..\Agent\agent\adapter.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\agent.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\asset.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\change_observer.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\checkpoint.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\component.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\component_event.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\config.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\connector.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\cutting_tool.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\data_item.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\device.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\globals.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\options.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\ref_counted.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\service.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\version.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\xml_parser.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\xml_printer.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\src\NIST\RunProcess.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\NIST\StdStringFcn.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\Agent\agent\stdint.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\src\NIST\VarTypes.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="DCOMUtils.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="MtcOpcAdapter.hpp">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="MTCSiemensAgent.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="OpcAdapter.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="OPCBackEnd.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="OPCCallback.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="OPCItem.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="RemoteTaskList.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="ExceptionHandler.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="CatchMemoryLeak.h" />
+    <ClInclude Include="..\..\src\NIST\windows7.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\adapter.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\agent.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\asset.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\change_observer.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\checkpoint.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\component.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\component_event.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\config.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\connector.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\cutting_tool.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\data_item.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\device.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\globals.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\options.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\ref_counted.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\service.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\stdint.h">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\version.h">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\xml_parser.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\xml_printer.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\Config.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\Logger.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\src\Agent\agent\agent.cfg" />
+    <None Include="ChangeLog.txt" />
+    <None Include="ReadMe.txt" />
+    <None Include="Table.htm" />
+    <None Include="Notes.txt" />
+    <None Include="..\Agent\agent\agent.cfg">
+      <Filter>Agent</Filter>
+    </None>
+    <None Include="..\Agent\agent\CMakeLists.txt">
+      <Filter>Agent</Filter>
+    </None>
+    <None Include="..\Agent\agent\jsmtconnect.txt">
+      <Filter>Agent</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Agent">
+      <UniqueIdentifier>{9abfc15e-47c7-4cb5-b20a-926508885f84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NIST">
+      <UniqueIdentifier>{2573e0c5-673d-4e85-893d-2ad1d060d2d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{2f613b5d-0431-4692-8f5f-44f408daf9ad}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="opcda.idl" />
+    <Midl Include="opccomm.idl" />
+  </ItemGroup>
+</Project>

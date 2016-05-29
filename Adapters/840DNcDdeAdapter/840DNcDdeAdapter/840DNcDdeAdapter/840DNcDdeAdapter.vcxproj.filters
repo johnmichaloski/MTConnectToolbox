@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Adapter">
+      <UniqueIdentifier>{3bf6a627-fea2-4971-bfd1-eda32ee0e374}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="NIST">
+      <UniqueIdentifier>{e3ce3c9a-4739-48ba-ad88-b04f341cbfa2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+    <None Include="IncludeDirX32.txt" />
+    <None Include="ClassDiagram.cd" />
+    <None Include="AdapterClasses.cd" />
+    <None Include="AdapterOnly.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\adapter.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\client.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\condition.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\configuration.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\device_datum.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\internal.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\logger.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\serial.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\server.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\service.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\string_array.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\string_buffer.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\MTConnectAdapter\time_series.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="DDEapi.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListExeProcesses.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="AppEventLog.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DdeAdapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NIST\Config.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\NIST\StdStringFcn.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="OS.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="File.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="Firewall.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="RegieIni.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="840DNcDdeAdapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MTConnectAdapter\adapter.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MTConnectAdapter\client.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MTConnectAdapter\condition.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MTConnectAdapter\configuration.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MTConnectAdapter\device_datum.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MTConnectAdapter\logger.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MTConnectAdapter\serial.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MTConnectAdapter\server.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MTConnectAdapter\service.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MTConnectAdapter\string_array.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MTConnectAdapter\string_buffer.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\MTConnectAdapter\time_series.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="DDEapi.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DdeAdapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RegieIni.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

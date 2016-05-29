@@ -1,0 +1,10 @@
+-I"C:\Program Files\NIST\src\wtl81\Include" 
+-I"C:\Program Files\NIST\src\boost_1_54_0"
+-I.
+-I"C:\Users\michalos\Documents\GitHub\Adapters\CrlcAdapter\CrlcAdapter" 
+-I"C:\Users\michalos\Documents\GitHub\Adapters\CrlcAdapter\adapter-master\src"
+-I"C:\Users\michalos\Documents\GitHub\Adapters\CrlcAdapter\adapter-master\yaml\include"
+-I"C:\Program Files (x86)\CodeSynthesis XSD 4.0\XQilla-2.3.0\include"
+-I"C:\Program Files (x86)\CodeSynthesis XSD 4.0\include"
+-I"C:\Users\michalos\Documents\GitHub\Adapters\CrlcAdapter\crcl"
+

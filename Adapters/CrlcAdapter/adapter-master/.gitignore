@@ -1,0 +1,14 @@
+*~
+Debug
+Release
+*.o
+*.obj
+*.suo
+*.ncb
+*.user
+Fwlib
+build
+*.sln
+*.vcproj
+CMakeFiles
+*.dir

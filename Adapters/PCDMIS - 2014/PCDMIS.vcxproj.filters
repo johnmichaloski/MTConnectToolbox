@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="SHDR">
+      <UniqueIdentifier>{5722f7d5-0981-47fd-806c-e829a5c8105a}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="guicon.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MachineEvents.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PartProgramSink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PCDMIS.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pcdmis_adapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PCDMISEnums.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Adapter\adapter.cpp">
+      <Filter>SHDR</Filter>
+    </ClCompile>
+    <ClCompile Include="Adapter\client.cpp">
+      <Filter>SHDR</Filter>
+    </ClCompile>
+    <ClCompile Include="Adapter\condition.cpp">
+      <Filter>SHDR</Filter>
+    </ClCompile>
+    <ClCompile Include="Adapter\device_datum.cpp">
+      <Filter>SHDR</Filter>
+    </ClCompile>
+    <ClCompile Include="Adapter\logger.cpp">
+      <Filter>SHDR</Filter>
+    </ClCompile>
+    <ClCompile Include="Adapter\server.cpp">
+      <Filter>SHDR</Filter>
+    </ClCompile>
+    <ClCompile Include="Adapter\service.cpp">
+      <Filter>SHDR</Filter>
+    </ClCompile>
+    <ClCompile Include="Adapter\string_array.cpp">
+      <Filter>SHDR</Filter>
+    </ClCompile>
+    <ClCompile Include="Adapter\string_buffer.cpp">
+      <Filter>SHDR</Filter>
+    </ClCompile>
+    <ClCompile Include="Adapter\time_series.cpp">
+      <Filter>SHDR</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="guicon.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MachineEvents.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PartProgramSink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pcdmis_adapter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\adapter.hpp">
+      <Filter>SHDR</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\client.hpp">
+      <Filter>SHDR</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\condition.hpp">
+      <Filter>SHDR</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\configuration.hpp">
+      <Filter>SHDR</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\device_datum.hpp">
+      <Filter>SHDR</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\internal.hpp">
+      <Filter>SHDR</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\logger.hpp">
+      <Filter>SHDR</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\server.hpp">
+      <Filter>SHDR</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\service.hpp">
+      <Filter>SHDR</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\string_array.hpp">
+      <Filter>SHDR</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\string_buffer.hpp">
+      <Filter>SHDR</Filter>
+    </ClInclude>
+    <ClInclude Include="Adapter\time_series.hpp">
+      <Filter>SHDR</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+</Project>

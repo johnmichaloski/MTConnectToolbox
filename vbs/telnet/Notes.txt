@@ -1,0 +1,21 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Users\michalos\Documents\GitHub\Tech Providers\NIST\vbs\telnet>telnet 127.0.0
+.1 7878 -f C:\Users\michalos\Documents\GitHub\Tech Providers\NIST\vbs\telnet\out
+.txt
+
+telnet [-a][-e escape char][-f log file][-l user][-t term][host [port]]
+ -a      Attempt automatic logon. Same as -l option except uses
+         the currently logged on user's name.
+ -e      Escape character to enter telnet client prompt.
+ -f      File name for client side logging
+ -l      Specifies the user name to log in with on the remote system.
+         Requires that the remote system support the TELNET ENVIRON option.
+ -t      Specifies terminal type.
+         Supported term types are vt100, vt52, ansi and vtnt only.
+ host    Specifies the hostname or IP address of the remote computer
+         to connect to.
+ port    Specifies a port number or service name.
+
+C:\Users\michalos\Documents\GitHub\Tech Providers\NIST\vbs\telnet>

@@ -1,0 +1,7 @@
+-I"C:\Program Files\NIST\src\wtl81\Include" 
+-I"C:\Program Files\NIST\src\boost_1_54_0"
+-I.
+-I"C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter"
+-I"C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\NIST"
+
+

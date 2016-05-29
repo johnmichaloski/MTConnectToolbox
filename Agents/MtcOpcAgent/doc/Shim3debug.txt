@@ -1,0 +1,10 @@
+2013-01-07T23:15:52.0983Z: FATAL [51] (shim3) Could not find data item: alarmField1
+2013-01-07T23:15:52.0984Z: FATAL [52] (shim3) Could not find data item: alarmField2
+2013-01-07T23:15:52.0984Z: FATAL [53] (shim3) Could not find data item: alarmField3
+2013-01-07T23:15:52.0984Z: FATAL [54] (shim3) Could not find data item: alarmField4
+2013-01-07T23:16:04.0985Z: INFO  [55] COpcAdapter 132.173.132.13 attempt Connect at 1/7/2013 3:16:04 PM
+2013-01-07T23:16:04.0985Z: FATAL [56] (shim3) Could not find data item: alarmField1
+2013-01-07T23:16:04.0985Z: FATAL [57] (shim3) Could not find data item: alarmField2
+2013-01-07T23:16:04.0985Z: FATAL [58] (shim3) Could not find data item: alarmField3
+2013-01-07T23:16:04.0985Z: FATAL [59] (shim3) Could not find data item: alarmField4
+2013-01-07T23:16:27.0596Z: ERROR [60] COpcAdapter Exception in shim3 - COpcAdapter::Execute() Attempt Connect FAILED

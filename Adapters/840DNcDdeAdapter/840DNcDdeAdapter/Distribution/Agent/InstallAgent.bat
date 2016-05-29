@@ -1,0 +1,2 @@
+agent.exe install
+pause

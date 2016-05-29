@@ -1,0 +1,12 @@
+-I"C:\Program Files\NIST\src\boost_1_54_0"
+-I"C:\Program Files\NIST\src\wtl81\Include"
+-I.
+-I"C:\Users\michalos\Documents\GitHub\MTConnectSolutions\MTConnectAgentFromShdr\MTConnectAgent\agent"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectSolutions\MTConnectAgentFromShdr\MTConnectAgent\lib"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectSolutions\MTConnectAgentFromShdr\MTConnectAgent\win32\libxml2-2.9\include"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectSolutions\MTConnectAgentFromShdr\MTConnectAgent"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectSolutions\MTConnectAgentFromShdr\NIST"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectSolutions\MTConnectAgentFromShdr\Math"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectSolutions\MTConnectAgentFromShdr"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectSolutions\MTConnectAgentFromShdr\MTConnectAgent\win32\libxml2-2.9\libconv"
+-I"C:\Users\michalos\Documents\GitHub\MTConnectSolutions\MTConnectAgentFromShdr\MTConnectAgent\win32\libxml2-2.9\libconv\uniwidth"

@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{9597223b-9175-4541-b079-7adf54481b75}</UniqueIdentifier>
+      <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{c755cb07-faf2-4366-939a-8889bb9d1212}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{29c44eb5-4568-4133-ab98-f6374448d758}</UniqueIdentifier>
+      <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
+    </Filter>
+    <Filter Include="Listview">
+      <UniqueIdentifier>{7aa8514e-ed59-4ec1-91d4-87e584508ac9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="MainDlg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MSI_Logging.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MtCustomAction.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MtCustomAction.def">
+      <Filter>Source Files</Filter>
+    </None>
+    <None Include="res\Add.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\divider.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\ExampleItems.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\hand.cur">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\ListItems.bmp">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="res\OptionDialog.ico">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MtCustomAction.rc">
+      <Filter>Source Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ListViewCtrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainDlg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MSI_Logging.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RunProcess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdAfx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdStringFcn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\dragdrop.h">
+      <Filter>Listview</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\DropArrows.h">
+      <Filter>Listview</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\ListCombo.h">
+      <Filter>Listview</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\ListCtrl.h">
+      <Filter>Listview</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\ListDate.h">
+      <Filter>Listview</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\ListEdit.h">
+      <Filter>Listview</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\ListTypes.h">
+      <Filter>Listview</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\TitleTip.h">
+      <Filter>Listview</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

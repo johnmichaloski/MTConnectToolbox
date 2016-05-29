@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="95">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="f1" displayName="Adapter" projectFiles="true">
+      <itemPath>adapter-master/src/adapter.cpp</itemPath>
+      <itemPath>adapter-master/src/adapter.hpp</itemPath>
+      <itemPath>adapter-master/src/axis.hpp</itemPath>
+      <itemPath>adapter-master/src/client.cpp</itemPath>
+      <itemPath>adapter-master/src/client.hpp</itemPath>
+      <itemPath>adapter-master/src/component.hpp</itemPath>
+      <itemPath>adapter-master/src/condition.cpp</itemPath>
+      <itemPath>adapter-master/src/condition.hpp</itemPath>
+      <itemPath>adapter-master/src/configuration.cpp</itemPath>
+      <itemPath>adapter-master/src/configuration.hpp</itemPath>
+      <itemPath>adapter-master/src/cutting_tool.cpp</itemPath>
+      <itemPath>adapter-master/src/cutting_tool.hpp</itemPath>
+      <itemPath>adapter-master/src/device_datum.cpp</itemPath>
+      <itemPath>adapter-master/src/device_datum.hpp</itemPath>
+      <itemPath>adapter-master/src/internal.hpp</itemPath>
+      <itemPath>adapter-master/src/logger.cpp</itemPath>
+      <itemPath>adapter-master/src/logger.hpp</itemPath>
+      <itemPath>adapter-master/src/server.cpp</itemPath>
+      <itemPath>adapter-master/src/server.hpp</itemPath>
+      <itemPath>adapter-master/src/service.cpp</itemPath>
+      <itemPath>adapter-master/src/service.hpp</itemPath>
+      <itemPath>adapter-master/src/string_array.cpp</itemPath>
+      <itemPath>adapter-master/src/string_array.hpp</itemPath>
+      <itemPath>adapter-master/src/string_buffer.cpp</itemPath>
+      <itemPath>adapter-master/src/string_buffer.hpp</itemPath>
+      <itemPath>adapter-master/src/threading.hpp</itemPath>
+      <itemPath>adapter-master/src/time_series.cpp</itemPath>
+      <itemPath>adapter-master/src/time_series.hpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f3" displayName="crcl" projectFiles="true">
+      <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLCommandInstance.cxx</itemPath>
+      <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLCommandInstance.hxx</itemPath>
+      <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLCommands.cxx</itemPath>
+      <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLCommands.hxx</itemPath>
+      <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLProgramInstance.cxx</itemPath>
+      <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLProgramInstance.hxx</itemPath>
+      <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLStatus.cxx</itemPath>
+      <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLStatus.hxx</itemPath>
+      <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/crcl/DataPrimitives.cxx</itemPath>
+      <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/crcl/DataPrimitives.hxx</itemPath>
+    </logicalFolder>
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>main.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="f2" displayName="Yaml" projectFiles="true">
+      <itemPath>adapter-master/yaml/src/aliascontent.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/aliascontent.h</itemPath>
+      <itemPath>adapter-master/yaml/src/content.h</itemPath>
+      <itemPath>adapter-master/yaml/src/conversion.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/emitter.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/emitterstate.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/emitterstate.h</itemPath>
+      <itemPath>adapter-master/yaml/src/emitterutils.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/emitterutils.h</itemPath>
+      <itemPath>adapter-master/yaml/src/exp.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/exp.h</itemPath>
+      <itemPath>adapter-master/yaml/src/indentation.h</itemPath>
+      <itemPath>adapter-master/yaml/src/iterator.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/iterpriv.h</itemPath>
+      <itemPath>/home/michalos/xerces-c-3.1.2/src/libs/libxerces-c.a</itemPath>
+      <itemPath>adapter-master/yaml/src/ltnode.h</itemPath>
+      <itemPath>adapter-master/yaml/src/map.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/map.h</itemPath>
+      <itemPath>adapter-master/yaml/src/node.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/null.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/ostream.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/parser.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/parserstate.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/parserstate.h</itemPath>
+      <itemPath>adapter-master/yaml/src/regex.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/regex.h</itemPath>
+      <itemPath>adapter-master/yaml/src/regeximpl.h</itemPath>
+      <itemPath>adapter-master/yaml/src/scalar.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/scalar.h</itemPath>
+      <itemPath>adapter-master/yaml/src/scanner.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/scanner.h</itemPath>
+      <itemPath>adapter-master/yaml/src/scanscalar.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/scanscalar.h</itemPath>
+      <itemPath>adapter-master/yaml/src/scantag.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/scantag.h</itemPath>
+      <itemPath>adapter-master/yaml/src/scantoken.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/sequence.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/sequence.h</itemPath>
+      <itemPath>adapter-master/yaml/src/setting.h</itemPath>
+      <itemPath>adapter-master/yaml/src/simplekey.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/stream.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/stream.h</itemPath>
+      <itemPath>adapter-master/yaml/src/streamcharsource.h</itemPath>
+      <itemPath>adapter-master/yaml/src/stringsource.h</itemPath>
+      <itemPath>adapter-master/yaml/src/tag.cpp</itemPath>
+      <itemPath>adapter-master/yaml/src/tag.h</itemPath>
+      <itemPath>adapter-master/yaml/src/token.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+    <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/CrclInterface.cpp</itemPath>
+    <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/CrclInterface.h</itemPath>
+    <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/LinuxGlobals.cpp</itemPath>
+    <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/LinuxGlobals.h</itemPath>
+    <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/XmlSocketClient.cpp</itemPath>
+    <itemPath>/home/michalos/NetBeansProjects/CrlcAdapter/XmlSocketClient.h</itemPath>
+    <itemPath>fake_adapter.cpp</itemPath>
+    <itemPath>fake_adapter.hpp</itemPath>
+  </logicalFolder>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <architecture>2</architecture>
+          <standard>4</standard>
+          <incDir>
+            <pElem>/home/michalos/NetBeansProjects/CrlcAdapter/crcl</pElem>
+            <pElem>/home/michalos/xsd/libxsd</pElem>
+            <pElem>/home/michalos/xerces-c-3.1.2/src</pElem>
+            <pElem>/home/michalos/NetBeansProjects/CrlcAdapter/adapter-master/yaml/include</pElem>
+            <pElem>/home/michalos/NetBeansProjects/CrlcAdapter/adapter-master/src</pElem>
+          </incDir>
+          <commandLine>-fpermissive -pthread</commandLine>
+          <preprocessorList>
+            <Elem>DEBUG</Elem>
+          </preprocessorList>
+        </ccTool>
+        <linkerTool>
+          <linkerAddLib>
+            <pElem>/home/michalos/xerces-c-3.1.2/src/libs</pElem>
+          </linkerAddLib>
+          <linkerDynSerch>
+            <pElem>/home/michalos/xerces-c-3.1.2/src/libs</pElem>
+          </linkerDynSerch>
+          <linkerLibItems>
+            <linkerLibLibItem>xerces-c</linkerLibLibItem>
+            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libboost_regex.a</linkerLibFileItem>
+            <linkerLibLibItem>boost_system</linkerLibLibItem>
+            <linkerLibFileItem>/usr/lib/x86_64-linux-gnu/libboost_thread.a</linkerLibFileItem>
+          </linkerLibItems>
+        </linkerTool>
+      </compileType>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/CrclInterface.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/CrclInterface.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/LinuxGlobals.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/LinuxGlobals.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/XmlSocketClient.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/XmlSocketClient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLCommandInstance.cxx"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLCommandInstance.hxx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLCommands.cxx"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLCommands.hxx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLProgramInstance.cxx"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLProgramInstance.hxx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLStatus.cxx"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLStatus.hxx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/DataPrimitives.cxx"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/DataPrimitives.hxx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/xerces-c-3.1.2/src/libs/libxerces-c.a"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/adapter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/adapter.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/axis.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/client.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/client.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/component.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/condition.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/condition.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/configuration.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/configuration.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/cutting_tool.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/cutting_tool.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/device_datum.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/device_datum.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/internal.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/logger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/logger.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/server.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/server.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/service.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/service.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/string_array.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/string_array.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/string_buffer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/string_buffer.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/threading.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/time_series.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/time_series.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/aliascontent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/aliascontent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/content.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/conversion.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/emitter.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/emitterstate.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/emitterstate.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/emitterutils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/emitterutils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/exp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/exp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/indentation.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/iterator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/iterpriv.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/ltnode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/map.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/map.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/node.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/null.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/ostream.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/parser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/parserstate.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/parserstate.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/regex.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/regex.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/regeximpl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scalar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scalar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scanner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scanner.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scanscalar.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scanscalar.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scantag.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scantag.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scantoken.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/sequence.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/sequence.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/setting.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/simplekey.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/stream.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/stream.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/streamcharsource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/stringsource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/tag.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/tag.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/token.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="fake_adapter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="fake_adapter.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="1">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/CrclInterface.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/CrclInterface.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/LinuxGlobals.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/LinuxGlobals.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/XmlSocketClient.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/XmlSocketClient.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLCommandInstance.cxx"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLCommandInstance.hxx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLCommands.cxx"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLCommands.hxx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLProgramInstance.cxx"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLProgramInstance.hxx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLStatus.cxx"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/CRCLStatus.hxx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/DataPrimitives.cxx"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/NetBeansProjects/CrlcAdapter/crcl/DataPrimitives.hxx"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="/home/michalos/xerces-c-3.1.2/src/libs/libxerces-c.a"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/adapter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/adapter.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/axis.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/client.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/client.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/component.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/condition.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/condition.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/configuration.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/configuration.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/cutting_tool.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/cutting_tool.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/device_datum.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/device_datum.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/internal.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/logger.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/logger.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/server.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/server.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/service.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/service.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/string_array.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/string_array.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/string_buffer.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/string_buffer.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/src/threading.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/src/time_series.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/src/time_series.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/aliascontent.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/aliascontent.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/content.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/conversion.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/emitter.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/emitterstate.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/emitterstate.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/emitterutils.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/emitterutils.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/exp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/exp.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/indentation.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/iterator.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/iterpriv.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/ltnode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/map.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/map.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/node.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/null.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/ostream.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/parser.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/parserstate.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/parserstate.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/regex.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/regex.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/regeximpl.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scalar.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scalar.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scanner.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scanner.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scanscalar.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scanscalar.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scantag.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scantag.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/scantoken.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/sequence.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/sequence.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/setting.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/simplekey.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/stream.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/stream.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/streamcharsource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/stringsource.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/tag.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/tag.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="adapter-master/yaml/src/token.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="fake_adapter.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="fake_adapter.hpp" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="main.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>

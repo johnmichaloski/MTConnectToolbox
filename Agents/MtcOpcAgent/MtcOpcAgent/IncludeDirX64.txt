@@ -1,0 +1,9 @@
+-I"C:\Program Files\NIST\src\wtl81\Include" 
+-I"C:\Program Files\NIST\src\boost_1_54_0"
+-I"C:\Users\michalos\Documents\GitHub\MTConnect\Agent\agent" 
+-I"C:\Users\michalos\Documents\GitHub\MTConnect\Agent\lib" 
+-I"C:\Users\michalos\Documents\GitHub\MTConnect\Agent\win32\libxml2-2.7.7\include" 
+-I.
+-I"C:\Users\michalos\Documents\GitHub\MTConnect\OPC" 
+-I"C:\Users\michalos\Documents\GitHub\MTConnectGadgets\src" 
+

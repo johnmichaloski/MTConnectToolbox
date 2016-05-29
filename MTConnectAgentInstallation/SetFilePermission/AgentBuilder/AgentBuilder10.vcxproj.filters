@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="MainDlg.cpp" />
+    <ClCompile Include="AgentBuilder.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Utils.cpp" />
+    <ClCompile Include="Yaml.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DCOMUtils.h" />
+    <ClInclude Include="ListControl\dragdrop.h" />
+    <ClInclude Include="MainDlg.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="StdStringFcn.h" />
+    <ClInclude Include="ListControl\TitleTip.h" />
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="WTLTabViewCtrl.h" />
+    <ClInclude Include="Yaml.h" />
+    <ClInclude Include="ListControl\DropArrows.h">
+      <Filter>List</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\ListCombo.h">
+      <Filter>List</Filter>
+    </ClInclude>
+    <ClInclude Include="ListViewCtrl.h">
+      <Filter>List</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\ListCtrl.h">
+      <Filter>List</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\ListDate.h">
+      <Filter>List</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\ListEdit.h">
+      <Filter>List</Filter>
+    </ClInclude>
+    <ClInclude Include="ListControl\ListTypes.h">
+      <Filter>List</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="AgentBuilder.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Readme.txt" />
+    <None Include="res\Add.bmp" />
+    <None Include="res\divider.cur" />
+    <None Include="res\ExampleItems.bmp" />
+    <None Include="res\hand.cur" />
+    <None Include="res\AgentBuilder.ico" />
+    <None Include="res\ListItems.bmp">
+      <Filter>List</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="List">
+      <UniqueIdentifier>{69a44eaf-f521-4a41-9850-7a89dbea1545}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

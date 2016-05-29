@@ -1,0 +1,7 @@
+2016-05-26T14:54:55.0530Z|execution|ACTIVE|program|_N_MACHINING2_UP_MPF
+                                                                       2016-05-2
+6T14:55:51.0620Z|execution|IDLE|program|_N_MACHINING_UP_MPF
+                                                           2016-05-26T14:56:51.0
+218Z|execution|ACTIVE
+                     2016-05-26T14:59:53.0519Z|execution|IDLE|program|_N_MACHINI
+NG2_UP_MPF

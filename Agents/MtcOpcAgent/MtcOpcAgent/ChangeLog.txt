@@ -1,0 +1,20 @@
+
+Tue 04/10/12 12:53:12 PM
+
+The connect to root/cimv2 is fine because its a local call. Try to connect to the cimv2 namespace with WBEMTEST on that server at see if it connects or fails, and if it fails, what error message is returned.
+
+Thu 11/17/11 02:37:03 PM
+	* version 1.0 Tests appear to work
+	Cable disconnect
+	on/off/on/off
+	reset midnight
+
+
+	  	#CNCTaskListCmd = tasklist 
+
+	#ServerMachineName=129.6.72.44, 127.0.0.1
+	#MTConnectDevice=CNC1, CNC2
+	#OpcTags = SIEMENS,MATRIKONTAGS
+
+	   CNCTaskListCmd = tasklist /S 129.6.72.44 /U michalos_a /P jlm&&cbm1984
+   CNCProcessName= maschine.exe

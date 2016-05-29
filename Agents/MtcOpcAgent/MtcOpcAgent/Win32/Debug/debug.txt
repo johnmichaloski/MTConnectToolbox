@@ -1,0 +1,134 @@
+2013-05-23T20:49:47.0479ZMTConnect Agent Service Started
+2013-05-23T20:49:47.0495ZAgentConfigurationEx::initialize() 
+2013-05-23T20:49:47.0495ZTConnect Agent Service Read Configuration - C:\Program Files\NIST\proj\MTConnect\Nist\MTConnectGadgets\MtcOpcAgent\MtcOpcAgent\Win32\Debug\MtcOpcAgent.ini 
+2013-05-23T20:49:47.0495ZMTConnect Agent Service Read OPCSERVER.logging_level FATAL
+2013-05-23T20:49:47.0620ZAgentConfigurationEx::start()
+2013-05-23T20:49:48.0777Z(M4) Could not find data item: Slod_percent  
+2013-05-23T20:49:48.0777Z(M2) Could not find data item: Slod_percent  
+2013-05-23T20:49:48.0777Z(M4) Could not find data item: alarm  
+2013-05-23T20:49:48.0777Z(M4) Could not find data item: alarmNative  
+2013-05-23T20:49:48.0777Z(M2) Could not find data item: alarm  
+2013-05-23T20:49:48.0777Z(M2) Could not find data item: alarmNative  
+2013-05-23T20:49:48.0793Z(M3) Could not find data item: Slod_percent  
+2013-05-23T20:49:48.0793Z(M3) Could not find data item: alarm  
+2013-05-23T20:49:48.0793Z(M3) Could not find data item: alarmNative  
+2013-05-23T20:49:48.0793Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:49:48.0808Z(M1) Could not find data item: alarm  
+2013-05-23T20:49:48.0808Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:49:48.0808Z(M5) Could not find data item: Slod_percent  
+2013-05-23T20:49:48.0808Z(M5) Could not find data item: alarm  
+2013-05-23T20:49:48.0824Z(M5) Could not find data item: alarmNative  
+2013-05-23T20:49:50.0184Z2013-05-23T20:49:50.0184ZERROR : FAIL: Connect() OPC Server 129.6.72.45 Connect failed WARNING: Couldn't ping machine=129.6.72.45 COM Error=0 
+ERROR : FAIL: Connect() OPC Server 129.6.72.46 Connect failed WARNING: Couldn't ping machine=129.6.72.46 COM Error=0 
+2013-05-23T20:49:50.0200Z(M2) Could not find data item: Slod_percent  
+2013-05-23T20:49:50.0200Z(M3) Could not find data item: Slod_percent  
+2013-05-23T20:49:50.0200ZERROR : FAIL: Connect() OPC Server 129.6.72.47 Connect failed WARNING: Couldn't ping machine=129.6.72.47 COM Error=0 
+2013-05-23T20:49:50.0200ZERROR : FAIL: Connect() OPC Server 129.6.72.48 Connect failed WARNING: Couldn't ping machine=129.6.72.48 COM Error=0 
+2013-05-23T20:49:50.0200Z(M4) Could not find data item: Slod_percent  
+2013-05-23T20:49:50.0200Z(M5) Could not find data item: Slod_percent  
+2013-05-23T20:49:50.0200Z(M2) Could not find data item: alarm  
+2013-05-23T20:49:50.0200Z(M2) Could not find data item: alarmNative  
+2013-05-23T20:49:50.0200Z(M3) Could not find data item: alarm  
+2013-05-23T20:49:50.0200Z(M3) Could not find data item: alarmNative  
+2013-05-23T20:49:50.0200Z(M4) Could not find data item: alarm  
+2013-05-23T20:49:50.0200Z(M5) Could not find data item: alarm  
+2013-05-23T20:49:50.0200Z(M4) Could not find data item: alarmNative  
+2013-05-23T20:49:50.0200Z(M5) Could not find data item: alarmNative  
+2013-05-23T20:49:55.0109Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:49:55.0109Z(M1) Could not find data item: alarm  
+2013-05-23T20:49:55.0109Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:49:57.0157Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:49:57.0157Z(M1) Could not find data item: alarm  
+2013-05-23T20:49:57.0157Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:49:59.0173Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:49:59.0173Z(M1) Could not find data item: alarm  
+2013-05-23T20:49:59.0173Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:50:01.0206Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:50:01.0206Z(M1) Could not find data item: alarm  
+2013-05-23T20:50:01.0206Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:50:02.0206Z(M2) Could not find data item: Slod_percent  
+2013-05-23T20:50:02.0206Z(M3) Could not find data item: Slod_percent  
+2013-05-23T20:50:02.0206Z(M4) Could not find data item: Slod_percent  
+2013-05-23T20:50:02.0206Z(M5) Could not find data item: Slod_percent  
+2013-05-23T20:50:02.0206Z(M2) Could not find data item: alarm  
+2013-05-23T20:50:02.0206Z(M2) Could not find data item: alarmNative  
+2013-05-23T20:50:02.0206Z(M3) Could not find data item: alarm  
+2013-05-23T20:50:02.0206Z(M3) Could not find data item: alarmNative  
+2013-05-23T20:50:02.0222Z(M4) Could not find data item: alarm  
+2013-05-23T20:50:02.0222Z(M4) Could not find data item: alarmNative  
+2013-05-23T20:50:02.0222Z(M5) Could not find data item: alarm  
+2013-05-23T20:50:02.0222Z(M5) Could not find data item: alarmNative  
+2013-05-23T20:50:03.0222Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:50:03.0222Z(M1) Could not find data item: alarm  
+2013-05-23T20:50:03.0222Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:50:03.0691ZERROR : FAIL: Connect() OPC Server 129.6.72.48 Connect failed WARNING: Couldn't ping machine=129.6.72.48 COM Error=0 
+2013-05-23T20:50:03.0691ZERROR : FAIL: Connect() OPC Server 129.6.72.45 Connect failed WARNING: Couldn't ping machine=129.6.72.45 COM Error=0 
+2013-05-23T20:50:03.0707ZERROR : FAIL: Connect() OPC Server 129.6.72.46 Connect failed WARNING: Couldn't ping machine=129.6.72.46 COM Error=0 
+2013-05-23T20:50:03.0707Z(M2) Could not find data item: Slod_percent  
+2013-05-23T20:50:03.0707Z(M3) Could not find data item: Slod_percent  
+2013-05-23T20:50:03.0707Z(M5) Could not find data item: Slod_percent  
+2013-05-23T20:50:03.0707ZERROR : FAIL: Connect() OPC Server 129.6.72.47 Connect failed WARNING: Couldn't ping machine=129.6.72.47 COM Error=0 
+2013-05-23T20:50:03.0707Z(M4) Could not find data item: Slod_percent  
+2013-05-23T20:50:03.0707Z(M2) Could not find data item: alarm  
+2013-05-23T20:50:03.0707Z(M2) Could not find data item: alarmNative  
+2013-05-23T20:50:03.0707Z(M3) Could not find data item: alarm  
+2013-05-23T20:50:03.0707Z(M3) Could not find data item: alarmNative  
+2013-05-23T20:50:03.0707Z(M5) Could not find data item: alarm  
+2013-05-23T20:50:03.0707Z(M4) Could not find data item: alarm  
+2013-05-23T20:50:03.0707Z(M5) Could not find data item: alarmNative  
+2013-05-23T20:50:03.0707Z(M4) Could not find data item: alarmNative  
+2013-05-23T20:50:05.0255Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:50:05.0255Z(M1) Could not find data item: alarm  
+2013-05-23T20:50:05.0255Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:50:07.0271Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:50:07.0271Z(M1) Could not find data item: alarm  
+2013-05-23T20:50:07.0271Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:50:09.0304Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:50:09.0304Z(M1) Could not find data item: alarm  
+2013-05-23T20:50:09.0304Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:50:11.0321Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:50:11.0321Z(M1) Could not find data item: alarm  
+2013-05-23T20:50:11.0321Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:50:13.0353Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:50:13.0353Z(M1) Could not find data item: alarm  
+2013-05-23T20:50:13.0353Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:50:15.0354Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:50:15.0354Z(M1) Could not find data item: alarm  
+2013-05-23T20:50:15.0354Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:50:15.0729Z(M5) Could not find data item: Slod_percent  
+2013-05-23T20:50:15.0729Z(M4) Could not find data item: Slod_percent  
+2013-05-23T20:50:15.0729Z(M2) Could not find data item: Slod_percent  
+2013-05-23T20:50:15.0729Z(M3) Could not find data item: Slod_percent  
+2013-05-23T20:50:15.0729Z(M2) Could not find data item: alarm  
+2013-05-23T20:50:15.0729Z(M5) Could not find data item: alarm  
+2013-05-23T20:50:15.0729Z(M2) Could not find data item: alarmNative  
+2013-05-23T20:50:15.0729Z(M5) Could not find data item: alarmNative  
+2013-05-23T20:50:15.0729Z(M3) Could not find data item: alarm  
+2013-05-23T20:50:15.0729Z(M4) Could not find data item: alarm  
+2013-05-23T20:50:15.0729Z(M3) Could not find data item: alarmNative  
+2013-05-23T20:50:15.0729Z(M4) Could not find data item: alarmNative  
+2013-05-23T20:50:17.0214ZERROR : FAIL: Connect() OPC Server 129.6.72.48 Connect failed WARNING: Couldn't ping machine=129.6.72.48 COM Error=0 
+2013-05-23T20:50:17.0214ZERROR : FAIL: Connect() OPC Server 129.6.72.45 Connect failed WARNING: Couldn't ping machine=129.6.72.45 COM Error=0 
+2013-05-23T20:50:17.0214ZERROR : FAIL: Connect() OPC Server 129.6.72.46 Connect failed WARNING: Couldn't ping machine=129.6.72.46 COM Error=0 
+2013-05-23T20:50:17.0214ZERROR : FAIL: Connect() OPC Server 129.6.72.47 Connect failed WARNING: Couldn't ping machine=129.6.72.47 COM Error=0 
+2013-05-23T20:50:17.0214Z(M3) Could not find data item: Slod_percent  
+2013-05-23T20:50:17.0214Z(M2) Could not find data item: Slod_percent  
+2013-05-23T20:50:17.0214Z(M4) Could not find data item: Slod_percent  
+2013-05-23T20:50:17.0214Z(M5) Could not find data item: Slod_percent  
+2013-05-23T20:50:17.0214Z(M4) Could not find data item: alarm  
+2013-05-23T20:50:17.0214Z(M4) Could not find data item: alarmNative  
+2013-05-23T20:50:17.0214Z(M2) Could not find data item: alarm  
+2013-05-23T20:50:17.0214Z(M5) Could not find data item: alarm  
+2013-05-23T20:50:17.0214Z(M2) Could not find data item: alarmNative  
+2013-05-23T20:50:17.0214Z(M5) Could not find data item: alarmNative  
+2013-05-23T20:50:17.0214Z(M3) Could not find data item: alarm  
+2013-05-23T20:50:17.0230Z(M3) Could not find data item: alarmNative  
+2013-05-23T20:50:17.0371Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:50:17.0371Z(M1) Could not find data item: alarm  
+2013-05-23T20:50:17.0371Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:50:19.0388Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:50:19.0388Z(M1) Could not find data item: alarm  
+2013-05-23T20:50:19.0388Z(M1) Could not find data item: alarmNative  
+2013-05-23T20:50:21.0389Z(M1) Could not find data item: Slod_percent  
+2013-05-23T20:50:21.0389Z(M1) Could not find data item: alarm  
+2013-05-23T20:50:21.0389Z(M1) Could not find data item: alarmNative  

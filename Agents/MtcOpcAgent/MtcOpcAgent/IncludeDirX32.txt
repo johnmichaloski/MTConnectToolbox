@@ -1,0 +1,9 @@
+-I"C:\Program Files\NIST\src\wtl81\Include" 
+-I"C:\Program Files\NIST\src\boost_1_54_0"
+-I"C:\Users\michalos\Documents\GitHub\Agents\MtcOpcAgent\Agent\agent" 
+-I"C:\Users\michalos\Documents\GitHub\Agents\MtcOpcAgent\Agent\lib" 
+-I"C:\Users\michalos\Documents\GitHub\Agents\MtcOpcAgent\Agent\win32\libxml2-2.7.7\include" 
+-I.
+-I"C:\Users\michalos\Documents\GitHub\Agents\MtcOpcAgent\OPC" 
+-I"C:\Users\michalos\Documents\GitHub\Agents\MtcOpcAgent\NIST" 
+

@@ -1,0 +1,1 @@
+cscript //X "MTConnectAgentaXmlZipLogging.vbs"

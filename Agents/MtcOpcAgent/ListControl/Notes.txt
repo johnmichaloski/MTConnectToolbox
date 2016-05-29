@@ -1,0 +1,110 @@
+// Get the Device context.
+CPaintDC dc( this );
+
+// Get the client co-ordinates.
+CRect rect;
+GetClientRect( &rect );
+
+// Two gradient points.
+TRIVERTEX vert[2] = { 0 };
+
+// Set the first vertex point at 0,0 and with blue color.
+// Since the array is initialize with 0, all other
+// members in struct are 0.
+vert[ 0 ] .Blue   = 0xff00;
+
+// Initialize second vertex at endcorner of
+// window with black color.
+vert[ 1 ] .x      = rect.Width();
+vert[ 1 ] .y      = rect.Height();
+
+// Gradient rectangle.
+GRADIENT_RECT GradientRect = { 0 };
+GradientRect.UpperLeft = 0;
+GradientRect.LowerRight = 1;
+
+// Now fill the gradient.
+GradientFill( dc.GetSafeHdc(),
+              vert, // Gradient vertices.
+              2,    // No. of vertices.
+              &GradientRect, // Gradient array.
+              1,    // No. of items in Gradient Array.
+              GRADIENT_FILL_RECT_V ); // Vertical Fill.
+
+=====================================================================
+
+void CSubtitlePreviewImage::OnPaint()
+{
+	CPaintDC dc(this); // device context for painting
+
+	// TODO: Add your message handler code here
+	// Do not call CDialog::OnPaint() for painting messages
+
+	RECT lpRect;
+
+	GetClientRect( &lpRect );
+
+	// Create a rect the size of my image container.
+	RectF destRect(0, 0, lpRect.right, lpRect.bottom);
+
+	int phWidth = m_GDIimage->GetWidth();
+	int phHeight = m_GDIimage->GetHeight();
+
+	//create a Bitmap the Size of the original photograph
+	Bitmap *bmPhoto = new Bitmap(phWidth, phHeight, PixelFormat24bppRGB );
+
+	bmPhoto->SetResolution( m_GDIimage->GetHorizontalResolution(), m_GDIimage->GetVerticalResolution() );
+
+	//load the Bitmap into a Graphics object 
+	Graphics *grPhoto = Graphics::FromImage(bmPhoto);
+
+	//Set the rendering quality for this Graphics object
+	grPhoto->SetSmoothingMode( SmoothingModeAntiAlias );
+
+	RectF imageRect(0, 0, phWidth, phHeight);
+
+	//Draws the photo Image object at original size to the graphics object.
+	grPhoto->DrawImage(
+		m_GDIimage,                             // Photo Image object
+		imageRect,								// Rectangle structure
+		0,                                      // x-coordinate of the portion of the source image to draw. 
+		0,                                      // y-coordinate of the portion of the source image to draw. 
+		phWidth,                                // Width of the portion of the source image to draw. 
+		phHeight,                               // Height of the portion of the source image to draw. 
+		UnitPixel);								// Units of measure 
+
+	FontFamily fontFamily(L"Arial");
+	Font myFont(&fontFamily, 180, FontStyleBold, UnitPixel);
+
+	StringFormat format;
+	SolidBrush blackBrush(Color(255, 255, 255, 255));
+
+	// Draw string.
+	grPhoto->DrawString(L"This is subtitle text!", 22, &myFont, PointF(0,0), &format, &blackBrush);
+
+	Graphics graphics( dc.m_hDC );
+
+	Image *finalImage;
+
+	finalImage = bmPhoto;
+
+	//// Draw the image scaled to fit the image conatiner.
+	graphics.DrawImage( finalImage, destRect);
+}
+
+
+	wchar_t progDir[MAX_PATH];
+
+	wchar_t fileName[MAX_PATH];
+
+	// This gets the path and name of the executable.
+	GetModuleFileName( NULL, progDir, MAX_PATH );
+
+	// This loop removes the file name and just leaves the executable's path.
+	for( size_t i = wcslen( progDir ); i > 0 && progDir[ i ] != '\\'; i-- ) progDir[ i ] = '\0';
+
+	wcscpy( fileName, progDir );
+
+	wcscat( fileName, _T( "Toffee.jpg" ) );
+
+	m_GDIimage = Image::FromFile( fileName );}

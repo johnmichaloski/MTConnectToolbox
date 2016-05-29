@@ -1,0 +1,11 @@
+; MtCustomAction.def
+;
+; defines the exported functions which will be available to the MSI engine
+
+LIBRARY      "MtCustomAction" 
+
+EXPORTS
+Install
+Commit
+Rollback
+Uninstall

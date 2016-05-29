@@ -1,0 +1,35 @@
+<<<<<<< HEAD
+SimDeviceBuilder/ 
+CMSDCommandCell10.0/
+=======
+src/Adapter/
+src/Agent/
+src/Copy/
+CMSDCommandCell/
+*.msi
+*.obj
+*.ilk
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.rsp
+*.pch
+*.ncb
+*.user
+*.manifest
+*.pdb
+*.idb
+*.suo
+*.dll
+*.idb
+*.log
+*.exg
+*.dlx
+*.tlog
+Copy*.*
+*.opensdf
+*.sdf
+~*.*
+*.ipch
+>>>>>>> 352b2c2430392443c49cd6840fdc93f1050afb6d

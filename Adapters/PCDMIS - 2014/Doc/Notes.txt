@@ -1,0 +1,81 @@
+
+
+App.ActivePartProgram
+
+Properties
+	Public Property _Name() As String
+	// Returns/Sets pointer to Currently Active Part Program Represents the currently active part program
+	Public Property ActivePartProgram() As PartProgram
+	
+	
+	//Returns Application Events Object for use in capturing application events Returns the
+ApplicationObjectEvents object for use in capturing application events.
+	Public Property ApplicationEvents() As ApplicationObjectEvents
+
+
+Public Property CurrentUserDirectory() As String
+Public Property DefaultFilePath() As String
+Public Property DefaultMachineName() As String
+Public Property DefaultProbeFile() As String
+Public Property ErrorDialogEnabled() As Long
+Public Property Machines() As Machines
+Public Property MajorVersion() As Long
+Public Property MinorVersion() As Long
+Public Property Name() As String //Returns name of executable
+//Returns/Sets status of application operator mode
+Represents whether or not you are in operator mode. TRUE when in operator mode, FALSE
+otherwise.
+***Public Property OperatorMode() As Boolean
+Public Property PartPrograms() As PartPrograms
+Public Property Path() As String
+Public Property ReportTemplates() As ReportTemplates
+Public Property VersionString() As String
+Public Property Visible() As Boolean
+
+
+Sub LaunchPCDMIS()
+Set PCDApp = CreateObject("PCDLRN.Application")
+Set AppEvents = PCDApp.ApplicationEvents
+PCDApp.Visible = True
+End Sub
+
+Private Sub AppEvents_OnStartExecution(ByVal PartProg As PCDLRN.IPartProgram)
+' Event subroutine. This activates when you START EXECUTION of the part program.
+MsgBox "STARTING EXECUTION OF " & PartProg.Name & ". Click OK to continue."
+End Sub
+Private Sub AppEvents_OnEndExecution(ByVal PartProg As PCDLRN.IPartProgram, ByVal
+TerminationType As Long)
+' Event subroutine. This activates when you END EXECUTION of the part program.
+MsgBox "ENDING EXECUTION OF " & PartProg.Name & ". Click OK to continue."
+End Sub
+
+Private Sub AppEvents_OnOpenPartProgram(ByVal PartProg As PCDLRN.IPartProgram)
+' Event subroutine. This activates when you OPEN a part program.
+Set PartProg = PCDApp.ActivePartProgram
+Application.Visible = True
+MsgBox "Part Program " & PartProg.Name & " opened. Excel should also be visible."
+MsgBox "Part Name " & PartProg.PartName & " to be probed."
+End Sub
+
+============================================================
+
+ApplicationSettings Object
+PartProgram Command Object.
+The Command object represents a single command in PCDMIS.
+Feature Property
+
+PartProgram
+Public Property ActiveMachine() As Machine
+Public Property Application() As Application
+Public Property CurrentProbeName() As String
+Public Property PartName() As String
+Public Property PartProgramSettings() As PartProgramSettings
+Public Property ExecutionWasCancelled() As Boolean
+
+
+Public Event OnEndExecution( ByVal TerminationType As Long )
+Public Event OnExecuteDialogErrorMsg( ByVal ErrorMsg As String )
+Public Event OnExecuteDialogStatusMsg(ByVal StatusMsg As String )
+Public Event OnStartExecution()
+
+

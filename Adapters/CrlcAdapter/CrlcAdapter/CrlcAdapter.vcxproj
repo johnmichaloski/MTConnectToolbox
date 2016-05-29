@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{EC0F1929-720F-4335-82EE-1DCA611F3F36}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>CrlcAdapter</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(Platform)\$(Configuration)\Intermediate\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>@IncludeDirX64.txt %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>C:\Program Files\NIST\src\boost_1_54_0\MSVC10\stage\lib64-msvc-10.0;C:\Program Files %28x86%29\CodeSynthesis XSD 4.0\lib64\vc-10.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>@IncludeDirX64.txt %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>C:\Program Files\NIST\src\boost_1_54_0\MSVC10\stage\lib64-msvc-10.0;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\adapter-master\src\adapter.hpp" />
+    <ClInclude Include="..\adapter-master\src\axis.hpp" />
+    <ClInclude Include="..\adapter-master\src\client.hpp" />
+    <ClInclude Include="..\adapter-master\src\component.hpp" />
+    <ClInclude Include="..\adapter-master\src\condition.hpp" />
+    <ClInclude Include="..\adapter-master\src\configuration.hpp" />
+    <ClInclude Include="..\adapter-master\src\cutting_tool.hpp" />
+    <ClInclude Include="..\adapter-master\src\device_datum.hpp" />
+    <ClInclude Include="..\adapter-master\src\internal.hpp" />
+    <ClInclude Include="..\adapter-master\src\logger.hpp" />
+    <ClInclude Include="..\adapter-master\src\server.hpp" />
+    <ClInclude Include="..\adapter-master\src\service.hpp" />
+    <ClInclude Include="..\adapter-master\src\string_array.hpp" />
+    <ClInclude Include="..\adapter-master\src\string_buffer.hpp" />
+    <ClInclude Include="..\adapter-master\src\threading.hpp" />
+    <ClInclude Include="..\adapter-master\src\time_series.hpp" />
+    <ClInclude Include="..\crcl\CRCLCommandInstance.hxx" />
+    <ClInclude Include="..\crcl\CRCLCommands.hxx" />
+    <ClInclude Include="..\crcl\CRCLProgramInstance.hxx" />
+    <ClInclude Include="..\crcl\CRCLStatus.hxx" />
+    <ClInclude Include="..\crcl\DataPrimitives.hxx" />
+    <ClInclude Include="CrclInterface.h" />
+    <ClInclude Include="fake_adapter.hpp" />
+    <ClInclude Include="LinuxGlobals.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="XmlSocketClient.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\adapter-master\src\adapter.cpp" />
+    <ClCompile Include="..\adapter-master\src\client.cpp" />
+    <ClCompile Include="..\adapter-master\src\condition.cpp" />
+    <ClCompile Include="..\adapter-master\src\configuration.cpp" />
+    <ClCompile Include="..\adapter-master\src\cutting_tool.cpp" />
+    <ClCompile Include="..\adapter-master\src\device_datum.cpp" />
+    <ClCompile Include="..\adapter-master\src\logger.cpp" />
+    <ClCompile Include="..\adapter-master\src\server.cpp" />
+    <ClCompile Include="..\adapter-master\src\service.cpp" />
+    <ClCompile Include="..\adapter-master\src\string_array.cpp" />
+    <ClCompile Include="..\adapter-master\src\string_buffer.cpp" />
+    <ClCompile Include="..\adapter-master\src\time_series.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\aliascontent.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\conversion.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\emitter.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\emitterstate.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\emitterutils.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\exp.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\iterator.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\map.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\node.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\null.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\ostream.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\parser.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\parserstate.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\regex.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\scalar.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\scanner.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\scanscalar.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\scantag.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\scantoken.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\sequence.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\simplekey.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\stream.cpp" />
+    <ClCompile Include="..\adapter-master\yaml\src\tag.cpp" />
+    <ClCompile Include="..\crcl\CRCLCommandInstance.cxx" />
+    <ClCompile Include="..\crcl\CRCLCommands.cxx" />
+    <ClCompile Include="..\crcl\CRCLProgramInstance.cxx" />
+    <ClCompile Include="..\crcl\CRCLStatus.cxx" />
+    <ClCompile Include="..\crcl\DataPrimitives.cxx" />
+    <ClCompile Include="CrclInterface.cpp" />
+    <ClCompile Include="CrlcAdapter.cpp" />
+    <ClCompile Include="fake_adapter.cpp" />
+    <ClCompile Include="LinuxGlobals.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="XmlSocketClient.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

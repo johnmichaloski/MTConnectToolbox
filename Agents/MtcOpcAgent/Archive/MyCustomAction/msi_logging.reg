@@ -1,0 +1,6 @@
+REGEDIT4
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer]
+"Debug"=dword:00000003
+"Logging"="vicewarmup"
+

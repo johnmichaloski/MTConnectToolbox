@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Adapter">
+    <Position X="3" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>RCIAgAAgMEABEAKEAIBQIAIQAgGAABglAAgBCAAAQSA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\adapter.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Server">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAACQEUACgCEFAAAAAAAJAAAAAAAEMAAEAAgEAAgA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\server.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTConnectService">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAkAEEABQAAAAAkAABAAAgAAAAAAAQ=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\service.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DdeAdapter" Collapsed="true">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MEAQAAgAgIADAAAoAEkAgAIAgCAgACMAASAAAAAAAIA=</HashCode>
+      <FileName>DdeAdapter.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

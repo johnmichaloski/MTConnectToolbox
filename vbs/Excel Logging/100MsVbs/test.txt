@@ -1,0 +1,25 @@
+Private Type SYSTEMTIME
+	wYear As Integer
+	wMonth As Integer
+	wDayOfWeek As Integer
+	wDay As Integer
+	wHour As Integer
+	wMinute As Integer
+	wSecond As Integer
+	wMilliseconds As Integer
+End Type
+
+Private Declare Sub GetSystemTime Lib "kernel32" _
+	(lpSystemTime As SYSTEMTIME)
+
+Public Function TimeToMillisecond() As String
+	Dim tSystem As SYSTEMTIME
+	Dim sRet
+	On Error Resume Next
+	GetSystemTime tSystem
+	sRet = Hour(Now) & ":" & Minute(Now) & ":" & Second(Now) & _
+		":" & tSystem.wMilliseconds
+	TimeToMillisecond = sRet
+End Function
+
+'Read more at http://vbadud.blogspot.com/2012/05/excel-vba-timestamp-milliseconds-using.html#9Kh6C5kBdCAxqG3x.99

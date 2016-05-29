@@ -1,0 +1,19 @@
+
+
+2013-12-03 John Michaloski
+*	Change cnc=explorer.exe  to cnc=maschine.exe  in Config.ini
+*	alias and tagname opposite of what you thing alias = tagname
+* 	Memory Leak Test
+	- 
+	- 
+*	Revise enumeration code - test 
+	Works on powerline
+* 	avail problem - flipping values, unavailable set in clear()
+*	wait 10*10 seconds so cnc actually starts
+	- too long?
+	- ncdde.exe still running
+*	catch C++ and SEH exceptions	
+	- done
+*	NO THREADING IN ADAPTER - flaky in 64 bit world
+*	Firewall - check firewall, check firewall port open, open firewall port
+	- test:

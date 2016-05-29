@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2015-06-17T19:31:44" sender="local" version="1.1"/>
+<Devices>
+			 <Device id="M1id" uuid="M1xxx" name="M1">
+			<Description>Nikon</Description>
+			<DataItems>
+				<DataItem id="M1avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<DataItems>
+				<DataItem id="M1avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="M1a1" name="base">
+					<Components>
+						<Rotary id="M1d1" name="SPINDLE">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="M1cs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+							</DataItems>
+						</Rotary>
+						<Linear id="M1x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M1xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M1y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M1yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M1z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M1zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+					</Components>
+				</Axes>
+			<Components>
+				<Controller id="M1cont" name="controller">
+					<Components>
+						<Path id="M1path1" name="path">
+							<DataItems>
+								<DataItem type="MESSAGE" id="M1last_update" category="EVENT" name="last_update"/>
+								<DataItem type="PROGRAM" id="M1pgm" category="EVENT" name="program"/>
+								<DataItem type="EXECUTION" id="M1exec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="M1mode" category="EVENT" name="controllermode"/>
+								<DataItem type="PATH_FEEDRATE" id="M1pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+        							<DataItem category="EVENT"  id="M1operator"  name="operator" type="CODE"></DataItem>
+        							<DataItem category="EVENT"  id="M1alarm"  name="error" type="CODE"></DataItem>
+        							<DataItem category="EVENT"  id="M1heartbeat"  name="heartbeat" type="CODE"></DataItem>
+ 							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="M1systems" name="systems">
+					<Components>
+						<Electric name="electric" id="M1elec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="M1pwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+			 <Device id="M2id" uuid="M2xxx" name="M2">
+			<Description>Nikon</Description>
+			<DataItems>
+				<DataItem id="M2avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<DataItems>
+				<DataItem id="M2avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="M2a1" name="base">
+					<Components>
+						<Rotary id="M2d1" name="SPINDLE">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="M2cs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+							</DataItems>
+						</Rotary>
+						<Linear id="M2x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M2xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M2y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M2yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M2z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M2zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+					</Components>
+				</Axes>
+			<Components>
+				<Controller id="M2cont" name="controller">
+					<Components>
+						<Path id="M2path1" name="path">
+							<DataItems>
+								<DataItem type="MESSAGE" id="M2last_update" category="EVENT" name="last_update"/>
+								<DataItem type="PROGRAM" id="M2pgm" category="EVENT" name="program"/>
+								<DataItem type="EXECUTION" id="M2exec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="M2mode" category="EVENT" name="controllermode"/>
+								<DataItem type="PATH_FEEDRATE" id="M2pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+        							<DataItem category="EVENT"  id="M2operator"  name="operator" type="CODE"></DataItem>
+        							<DataItem category="EVENT"  id="M2alarm"  name="error" type="CODE"></DataItem>
+        							<DataItem category="EVENT"  id="M2heartbeat"  name="heartbeat" type="CODE"></DataItem>
+ 							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="M2systems" name="systems">
+					<Components>
+						<Electric name="electric" id="M2elec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="M2pwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+			 <Device id="M3id" uuid="M3xxx" name="M3">
+			<Description>Nikon</Description>
+			<DataItems>
+				<DataItem id="M3avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<DataItems>
+				<DataItem id="M3avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="M3a1" name="base">
+					<Components>
+						<Rotary id="M3d1" name="SPINDLE">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="M3cs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+							</DataItems>
+						</Rotary>
+						<Linear id="M3x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M3xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M3y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M3yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M3z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M3zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+					</Components>
+				</Axes>
+			<Components>
+				<Controller id="M3cont" name="controller">
+					<Components>
+						<Path id="M3path1" name="path">
+							<DataItems>
+								<DataItem type="MESSAGE" id="M3last_update" category="EVENT" name="last_update"/>
+								<DataItem type="PROGRAM" id="M3pgm" category="EVENT" name="program"/>
+								<DataItem type="EXECUTION" id="M3exec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="M3mode" category="EVENT" name="controllermode"/>
+								<DataItem type="PATH_FEEDRATE" id="M3pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+        							<DataItem category="EVENT"  id="M3operator"  name="operator" type="CODE"></DataItem>
+        							<DataItem category="EVENT"  id="M3alarm"  name="error" type="CODE"></DataItem>
+        							<DataItem category="EVENT"  id="M3heartbeat"  name="heartbeat" type="CODE"></DataItem>
+ 							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="M3systems" name="systems">
+					<Components>
+						<Electric name="electric" id="M3elec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="M3pwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+</Devices>
+</MTConnectDevices>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2013-05-23T16:20:49" sender="local" version="1.1"/>
+<Devices>
+		<Device id="M1d1" uuid="M1xxx" name="M1">
+     			<Description serialNumber="xxxx">Siemens-840D</Description>
+ 			<DataItems>
+				<DataItem id="M1avail1" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="M1a1" name="base">
+					<Components>
+						<Linear id="M1x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M1xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M1y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M1yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M1z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M1zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Rotary id="M1c1" name="C">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="M1cs1" category="SAMPLE" name="Srpm" subType="ACTUAL" units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+								<DataItem type="SPINDLE_SPEED" id="M1cso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+						</DataItems>
+						</Rotary>
+					</Components>
+				</Axes>
+				<Controller id="M1cont1" name="controller">
+					<Components>
+						<Path id="M1path1" name="path">
+							<DataItems>
+								<DataItem type="PROGRAM" id="M1pgm1" category="EVENT" name="program"/>
+								<DataItem type="PART_COUNT" id="M1pc1" category="EVENT" name="PartCountAct" />
+								<DataItem type="PATH_FEEDRATE" id="M1pf1" category="SAMPLE" name="path_feedratefrt" units="MILLIMETER/SECOND" subType="ACTUAL" coordinateSystem="WORK"/>
+								<DataItem type="PATH_FEEDRATE" id="M1pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+								<DataItem type="TOOL_ID" id="M1tid1" category="EVENT" name="Tool_number"/>
+								<DataItem type="EXECUTION" id="M1exec1" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="M1mode1" category="EVENT" name="controllermode"/>
+							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="M1systems1" name="systems">
+					<Components>
+						<Electric name="electric" id="M1elec1">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="M1pwr1" name="power" />
+							</DataItems>
+						</Electric>
+		
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+		<Device id="M2d1" uuid="M2xxx" name="M2">
+     			<Description serialNumber="xxxx">Siemens-840D</Description>
+ 			<DataItems>
+				<DataItem id="M2avail1" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="M2a1" name="base">
+					<Components>
+						<Linear id="M2x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M2xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M2y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M2yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M2z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M2zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Rotary id="M2c1" name="C">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="M2cs1" category="SAMPLE" name="Srpm" subType="ACTUAL" units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+								<DataItem type="SPINDLE_SPEED" id="M2cso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+						</DataItems>
+						</Rotary>
+					</Components>
+				</Axes>
+				<Controller id="M2cont1" name="controller">
+					<Components>
+						<Path id="M2path1" name="path">
+							<DataItems>
+								<DataItem type="PROGRAM" id="M2pgm1" category="EVENT" name="program"/>
+								<DataItem type="PART_COUNT" id="M2pc1" category="EVENT" name="PartCountAct" />
+								<DataItem type="PATH_FEEDRATE" id="M2pf1" category="SAMPLE" name="path_feedratefrt" units="MILLIMETER/SECOND" subType="ACTUAL" coordinateSystem="WORK"/>
+								<DataItem type="PATH_FEEDRATE" id="M2pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+								<DataItem type="TOOL_ID" id="M2tid1" category="EVENT" name="Tool_number"/>
+								<DataItem type="EXECUTION" id="M2exec1" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="M2mode1" category="EVENT" name="controllermode"/>
+							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="M2systems1" name="systems">
+					<Components>
+						<Electric name="electric" id="M2elec1">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="M2pwr1" name="power" />
+							</DataItems>
+						</Electric>
+		
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+		<Device id="M3d1" uuid="M3xxx" name="M3">
+     			<Description serialNumber="xxxx">Siemens-840D</Description>
+ 			<DataItems>
+				<DataItem id="M3avail1" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="M3a1" name="base">
+					<Components>
+						<Linear id="M3x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M3xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M3y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M3yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M3z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M3zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Rotary id="M3c1" name="C">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="M3cs1" category="SAMPLE" name="Srpm" subType="ACTUAL" units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+								<DataItem type="SPINDLE_SPEED" id="M3cso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+						</DataItems>
+						</Rotary>
+					</Components>
+				</Axes>
+				<Controller id="M3cont1" name="controller">
+					<Components>
+						<Path id="M3path1" name="path">
+							<DataItems>
+								<DataItem type="PROGRAM" id="M3pgm1" category="EVENT" name="program"/>
+								<DataItem type="PART_COUNT" id="M3pc1" category="EVENT" name="PartCountAct" />
+								<DataItem type="PATH_FEEDRATE" id="M3pf1" category="SAMPLE" name="path_feedratefrt" units="MILLIMETER/SECOND" subType="ACTUAL" coordinateSystem="WORK"/>
+								<DataItem type="PATH_FEEDRATE" id="M3pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+								<DataItem type="TOOL_ID" id="M3tid1" category="EVENT" name="Tool_number"/>
+								<DataItem type="EXECUTION" id="M3exec1" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="M3mode1" category="EVENT" name="controllermode"/>
+							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="M3systems1" name="systems">
+					<Components>
+						<Electric name="electric" id="M3elec1">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="M3pwr1" name="power" />
+							</DataItems>
+						</Electric>
+		
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+		<Device id="M4d1" uuid="M4xxx" name="M4">
+     			<Description serialNumber="xxxx">Siemens-840D</Description>
+ 			<DataItems>
+				<DataItem id="M4avail1" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="M4a1" name="base">
+					<Components>
+						<Linear id="M4x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M4xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M4y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M4yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M4z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M4zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Rotary id="M4c1" name="C">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="M4cs1" category="SAMPLE" name="Srpm" subType="ACTUAL" units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+								<DataItem type="SPINDLE_SPEED" id="M4cso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+						</DataItems>
+						</Rotary>
+					</Components>
+				</Axes>
+				<Controller id="M4cont1" name="controller">
+					<Components>
+						<Path id="M4path1" name="path">
+							<DataItems>
+								<DataItem type="PROGRAM" id="M4pgm1" category="EVENT" name="program"/>
+								<DataItem type="PART_COUNT" id="M4pc1" category="EVENT" name="PartCountAct" />
+								<DataItem type="PATH_FEEDRATE" id="M4pf1" category="SAMPLE" name="path_feedratefrt" units="MILLIMETER/SECOND" subType="ACTUAL" coordinateSystem="WORK"/>
+								<DataItem type="PATH_FEEDRATE" id="M4pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+								<DataItem type="TOOL_ID" id="M4tid1" category="EVENT" name="Tool_number"/>
+								<DataItem type="EXECUTION" id="M4exec1" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="M4mode1" category="EVENT" name="controllermode"/>
+							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="M4systems1" name="systems">
+					<Components>
+						<Electric name="electric" id="M4elec1">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="M4pwr1" name="power" />
+							</DataItems>
+						</Electric>
+		
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+		<Device id="M5d1" uuid="M5xxx" name="M5">
+     			<Description serialNumber="xxxx">Siemens-840D</Description>
+ 			<DataItems>
+				<DataItem id="M5avail1" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="M5a1" name="base">
+					<Components>
+						<Linear id="M5x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M5xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M5y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M5yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M5z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M5zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Rotary id="M5c1" name="C">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="M5cs1" category="SAMPLE" name="Srpm" subType="ACTUAL" units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+								<DataItem type="SPINDLE_SPEED" id="M5cso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+						</DataItems>
+						</Rotary>
+					</Components>
+				</Axes>
+				<Controller id="M5cont1" name="controller">
+					<Components>
+						<Path id="M5path1" name="path">
+							<DataItems>
+								<DataItem type="PROGRAM" id="M5pgm1" category="EVENT" name="program"/>
+								<DataItem type="PART_COUNT" id="M5pc1" category="EVENT" name="PartCountAct" />
+								<DataItem type="PATH_FEEDRATE" id="M5pf1" category="SAMPLE" name="path_feedratefrt" units="MILLIMETER/SECOND" subType="ACTUAL" coordinateSystem="WORK"/>
+								<DataItem type="PATH_FEEDRATE" id="M5pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+								<DataItem type="TOOL_ID" id="M5tid1" category="EVENT" name="Tool_number"/>
+								<DataItem type="EXECUTION" id="M5exec1" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="M5mode1" category="EVENT" name="controllermode"/>
+							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="M5systems1" name="systems">
+					<Components>
+						<Electric name="electric" id="M5elec1">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="M5pwr1" name="power" />
+							</DataItems>
+						</Electric>
+		
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+</Devices>
+</MTConnectDevices>

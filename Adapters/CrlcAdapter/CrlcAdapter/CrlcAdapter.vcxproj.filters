@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Adapter">
+      <UniqueIdentifier>{e7ca3579-42db-44cc-b9b6-c0876f290f01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Yaml">
+      <UniqueIdentifier>{0056e0e7-3b26-4056-b1db-aca74a6b6c9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="CRCL">
+      <UniqueIdentifier>{e11be94b-0247-4486-a91f-2c0ccdd0c60b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CrclInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fake_adapter.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LinuxGlobals.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\adapter.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\axis.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\client.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\component.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\condition.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\configuration.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\cutting_tool.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\device_datum.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\internal.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\logger.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\server.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\service.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\string_array.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\string_buffer.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\threading.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="..\adapter-master\src\time_series.hpp">
+      <Filter>Adapter</Filter>
+    </ClInclude>
+    <ClInclude Include="XmlSocketClient.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crcl\CRCLCommandInstance.hxx">
+      <Filter>CRCL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crcl\CRCLCommands.hxx">
+      <Filter>CRCL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crcl\CRCLProgramInstance.hxx">
+      <Filter>CRCL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crcl\CRCLStatus.hxx">
+      <Filter>CRCL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crcl\DataPrimitives.hxx">
+      <Filter>CRCL</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CrlcAdapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CrclInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fake_adapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LinuxGlobals.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\src\adapter.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\src\client.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\src\condition.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\src\configuration.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\src\cutting_tool.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\src\device_datum.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\src\logger.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\src\server.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\src\service.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\src\string_array.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\src\string_buffer.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\src\time_series.cpp">
+      <Filter>Adapter</Filter>
+    </ClCompile>
+    <ClCompile Include="XmlSocketClient.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\aliascontent.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\conversion.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\emitter.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\emitterstate.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\emitterutils.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\exp.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\iterator.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\map.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\node.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\null.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\ostream.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\parser.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\parserstate.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\regex.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\scalar.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\scanner.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\scanscalar.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\scantag.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\scantoken.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\sequence.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\simplekey.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\stream.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\adapter-master\yaml\src\tag.cpp">
+      <Filter>Yaml</Filter>
+    </ClCompile>
+    <ClCompile Include="..\crcl\CRCLCommandInstance.cxx">
+      <Filter>CRCL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\crcl\CRCLCommands.cxx">
+      <Filter>CRCL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\crcl\CRCLProgramInstance.cxx">
+      <Filter>CRCL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\crcl\CRCLStatus.cxx">
+      <Filter>CRCL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\crcl\DataPrimitives.cxx">
+      <Filter>CRCL</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

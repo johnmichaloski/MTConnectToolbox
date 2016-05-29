@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Adapter" Collapsed="true">
+    <Position X="5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RCIAgAAgMEABEAKEAIBQIAIQAgGAABglAAgBCAAAQSA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\adapter.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Availability" Collapsed="true">
+    <Position X="2.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAEABBAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="AxisCoupling" Collapsed="true">
+    <Position X="2.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAGCAAAAIABAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Client" Collapsed="true">
+    <Position X="7.25" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAQAAgAAAAAAAkAAQEgAAAAAAQ=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\client.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Condition" Collapsed="true">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QACAACAAGACAUAAACAEABBgQQAAAAAAIAAEAAAACAAQ=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\condition.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Configuration" Collapsed="true">
+    <Position X="5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAQAEAAAAAAAIAAACBAAEAgAAACAAAIiI=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\configuration.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DeviceDatum" Collapsed="true">
+    <Position X="0.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAgAAEQAAEUAAAAAEBBRQQgAIAIAAACAkEAAEAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Direction" Collapsed="true">
+    <Position X="2.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAECAAACIABAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DoorState" Collapsed="true">
+    <Position X="2.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAECAAAAIABAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EmergencyStop" Collapsed="true">
+    <Position X="2.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAECAAAAIABAAAAAAEAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Event" Collapsed="true">
+    <Position X="2.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAECAAAAIABAAAAgAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EventLogging" Collapsed="true">
+    <Position X="6.75" Y="5.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAQgAAAAAAAAAIAAABAEAEAAACAAgAAAA=</HashCode>
+      <FileName>AppEventLog.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Execution" Collapsed="true">
+    <Position X="2.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAECAAAAIABAAAAAAAAAAAAAAIAAAAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ExeList" Collapsed="true">
+    <Position X="6.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAQAAAAAAAAAAQAAAAICAAAAAAAACAAAAA=</HashCode>
+      <FileName>ListExeProcesses.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="IntEvent" Collapsed="true">
+    <Position X="2.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAECAAAAIABAAAAAAEAAAAABAAAAEAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Logger" Collapsed="true">
+    <Position X="4.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAABAAAGACgAAAgAQAAAAQAAAAACAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\logger.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Message" Collapsed="true">
+    <Position X="2.75" Y="7.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAUAIAAAIADAACAAAAAAAAAAAAIAAAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="MTConnectService" Collapsed="true">
+    <Position X="5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAkAEEABQAAAAAkAABAAAgAAAAAAAQ=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\service.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathMode" Collapsed="true">
+    <Position X="2.75" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAECAAAAIABAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PathPosition" Collapsed="true">
+    <Position X="2.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAgAIABAAAACAAAACAABAAAGEBgAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PowerState" Collapsed="true">
+    <Position X="2.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAECAAAAIABAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Register" Collapsed="true">
+    <Position X="7.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAgAAIAAAAABEAAAABAAAiAAIAAAAAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\configuration.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="RegisterSet" Collapsed="true">
+    <Position X="7.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAIACAQAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\configuration.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sample" Collapsed="true">
+    <Position X="2.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAECAAAAIABABAAAAEAAAAAAAAAAEAgAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\device_datum.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Server" Collapsed="true">
+    <Position X="5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACQEUACgCEFAAAAAAAJAAAAAAAEMAAEAAgEAAgA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\server.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ServiceLogger" Collapsed="true">
+    <Position X="6.75" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAGAAAAAAAAQAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\service.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TimeSeries" Collapsed="true">
+    <Position X="2.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAABAUCAECAIABAEAAAAAAAAAAAEAAAEEwAA=</HashCode>
+      <FileName>C:\Users\michalos\Documents\GitHub\840DNcDdeAdapter\MTConnectAdapter\time_series.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Tahoma" Size="8.25" />
+</ClassDiagram>

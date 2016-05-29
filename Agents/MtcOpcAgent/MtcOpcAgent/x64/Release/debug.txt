@@ -1,0 +1,55 @@
+2013-06-04T20:37:50.0178ZMTConnect Agent Service Started
+2013-06-04T20:37:50.0178ZAgentConfigurationEx::initialize() 
+2013-06-04T20:37:50.0178ZTConnect Agent Service Read Configuration - C:\Program Files\NIST\proj\MTConnect\NIST\MTConnectGadgets\MtcOpcAgent\MtcOpcAgent\x64\Release\MtcOpcAgent.ini 
+2013-06-04T20:37:50.0178ZMTConnect Agent Service Read OPCSERVER.logging_level FATAL
+2013-06-04T20:37:50.0193ZAgentConfigurationEx::start()
+2013-06-04T20:37:50.0193ZCOpcAdapter::Cycle() for IP = M1
+2013-06-04T20:37:50.0193ZCOpcAdapter::Cycle() for IP = M2
+2013-06-04T20:37:50.0193ZCOpcAdapter::Cycle() for IP = M3
+2013-06-04T20:37:50.0193ZCOpcAdapter::Cycle() for IP = M4
+2013-06-04T20:37:50.0193ZCall AgentConfiguration::start() ed 
+2013-06-04T20:37:50.0193ZCOpcAdapter::Cycle() for IP = M5
+2013-06-04T20:37:51.0207Z(M4) Could not find data item: Slod_percent  
+2013-06-04T20:37:51.0207ZWARNING: COPCBackEnd::Connect Machine 129.6.72.45 
+2013-06-04T20:37:51.0207Z2013-06-04T20:37:51.0207ZWARNING: COPCBackEnd::Connect Machine 129.6.72.47 
+WARNING: COPCBackEnd::Connect Machine 129.6.72.48 
+2013-06-04T20:37:51.0207ZWARNING: COPCBackEnd::Connect Machine 129.6.72.48 - TestPing 1000
+2013-06-04T20:37:51.0207Z2013-06-04T20:37:51.0207ZWARNING: COPCBackEnd::Connect Machine 129.6.72.47 - TestPing 1000
+WARNING: COPCBackEnd::Connect Machine 129.6.72.45 - TestPing 1000
+2013-06-04T20:37:51.0207ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 
+2013-06-04T20:37:51.0207ZWARNING: COPCBackEnd::Connect Machine 129.6.72.46 
+2013-06-04T20:37:51.0207ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - TestPing 1000
+2013-06-04T20:37:51.0207ZWARNING: COPCBackEnd::Connect Machine 129.6.72.46 - TestPing 1000
+2013-06-04T20:37:51.0207ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Remote CoCreateInstanceEx
+2013-06-04T20:37:52.0440ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - GetStatus
+2013-06-04T20:37:52.0471ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - AddGroup
+2013-06-04T20:37:52.0471ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - QueryInterface IID_IOPCSyncIO
+2013-06-04T20:37:52.0471ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add items to group
+2013-06-04T20:37:52.0471ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/Spindle/actSpeed[1]
+2013-06-04T20:37:52.0502ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/Spindle/speedOvr[1]
+2013-06-04T20:37:52.0502ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/Spindle/driveLoad[1]
+2013-06-04T20:37:52.0502ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/MachineAxis/actToolBasePos[1]
+2013-06-04T20:37:52.0503ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/MachineAxis/actToolBasePos[2]
+2013-06-04T20:37:52.0503ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/MachineAxis/actToolBasePos[3]
+2013-06-04T20:37:52.0503ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/State/feedRateIpoOvr
+2013-06-04T20:37:52.0503ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/State/actFeedRateIpo
+2013-06-04T20:37:52.0503ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Bag/State/opMode
+2013-06-04T20:37:52.0504ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/State/progStatus
+2013-06-04T20:37:52.0507ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/ProgramInfo/progName
+2013-06-04T20:37:52.0509ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/State/actTNumber
+2013-06-04T20:37:52.0512ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/State/totalParts
+2013-06-04T20:37:52.0532ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Channel/State/chanAlarm
+2013-06-04T20:37:52.0532ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Add item /Nck/LastAlarm/textIndex
+2013-06-04T20:37:57.0555ZWARNING: COPCBackEnd::Connect Machine 129.6.72.44 - Exit
+2013-06-04T20:38:11.0805ZERROR : FAIL: Connect() OPC Server 129.6.72.48 Connect failed WARNING: Couldn't ping machine=129.6.72.48 COM Error=0 
+2013-06-04T20:38:11.0805Z2013-06-04T20:38:11.0805ZERROR : FAIL: Connect() OPC Server 129.6.72.47 Connect failed WARNING: Couldn't ping machine=129.6.72.47 COM Error=0 
+ERROR : FAIL: Connect() OPC Server 129.6.72.45 Connect failed WARNING: Couldn't ping machine=129.6.72.45 COM Error=0 
+2013-06-04T20:38:11.0805ZERROR : FAIL: Connect() OPC Server 129.6.72.46 Connect failed WARNING: Couldn't ping machine=129.6.72.46 COM Error=0 
+2013-06-04T20:38:23.0825ZWARNING: COPCBackEnd::Connect Machine 129.6.72.45 
+2013-06-04T20:38:23.0825ZWARNING: COPCBackEnd::Connect Machine 129.6.72.45 - TestPing 1000
+2013-06-04T20:38:23.0825ZWARNING: COPCBackEnd::Connect Machine 129.6.72.46 
+2013-06-04T20:38:23.0825ZWARNING: COPCBackEnd::Connect Machine 129.6.72.46 - TestPing 1000
+2013-06-04T20:38:23.0825ZWARNING: COPCBackEnd::Connect Machine 129.6.72.47 
+2013-06-04T20:38:23.0825ZWARNING: COPCBackEnd::Connect Machine 129.6.72.48 
+2013-06-04T20:38:23.0825ZWARNING: COPCBackEnd::Connect Machine 129.6.72.47 - TestPing 1000
+2013-06-04T20:38:23.0825ZWARNING: COPCBackEnd::Connect Machine 129.6.72.48 - TestPing 1000

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2014-11-07T20:12:14" sender="local" version="1.1"/>
+<Devices>
+			 <Device id="S00L00106id" uuid="S00L00106xxx" name="S00L00106">
+			<Description>MTConnect Siemens 840D Device Using Mazak Shdr as Backend</Description>
+			<DataItems>
+				<DataItem id="S00L00106avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="S00L00106a1" name="base">
+					<Components>
+						<Rotary id="S00L00106d1" name="SPINDLE">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="S00L00106cs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+								<DataItem type="SPINDLE_SPEED" id="S00L00106cso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+								<DataItem category="SAMPLE" id="S00L00106cl3" name="Sload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+							</DataItems>
+						</Rotary>
+						<Linear id="S00L00106x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="S00L00106xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="S00L00106y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="S00L00106yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="S00L00106z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="S00L00106zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+					</Components>
+				</Axes>
+				<Controller id="S00L00106cont" name="controller">
+					<Components>
+						<Path id="S00L00106path1" name="path">
+							<DataItems>
+								<DataItem type="PART_COUNT" id="S00L00106pc1" category="EVENT" name="PartCountAct" />
+								<DataItem type="PATH_FEEDRATE" id="S00L00106pf1" category="SAMPLE" name="path_feedratefrt" units="MILLIMETER/SECOND" subType="ACTUAL" coordinateSystem="WORK"/>
+								<DataItem type="TOOL_ID" id="S00L00106tid1" category="EVENT" name="Tool_number"/>
+								<DataItem type="PROGRAM" id="S00L00106pgm" category="EVENT" name="program"/>
+								<DataItem type="EXECUTION" id="S00L00106exec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="S00L00106mode" category="EVENT" name="controllermode"/>
+								<DataItem type="PATH_FEEDRATE" id="S00L00106pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+        							<DataItem category="EVENT"  id="S00L00106fault"  name="fault" type="CODE"></DataItem>
+        							<DataItem category="EVENT"  id="S00L00106heartbeat"  name="heartbeat" type="CODE"></DataItem>
+								<DataItem type="SYSTEM" category="CONDITION" id="S00L00106alarm_cond" name="alarm" />
+ 							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="S00L00106systems" name="systems">
+					<Components>
+						<Electric name="electric" id="S00L00106elec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="S00L00106pwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+</Devices>
+</MTConnectDevices>

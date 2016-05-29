@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PCDMIS", "PCDMIS.vcxproj", "{CE685E7A-2FE9-4FF3-8CDE-C4836839516E}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PCDMISSetup", "PCDMISSetup\PCDMISSetup.vdproj", "{B2D8AD8F-DB12-4C1F-90A0-AD5937B832FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE685E7A-2FE9-4FF3-8CDE-C4836839516E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CE685E7A-2FE9-4FF3-8CDE-C4836839516E}.Debug|Win32.Build.0 = Debug|Win32
+		{CE685E7A-2FE9-4FF3-8CDE-C4836839516E}.Debug|x64.ActiveCfg = Debug|Win32
+		{CE685E7A-2FE9-4FF3-8CDE-C4836839516E}.Debug|x64.Build.0 = Debug|Win32
+		{CE685E7A-2FE9-4FF3-8CDE-C4836839516E}.Release|Win32.ActiveCfg = Release|Win32
+		{CE685E7A-2FE9-4FF3-8CDE-C4836839516E}.Release|Win32.Build.0 = Release|Win32
+		{CE685E7A-2FE9-4FF3-8CDE-C4836839516E}.Release|x64.ActiveCfg = Release|x64
+		{CE685E7A-2FE9-4FF3-8CDE-C4836839516E}.Release|x64.Build.0 = Release|x64
+		{B2D8AD8F-DB12-4C1F-90A0-AD5937B832FE}.Debug|Win32.ActiveCfg = Debug
+		{B2D8AD8F-DB12-4C1F-90A0-AD5937B832FE}.Debug|x64.ActiveCfg = Debug
+		{B2D8AD8F-DB12-4C1F-90A0-AD5937B832FE}.Release|Win32.ActiveCfg = Release
+		{B2D8AD8F-DB12-4C1F-90A0-AD5937B832FE}.Release|x64.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

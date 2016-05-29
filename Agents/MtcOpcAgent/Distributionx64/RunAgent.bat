@@ -1,0 +1,3 @@
+.\MtcOpcAgent.exe debug
+pause
+

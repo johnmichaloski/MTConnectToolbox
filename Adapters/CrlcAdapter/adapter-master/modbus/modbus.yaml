@@ -1,0 +1,13 @@
+communications:
+  type: serial
+  port: "/dev/cu.PL2303-00001004"
+  baud: 19200
+  dataBits: 8
+  stopBits: 1
+  parity: none
+data:
+  - type: register
+    size: 1
+    address: 425
+    names: [test]
+  

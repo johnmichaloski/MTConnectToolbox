@@ -1,0 +1,15 @@
+Devices = Devices.xml
+Port = 80
+ServiceName = MTConnectAgent
+CheckpointFrequency=10000
+Adapters 
+{ 
+XXXX
+}
+
+# Logger Configuration
+logger_config
+{
+    logging_level = fatal
+    output = cout
+}
