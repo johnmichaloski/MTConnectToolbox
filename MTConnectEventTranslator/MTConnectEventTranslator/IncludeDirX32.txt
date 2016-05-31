@@ -1,6 +1,0 @@
--I"C:\Program Files\NIST\src\boost_1_54_0"
--I"C:\Program Files\NIST\src\wtl81\Include"
--I.
--I"C:\Users\michalos\Documents\GitHub\MTConnectToolbox\MTConnectEventTranslator\MATH"
--I"C:\Users\michalos\Documents\GitHub\MTConnectToolbox\MTConnectEventTranslator\MTConnectEventTranslator"
--I"C:\Users\michalos\Documents\GitHub\MTConnectToolbox\MTConnectEventTranslator\NIST"

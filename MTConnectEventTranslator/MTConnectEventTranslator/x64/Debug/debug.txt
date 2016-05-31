@@ -1,2 +1,0 @@
-CEchoService::initialize(int aArgc, const char *aArgv[])
-2014-02-13 12:18:06.0864 CEchoService::serviceThread()
