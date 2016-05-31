@@ -11,7 +11,10 @@ and the web page tables are put into rows to make sure all the data per device i
 
 
 The logging reads the data item type -  samples, events, and condition -  tag names and data values. 
-The vbs creates a sorted dictionary and updates the web page table with polled values. 
+The vbs creates a sorted dictionary and updates the web page table with polled values. Figure 1 shows 
+a simple screen snapshot.
+
+![Figure 1 MTConnectPage Screen Snapshot](./images/agenttablescreenshot.png?raw=true)
 
 A delay of roughly 3 seconds between polls is done. If a MTConnect device is down, 
 all the agent data for the device will read UNAVAILABLE. This corresponds to a table with tags names 
