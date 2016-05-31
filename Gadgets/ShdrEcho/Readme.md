@@ -18,17 +18,17 @@ executable. The Conifg.ini file is a  Below is a sample config.ini file.
 There  is only one section [GLOBALS]. 
 Within the section are 4 variables, Filename, Repeat, Wait, PortNum and IP to 
 
-[GLOBALS]
-Filename= C:\Users\michalos\Documents\GitHub\MTConnectSolutions\ShdrEcho\ShdrEcho\x64\Debug\out.txt
-Repeat=1
-Wait=0
-PortNum=7878
+	[GLOBALS]
+	Filename= C:\Users\michalos\Documents\GitHub\MTConnectSolutions\ShdrEcho\ShdrEcho\x64\Debug\out.txt
+	Repeat=1
+	Wait=0
+	PortNum=7878
 
 
-The filename variable specifies the filename (including path) of the SHDR archival file.
-Repeat variable determines whether the echo will restart when the archival file is finished.
-The Wait variable is used to tell the program to wait for a connection before reading the SHDR 
-archival file
-The PortNum is the TCP/IP socket port of the MTConnect SHDR connection that the program will listen to.
+The GLOBALS section variables have the following meaning:
 
-Note, the IP of the  ShdrEcho program must always be localhost or 127.0.0.1.
+- The filename variable specifies the filename (including path) of the SHDR archival file.
+- Repeat variable determines whether the echo will restart when the archival file is finished.
+- The Wait variable is used to tell the program to wait for a connection before reading the SHDR archival file
+- The PortNum is the TCP/IP socket port of the MTConnect SHDR connection that the program will listen to. 
+- Note, the IP of the  ShdrEcho program must always be localhost or 127.0.0.1.
