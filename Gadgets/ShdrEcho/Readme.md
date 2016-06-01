@@ -6,18 +6,20 @@ The ShdrEcho program accepts a MTConnect SHDR archival file, and echo's it to an
 The  ShdrEcho program replaces the first and every subsequent archival timestamp with
 the current time and duration offset. The ShdrEcho program  waits between updates by
 the amount of time between timestamps in the MTConnect SHDR archival file. 
-A sample line from a SHDR would look like:
+A sample line from a SHDR file would look like:
 	
 	12/2/2009 2:42:25 PM|power|ON|controllermode|AUTOMATIC|execution|EXECUTING|program|117Z2716-54_1-1|line|0|Srpm|1031|Tool|50
 
-where there is a leading timestamp, and then either samples, events, conditions, information, or multi-line assets are
-given. This program just echos whatever follows the timestamp until the line feed. Information SHDR begin with a * instead
+where there is a leading timestamp, and then either samples, events, conditions, information, or multi-line assets MTConnect
+data items are given. Samples and events are "tagname|value|" pairs while conditions are tagname|1|2|3| are a four field collection.
+This program just echos whatever follows the timestamp until the line feed. Information SHDR begin with a * instead
 of a timestamp, and this is detected. Multiline asset device information is not handled.
 
 This program  was developed in  Microsoft Windows Visual Studio C++ 10.0.
 Most but not all MSVC dependencies have been removed. 
-The inclusion of precompiled headers (which really speeds things up) are included,
-and no easy way to mitigate, such #define way to add "stdafx.h", was found.
+The inclusion of precompiled headers (which really speeds things up) may be included,
+and there is no easy way to mitigate, such #define way to add "stdafx.h", was found. You could rename
+the file stdafx.h and use it as the precompiled header, but life is short.
 
 The ShdrEcho program reads a Config.ini file that is in the same folder as the ShdrEcho.exe
 executable. The Conifg.ini file is a  Below is a sample config.ini file. 
