@@ -31,8 +31,13 @@
 #include <iomanip>
 #include <vector>
 #include <map>
+#include <stdio.h>
+#include <fcntl.h>
+#include <io.h>
+#include <iostream>
+#include <fstream>
 
-#ifndef _WIN32
+#ifndef WIN32
 typedef unsigned int UINT;
 typedef unsigned long DWORD;
 #ifdef UNICODE
@@ -52,14 +57,6 @@ inline std::string nowtimestamp()
   GetSystemTime(&st);
   return  StrFormat("%4d-%02d-%02dT%02d:%02d:%02d.%04d", st.wYear, st.wMonth, st.wDay, st.wHour, st.wMinute, st.wSecond, st.wMilliseconds);
 }
-//inline std::string ExeDirectory()
-//{
-//	TCHAR buf[1000];
-//	GetModuleFileName(NULL, buf, 1000);
-//	std::string path(buf);
-//	path=path.substr( 0, path.find_last_of( '\\' ) +1 );
-//	return path;
-//}
 #endif
 //#ifdef UNICODE
 //typedef std::wstring  tstring;
@@ -80,14 +77,10 @@ inline std::string nowtimestamp()
 //#define A2T(X) X
 //
 //#endif
+
+// Simplify for now
 #define tstring std::string 
 
-// maximum mumber of lines the output console should have
-#include <stdio.h>
-#include <fcntl.h>
-#include <io.h>
-#include <iostream>
-#include <fstream>
 
 inline std::string UrlEncode(const std::string& input)
 {
@@ -232,17 +225,6 @@ inline bool ReadFile(std::string filename, std::string & contents)
 	contents= buffer.str();
 	return true;
 
-	//std::ifstream in(filename, std::ios::in | std::ios::binary);
-	//if (in)
-	//{
-	//	in.seekg(0, std::ios::end);
-	//	contents.resize(in.tellg());
-	//	in.seekg(0, std::ios::beg);
-	//	in.read(&contents[0], contents.size());
-	//	in.close();
-	//	return true;
-	//}
-	//return false;
 } 
 inline void WriteFile(std::string filename, std::string & contents)
 {
@@ -364,6 +346,7 @@ inline double MIN(double x, double y) { if(x<y) return x; return y; }
 inline double POSMAX(double x, double y, double dMin=0) {x=MAX(x,dMin); y=MAX(y,dMin); if(x>y) return x;   return y;}
 inline double POSMIN(double x, double y, double dMin=0) {x=MAX(x,dMin); y=MAX(y,dMin);  if(x<y) return x; return y; }
 
+#if 0
 #include <streambuf>
 #include <ostream>
 
@@ -525,6 +508,7 @@ inline std::vector<std::string>TrimmedTokenize(std::string value, std::string de
 	}
 	return tokens;
 }
+#endif
 
 // Convert the string to lowercase
 inline std::string MakeUpper(std::string str)
@@ -552,37 +536,7 @@ inline bool FileExists(std::string filename)
 	}
 	return false;
 }
-//#include <dirent.h>
-//inline std::string RecursiveFileFind(std::string path, std::string filetitle)
-//{
-//	struct dirent *fname;
-//	DIR *od;   
-//	std::string filename;
-//	if (path[path.length()-1] != '\\') 
-//		path += "\\";
-//	od = opendir(path.c_str());
-//
-//	while((od != NULL) && (fname = readdir(od)) != NULL)
-//	{
-//		if((strcmp(fname->d_name, ".") != 0) && (strcmp(fname->d_name, "..") != 0))
-//		{
-//			if(fname->d_type == DT_DIR)
-//			{
-//				filename = path +  fname->d_name; 
-//				std::string fullpath = RecursiveFileFind(filename, filetitle);
-//				if(!fullpath.empty())
-//					return fullpath;
-//			}
-//
-//			if(fname->d_type == DT_REG)
-//			{
-//				if(filetitle == fname->d_name) 
-//					return  path +  fname->d_name;;
-//			}
-//		}
-//	}
-//	return "";
-//}
+#if 0
 
 inline std::string ReplaceOnce(
 							   std::string result, 
@@ -664,4 +618,6 @@ inline std::string FindPattern(std::string & inStr, std::string oldBeginningStr,
 	}
 	return "";
 }
+#endif
+
 #endif

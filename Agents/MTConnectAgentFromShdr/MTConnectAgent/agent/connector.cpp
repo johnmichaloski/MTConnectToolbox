@@ -130,7 +130,8 @@ void Connector::connect()
       if (mHeartbeats)
       {
         now = stamper.get_timestamp();
-        if ((now - mLastHeartbeat) > (uint64) (mHeartbeatFrequency * 2000))
+        if ((now - mLastHeartbeat) > (uint64) (mHeartbeatFrequency * 12000)) // twelve seconds
+        //if ((now - mLastHeartbeat) > (uint64) (mHeartbeatFrequency * 2000))
         {
           sLogger << LERROR << "connect: Did not receive heartbeat for over: " << (mHeartbeatFrequency * 2);
           break;

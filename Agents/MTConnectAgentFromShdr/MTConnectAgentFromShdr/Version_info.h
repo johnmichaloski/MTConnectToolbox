@@ -1,7 +1,7 @@
 #define VERSION_MAJOR 1
 #define VERSION_MINOR 3
 #define VERSION_REVISION 0
-#define VERSION_BUILD 57
+#define VERSION_BUILD 77
 #ifdef _UNICODE
 #define _T(x)      L ## x
 #else

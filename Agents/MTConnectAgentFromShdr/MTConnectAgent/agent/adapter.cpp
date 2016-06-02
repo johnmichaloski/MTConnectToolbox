@@ -46,74 +46,74 @@ std::map<std::string, std::string> Adapter::enummapping;
 
 /* Adapter public methods */
 Adapter::Adapter(const string& device,
-                 const string& server,
-                 const unsigned int port,
-                 int aLegacyTimeout)
-  : Connector(server, port, aLegacyTimeout), mDeviceName(device), mRunning(true),
-    mDupCheck(false), mAutoAvailable(false), mIgnoreTimestamps(false),
-    mGatheringAsset(false), mReconnectInterval(10 * 1000)
+	const string& server,
+	const unsigned int port,
+	int aLegacyTimeout)
+	: Connector(server, port, aLegacyTimeout), mDeviceName(device), mRunning(true),
+	mDupCheck(false), mAutoAvailable(false), mIgnoreTimestamps(false),
+	mGatheringAsset(false), mReconnectInterval(10 * 1000)
 {
 }
 
 Adapter::~Adapter()
 {
-  // Will stop threaded object gracefully Adapter::thread()
-  mRunning = false;
-  stop();
-  wait();
+	// Will stop threaded object gracefully Adapter::thread()
+	mRunning = false;
+	stop();
+	wait();
 }
 
 void Adapter::setAgent(Agent &aAgent)
 {
-  mAgent = &aAgent;
-  mDevice = mAgent->getDeviceByName(mDeviceName);
-  mDevice->addAdapter(this);
+	mAgent = &aAgent;
+	mDevice = mAgent->getDeviceByName(mDeviceName);
+	mDevice->addAdapter(this);
 
-  if (mDevice != NULL)
-    mAllDevices.push_back(mDevice);
+	if (mDevice != NULL)
+		mAllDevices.push_back(mDevice);
 }
 
 void Adapter::addDevice(string &aName)
 {
-  Device *dev = mAgent->getDeviceByName(aName);
-  if (dev != NULL) {
-    mAllDevices.push_back(dev);
-    dev->addAdapter(this);
-  }
+	Device *dev = mAgent->getDeviceByName(aName);
+	if (dev != NULL) {
+		mAllDevices.push_back(dev);
+		dev->addAdapter(this);
+	}
 }
 
 inline static bool splitKey(string &key, string &dev) 
 {
-  size_t found = key.find_first_of(':');
-  if (found == string::npos) {
-    return false;
-  } else {
-    dev = key;
-    dev.erase(found);
-    key.erase(0, found + 1);
-    return true;
-  }
+	size_t found = key.find_first_of(':');
+	if (found == string::npos) {
+		return false;
+	} else {
+		dev = key;
+		dev.erase(found);
+		key.erase(0, found + 1);
+		return true;
+	}
 }
 
 inline static void trim(std::string &str)
 {
-  size_t index = str.find_first_not_of(" \r\t");
-  if (index != string::npos && index > 0)
-    str.erase(0, index);
-  index = str.find_last_not_of(" \r\t");
-  if (index != string::npos)
-    str.erase(index + 1);
+	size_t index = str.find_first_not_of(" \r\t");
+	if (index != string::npos && index > 0)
+		str.erase(0, index);
+	index = str.find_last_not_of(" \r\t");
+	if (index != string::npos)
+		str.erase(index + 1);
 }
 
 /**
- * Expected data to parse in SDHR format:
- *   Time|Alarm|Code|NativeCode|Severity|State|Description
- *   Time|Item|Value
- *   Time|Item1|Value1|Item2|Value2...
- * 
- * Support for assets:
- *   Time|@ASSET@|id|type|<...>...</...>
- */
+* Expected data to parse in SDHR format:
+*   Time|Alarm|Code|NativeCode|Severity|State|Description
+*   Time|Item|Value
+*   Time|Item1|Value1|Item2|Value2...
+* 
+* Support for assets:
+*   Time|@ASSET@|id|type|<...>...</...>
+*/
 // Use this define to prevent unwanted exceptions
 #ifndef CLEANSTORE
 #define CLEANSTORE(Y, X, Z) \
@@ -132,46 +132,16 @@ NumberType toNumber(std::string data)
 		return result;
 	throw std::runtime_error("Bad number conversion");
 }
-void Adapter::processData(const string& data)
+
+void Adapter::CheckAlias(std::string &key, std::string &value)
 {
-  if (mGatheringAsset)
-  {
-    if (data == mTerminator)
-    {
-      mAgent->addAsset(mAssetDevice, mAssetId, mBody.str(), mAssetType, mTime);
-      mGatheringAsset = false;
-    }
-    else
-    {
-      mBody << data << endl;
-    }
-    
-    return;
-  }
-  
-  istringstream toParse(data);
-  string key, value, dev;
-  Device *device;
-  
-  getline(toParse, key, '|');
-  string time = key;
+	//if(key == "execution")
+	//{
+	//	DebugBreak();
+	//}
 
-  // If this function is being used as an API, add the current time in
-  if (mIgnoreTimestamps || time.empty()) {
-    time = getCurrentTime(GMT_UV_SEC);
-  }
-  
-  getline(toParse, key, '|');
-  getline(toParse, value, '|');
-  
-  if (splitKey(key, dev)) {
-    device = mAgent->getDeviceByName(dev);
-  } else {
-    device = mDevice;
-  }
-
-    ////////////////////////////////////////////////////////////////////////////////
-  	// Michaloski hack - if srpm2 is > 0 assign it to Srpm 
+	////////////////////////////////////////////////////////////////////////////////
+	// Michaloski hack - if srpm2 is > 0 assign it to Srpm 
 	if(key.find("rpm")!= std::string::npos)
 	{
 		try {
@@ -189,231 +159,273 @@ void Adapter::processData(const string& data)
 		}
 
 	}
-  // Change enumerations
-  if(enummapping.find(key+"."+value)!= enummapping.end())
-  {
-	value=enummapping[key+"."+value];
-  }
+#if 1
+	//////////////////////////////
+	// Change enumerations
+	if(enummapping.find(key+"."+value)!= enummapping.end())
+	{
+		value=enummapping[key+"."+value];
+	}
+#endif
+	// Map  shdr key (e.g., mode) into new key (controllermode) 
+	if(keymapping.find(key)!= keymapping.end())
+	{
+		key=keymapping[key];
+	}
+	///////////////////////////////////////////////////////////////////
+}
+void Adapter::processData(const string& data)
+{
+	if (mGatheringAsset)
+	{
+		if (data == mTerminator)
+		{
+			mAgent->addAsset(mAssetDevice, mAssetId, mBody.str(), mAssetType, mTime);
+			mGatheringAsset = false;
+		}
+		else
+		{
+			mBody << data << endl;
+		}
 
-  // Map  shdr key (e.g., mode) into new key (controllermode) 
-  if(keymapping.find(key)!= keymapping.end())
-  {
-	key=keymapping[key];
-  }
-  ////////////////////////////////////////////////////////////////////////////////
-  if (key == "@ASSET@") {
-    string type, rest;
-    getline(toParse, type, '|');
-    getline(toParse, rest);
-    
-    // Chck for an update and parse key value pairs. If only a type 
-    // is presented, then assume the remainder is a complete doc.
-    
-    
-    // if the rest of the line begins with --multiline--... then 
-    // set multiline and accumulate until a completed document is found
-    if (rest.find("--multiline--") != rest.npos)
-    {
-      mAssetDevice = device;
-      mGatheringAsset = true;
-      mTerminator = rest;
-      mTime = time;
-      mAssetType = type;
-      mAssetId = value;
-      mBody.str("");
-      mBody.clear();
-    }
-    else
-    {
-      mAgent->addAsset(device, value, rest, type, time);
-    }
-    
-    return;
-  } 
-  else if (key == "@UPDATE_ASSET@")
-  {
-    string assetId = value;
-    AssetChangeList list;
-    getline(toParse, key, '|');
-    if (key[0] == '<')
-    {
-      do {
-        pair<string,string> kv("xml", key);
-        list.push_back(kv);        
-      } while (getline(toParse, key, '|'));
-      
-    } 
-    else
-    {
-      while (getline(toParse, value, '|'))
-      {
-        pair<string,string> kv(key, value);
-        list.push_back(kv);      
-        
-        if (!getline(toParse, key, '|'))
-          break;
-      } 
-    }
-    mAgent->updateAsset(device, assetId, list, time);
-    return;
-  }
+		return;
+	}
 
-    
-  DataItem *dataItem;
-  if (device != NULL) {
-    dataItem = device->getDeviceDataItem(key);    
-  
-    if (dataItem == NULL)
-    {
-      sLogger << LWARN << "(" << mDeviceName << ") Could not find data item: " << key <<
-        " from line '" << data << "'";
-    } else {
-      string rest;
-      if (dataItem->isCondition() || dataItem->isAlarm() || dataItem->isMessage() ||
-          dataItem->isTimeSeries())
-      {
-        getline(toParse, rest);
-        value = value + "|" + rest;
-      }
+	istringstream toParse(data);
+	string key, value, dev;
+	Device *device;
 
-      // Add key->value pairings
-      dataItem->setDataSource(this);
-      trim(value);
- 
-	  //////////////////////////////
-	  // Change enumerations
-	  if(enummapping.find(key+"."+value)!= enummapping.end())
-	  {
-		  value=enummapping[key+"."+value];
-	  }
+	getline(toParse, key, '|');
+	string time = key;
 
-	  // Map  shdr key (e.g., mode) into new key (controllermode) 
-	  if(keymapping.find(key)!= keymapping.end())
-	  {
-		  key=keymapping[key];
-	  }
-	  ///////////////////////////////////////////////////////////////////
+	// If this function is being used as an API, add the current time in
+	if (mIgnoreTimestamps || time.empty()) {
+		time = getCurrentTime(GMT_UV_SEC);
+	}
+
+	getline(toParse, key, '|');
+	getline(toParse, value, '|');
+//	std::cout << "key=" << key << " value = " << value << std::endl;
+	if (splitKey(key, dev)) {
+		device = mAgent->getDeviceByName(dev);
+	} else {
+		device = mDevice;
+	}
+	////////////////////////////////////////////////////////////////////////////////
+	// Michaloski hack - if srpm2 is > 0 assign it to Srpm 
+	CheckAlias(key, value);
+
+	////////////////////////////////////////////////////////////////////////////////
+	if (key == "@ASSET@") {
+		string type, rest;
+		getline(toParse, type, '|');
+		getline(toParse, rest);
+
+		// Chck for an update and parse key value pairs. If only a type 
+		// is presented, then assume the remainder is a complete doc.
 
 
-      // Check for duplication
-      if (!mDupCheck || !dataItem->isDuplicate(value)) 
-      {
-        mAgent->addToBuffer(dataItem, toUpperCase(value), time);
-      } 
-      else if (mDupCheck)
-      {
-        //sLogger << LDEBUG << "Dropping duplicate value for " << key << " of " << value;
-      }
-    }
-  } else {
-    sLogger << LDEBUG << "Could not find device: " << dev;
-  }
-  
-  // Look for more key->value pairings in the rest of the data
-  while (getline(toParse, key, '|') && getline(toParse, value, '|'))
-  {
-    if (splitKey(key, dev)) {
-      device = mAgent->getDeviceByName(dev);
-    } else {
-      device = mDevice;
-    }
-    if (device == NULL) {
-      sLogger << LDEBUG << "Could not find device: " << dev;
-      continue;
-    }
-    
-    dataItem = device->getDeviceDataItem(key);    
-    if (dataItem == NULL)
-    {
-      sLogger << LWARN << "Could not find data item: " << key << " for device " << mDeviceName;
-    }
-    else
-    {
-      dataItem->setDataSource(this);
-      trim(value);
-      if (!mDupCheck || !dataItem->isDuplicate(value)) 
-      {
-        mAgent->addToBuffer(dataItem, toUpperCase(value), time);
-      } 
-      else if (mDupCheck)
-      {
-        //sLogger << LDEBUG << "Dropping duplicate value for " << key << " of " << value;
-      }
-    }
-  }
+		// if the rest of the line begins with --multiline--... then 
+		// set multiline and accumulate until a completed document is found
+		if (rest.find("--multiline--") != rest.npos)
+		{
+			mAssetDevice = device;
+			mGatheringAsset = true;
+			mTerminator = rest;
+			mTime = time;
+			mAssetType = type;
+			mAssetId = value;
+			mBody.str("");
+			mBody.clear();
+		}
+		else
+		{
+			mAgent->addAsset(device, value, rest, type, time);
+		}
+
+		return;
+	} 
+	else if (key == "@UPDATE_ASSET@")
+	{
+		string assetId = value;
+		AssetChangeList list;
+		getline(toParse, key, '|');
+		if (key[0] == '<')
+		{
+			do {
+				pair<string,string> kv("xml", key);
+				list.push_back(kv);        
+			} while (getline(toParse, key, '|'));
+
+		} 
+		else
+		{
+			while (getline(toParse, value, '|'))
+			{
+				pair<string,string> kv(key, value);
+				list.push_back(kv);      
+
+				if (!getline(toParse, key, '|'))
+					break;
+			} 
+		}
+		mAgent->updateAsset(device, assetId, list, time);
+		return;
+	}
+
+
+	DataItem *dataItem;
+	if (device != NULL) 
+	{
+		dataItem = device->getDeviceDataItem(key);    
+
+		if (dataItem == NULL)
+		{
+			sLogger << LWARN << "(" << mDeviceName << ") Could not find data item: " << key <<
+				" from line '" << data << "'";
+			sLogger << LDEBUG << "Parse '" << toParse << "' String  from line '" << data << "'";
+		} 
+		else {
+			string rest;
+			if (dataItem->isCondition() || dataItem->isAlarm() || dataItem->isMessage() ||
+				dataItem->isTimeSeries())
+			{
+				getline(toParse, rest);
+				value = value + "|" + rest;
+			}
+
+			// Add key->value pairings
+			dataItem->setDataSource(this);
+			trim(value);
+
+
+			// Check for duplication
+			if (!mDupCheck || !dataItem->isDuplicate(value)) 
+			{
+				mAgent->addToBuffer(dataItem, toUpperCase(value), time);
+			} 
+			else if (mDupCheck)
+			{
+				//sLogger << LDEBUG << "Dropping duplicate value for " << key << " of " << value;
+			}
+		}
+	} 
+	else 
+	{
+		sLogger << LDEBUG << "Could not find device: " << dev;
+	}
+
+	// Look for more key->value pairings in the rest of the data
+	while (getline(toParse, key, '|') && getline(toParse, value, '|'))
+	{
+		if (splitKey(key, dev)) {
+			device = mAgent->getDeviceByName(dev);
+		} else {
+			device = mDevice;
+		}
+		if (device == NULL) {
+			sLogger << LDEBUG << "Could not find device: " << dev;
+			continue;
+		}
+
+		////////////////////////////////////////////////////////////////////////////////
+		// Michaloski hack - if srpm2 is > 0 assign it to Srpm 
+		CheckAlias(key, value);
+
+		dataItem = device->getDeviceDataItem(key);    
+		if (dataItem == NULL)
+		{
+			sLogger << LWARN << "Could not find data item: " << key << " for device " << mDeviceName;
+			//sLogger << LDEBUG << "For Parse '" << toParse << "' String  from line '" << data << "'";
+		}
+		else
+		{
+			dataItem->setDataSource(this);
+			trim(value);
+			if (!mDupCheck || !dataItem->isDuplicate(value)) 
+			{
+				mAgent->addToBuffer(dataItem, toUpperCase(value), time);
+
+			} 
+			else if (mDupCheck)
+			{
+				//sLogger << LDEBUG << "Dropping duplicate value for " << key << " of " << value;
+			}
+		}
+	}
 }
 
 void Adapter::protocolCommand(const std::string& data)
 {
-  // Handle initial push of settings for uuid, serial number and manufacturer. 
-  // This will override the settings in the device from the xml
-  if (data == "* PROBE") {
-    string response = mAgent->handleProbe(mDeviceName);
-    string probe = "* PROBE LENGTH=";
-    probe.append(intToString(response.length()));
-    probe.append("\n");
-    probe.append(response);
-    probe.append("\n");
-    mConnection->write(probe.c_str(), probe.length());
-  } else {
-    size_t index = data.find(':', 2);
-    if (index != string::npos)
-    {
-      // Slice from the second character to the :, without the colon
-      string key = data.substr(2, index - 2);
-      trim(key);        
-      string value = data.substr(index + 1);
-      trim(value);
-    
-      if (key == "uuid") {
-        if (!mDevice->mPreserveUuid) mDevice->setUuid(value);
-      } else if (key == "manufacturer")
-        mDevice->setManufacturer(value);
-      else if (key == "station")
-        mDevice->setStation(value);
-      else if (key == "serialNumber")
-        mDevice->setSerialNumber(value);
-      else if (key == "description")
-        mDevice->setDescription(value);
-      else if (key == "nativeName")
-        mDevice->setNativeName(value);
-      else
-        sLogger << LWARN << "Unknown command '" << data << "' for device '" << mDeviceName;
-    }
-  }  
+	// Handle initial push of settings for uuid, serial number and manufacturer. 
+	// This will override the settings in the device from the xml
+	if (data == "* PROBE") {
+		string response = mAgent->handleProbe(mDeviceName);
+		string probe = "* PROBE LENGTH=";
+		probe.append(intToString(response.length()));
+		probe.append("\n");
+		probe.append(response);
+		probe.append("\n");
+		mConnection->write(probe.c_str(), probe.length());
+	} else {
+		size_t index = data.find(':', 2);
+		if (index != string::npos)
+		{
+			// Slice from the second character to the :, without the colon
+			string key = data.substr(2, index - 2);
+			trim(key);        
+			string value = data.substr(index + 1);
+			trim(value);
+
+			if (key == "uuid") {
+				if (!mDevice->mPreserveUuid) mDevice->setUuid(value);
+			} else if (key == "manufacturer")
+				mDevice->setManufacturer(value);
+			else if (key == "station")
+				mDevice->setStation(value);
+			else if (key == "serialNumber")
+				mDevice->setSerialNumber(value);
+			else if (key == "description")
+				mDevice->setDescription(value);
+			else if (key == "nativeName")
+				mDevice->setNativeName(value);
+			else
+				sLogger << LWARN << "Unknown command '" << data << "' for device '" << mDeviceName;
+		}
+	}  
 }
 
 void Adapter::disconnected()
 {
-  mAgent->disconnected(this, mAllDevices);
+	mAgent->disconnected(this, mAllDevices);
 }
 
 void Adapter::connected()
 {
-  mAgent->connected(this, mAllDevices);
+	mAgent->connected(this, mAllDevices);
 }
 
 /* Adapter private methods */
 void Adapter::thread()
 {
-  while (mRunning)
-  {
-    try
-    {
-      // Start the connection to the socket
-      connect();
-      
-      // make sure we're closed...
-      close();
-    }
-    catch (...)
-    {
-      sLogger << LERROR << "Thread for adapter " << mDeviceName << "'s thread threw an unhandled exception";
-    }
+	while (mRunning)
+	{
+		try
+		{
+			// Start the connection to the socket
+			connect();
 
-    // Try to reconnect every 10 seconds
-    sLogger << LINFO << "Will try to reconnect in " << mReconnectInterval << " milliseconds";
-    dlib::sleep(mReconnectInterval);
-  }
+			// make sure we're closed...
+			close();
+		}
+		catch (...)
+		{
+			sLogger << LERROR << "Thread for adapter " << mDeviceName << "'s thread threw an unhandled exception";
+		}
+
+		// Try to reconnect every 10 seconds
+		sLogger << LINFO << "Will try to reconnect in " << mReconnectInterval << " milliseconds";
+		dlib::sleep(mReconnectInterval);
+	}
 }
 

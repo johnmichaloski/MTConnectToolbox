@@ -61,8 +61,9 @@ public:
 	*/
 	double  ProcessStream()
 	{
+		//Get line from "in" stream into string _buffer until line feed found.
+		// If the line feed delimiter is found, it is extracted and discarded
 		getline(in,_buffer);
-
 
 		if(in.eof( ))
 		{
@@ -74,15 +75,17 @@ public:
 			getline(in, _buffer);
 		}
 		_linenum++;
+
+		// Check for empty buffer - return 0 wait
+		if(_buffer.empty())
+			return 0;
+
 		// Skip lines that start with * like:
 		// * uuid: MAZAK-M74KP230234
 		// * serialNumber: M74KP230234
 		// * description: Mazak FCA751PY-N08
+		// return 0 wait and send information buffer
 		if(Trim(_buffer)[0]=='*')
-			return 0;
-
-		// Check for empty buffer
-		if(_buffer.empty())
 			return 0;
 
 		// Now get timestamp - in field 1
@@ -98,7 +101,7 @@ public:
 			_currenttime=Timing::GetDateTime(timestamp);
 			if(_bFirstTime)
 			{
-				_duration = boost::posix_time::seconds(0) ;  // COleDateTimeSpan(0,0,0,0);
+				_duration = boost::posix_time::seconds(0) ; 
 				_bFirstTime=false;
 			}
 			else
@@ -110,7 +113,7 @@ public:
 		}
 		else
 		{
-			_duration = boost::posix_time::seconds(0); // COleDateTimeSpan(0,0,0,0);
+			_duration = boost::posix_time::seconds(0); 
 		}
 		//http://www.boost.org/doc/libs/1_31_0/libs/date_time/doc/class_time_duration.html
 		return _duration.total_milliseconds();

@@ -37,6 +37,21 @@
                 <DataItem category="SAMPLE" id="Mazak101zf" name="Zfrt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
               </DataItems>
             </Linear>
+            <Rotary id="Mazak101ar" name="A">
+              <DataItems>
+                <DataItem category="SAMPLE" id="Mazak101al" name="Aload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101af" name="Afrt" nativeUnits="DEGREE/MINUTE" type="ANGULAR_VELOCITY" units="DEGREE/SECOND"/>
+                <DataItem category="CONDITION" id="Mazak101at" name="Atravel" type="ANGLE"/>
+                <DataItem category="SAMPLE" id="Mazak101apos" name="Adeg" nativeUnits="DEGREE" subType="ACTUAL" type="ANGLE" units="DEGREE"/>
+                <DataItem category="EVENT" id="Mazak101arf" name="Arfunc" type="ROTARY_MODE">
+                  <Constraints>
+                  <Value>CONTOUR</Value>
+                  <Value>INDEX</Value>
+                  </Constraints>
+                </DataItem>
+              </DataItems>
+            </Rotary>
+
             <Rotary id="Mazak101br" name="B">
               <DataItems>
                 <DataItem category="SAMPLE" id="Mazak101bl" name="Bload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
@@ -181,6 +196,7 @@
                 <DataItem category="EVENT" id="pfr" name="Frapidovr" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
                 <DataItem category="EVENT" id="Fovr" name="path_feedrateovr" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
                 <DataItem category="EVENT" id="Mazak101tid" name="Tool_number" type="TOOL_ID"/>
+                <DataItem category="EVENT" id="Mazak101palleteid" name="pallet_num" type="TOOL_ID"/>
                 <DataItem category="EVENT" id="Mazak101tid1" name="Tool_group" type="x:TOOL_GROUP"/>
                 <DataItem category="EVENT" id="Mazak101tsuf1" name="Tool_suffix" type="x:TOOL_SUFFIX"/>
                 <DataItem category="EVENT" id="Mazak101exec" name="execution" type="EXECUTION"/>
@@ -217,6 +233,56 @@
                 <DataItem category="EVENT" id="Mazak101ctime2" name="cut_time2" subType="x:CUT" type="x:DURATION"/>
                 <DataItem category="CONDITION" id="Mazak101motion2" name="motion_cond2" type="MOTION_PROGRAM"/>
 		<DataItem category="CONDITION" id="Mazak101path_system2" name="path_system2" type="SYSTEM"/>
+              </DataItems>
+            </Path>
+           <Path id="Mazak101path3" name="path3">
+              <DataItems>
+                <DataItem category="EVENT" id="Mazak101pgm3" name="program3" type="PROGRAM"/>
+                <DataItem category="EVENT" id="Mazak101spgm3" name="subprogram3" subType="x:SUB" type="PROGRAM"/>
+                <DataItem category="EVENT" id="Mazak101ln3" name="line3" type="LINE"/>
+                <DataItem category="EVENT" id="Mazak101unit3" name="unitNum3" type="x:UNIT"/>
+                <DataItem category="EVENT" id="Mazak101seq3" name="sequenceNum3" type="x:SEQUENCE_NUMBER"/>
+                <DataItem category="EVENT" id="Mazak101pc3" name="PartCountAct3" type="PART_COUNT"/>
+                <DataItem category="SAMPLE" coordinateSystem="WORK" id="Mazak101pf3" name="Fact3" nativeUnits="FOOT/MINUTE" subType="ACTUAL" type="PATH_FEEDRATE" units="MILLIMETER/SECOND"/>
+                <DataItem category="EVENT" id="Mazak101pfr3" name="Frapidovr3" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak101pfo3" name="Fovr3" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak101tid3" name="Tool3_number" type="TOOL_ID"/>
+                <DataItem category="EVENT" id="Mazak101tid33" name="Tool3_group" type="x:TOOL_GROUP"/>
+                <DataItem category="EVENT" id="Mazak101tsuf333" name="Tool3_suffix" type="x:TOOL_SUFFIX"/>
+                <DataItem category="EVENT" id="Mazak101exec3" name="execution" type="EXECUTION"/>
+                <DataItem category="EVENT" id="Mazak101mode3" name="mode3" type="CONTROLLER_MODE"/>
+                <DataItem category="EVENT" id="Mazak101pcmt3" name="program_cmt3" type="MESSAGE"/>
+                <DataItem category="EVENT" id="Mazak101spcmt3" name="subprogram_cmt3" subType="x:SUB" type="MESSAGE"/>
+                <DataItem category="EVENT" id="Mazak101atime3" name="auto_time3" subType="x:AUTO" type="x:DURATION"/>
+                <DataItem category="EVENT" id="Mazak101yltime3" name="total_time3" subType="x:TOTAL" type="x:DURATION"/>
+                <DataItem category="EVENT" id="Mazak101ctime3" name="cut_time3" subType="x:CUT" type="x:DURATION"/>
+                <DataItem category="CONDITION" id="Mazak101motion3" name="motion_cond3" type="MOTION_PROGRAM"/>
+		<DataItem category="CONDITION" id="Mazak101path_system3" name="path_system3" type="SYSTEM"/>
+              </DataItems>
+            </Path>
+           <Path id="Mazak101path4" name="path4">
+              <DataItems>
+                <DataItem category="EVENT" id="Mazak101pgm4" name="program4" type="PROGRAM"/>
+                <DataItem category="EVENT" id="Mazak101spgm4" name="subprogram4" subType="x:SUB" type="PROGRAM"/>
+                <DataItem category="EVENT" id="Mazak101ln4" name="line4" type="LINE"/>
+                <DataItem category="EVENT" id="Mazak101unit4" name="unitNum4" type="x:UNIT"/>
+                <DataItem category="EVENT" id="Mazak101seq4" name="sequenceNum4" type="x:SEQUENCE_NUMBER"/>
+                <DataItem category="EVENT" id="Mazak101pc4" name="PartCountAct4" type="PART_COUNT"/>
+                <DataItem category="SAMPLE" coordinateSystem="WORK" id="Mazak101pf4" name="Fact4" nativeUnits="FOOT/MINUTE" subType="ACTUAL" type="PATH_FEEDRATE" units="MILLIMETER/SECOND"/>
+                <DataItem category="EVENT" id="Mazak101pfr4" name="Frapidovr4" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak101pfo4" name="Fovr4" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak101tid4" name="Tool4_number" type="TOOL_ID"/>
+                <DataItem category="EVENT" id="Mazak101tid44" name="Tool4_group" type="x:TOOL_GROUP"/>
+                <DataItem category="EVENT" id="Mazak101tsuf444" name="Tool4_suffix" type="x:TOOL_SUFFIX"/>
+                <DataItem category="EVENT" id="Mazak101exec4" name="execution" type="EXECUTION"/>
+                <DataItem category="EVENT" id="Mazak101mode4" name="mode4" type="CONTROLLER_MODE"/>
+                <DataItem category="EVENT" id="Mazak101pcmt4" name="program_cmt4" type="MESSAGE"/>
+                <DataItem category="EVENT" id="Mazak101spcmt4" name="subprogram_cmt4" subType="x:SUB" type="MESSAGE"/>
+                <DataItem category="EVENT" id="Mazak101atime4" name="auto_time4" subType="x:AUTO" type="x:DURATION"/>
+                <DataItem category="EVENT" id="Mazak101yltime4" name="total_time4" subType="x:TOTAL" type="x:DURATION"/>
+                <DataItem category="EVENT" id="Mazak101ctime4" name="cut_time4" subType="x:CUT" type="x:DURATION"/>
+                <DataItem category="CONDITION" id="Mazak101motion4" name="motion_cond4" type="MOTION_PROGRAM"/>
+		<DataItem category="CONDITION" id="Mazak101path_system4" name="path_system4" type="SYSTEM"/>
               </DataItems>
             </Path>
           </Components>

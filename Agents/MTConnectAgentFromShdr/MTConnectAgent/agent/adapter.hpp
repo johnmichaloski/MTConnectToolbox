@@ -90,7 +90,7 @@ public:
 
   /* For the additional devices associated with this adapter */
   void addDevice(std::string &aDevice);
-  
+  void CheckAlias(std::string &key, std::string &value);
 protected:
   /* Pointer to the agent */
   Agent *mAgent;

@@ -34,18 +34,14 @@
 #pragma comment(lib, "libboost_thread-vc100-mt-s-1_54.lib")
 #pragma comment(lib, "libboost_system-vc100-mt-s-1_54.lib")
 
-//#elif defined( _DEBUG ) && defined( WIN32 )
-//#pragma message( "DEBUG x32" )
-//
-//// #pragma message( MTCLIBPATH("libxml2d.lib") )
-//#pragma comment(lib, MTCLIBPATH("libxml2d.lib"))
-//#pragma comment(lib, "libboost_thread-vc100-mt-sgd-1_54.lib")
-//#pragma comment(lib, "libboost_system-vc100-mt-sgd-1_54.lib")
-//#elif !defined( _DEBUG ) && defined( WIN32 )
-//#pragma message( "RELEASE x32" )
-//#pragma comment(lib, MTCLIBPATH("libxml2d.lib"))
-//#pragma comment(lib, "libboost_thread-vc100-mt-s-1_54.lib")
-//#pragma comment(lib, "libboost_system-vc100-mt-s-1_54.lib")
+#elif defined( _DEBUG ) && defined( WIN32 )
+#pragma message( "DEBUG x32" )
+#pragma comment(lib, "libboost_thread-vc100-mt-sgd-1_54.lib")
+#pragma comment(lib, "libboost_system-vc100-mt-sgd-1_54.lib")
+#elif !defined( _DEBUG ) && defined( WIN32 )
+#pragma message( "RELEASE x32" )
+#pragma comment(lib, "libboost_thread-vc100-mt-s-1_54.lib")
+#pragma comment(lib, "libboost_system-vc100-mt-s-1_54.lib")
 #endif
 
 int _tmain(int argc, _TCHAR* argv[])
@@ -55,13 +51,13 @@ int _tmain(int argc, _TCHAR* argv[])
 	ShdrParser parser(backend);
 	bool bOptionWait;
 	int nSleep = 100;
-	int nTimeMultipler = 1;
 
 	// Option handling - hard coded for now
 	// ExeDirectory+"CannedScript.txt", ExeDirectory+"out.txt";
 	std::string filename  ;
 	long portnum=7878;
 	std::string ip = "127.0.0.1";
+	double dTimeMultipler = 1.0;
 	//parser.Repeat()=true;
 	parser.Repeat()=false;
 	bOptionWait=false;
@@ -79,7 +75,8 @@ int _tmain(int argc, _TCHAR* argv[])
 		bOptionWait       = config.GetSymbolValue("GLOBALS.Wait", 1).toNumber<int>( );
 		portnum           = config.GetSymbolValue("GLOBALS.PortNum", portnum).toNumber<int>( );
 		ip                = config.GetSymbolValue("GLOBALS.IP", ip).c_str( );
-
+		dTimeMultipler    = config.GetSymbolValue("GLOBALS.TimeMultipler", dTimeMultipler).toNumber<double>( );
+		
 		parser.Init(filename);
 		backend.Init(ip, portnum, "M1");
 		double delay=0;
@@ -95,7 +92,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			{
 				if(delay<0)
 				{
-					delay=parser.ProcessStream()*nTimeMultipler;
+					delay=(long) parser.ProcessStream()*dTimeMultipler;
 					if(delay<0)
 						break; // should only get here if no repeat
 					OutputDebugString(parser.GetLatestBuffer().c_str());
