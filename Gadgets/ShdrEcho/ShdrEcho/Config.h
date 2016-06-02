@@ -132,7 +132,7 @@ public:
 		// Returns whether or not this operation was successful
 
 		std::vector<std::string> getkeys(std::string section) { return sections[section]; }
-		bool Config::load(const std::string filename)
+		bool load(const std::string filename)
 		{
 			std::string section;
 			std::string line;
@@ -192,7 +192,7 @@ public:
 		}
 
 		// Use the [] operator to get/set values just like a map container
-		const StringVariant& Config::operator[](const std::string& keyName) const 
+		const StringVariant& operator[](const std::string& keyName) const 
 		{
 			std::map<std::string, StringVariant>::const_iterator iter = inimap.find(keyName);
 

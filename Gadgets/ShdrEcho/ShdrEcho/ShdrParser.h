@@ -45,7 +45,7 @@ public:
 	/**
 	* \brief Reset is done before the beginning of a file. Either first or each repeated time.
 	*/
-	void ShdrParser::Reset(void)
+	void Reset(void)
 	{
 		_bFirstTime=true;
 		_realtimetime = Timing::Now(); // COleDateTime::GetCurrentTime();
