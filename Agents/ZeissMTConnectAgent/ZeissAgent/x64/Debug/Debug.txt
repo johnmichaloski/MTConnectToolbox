@@ -1,0 +1,5 @@
+2016-06-27 16:14:23.0444 Start Zeiss Agent
+2016-06-27 16:14:23.0455 Main
+2016-06-27 16:14:23.0456 initialize
+2016-06-27 16:14:23.0609 Start
+2016-06-27 16:14:23.0620  (BPQ449) Could not find data item: path_feedrate  

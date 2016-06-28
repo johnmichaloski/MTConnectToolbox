@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2016-06-27T20:14:23" sender="local" version="1.1"/>
+<Devices>
+			 <Device id="BPQ449id" uuid="BPQ449xxx" name="BPQ449">
+			<Description>Zeiss</Description>
+			<DataItems>
+				<DataItem id="BPQ449avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<DataItems>
+				<DataItem id="BPQ449avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="BPQ449a1" name="base">
+					<Components>
+						<Rotary id="BPQ449d1" name="SPINDLE">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="BPQ449cs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+							</DataItems>
+						</Rotary>
+						<Linear id="BPQ449x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="BPQ449xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="BPQ449y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="BPQ449yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="BPQ449z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="BPQ449zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+					</Components>
+				</Axes>
+			</Components>
+			<Components>
+				<Controller id="BPQ449cont" name="controller">
+					<Components>
+						<Path id="BPQ449path1" name="path">
+							<DataItems>
+								<DataItem type="MESSAGE" id="BPQ449last_update" category="EVENT" name="last_update"/>
+								<DataItem type="PROGRAM" id="BPQ449pgm" category="EVENT" name="program"/>
+								<DataItem type="EXECUTION" id="BPQ449exec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="BPQ449mode" category="EVENT" name="controllermode"/>
+								<DataItem type="PATH_FEEDRATE" id="BPQ449pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+					    		<DataItem category="SAMPLE" id="BPQ449path_feedrate" nativeUnits="MILLIMETER/SECOND" type="PATH_FEEDRATE" units="MILLIMETER/SECOND"/>
+                                 <DataItem category="EVENT"  id="BPQ449operator"  name="operator" type="CODE"></DataItem>
+                                 <DataItem category="EVENT"  id="BPQ449alarm"  name="error" type="CODE"></DataItem>
+                                 <DataItem category="EVENT"  id="BPQ449heartbeat"  name="heartbeat" type="CODE"></DataItem>
+                             </DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="BPQ449systems" name="systems">
+					<Components>
+						<Electric name="electric" id="BPQ449elec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="BPQ449pwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+			 <Device id="BPQ450id" uuid="BPQ450xxx" name="BPQ450">
+			<Description>Zeiss</Description>
+			<DataItems>
+				<DataItem id="BPQ450avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<DataItems>
+				<DataItem id="BPQ450avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="BPQ450a1" name="base">
+					<Components>
+						<Rotary id="BPQ450d1" name="SPINDLE">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="BPQ450cs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+							</DataItems>
+						</Rotary>
+						<Linear id="BPQ450x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="BPQ450xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="BPQ450y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="BPQ450yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="BPQ450z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="BPQ450zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+					</Components>
+				</Axes>
+			</Components>
+			<Components>
+				<Controller id="BPQ450cont" name="controller">
+					<Components>
+						<Path id="BPQ450path1" name="path">
+							<DataItems>
+								<DataItem type="MESSAGE" id="BPQ450last_update" category="EVENT" name="last_update"/>
+								<DataItem type="PROGRAM" id="BPQ450pgm" category="EVENT" name="program"/>
+								<DataItem type="EXECUTION" id="BPQ450exec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="BPQ450mode" category="EVENT" name="controllermode"/>
+								<DataItem type="PATH_FEEDRATE" id="BPQ450pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+					    		<DataItem category="SAMPLE" id="BPQ450path_feedrate" nativeUnits="MILLIMETER/SECOND" type="PATH_FEEDRATE" units="MILLIMETER/SECOND"/>
+                                 <DataItem category="EVENT"  id="BPQ450operator"  name="operator" type="CODE"></DataItem>
+                                 <DataItem category="EVENT"  id="BPQ450alarm"  name="error" type="CODE"></DataItem>
+                                 <DataItem category="EVENT"  id="BPQ450heartbeat"  name="heartbeat" type="CODE"></DataItem>
+                             </DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="BPQ450systems" name="systems">
+					<Components>
+						<Electric name="electric" id="BPQ450elec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="BPQ450pwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+</Devices>
+</MTConnectDevices>

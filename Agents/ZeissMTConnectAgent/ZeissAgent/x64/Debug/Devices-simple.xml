@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2015-10-02T19:47:53" sender="local" version="1.1"/>
+<Devices>
+			 <Device id="bpq461id" uuid="bpq461xxx" name="bpq461">
+			<Description>Zeiss</Description>
+			<DataItems>
+				<DataItem id="bpq461avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<DataItems>
+				<DataItem id="bpq461avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="bpq461a1" name="base">
+					<Components>
+						<Rotary id="bpq461d1" name="SPINDLE">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="bpq461cs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+							</DataItems>
+						</Rotary>
+						<Linear id="bpq461x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="bpq461xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="bpq461y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="bpq461yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="bpq461z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="bpq461zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+					</Components>
+				</Axes>
+				<Controller id="bpq461cont" name="controller">
+					<Components>
+						<Path id="bpq461path1" name="path">
+							<DataItems>
+								<DataItem type="MESSAGE" id="bpq461last_update" category="EVENT" name="last_update"/>
+								<DataItem type="PROGRAM" id="bpq461pgm" category="EVENT" name="program"/>
+								<DataItem type="EXECUTION" id="bpq461exec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="bpq461mode" category="EVENT" name="controllermode"/>
+								<DataItem type="PATH_FEEDRATE" id="bpq461pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+        							<DataItem category="EVENT"  id="bpq461operator"  name="operator" type="CODE"></DataItem>
+        							<DataItem category="EVENT"  id="bpq461alarm"  name="error" type="CODE"></DataItem>
+        							<DataItem category="EVENT"  id="bpq461heartbeat"  name="heartbeat" type="CODE"></DataItem>
+ 							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="bpq461systems" name="systems">
+					<Components>
+						<Electric name="electric" id="bpq461elec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="bpq461pwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+</Devices>
+</MTConnectDevices>
