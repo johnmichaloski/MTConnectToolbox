@@ -1,0 +1,10 @@
+12/2/2009 2:42:25 PM|power|ON|controllermode|AUTOMATIC|execution|EXECUTING|program|117Z2716-54_1-1|line|0|Srpm|1031|Tool|50
+12/2/2009 2:43:25 PM|power|ON|controllermode|AUTOMATIC|execution|PAUSED|program|117Z2716-54_1-1|line|0|Srpm|0|Tool|50
+12/2/2009 2:44:25 PM|power|ON|controllermode|AUTOMATIC|execution|EXECUTING|program|117Z2716-54_1-1|line|0|Srpm|1031|Tool|50
+12/2/2009 2:45:25 PM|power|ON|controllermode|AUTOMATIC|execution|EXECUTING|program|117Z2716-54_1-2|line|0|Srpm|1031|Tool|50
+12/2/2009 2:46:25 PM|power|ON|controllermode|AUTOMATIC|execution|EXECUTING|program|117Z2716-54_1-2|line|0|Srpm|0|Tool|50
+12/2/2009 2:47:25 PM|power|ON|controllermode|AUTOMATIC|execution|EXECUTING|program|117Z2716-54_1-2|line|0|Srpm|1000|Tool|50
+12/2/2009 2:48:35 PM|power|ON|controllermode|AUTOMATIC|execution|EXECUTING|program|117Z2716-54_1-2|line|0|Srpm|1000|Tool|50
+12/2/2009 2:49:35 PM|power|ON|controllermode|AUTOMATIC|execution|EXECUTING|program|117Z2716-54_1-3|line|0|Srpm|1000|Tool|50
+12/2/2009 2:51:35 PM|power|ON|controllermode|PAUSED|execution|PAUSED|program|117Z2716-54_1-3|line|0|Srpm|000|Tool|50
+12/2/2009 2:52:35 PM|power|ON|controllermode|AUTOMATIC|execution|EXECUTING|program|117Z2716-54_1-3|line|0|Srpm|1000|Tool|50

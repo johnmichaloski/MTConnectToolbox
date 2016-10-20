@@ -1,0 +1,7 @@
+-I"C:\Program Files\NIST\src\boost_1_54_0"
+-I.
+-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\MTConnectAgent1_3\MTConnectAgent\agent"
+-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\MTConnectAgent1_3\MTConnectAgent\lib"
+-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\MTConnectAgent1_3\MTConnectAgent\win32\libxml2-2.9\include"
+-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\MTConnectAgent1_3\MTConnectAgent"
+-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\MTConnectAgent1_3\NIST"

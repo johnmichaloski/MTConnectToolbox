@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Agent">
+      <UniqueIdentifier>{0568b138-03d9-47fc-be51-4c80c2e66dca}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\adapter.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\agent.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\asset.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\change_observer.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\checkpoint.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\component.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\component_event.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\config.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\connector.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\cutting_tool.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\data_item.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\device.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\globals.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\options.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\ref_counted.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\service.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\version.h">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\xml_parser.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\MTConnectAgent\agent\xml_printer.hpp">
+      <Filter>Agent</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MTConnectAgent1_3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\adapter.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\agent.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\asset.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\change_observer.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\checkpoint.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\component.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\component_event.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\config.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\connector.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\cppagent.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\cutting_tool.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\data_item.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\device.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\globals.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\options.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\ref_counted.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\rolling_file_logger.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\service.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\version.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\xml_parser.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\MTConnectAgent\agent\xml_printer.cpp">
+      <Filter>Agent</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2015-08-26T12:53:19" sender="local" version="1.1"/>
+<Devices>
+    <Device id="Mazak101d1" name="Mazak101" uuid="Mazak101MAZAK-M7303290458">
+      <Description serialNumber="M7303290458">Mazak - INT-Series</Description>
+      <DataItems>
+        <DataItem category="EVENT" id="Mazak101avail" type="AVAILABILITY"/>
+      </DataItems>
+      <Components>
+        <Axes id="Mazak101a" name="base">
+          <DataItems>
+            <DataItem category="CONDITION" id="Mazak101servo" name="servo_cond" type="ACTUATOR"/>
+          </DataItems>
+          <Components>
+            <Linear id="Mazak101x" name="X">
+              <DataItems>
+                <DataItem category="SAMPLE" coordinateSystem="MACHINE" id="Mazak101xp" name="Xabs" nativeUnits="MILLIMETER" subType="ACTUAL" type="POSITION" units="MILLIMETER"/>
+                <DataItem category="CONDITION" id="Mazak101xt" name="Xtravel" type="POSITION"/>
+                <DataItem category="SAMPLE" id="Mazak101xl" name="Xload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101xf" name="Xfrt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+              </DataItems>
+            </Linear>
+            <Linear id="Mazak101y" name="Y">
+              <DataItems>
+                <DataItem category="SAMPLE" coordinateSystem="MACHINE" id="Mazak101yp" name="Yabs" nativeUnits="MILLIMETER" subType="ACTUAL" type="POSITION" units="MILLIMETER"/>
+                <DataItem category="CONDITION" id="Mazak101yt" name="Ytravel" type="POSITION"/>
+                <DataItem category="SAMPLE" id="Mazak101yl" name="Yload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101yf" name="Yfrt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+              </DataItems>
+            </Linear>
+            <Linear id="Mazak101z" name="Z">
+              <DataItems>
+                <DataItem category="SAMPLE" coordinateSystem="MACHINE" id="Mazak101zp" name="Zabs" nativeUnits="MILLIMETER" subType="ACTUAL" type="POSITION" units="MILLIMETER"/>
+                <DataItem category="CONDITION" id="Mazak101zt" name="Ztravel" type="POSITION"/>
+                <DataItem category="SAMPLE" id="Mazak101zl" name="Zload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101zf" name="Zfrt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+              </DataItems>
+            </Linear>
+            <Rotary id="Mazak101ar" name="A">
+              <DataItems>
+                <DataItem category="SAMPLE" id="Mazak101al" name="Aload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101af" name="Afrt" nativeUnits="DEGREE/MINUTE" type="ANGULAR_VELOCITY" units="DEGREE/SECOND"/>
+                <DataItem category="CONDITION" id="Mazak101at" name="Atravel" type="ANGLE"/>
+                <DataItem category="SAMPLE" id="Mazak101apos" name="Adeg" nativeUnits="DEGREE" subType="ACTUAL" type="ANGLE" units="DEGREE"/>
+                <DataItem category="EVENT" id="Mazak101arf" name="Arfunc" type="ROTARY_MODE">
+                  <Constraints>
+                  <Value>CONTOUR</Value>
+                  <Value>INDEX</Value>
+                  </Constraints>
+                </DataItem>
+              </DataItems>
+            </Rotary>
+
+            <Rotary id="Mazak101br" name="B">
+              <DataItems>
+                <DataItem category="SAMPLE" id="Mazak101bl" name="Bload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101bf" name="Bfrt" nativeUnits="DEGREE/MINUTE" type="ANGULAR_VELOCITY" units="DEGREE/SECOND"/>
+                <DataItem category="CONDITION" id="Mazak101bt" name="Btravel" type="ANGLE"/>
+                <DataItem category="SAMPLE" id="Mazak101bpos" name="Bdeg" nativeUnits="DEGREE" subType="ACTUAL" type="ANGLE" units="DEGREE"/>
+                <DataItem category="EVENT" id="Mazak101brf" name="Brfunc" type="ROTARY_MODE">
+                  <Constraints>
+                  <Value>CONTOUR</Value>
+                  <Value>INDEX</Value>
+                  </Constraints>
+                </DataItem>
+              </DataItems>
+            </Rotary>
+            <Rotary id="Mazak101c" name="C">
+              <DataItems>
+                <DataItem category="SAMPLE" id="Mazak101cl" name="Cload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101sl" name="Sload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="CONDITION" id="Mazak101ct" name="Ctravel" type="ANGLE"/>
+                <DataItem category="SAMPLE" id="Mazak101cf" name="Cfrt" nativeUnits="DEGREE/MINUTE" type="ANGULAR_VELOCITY" units="DEGREE/SECOND"/>
+                <DataItem category="SAMPLE" id="Mazak101cs" name="Srpm" nativeUnits="REVOLUTION/MINUTE" subType="ACTUAL" type="SPINDLE_SPEED" units="REVOLUTION/MINUTE"/>
+                <DataItem category="SAMPLE" id="Mazak101cso" name="Sovr" nativeUnits="PERCENT" subType="OVERRIDE" type="SPINDLE_SPEED" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101ctemp" name="Stemp" nativeUnits="CELSIUS" type="TEMPERATURE" units="CELSIUS"/>
+                <DataItem category="SAMPLE" id="Mazak101cpos" name="Cdeg" nativeUnits="DEGREE" subType="ACTUAL" type="ANGLE" units="DEGREE"/>
+                <DataItem category="EVENT" id="Mazak101rf" name="crfunc" type="ROTARY_MODE">
+                  <Constraints>
+                  <Value>CONTOUR</Value>
+                    <Value>SPINDLE</Value>
+                    <Value>INDEX</Value>
+                  </Constraints>
+                </DataItem>
+                <DataItem category="CONDITION" id="Mazak101spc" name="Sload_cond" type="LOAD"/>
+                <DataItem category="CONDITION" id="Mazak101tmp" name="Stemp_cond" type="TEMPERATURE"/>
+              </DataItems>
+            </Rotary>
+            <Linear id="Mazak101x2" name="X">
+              <DataItems>
+                <DataItem category="SAMPLE" coordinateSystem="MACHINE" id="Mazak101xp2" name="X2abs" nativeUnits="MILLIMETER" subType="ACTUAL" type="POSITION" units="MILLIMETER"/>
+                <DataItem category="CONDITION" id="Mazak101xt2" name="X2travel" type="POSITION"/>
+                <DataItem category="SAMPLE" id="Mazak101xl2" name="X2load" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101xf2" name="X2frt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+              </DataItems>
+            </Linear>
+            <Linear id="Mazak101z2" name="Z">
+              <DataItems>
+                <DataItem category="SAMPLE" coordinateSystem="MACHINE" id="Mazak101zp2" name="Z2abs" nativeUnits="MILLIMETER" subType="ACTUAL" type="POSITION" units="MILLIMETER"/>
+                <DataItem category="CONDITION" id="Mazak101zt2" name="Z2travel" type="POSITION"/>
+                <DataItem category="SAMPLE" id="Mazak101zl2" name="Z2load" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101zf2" name="Z2frt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+              </DataItems>
+            </Linear>
+            <Rotary id="Mazak101c2" name="C">
+              <DataItems>
+                <DataItem category="SAMPLE" id="Mazak101cl2" name="C2load" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101sl2" name="S2load" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="CONDITION" id="Mazak101ct2" name="C2travel" type="ANGLE"/>
+                <DataItem category="SAMPLE" id="Mazak101cf2" name="C2frt" nativeUnits="DEGREE/MINUTE" type="ANGULAR_VELOCITY" units="DEGREE/SECOND"/>
+                <DataItem category="SAMPLE" id="Mazak101cs2" name="S2rpm" nativeUnits="REVOLUTION/MINUTE" subType="ACTUAL" type="SPINDLE_SPEED" units="REVOLUTION/MINUTE"/>
+                <DataItem category="SAMPLE" id="Mazak101cso2" name="S2ovr" nativeUnits="PERCENT" subType="OVERRIDE" type="SPINDLE_SPEED" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101ctemp2" name="S2temp" nativeUnits="CELSIUS" type="TEMPERATURE" units="CELSIUS"/>
+                <DataItem category="SAMPLE" id="Mazak101cpos2" name="C2deg" nativeUnits="DEGREE" subType="ACTUAL" type="ANGLE" units="DEGREE"/>
+                <DataItem category="EVENT" id="Mazak101rf2" name="c2rfunc" type="ROTARY_MODE">
+                  <Constraints>
+                  <Value>CONTOUR</Value>
+                    <Value>SPINDLE</Value>
+                    <Value>INDEX</Value>
+                  </Constraints>
+                </DataItem>
+                <DataItem category="CONDITION" id="Mazak101spc2" name="S2load_cond" type="LOAD"/>
+                <DataItem category="CONDITION" id="Mazak101tmp2" name="S2temp_cond" type="TEMPERATURE"/>
+              </DataItems>
+            </Rotary>
+            <Rotary id="Mazak101c3" name="C">
+              <DataItems>
+                <DataItem category="SAMPLE" id="Mazak101cl3" name="C3load" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101sl3" name="S3load" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="CONDITION" id="Mazak101ct3" name="C3travel" type="ANGLE"/>
+                <DataItem category="SAMPLE" id="Mazak101cf3" name="S3frt" nativeUnits="DEGREE/MINUTE" type="ANGULAR_VELOCITY" units="DEGREE/SECOND"/>
+                <DataItem category="SAMPLE" id="Mazak101cs3" name="S3rpm" nativeUnits="REVOLUTION/MINUTE" subType="ACTUAL" type="SPINDLE_SPEED" units="REVOLUTION/MINUTE"/>
+                <DataItem category="SAMPLE" id="Mazak101cso3" name="S3ovr" nativeUnits="PERCENT" subType="OVERRIDE" type="SPINDLE_SPEED" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101ctemp3" name="S3temp" nativeUnits="CELSIUS" type="TEMPERATURE" units="CELSIUS"/>
+                <DataItem category="SAMPLE" id="Mazak101cpos3" name="C3deg" nativeUnits="DEGREE" subType="ACTUAL" type="ANGLE" units="DEGREE"/>
+                <DataItem category="EVENT" id="Mazak101rf3" name="c3rfunc" type="ROTARY_MODE">
+                  <Constraints>
+                  <Value>CONTOUR</Value>
+                    <Value>SPINDLE</Value>
+                    <Value>INDEX</Value>
+                  </Constraints>
+                </DataItem>
+                <DataItem category="CONDITION" id="Mazak101spc3" name="S3load_cond" type="LOAD"/>
+                <DataItem category="CONDITION" id="Mazak101tmp3" name="S3temp_cond" type="TEMPERATURE"/>
+              </DataItems>
+            </Rotary>
+            <Rotary id="Mazak101c4" name="C">
+              <DataItems>
+                <DataItem category="SAMPLE" id="Mazak101cl4" name="C4load" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101sl4" name="S4load" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="CONDITION" id="Mazak101ct4" name="C4travel" type="ANGLE"/>
+                <DataItem category="SAMPLE" id="Mazak101cf4" name="S4frt" nativeUnits="DEGREE/MINUTE" type="ANGULAR_VELOCITY" units="DEGREE/SECOND"/>
+                <DataItem category="SAMPLE" id="Mazak101cs4" name="S4rpm" nativeUnits="REVOLUTION/MINUTE" subType="ACTUAL" type="SPINDLE_SPEED" units="REVOLUTION/MINUTE"/>
+                <DataItem category="SAMPLE" id="Mazak101cso4" name="S4ovr" nativeUnits="PERCENT" subType="OVERRIDE" type="SPINDLE_SPEED" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101ctemp4" name="S4temp" nativeUnits="CELSIUS" type="TEMPERATURE" units="CELSIUS"/>
+                <DataItem category="SAMPLE" id="Mazak101cpos4" name="C4deg" nativeUnits="DEGREE" subType="ACTUAL" type="ANGLE" units="DEGREE"/>
+                <DataItem category="EVENT" id="Mazak101rf4" name="c4rfunc" type="ROTARY_MODE">
+                  <Constraints>
+                  <Value>CONTOUR</Value>
+                    <Value>SPINDLE</Value>
+                    <Value>INDEX</Value>
+                  </Constraints>
+                </DataItem>
+                <DataItem category="CONDITION" id="Mazak101spc4" name="S4load_cond" type="LOAD"/>
+                <DataItem category="CONDITION" id="Mazak101tmp4" name="S4temp_cond" type="TEMPERATURE"/>
+              </DataItems>
+            </Rotary>
+            <Linear id="Mazak101w" name="Z">
+              <DataItems>
+                <DataItem category="SAMPLE" coordinateSystem="MACHINE" id="Mazak101wp" name="Wabs" nativeUnits="MILLIMETER" subType="ACTUAL" type="POSITION" units="MILLIMETER"/>
+                <DataItem category="CONDITION" id="Mazak101wt" name="Wtravel" type="POSITION"/>
+                <DataItem category="SAMPLE" id="Mazak101wl" name="Wload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+                <DataItem category="SAMPLE" id="Mazak101wf" name="Wfrt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+              </DataItems>
+            </Linear>
+          </Components>
+        </Axes>
+        <Controller id="Mazak101cont" name="controller">
+          <DataItems>
+            <DataItem category="CONDITION" id="Mazak101ccond" name="comms_cond" type="COMMUNICATIONS"/>
+            <DataItem category="CONDITION" id="Mazak101logic" name="logic_cond" type="LOGIC_PROGRAM"/>
+            <DataItem category="CONDITION" id="Mazak101system" name="system_cond" type="SYSTEM"/>
+			<DataItem category="EVENT" id="Mazak101estop" name="estop" type="EMERGENCY_STOP"/>
+          </DataItems>
+          <Components>
+            <Path id="Mazak101path1" name="path">
+              <DataItems>
+                <DataItem category="EVENT" id="Mazak101pgm" name="program" type="PROGRAM"/>
+                <DataItem category="EVENT" id="Mazak101spgm" name="subprogram" subType="x:SUB" type="PROGRAM"/>
+                <DataItem category="EVENT" id="Mazak101ln" name="line" type="LINE"/>
+                <DataItem category="EVENT" id="Mazak101unit" name="unitNum" type="x:UNIT"/>
+                <DataItem category="EVENT" id="Mazak101seq" name="sequenceNum" type="x:SEQUENCE_NUMBER"/>
+                <DataItem category="EVENT" id="Mazak101pc" name="PartCountAct" type="PART_COUNT"/>
+                <DataItem category="SAMPLE" coordinateSystem="WORK" id="Fact" name="path_feedratefrt" nativeUnits="FOOT/MINUTE" subType="ACTUAL" type="PATH_FEEDRATE" units="MILLIMETER/SECOND"/>
+                <DataItem category="EVENT" id="pfr" name="Frapidovr" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Fovr" name="path_feedrateovr" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak101tid" name="Tool_number" type="TOOL_ID"/>
+                <DataItem category="EVENT" id="Mazak101palleteid" name="pallet_num" type="TOOL_ID"/>
+                <DataItem category="EVENT" id="Mazak101tid1" name="Tool_group" type="x:TOOL_GROUP"/>
+                <DataItem category="EVENT" id="Mazak101tsuf1" name="Tool_suffix" type="x:TOOL_SUFFIX"/>
+                <DataItem category="EVENT" id="Mazak101exec" name="execution" type="EXECUTION"/>
+                <DataItem category="EVENT" id="mode" name="controllermode" type="CONTROLLER_MODE"/>
+                <DataItem category="EVENT" id="Mazak101pcmt" name="program_cmt" type="MESSAGE"/>
+                <DataItem category="EVENT" id="Mazak101spcmt" name="subprogram_cmt" subType="x:SUB" type="MESSAGE"/>
+                <DataItem category="EVENT" id="Mazak101atime" name="auto_time" subType="x:AUTO" type="x:DURATION"/>
+                <DataItem category="EVENT" id="Mazak101yltime" name="total_time" subType="x:TOTAL" type="x:DURATION"/>
+                <DataItem category="EVENT" id="Mazak101ctime" name="cut_time" subType="x:CUT" type="x:DURATION"/>
+                <DataItem category="CONDITION" id="Mazak101motion" name="motion_cond" type="MOTION_PROGRAM"/>
+		<DataItem category="CONDITION" id="Mazak101path_system" name="path_system" type="SYSTEM"/>
+              </DataItems>
+            </Path>
+            <Path id="Mazak101path2" name="path2">
+              <DataItems>
+                   <DataItem category="SAMPLE" coordinateSystem="WORK" id="Mazak101pf2" name="Fact2" nativeUnits="FOOT/MINUTE" subType="ACTUAL" type="PATH_FEEDRATE" units="MILLIMETER/SECOND"/>
+                <DataItem category="EVENT" id="Mazak101pfr2" name="Frapidovr2" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak101pfo2" name="Fovr2" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak101tid2" name="Tool2_number" type="TOOL_ID"/>
+                <DataItem category="EVENT" id="Mazak101tid5" name="Tool2_group" type="x:TOOL_GROUP"/>
+                <DataItem category="EVENT" id="Mazak101tsuf6" name="Tool2_suffix" type="x:TOOL_SUFFIX"/>
+                <DataItem category="CONDITION" id="Mazak101motion2" name="motion_cond2" type="MOTION_PROGRAM"/>
+		<DataItem category="CONDITION" id="Mazak101path_system2" name="path_system2" type="SYSTEM"/>
+              </DataItems>
+            </Path>
+           <Path id="Mazak101path3" name="path3">
+              <DataItems>
+                 <DataItem category="SAMPLE" coordinateSystem="WORK" id="Mazak101pf3" name="Fact3" nativeUnits="FOOT/MINUTE" subType="ACTUAL" type="PATH_FEEDRATE" units="MILLIMETER/SECOND"/>
+                <DataItem category="EVENT" id="Mazak101pfr3" name="Frapidovr3" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak101pfo3" name="Fovr3" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak101tid3" name="Tool3_number" type="TOOL_ID"/>
+                <DataItem category="EVENT" id="Mazak101tid33" name="Tool3_group" type="x:TOOL_GROUP"/>
+                <DataItem category="EVENT" id="Mazak101tsuf333" name="Tool3_suffix" type="x:TOOL_SUFFIX"/>
+                 <DataItem category="CONDITION" id="Mazak101motion3" name="motion_cond3" type="MOTION_PROGRAM"/>
+		<DataItem category="CONDITION" id="Mazak101path_system3" name="path_system3" type="SYSTEM"/>
+              </DataItems>
+            </Path>
+           <Path id="Mazak101path4" name="path4">
+              <DataItems>
+                <DataItem category="SAMPLE" coordinateSystem="WORK" id="Mazak101pf4" name="Fact4" nativeUnits="FOOT/MINUTE" subType="ACTUAL" type="PATH_FEEDRATE" units="MILLIMETER/SECOND"/>
+                <DataItem category="EVENT" id="Mazak101pfr4" name="Frapidovr4" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak101pfo4" name="Fovr4" nativeUnits="PERCENT" subType="OVERRIDE" type="PATH_FEEDRATE" units="PERCENT"/>
+                <DataItem category="EVENT" id="Mazak101tid4" name="Tool4_number" type="TOOL_ID"/>
+                <DataItem category="EVENT" id="Mazak101tid44" name="Tool4_group" type="x:TOOL_GROUP"/>
+                <DataItem category="EVENT" id="Mazak101tsuf444" name="Tool4_suffix" type="x:TOOL_SUFFIX"/>
+                <DataItem category="CONDITION" id="Mazak101motion4" name="motion_cond4" type="MOTION_PROGRAM"/>
+		<DataItem category="CONDITION" id="Mazak101path_system4" name="path_system4" type="SYSTEM"/>
+              </DataItems>
+            </Path>
+          </Components>
+        </Controller>
+        <Systems id="Mazak101systems" name="systems">
+          <Components>
+            <Electric id="Mazak101elec" name="electric">
+              <DataItems>
+                <DataItem category="EVENT" id="Mazak101pwr" name="power" type="POWER_STATE"/>
+                <DataItem category="CONDITION" id="Mazak101pwrt" name="electric_temp" type="TEMPERATURE"/>
+              </DataItems>
+            </Electric>
+            <Hydraulic id="Mazak101hydraulic" name="hydraulic">
+              <DataItems>
+                <DataItem category="CONDITION" id="Mazak101hyd" name="hydra_cond" type="PRESSURE"/>
+              </DataItems>
+            </Hydraulic>
+            <Coolant id="Mazak101coolant" name="coolant">
+              <DataItems>
+                <DataItem category="CONDITION" id="Mazak101coolpress" name="coolant_pres" type="PRESSURE"/>
+                <DataItem category="CONDITION" id="Mazak101cooltemp" name="coolant_temp" type="TEMPERATURE"/>
+                <DataItem category="CONDITION" id="Mazak101coollevel" name="coolant_level" type="LEVEL"/>
+              </DataItems>
+            </Coolant>
+            <Pneumatic id="Mazak101pneumatic" name="pneumatic">
+              <DataItems>
+                <DataItem category="CONDITION" id="Mazak101pneupress" name="pneu_cond" type="PRESSURE"/>
+              </DataItems>
+            </Pneumatic>
+          </Components>
+        </Systems>
+      </Components>
+    </Device>
+</Devices>
+</MTConnectDevices>

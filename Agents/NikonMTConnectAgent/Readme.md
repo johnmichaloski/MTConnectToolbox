@@ -1,6 +1,8 @@
-
+﻿
 #NIKON README 
 ----
+* auto-gen TOC:
+{:toc}
 
 Tuesday, May 12, 2015 10:00:05 AM EDT
 This document describes the data gathering for a Nikon CMM machine that updates a tab separated log file. Multiple adapters to Nikon software are possible, each contained within one MTConnect Agent.
