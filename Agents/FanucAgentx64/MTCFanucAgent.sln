@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FanucSetup", "FanucSetup\FanucSetup.vdproj", "{21B2421A-8A96-440D-AFCB-2035F2D0D794}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyCustomAction", "MyCustomAction\MyCustomAction.vcxproj", "{1BB01C0A-177C-475D-AB2F-223C8FB22E87}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21B2421A-8A96-440D-AFCB-2035F2D0D794}.Debug|Win32.ActiveCfg = Debug
+		{21B2421A-8A96-440D-AFCB-2035F2D0D794}.Release|Win32.ActiveCfg = Release
+		{1BB01C0A-177C-475D-AB2F-223C8FB22E87}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1BB01C0A-177C-475D-AB2F-223C8FB22E87}.Debug|Win32.Build.0 = Debug|Win32
+		{1BB01C0A-177C-475D-AB2F-223C8FB22E87}.Release|Win32.ActiveCfg = Release|Win32
+		{1BB01C0A-177C-475D-AB2F-223C8FB22E87}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

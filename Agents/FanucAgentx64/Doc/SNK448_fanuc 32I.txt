@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<MTConnectStreams xmlns:m="urn:mtconnect.org:MTConnectStreams:1.2" xmlns="urn:mtconnect.org:MTConnectStreams:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectStreams:1.2 http://www.mtconnect.org/schemas/MTConnectStreams_1.2.xsd"> 
+<Header creationTime="2013-01-09T22:13:00Z" sender="A3978909" instanceId="1357311776" version="0.0.0.0" bufferSize="131072" nextSequence="4972968" firstSequence="4841896" lastSequence="4972967" /> 
+<Streams> 
+<DeviceStream name="FanucCNC" uuid="FanucCNCxxx"> 
+<ComponentStream component="Rotary" name="A" componentId="FanucCNCd1"> 
+<Samples> 
+<Position dataItemId="FanucCNCa" timestamp="2013-01-04T15:02:56.0578Z" name="Aabs" sequence="1" subType="ACTUAL">UNAVAILABLE</Position> 
+</Samples> 
+</ComponentStream> 
+<ComponentStream component="Rotary" name="B" componentId="FanucCNCd1"> 
+<Samples> 
+<Position dataItemId="FanucCNCb" timestamp="2013-01-09T22:12:59.0446Z" name="Babs" sequence="4972960" subType="ACTUAL">0.0000</Position> 
+</Samples> 
+</ComponentStream> 
+<ComponentStream component="Rotary" name="C" componentId="FanucCNCd1"> 
+<Samples> 
+<Position dataItemId="FanucCNCc" timestamp="2013-01-09T22:12:59.0446Z" name="Cabs" sequence="4972961" subType="ACTUAL">0.0000</Position> 
+</Samples> 
+</ComponentStream> 
+<ComponentStream component="Rotary" name="D" componentId="FanucCNCd1"> 
+<Samples> 
+<SpindleSpeed dataItemId="FanucCNCcs1" timestamp="2013-01-09T22:12:59.0524Z" name="Srpm" sequence="4972967">0.0000</SpindleSpeed> 
+<SpindleSpeed dataItemId="FanucCNCcso1" timestamp="2013-01-09T22:12:59.0524Z" name="Sovr" sequence="4972963" subType="OVERRIDE">200.0000</SpindleSpeed> 
+</Samples> 
+</ComponentStream> 
+<ComponentStream component="Device" name="FanucCNC" componentId="FanucCNCd1"> 
+<Events> 
+<Availability dataItemId="FanucCNCavail1" timestamp="2013-01-04T15:02:58.0609Z" name="avail" sequence="19">AVAILABLE</Availability> 
+<AssetChanged dataItemId="FanucCNCd1_asset_chg" timestamp="2013-01-04T15:02:56.0578Z" sequence="7" assetType="">UNAVAILABLE</AssetChanged> 
+</Events> 
+</ComponentStream> 
+<ComponentStream component="Electric" name="electric" componentId="FanucCNCelec1"> 
+<Events> 
+<PowerState dataItemId="FanucCNCpwr1" timestamp="2013-01-04T15:26:55.0646Z" name="power" sequence="1451">OFF</PowerState> 
+</Events> 
+</ComponentStream> 
+<ComponentStream component="Path" name="path" componentId="FanucCNCpath1"> 
+<Samples> 
+<PathFeedrate dataItemId="FanucCNCpf1" timestamp="2013-01-09T22:12:59.0524Z" name="path_feedratefrt" sequence="4972966" subType="ACTUAL">20</PathFeedrate> 
+<PathFeedrate dataItemId="FanucCNCpfo1" timestamp="2013-01-09T22:12:59.0493Z" name="path_feedrateovr" sequence="4972962" subType="OVERRIDE">200.0000</PathFeedrate> 
+</Samples> 
+<Events> 
+<Execution dataItemId="FanucCNCexec1" timestamp="2013-01-09T22:12:59.0524Z" name="execution" sequence="4972965">PAUSED</Execution> 
+<ControllerMode dataItemId="FanucCNCmode1" timestamp="2013-01-09T22:12:59.0524Z" name="controllermode" sequence="4972964">AUTOMATIC</ControllerMode> 
+<PartCount dataItemId="FanucCNCpc1" timestamp="2013-01-04T15:02:56.0578Z" name="PartCountAct" sequence="10">UNAVAILABLE</PartCount> 
+<Program dataItemId="FanucCNCpgm1" timestamp="2013-01-09T22:12:59.0446Z" name="program" sequence="4972956">O0006</Program> 
+<ToolId dataItemId="FanucCNCtid1" timestamp="2013-01-04T15:02:56.0578Z" name="Tool_number" sequence="15">UNAVAILABLE</ToolId> 
+</Events> 
+</ComponentStream> 
+<ComponentStream component="Linear" name="X" componentId="FanucCNCx1"> 
+<Samples> 
+<Position dataItemId="FanucCNCxp1" timestamp="2013-01-09T22:12:59.0446Z" name="Xabs" sequence="4972957" subType="ACTUAL">-50.2920</Position> 
+</Samples> 
+</ComponentStream> 
+<ComponentStream component="Linear" name="Y" componentId="FanucCNCy1"> 
+<Samples> 
+<Position dataItemId="FanucCNCyp1" timestamp="2013-01-09T22:12:59.0446Z" name="Yabs" sequence="4972958" subType="ACTUAL">13.6000</Position> 
+</Samples> 
+</ComponentStream> 
+<ComponentStream component="Linear" name="Z" componentId="FanucCNCz1"> 
+<Samples> 
+<Position dataItemId="FanucCNCzp1" timestamp="2013-01-09T22:12:59.0446Z" name="Zabs" sequence="4972959" subType="ACTUAL">1.6100</Position> 
+</Samples> 
+</ComponentStream> 
+</DeviceStream> 
+</Streams> 
+</MTConnectStreams>
+

@@ -8,7 +8,7 @@
 #include "atlstr.h"
 
 #pragma comment(lib, "msi.lib") 
-
+#if 0
 class CConfigDlg : public CDialogImpl<CConfigDlg>
 {
 public:
@@ -76,7 +76,7 @@ public:
 		return 0;
 	}
 };
-
+#endif
 BOOL APIENTRY DllMain( HANDLE hModule, 
 					  DWORD  ul_reason_for_call, 
 					  LPVOID lpReserved )

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2012-11-28T15:18:25" sender="local" version="1.1"/>
+<Devices>
+		<Device id="FanucCNCd1" uuid="FanucCNCxxx" name="FanucCNC">
+     			<Description serialNumber="xxxx">Siemens-840D</Description>
+ 			<DataItems>
+				<DataItem id="FanucCNCavail1" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="FanucCNCa1" name="base">
+					<Components>
+						<Linear id="FanucCNCx1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="FanucCNCxp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="FanucCNCy1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="FanucCNCyp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="FanucCNCz1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="FanucCNCzp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Rotary id="FanucCNCd1" name="A">
+							<DataItems>
+								<DataItem type="POSITION" id="FanucCNCa" category="SAMPLE" name="Aabs" subType="ACTUAL" nativeUnits="DEGREE" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="FanucCNCd1" name="B">
+							<DataItems>
+								<DataItem type="POSITION" id="FanucCNCb" category="SAMPLE" name="Babs" subType="ACTUAL" nativeUnits="DEGREE" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="FanucCNCd1" name="C">
+							<DataItems>
+								<DataItem type="POSITION" id="FanucCNCc" category="SAMPLE" name="Cabs" subType="ACTUAL" nativeUnits="DEGREE" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="FanucCNCd1" name="D">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="FanucCNCcs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+								<DataItem type="SPINDLE_SPEED" id="FanucCNCcso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+							</DataItems>
+						</Rotary>
+					</Components>
+				</Axes>
+				<Controller id="FanucCNCcont1" name="controller">
+					<Components>
+						<Path id="FanucCNCpath1" name="path">
+							<DataItems>
+								<DataItem type="PROGRAM" id="FanucCNCpgm1" category="EVENT" name="program"/>
+								<DataItem type="PART_COUNT" id="FanucCNCpc1" category="EVENT" name="PartCountAct" />
+								<DataItem type="PATH_FEEDRATE" id="FanucCNCpf1" category="SAMPLE" name="path_feedratefrt" units="MILLIMETER/SECOND" subType="ACTUAL" coordinateSystem="WORK"/>
+								<DataItem type="PATH_FEEDRATE" id="FanucCNCpfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+								<DataItem type="TOOL_ID" id="FanucCNCtid1" category="EVENT" name="Tool_number"/>
+								<DataItem type="EXECUTION" id="FanucCNCexec1" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="FanucCNCmode1" category="EVENT" name="controllermode"/>
+							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="FanucCNCsystems1" name="systems">
+					<Components>
+						<Electric name="electric" id="FanucCNCelec1">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="FanucCNCpwr1" name="power" />
+							</DataItems>
+						</Electric>
+		
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+</Devices>
+</MTConnectDevices>

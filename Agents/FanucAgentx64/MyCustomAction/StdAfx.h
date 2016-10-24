@@ -12,9 +12,11 @@
 
 #include <atlbase.h>
 #include <atlwin.h>
+#if 0
 #include <atlapp.h>
 #include <atlctrls.h>
 #include <atldlgs.h>
+#endif
 #include <comdef.h>
 #include <msi.h>
 #include <msiquery.h>
