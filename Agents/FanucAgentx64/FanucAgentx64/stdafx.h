@@ -19,7 +19,7 @@
 //#define SERIESHSSB
 #define BUFSIZE 100
 
-
+#include <stdint.h>
 
 #pragma warning(disable: 4800) //warning C4800: forcing value to bool 'true' or 'false' (performance warning)
 #pragma warning(disable: 4018) //warning C4018: '<' : signed/unsigned mismatch

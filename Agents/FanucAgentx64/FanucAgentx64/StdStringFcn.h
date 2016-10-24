@@ -471,13 +471,12 @@ inline std::vector<T> TokenList(const std::string& str,const std::string& delimi
  }
  return tokens;
 }
-#include "boost/bind.hpp"
-#include <boost/algorithm/string.hpp>
 
 inline std::vector<std::string> TrimmedTokenize(const std::string& str,const std::string& delimiters, bool bTrim=false)
 {
 	std::vector<std::string> fields = Tokenize(str,delimiters);
-	std::for_each(fields.begin(), fields.end(), boost::bind(&boost::trim<std::string>,_1, std::locale() ));
+	for (size_t i = 0; i < fields.size(); i++)
+		fields[i] = Trim(fields[i]);
 	return fields;
 }
 

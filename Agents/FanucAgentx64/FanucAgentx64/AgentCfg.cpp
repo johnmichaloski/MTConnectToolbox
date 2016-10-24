@@ -5,7 +5,9 @@
 // This software was developed by U.S. Government employees as part of
 // their official duties and is not subject to copyright. No warranty implied 
 // or intended.
+#include <stdint.h>
 
+#define INTMAX_MAX   9223372036854775807i64 
 #include "StdAfx.h"
 
 #include "AgentCfg.h"

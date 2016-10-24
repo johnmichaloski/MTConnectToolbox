@@ -9,19 +9,23 @@
 //#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
 
 #include <windows.h>
-
-#include <atlbase.h>
-#include <atlwin.h>
-#if 0
-#include <atlapp.h>
-#include <atlctrls.h>
-#include <atldlgs.h>
-#endif
-#include <comdef.h>
 #include <msi.h>
 #include <msiquery.h>
-#include <stdio.h>
 
+
+#include <atlbase.h>
+//#include <atlwin.h>
+//#include <atlapp.h>
+//#include <atlctrls.h>
+//#include <atldlgs.h>
+//#include <comdef.h>
+
+//#include <stdio.h>
+
+//#define FANUCAGENT
+#define MAZAKAGENT
+//#define SIEMENS840DAGENT
+//#define LINUXSOLUTIONLINEAGENT
 #pragma warning(disable: 4800) //warning C4800: forcing value to bool 'true' or 'false' (performance warning)
 #pragma warning(disable: 4018) //warning C4018: '<' : signed/unsigned mismatch
 #pragma warning(disable: 4244) //warning C4244: 'argument' : conversion from 'double' to 'LPARAM', possible loss of data

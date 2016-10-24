@@ -6,8 +6,9 @@
 // their official duties and is not subject to copyright. No warranty implied 
 // or intended.
 #pragma once
+
 #include <string>
-#include <boost/thread.hpp>
+#include <thread>
 #include <vector>
 #include <string>
 
@@ -36,7 +37,7 @@ public:
 	void Start(AgentConfiguration *config= NULL) 
 	{
 		_config=config;
-		_agentthread= boost::thread(boost::bind(&CAgentCfg::Run, this)); 
+		_agentthread= std::thread(std::bind(&CAgentCfg::Run, this));
 	}
 	long	WriteCfgFile(std::string cfgfile, std::string xmlfile,  std::string _destFolder);
 	long	WriteAgentCfgFile(std::string cfgfile, std::string xmlfile, std::string _destFolder);
@@ -51,7 +52,7 @@ public:
 	std::vector<std::string>		ips, ports, rates, debugs, devices,names, alldevices;
 	std::string 					_destFolder,_cfgFolder,_cfgFile,_xmlFile;
 	std::string						_serviceName;
-	boost::thread					_agentthread;
+	std::thread					_agentthread;
 	int								_agenthttpport;
 	AgentConfiguration * _config;
 

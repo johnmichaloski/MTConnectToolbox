@@ -302,23 +302,35 @@ inline void ReplaceAll( tstring& tInput, tstring tFind, tstring tReplace )
 
 inline bool ReplacePattern(tstring & inStr, tstring oldBeginningStr, tstring oldEndingStr, tstring newStr, int num=1)
 {
-	unsigned int i,j,k;
+	size_t i,j,k;
 
 	// Sanity checks
-	if(inStr.size()<1) return false;
-	if(oldBeginningStr.size()<1) return false;
-	if(oldEndingStr.size()<1) return false;
+	if(inStr.size()<1)
+	{
+		OutputDebugString("Error ReplacePattern inStr.size()<1\n");
+		return false;
+	}
+	if(oldBeginningStr.size()<1)
+	{
+		OutputDebugString("Error ReplacePattern oldBeginningStr.size()<1\n");
+		return false;
+	}
+	if(oldEndingStr.size()<1)
+	{
+		OutputDebugString("Error ReplacePattern oldEndingStr.size()<1\n");
+		return false;
+	}
 
 	// Setup up StringEx sizes
-	int newCnt = newStr.size();  
+	size_t newCnt = newStr.size();  
 
 	i=0; // Let find determine where to start.
 
 	int cnt=0;
 	for(;i<inStr.size();){
-		if((j=inStr.find(oldBeginningStr,  i)) < 0)
+		if((j=inStr.find(oldBeginningStr,  i)) == std::string::npos)
 			break;
-		if((k=inStr.find(oldEndingStr, j)) < 0 ) 
+		if((k=inStr.find(oldEndingStr, j)) == std::string::npos)
 			break;
 		inStr = inStr.substr(0,j)+ newStr + inStr.substr(k+1);
 		i=j+newCnt;

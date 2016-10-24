@@ -5,6 +5,7 @@
 // This software was developed by U.S. Government employees as part of
 // their official duties and is not subject to copyright. No warranty implied 
 // or intended.
+#define INTMAX_MAX   9223372036854775807i64 
 
 #include "StdAfx.h"
 #include "CmdHandler.h"
@@ -97,7 +98,6 @@ void CCmdHandler::SetMTCTagValue(std::string tag, std::string value)
 void CCmdHandler::Cycle()
 {
 	GLogger << FATAL << "CCmdHandler::Cycle()" << std::endl; 
-	boost::timer delaytimer;
 	HRESULT hr;
 	int nHeartbeat=0;
 	_mRunning=true;
@@ -106,6 +106,7 @@ void CCmdHandler::Cycle()
 	_set_se_translator( trans_func );  // correct thread?
 
 	::Sleep(2000);
+	// This was here if you want all adapters to start at once
 	//boost::mutex::scoped_lock lock(_access);
 	//this->_agentconfig->cond.wait(lock);
 

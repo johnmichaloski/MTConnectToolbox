@@ -8,7 +8,6 @@
 #pragma once
 #include <vector>
 #include <string>
-#include <boost\thread.hpp>
 #include "atlutil.h"
 
 #include "config.hpp"
@@ -31,6 +30,7 @@ public:
 	int AutoVersionDetect;
 	std::string MachineToolConfig;
 	std::vector<std::string>  fanucips;
+	std::vector<std::string>  fanucdevicess;
 	std::vector<std::string>  configs;
 	//std::vector<std::string>  fanucports;
 	bool _bResetAtMidnight;
@@ -49,22 +49,21 @@ class AgentConfigurationEx : public AgentConfiguration
 {
 	crp::Config										config;
 	//std::vector<std::string>						_devices, ipaddrs;
-	boost::thread_group								_group;
+	//std::thread_group								_group;
+	std::vector<std::thread> _group;
 	std::vector<CCmdHandler * >						 _cmdHandlers;
 	CAgentCfg										_agentcfg;
 	std::string										_devicefile ;
 	std::string										_cfgfile ;
 	int												_httpPort;
-
+	void join_all();
 public:
 	AgentConfigurationEx(){} 
 	virtual int thread(int aArgc, const char *aArgv[]);
 	virtual void start();
 	virtual void stop();
-	boost::condition_variable cond;
 	std::vector<int> _shiftchanges;
 
-	//boost::condition_variable cond;
 	CWorkerThread<> _resetthread;
 	struct CResetThread : public IWorkerThreadClient
 	{

@@ -1,0 +1,2 @@
+.\FanucAgent.exe install
+pause

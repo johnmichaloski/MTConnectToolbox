@@ -17,7 +17,7 @@
 #include "StdStringFcn.h"
 #pragma message("Compiling c:\\Program Files\\NIST\\proj\\MTConnect\\Nist\\MTConnectGadgets\\Agent - fanuc iSeries\\Logger.h")
 
-#define LOGLISTENERS
+//#define LOGLISTENERS
 
 #ifdef LOGLISTENERS
 // This is for notifying listeners to logged messages - mnany to many relationship
@@ -46,7 +46,9 @@ std::clog.rdbuf(&charDebugOutput);
 template<typename TChar, typename TTraits = std::char_traits<TChar>>
 class basic_debugbuf : public std::basic_stringbuf<TChar,TTraits> {
 public:
+#ifdef LOGLISTENERS
 	std::vector<FcnLognotify> listeners;
+#endif
 
 	explicit basic_debugbuf() : _buffer(256) {
 		setg(nullptr, nullptr, nullptr);

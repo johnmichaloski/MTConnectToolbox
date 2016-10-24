@@ -7,11 +7,10 @@
 // or intended.
 
 #pragma once
-#include <boost/timer.hpp>
-#include <boost/thread/mutex.hpp>
 
 #include "config.hpp"
 #include "config.h"
+#include <mutex>
 class AgentConfigurationEx;
 class CiSeries;
 class CFS15D;
@@ -39,7 +38,7 @@ public:
 	crp::Config							_config;
 	std::string							_device, _ipaddr,_devicexmlpath;
 	bool								_mRunning;
-	boost::mutex _access;
+	std::mutex _access;
 
 	int _nAxes;
 	std::map<char,int> axisnum;

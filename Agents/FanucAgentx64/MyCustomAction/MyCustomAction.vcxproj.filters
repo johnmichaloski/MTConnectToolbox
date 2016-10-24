@@ -2,15 +2,15 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
-      <UniqueIdentifier>{841c7311-4fac-4896-8827-cc8e0388c20a}</UniqueIdentifier>
+      <UniqueIdentifier>{20b9072b-5e6b-41a6-a048-3ebb9c1a609c}</UniqueIdentifier>
       <Extensions>cpp;c;cxx;rc;def;r;odl;idl;hpj;bat</Extensions>
     </Filter>
     <Filter Include="Header Files">
-      <UniqueIdentifier>{6eddeff9-d502-4179-8de6-f74261e6b122}</UniqueIdentifier>
+      <UniqueIdentifier>{cd5002d7-ac32-4c96-86fb-74489c6381d5}</UniqueIdentifier>
       <Extensions>h;hpp;hxx;hm;inl</Extensions>
     </Filter>
     <Filter Include="Resource Files">
-      <UniqueIdentifier>{1b1c423d-f321-4212-8af4-f970c84cc10f}</UniqueIdentifier>
+      <UniqueIdentifier>{25649aa0-e113-4dc4-bab3-70e5b079dfe9}</UniqueIdentifier>
       <Extensions>ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe</Extensions>
     </Filter>
   </ItemGroup>
@@ -22,6 +22,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="StdAfx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DeviceXml.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,6 +53,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="StdStringFcn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FilPermission.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="DeviceXml.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

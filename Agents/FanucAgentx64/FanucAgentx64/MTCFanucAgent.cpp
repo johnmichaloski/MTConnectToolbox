@@ -5,32 +5,12 @@
 // This software was developed by U.S. Government employees as part of
 // their official duties and is not subject to copyright. No warranty implied 
 // or intended.
+#define INTMAX_MAX   9223372036854775807i64 
+
 #include "stdafx.h"
 #include <windows.h>
 
-#pragma comment( lib, "msxml2.lib" )
-#pragma comment(lib,"psapi") 
-#pragma comment(lib, "Ws2_32.lib")
-#pragma comment(lib, "legacy_stdio_definitions.lib")
 
-#define MTCLIBPATH(X)    "C:\\Users\\michalos\\Documents\\Visual Studio 2015\\Projects\\FanucAgentx64\\Agent\\win32\\libxml2-2.7.7\\lib\\" ## X
-#define BOOSTLIBPATH(X)    "C:\\Program Files\\NIST\\src\\boost_1_61_0\\stage\\lib\\" ## X
-#define FANUCLIBPATH(X) "C:\\Users\\michalos\\Documents\\Visual Studio 2015\\Projects\\FanucAgentx64\\Fwlib64\\" ## X
-
-#if defined( WIN64 ) && defined( _DEBUG )
-#pragma message( "DEBUG x64" )
-#pragma comment(lib, MTCLIBPATH("libxml2_64d.lib"))
-#pragma comment(lib, BOOSTLIBPATH("libboost_system-vc140-mt-sgd-1_61.lib"))
-#pragma comment(lib, BOOSTLIBPATH("libboost_thread-vc140-mt-sgd-1_61.lib"))
-#pragma comment(lib, FANUCLIBPATH("fwlib64.lib"))
-
-#elif !defined( _DEBUG ) && defined( WIN64 )
-#pragma message( "RELEASE x64" )
-#pragma comment(lib,  MTCLIBPATH("libxml2_64.lib"))
-#pragma comment(lib, BOOSTLIBPATH("libboost_thread-vc140-mt-s-1_61.lib"))
-#pragma comment(lib, BOOSTLIBPATH("libboost_system-vc140-mt-s-1_61.lib"))
-#pragma comment(lib, FANUCLIBPATH("fwlib64.lib"))
-#endif
 
 
 #include "MTCFanucAgent.h"
@@ -38,9 +18,7 @@
 #include "Shellapi.h"
 #include <vector>
 #include <string>
-#include <boost/bind.hpp>
-#include <boost/thread/thread.hpp>
-
+#include <thread>
 #include "sys/stat.h"
 #include "string.h"
 #include "fcntl.h"
@@ -57,13 +35,6 @@
 
 using namespace std;
 using namespace dlib;
-
-FILE _iob[] = { *stdin, *stdout, *stderr };
-extern "C" FILE * __cdecl __iob_func(void)
-{
-	return _iob;
-}
-
 
 std::string ExeDirectory()
 {
@@ -111,6 +82,10 @@ int AgentConfigurationEx::thread(int aArgc, const char *aArgv[])
 			//_devices = config.GetTokens("CONFIG.Devices", ",");  // Device name - fanuc something
 
 			Globals.fanucips=TrimmedTokenize(config.GetSymbolValue("CONFIG.FanucIpAddress", "127.0.0.1").c_str(),",");
+			Globals.fanucdevicess = TrimmedTokenize(config.GetSymbolValue("CONFIG.FanucDevices", "Fanuc1").c_str(), ",");
+
+			
+
 			Globals.configs=TrimmedTokenize(config.GetSymbolValue("CONFIG.Configs", "xyzabcuv").c_str(),",");
 			Globals.FanucPort=config.GetSymbolValue("CONFIG.FanucPort", "0").toNumber<int>();
 			//Globals.fanucports=TrimmedTokenize(config.GetSymbolValue("CONFIG.ipaddrs", "127.0.0.1").c_str(),",");
@@ -177,11 +152,13 @@ int AgentConfigurationEx::thread(int aArgc, const char *aArgv[])
 				config=Globals.configs[i];
 			else
 				config="xyzabcuv";
-			_agentcfg.AddFanucDevice("FanucCNC" + ConvertToString(i+1), config); // changed 3/29/2013
+			_agentcfg.AddFanucDevice(Globals.fanucdevicess[i], config); // changed 3/29/2013
 		}
-
+		// We will assume this is either done by hand or by msi install script
+#if 0
 		_agentcfg.WriteDevicesFile(_devicefile,  ::ExeDirectory());
 		_agentcfg.WriteCfgFile( _cfgfile , _devicefile,::ExeDirectory());
+#endif
 
 	}
 	catch(...) 
@@ -194,6 +171,13 @@ int AgentConfigurationEx::thread(int aArgc, const char *aArgv[])
 
 	return 0;
 }
+
+void AgentConfigurationEx::join_all() {
+	for (auto& thread : _group)
+		if (thread.joinable())
+			thread.join();
+}
+
 // Start the server. This blocks until the server stops.
 void AgentConfigurationEx::start()
 {
@@ -274,7 +258,8 @@ void AgentConfigurationEx::start()
 		_cmdHandler = new CCmdHandler(this);
 		_cmdHandlers.push_back(_cmdHandler);
 		_cmdHandler->Configure( config,"FanucCNC" + ConvertToString(i+1), Globals.fanucips[i],ConvertToString(Globals.FanucPort));
-		_group.create_thread(boost::bind(&CCmdHandler::Cycle, _cmdHandler));
+//		_group.create_thread(std::bind(&CCmdHandler::Cycle, _cmdHandler));
+		_group.emplace_back(std::thread(std::bind(&CCmdHandler::Cycle, _cmdHandler)));
 	}
 	AgentConfiguration::start();
 }
@@ -283,7 +268,8 @@ void AgentConfigurationEx::stop()
 	for(int i=0; i< _cmdHandlers.size(); i++)
 		_cmdHandlers[i]->Stop();
 
-	_group.join_all();
+	join_all();
+	//_group.join_all();
 	AgentConfiguration::stop();
 }
 

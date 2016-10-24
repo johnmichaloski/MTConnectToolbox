@@ -1,2 +1,0 @@
-MTCFanucAgent.exe install
-pause

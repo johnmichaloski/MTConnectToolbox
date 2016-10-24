@@ -1,0 +1,2 @@
+.\FanucAgent.exe debug
+pause
