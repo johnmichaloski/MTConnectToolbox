@@ -1,0 +1,33 @@
+MTConnect Agent Service Started Mon May 13 15:14:12 2013
+MTConnect Agent Service Started Mon May 13 15:14:12 2013
+2013-05-13T19:14:12.0828Z: FATAL [1] DebugLevel=5
+2013-05-13T19:14:12.0828Z: FATAL [2] Protocol=HSSB
+2013-05-13T19:14:12.0828Z: FATAL [3] ScanDelay=1000
+2013-05-13T19:14:12.0828Z: FATAL [4] FanucPort=0
+2013-05-13T19:14:12.0828Z: FATAL [5] FocasDelay=1000
+2013-05-13T19:14:12.0828Z: FATAL [6] ResetAtMidnight=1
+2013-05-13T19:14:12.0906Z: FATAL [7] Agent will Reset from now    1.0000 
+2013-05-13T19:14:12.0906Z: FATAL [8] CCmdHandler::Cycle()
+2013-05-13T19:14:14.0906ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-13T19:14:14.0906ZiSeries::connect Using Protocol=HSSB
+2013-05-13T19:14:14.0906ZiSeries::connect HSSB cnc_allclibhndl2 Port=0
+2013-05-13T19:14:14.0922Z: FATAL [9] iSeries::connect cnc_allclibhndl3 Result: -3
+2013-05-13T19:14:14.0922ZiSeries::connect cnc_allclibhndl3 failed  Error on machine 192.168.1.102 : EW_MMCSYS - emm386 or mmcsys install error
+2013-05-13T19:14:14.0922ZiSeries::connect cnc_allclibhndl3 failed  Error on machine 192.168.1.102 : EW_MMCSYS - emm386 or mmcsys install error
+2013-05-13T19:14:14.0922ZiSeries::connect FAILED Power = OFF
+2013-05-13T19:14:25.0921ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-13T19:14:25.0921ZiSeries::connect HSSB cnc_allclibhndl2 Port=0
+2013-05-13T19:14:25.0921Z: FATAL [10] iSeries::connect cnc_allclibhndl3 Result: -3
+2013-05-13T19:14:25.0921ZiSeries::connect cnc_allclibhndl3 failed  Error on machine 192.168.1.102 : EW_MMCSYS - emm386 or mmcsys install error
+2013-05-13T19:14:36.0921ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-13T19:14:36.0921ZiSeries::connect HSSB cnc_allclibhndl2 Port=0
+2013-05-13T19:14:36.0921Z: FATAL [11] iSeries::connect cnc_allclibhndl3 Result: -3
+2013-05-13T19:14:36.0921ZiSeries::connect cnc_allclibhndl3 failed  Error on machine 192.168.1.102 : EW_MMCSYS - emm386 or mmcsys install error
+2013-05-13T19:14:47.0920ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-13T19:14:47.0920ZiSeries::connect HSSB cnc_allclibhndl2 Port=0
+2013-05-13T19:14:47.0920Z: FATAL [12] iSeries::connect cnc_allclibhndl3 Result: -3
+2013-05-13T19:14:47.0920ZiSeries::connect cnc_allclibhndl3 failed  Error on machine 192.168.1.102 : EW_MMCSYS - emm386 or mmcsys install error
+2013-05-13T19:14:58.0920ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-13T19:14:58.0920ZiSeries::connect HSSB cnc_allclibhndl2 Port=0
+2013-05-13T19:14:58.0920Z: FATAL [13] iSeries::connect cnc_allclibhndl3 Result: -3
+2013-05-13T19:14:58.0920ZiSeries::connect cnc_allclibhndl3 failed  Error on machine 192.168.1.102 : EW_MMCSYS - emm386 or mmcsys install error

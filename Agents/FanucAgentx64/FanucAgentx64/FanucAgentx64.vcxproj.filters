@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Agent2">
+      <UniqueIdentifier>{a6b1851d-b8cd-4773-9f76-e6fd82d8645d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\adapter.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\agent.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\asset.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\change_observer.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\checkpoint.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\component.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\component_event.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\config.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\connector.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\cutting_tool.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\data_item.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\device.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\globals.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\options.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\ref_counted.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\service.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\stdint.h">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\version.h">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\xml_parser.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Agent\agent\xml_printer.hpp">
+      <Filter>Agent2</Filter>
+    </ClInclude>
+    <ClInclude Include="AgentCfg.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CmdHandler.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="F15B.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fanuc_adapter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FS15D.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GLogger.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="iSeries.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdStringFcn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MTCFanucAgent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FanucAgentx64.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\adapter.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\agent.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\asset.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\change_observer.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\checkpoint.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\component.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\component_event.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\config.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\connector.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\cppagent.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\cutting_tool.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\data_item.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\device.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\globals.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\options.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\ref_counted.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\service.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\version.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\xml_parser.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Agent\agent\xml_printer.cpp">
+      <Filter>Agent2</Filter>
+    </ClCompile>
+    <ClCompile Include="AgentCfg.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="CmdHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="fanuc_adapter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MTCFanucAgent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="iSeries.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Agent\agent\agent.cfg">
+      <Filter>Agent2</Filter>
+    </None>
+  </ItemGroup>
+</Project>

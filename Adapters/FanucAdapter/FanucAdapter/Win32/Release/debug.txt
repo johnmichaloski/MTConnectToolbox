@@ -1,0 +1,15 @@
+2016-10-21T14:27:45.0620ZMTConnect Adapter  Configure Fri Oct 21 10:27:45 2016
+
+2016-10-21T15:10:20.0824ZFanucMTConnectAdapter::gatherDeviceData
+2016-10-21T15:10:20.0824ZiSeries::connect Using Protocol=LAN
+2016-10-21T15:10:20.0824ZiSeries::connect LAN cnc_allclibhndl3 IP=000.000.000.000  Port=8193
+2016-10-21T15:10:30.0843ZiSeries::connect cnc_allclibhndl Result:fffffff0
+ 2016-10-21T15:10:30.0843ZiSeries::connect cnc_allclibhndl3 failed  Error on machine 000.000.000.000 : EW_SOCKET - Windows socket error 
+2016-10-21T15:10:30.0843ZiSeries::connect FAILED Power = OFF
+2016-10-21T15:10:30.0844ZFanucMTConnectAdapter::gatherDeviceData
+2016-10-21T15:10:30.0844ZiSeries::connect LAN cnc_allclibhndl3 IP=000.000.000.000  Port=8193
+2016-10-21T15:10:40.0862ZiSeries::connect cnc_allclibhndl Result:fffffff0
+ 2016-10-21T15:10:41.0865ZFanucMTConnectAdapter::gatherDeviceData
+2016-10-21T15:10:41.0865ZiSeries::connect LAN cnc_allclibhndl3 IP=000.000.000.000  Port=8193
+2016-10-21T15:10:51.0883ZiSeries::connect cnc_allclibhndl Result:fffffff0
+ 

@@ -1,0 +1,6 @@
+-I"C:\Program Files\NIST\src\wtl81\Include" 
+-I"C:\Program Files\NIST\src\boost_1_54_0"
+-I.
+-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\FanucAdapter"
+-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\FanucAdapter\Adapter"
+-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\FanucAdapter\Fwlib"

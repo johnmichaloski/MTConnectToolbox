@@ -1,0 +1,6 @@
+-I"C:\Program Files\NIST\src\boost_1_61_0"
+-I.
+-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\FanucAgentx64"
+-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\FanucAgentx64\Agent\agent"
+-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\FanucAgentx64\Agent\lib"
+-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\FanucAgentx64\Agent\win32\libxml2-2.7.7\include"

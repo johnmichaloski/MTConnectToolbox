@@ -1,0 +1,941 @@
+MTConnect Agent Service Started Fri May 31 13:30:19 2013
+MTConnect Agent Service Started Fri May 31 13:30:19 2013
+2013-05-31T17:30:19.0557Z: FATAL [1] DebugLevel=5
+2013-05-31T17:30:19.0557Z: FATAL [2] Protocol=LAN
+2013-05-31T17:30:19.0557Z: FATAL [3] ScanDelay=1000
+2013-05-31T17:30:19.0557Z: FATAL [4] FanucPort=0
+2013-05-31T17:30:19.0557Z: FATAL [5] FocasDelay=1000
+2013-05-31T17:30:19.0557Z: FATAL [6] ResetAtMidnight=1
+2013-05-31T17:30:21.0026Z: FATAL [7] Agent will Reset from now    1.0000 
+2013-05-31T17:30:21.0026Z: FATAL [8] CCmdHandler::Cycle()
+2013-05-31T17:30:23.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:23.0026Z15iSeries::connect Using Protocol=LAN
+2013-05-31T17:30:23.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:23.0026Z: FATAL [9] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:24.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:24.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:24.0026Z: FATAL [10] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:25.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:25.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:25.0026Z: FATAL [11] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:26.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:26.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:26.0026Z: FATAL [12] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:27.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:27.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:27.0026Z: FATAL [13] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:28.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:28.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:28.0026Z: FATAL [14] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:29.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:29.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:29.0026Z: FATAL [15] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:30.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:30.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:30.0026Z: FATAL [16] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:31.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:31.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:31.0026Z: FATAL [17] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:32.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:32.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:32.0026Z: FATAL [18] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:33.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:33.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:33.0026Z: FATAL [19] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:34.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:34.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:34.0026Z: FATAL [20] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:35.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:35.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:35.0026Z: FATAL [21] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:36.0026ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:36.0026ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:36.0026Z: FATAL [22] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:37.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:37.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:37.0025Z: FATAL [23] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:38.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:38.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:38.0025Z: FATAL [24] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:39.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:39.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:39.0025Z: FATAL [25] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:40.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:40.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:40.0025Z: FATAL [26] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:41.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:41.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:41.0025Z: FATAL [27] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:42.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:42.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:42.0025Z: FATAL [28] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:43.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:43.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:43.0025Z: FATAL [29] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:44.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:44.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:44.0025Z: FATAL [30] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:45.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:45.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:45.0025Z: FATAL [31] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:46.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:46.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:46.0025Z: FATAL [32] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:47.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:47.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:47.0025Z: FATAL [33] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:48.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:48.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:48.0025Z: FATAL [34] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:49.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:49.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:49.0025Z: FATAL [35] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:50.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:50.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:50.0025Z: FATAL [36] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:51.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:51.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:51.0025Z: FATAL [37] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:52.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:52.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:52.0025Z: FATAL [38] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:53.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:53.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:53.0025Z: FATAL [39] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:54.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:54.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:54.0025Z: FATAL [40] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:55.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:55.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:55.0025Z: FATAL [41] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:56.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:56.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:56.0025Z: FATAL [42] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:57.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:57.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:57.0025Z: FATAL [43] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:58.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:58.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:58.0025Z: FATAL [44] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:30:59.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:30:59.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:30:59.0025Z: FATAL [45] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:00.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:00.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:00.0025Z: FATAL [46] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:01.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:01.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:01.0025Z: FATAL [47] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:02.0025ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:02.0025ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:02.0025Z: FATAL [48] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:03.0024ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:03.0024ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:03.0024Z: FATAL [49] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:04.0024ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:04.0024ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:04.0024Z: FATAL [50] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:05.0024ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:05.0024ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:05.0024Z: FATAL [51] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:06.0024ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:06.0040ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:06.0040Z: FATAL [52] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:07.0040ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:07.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:07.0102Z: FATAL [53] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:08.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:08.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:08.0102Z: FATAL [54] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:09.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:09.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:09.0102Z: FATAL [55] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:10.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:10.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:10.0102Z: FATAL [56] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:11.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:11.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:11.0102Z: FATAL [57] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:12.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:12.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:12.0102Z: FATAL [58] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:13.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:13.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:13.0102Z: FATAL [59] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:14.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:14.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:14.0102Z: FATAL [60] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:15.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:15.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:15.0102Z: FATAL [61] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:16.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:16.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:16.0102Z: FATAL [62] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:17.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:17.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:17.0102Z: FATAL [63] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:18.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:18.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:18.0102Z: FATAL [64] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:19.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:19.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:19.0102Z: FATAL [65] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:20.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:20.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:20.0102Z: FATAL [66] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:21.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:21.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:21.0102Z: FATAL [67] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:22.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:22.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:22.0102Z: FATAL [68] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:23.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:23.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:23.0102Z: FATAL [69] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:24.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:24.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:24.0102Z: FATAL [70] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:25.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:25.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:25.0102Z: FATAL [71] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:26.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:26.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:26.0102Z: FATAL [72] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:27.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:27.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:27.0102Z: FATAL [73] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:28.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:28.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:28.0102Z: FATAL [74] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:29.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:29.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:29.0102Z: FATAL [75] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:30.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:30.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:30.0102Z: FATAL [76] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:31.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:31.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:31.0102Z: FATAL [77] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:32.0102ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:32.0102ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:32.0102Z: FATAL [78] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:33.0101ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:33.0101ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:33.0101Z: FATAL [79] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:34.0101ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:34.0101ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:34.0101Z: FATAL [80] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:35.0101ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:35.0101ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:35.0101Z: FATAL [81] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:36.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:36.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:36.0117Z: FATAL [82] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:37.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:37.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:37.0117Z: FATAL [83] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:38.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:38.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:38.0117Z: FATAL [84] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:39.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:39.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:39.0117Z: FATAL [85] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:40.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:40.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:40.0117Z: FATAL [86] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:41.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:41.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:41.0117Z: FATAL [87] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:42.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:42.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:42.0117Z: FATAL [88] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:43.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:43.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:43.0117Z: FATAL [89] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:44.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:44.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:44.0117Z: FATAL [90] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:45.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:45.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:45.0117Z: FATAL [91] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:46.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:46.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:46.0117Z: FATAL [92] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:47.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:47.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:47.0117Z: FATAL [93] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:48.0117ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:48.0117ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:48.0117Z: FATAL [94] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:49.0116ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:49.0116ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:49.0116Z: FATAL [95] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:50.0116ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:50.0116ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:50.0116Z: FATAL [96] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:51.0116ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:51.0116ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:51.0116Z: FATAL [97] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:52.0116ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:52.0116ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:52.0116Z: FATAL [98] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:53.0116ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:53.0116ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:53.0116Z: FATAL [99] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:54.0116ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:54.0116ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:54.0116Z: FATAL [100] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:55.0116ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:55.0116ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:55.0116Z: FATAL [101] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:56.0116ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:56.0116ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:56.0116Z: FATAL [102] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:57.0116ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:57.0116ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:57.0116Z: FATAL [103] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:58.0116ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:58.0116ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:58.0116Z: FATAL [104] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:31:59.0116ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:31:59.0116ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:31:59.0116Z: FATAL [105] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:00.0116ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:00.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:00.0147Z: FATAL [106] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:01.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:01.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:01.0147Z: FATAL [107] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:02.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:02.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:02.0147Z: FATAL [108] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:03.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:03.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:03.0147Z: FATAL [109] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:04.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:04.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:04.0147Z: FATAL [110] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:05.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:05.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:05.0147Z: FATAL [111] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:06.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:06.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:06.0147Z: FATAL [112] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:07.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:07.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:07.0147Z: FATAL [113] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:08.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:08.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:08.0147Z: FATAL [114] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:09.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:09.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:09.0147Z: FATAL [115] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:10.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:10.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:10.0147Z: FATAL [116] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:11.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:11.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:11.0147Z: FATAL [117] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:12.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:12.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:12.0147Z: FATAL [118] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:13.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:13.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:13.0147Z: FATAL [119] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:14.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:14.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:14.0147Z: FATAL [120] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:15.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:15.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:15.0147Z: FATAL [121] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:16.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:16.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:16.0147Z: FATAL [122] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:17.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:17.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:17.0147Z: FATAL [123] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:18.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:18.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:18.0147Z: FATAL [124] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:19.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:19.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:19.0147Z: FATAL [125] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:20.0147ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:20.0147ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:20.0147Z: FATAL [126] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:21.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:21.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:21.0146Z: FATAL [127] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:22.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:22.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:22.0146Z: FATAL [128] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:23.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:23.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:23.0146Z: FATAL [129] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:24.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:24.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:24.0146Z: FATAL [130] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:25.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:25.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:25.0146Z: FATAL [131] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:26.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:26.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:26.0146Z: FATAL [132] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:27.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:27.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:27.0146Z: FATAL [133] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:28.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:28.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:28.0146Z: FATAL [134] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:29.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:29.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:29.0146Z: FATAL [135] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:30.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:30.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:30.0146Z: FATAL [136] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:31.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:31.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:31.0146Z: FATAL [137] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:32.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:32.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:32.0146Z: FATAL [138] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:33.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:33.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:33.0146Z: FATAL [139] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:34.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:34.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:34.0146Z: FATAL [140] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:35.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:35.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:35.0146Z: FATAL [141] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:36.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:36.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:36.0146Z: FATAL [142] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:37.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:37.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:37.0146Z: FATAL [143] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:38.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:38.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:38.0146Z: FATAL [144] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:39.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:39.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:39.0146Z: FATAL [145] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:40.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:40.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:40.0146Z: FATAL [146] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:41.0146ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:41.0146ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:41.0146Z: FATAL [147] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:42.0161ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:42.0193ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:42.0193Z: FATAL [148] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:43.0193ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:43.0193ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:43.0193Z: FATAL [149] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:44.0192ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:44.0192ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:44.0192Z: FATAL [150] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:45.0192ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:45.0192ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:45.0192Z: FATAL [151] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:46.0192ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:46.0192ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:46.0192Z: FATAL [152] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:47.0192ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:47.0192ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:47.0192Z: FATAL [153] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:48.0192ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:48.0192ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:48.0192Z: FATAL [154] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:49.0192ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:49.0192ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:49.0192Z: FATAL [155] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:50.0192ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:50.0192ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:50.0192Z: FATAL [156] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:51.0192ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:51.0192ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:51.0192Z: FATAL [157] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:52.0192ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:52.0192ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:52.0192Z: FATAL [158] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:53.0192ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:53.0192ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:53.0192Z: FATAL [159] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:54.0208ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:54.0208ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:54.0208Z: FATAL [160] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:55.0208ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:55.0208ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:55.0208Z: FATAL [161] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:56.0208ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:56.0208ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:56.0208Z: FATAL [162] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:57.0208ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:57.0208ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:57.0208Z: FATAL [163] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:58.0208ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:58.0208ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:58.0208Z: FATAL [164] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:32:59.0208ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:32:59.0208ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:32:59.0208Z: FATAL [165] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:00.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:00.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:00.0207Z: FATAL [166] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:01.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:01.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:01.0207Z: FATAL [167] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:02.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:02.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:02.0207Z: FATAL [168] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:03.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:03.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:03.0207Z: FATAL [169] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:04.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:04.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:04.0207Z: FATAL [170] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:05.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:05.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:05.0207Z: FATAL [171] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:06.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:06.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:06.0207Z: FATAL [172] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:07.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:07.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:07.0207Z: FATAL [173] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:08.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:08.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:08.0207Z: FATAL [174] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:09.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:09.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:09.0207Z: FATAL [175] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:10.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:10.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:10.0207Z: FATAL [176] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:11.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:11.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:11.0207Z: FATAL [177] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:12.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:12.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:12.0207Z: FATAL [178] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:13.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:13.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:13.0207Z: FATAL [179] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:14.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:14.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:14.0207Z: FATAL [180] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:15.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:15.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:15.0207Z: FATAL [181] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:16.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:16.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:16.0207Z: FATAL [182] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:17.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:17.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:17.0207Z: FATAL [183] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:18.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:18.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:18.0207Z: FATAL [184] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:19.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:19.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:19.0207Z: FATAL [185] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:20.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:20.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:20.0207Z: FATAL [186] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:21.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:21.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:21.0207Z: FATAL [187] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:22.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:22.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:22.0207Z: FATAL [188] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:23.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:23.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:23.0207Z: FATAL [189] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:24.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:24.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:24.0207Z: FATAL [190] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:25.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:25.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:25.0207Z: FATAL [191] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:26.0207ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:26.0207ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:26.0207Z: FATAL [192] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:27.0206ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:27.0206ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:27.0206Z: FATAL [193] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:28.0206ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:28.0206ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:28.0206Z: FATAL [194] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:29.0206ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:29.0222ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:29.0222Z: FATAL [195] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:30.0222ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:30.0222ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:30.0222Z: FATAL [196] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:31.0222ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:31.0222ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:31.0222Z: FATAL [197] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:32.0222ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:32.0222ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:32.0222Z: FATAL [198] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:33.0222ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:33.0222ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:33.0222Z: FATAL [199] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:34.0222ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:34.0222ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:34.0222Z: FATAL [200] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:35.0222ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:35.0222ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:35.0222Z: FATAL [201] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:36.0222ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:36.0222ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:36.0222Z: FATAL [202] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:37.0222ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:37.0222ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:37.0222Z: FATAL [203] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:38.0222ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:38.0222ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:38.0222Z: FATAL [204] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:39.0222ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:39.0222ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:39.0222Z: FATAL [205] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:40.0222ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:40.0222ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:40.0222Z: FATAL [206] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:41.0221ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:41.0221ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:41.0221Z: FATAL [207] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:42.0221ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:42.0221ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:42.0221Z: FATAL [208] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:43.0221ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:43.0221ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:43.0221Z: FATAL [209] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:44.0221ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:44.0221ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:44.0221Z: FATAL [210] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:45.0221ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:45.0221ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:45.0221Z: FATAL [211] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:46.0221ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:46.0221ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:46.0221Z: FATAL [212] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:47.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:47.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:47.0268Z: FATAL [213] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:48.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:48.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:48.0268Z: FATAL [214] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:49.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:49.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:49.0268Z: FATAL [215] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:50.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:50.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:50.0268Z: FATAL [216] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:51.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:51.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:51.0268Z: FATAL [217] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:52.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:52.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:52.0268Z: FATAL [218] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:53.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:53.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:53.0268Z: FATAL [219] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:54.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:54.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:54.0268Z: FATAL [220] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:55.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:55.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:55.0268Z: FATAL [221] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:56.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:56.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:56.0268Z: FATAL [222] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:57.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:57.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:57.0268Z: FATAL [223] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:58.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:58.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:58.0268Z: FATAL [224] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:33:59.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:33:59.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:33:59.0268Z: FATAL [225] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:00.0268ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:00.0268ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:00.0268Z: FATAL [226] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:01.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:01.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:01.0267Z: FATAL [227] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:02.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:02.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:02.0267Z: FATAL [228] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:03.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:03.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:03.0267Z: FATAL [229] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:04.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:04.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:04.0267Z: FATAL [230] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:05.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:05.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:05.0267Z: FATAL [231] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:06.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:06.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:06.0267Z: FATAL [232] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:07.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:07.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:07.0267Z: FATAL [233] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:08.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:08.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:08.0267Z: FATAL [234] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:09.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:09.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:09.0267Z: FATAL [235] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:10.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:10.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:10.0267Z: FATAL [236] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:11.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:11.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:11.0267Z: FATAL [237] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:12.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:12.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:12.0267Z: FATAL [238] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:13.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:13.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:13.0267Z: FATAL [239] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:14.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:14.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:14.0267Z: FATAL [240] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:15.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:15.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:15.0267Z: FATAL [241] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:16.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:16.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:16.0267Z: FATAL [242] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:17.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:17.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:17.0267Z: FATAL [243] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:18.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:18.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:18.0267Z: FATAL [244] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:19.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:19.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:19.0267Z: FATAL [245] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:20.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:20.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:20.0267Z: FATAL [246] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:21.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:21.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:21.0267Z: FATAL [247] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:22.0267ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:22.0267ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:22.0267Z: FATAL [248] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:23.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:23.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:23.0266Z: FATAL [249] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:24.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:24.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:24.0266Z: FATAL [250] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:25.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:25.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:25.0266Z: FATAL [251] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:26.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:26.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:26.0266Z: FATAL [252] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:27.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:27.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:27.0266Z: FATAL [253] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:28.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:28.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:28.0266Z: FATAL [254] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:29.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:29.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:29.0266Z: FATAL [255] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:30.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:30.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:30.0266Z: FATAL [256] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:31.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:31.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:31.0266Z: FATAL [257] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:32.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:32.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:32.0266Z: FATAL [258] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:33.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:33.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:33.0266Z: FATAL [259] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:34.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:34.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:34.0266Z: FATAL [260] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:35.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:35.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:35.0266Z: FATAL [261] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:36.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:36.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:36.0266Z: FATAL [262] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:37.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:37.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:37.0266Z: FATAL [263] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:38.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:38.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:38.0266Z: FATAL [264] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:39.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:39.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:39.0266Z: FATAL [265] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:40.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:40.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:40.0266Z: FATAL [266] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:41.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:41.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:41.0266Z: FATAL [267] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:42.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:42.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:42.0266Z: FATAL [268] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:43.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:43.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:43.0266Z: FATAL [269] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:44.0266ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:44.0266ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:44.0266Z: FATAL [270] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:45.0265ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:45.0265ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:45.0265Z: FATAL [271] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:46.0265ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:46.0265ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:46.0265Z: FATAL [272] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:47.0265ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:47.0265ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:47.0265Z: FATAL [273] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:48.0265ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:48.0265ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:48.0265Z: FATAL [274] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:49.0265ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:49.0265ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:49.0265Z: FATAL [275] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:50.0265ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:50.0265ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:50.0265Z: FATAL [276] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:51.0265ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:51.0265ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:51.0265Z: FATAL [277] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:52.0265ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:52.0265ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:52.0265Z: FATAL [278] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:53.0265ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:53.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:53.0296Z: FATAL [279] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:54.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:54.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:54.0296Z: FATAL [280] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:55.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:55.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:55.0296Z: FATAL [281] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:56.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:56.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:56.0296Z: FATAL [282] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:57.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:57.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:57.0296Z: FATAL [283] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:58.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:58.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:58.0296Z: FATAL [284] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:34:59.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:34:59.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:34:59.0296Z: FATAL [285] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:00.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:00.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:00.0296Z: FATAL [286] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:01.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:01.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:01.0296Z: FATAL [287] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:02.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:02.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:02.0296Z: FATAL [288] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:03.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:03.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:03.0296Z: FATAL [289] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:04.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:04.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:04.0296Z: FATAL [290] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:05.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:05.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:05.0296Z: FATAL [291] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:06.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:06.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:06.0296Z: FATAL [292] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:07.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:07.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:07.0296Z: FATAL [293] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:08.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:08.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:08.0296Z: FATAL [294] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:09.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:09.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:09.0296Z: FATAL [295] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:10.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:10.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:10.0296Z: FATAL [296] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:11.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:11.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:11.0296Z: FATAL [297] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:12.0296ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:12.0296ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:12.0296Z: FATAL [298] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:13.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:13.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:13.0295Z: FATAL [299] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:14.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:14.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:14.0295Z: FATAL [300] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:15.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:15.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:15.0295Z: FATAL [301] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:16.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:16.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:16.0295Z: FATAL [302] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:17.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:17.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:17.0295Z: FATAL [303] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:18.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:18.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:18.0295Z: FATAL [304] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:19.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:19.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:19.0295Z: FATAL [305] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:20.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:20.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:20.0295Z: FATAL [306] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:21.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:21.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:21.0295Z: FATAL [307] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:22.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:22.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:22.0295Z: FATAL [308] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:23.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:23.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:23.0295Z: FATAL [309] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:24.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:24.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:24.0295Z: FATAL [310] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:25.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:25.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:25.0295Z: FATAL [311] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:26.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:26.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:26.0295Z: FATAL [312] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:27.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:27.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:27.0295Z: FATAL [313] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:28.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:28.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:28.0295Z: FATAL [314] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:29.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:29.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:29.0295Z: FATAL [315] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:30.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:30.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:30.0295Z: FATAL [316] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:31.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:31.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:31.0295Z: FATAL [317] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB
+2013-05-31T17:35:32.0295ZFanucMTConnectAdapter::gatherDeviceData
+2013-05-31T17:35:32.0295ZiSeries::connect LAN cnc_allclibhndl3 IP=192.168.1.102  Port=0
+2013-05-31T17:35:32.0295Z: FATAL [318] THIS EXECUTABLE DOES NOT HANDLE LAN - EXCLUSIVELY Focas w/ Processing library for HSSB

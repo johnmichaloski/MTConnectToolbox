@@ -1,0 +1,47 @@
+MTConnect Agent Service Started Fri May 03 10:45:01 2013
+MTConnect Agent Service Started Fri May 03 10:45:01 2013
+2013-05-03T14:45:01.0253Z: FATAL [1] DebugLevel=0
+2013-05-03T14:45:01.0253Z: FATAL [2] Protocol=LAN
+2013-05-03T14:45:01.0253Z: FATAL [3] ScanDelay=1000
+2013-05-03T14:45:01.0253Z: FATAL [4] FanucPort=0
+2013-05-03T14:45:01.0253Z: FATAL [5] FocasDelay=1000
+2013-05-03T14:45:01.0253Z: FATAL [6] ResetAtMidnight=1
+2013-05-03T14:45:01.0284Z: FATAL [7] Agent will Reset from now    1.0000 
+2013-05-03T14:45:01.0284Z: FATAL [8] CCmdHandler::Cycle()
+2013-05-03T14:45:03.0299ZiSeries::connect Using Protocol=LAN
+2013-05-03T14:45:03.0299ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:45:13.0312Z: FATAL [9] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:45:13.0312ZiSeries::connect cnc_allclibhndl3 failed  Error on machine 127.0.0.1 : EW_SOCKET - Windows socket error 
+2013-05-03T14:45:13.0312ZiSeries::connect FAILED Power = OFF
+2013-05-03T14:45:24.0308ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:45:34.0321Z: FATAL [10] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:45:45.0317ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:45:55.0330Z: FATAL [11] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:46:06.0327ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:46:16.0339Z: FATAL [12] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:46:27.0336ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:46:37.0348Z: FATAL [13] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:46:48.0345ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:46:58.0358Z: FATAL [14] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:47:09.0354ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:47:19.0367Z: FATAL [15] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:47:30.0363ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:47:40.0376Z: FATAL [16] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:47:51.0373ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:48:01.0385Z: FATAL [17] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:48:12.0382ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:48:22.0394Z: FATAL [18] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:48:33.0391ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:48:43.0403Z: FATAL [19] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:48:54.0400ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:49:04.0413Z: FATAL [20] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:49:15.0409ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:49:25.0423Z: FATAL [21] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:49:36.0421ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:49:46.0436Z: FATAL [22] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:49:57.0434ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:50:07.0448Z: FATAL [23] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:50:18.0447ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:50:28.0492Z: FATAL [24] iSeries::connect cnc_allclibhndl3 Result: -16
+2013-05-03T14:50:39.0491ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-05-03T14:50:49.0505Z: FATAL [25] iSeries::connect cnc_allclibhndl3 Result: -16
