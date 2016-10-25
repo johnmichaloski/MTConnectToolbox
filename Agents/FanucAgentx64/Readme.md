@@ -201,11 +201,30 @@ In file dlib/noncopyable.
 	}
 	#endif  // DLIB_BOOST_NONCOPYABLE_HPP_INCLUDED
 
-##Missing lib  Add to project properties-> Linker->General
+##Missing libs
+Easiest way, is to add folder location to project properties-> Linker->General
 <CENTER>
 ![Figure16](./images/image16.jpg?raw=true)
 </CENTER>
 
+
+Better way, but sometime doesn't work, is to use the following MSVC++  preprocessor pragma code to include the libxml library, (declared in some cpp, in this case, FanucAgentx64.cpp)
+
+	#define MTCLIBPATH(X)      "C:\\Users\\michalos\\Documents\\Visual Studio 2015\\Projects\\FanucAgentx64\\Agent\\win32\\libxml2-2.7.7\\lib\\" ## X
+	#define FANUCLIBPATH(X)    "C:\\Users\\michalos\\Documents\\Visual Studio 2015\\Projects\\FanucAgentx64\\Fwlib64\\" ## X
+	
+	#if defined( WIN64 ) && defined( _DEBUG )
+	#pragma message( "DEBUG x64" )
+	#pragma comment(lib, MTCLIBPATH("libxml2_64d.lib"))
+	#pragma comment(lib, FANUCLIBPATH("fwlib64.lib"))
+	
+	#elif !defined( _DEBUG ) && defined( WIN64 )
+	#pragma message( "RELEASE x64" )
+	#pragma comment(lib,  MTCLIBPATH("libxml2_64.lib"))
+	#pragma comment(lib, FANUCLIBPATH("fwlib64.lib"))
+	#endif
+
+Note, you would have to change the MTCLIB and the FANUCLIBPATH to match the file locations on you git clone installation file location.
 ##Create console project - no precompiled ATL, etc.
  - Setup project as multibyte not Unicode string
  - Make Project options: Compiler-> code generation-> Runtime static lib use of C lib
@@ -217,7 +236,10 @@ Add these definitions:
  - WIN64 for 64 bit configurations for later #pragma lib includes described below
  - _NO_CRT_STDIO_INLINE for problem (9) doesn't solve but should
 ##Include files
-In project properties, Projects->Compiler->Command line Add: @IncludeDirs.txt¶You will have to adapt the full path to the location of your ¶FIle IncludeDirs.txt:
+In project properties, Projects->Compiler->Command line Add: 
+
+	@IncludeDirs.txt
+You will have to adapt the full path of the location of your files inside of IncludeDirs.txt:
 
 	-I"C:\Program Files\NIST\src\boost_1_61_0"
 	-I.
