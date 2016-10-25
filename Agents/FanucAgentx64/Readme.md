@@ -41,6 +41,7 @@ The installation wizard installs the Fanuc Agent into the folder: C:\Program Fil
 In the folder, the vb script MTConnectPage-1.4.vbs can be used to verify that the log file Agent is working. MTConnectPage-1.4.vbs reads the data from the agent e.g., http://127.0.0.1:5000 and then formats the data. (assuming you have configured the Agent port to 5000 in the install wizard).
 #Configuration
 ##Configuring MTConnect Fanuc Devices
+MTCFanucAgent.ini file is the ini file to handle configuration. 
 Configuration of the Devices.xml file is done with the "MTCFanucAgent.ini" file in the installation folder.  The Fanuc Agent looks in the [CONFIG] section at the "FanucDevices" tag to see how many devices with accompanying sections are defined.  (The device names must be unique and match the count of the FanucIpAddress entries, but no check is done.)  For example,
 
 	[CONFIG]
@@ -48,7 +49,7 @@ Configuration of the Devices.xml file is done with the "MTCFanucAgent.ini" file 
 	FanucDevices =Fanuc1
 	FanucIpAddress= 169.254.22.252
 specifies a device Fanuc1. 
-A complete config.ini file is shown below:
+A complete MTCFanucAgent.ini file is shown below:
 
 	[CONFIG]
 	NewDevicesFile=OLD
@@ -84,6 +85,7 @@ A complete config.ini file is shown below:
 	#Agent Port Number
 	HttpPort=5000
 
+The MTConnect Fanuc Agent will read the ini file: MTCFanucAgent.ini. In that you can configure a LAN agent to gather data from multiple devices, AND the agent will oeprate propely even if one or more of the Fanuc devices is not operational. Many of the parameter tags in the ini file are not used. The file is located in the exe folder, and must have the same "title" as the executable, i.e., MTCFanucAgent.  The following tags are important:
  - The tag DebugLevel specifies the logging level of information from 0..5, that is written to the file "debug.txt", found  in the Installation folder.
  - The tag FocasDelay specifies the delay in milliseconds between Fanuc device updates. For example, 1000 specifies one second (1000 milliseconds.)
  - The tag HttpPort specifies the Webpage port that the client will use to ccess the MTConnect Agent. For example, when HttpPort=5000 the MTConnect Agent is accessed via http://127.0.0.1:5000/current  to retrieve the latest data. Note the colon 5000 specfies the http port, if the port is 80 it can be omitted, but port 80 WILL NOT WORK IN Windows 7! Also note this tag is also found in Agent.cfg file, and once installed only the Agent.cfg http port is monitored by the Agent for http servicing.
@@ -112,42 +114,6 @@ Use the following steps to modify MTCFanucAgent.ini in C:\Program Files\MTConnec
 8193 is the Focas TCP port that the agent communicates through the Fanuc Adapter that connects to the Fanuc Focas library. Port 8193 must not be firewalled on the CNC/HMI side.
 This 8193 number is a Fanuc # so it is hardwired!
 Confirm Focas Installed
-##Configuring the MTConnect ini File
-MTCFanucAgent.ini file is the ini file to handle configuration. Many of the parameters in the ini file are not used. The name is located in the exe folder, and must have the same "title" as the executable, i.e., MTCFanucAgent. 
-
-	[CONFIG]
-	
-	DebugLevel=0
-	
-	#xyzabc
-	MachineToolConfig = xyz
-	
-	##########FOCAS######################
-	# IP address of Fanuc CNC
-	FanucIpAddress=136.241.9.81,136.241.9.82,136.241.9.83,136.241.9.43,136.241.8.31,136,241.8.130,136.241.8.156,136.241.8.164,136.241.8.162
-	
-	# TIme delay between updates focas updates
-	FocasDelay=1000
-	
-	#HSSB,LAN
-	Protocol=LAN
-	
-	# Port number
-	FanucPort=8193
-	
-	# Fanuc CNC version - ignored for now
-	#FanucVersion=iSeries
-	#FanucVersion=15i
-	FanucVersion=15M
-	
-	# Automatically detect Focas version - ignored
-	AutoVersionDetect=0
-	
-	##########AGENT######################
-	#Agent Port Number
-	HttpPort=80
-
-The MTConnect Fanuc Agent will read the ini file: MTC. In that you can configure a LAN agent to gather data from multiple devices, AND the agent will oeprate propely even if one or more of the Fanuc devices is not operational.
 ##Confirm FOCAS is installed
 **How can i check to see if i Fanuc FOCAS** 
 In order to see if you have Fanuc FOCAS available on your CNC, is to first check if you have Ethernet. To do that follow these steps:
