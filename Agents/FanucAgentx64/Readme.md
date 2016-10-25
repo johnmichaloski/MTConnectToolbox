@@ -99,6 +99,7 @@ Use the following steps to modify MTCFanucAgent.ini in C:\Program Files\MTConnec
  
 
 	[CONFIG]
+	
 	Config=NEW
 
  2. Add new devices under [CONFIG] section tag "FanucIpAddress" and "FanucDevices"  (spaces are stripped out)
@@ -216,7 +217,7 @@ Add these definitions:
  - WIN64 for 64 bit configurations for later #pragma lib includes described below
  - _NO_CRT_STDIO_INLINE for problem (9) doesn't solve but should
 ##Include files
-In project properties, Projects->Compiler->Command line Add: @IncludeDirs.txtYou will have to adapt the full path to the location of your FIle IncludeDirs.txt:
+In project properties, Projects->Compiler->Command line Add: @IncludeDirs.txt¶You will have to adapt the full path to the location of your ¶FIle IncludeDirs.txt:
 
 	-I"C:\Program Files\NIST\src\boost_1_61_0"
 	-I.
@@ -225,7 +226,7 @@ In project properties, Projects->Compiler->Command line Add: @IncludeDirs.txtYo
 	-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\FanucAgentx64\Agent\lib"
 	-I"C:\Users\michalos\Documents\Visual Studio 2015\Projects\FanucAgentx64\Agent\win32\libxml2-2.7.7\include"
 ##No gets() in service.cpp in VS 2015
-_The most recent revision of the C standard (2011) has definitively removed this function from its specification. The function is deprecated in C++ (as of 2011 standard, which follows C99+TC3)_ from http://stackoverflow.com/questions/12893774/what-is-gets-equivalent-in-c11
+_The most recent revision of the C standard (2011) has definitively removed this function from its specification. The function is deprecated in C++ (as of 2011 standard, which follows C99+TC3)._ from http://stackoverflow.com/questions/12893774/what-is-gets-equivalent-in-c11
 Subsituted:
 
 	while(gets_s(line, sizeof(line)) != NULL) {
@@ -239,7 +240,11 @@ l ibxml2d_a_v120_64.lib(error.obj) : error LNK2001: unresolved external symbol _
 http://stackoverflow.com/questions/30412951/unresolved-external-symbol-imp-fprintf-and-imp-iob-func-sdl2
 Added to project main file:
 
-	FILE _iob[] = {*stdin, *stdout, *stderr};extern "C" FILE * __cdecl __iob_func(void){   return _iob;}
+	FILE _iob[] = {*stdin, *stdout, *stderr};
+	extern "C" FILE * __cdecl __iob_func(void)
+	{
+	   return _iob;
+	}
 ## unresolved external symbol vfprintf 
 
 	#pragma comment(lib, "legacy_stdio_definitions.lib")
