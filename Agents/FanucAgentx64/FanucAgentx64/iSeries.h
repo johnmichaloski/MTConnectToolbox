@@ -1,4 +1,5 @@
 //
+
 // iSeries.h
 //
 
@@ -19,26 +20,25 @@ class CCmdHandler;
 class CiSeries
 {
 public:
-	CiSeries(CCmdHandler*);
-	~CiSeries(void);
-	int getStatus();
-	int getSpeeds();
-	int getPositions();
-	int getLine();
-	int getInfo();
-	int getVersion();
-	int getAlarmInfo();
-	int LogErrorMessage(std::string msg, short errcode);
-	int connect();
-	void disconnect();
-	CCmdHandler* _adapter;
-	int nBlockNum;
-	std::string lastprognum;
-	std::string lastFeed,lastX, lastY, lastZ, lastA, lastB;
-	int mLag;
-	void saveStateInfo();
+    CiSeries(CCmdHandler *);
+    ~CiSeries(void);
+    int  getStatus ( );
+    int  getSpeeds ( );
+    int  getPositions ( );
+    int  getLine ( );
+    int  getInfo ( );
+    int  getVersion ( );
+    int  getAlarmInfo ( );
+    int  LogErrorMessage (std::string msg, short errcode);
+    int  connect ( );
+    void disconnect ( );
+    CCmdHandler *_adapter;
+    int          nBlockNum;
+    std::string  lastprognum;
+    std::string  lastFeed, lastX, lastY, lastZ, lastA, lastB;
+    int          mLag;
+    void saveStateInfo ( );
 };
-
 
 #include "iSeries.cpp"
 #endif

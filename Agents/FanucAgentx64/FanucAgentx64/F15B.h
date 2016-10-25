@@ -1,4 +1,5 @@
 //
+
 // F15B.h
 //
 
@@ -12,25 +13,23 @@ class FanucMTConnectAdapter;
 class CF15B
 {
 public:
-	CF15B(CCmdHandler* f);
-	~CF15B(void);
-	int getPositions();
-	int getStatus();
-	int getSpeeds();
-	int getLine();
-	int getInfo();
-	int getVersion();
-	int connect();
-	void disconnect();
-	void saveStateInfo();
-	int LogErrorMessage(std::string msg, short errcode);
-	CCmdHandler* _adapter;
-  std::string lastprognum;
-  std::string lastFeed,lastX, lastY, lastZ, lastA, lastB;
-  int mLag;
-
+    CF15B(CCmdHandler *f);
+    ~CF15B(void);
+    int  getPositions ( );
+    int  getStatus ( );
+    int  getSpeeds ( );
+    int  getLine ( );
+    int  getInfo ( );
+    int  getVersion ( );
+    int  connect ( );
+    void disconnect ( );
+    void saveStateInfo ( );
+    int  LogErrorMessage (std::string msg, short errcode);
+    CCmdHandler *_adapter;
+    std::string  lastprognum;
+    std::string  lastFeed, lastX, lastY, lastZ, lastA, lastB;
+    int          mLag;
 };
-
 
 #include "F15B.cpp"
 #endif

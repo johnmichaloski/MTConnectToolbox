@@ -262,11 +262,6 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 		WritePrivateProfileString("CONFIG", "FanucIpAddress", ipaddr.c_str(), (path+"MTCFanucAgent.ini").c_str());
 		WritePrivateProfileString("CONFIG", "FanucDevices", devices.c_str(), (path+"MTCFanucAgent.ini").c_str());
 
-		//::MessageBox(NULL,(path+"superuser.bat").c_str(), "ALERT", MB_OK);
-		//RunSynchronousProcess(path+"superuser.bat","");
-//		::Sleep(4000);
-//		::MessageBox(NULL,"Create service with MTCAgent.exe", "ALERT", MB_OK);
-		
 		// Install and start service  
 		DbgOut("Create service with sc.exe and UAC");
 		//RunSynchronousProcess(path+"Agent.exe", " install");

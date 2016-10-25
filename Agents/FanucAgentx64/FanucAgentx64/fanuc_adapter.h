@@ -1,5 +1,5 @@
 /*
-* Copyright (c) 2008, AMT – The Association For Manufacturing Technology (“AMT”)
+* Copyright (c) 2008, AMT  The Association For Manufacturing Technology (AMT)
 * All rights reserved.
 *
 * Redistribution and use in source and binary forms, with or without
@@ -20,7 +20,7 @@
 * (COLLECTIVELY, THE "AMT PARTIES") AND PARTICIPANTS MAKE NO REPRESENTATION OR
 * WARRANTY OF ANY KIND WHATSOEVER RELATING TO THESE MATERIALS, INCLUDING, WITHOUT
 * LIMITATION, ANY EXPRESS OR IMPLIED WARRANTY OF NONINFRINGEMENT,
-* MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE. 
+* MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE.
 
 * LIMITATION OF LIABILITY. IN NO EVENT SHALL AMT, MTCONNECT, ANY OTHER AMT
 * PARTY, OR ANY PARTICIPANT BE LIABLE FOR THE COST OF PROCURING SUBSTITUTE GOODS
@@ -39,108 +39,103 @@
 #include "Service.hpp"
 #include <map>
 
-
 #ifdef F15i
 class CFS15D;
 #endif
 #ifdef iSERIES
 class CiSeries;
 #endif
-#ifdef F15M	
+#ifdef F15M
 class CF15B;
 #endif
 
-
-/* 
+/*
  * Provides a connection to the data available from the FANUC Focus library.
  */
-class FanucMTConnectAdapter : public Adapter , public MTConnectService
+class FanucMTConnectAdapter : public Adapter, public MTConnectService
 {
 protected:
 
 #ifdef F15i
-	CFS15D * _FS15D;
-	friend  CFS15D;
+    CFS15D * _FS15D;
+    friend  CFS15D;
 #endif
 
-#ifdef F15M	
-	CF15B * _F15M;
- 	friend CF15B;
+#ifdef F15M
+    CF15B * _F15M;
+    friend CF15B;
 #endif
 
 #ifdef iSERIES
-	CiSeries * _iSeries;
-	friend CiSeries;
+    CiSeries * _iSeries;
+    friend CiSeries;
 #endif
 
- /* Define all the data values here */
-  
+    /* Define all the data values here */
 
-  /* Events */
-  //Alarm mAlarm;
-  PowerState mPower;
-  Execution mExecution;
-  IntEvent mLine; 
-  ControllerMode mMode;
-  Event mProgram;
+    /* Events */
 
-  enum { X=1, Y=2, Z=4, A=8, B=16, C=32 };
-  //IntEvent mPartCount; // We have to figure this out
+    // Alarm mAlarm;
+    PowerState mPower;
+    Execution      mExecution;
+    IntEvent       mLine;
+    ControllerMode mMode;
+    Event          mProgram;
 
-  /* Samples */
-  /* Linear Axis */
-  Sample mXact;
-  Sample mYact;
-  Sample mZact;
-  Sample mAact;
-  Sample mBact;
-  Sample mCact;
-  
-  Sample mXload;
-  Sample mYload;
-  Sample mZload;
-  Sample mAload;
-  Sample mBload;
-  Sample mCload;
+    enum { X = 1, Y = 2, Z = 4, A = 8, B = 16, C = 32 };
 
+    // IntEvent mPartCount; // We have to figure this out
 
-  /* Spindle */
-  Sample mSpindleSpeed;  
-  Sample mSpindleSpeedOvr;  
-  Sample mSpindleSpeedLoad;  
-  
-  /* Path Feedrate */
-  Sample mPathFeedrate;
-  Sample mPathFeedrateOvr;
- 
-  unsigned short mFlibhndl;
-  bool mConnected;
-  int mDevicePort;
-  const char *mDeviceIP;
+    /* Samples */
+    /* Linear Axis */
+    Sample mXact;
+    Sample mYact;
+    Sample mZact;
+    Sample mAact;
+    Sample mBact;
+    Sample mCact;
 
-  int _nAxes;
-  std::map<char,int> axisnum;
+    Sample mXload;
+    Sample mYload;
+    Sample mZload;
+    Sample mAload;
+    Sample mBload;
+    Sample mCload;
 
+    /* Spindle */
+    Sample mSpindleSpeed;
+    Sample mSpindleSpeedOvr;
+    Sample mSpindleSpeedLoad;
 
-  virtual  void start();
-  virtual  void stop();
-  virtual  void initialize(int aArgc, const char *aArgv[]);
-  static int LogErrorMessage(std::string msg, short errcode);
-	void disconnect();
+    /* Path Feedrate */
+    Sample mPathFeedrate;
+    Sample mPathFeedrateOvr;
 
+    unsigned short mFlibhndl;
+    bool           mConnected;
+    int            mDevicePort;
+    const char *   mDeviceIP;
+
+    int                 _nAxes;
+    std::map<char, int> axisnum;
+
+    virtual void       start ( );
+    virtual void       stop ( );
+    virtual void       initialize (int aArgc, const char *aArgv[]);
+    static int         LogErrorMessage (std::string msg, short errcode);
+    void               disconnect ( );
 protected:
- void getVersion();
-  void getSpeeds();
-  void getLine();
-  void getStatus();
-  bool IsCNCRunning();
-
+    void               getVersion ( );
+    void               getSpeeds ( );
+    void               getLine ( );
+    void               getStatus ( );
+    bool               IsCNCRunning ( );
 public:
-  FanucMTConnectAdapter(int aServerPort, const char *aDeviceIP, int aDevicePort, int delay=100);
-  ~FanucMTConnectAdapter();
- 
-  virtual void gatherDeviceData();
-  static std::string getProgramName(char * buffer) ;
+    FanucMTConnectAdapter(int aServerPort, const char *aDeviceIP, int aDevicePort, int delay = 100);
+    ~FanucMTConnectAdapter( );
+
+    virtual void       gatherDeviceData ( );
+    static std::string getProgramName (char *buffer);
 };
 
 #endif

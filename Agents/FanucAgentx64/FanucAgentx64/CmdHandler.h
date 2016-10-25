@@ -1,9 +1,10 @@
 //
+
 // CmdHandler.h
 //
 
 // This software was developed by U.S. Government employees as part of
-// their official duties and is not subject to copyright. No warranty implied 
+// their official duties and is not subject to copyright. No warranty implied
 // or intended.
 
 #pragma once
@@ -19,51 +20,51 @@ class CF15B;
 class CCmdHandler
 {
 public:
-	CCmdHandler(AgentConfigurationEx * config);
-	~CCmdHandler(void);
-	void Configure(crp::Config	& config, 
-		std::string device, 
-		std::string ipaddr,
-		std::string port="8193"
-		);
-	void Stop(){ _mRunning=false; }
-	void Cycle();
-	std::map<std::string, std::string> _mtcValues;
-	void SetMTCTagValue( std::string tag, std::string value);
-	std::string GetMTCTagValue(std::string tag);
-	void disconnect();
+    CCmdHandler(AgentConfigurationEx *config);
+    ~CCmdHandler(void);
+    void               Configure (nist::Config & config,
+        std::string                             device,
+        std::string                             ipaddr,
+        std::string                             port = "8193"
+        );
+    void Stop ( ) { _mRunning = false; }
+    void               Cycle ( );
+    void               SetMTCTagValue (std::string tag, std::string value);
+    std::string        GetMTCTagValue (std::string tag);
+    void               disconnect ( );
+    void               AllOff ( );
+    virtual HRESULT    gatherDeviceData ( );
+    static std::string getProgramName (char *buffer);
 
-	AgentConfigurationEx *				_agentconfig;
-	//MTConnectStreamsParser				_parser;
-	crp::Config							_config;
-	std::string							_device, _ipaddr,_devicexmlpath;
-	bool								_mRunning;
-	std::mutex _access;
+    std::map<std::string, std::string> _mtcValues;
+    AgentConfigurationEx *             _agentconfig;
 
-	int _nAxes;
-	std::map<char,int> axisnum;
-	virtual HRESULT gatherDeviceData();
-	static std::string getProgramName(char * buffer) ;
-	unsigned short mFlibhndl;
-	bool mConnected;
-	int mDevicePort;
-	std::string mDeviceIP;
-	std::string sHeartbeat;
-	int heartbeat;
+	nist::Config _config;
+    std::string _device, _ipaddr, _devicexmlpath;
+    bool        _mRunning;
+    std::mutex  _access;
+
+    int                 _nAxes;
+    std::map<char, int> axisnum;
+
+    unsigned short mFlibhndl;
+    bool           mConnected;
+    int            mDevicePort;
+    std::string    mDeviceIP;
+    std::string    sHeartbeat;
+    int            heartbeat;
 #ifdef F15i
-	CFS15D * _FS15D;
-	friend  CFS15D;
+    CFS15D *_FS15D;
+    friend  CFS15D;
 #endif
 
-#ifdef F15M	
-	CF15B * _F15M;
-	friend CF15B;
+#ifdef F15M
+    CF15B *_F15M;
+    friend CF15B;
 #endif
 
 #ifdef iSERIES
-	CiSeries * _iSeries;
-	friend CiSeries;
+    CiSeries *_iSeries;
+    friend CiSeries;
 #endif
-	void CCmdHandler::AllOff();
-
 };
