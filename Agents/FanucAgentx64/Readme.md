@@ -101,10 +101,11 @@ Use the following steps to modify MTCFanucAgent.ini in C:\Program Files\MTConnec
 	[CONFIG]
 	Config=NEW
 
- 2. Add new devices under [GLOBALS] section tag "MTConnectDevice" (spaces are stripped out)
+ 2. Add new devices under [CONFIG] section tag "FanucIpAddress" and "FanucDevices"  (spaces are stripped out)
  
 
 	FanucIpAddress=136.241.9.81, 36.241.9.82
+	
 	FanucDevices=Fanuc1, Fanuc2
  3. Retart Fanuc agent, the agent will detect a new configuration, and then write a new Devices.xml file to add the new devices.
  4. If it works MTCFanucAgent.ini tag should say: "Config=UPDATED" if a problem tag will say: "Config=ERROR"
@@ -116,14 +117,16 @@ This 8193 number is a Fanuc # so it is hardwired!
 Confirm Focas Installed
 ##Confirm FOCAS is installed
 **How can i check to see if i Fanuc FOCAS** 
-In order to see if you have Fanuc FOCAS available on your CNC, is to first check if you have Ethernet. To do that follow these steps:
-Press the [SYSTEM] hard key.
-Press [>] approximately 5 times until you see "ETHPRM"
-Press {ETHPRM} soft key, followed by {OPRT}
-This will display the ethernet connections available.
-Select a connection (normally EMBEDD or BOARD)
-Press the [DOWN] hard key. (page 2)
-This should display FOCAS / ETHERNET
+In order to see if you have Fanuc FOCAS available on your CNC, is to first check if you have Ethernet. To do that follow these steps:
+
+	Press the [SYSTEM] hard key.
+	Press [>] approximately 5 times until you see "ETHPRM"
+	Press {ETHPRM} soft key, followed by {OPRT}
+	This will display the ethernet connections available.
+	Select a connection (normally EMBEDD or BOARD)
+	Press the [DOWN] hard key. (page 2)
+	This should display FOCAS / ETHERNET
+
 FOCAS is an optional function.  If it is installed, the setting screen will be available.  The screen is located under the system hard key; followed by the continuous menu soft key several times.
 <CENTER>
 ![Figure8](./images/image8.jpg?raw=true)
