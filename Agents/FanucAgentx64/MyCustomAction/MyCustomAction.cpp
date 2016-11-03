@@ -267,7 +267,7 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 		//RunSynchronousProcess(path+"Agent.exe", " install");
 		//RunSynchronousProcessUAC("Agent.exe", " install", path);
 		//RunSynchronousProcessUAC("Install.bat", "", path);
-		RunSynchronousProcessUAC("sc.exe", " create "+ ServiceName + " start= auto binpath= \"" + path+"Agent.exe\"", "");
+		RunSynchronousProcessUAC("sc.exe", " create "+ ServiceName + " start= auto binpath= \"" + path+"FanucAgent.exe\"", "");
 		//RunSynchronousProcess(path+"Install.bat","");
 		DbgOut("sc start MTCAgent \n");
 		//RunSynchronousProcess("sc.exe", " start MTCAgent");
