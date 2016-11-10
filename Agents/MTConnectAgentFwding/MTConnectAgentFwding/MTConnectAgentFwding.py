@@ -43,6 +43,7 @@ URL="agent.mtconnect.org:80"
 SERVICENAME="MTConnectAgentForwarding"
 SLEEPAMT=3.0
 REQUERYAMT=10.0
+debuglevel=0
 
 ####### Global variables #######
 dfile=open(sys.path[0]+'/debug.txt', 'w', 0)
@@ -76,11 +77,17 @@ def doConfig():
         URL=get_with_default("MTCONNECT","backurl", "agent.mtconnect.org:80") # tagdictionary["MTCONNECT"]["backurl"]
         SERVICENAME=get_with_default("MTCONNECT","servicename", "MTConnectFwdAgent")# tagdictionary["MTCONNECT"]["servicename"]
         SLEEPAMT=float(get_with_default("MTCONNECT","refresh","8.0")) # tagdictionary["MTCONNECT"]["refresh"])
+        debuglevel=int(get_with_default("MTCONNECT","debuglevel", "0")) 
         #REQUERYAMT=tagdictionary["MTCONNECT"]["refresh"]
+        # Check legal URL - strip off leading http:// and trailing /current
+        URL = URL.replace("http://","")
+        index = URL.find("/current")
+        if(index >= 0): URL = URL[:index]
         dfile.write(time.asctime() + "PORT_NUMBER=" + str(PORT_NUMBER)+"\n")
         dfile.write(time.asctime() + "URL=" + URL+"\n")
         dfile.write(time.asctime() + "SERVICENAME=" + SERVICENAME+"\n")
         dfile.write(time.asctime() + "SLEEPAMT=" + str(SLEEPAMT)+"\n")
+        dfile.write(time.asctime() + "debuglevel=" + str(debuglevel)+"\n")
     except:
         dfile.write(time.asctime() + "doConfig exception\n")
  
@@ -151,8 +158,8 @@ def do_UPDATE():
     except Exception:
         dfile.write(time.asctime() + "MTConnect update exception\n")
         var = traceback.format_exc()
-        dfile.write(time.asctime() + var)
-        # or
+        if(debuglevel>0):
+            dfile.write(time.asctime() + var)
         bConnected=False 
 
 class MyWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
@@ -161,16 +168,21 @@ class MyWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         s.send_header("Content-type", "text/xml")
         s.end_headers()
     def do_GET(s):
-        global agentxml
-        """Respond to a GET request."""
-        s.send_response(200)
-        s.send_header("Content-type", "text/xml")
-        s.end_headers()
-        # Only handling current since there are substitutions
-        if( s.path == "/current" ) :
-            s.wfile.write(agentxml)
-
-
+        try:
+            global agentxml
+            """Respond to a GET request."""
+            s.send_response(200)
+            s.send_header("Content-type", "text/xml")
+            s.end_headers()
+            # Only handling current since there are substitutions
+            if(s.path.find("/current") >= 0) : # could bee /DeviceName/current
+                s.wfile.write(agentxml)
+        except Exception:
+            dfile.write(time.asctime() + "do_GET exception\n")
+            var = traceback.format_exc()
+            if(debuglevel > 0):
+                dfile.write(time.asctime() + var)
+ 
 def run_while_true(server_class=BaseHTTPServer.HTTPServer,
                    handler_class=BaseHTTPServer.BaseHTTPRequestHandler):
     """
@@ -214,18 +226,17 @@ class Service (win32serviceutil.ServiceFramework):
         socket.setdefaulttimeout(60)
         # This is how long the service will wait to run / refresh itself (see script below)
         self.timeout = 30000     #30 seconds
-        doConfig()
+        self.stop_event = win32event.CreateEvent(None, 0, 0, None)
 
     def log(self, msg):
-        import servicemanager
-        servicemanager.LogInfoMsg(str(msg))
+        #import servicemanager
+        #servicemanager.LogInfoMsg(str(msg))
+        dfile.write(time.asctime() + msg + "\n")
     def sleep(self, sec):
         win32api.Sleep(sec*1000, True)
     def SvcStop(self):
         self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
-        self.log('stopping')
         self.stop()
-        self.log('stopped')
         win32event.SetEvent(self.stop_event)
         self.ReportServiceStatus(win32service.SERVICE_STOPPED)
 
@@ -233,11 +244,8 @@ class Service (win32serviceutil.ServiceFramework):
         self.ReportServiceStatus(win32service.SERVICE_START_PENDING)
         try:
             self.ReportServiceStatus(win32service.SERVICE_RUNNING)
-            self.log('start')
             self.start()
-            self.log('wait')
             win32event.WaitForSingleObject(self.stop_event, win32event.INFINITE)
-            self.log('done')
         except Exception, x:
             self.log('Exception : %s' % x)
             self.SvcStop()
@@ -246,14 +254,13 @@ class Service (win32serviceutil.ServiceFramework):
         self.runflag=True
         while self.runflag:
             self.sleep(10)
-            self.log("I'm alive ...")
     def stop(self):
         global bflag
         self.runflag=False
         bflag=False
-        self.log("I'm done")
 
 if __name__ == '__main__':
+    doConfig()
     if len(sys.argv) == 1:
         servicemanager.Initialize()
         servicemanager.PrepareToHostSingle(Service)

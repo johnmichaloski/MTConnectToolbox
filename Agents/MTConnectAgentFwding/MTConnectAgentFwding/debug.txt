@@ -1,11 +1,7 @@
-Tue Nov 08 15:08:35 2016doConfig readc:\users\michalos\documents\visual studio 2010\Projects\MTConnectAgentFwding\MTConnectAgentFwding\Config.INI
-Tue Nov 08 15:08:35 2016PORT_NUMBER=5010
-Tue Nov 08 15:08:35 2016URL=agent.mtconnect.org:80
-Tue Nov 08 15:08:35 2016SERVICENAME=MTConnectAgentFwd
-Tue Nov 08 15:08:35 2016SLEEPAMT=5.0
-Tue Nov 08 15:08:35 2016['c:\\users\\michalos\\documents\\visual studio 2010\\Projects\\MTConnectAgentFwding\\MTConnectAgentFwding\\MTConnectAgentFwding.py', 'debug']
-Tue Nov 08 15:08:35 2016 Server Starts - 127.0.0.1:5010
-Traceback (most recent call last):
-  File "c:\users\michalos\documents\visual studio 2010\Projects\MTConnectAgentFwding\MTConnectAgentFwding\MTConnectAgentFwding.py", line 149, in do_UPDATE
-    raise TypeError("Again !?!")
-TypeError: Again !?!
+Thu Nov 10 09:51:28 2016doConfig readc:\users\michalos\documents\visual studio 2010\Projects\MTConnectAgentFwding\MTConnectAgentFwding\Config.INI
+Thu Nov 10 09:51:28 2016PORT_NUMBER=5010
+Thu Nov 10 09:51:28 2016URL=agent.mtconnect.org:80
+Thu Nov 10 09:51:28 2016SERVICENAME=MTConnectAgentFwd
+Thu Nov 10 09:51:28 2016SLEEPAMT=5.0
+Thu Nov 10 09:51:28 2016debuglevel=5
+Thu Nov 10 09:51:28 2016 Server Starts - 127.0.0.1:5010
