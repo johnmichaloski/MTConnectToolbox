@@ -167,19 +167,19 @@ Then a simple service overload was used to integrate with the Windows service ma
 	        self.hWaitStop = win32event.CreateEvent(None,0,0,None)
 	        
 	        socket.setdefaulttimeout(60)
+	        # This is how long the service will wait to run / refresh itself (see script below)
 	        self.timeout = 30000     #30 seconds
-	        doConfig()
+	        self.stop_event = win32event.CreateEvent(None, 0, 0, None)
 	
 	    def log(self, msg):
-	        import servicemanager
-	        servicemanager.LogInfoMsg(str(msg))
+	        #import servicemanager
+	        #servicemanager.LogInfoMsg(str(msg))
+	        dfile.write(time.asctime() + msg + "\n")
 	    def sleep(self, sec):
 	        win32api.Sleep(sec*1000, True)
 	    def SvcStop(self):
 	        self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
-	        self.log('stopping')
 	        self.stop()
-	        self.log('stopped')
 	        win32event.SetEvent(self.stop_event)
 	        self.ReportServiceStatus(win32service.SERVICE_STOPPED)
 	
@@ -187,11 +187,8 @@ Then a simple service overload was used to integrate with the Windows service ma
 	        self.ReportServiceStatus(win32service.SERVICE_START_PENDING)
 	        try:
 	            self.ReportServiceStatus(win32service.SERVICE_RUNNING)
-	            self.log('start')
 	            self.start()
-	            self.log('wait')
 	            win32event.WaitForSingleObject(self.stop_event, win32event.INFINITE)
-	            self.log('done')
 	        except Exception, x:
 	            self.log('Exception : %s' % x)
 	            self.SvcStop()
@@ -200,14 +197,14 @@ Then a simple service overload was used to integrate with the Windows service ma
 	        self.runflag=True
 	        while self.runflag:
 	            self.sleep(10)
-	            self.log("I'm alive ...")
 	    def stop(self):
 	        global bflag
 	        self.runflag=False
-	        bflag=False
-	        self.log("I'm done")
-
-
+	        bflag=False
+There is event logging but most was removed as the possibility of overflowing the event log with meaningless and hard to get to error messages was deemed imprudent. A note of caution, don't change
+
+	      socket.setdefaulttimeout(60)
+to 0, or you will get socket timeout error. They appeared mysterious at first, but not upon reflection.
 To be a service to be installed or a service to be started or an application required the main routine to handle all three cases. Numerous attempts did not work. Pywin32 will do straight python into a service with the install command, and will handle the service start directly. However, it was preferred to bundle the python and not make users install python when they are only using an executable. So pyinstaller would have to treat the exe as a service which is different than a normal application and was not intuitive. Fortunately, someone on the internet figured is out and posted the answer:  http://stackoverflow.com/questions/25770873/python-windows-service-pyinstaller-executables-error-1053/25934756#25934756  under the section of "Try changing the last few lines to" without which I would still be cursing. I added the ability to run the exe as a regular application.
 
 
@@ -221,9 +218,23 @@ To be a service to be installed or a service to be started or an application req
 	    else:
 	        win32serviceutil.HandleCommandLine(Service)
 
-
-
-
+#Troubleshooting
+This section covers problems that have been encountered using the forwarding agent. 
+The easiest way to test the forwarding agent is to start a web browser on the host machine and enter the URL: http://127.0.0.1:5000/current and see if any MTConnect XML data appears. (This assumes the port 5000 matches the port entered either by the msi install script or by manually configuring the Config.ini file. Start with the local host (127.0.0.1) since the firewall is not involved. Make sure the connection works and the MTConnect data is being refreshed. 
+After this has web connection to the local URL has been established, you can then try a remote web connection. You will need the ip of the PC that is hosting the forwarding agent. Just replace the 127.0.01 with the PC ip address. If this fails, you probably have a firewall blocking the access to the port, see section on Firewall issues.
+##This page can't be displayed
+You will attempt to read data from the forwarding agent and you will get a page can't be displayed with a number of potential issues:
+<CENTER>
+![Figure10](./images/image10.jpg?raw=true)
+</CENTER>
+
+<p align="center">
+_Figure 1 Connection Problem_
+</p>
+This is due to the forwarding agent ONLY handling "/current" requests: i.e., http://ipaddress:xxx/current.
+##Firewall Issues
+The windows firewall or other firewall can block access to this and any other MTConnect agent URL with a port. So you should check if a firewall is blocking port 5000.  If the Windows firewall is turned off, this shouldn't block access through the port to the forwarding agent. Unfortunately, there can be a hardware or other firewall installed which can block the access.  Whenever possible, turn them off and try to connect. If you can connect, open the port and then restart the firewall.
+See URL: https://support.microsoft.com/en-us/instantanswers/c9955ad9-1239-4cb2-988c-982f851617ed/turn-windows-firewall-on-or-off for explanation of turning off firewall.
 
 
 Autogenerated from Microsoft Word by [Word2Markdown](https://github.com/johnmichaloski/SoftwareGadgets/tree/master/Word2Markdown)
