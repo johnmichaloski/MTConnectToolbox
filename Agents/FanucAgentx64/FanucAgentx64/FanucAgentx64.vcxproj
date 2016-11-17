@@ -182,6 +182,7 @@
     <ClInclude Include="..\Agent\agent\xml_printer.hpp" />
     <ClInclude Include="AgentCfg.h" />
     <ClInclude Include="CmdHandler.h" />
+    <ClInclude Include="Config.h" />
     <ClInclude Include="F15B.h" />
     <ClInclude Include="fanuc_adapter.h" />
     <ClInclude Include="FS15D.h" />
