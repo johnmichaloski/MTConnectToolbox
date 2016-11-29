@@ -37,7 +37,7 @@ except ImportError:
 
 
 ####### Configuration Parameters #######
-HOST_NAME = '127.0.0.1' 
+HOST_NAME = '0.0.0.0' 
 PORT_NUMBER = 5010
 URL="agent.mtconnect.org:80"
 SERVICENAME="MTConnectAgentForwarding"
@@ -49,7 +49,7 @@ debuglevel=0
 dfile=open(sys.path[0]+'/debug.txt', 'w', 0)
 bflag=True
 bConnected=False
-agentxml = '<head>get your yayas out </head>'
+agentxml = '<error> no mtconnect data from back end agent! </error>'
 lock=threading.Lock()
 tagdictionary = {}
 
@@ -175,8 +175,8 @@ class MyWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             s.send_header("Content-type", "text/xml")
             s.end_headers()
             # Only handling current since there are substitutions
-            if(s.path.find("/current") >= 0) : # could bee /DeviceName/current
-                s.wfile.write(agentxml)
+            #if(s.path.find("/current") >= 0) : # could bee /DeviceName/current
+            s.wfile.write(agentxml)
         except Exception:
             dfile.write(time.asctime() + "do_GET exception\n")
             var = traceback.format_exc()
@@ -191,14 +191,31 @@ def run_while_true(server_class=BaseHTTPServer.HTTPServer,
     is true, the server continues.
     """
     global bConnected
-    dfile.write( time.asctime()+ " Server Starts - %s:%s\n" % (HOST_NAME, PORT_NUMBER))
-    server_address = (HOST_NAME, PORT_NUMBER)
-    httpd = server_class(server_address, MyWebHandler)
+    ServerClass = BaseHTTPServer.HTTPServer
+    Protocol = "HTTP/1.0"
+    dfile.write(time.asctime() + " Server Starts - %s:%s\n" % (HOST_NAME, PORT_NUMBER))
+
+    MyWebHandler.protocol_version = Protocol
+    httpd = ServerClass((HOST_NAME, PORT_NUMBER), MyWebHandler)
+
+ 
+ #    httpd = server_class((HOST_NAME, PORT_NUMBER), MyWebHandler)
     while bflag:
-        if bConnected:
-            httpd.handle_request()
-        else:
-            time.sleep(REQUERYAMT)
+        try:
+            if bConnected:
+                httpd.handle_request()
+            else:
+                time.sleep(REQUERYAMT)
+
+        except urllib.URLError as e: 
+            dfile.write(time.asctime() + 'cannot get %s - %s' % (szurl,e.reason)) 
+        except urllib.HTTPError as e: 
+            dfile.write(time.asctime() + 'cannot get %s - server reply: %d %s' % (szurl,e.code,e.reason)) 
+        except (IOError,httplib.BadStatusLine,httplib.HTTPException): 
+            dfile.write(time.asctime() + 'cannot get %s - connection reset by router or firewall' % szurl) 
+        except socket.error as msg: 
+            dfile.write(time.asctime() + 'cannot get %s - %s' % (szurl,msg)) 
+
     httpd.server_close()
     dfile.write( time.asctime()+ "Server Stops - %s:%s\n" % (HOST_NAME, PORT_NUMBER))
 

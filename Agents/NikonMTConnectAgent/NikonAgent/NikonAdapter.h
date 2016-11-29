@@ -174,4 +174,5 @@ public:
   std::string   _Password;
   std::string   _LocalShare;
   std::string   _NetworkShare;
+  bool			_bNotProductionMode;
 };

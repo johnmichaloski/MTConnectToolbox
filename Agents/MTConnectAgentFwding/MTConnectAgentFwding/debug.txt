@@ -1,7 +1,7 @@
-Thu Nov 10 09:51:28 2016doConfig readc:\users\michalos\documents\visual studio 2010\Projects\MTConnectAgentFwding\MTConnectAgentFwding\Config.INI
-Thu Nov 10 09:51:28 2016PORT_NUMBER=5010
-Thu Nov 10 09:51:28 2016URL=agent.mtconnect.org:80
-Thu Nov 10 09:51:28 2016SERVICENAME=MTConnectAgentFwd
-Thu Nov 10 09:51:28 2016SLEEPAMT=5.0
-Thu Nov 10 09:51:28 2016debuglevel=5
-Thu Nov 10 09:51:28 2016 Server Starts - 127.0.0.1:5010
+Mon Nov 28 11:59:20 2016doConfig readC:\Users\michalos\Documents\Visual Studio 2010\Projects\MTConnectAgentFwding\MTConnectAgentFwding\Config.INI
+Mon Nov 28 11:59:20 2016PORT_NUMBER=5010
+Mon Nov 28 11:59:20 2016URL=agent.mtconnect.org:80
+Mon Nov 28 11:59:20 2016SERVICENAME=MTConnectAgentFwd
+Mon Nov 28 11:59:20 2016SLEEPAMT=5.0
+Mon Nov 28 11:59:20 2016debuglevel=5
+Mon Nov 28 11:59:20 2016 Server Starts - 0.0.0.0:5010

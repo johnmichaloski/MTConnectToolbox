@@ -242,7 +242,8 @@ int _tmain (int argc, _TCHAR *argv[])
 	remove((File.ExeDirectory( ) + "MaydayMayday.txt").c_str());
 
 	std::vector<std::string>::iterator it =	std::find(filepaths.begin(), filepaths.end(), modulepath);
-	filepaths.erase(it);  // delete 1 - my running image
+	if(it != filepaths.end())
+		filepaths.erase(it);  // delete 1 - my running image
 	// if another one - bad news
 	it =	std::find(filepaths.begin(), filepaths.end(), modulepath);
 	if(it != filepaths.end())
