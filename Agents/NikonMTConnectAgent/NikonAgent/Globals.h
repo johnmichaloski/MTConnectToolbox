@@ -24,6 +24,7 @@ public:
   std::string HttpPort;
   std::string ServerName;
   std::string sNewConfig;
+  std::string shiftchanges;
   int         ResetAtMidnight;
   int &       DbgConsole;
   CGlobals( ) : Debug(GLogger.DebugLevel( ) ),

@@ -175,6 +175,7 @@ End Function
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 function updatetable(machine)
      On Error Resume Next
+
   	updatetable=""
 	xmlDoc1.Load("http://" & machine & "/current")
 	if(  0 <> Err.Number ) then 

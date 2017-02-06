@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF8"?>
+<MTConnectStreams xmlns="urn:mtconnect.org:MTConnectStreams:1.3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectStreams:1.3 /schemas/MTConnectStreams_1.3.xsd">
+  <Header bufferSize="131072" creationTime="2016-12-01T20:16:40Z" firstSequence="698990369" instanceId="1477551516" lastSequence="699121440" nextSequence="699121441" sender="mtcagent" version="1.3.0.9" />
+  <Streams>
+    <DeviceStream name="VMC-3Axis" uuid="000">
+      <ComponentStream component="Rotary" componentId="c1" name="C">
+        <Samples>
+          <SpindleSpeed dataItemId="c2" name="Sspeed" sequence="699099326" subType="ACTUAL" timestamp="2016-12-01T20:15:18.102480">3400.0</SpindleSpeed>
+          <SpindleSpeed dataItemId="c3" name="Sovr" sequence="698909714" subType="OVERRIDE" timestamp="2016-12-01T20:01:58.466282">100.0000000000</SpindleSpeed>
+          <Load dataItemId="cl3" name="Cload" sequence="15" timestamp="2016-10-27T06:58:36.237647Z">UNAVAILABLE</Load>
+        </Samples>
+        <Events>
+          <RotaryMode dataItemId="cm" name="Cmode" sequence="18" timestamp="2016-10-27T06:58:36.237647Z">SPINDLE</RotaryMode>
+        </Events>
+        <Condition>
+          <Normal dataItemId="Cloadc" sequence="698909721" timestamp="2016-12-01T20:01:58.467110" type="LOAD" />
+          <Unavailable dataItemId="Csystem" sequence="2" timestamp="2016-10-27T06:58:36.237647Z" type="SYSTEM" />
+        </Condition>
+      </ComponentStream>
+      <ComponentStream component="Controller" componentId="cn1" name="controller">
+        <Events>
+          <EmergencyStop dataItemId="estop" sequence="699087683" timestamp="2016-12-01T20:14:08.615518">ARMED</EmergencyStop>
+          <Message dataItemId="msg" sequence="35" timestamp="2016-10-27T06:58:36.237647Z">UNAVAILABLE</Message>
+        </Events>
+        <Condition>
+          <Normal dataItemId="clp" sequence="698909725" timestamp="2016-12-01T20:01:58.467590" type="LOGIC_PROGRAM" />
+          <Unavailable dataItemId="motion" sequence="34" timestamp="2016-10-27T06:58:36.237647Z" type="MOTION_PROGRAM" />
+          <Unavailable dataItemId="system" sequence="38" timestamp="2016-10-27T06:58:36.237647Z" type="SYSTEM" />
+        </Condition>
+      </ComponentStream>
+      <ComponentStream component="Coolant" componentId="cool" name="coolant">
+        <Condition>
+          <Normal dataItemId="clow" sequence="698909717" timestamp="2016-12-01T20:01:58.466440" type="LEVEL" />
+          <Unavailable dataItemId="coolantmotor" sequence="25" timestamp="2016-10-27T06:58:36.237647Z" type="ACTUATOR" />
+          <Unavailable dataItemId="coolpres" sequence="26" timestamp="2016-10-27T06:58:36.237647Z" type="PRESSURE" />
+          <Unavailable dataItemId="filter" sequence="30" timestamp="2016-10-27T06:58:36.237647Z" type="x:FILTER" />
+        </Condition>
+      </ComponentStream>
+      <ComponentStream component="Device" componentId="dev" name="VMC-3Axis">
+        <Events>
+          <Availability dataItemId="avail" sequence="698909716" timestamp="2016-12-01T20:01:58.466282">AVAILABLE</Availability>
+          <AssetChanged assetType="" dataItemId="dev_asset_chg" sequence="27" timestamp="2016-10-27T06:58:36.237647Z">UNAVAILABLE</AssetChanged>
+          <AssetRemoved assetType="" dataItemId="dev_asset_rem" sequence="28" timestamp="2016-10-27T06:58:36.237647Z">UNAVAILABLE</AssetRemoved>
+        </Events>
+      </ComponentStream>
+      <ComponentStream component="Electric" componentId="el" name="electric">
+        <Events>
+          <PowerState dataItemId="p2" name="power" sequence="698909699" timestamp="2016-12-01T20:01:58.466282">ON</PowerState>
+        </Events>
+      </ComponentStream>
+      <ComponentStream component="Hydraulic" componentId="hsys" name="hydrolic">
+        <Condition>
+          <Normal dataItemId="hlow" sequence="698909718" timestamp="2016-12-01T20:01:58.466576" type="LEVEL" />
+          <Normal dataItemId="hpres" sequence="698909719" timestamp="2016-12-01T20:01:58.466784" type="PRESSURE" />
+          <Normal dataItemId="htemp" sequence="698992512" timestamp="2016-12-01T20:06:56.608188" type="TEMPERATURE" />
+        </Condition>
+      </ComponentStream>
+      <ComponentStream component="Path" componentId="pth" name="path">
+        <Samples>
+          <PathFeedrate dataItemId="path_feedrateovr" sequence="698909713" timestamp="2016-12-01T20:01:58.466282">100.0000000000</PathFeedrate>
+          <PathFeedrate dataItemId="path_feedratefrt" sequence="699121422" timestamp="2016-12-01T20:16:39.923371">0.4</PathFeedrate>
+          <PathPosition dataItemId="Ppos" sequence="5" subType="ACTUAL" timestamp="2016-10-27T06:58:36.237647Z">UNAVAILABLE</PathPosition>
+        </Samples>
+        <Events>
+          <Block dataItemId="cn2" name="block" sequence="699121417" timestamp="2016-12-01T20:16:39.910843">X-0.724806 Y1.508951</Block>
+          <ControllerMode dataItemId="cn3" name="controllermode" sequence="698909711" timestamp="2016-12-01T20:01:58.466282">AUTOMATIC</ControllerMode>
+          <Line dataItemId="cn4" name="line" sequence="699121411" timestamp="2016-12-01T20:16:39.910843">170</Line>
+          <Program dataItemId="cn5" name="program" sequence="698909710" timestamp="2016-12-01T20:01:58.466282">FLANGE_CAM.NGC</Program>
+          <Execution dataItemId="cn6" name="execution" sequence="699099484" timestamp="2016-12-01T20:15:18.565178">EXECUTING</Execution>
+          <ToolId dataItemId="cnt1" name="tool_id" sequence="24" timestamp="2016-10-27T06:58:36.237647Z">UNAVAILABLE</ToolId>
+        </Events>
+      </ComponentStream>
+      <ComponentStream component="Linear" componentId="x1" name="X">
+        <Samples>
+          <Load dataItemId="n3" name="Xload" sequence="36" timestamp="2016-10-27T06:58:36.237647Z">UNAVAILABLE</Load>
+          <Position dataItemId="x2" name="Xact" sequence="699121437" subType="ACTUAL" timestamp="2016-12-01T20:16:40.021707">-0.8348850608</Position>
+          <Position dataItemId="x3" name="Xcom" sequence="699121439" subType="COMMANDED" timestamp="2016-12-01T20:16:40.021707">-0.8278109067</Position>
+        </Samples>
+        <Condition>
+          <Normal dataItemId="Xloadc" sequence="698909722" timestamp="2016-12-01T20:01:58.467242" type="LOAD" />
+          <Unavailable dataItemId="Xsystem" sequence="7" timestamp="2016-10-27T06:58:36.237647Z" type="SYSTEM" />
+        </Condition>
+      </ComponentStream>
+      <ComponentStream component="Linear" componentId="y1" name="Y">
+        <Samples>
+          <Position dataItemId="y2" name="Yact" sequence="699121438" subType="ACTUAL" timestamp="2016-12-01T20:16:40.021707">1.4508198500</Position>
+          <Position dataItemId="y3" name="Ycom" sequence="699121440" subType="COMMANDED" timestamp="2016-12-01T20:16:40.021707">1.4545555881</Position>
+          <Load dataItemId="y4" name="Yload" sequence="43" timestamp="2016-10-27T06:58:36.237647Z">UNAVAILABLE</Load>
+        </Samples>
+        <Condition>
+          <Normal dataItemId="Yloadc" sequence="698909723" timestamp="2016-12-01T20:01:58.467372" type="LOAD" />
+          <Unavailable dataItemId="Ysystem" sequence="9" timestamp="2016-10-27T06:58:36.237647Z" type="SYSTEM" />
+        </Condition>
+      </ComponentStream>
+      <ComponentStream component="Linear" componentId="z1" name="Z">
+        <Samples>
+          <Position dataItemId="z2" name="Zact" sequence="699100423" subType="ACTUAL" timestamp="2016-12-01T20:15:22.878554">-0.1000000015</Position>
+          <Position dataItemId="z3" name="Zcom" sequence="699100415" subType="COMMANDED" timestamp="2016-12-01T20:15:22.853712">-0.1000000000</Position>
+          <Load dataItemId="z4" name="Zload" sequence="46" timestamp="2016-10-27T06:58:36.237647Z">UNAVAILABLE</Load>
+        </Samples>
+        <Condition>
+          <Normal dataItemId="Zloadc" sequence="698909724" timestamp="2016-12-01T20:01:58.467487" type="LOAD" />
+          <Unavailable dataItemId="Zsystem" sequence="11" timestamp="2016-10-27T06:58:36.237647Z" type="SYSTEM" />
+        </Condition>
+      </ComponentStream>
+    </DeviceStream>
+  </Streams>
+</MTConnectStreams>

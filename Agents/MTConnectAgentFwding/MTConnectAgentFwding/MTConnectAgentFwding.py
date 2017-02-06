@@ -6,16 +6,21 @@
 # with its operation, modification and maintenance. 
 
 import time
-import BaseHTTPServer
-import threading
-from threading import Thread
-import urllib2
 import os,sys
 import argparse
 import traceback
-
 from os.path import splitext, abspath
 from sys import modules
+
+# Backend read of MTConnect agent web server
+import urllib2
+
+#Http server
+#import BaseHTTPServer
+from BaseHTTPServer import HTTPServer, BaseHTTPRequestHandler
+from SocketServer import ThreadingMixIn
+import threading
+from threading import Thread
 
 # Service imports
 import win32serviceutil
@@ -30,13 +35,14 @@ try:
 except ImportError:
     import xml.etree.ElementTree as ET
 
+# Ini Optionreader
 try:
     from configparser import ConfigParser
 except ImportError:
     from ConfigParser import ConfigParser  # ver. < 3.0
 
 
-####### Configuration Parameters #######
+####### Configuration Ini Parameters #######
 HOST_NAME = '0.0.0.0' 
 PORT_NUMBER = 5010
 URL="agent.mtconnect.org:80"
@@ -44,7 +50,8 @@ SERVICENAME="MTConnectAgentForwarding"
 SLEEPAMT=3.0
 REQUERYAMT=10.0
 debuglevel=0
-
+RPM=0
+rpms=[]
 ####### Global variables #######
 dfile=open(sys.path[0]+'/debug.txt', 'w', 0)
 bflag=True
@@ -63,7 +70,7 @@ def get_with_default(section,name,default):
 def doConfig():
     global tagdictionary
     global config
-    global PORT_NUMBER, URL, SERVICENAME,SLEEPAMT,REQUERYAMT
+    global PORT_NUMBER, URL, SERVICENAME,SLEEPAMT,REQUERYAMT,RPM,RPMTAGS,rpms
     try:
         config = ConfigParser()
         config.optionxform = str   
@@ -78,7 +85,10 @@ def doConfig():
         SERVICENAME=get_with_default("MTCONNECT","servicename", "MTConnectFwdAgent")# tagdictionary["MTCONNECT"]["servicename"]
         SLEEPAMT=float(get_with_default("MTCONNECT","refresh","8.0")) # tagdictionary["MTCONNECT"]["refresh"])
         debuglevel=int(get_with_default("MTCONNECT","debuglevel", "0")) 
-        #REQUERYAMT=tagdictionary["MTCONNECT"]["refresh"]
+        RPM=int(get_with_default("MTCONNECT","RPM", "0")) 
+        RPMTAGS=get_with_default("MTCONNECT","RPMTAGS", "Srpm") 
+        rpms = RPMTAGS.split(",")
+         #REQUERYAMT=tagdictionary["MTCONNECT"]["refresh"]
         # Check legal URL - strip off leading http:// and trailing /current
         URL = URL.replace("http://","")
         index = URL.find("/current")
@@ -97,30 +107,41 @@ def do_XML(xmlstr):
     try:
         #  avoid the ns0 prefix the default namespace should be set before reading the XML data
         ET.register_namespace('xsi', "http://www.w3.org/2001/XMLSchema-instance")
+        ET.register_namespace('', "urn:mtconnect.org:MTConnectStreams:1.1")
         ET.register_namespace('', "urn:mtconnect.org:MTConnectStreams:1.2")
+        ET.register_namespace('', "urn:mtconnect.org:MTConnectStreams:1.3")
         ET.register_namespace('x', "urn:mazakusa.com:MazakStreams:1.2")
         
         # Parse xml from string
         root = ET.fromstring(xmlstr)
         # Find all rpm assume max is value- if none, use 0.0
+        srpm=[]
         d=[0.0]
-        srpm = root.find(".//*[@name='Srpm']")
-        srpm.extend(root.findall(".//*[@name='S2rpm']"))
-        srpm.extend(root.findall(".//*[@name='S3rpm']"))
-        srpm.extend(root.findall(".//*[@name='S4rpm']"))
-        srpm.extend(root.findall(".//*[@name='S5rpm']"))
+        srpm.extend(root.findall(".//*[@name='%s']"% rpms[0]))
+        try:
+            srpm.extend(root.findall(".//*[@name='%s']"% rpms[1]))
+            srpm.extend(root.findall(".//*[@name='%s']"% rpms[2]))
+            srpm.extend(root.findall(".//*[@name='%s']"% rpms[3]))
+            srpm.extend(root.findall(".//*[@name='%s']"% rpms[4]))
+        except Exception:
+            pass
         for r in srpm:
             if r.text != "UNAVAILABLE" :
                 d.extend([float(r.text)])
         bestd=max(d)
-        srpmnew = root.find(".//*[@name='Srpm']")
+        srpmnew = root.find(".//*[@name='%s']"% rpms[0])
         srpmnew.text=str(bestd)
 
         # Write xml to string - FIXME: should only write if changed
-        xmlstr =  ET.tostring(root, encoding='utf8', method='xml')
-        return xmlstr
+        newxmlstr =  ET.tostring(root, encoding='utf8', method='xml')
+        newxmlstr=newxmlstr.replace("'1.0'", "\"1.0\"")
+        newxmlstr=newxmlstr.replace("'utf8'", "\"UTF-8\"")
+        # Syntax checked out with http://www.w3schools.com/xml/xml_validator.asp
+        return newxmlstr.strip()
     except:
-        pass
+        dfile.write(time.asctime() + "do_XML exception\n")
+        return xmlstr
+
 
 def do_UPDATE():
     global agentxml,bConnected
@@ -146,8 +167,9 @@ def do_UPDATE():
             str=str.replace('dataItemId="{}"'.format(option), 'dataItemId="{}"'.format(tagdictionary[section][option]))
 
         # Perform XML gyrations
-        #str=do_XML(str)
-
+        if(RPM>0):
+            str=do_XML(str)
+ 
         # Update current agent string- note, probe other queries not supported
         lock.acquire()
         agentxml=str
@@ -161,8 +183,9 @@ def do_UPDATE():
         if(debuglevel>0):
             dfile.write(time.asctime() + var)
         bConnected=False 
+# http://stackoverflow.com/questions/8403857/python-basehttpserver-not-serving-requests-properly
 
-class MyWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
+class MyWebHandler(BaseHTTPRequestHandler):
     def do_HEAD(s):
         s.send_response(200)
         s.send_header("Content-type", "text/xml")
@@ -176,34 +199,45 @@ class MyWebHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             s.end_headers()
             # Only handling current since there are substitutions
             #if(s.path.find("/current") >= 0) : # could bee /DeviceName/current
+            lock.acquire()
             s.wfile.write(agentxml)
+            s.wfile.close()
+            lock.release()
         except Exception:
             dfile.write(time.asctime() + "do_GET exception\n")
             var = traceback.format_exc()
             if(debuglevel > 0):
                 dfile.write(time.asctime() + var)
- 
-def run_while_true(server_class=BaseHTTPServer.HTTPServer,
-                   handler_class=BaseHTTPServer.BaseHTTPRequestHandler):
+
+class ThreadedHTTPServer(ThreadingMixIn, HTTPServer):
+    """ This class allows to handle requests in separated threads.
+        No further content needed, don't touch this. """
+# goes way back: http://www.gossamer-threads.com/lists/python/bugs/278139
+
+#def run_while_true(server_class=BaseHTTPServer.HTTPServer,
+#                   handler_class=BaseHTTPServer.BaseHTTPRequestHandler):
+def run_while_true():    
     """
     This assumes that keep_running() is a function of no arguments which
     is tested initially and after each request.  If its return value
     is true, the server continues.
     """
     global bConnected
-    ServerClass = BaseHTTPServer.HTTPServer
-    Protocol = "HTTP/1.0"
     dfile.write(time.asctime() + " Server Starts - %s:%s\n" % (HOST_NAME, PORT_NUMBER))
 
-    MyWebHandler.protocol_version = Protocol
-    httpd = ServerClass((HOST_NAME, PORT_NUMBER), MyWebHandler)
+    ServerClass = ThreadedHTTPServer((HOST_NAME, PORT_NUMBER), MyWebHandler)
+ 
+    #ServerClass = BaseHTTPServer.HTTPServer
+    #Protocol = "HTTP/1.1"
+    #MyWebHandler.protocol_version = Protocol
+    #httpd = ServerClass((HOST_NAME, PORT_NUMBER), MyWebHandler)
 
  
  #    httpd = server_class((HOST_NAME, PORT_NUMBER), MyWebHandler)
     while bflag:
         try:
             if bConnected:
-                httpd.handle_request()
+                ServerClass.handle_request()
             else:
                 time.sleep(REQUERYAMT)
 
@@ -216,7 +250,8 @@ def run_while_true(server_class=BaseHTTPServer.HTTPServer,
         except socket.error as msg: 
             dfile.write(time.asctime() + 'cannot get %s - %s' % (szurl,msg)) 
 
-    httpd.server_close()
+    ServerClass.server_close()
+    #httpd.server_close()
     dfile.write( time.asctime()+ "Server Stops - %s:%s\n" % (HOST_NAME, PORT_NUMBER))
 
 def MyMain():

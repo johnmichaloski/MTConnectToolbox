@@ -55,7 +55,7 @@ HRESULT AdapterT::DebugMessage (std::string errmsg)
 	}
 	return E_FAIL;
 }
-// ///////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
 static void trans_func (unsigned int u, EXCEPTION_POINTERS *pExp)
 {
 	std::string errmsg = StdStringFormat("COpcAdapter In trans_func - Code = 0x%x\n", pExp->ExceptionRecord->ExceptionCode);
@@ -63,6 +63,70 @@ static void trans_func (unsigned int u, EXCEPTION_POINTERS *pExp)
 	OutputDebugString(errmsg.c_str( ) );
 	throw std::exception(errmsg.c_str( ), pExp->ExceptionRecord->ExceptionCode);
 }
+
+static int GetShiftTime(std::string s)
+{
+	int Hour, Minute;
+	if(sscanf(s.c_str(), "%d:%d", &Hour, &Minute)==2){}
+	else return -1;
+	return Hour * 60 + Minute;
+}
+static void Nop ( ) { }
+static bool getline (size_t & n, std::string & data, std::string & line)
+{
+	line.clear( );
+	size_t N = data.size( );
+
+	if ( n >= N )
+	{
+		return false;
+	}
+
+	size_t start = n;
+	size_t end   = n;
+
+	while ( end < N && data[end] != '\n' )
+	{
+		end++;
+	}
+
+	while ( end < N && data[end] == '\n' )
+	{
+		end++;
+	}
+
+	line = data.substr(start, end - start);
+	n    = end; // skip over \n
+	return true;
+}
+static bool getlinebackwards (long & n, std::string & data, std::string & line)
+{
+	line.clear( );
+
+	if ( n < 0 )
+	{
+		return false;
+	}
+
+	long start = n;
+	long end   = n;
+
+	while ( end >= 0 && data[end] == '\n' )
+	{
+		end--;
+	}
+
+	while ( end >= 0 && data[end] != '\n' )
+	{
+		end--;
+	}
+
+	line = data.substr(end + 1, start - end);
+	n = end;
+	return true;
+}
+/////////////////////////////////////////////////////////////////////
+
 AdapterT::AdapterT(AgentConfigurationEx *mtcagent, // mtconnect agent
 	crp::Config &                          config,
 	std::string                            machine,  // ip address or pc name
@@ -113,16 +177,21 @@ void AdapterT::SetMTCTagValue (std::string tag, std::string value)
 }
 void AdapterT::Off ( )
 {
+#if 0
 	for ( int i = 0; i < items.size( ); i++ )
 	{
 		items[i]->_value     = "UNAVAILABLE";
 		items[i]->_lastvalue = "UNAVAILABLE";
 		SetMTCTagValue(items[i]->_tagname, "UNAVAILABLE");
 	}
-
+#endif
 	// changed from unavailable. Causes agent to make everything unavailable.
-	SetMTCTagValue("avail", "UNAVAILABLE");
-	SetMTCTagValue("power", "OFF");
+	SetMTCTagValue("program", "");
+	SetMTCTagValue("error", "");	
+	SetMTCTagValue("controllermode", "MANUAL");
+	SetMTCTagValue("execution", "IDLE");
+	SetMTCTagValue("avail", "AVAILABLE");
+	SetMTCTagValue("power", "ON");
 }
 void AdapterT::On ( )
 {
@@ -136,6 +205,26 @@ void NikonAdapter::CreateItem (std::string tag, std::string type)
 	item->_type    = _T("Event");
 	item->_tagname = tag;
 	items.push_back(item);
+}
+std::string NikonAdapter::DumpHeader()
+{
+	std::string tmp;
+	for(size_t i=0; i< items.size(); i++)
+	{
+		tmp+=StdStringFormat("%s,", items[i]->_tagname.c_str());
+	}
+	tmp+="\n";
+	return tmp;
+}
+std::string NikonAdapter::DumpDataItems()
+{
+	std::string tmp;
+	for(size_t i=0; i< items.size(); i++)
+	{
+		tmp+=StdStringFormat("%s,", items[i]->_value.c_str());
+	}
+	tmp+="\n";
+	return tmp;
 }
 void NikonAdapter::Dump ( )
 {
@@ -179,6 +268,16 @@ void NikonAdapter::Config ( )
 		_Password     = config.GetSymbolValue(_device + ".Pw", "").c_str( );
 		_LocalShare   = config.GetSymbolValue(_device + ".LocalShare", "").c_str( );
 		_NetworkShare = config.GetSymbolValue(_device + ".NetworkShare", "").c_str( );
+#if defined( SHIFTCHANGE)
+
+		std::string shiftchanges =  config.GetSymbolValue(_device +".SHIFTCHANGES", Globals.shiftchanges).c_str();
+
+		std::vector<std::string> shifttimes =TrimmedTokenize(shiftchanges, ",");
+		for(int i=0; i< shifttimes.size(); i++)
+		{
+			_shiftchanges.push_back(GetShiftTime(shifttimes[i]));
+		}
+#endif
 	}
 	catch ( std::exception errmsg )
 	{
@@ -213,12 +312,18 @@ void NikonAdapter::Cycle ( )
 	CreateItem("Zabs");
 	CreateItem("last_update");
 	CreateItem("d_file_size");
-	CreateItem("d_cycle_time");
 	CreateItem("d_message");
+	//CreateItem("d_cycle_time");
 
-	Off( );
 	_bNotProductionMode=false;
+	_bShiftChange=false;
 
+#ifdef _DEBUG
+    tagfile.open (File.ExeDirectory()+ "tags.csv", std::ofstream::out );
+	if(!tagfile.is_open())
+		this->DebugMessage("tagfile.open failed");
+	tagfile<< DumpHeader().c_str( ); 
+#endif
 	// GLogger.LogMessage(StdStringFormat("COpcAdapter::Cycle() Enter Loop for IP = %s\n",_device.c_str()));
 	_mRunning = true;
 	Off( );
@@ -231,10 +336,10 @@ void NikonAdapter::Cycle ( )
 			// PING IP?
 			SetMTCTagValue("heartbeat", StdStringFormat("%d", nHeartbeat++) );
 			SetMTCTagValue("avail", "AVAILABLE");
-			COleDateTime starting = COleDateTime::GetCurrentTime( ); 
+			//COleDateTime starting = COleDateTime::GetCurrentTime( ); 
 			hr = GatherDeviceData( );
-			::COleDateTimeSpan duration = COleDateTime::GetCurrentTime( ) - starting ; 
-			SetMTCTagValue("d_cycle_time", StdStringFormat("%d:%d:%d", duration.GetHours(), duration.GetMinutes(), duration.GetSeconds()));
+			//::COleDateTimeSpan duration = COleDateTime::GetCurrentTime( ) - starting ; 
+			//SetMTCTagValue("d_cycle_time", StdStringFormat("%d:%d:%d", duration.GetHours(), duration.GetMinutes(), duration.GetSeconds()));
 
 			if ( FAILED(hr ) )
 			{
@@ -253,27 +358,7 @@ void NikonAdapter::Cycle ( )
 		}
 	}
 }
-COleDateTime GetDateTime (std::string s)
-{
-	std::string::size_type delimPos = s.find_first_of("\t", 0);
 
-	if ( std::string::npos != delimPos )
-	{
-		s = s.substr(0, delimPos);
-	}
-
-	// parse 2012/11/03 Skip time
-	int Year, Month, Day;
-
-	if ( sscanf(s.c_str( ), "%4d-%02d-%02d", &Year, &Month, &Day) == 3 )
-	{ }
-	else
-	{
-		throw std::exception("Unrecognized date-time format\n");
-	}
-
-	return COleDateTime(Year, Month, Day, 0, 0, 0);
-}
 // Format: 2015-03-11 17:04:39.998
 boolean GetLogTimestamp (std::string s, COleDateTime & ts)
 {
@@ -284,17 +369,18 @@ boolean GetLogTimestamp (std::string s, COleDateTime & ts)
 		s = s.substr(0, delimPos);
 	}
 
-	// parse 2012/11/03 Skip time
 	int Year, Month, Day, Hour, Min, Sec;
-
+	// Nikon log timestamp: 2016-11-15 16:10:08.650
 	if ( sscanf(s.c_str( ), "%4d-%02d-%02d %02d:%02d:%02d", &Year, &Month, &Day, &Hour, &Min, &Sec) == 6 )
 	{
 		ts = COleDateTime(Year, Month, Day, Hour, Min, Sec);
 		return true;
 	}
+	//Fixme: add more 
+	// parse 2012/11/03 Skip time
 	return false;
 }
-static void Nop ( ) { }
+
 HRESULT NikonAdapter::FailWithMsg (HRESULT hr, std::string errmsg)
 {
 	if ( Globals.Debug > 3 )
@@ -309,68 +395,7 @@ HRESULT NikonAdapter::WarnWithMsg (HRESULT hr, std::string errmsg)
 	this->DebugMessage(errmsg);
 	return S_OK;
 }
-static bool getline (size_t & n, std::string & data, std::string & line)
-{
-	line.clear( );
-	size_t N = data.size( );
 
-	if ( n >= N )
-	{
-		return false;
-	}
-
-	size_t start = n;
-	size_t end   = n;
-
-	while ( end < N && data[end] != '\n' )
-	{
-		end++;
-	}
-
-	while ( end < N && data[end] == '\n' )
-	{
-		end++;
-	}
-
-	line = data.substr(start, end - start);
-	n    = end; // skip over \n
-	return true;
-
-	// if((n=data.find_first_of('\n')) != std::string::npos)
-	// {
-	//	line=data.substr(0,n);
-	//	data=data.substr(n+1);
-	//	return true;
-	// }
-}
-static bool getlinebackwards (long & n, std::string & data, std::string & line)
-{
-	line.clear( );
-
-	if ( n < 0 )
-	{
-		return false;
-	}
-
-	long start = n;
-	long end   = n;
-
-	while ( end >= 0 && data[end] == '\n' )
-	{
-		end--;
-	}
-
-	while ( end >= 0 && data[end] != '\n' )
-	{
-		end--;
-	}
-
-	line = data.substr(end + 1, start - end);
-
-	// OutputDebugString(line.c_str());
-	n = end;
-	return true;
-}
 HRESULT NikonAdapter::GatherDeviceData ( )
 {
 	USES_CONVERSION;
@@ -407,12 +432,53 @@ HRESULT NikonAdapter::GatherDeviceData ( )
 			}
 		}
 
+#if defined( SHIFTCHANGE)
+		// Shift change check....
+		COleDateTime nowclock = COleDateTime::GetCurrentTime();
+		int nowtime = nowclock.GetHour()*60 + nowclock.GetMinute();
+		// Shift change
+		if( items.GetTag("controllermode", "AUTOMATIC") == "MANUAL"  && !_bShiftChange)
+		{
+			for(size_t i=0; i< _shiftchanges.size(); i++)
+			{
+				// No seconds - must be minute
+				if(nowtime>=_shiftchanges[i] && nowtime < ( _shiftchanges[i] + 1)){
+					_bShiftChange=true;
+					SetMTCTagValue("program", "ShiftChange");
+					std::string str = "Shift Change at:";
+					str += (const char *) nowclock.Format("%H:%M");
+					OutputDebugString(str.c_str());
+					return S_OK;
+				}
+			}
+		}
+
+		// Undo shift change
+		if(_bShiftChange)
+		{
+			for(size_t i=0; i< _shiftchanges.size(); i++)
+			{
+				// No seconds - must be minute
+				if(nowtime>=(_shiftchanges[i]+1) && nowtime < ( _shiftchanges[i] + 2)){
+					_bShiftChange=false;
+					SetMTCTagValue("program", "");
+					std::string str = "Undo Shift Change at:";
+					str += (const char *) nowclock.Format("%H:%M");
+					OutputDebugString(str.c_str());
+					return S_OK;
+				}
+			}
+		}
+#endif
 		//
 		// Check if connected - this could take too long if
 		if ( !File.Exists(filename) )
 		{
 			// We are now going to assume that the PC is turned off!
+			// MAY have some file permission errors.
+#if 0
 			Off();
+#endif
 			_lastfilesize=0;
 			lastmodtime   = COleDateTime(0, 0, 0, 0, 0, 0);
 			return WarnWithMsg(E_FAIL, StdStringFormat("PC for device %s turned off\n",  _device.c_str( ) ) );
@@ -509,7 +575,6 @@ HRESULT NikonAdapter::GatherDeviceData ( )
 		// 
 		while ( getlinebackwards(m, data, line) )
 		{
-			size_t it;
 			if( line.find("\t\\\\") != std::string::npos)
 			{
 					data = data.substr(m);
@@ -522,6 +587,7 @@ HRESULT NikonAdapter::GatherDeviceData ( )
 				break;
 			}
 
+			size_t it;
 			if ( ( it = line.find_first_of("\t") ) != std::string::npos )
 			{
 				COleDateTime ts     = now;
@@ -729,6 +795,10 @@ HRESULT NikonAdapter::GatherDeviceData ( )
 				items.SetTag("error", "");
 			}
 #endif
+#ifdef _DEBUG
+			tagfile << DumpDataItems(); 
+			tagfile.flush();
+#endif
 		}
 
 		// Guess RPM
@@ -740,6 +810,7 @@ HRESULT NikonAdapter::GatherDeviceData ( )
 		{
 			items.SetTag("Srpm", "0");
 		}
+
 
 		// FIXME: should guess xyz motion if auto/exec and timestamp and now > threshold of time
 		for ( int i = 0; i < items.size( ); i++ )

@@ -15,6 +15,18 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_09EF0DADF3474D28B213834082215720"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_0A76EDDC27F0431E95A7E708C86A5E28"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_1053030269AF4C43B3E8F5EA562B8995"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -33,6 +45,30 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1ACC6E9F9D954210A05619E5500F1C6A"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1D0C761B0B7B4743A28FE305BAF6B4DA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_225C952F1A9043F7AA142E1C12D6085D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_24D741FF839C49BEBE52BE2CA0B3EBF3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2525B7E8AF05404EAA3E03204563B2CD"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -45,7 +81,25 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_273EE2344E3D4AB7B00162701589E8AA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_2A3EA828D60A4DF2B1E098A77B4E109D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_3147FBF35C6B4704B49AD234943C9BA3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_32392EBB35FD4575BA7702A9BFD5600F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -57,19 +111,19 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_3A79B6B5F2834D4C83E45F0DCBF6A207"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_3FA460AC0C474F2BA1E245F9453C6335"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_522B329C4DE34205A3D2797171E9E327"
+        "MsmKey" = "8:_431A53117F3B45B49555984E894B269D"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_50A49F6638B04768A57C41411D8D40E4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -81,13 +135,25 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_60CDF49743D343CFBE4C14E702DC0BC3"
+        "MsmKey" = "8:_5B5C7828452F4F399AC4D6EE199F8CC4"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_68A6CEA141904420976A7144E8429407"
+        "MsmKey" = "8:_5F07FF50108E49BA88A84B011A1A0A58"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_61E6AFADBCAD45E0A42EDD0D5916BA0C"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_710AA33AA22C44BE9138CE11C362D24D"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -99,13 +165,7 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_821FD9EF35264C238B7C73AD7638AA3A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_846BC924C45E4722B1ACEC1C1642305A"
+        "MsmKey" = "8:_7D9CF25ED89F49629B4F5DEFE4CDBC37"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -117,13 +177,13 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_94551209084F40FA8A3254DD2EC7A5D7"
+        "MsmKey" = "8:_98A8EFC99B7740B79C5C98ACD482EFE7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_99724D21B5E14010BF6AAAEB0F224CCA"
+        "MsmKey" = "8:_AC59F3F36A5E4DCCA3AF395BFD6E7F3F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -135,80 +195,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_AFD3E9F8D9944BD9AF171DF55E250255"
+        "MsmKey" = "8:_BA331E22753540CDA819029EE1165B32"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_B810CAB841A2433099F04A779027F75B"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C3C99C18C5274802A8418BE041CF560F"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C5631047A8CA4250AD0D33685A41CE57"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CD43074BFA544528848FB1831CC9D14A"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_CE50D47A5A784910ADFD995FB55F5D7D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D03F4A9B24F847DA8768429D39339706"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_D60B0C1A61D44E6B8D972E7354769E7D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_DED2017FC2504B84840A127060234D2D"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E271FCCB29104F71BFDF4F6EDA5098BC"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_E38CC72CE18C48BB92C23368C4502577"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_FEA26CB3FAC24D8BA8FB4DA02F85DAC9"
+        "MsmKey" = "8:_BBF416158414453FBFA792A0D173F732"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C5631047A8CA4250AD0D33685A41CE57"
+        "OwnerKey" = "8:_98A8EFC99B7740B79C5C98ACD482EFE7"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -344,6 +344,46 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_09EF0DADF3474D28B213834082215720"
+            {
+            "SourcePath" = "8:..\\Dictribution\\Config.ini"
+            "TargetName" = "8:Config.ini"
+            "Tag" = "8:"
+            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_0A76EDDC27F0431E95A7E708C86A5E28"
+            {
+            "SourcePath" = "8:..\\Dictribution\\perfmon.pyd"
+            "TargetName" = "8:perfmon.pyd"
+            "Tag" = "8:"
+            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1053030269AF4C43B3E8F5EA562B8995"
             {
             "SourcePath" = "8:..\\Dictribution\\bz2.pyd"
@@ -404,6 +444,86 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1ACC6E9F9D954210A05619E5500F1C6A"
+            {
+            "SourcePath" = "8:..\\Dictribution\\win32service.pyd"
+            "TargetName" = "8:win32service.pyd"
+            "Tag" = "8:"
+            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_1D0C761B0B7B4743A28FE305BAF6B4DA"
+            {
+            "SourcePath" = "8:..\\Dictribution\\msvcr90.dll"
+            "TargetName" = "8:msvcr90.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_225C952F1A9043F7AA142E1C12D6085D"
+            {
+            "SourcePath" = "8:..\\Dictribution\\RunFwdAgent.bat"
+            "TargetName" = "8:RunFwdAgent.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_24D741FF839C49BEBE52BE2CA0B3EBF3"
+            {
+            "SourcePath" = "8:..\\Dictribution\\superuser.bat"
+            "TargetName" = "8:superuser.bat"
+            "Tag" = "8:"
+            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2525B7E8AF05404EAA3E03204563B2CD"
             {
             "SourcePath" = "8:..\\Dictribution\\win32api.pyd"
@@ -444,10 +564,70 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_273EE2344E3D4AB7B00162701589E8AA"
+            {
+            "SourcePath" = "8:..\\Dictribution\\win32evtlog.pyd"
+            "TargetName" = "8:win32evtlog.pyd"
+            "Tag" = "8:"
+            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_2A3EA828D60A4DF2B1E098A77B4E109D"
+            {
+            "SourcePath" = "8:..\\Dictribution\\Microsoft.VC90.CRT.manifest"
+            "TargetName" = "8:Microsoft.VC90.CRT.manifest"
+            "Tag" = "8:"
+            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3147FBF35C6B4704B49AD234943C9BA3"
             {
             "SourcePath" = "8:..\\Dictribution\\MyCustomAction.dll"
             "TargetName" = "8:MyCustomAction.dll"
+            "Tag" = "8:"
+            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_32392EBB35FD4575BA7702A9BFD5600F"
+            {
+            "SourcePath" = "8:..\\Dictribution\\MTConnectAgentFwding.exe"
+            "TargetName" = "8:MTConnectAgentFwding.exe"
             "Tag" = "8:"
             "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
             "Condition" = "8:"
@@ -484,26 +664,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3A79B6B5F2834D4C83E45F0DCBF6A207"
-            {
-            "SourcePath" = "8:..\\Dictribution\\win32evtlog.pyd"
-            "TargetName" = "8:win32evtlog.pyd"
-            "Tag" = "8:"
-            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3FA460AC0C474F2BA1E245F9453C6335"
             {
             "SourcePath" = "8:..\\Dictribution\\servicemanager.pyd"
@@ -524,10 +684,30 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_522B329C4DE34205A3D2797171E9E327"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_431A53117F3B45B49555984E894B269D"
             {
-            "SourcePath" = "8:..\\Dictribution\\msvcr90.dll"
-            "TargetName" = "8:msvcr90.dll"
+            "SourcePath" = "8:..\\Dictribution\\unicodedata.pyd"
+            "TargetName" = "8:unicodedata.pyd"
+            "Tag" = "8:"
+            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_50A49F6638B04768A57C41411D8D40E4"
+            {
+            "SourcePath" = "8:..\\Dictribution\\MTConnectPage-1.4.vbs"
+            "TargetName" = "8:MTConnectPage-1.4.vbs"
             "Tag" = "8:"
             "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
             "Condition" = "8:"
@@ -564,10 +744,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_60CDF49743D343CFBE4C14E702DC0BC3"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5B5C7828452F4F399AC4D6EE199F8CC4"
             {
-            "SourcePath" = "8:..\\Dictribution\\RunFwdAgent.bat"
-            "TargetName" = "8:RunFwdAgent.bat"
+            "SourcePath" = "8:..\\Dictribution\\debug.txt"
+            "TargetName" = "8:debug.txt"
             "Tag" = "8:"
             "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
             "Condition" = "8:"
@@ -584,10 +764,50 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_68A6CEA141904420976A7144E8429407"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_5F07FF50108E49BA88A84B011A1A0A58"
             {
-            "SourcePath" = "8:..\\Dictribution\\MTConnectAgentFwding.exe"
-            "TargetName" = "8:MTConnectAgentFwding.exe"
+            "SourcePath" = "8:..\\Dictribution\\pyexpat.pyd"
+            "TargetName" = "8:pyexpat.pyd"
+            "Tag" = "8:"
+            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_61E6AFADBCAD45E0A42EDD0D5916BA0C"
+            {
+            "SourcePath" = "8:..\\Dictribution\\_socket.pyd"
+            "TargetName" = "8:_socket.pyd"
+            "Tag" = "8:"
+            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_710AA33AA22C44BE9138CE11C362D24D"
+            {
+            "SourcePath" = "8:..\\Dictribution\\select.pyd"
+            "TargetName" = "8:select.pyd"
             "Tag" = "8:"
             "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
             "Condition" = "8:"
@@ -624,30 +844,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_821FD9EF35264C238B7C73AD7638AA3A"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7D9CF25ED89F49629B4F5DEFE4CDBC37"
             {
-            "SourcePath" = "8:..\\Dictribution\\Config.ini"
-            "TargetName" = "8:Config.ini"
-            "Tag" = "8:"
-            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_846BC924C45E4722B1ACEC1C1642305A"
-            {
-            "SourcePath" = "8:..\\Dictribution\\pyexpat.pyd"
-            "TargetName" = "8:pyexpat.pyd"
+            "SourcePath" = "8:..\\Dictribution\\win32event.pyd"
+            "TargetName" = "8:win32event.pyd"
             "Tag" = "8:"
             "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
             "Condition" = "8:"
@@ -684,10 +884,21 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_94551209084F40FA8A3254DD2EC7A5D7"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_98A8EFC99B7740B79C5C98ACD482EFE7"
             {
-            "SourcePath" = "8:..\\Dictribution\\superuser.bat"
-            "TargetName" = "8:superuser.bat"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:msvcm90, Version=9.0.30729.6161, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=AMD64"
+                "ScatterAssemblies"
+                {
+                    "_98A8EFC99B7740B79C5C98ACD482EFE7"
+                    {
+                    "Name" = "8:msvcm90.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:..\\Dictribution\\msvcm90.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
             "Condition" = "8:"
@@ -704,10 +915,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_99724D21B5E14010BF6AAAEB0F224CCA"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AC59F3F36A5E4DCCA3AF395BFD6E7F3F"
             {
-            "SourcePath" = "8:..\\Dictribution\\select.pyd"
-            "TargetName" = "8:select.pyd"
+            "SourcePath" = "8:..\\Dictribution\\msvcp90.dll"
+            "TargetName" = "8:msvcp90.dll"
             "Tag" = "8:"
             "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
             "Condition" = "8:"
@@ -744,118 +955,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AFD3E9F8D9944BD9AF171DF55E250255"
-            {
-            "SourcePath" = "8:..\\Dictribution\\win32event.pyd"
-            "TargetName" = "8:win32event.pyd"
-            "Tag" = "8:"
-            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_B810CAB841A2433099F04A779027F75B"
-            {
-            "SourcePath" = "8:..\\Dictribution\\debug.txt"
-            "TargetName" = "8:debug.txt"
-            "Tag" = "8:"
-            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C3C99C18C5274802A8418BE041CF560F"
-            {
-            "SourcePath" = "8:..\\Dictribution\\perfmon.pyd"
-            "TargetName" = "8:perfmon.pyd"
-            "Tag" = "8:"
-            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C5631047A8CA4250AD0D33685A41CE57"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:msvcm90, Version=9.0.30729.6161, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=AMD64"
-                "ScatterAssemblies"
-                {
-                    "_C5631047A8CA4250AD0D33685A41CE57"
-                    {
-                    "Name" = "8:msvcm90.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:..\\Dictribution\\msvcm90.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CD43074BFA544528848FB1831CC9D14A"
-            {
-            "SourcePath" = "8:..\\Dictribution\\msvcp90.dll"
-            "TargetName" = "8:msvcp90.dll"
-            "Tag" = "8:"
-            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_CE50D47A5A784910ADFD995FB55F5D7D"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BA331E22753540CDA819029EE1165B32"
             {
             "SourcePath" = "8:..\\Dictribution\\python27.dll"
             "TargetName" = "8:python27.dll"
@@ -875,110 +975,10 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D03F4A9B24F847DA8768429D39339706"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_BBF416158414453FBFA792A0D173F732"
             {
             "SourcePath" = "8:..\\Dictribution\\_ssl.pyd"
             "TargetName" = "8:_ssl.pyd"
-            "Tag" = "8:"
-            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D60B0C1A61D44E6B8D972E7354769E7D"
-            {
-            "SourcePath" = "8:..\\Dictribution\\Microsoft.VC90.CRT.manifest"
-            "TargetName" = "8:Microsoft.VC90.CRT.manifest"
-            "Tag" = "8:"
-            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DED2017FC2504B84840A127060234D2D"
-            {
-            "SourcePath" = "8:..\\Dictribution\\win32service.pyd"
-            "TargetName" = "8:win32service.pyd"
-            "Tag" = "8:"
-            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E271FCCB29104F71BFDF4F6EDA5098BC"
-            {
-            "SourcePath" = "8:..\\Dictribution\\MTConnectPage-1.4.vbs"
-            "TargetName" = "8:MTConnectPage-1.4.vbs"
-            "Tag" = "8:"
-            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_E38CC72CE18C48BB92C23368C4502577"
-            {
-            "SourcePath" = "8:..\\Dictribution\\unicodedata.pyd"
-            "TargetName" = "8:unicodedata.pyd"
-            "Tag" = "8:"
-            "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:FALSE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FEA26CB3FAC24D8BA8FB4DA02F85DAC9"
-            {
-            "SourcePath" = "8:..\\Dictribution\\_socket.pyd"
-            "TargetName" = "8:_socket.pyd"
             "Tag" = "8:"
             "Folder" = "8:_BB1597B6AA024F80A80AC95DBDBD04A0"
             "Condition" = "8:"
@@ -1052,7 +1052,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AgentForwardingSetupX64"
         "ProductCode" = "8:{85488A3C-BBB9-471B-821C-733CFDE229DA}"
-        "PackageCode" = "8:{BD9C5525-9AD6-4526-9EAB-1E98AE12979B}"
+        "PackageCode" = "8:{60BB2F96-FE70-42E3-9BCD-94E30EB6E030}"
         "UpgradeCode" = "8:{F41BF44C-154E-4F7F-A90A-B49BA77AD7B9}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"

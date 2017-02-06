@@ -31,6 +31,28 @@ struct tm* clock;				// create a time structure
 struct stat attrib;			// create a file attribute structure        
 stat("afile.txt", &attrib);		// get the attributes of afile.txt	
 clock = gmtime(&(attrib.st_mtime));
+--------------------------------
+COleDateTime GetDateTime (std::string s)
+{
+	std::string::size_type delimPos = s.find_first_of("\t", 0);
+
+	if ( std::string::npos != delimPos )
+	{
+		s = s.substr(0, delimPos);
+	}
+
+	// parse 2012/11/03 Skip time
+	int Year, Month, Day;
+
+	if ( sscanf(s.c_str( ), "%4d-%02d-%02d", &Year, &Month, &Day) == 3 )
+	{ }
+	else
+	{
+		throw std::exception("Unrecognized date-time format\n");
+	}
+
+	return COleDateTime(Year, Month, Day, 0, 0, 0);
+}
 ---------------------
 CFile::GetStatus(CFileStatus &rStatus)
 
@@ -254,3 +276,22 @@ ULONGLONG GetFileSizeEx( CString strPath )
 			pAddr = &data[numread];
 			ulFileSize-=numread;
 		}*/
+
+
+Mon 02/06/2017_11:54:12.86  
+============================
+Removed:
+
+COleDateTime     now          = COleDateTime::GetCurrentTime( );
+COleDateTimeSpan tilnextreset = COleDateTimeSpan(0, 1, 0, 0);
+GLogger.Fatal(StdStringFormat("Agent will Reset from now  %8.4f\n", ( tilnextreset.GetTotalSeconds( ) / 3600.00 ) ) );
+
+_resetthread.Initialize( );
+
+_resetthread.AddTimer(
+	(long) tilnextreset.GetTotalSeconds( ) * 1000,
+	&_ResetThread,
+	( DWORD_PTR ) this,
+	&_ResetThread._hTimer        /
+	/ stored newly created timer handle
+	);

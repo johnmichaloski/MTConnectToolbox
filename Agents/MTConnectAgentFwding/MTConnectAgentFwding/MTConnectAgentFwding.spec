@@ -4,7 +4,7 @@ block_cipher = None
 
 
 a = Analysis(['MTConnectAgentFwding.py'],
-             pathex=['C:\\Users\\michalos\\Documents\\Visual Studio 2010\\Projects\\MTConnectAgentFwding\\MTConnectAgentFwding'],
+             pathex=['C:\\Users\\michalos\\Documents\\GitHub\\Agents\\MTConnectAgentFwding\\MTConnectAgentFwding'],
              binaries=None,
              datas=None,
              hiddenimports=[],

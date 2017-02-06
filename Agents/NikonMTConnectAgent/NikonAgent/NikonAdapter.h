@@ -155,13 +155,15 @@ public:
     lastmodtime   = COleDateTime(0, 0, 0, 0, 0, 0);
   }
 
-  void            CreateItem (std::string tag, std::string type = "Event");
-  virtual void    Cycle ( );
-  virtual void    Config ( );
-  virtual HRESULT GatherDeviceData ( );
-  virtual void    Dump ( );
-  HRESULT         FailWithMsg (HRESULT hr, std::string errmsg);
-  HRESULT         WarnWithMsg (HRESULT hr, std::string errmsg);
+  void				CreateItem (std::string tag, std::string type = "Event");
+  virtual void		Cycle ( );
+  virtual void		Config ( );
+  virtual HRESULT	GatherDeviceData ( );
+  virtual void		Dump ( );
+  HRESULT			FailWithMsg (HRESULT hr, std::string errmsg);
+  HRESULT			WarnWithMsg (HRESULT hr, std::string errmsg);
+  std::string		DumpHeader();
+  std::string		DumpDataItems();
 
   // //////////////////////////////////////////////////////////////////////////
   crp::Config & config;
@@ -175,4 +177,9 @@ public:
   std::string   _LocalShare;
   std::string   _NetworkShare;
   bool			_bNotProductionMode;
+  bool			_bShiftChange;
+  std::vector<int> _shiftchanges;
+#ifdef _DEBUG
+  std::ofstream	tagfile;
+#endif
 };

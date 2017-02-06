@@ -157,6 +157,12 @@ public:
 		path=path.substr( 0, path.find_last_of( '\\' ) +1 );
 		return path;
 	}
+	std::string GetModuleName()
+	{
+		TCHAR buf[1000];
+		GetModuleFileName(NULL, buf, 1000);
+		return ExtractFilename(std::string(buf));
+	}
 	std::string Filename(std::string path)
 	{
 		size_t sep = path.find_last_of("\\");

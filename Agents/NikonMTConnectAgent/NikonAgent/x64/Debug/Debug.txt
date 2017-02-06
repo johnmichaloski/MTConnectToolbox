@@ -1,4 +1,6 @@
-2016-11-29 09:01:50.0759 Start Nikon Agent
-2016-11-29 09:01:50.0778 Main
-2016-11-29 09:01:50.0780 initialize
-2016-11-29 09:01:51.0021 Start
+2017-02-06 13:06:06.0479 Start Nikon Agent
+2017-02-06 13:06:06.0495 Main
+2017-02-06 13:06:06.0495 initialize
+2017-02-06 13:06:06.0667 Start
+2017-02-06 13:06:06.0667 Agent will Reset at  Tuesday, February 07, 2017 00:00:01
+2017-02-06 13:06:06.0667 Agent will Reset  10.8986 hours::min from now
