@@ -1,0 +1,156 @@
+
+
+QObject: Cannot create children for a parent that is in a different thread.
+(Parent is QNativeSocketEngine(0x1cf8880), parent's thread is QThread(0x727850),
+ current thread is MyShdrClient(0x72c1e8)
+
+
+// Same of delegating to a thread to handle computation
+// make the server fully ascynchronous
+// by doing time consuming task
+void TaskResult(int Number);
+QThreadPool::globalInstance()->setMaxThreadCount(5);
+
+#if 0
+    // Time consumer
+    MyTask *mytask = new MyTask();
+    mytask->setAutoDelete(true);
+
+    // using queued connection
+    connect(mytask, SIGNAL(Result(int)), this, SLOT(TaskResult(int)), Qt::QueuedConnection);
+
+    qDebug() << "Starting a new task using a thread from the QThreadPool";
+
+    // QThreadPool::globalInstance() returns global QThreadPool instance
+    QThreadPool::globalInstance()->start(mytask);
+#endif
+
+    // After a task performed a time consuming task,
+    // we grab the result here, and send it to client
+    void MyShdrClient::TaskResult(int Number)
+    {
+        QByteArray Buffer;
+        Buffer.append("\r\nTask result = ");
+        Buffer.append(QString::number(Number));
+
+        socket->write(Buffer);
+    }
+
+in time is:2016-05-26T20:00:03.784Z
+The time is:2016-05-26T21:00:03.784
+Welcome to the XYZIJK Shdr echo - echo contents of out.txt
+in time is: 2016-05-26T20:00:03.784Z
+The time is:2016-04-26T21:00:03.784Z
+in time is: 2016-05-26T20:00:05.859Z
+The time is:2016-04-26T21:00:05.859Z
+2017-05-09T14:40:44.151Z|Xabs|-13.731621|Yabs|-205.982189|Zabs|263.18718|I|0.1|J
+|0.2|K|0.3
+
+2017-05-09T14:40:46.226Z|Xabs|-2.287397|Yabs|-215.876632|Zabs|269.132812|I|0.1|J
+|0.2|K|0.3
+
+in time is: 2016-05-26T20:00:16.233Z
+The time is:2016-04-26T21:00:16.233Z
+2017-05-09T14:40:56.600Z|Xabs|-8.335391|Yabs|-225.227515|Zabs|274.601559|I|0.1|J
+|0.2|K|0.3
+
+in time is: 2016-05-26T20:00:20.398Z
+The time is:2016-04-26T21:00:20.398Z
+2017-05-09T14:41:00.765Z|Xabs|6.784975|Yabs|-223.489012|Zabs|273.877024|I|0.1|J|
+0.2|K|0.3
+
+Fri 06/09/2017_ 8:39:32.28
+STATICALLY LINKING QT SO THERE ARE NO DLL on WINDOWS DEPLOYMENT
+http://doc.qt.io/qt-5/windows-deployment.html
+
+
+On Windows 7 Enterprise had to download: VC++ 2013 redistributable for
+https://www.microsoft.com/en-ca/download/confirmation.aspx?id=40784
+
+
+
+http://www.gamedev.net/topic/594976-c-qt-boost/
+
+
+You may build the subset of Boost libraries required to use Boost.Asio and its examples by running the following command from the root of the Boost download package:
+
+bjam --with-system --with-thread --with-date_time --with-regex --with-serialization stage
+
+
+http://doc.qt.io/qt-4.8/qmake-variable-reference.html#libs
+Precompiled Headers
+
+
+Code Synthesis with QT
+http://wiki.codesynthesis.com/Using_XSD_with_Qt_Creator
+
+Shared Libraries in QT:
+https://blog.g3rt.nl/building-cpp-shared-libraries-qt-creator.html
+
+C0x Compiler
+QMAKE_CXXFLAGS += -std=c++0x
+
+win32:LIBS += path/to/Psapi.lib
+
+
+-lws2_32
+D:\Programmierung\mingw\lib\libwsock32.a
+
+
+
+#if 0
+inline boost::posix_time::ptime Now()
+{
+    return boost::posix_time::microsec_clock::local_time();;
+}
+inline std::string ToString(boost::posix_time::ptime ts)
+{
+    namespace pt = boost::posix_time;
+    std::stringstream msg;
+    pt::time_facet*const f = new pt::time_facet("%Y-%m-%d");
+    msg.imbue(std::locale(msg.getloc(),f));
+    long hours = ((int)ts.time_of_day().hours());
+    long minutes = ((int)ts.time_of_day().minutes());
+    long seconds = ((int)ts.time_of_day().seconds());
+    long milliseconds = ((int)ts.time_of_day().total_milliseconds())%1000;
+
+    msg << ts << StrFormat("T%02d:%02d:%02d.%03d",hours, minutes, seconds, milliseconds);
+    return msg.str();
+}
+/**
+* \brief Return string using  date and time in MS format .
+*/
+inline std::string GetDateTimeString(boost::posix_time::ptime ts)
+{
+    boost::gregorian::date d = ts.date();
+    long hours = ((int)ts.time_of_day().hours());
+    long minutes = ((int)ts.time_of_day().minutes());
+    long seconds = ((int)ts.time_of_day().seconds());
+    long milliseconds = ((int)ts.time_of_day().total_milliseconds())%1000;
+    long year = d.year();
+    long month = d.month();
+    long day = d.day();
+    return StrFormat( "%4d-%02d-%02dT%02d:%02d:%02d.%3d", year, month, day, hours, minutes, seconds,milliseconds);
+}
+inline boost::posix_time::ptime GetDateTime(std::string s)
+{
+    using namespace boost::posix_time;
+    // parse 2012-02-03T17:31:51.0968Z
+    int Year, Month, Day, Hour, Minute, Second, Millisecond=0;
+    if(sscanf(s.c_str(), "%d-%d-%dT%d:%d:%d.%d", &Year, &Month, &Day, &Hour, &Minute,&Second, &Millisecond)==7){}
+    //12/2/2009 2:42:25 PM
+    else if(sscanf(s.c_str(), "%d/%d/%4d%d:%d:%d", &Month, &Day, &Year,  &Hour, &Minute,&Second)==6){}
+    else throw std::runtime_error(StrFormat("Unrecognized date-time format -%s\n", s.c_str()));
+
+    return boost::posix_time::ptime(boost::gregorian::date(Year, Month, Day),
+                                    time_duration(hours(Hour)+minutes(Minute)+seconds(Second)+millisec(Millisecond)));
+}
+#endif
+//   QTcpServer server;
+//    QTcpSocket* client;
+
+
+//void MyShdrServer::startClient(MyShdrClient * client)
+//{
+//    client->start_thread();
+//}
