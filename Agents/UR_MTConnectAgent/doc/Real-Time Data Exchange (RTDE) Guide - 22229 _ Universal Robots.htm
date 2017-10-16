@@ -1,0 +1,1283 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="keywords" content="">
+	
+	
+	
+
+    <title>Real-Time Data Exchange (RTDE) Guide - 22229 | Universal Robots</title>
+    <link href="/css/universal_robotssupport.css" rel="stylesheet" />
+    <link href='//fonts.googleapis.com/css?family=Roboto:400,500,700,300' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+	
+	<script type="text/javascript"
+		id="cookiebanner"
+		src="/scripts/cookiebanner.min.js"
+		data-zindex="1000"
+		data-moreinfo="/support/"
+		data-linkmsg="Learn more"
+		data-message="We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies."
+	></script>
+    <script type="text/javascript">var switchTo5x = true;</script>
+    <script type="text/javascript" src="https://ws.sharethis.com/button/buttons.js"></script>
+    <script type="text/javascript">stLight.options({ publisher: "8100cf34-1848-4c0d-8e73-f3a01b1248b5", doNotHash: false, doNotCopy: false, hashAddressBar: false });</script>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="navbar-lead hidden-print">
+        <div class="container">
+            <ul class="list-unstyled text-uppercase pull-right">
+                <li><a href="//www.universal-robots.com/" target="_blank">Back to main site</a></li>
+                <li><a class="active" href="">Support site</a></li>
+            </ul>
+        </div>
+    </div>
+    <!--/.navbar-lead -->
+
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/support/">
+                    <img src="/css/img/template/site-logo.png" alt="Universal Robots" />
+                </a>
+            </div>
+
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right text-uppercase">
+					<li><a href="/how-tos-and-faqs/how-to/">How-to</a></li>
+					<li><a href="/how-tos-and-faqs/faq/">FAQ</a></li>
+                    	<li><a href="/download/">Download</a></li>
+					<li><a class="is-icon collapsed" href="#collapse-search" data-toggle="collapse" onclick="setTimeout(function() { $('#search-field-content').focus(); }, 10);"><i class="fa fa-search"></i><i class="fa fa-times"></i></a></li>
+                </ul>
+            </div>
+
+            <div id="collapse-search" class="collapse">
+                <div class="navbar-search">
+					<form method="get" action="/support-search/">
+						<div class="form-group form-group--search">
+							<input name="query" type="text" id="search-field-content" class="form-control form-control--search" placeholder="Enter your keyword" />
+							<button type="submit" class="btn--search"><i class="fa fa-search"></i></button>
+						</div>
+					</form>
+                </div>
+            </div>
+        </div>
+    </nav>
+	
+	
+
+    <main role="main">
+        <div class="page page--content">
+            <div class="container">
+                <section class="page-header hidden-print">
+                    <div class="gray-bar">
+                        <a href="/how-tos-and-faqs/how-to/" class="link link--back-to"><i class="fa fa-angle-left"></i>Back to overview</a>
+                    </div>
+                    <!--/.gray-bar -->
+
+                    <div class="white-bar">
+                        <ul class="m-social-media list-unstyled list-inline vertical--middle">
+                            <li><a href="#" onclick="window.print();"><i class="fa fa-print"></i></a></li>
+                            <li><span class='st_email_large' displaytext='Email'><i class="fa fa-envelope"></i></span></li>
+                            <li><span class='st_facebook_large' displaytext='Facebook'><i class="fa fa-facebook"></i></span></li>
+                            <li><span class='st_linkedin_large' displaytext='LinkedIn'><i class="fa fa-linkedin"></i></span></li>
+                            <li><span class='st_twitter_large' displaytext='Tweet'><i class="fa fa-twitter"></i></span></li>
+                            <li><span class='st_googleplus_large' displaytext='Google +'><i class="fa fa-google-plus"></i></span></li>
+                        </ul>
+                    </div>
+                    <!--/.white-bar -->
+
+                    <div class="blue-badge text-center text-uppercase">
+                        <span class="heading">Difficulty level</span>
+                        <span class="subheading">Advanced</span>
+                    </div>
+                    <!--/.blue-badge -->
+
+                </section>
+                <!--/.page-header -->
+
+                <section class="l-rte-container rte-container">
+                    <h1>Real-Time Data Exchange (RTDE) Guide - 22229</h1>
+					<hr />
+<p><strong>This is a guide on how to use the data synchronization protocol of the UR controller e.g. when developing URCaps/UR+ for Universal Robots.</strong></p>
+<p style="color: red;"><strong>NOTE: All files are avalable for download at the bottom of this page.</strong></p>
+<p><strong>Examples are valid for:</strong><br /><strong>CB3 Software version: 3.4</strong><br /><strong>Note that newer software versions may behave differently.</strong></p>
+<p><strong>The RTDE is available on CB3/CB3.1 from software 3.3, but specific features may only be available in newer software versions.<br /></strong></p>
+<hr />
+<p>The RTDE synchronize external executables with the UR controller, for instance URCaps<a href="https://confluence.ur-update.dk/display/FB/Ethernet+IP+Home">,</a> without breaking any real-time properties. This document first describes the protocol and then provides a Python client reference implementation.</p>
+<h2><strong>Introduction</strong></h2>
+<p>The Real-Time Data Exchange (RTDE) interface provides a way to synchronize external applications with the UR controller over a standard TCP/IP connection, without breaking any real-time properties of the UR controller. This functionality is among others useful for interacting with drivers (e.g. Ethernet/IP), manipulating robot I/O and plotting robot status (e.g. robot trajectories). The RTDE interface is by default available when the UR controller is running.</p>
+<p>The synchronization is configurable and can for example involve the following data:</p>
+<ul>
+<li>Output: robot-, joint-, tool- and safety status, analog and digital I/O's and general purpose output registers</li>
+<li>Input: digital and analog outputs and general purpose input registers</li>
+</ul>
+<p>The RTDE functionality is split in two stages: a setup procedure and a synchronization loop.</p>
+<p>On connection to the RTDE interface, the client is responsible for setting up the variables to be synchronized. Any combination of input and output registers that the client needs to write and read, respectively, can be specified. To achieve this the client sends a setup list of named input and output fields that should be contained in the actual data synchronization packages. <span>The definition of a synchronization data package format is referred to as a <em>recipe.</em>  </span>In return the RTDE interface replies with a list of the variable types or specifies that a specific variable has not been found. <span>Each input recipe that has been successfully configured will get a unique recipe id. The list of supported field names and their associated data types can be found below. When the setup is complete the data synchronization can be started and paused.</span></p>
+<p>When the synchronization loop is started, the RTDE interface sends the client the requested data in the same order it was requested by the client. Furthermore the client is expected to send updated inputs to the RTDE interface on a change of value. The data synchronization uses serialized data.</p>
+<p>All packages share the same general structure with a header and a payload if applicable. The packages used for the setup procedure generate a return message. The synchronization loop packages do not. Both client and server may at any time send a text message, whereby the warning level specifies the severity of the problem. The RTDE is available on port number 30004.</p>
+<p>To get started we recommend to use or modify the provided client sample written in Python.</p>
+<h3><strong>Key features</strong></h3>
+<ul>
+<li>Real-time synchronization: The RTDE generally generates output messages on 125 Hz. However, the real-time loop in the controller has a higher priority than the RTDE interface. Therefore, if the controller lacks computational resources it will skip a number of output packages. The skipped packages will not be sent later, the controller will always send the most recent data. Input packages will always be processed in the control cycle they are received, so the load for the controller will vary depending on the number of received packages.</li>
+<li>Input messages: The updating of variables in the controller can be divided into multiple messages. One can have one message to update everything or a message per variable or any division in between. There is no need for a constant update rate; inputs keep their last received value. Note: Only one RTDE client is allowed to control a specific variable at any time.</li>
+<li>Runtime environment: An RTDE client may run on the UR Control Box PC or on any external PC. The advantage of running the RTDE client on the Control Box is no network latency. However, the RTDE client and UR controller will compete for computational resources. Please make sure that the RTDE client runs with standard operating system priority. Computationally intensive processes, e.g. image processing, should be run on an external PC.</li>
+<li>Protocol changes: The RTDE protocol might be updated at any time by UR. To guarantee maximum compatibility for your RTDE client, RTDE clients can request the RTDE interface to speak a specific protocol version. Protocol additions / changes are explicitly denoted, otherwise version 1 is assumed.</li>
+</ul>
+<h2><strong>Field names and associated types</strong></h2>
+<p>The following data fields are available through the RTDE interface.</p>
+<h3><strong>Robot controller inputs</strong></h3>
+<div class="table-wrap">
+<table border="0" width="646" height="714" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd">speed_slider_mask</td>
+<td class="confluenceTd">UINT32</td>
+<td class="confluenceTd">0 = don't change speed slider with this input<br />1 = use speed_slider_fraction to set speed slider value</td>
+</tr>
+<tr>
+<td class="confluenceTd">speed_slider_fraction</td>
+<td class="confluenceTd">DOUBLE</td>
+<td class="confluenceTd">new speed slider value</td>
+</tr>
+<tr>
+<td class="confluenceTd">standard_digital_output_mask</td>
+<td class="confluenceTd">UINT8</td>
+<td class="confluenceTd">Standard digital output bit mask*</td>
+</tr>
+<tr>
+<td class="confluenceTd">standard_digital_output</td>
+<td class="confluenceTd">UINT8</td>
+<td class="confluenceTd">Standard digital outputs</td>
+</tr>
+<tr>
+<td class="confluenceTd">configurable_digital_output_mask</td>
+<td class="confluenceTd">UINT8</td>
+<td class="confluenceTd">Configurable digital output bit mask*</td>
+</tr>
+<tr>
+<td class="confluenceTd">configurable_digital_output</td>
+<td class="confluenceTd">UINT8</td>
+<td class="confluenceTd">Configurable digital outputs</td>
+</tr>
+<tr>
+<td>tool_digital_output_mask</td>
+<td>UINT8</td>
+<td>Tool digital outputs mask* <br />Bits 0-1: mask, remaining bits are reserved for future use</td>
+</tr>
+<tr>
+<td class="confluenceTd">tool_digital_output</td>
+<td class="confluenceTd">UINT8</td>
+<td class="confluenceTd">Tool digital outputs <br />Bits 0-1: output state, remaining bits are reserved for future use</td>
+</tr>
+<tr>
+<td class="confluenceTd">standard_analog_output_mask</td>
+<td class="confluenceTd">UINT8</td>
+<td class="confluenceTd">Standard analog output mask <br />Bits 0-1: standard_analog_output_0 | standard_analog_output_1</td>
+</tr>
+<tr>
+<td class="confluenceTd">standard_analog_output_type</td>
+<td class="confluenceTd">UINT8</td>
+<td class="confluenceTd">Output domain {0=current[A], 1=voltage[V]} <br />Bits 0-1: standard_analog_output_0 | standard_analog_output_1</td>
+</tr>
+<tr>
+<td class="confluenceTd">standard_analog_output_0</td>
+<td class="confluenceTd">DOUBLE</td>
+<td class="confluenceTd">Standard analog output 0 (ratio) [0..1]</td>
+</tr>
+<tr>
+<td class="confluenceTd">standard_analog_output_1</td>
+<td class="confluenceTd">DOUBLE</td>
+<td class="confluenceTd">Standard analog output 1 (ratio) [0..1]</td>
+</tr>
+<tr>
+<td class="confluenceTd">input_bit_registers0_to_31</td>
+<td class="confluenceTd">UINT32</td>
+<td class="confluenceTd">General purpose bits</td>
+</tr>
+<tr>
+<td class="confluenceTd">input_bit_registers32_to_63</td>
+<td class="confluenceTd">UINT32</td>
+<td class="confluenceTd">General purpose bits</td>
+</tr>
+<tr>
+<td class="confluenceTd">input_int_register_<em>X</em></td>
+<td class="confluenceTd">INT32</td>
+<td class="confluenceTd">24 general purpose integer registers <br />X: [0..23]</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">input_double_register_<em>X</em></td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">24 general purpose double registers <br />X: [0..23]</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p> <span class="pull-left">*Digital and analog output values have to be sent together with mask, otherwise values will be ignored.</span></p>
+<h3><strong>Robot controller outputs</strong></h3>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd">timestamp</td>
+<td class="confluenceTd">DOUBLE</td>
+<td class="confluenceTd">Time elapsed since the controller was started [s]</td>
+</tr>
+<tr>
+<td class="confluenceTd">target_q</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Target joint positions</td>
+</tr>
+<tr>
+<td class="confluenceTd">target_qd</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Target joint velocities</td>
+</tr>
+<tr>
+<td class="confluenceTd">target_qdd</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Target joint accelerations</td>
+</tr>
+<tr>
+<td class="confluenceTd">target_current</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Target joint currents</td>
+</tr>
+<tr>
+<td class="confluenceTd">target_moment</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Target joint moments (torques)</td>
+</tr>
+<tr>
+<td class="confluenceTd">actual_q</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Actual joint positions</td>
+</tr>
+<tr>
+<td class="confluenceTd">actual_qd</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Actual joint velocities</td>
+</tr>
+<tr>
+<td class="confluenceTd">actual_current</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Actual joint currents</td>
+</tr>
+<tr>
+<td class="confluenceTd">joint_control_output</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Joint control currents</td>
+</tr>
+<tr>
+<td class="confluenceTd">actual_TCP_pose</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Actual Cartesian coordinates of the tool: (x,y,z,rx,ry,rz), where rx, ry and rz is a rotation vector representation of the tool orientation</td>
+</tr>
+<tr>
+<td class="confluenceTd">actual_TCP_speed</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Actual speed of the tool given in Cartesian coordinates</td>
+</tr>
+<tr>
+<td class="confluenceTd">actual_TCP_force</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Generalized forces in the TCP</td>
+</tr>
+<tr>
+<td class="confluenceTd">target_TCP_pose</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Target Cartesian coordinates of the tool: (x,y,z,rx,ry,rz), where rx, ry and rz is a rotation vector representation of the tool orientation</td>
+</tr>
+<tr>
+<td class="confluenceTd">target_TCP_speed</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Target speed of the tool given in Cartesian coordinates</td>
+</tr>
+<tr>
+<td class="confluenceTd">actual_digital_input_bits</td>
+<td class="confluenceTd">UINT64</td>
+<td class="confluenceTd">Current state of the digital inputs. <span>0-7: Standard, 8-15: Configurable, 16-17: Tool</span></td>
+</tr>
+<tr>
+<td class="confluenceTd">joint_temperatures</td>
+<td class="confluenceTd">VECTOR6D</td>
+<td class="confluenceTd">Temperature of each joint in degrees Celsius</td>
+</tr>
+<tr>
+<td class="confluenceTd">actual_execution_time</td>
+<td class="confluenceTd">DOUBLE</td>
+<td class="confluenceTd">Controller real-time thread execution time</td>
+</tr>
+<tr style="vertical-align: middle;">
+<td class="confluenceTd" colspan="1">robot_mode</td>
+<td class="confluenceTd" colspan="1">INT32</td>
+<td class="confluenceTd" colspan="1" style="vertical-align: middle;">Robot mode<br />Please see <a href="/how-tos-and-faqs/how-to/ur-how-tos/remote-control-via-tcpip-16496/" title="Remote Control Via TCP/IP - 16496">Remote Control Via TCP/IP - 16496</a></td>
+</tr>
+<tr style="vertical-align: middle;">
+<td class="confluenceTd" colspan="1">joint_mode</td>
+<td class="confluenceTd" colspan="1">VECTOR6INT32</td>
+<td class="confluenceTd" colspan="1" style="vertical-align: middle;">Joint control modes<br /><span>Please see </span><a href="/how-tos-and-faqs/how-to/ur-how-tos/remote-control-via-tcpip-16496/" title="Remote Control Via TCP/IP - 16496">Remote Control Via TCP/IP - 16496</a></td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">safety_mode</td>
+<td class="confluenceTd" colspan="1">INT32</td>
+<td class="confluenceTd" colspan="1">Safety mode<br /><span>Please see </span><a href="/how-tos-and-faqs/how-to/ur-how-tos/remote-control-via-tcpip-16496/" title="Remote Control Via TCP/IP - 16496">Remote Control Via TCP/IP - 16496</a></td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">actual_tool_accelerometer</td>
+<td class="confluenceTd" colspan="1">VECTOR3D</td>
+<td class="confluenceTd" colspan="1">Tool x, y and z accelerometer values</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">speed_scaling</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Speed scaling of the trajectory limiter</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">target_speed_fraction</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Target speed fraction</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">actual_momentum</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Norm of Cartesian linear momentum</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">actual_main_voltage</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Safety Control Board: Main voltage</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">actual_robot_voltage</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Safety Control Board: Robot voltage (48V)</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">actual_robot_current</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Safety Control Board: Robot current</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">actual_joint_voltage</td>
+<td class="confluenceTd" colspan="1">VECTOR6D</td>
+<td class="confluenceTd" colspan="1">Actual joint voltages</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">actual_digital_output_bits</td>
+<td class="confluenceTd" colspan="1">UINT64</td>
+<td class="confluenceTd" colspan="1"><span>Current state of the digital outputs. </span><span>0-7: Standard, 8-15: Configurable, 16-17: Tool</span></td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">runtime_state</td>
+<td class="confluenceTd" colspan="1">UINT32</td>
+<td class="confluenceTd" colspan="1">Program state</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">robot_status_bits</td>
+<td class="confluenceTd" colspan="1">UINT32</td>
+<td class="confluenceTd" colspan="1">Bits 0-3: Is power on | Is program running | Is teach button pressed | Is power button pressed</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">safety_status_bits</td>
+<td class="confluenceTd" colspan="1">UINT32</td>
+<td class="confluenceTd" colspan="1">Bits 0-10: Is normal mode | Is reduced mode | | Is protective stopped | Is recovery mode | Is safeguard stopped | Is system emergency stopped | Is robot emergency stopped | Is emergency stopped | Is violation | Is fault | Is stopped due to safety</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">analog_io_types</td>
+<td class="confluenceTd" colspan="1">UINT32</td>
+<td class="confluenceTd" colspan="1">
+<div>Bits 0-3: analog input 0 | analog input 1 | analog output 0 | analog output 1, {0=current[A], 1=voltage[V]}</div>
+</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">standard_analog_input0</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Standard analog input 0 [A or V]</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">standard_analog_input1</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Standard analog input 1 [A or V]</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">standard_analog_output0</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Standard analog output 0 [A or V]</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">standard_analog_output1</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Standard analog output 1 [A or V]</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">io_current</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">I/O current [A]</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">euromap67_input_bits</td>
+<td class="confluenceTd" colspan="1">UINT32</td>
+<td class="confluenceTd" colspan="1">
+<div>Euromap67 input bits</div>
+</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">euromap67_output_bits</td>
+<td class="confluenceTd" colspan="1">UINT32</td>
+<td class="confluenceTd" colspan="1">
+<div>Euromap67 output bits</div>
+</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">euromap67_24V_voltage</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">
+<div>Euromap 24V voltage [V]</div>
+</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">euromap67_24V_current</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">
+<div>Euromap 24V current [A]</div>
+</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">tool_mode</td>
+<td class="confluenceTd" colspan="1">UINT32</td>
+<td class="confluenceTd" colspan="1">Tool mode<br /><span>Please see </span><a href="/how-tos-and-faqs/how-to/ur-how-tos/remote-control-via-tcpip-16496/" title="Remote Control Via TCP/IP - 16496">Remote Control Via TCP/IP - 16496</a></td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">tool_analog_input_types</td>
+<td class="confluenceTd" colspan="1">UINT32</td>
+<td class="confluenceTd" colspan="1">
+<p>Output domain {0=current[A], 1=voltage[V]}</p>
+<p>Bits 0-1: tool_analog_input_0 | tool_analog_input_1</p>
+</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">tool_analog_input0</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Tool analog input 0 [A or V]</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">tool_analog_input1</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Tool analog input 1 [A or V]</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">tool_output_voltage</td>
+<td class="confluenceTd" colspan="1">INT32</td>
+<td class="confluenceTd" colspan="1">Tool output voltage [V]</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">tool_output_current</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Tool current [A]</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">tool_temperature</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">Tool temperature in degrees Celsius</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">tcp_force_scalar</td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">TCP force scalar [N]</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">output_bit_registers0_to_31</td>
+<td class="confluenceTd" colspan="1">UINT32</td>
+<td class="confluenceTd" colspan="1">General purpose bits</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">output_bit_registers32_to_63</td>
+<td class="confluenceTd" colspan="1">UINT32</td>
+<td class="confluenceTd" colspan="1">General purpose bits</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">output_int_register_<em>X</em></td>
+<td class="confluenceTd" colspan="1">INT32</td>
+<td class="confluenceTd" colspan="1">
+<p>24 general purpose integer registers</p>
+<p>X: [0..23]</p>
+</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">output_double_register_<em>X</em></td>
+<td class="confluenceTd" colspan="1">DOUBLE</td>
+<td class="confluenceTd" colspan="1">
+<p>24 general purpose double registers</p>
+<p>X: [0..23]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2><strong>Data types</strong></h2>
+<table border="0">
+<tbody>
+<tr>
+<td><strong>Name</strong></td>
+<td><strong>Type</strong></td>
+<td><strong>Size in bits</strong></td>
+</tr>
+<tr>
+<td>BOOL</td>
+<td><span class="diff-html-added">0 = False, everything else = True</span></td>
+<td>8</td>
+</tr>
+<tr>
+<td>UINT8</td>
+<td><span class="diff-html-added">unsigned integer</span></td>
+<td>8</td>
+</tr>
+<tr>
+<td>UINT32</td>
+<td><span class="diff-html-added">unsigned integer</span></td>
+<td>32</td>
+</tr>
+<tr>
+<td>UINT64</td>
+<td><span class="diff-html-added">unsigned integer</span></td>
+<td>64</td>
+</tr>
+<tr>
+<td>INT32</td>
+<td><span class="diff-html-added">signed integer, two's complement</span></td>
+<td>32</td>
+</tr>
+<tr>
+<td>DOUBLE</td>
+<td><span class="diff-html-added">IEEE 754 floating point</span></td>
+<td>64</td>
+</tr>
+<tr>
+<td>VECTOR3D</td>
+<td><span class="diff-html-added">3xDOUBLE</span></td>
+<td>3x64</td>
+</tr>
+<tr>
+<td>VECTOR6D</td>
+<td><span class="diff-html-added">6xDOUBLE</span></td>
+<td>6x64</td>
+</tr>
+<tr>
+<td>VECTOR6INT32</td>
+<td><span class="diff-html-added">6xINT32</span></td>
+<td>6x32</td>
+</tr>
+<tr>
+<td>VECTOR6UINT32</td>
+<td><span class="diff-html-added">6xUINT32</span></td>
+<td>6x32</td>
+</tr>
+<tr>
+<td>STRING</td>
+<td><span class="diff-html-added">ASCII char array</span></td>
+<td>lengthx8</td>
+</tr>
+</tbody>
+</table>
+<p>Network byte order</p>
+<h2><strong>Protocol</strong></h2>
+<p>EE = External Executable<br />CON = Robot Controller<br />Output: CON -&gt; EE<br />Input: CON &lt;- EE</p>
+<h3><strong>Header</strong></h3>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd">package size</td>
+<td class="confluenceTd">uint16_t</td>
+</tr>
+<tr>
+<td class="confluenceTd">package type</td>
+<td class="confluenceTd">uint8_t</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: All packages use the header.<br />Support package types are:</p>
+<div class="table-wrap">
+<table border="0">
+<tbody>
+<tr>
+<td><span class="diff-html-added"><strong>Package name</strong><br /></span></td>
+<td><strong>package type</strong></td>
+<td><strong>ascii equivalent</strong></td>
+</tr>
+<tr>
+<td><span class="diff-html-added">RTDE_REQUEST_PROTOCOL_VERSION</span></td>
+<td>86</td>
+<td>V</td>
+</tr>
+<tr>
+<td><span class="diff-html-added">RTDE_GET_URCONTROL_VERSION</span></td>
+<td>118</td>
+<td>v</td>
+</tr>
+<tr>
+<td><span class="diff-html-added">RTDE_TEXT_MESSAGE</span></td>
+<td>77</td>
+<td>M</td>
+</tr>
+<tr>
+<td><span class="diff-html-added">RTDE_DATA_PACKAGE</span></td>
+<td>85</td>
+<td>U</td>
+</tr>
+<tr>
+<td><span class="diff-html-added">RTDE_CONTROL_PACKAGE_SETUP_OUTPUTS</span></td>
+<td>79</td>
+<td>O</td>
+</tr>
+<tr>
+<td><span class="diff-html-added">RTDE_CONTROL_PACKAGE_SETUP_INPUTS</span></td>
+<td>73</td>
+<td>I</td>
+</tr>
+<tr>
+<td><span class="diff-html-added">RTDE_CONTROL_PACKAGE_START</span></td>
+<td>83</td>
+<td>S</td>
+</tr>
+<tr>
+<td><span class="diff-html-added">RTDE_CONTROL_PACKAGE_PAUSE</span></td>
+<td>80</td>
+<td>P</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Direction: Bilateral<br />Return: Not available</p>
+<h3><strong>RTDE_REQUEST_PROTOCOL_VERSION</strong></h3>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong>Header</strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">protocol version</td>
+<td class="confluenceTd" colspan="1">uint16_t</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: Request the controller to work with "protocol version"<br />Direction: EE -&gt; CON</p>
+<p><strong>Return<br /></strong></p>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong>Header</strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">accepted</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: The controller accepts or not, i.e. either 1 (success) or 0 (failed). On success, the EE should speak the specified protocol version and the CON will answer in that version.</p>
+<h3><strong>RTDE_GET_URCONTROL_VERSION</strong></h3>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong><strong>Header</strong></strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: Retrieves the CON major, minor, bugfix and build number.<br />Direction: EE -&gt; CON</p>
+<p><strong>Return</strong></p>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong>Header</strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">major</td>
+<td class="confluenceTd" colspan="1">uint32_t</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">minor</td>
+<td class="confluenceTd" colspan="1">uint32_t</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">bugfix</td>
+<td class="confluenceTd" colspan="1">uint32_t</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">build</td>
+<td class="confluenceTd" colspan="1">uint32_t</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: The major, minor, bugfix and build number.</p>
+<h3><strong>RTDE_TEXT_MESSAGE (protocol v. 1)</strong></h3>
+<p>Direction: CON -&gt; EE</p>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong><strong>Header</strong></strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">message type</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">message</td>
+<td class="confluenceTd" colspan="1">string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Direction: EE -&gt; CON</p>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong><strong>Header</strong></strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">message length</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">message</td>
+<td class="confluenceTd" colspan="1">string</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">source length</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">source</td>
+<td class="confluenceTd" colspan="1">string</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">warning level</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: Send an exception, error, warning or info message.<br />Warning level: EXCEPTION_MESSAGE, ERROR_MESSAGE, WARNING_MESSAGE, INFO_MESSAGE<br />EE-&gt;CON: Exceptions indicate EE program failure without recovery possibilities. Error, warning and info will end up in the PolyScope log.<br />CON -&gt; EE: Indicates mainly different kinds of protocol failures.<br />Direction: See above<br />Return: Not available.</p>
+<h3><strong>RTDE_TEXT_MESSAGE (protocol v. 2)</strong></h3>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong><strong>Header</strong></strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">message length</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">message</td>
+<td class="confluenceTd" colspan="1">string</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">source length</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">source</td>
+<td class="confluenceTd" colspan="1">string</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">warning level</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: Send an exception, error, warning or info message.<br />Warning level: EXCEPTION_MESSAGE, ERROR_MESSAGE, WARNING_MESSAGE, INFO_MESSAGE<br />EE-&gt;CON: Exceptions indicate EE program failure without recovery possibilities. Error, warning and info will end up in the PolyScope log.<br />CON -&gt; EE: Indicates mainly different kinds of protocol failures.<br />Direction: Bilateral<br />Return: Not available.</p>
+<h3><strong>RTDE_DATA_PACKAGE</strong></h3>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong><strong>Header</strong></strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">recipe id</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">&lt;variable&gt;</td>
+<td class="confluenceTd" colspan="1">&lt;data type&gt;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: An update to the CON/EE inputs respectively.<br />The &lt;variable&gt;s are packaged/serialized binary and match the type specified by the SETUP_OUTPUTS or SETUP_INPUTS requests return.<br />Direction: Bilateral<br />Return: Not available</p>
+<h3><strong>RTDE_CONTROL_PACKAGE_SETUP_OUTPUTS (protocol v. 1)</strong></h3>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong><strong>Header</strong></strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">variable names</td>
+<td class="confluenceTd" colspan="1">string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: Setup the outputs recipe. At the moment the CON only supports one output recipe. The package should contain all desired output variables. The variables names is a list of comma separated variable name strings.<br />Direction: EE -&gt; CON</p>
+<p><strong>Return</strong></p>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong><strong>Header</strong></strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">variable types</td>
+<td class="confluenceTd" colspan="1">string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: Returns the variable types in the same order as they were supplied in the request.<br />Variable types: VECTOR6D, VECTOR3D, VECTOR6INT32, VECTOR6UINT32, DOUBLE, UINT64, UINT32, INT32, BOOL, UINT8<br />If a variable is not available, then the variable type will be "NOT_FOUND".<br />In case of one or more "NOT_FOUND" return values, the recipe is considered invalid and the RTDE will not output this data.</p>
+<h3><strong>RTDE_CONTROL_PACKAGE_SETUP_OUTPUTS (protocol v. 2)</strong></h3>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong><strong>Header</strong></strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">output frequency</td>
+<td class="confluenceTd" colspan="1">double</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">variable names</td>
+<td class="confluenceTd" colspan="1">string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: Setup the outputs recipe. At the moment the CON only supports one output recipe and the output frequency is configurable. The frequency must be between 1 and 125 Hz and the output rate will be according to floor(125 / frequency). The package should contain all desired output variables. The variable names is a list of comma separated variable name strings.<br />Direction: EE -&gt; CON</p>
+<p><strong>Return</strong></p>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong><strong>Header</strong></strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">output recipe id</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">variable types</td>
+<td class="confluenceTd" colspan="1">string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: Returns the variable types in the same order as they were supplied in the request.<br />Variable types: VECTOR6D, VECTOR3D, VECTOR6INT32, VECTOR6UINT32, DOUBLE, UINT64, UINT32, INT32, BOOL, UINT8<br />If a variable is not available, then the variable type will be "NOT_FOUND".<br />In case of one or more "NOT_FOUND" return values, the recipe is considered invalid and the RTDE will not output this data.</p>
+<h3><strong>RTDE_CONTROL_PACKAGE_SETUP_INPUTS</strong></h3>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong><strong>Header</strong></strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">variable names</td>
+<td class="confluenceTd" colspan="1">string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: Setup a CON input recipe.The CON supports 255 different input recipes (0 is reserved). The variables names is a list of comma separated variable name strings.<br />Direction: EE -&gt; CON</p>
+<p><strong>Return</strong></p>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong><strong>Header</strong></strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">input recipe id</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">variable types</td>
+<td class="confluenceTd" colspan="1">string</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: Returns the variable types in the same order as they were supplied in the request.<br />Variable types: VECTOR6D, VECTOR3D, VECTOR6INT32, VECTOR6UINT32, DOUBLE, UINT64, UINT32, INT32, BOOL, UINT8<br />If a variable has been claimed by another EE, then the variable type will be "IN_USE".<br />If a variable is not available, then the variable type will be "NOT_FOUND".<br />In case of one or more "IN_USE" or "NOT_FOUND" return values, the recipe is considered invalid (recipe id = 0).</p>
+<h3><strong>RTDE_CONTROL_PACKAGE_START</strong></h3>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd">
+<p><strong>Header</strong></p>
+</td>
+<td class="confluenceTd">See above</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: Request the controller to start sending output updates. This will fail if e.g. an output package has not been configured yet.<br />Direction: EE -&gt; CON</p>
+<p><strong>Return</strong></p>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong>Header</strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">accepted</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: The CON accepts or not. Either 1 (success) or 0 (failed).</p>
+<h3><strong>RTDE_CONTROL_PACKAGE_PAUSE</strong></h3>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong><strong>Header</strong></strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: Request the CON to pause sending output updates.<br />Direction: EE -&gt; CON</p>
+<p><strong>Return</strong></p>
+<div class="table-wrap">
+<table border="0" class="confluenceTable tablesorter tablesorter-default">
+<tbody>
+<tr>
+<td class="confluenceTd"><strong>Header</strong></td>
+<td class="confluenceTd">See above</td>
+</tr>
+<tr>
+<td class="confluenceTd" colspan="1">accepted</td>
+<td class="confluenceTd" colspan="1">uint8_t</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Summary: The CON will always accept a pause command and return a 1 (success).</p>
+<h2><strong> RTDE client Python module </strong></h2>
+<div id="main-content" class="wiki-content">
+<p>RTDE clients can be implemented in different languages that support socket communication. The purpose of this RTDE client library, written in Python, is to provide an easy starting point and show some example applications. The functionality has been developed for Python 2.7.11.</p>
+<h3><strong>Examples</strong></h3>
+<p><strong>record.py</strong></p>
+<p>Use this script as an executable to record output data from the robot and save it to a csv file.</p>
+<p style="margin-left: 30.0px;"><em>Optional arguments<br /></em></p>
+<ul>
+<li>--host: name of host or IP address to connect to (default: localhost)</li>
+<li>--port: port number (default: 30004)</li>
+<li>--samples: specific number of samples to record (otherwise the program will record data until receiving SIGINT/Ctrl+C)</li>
+<li>--frequency: the sampling frequency in Herz</li>
+<li>--config: XML configuration file to use - it will use the recipe with key 'out' (default: record_configuration.xml)</li>
+<li>--output: data output file to write to - an existing file will be overwritten (default: robot_data.csv)</li>
+<li>--verbose: enable info logging output to console</li>
+<li>-h: display help</li>
+</ul>
+<p><strong>example_plotting.py</strong></p>
+<p>Provides a simple way to read and plot the data from a csv file recorded with the <em>record.py</em>.</p>
+<p><strong>example_control_loop.py</strong></p>
+<p>Example of a simple control loop. A configuration with two input recipes and one output recipe is read from XML file and sent to the RTDE server. The control loop consist of a blocking read followed by some very simple data processing before sending new information to the robot.</p>
+<p> </p>
+<h3><strong>rtde module</strong></h3>
+<p>This section describes the different classes and their public interfaces of the rtde module.</p>
+<p><strong>class csv_reader.CSVReader(csvfile, delimiter)</strong></p>
+<p style="margin-left: 30.0px;">Reads the CSV file and maps each column into an entry in the namespace dictionary of the object. The column header are the dictionary key and the value is an array of data points in the column.</p>
+<p style="margin-left: 30.0px;">Input parameters:</p>
+<ul>
+<li>csvfile (file): Any file-like object that has a <em>read()</em> method.</li>
+<li>delimiter (string): A one-character string used to separate fields. It defaults to <span class="pre">' '</span>.</li>
+</ul>
+<p><strong>class csv_writer.CSVWriter(csvfile, names, types, delimiter)</strong></p>
+<p style="margin-left: 30.0px;">Returns a writer object that can take RTDE DataObjects and convert them into delimited string and write them to a file like object.</p>
+<p style="margin-left: 30.0px;">Input parameters:</p>
+<ul>
+<li>csvfile (file): Any file-like object that has a <em>write()</em> method.</li>
+<li>names (array&lt;string&gt;): list of variable names</li>
+<li>types (array&lt;string&gt;): list of variable types</li>
+<li>delimiter (string): A one-character string used to separate fields. It defaults to <span class="pre">' '</span>.</li>
+</ul>
+<p><em>writeheader()</em></p>
+<p style="margin-left: 30.0px;">Write column headers to current line in file based on variable names. Multidimensional variables will get an index appended to the name in each column.</p>
+<p><em>writerow(data_object)</em></p>
+<p style="margin-left: 30.0px;">Write a new row to the file based on the provided DataObject.</p>
+<p style="margin-left: 30.0px;">Input parameters:</p>
+<ul>
+<li>data_object (DataObject): Data object with member variables matching the names of the configured RTDE variables<br /><br /></li>
+</ul>
+<p><strong>class rtde_config.ConfigFile(filename)</strong></p>
+<p style="margin-left: 30.0px;">An RTDE configuration can be loaded from an XML file containing a list of recipes. Each recipe should have a key and a list of field with a variable name and type. An example XML recipe:</p>
+<table border="0">
+<tbody>
+<tr>
+<td>&lt;?xml version="1.0"?&gt;<br />&lt;rtde_config&gt;<br />  &lt;recipe key="out"&gt;<br />    &lt;field name="timestamp" type="DOUBLE"/&gt;<br />    &lt;field name="target_q" type="VECTOR6D"/&gt;<br />    &lt;field name="target_qd" type="VECTOR6D"/&gt;<br />    &lt;field name="speed_scaling" type="DOUBLE"/&gt;<br />    &lt;field name="output_int_register_0" type="INT32"/&gt;<br />  &lt;/recipe&gt;<br />  &lt;recipe key="in1"&gt;<br />    &lt;field name="input_int_register_0" type="INT32"/&gt;<br />    &lt;field name="input_int_register_1" type="INT32"/&gt;<br />  &lt;/recipe&gt;<br />  &lt;recipe key="in2"&gt; <br />    &lt;field name="input_double_register_0" type="DOUBLE"/&gt;<br />  &lt;/recipe&gt;<br />&lt;/rtde_config&gt;</td>
+</tr>
+</tbody>
+</table>
+<p><em>get_recipe(key)</em></p>
+<p style="margin-left: 30.0px;">Gets the recipe associated to the specified key given as a list of names and a list of types.</p>
+<p style="margin-left: 30.0px;">Input parameters:</p>
+<ul>
+<li>key (string): The key associated to the recipe</li>
+</ul>
+<p style="margin-left: 30.0px;">Return values:</p>
+<ul>
+<li>variables (array&lt;string&gt;): list of variable names</li>
+<li>types (array&lt;string&gt;): list of variable types</li>
+</ul>
+<br />
+<p> </p>
+<p><strong>class serialize.DataObject():</strong></p>
+<p style="margin-left: 30.0px;">A data transfer object where the RTDE variable names configured for synchronization has been added to the namespace dictionary of the class for convenient accessing. This means that for example the timestamp can be accessed on an output DataObject like this: <em>objName.timestamp</em>. The DataObject is used for both input and output.</p>
+<p><em>recipe_id</em></p>
+<p style="margin-left: 30.0px;">The recipe_id is an integer member variable on the DataObject instance used to identify input packages configured in the RTDE server. It is not used for output packages.</p>
+<p> </p>
+<p><strong>class Rtde.RTDE(hostname, port)</strong></p>
+<p style="margin-left: 30.0px;">The constructor takes a hostname and port number as arguments.</p>
+<p style="margin-left: 30.0px;">Input parameters:<em><br /></em></p>
+<ul>
+<li>hostname (string): hostname or IP of RTDE server</li>
+<li>port (int): [Optional] port number (default value: 30004)</li>
+</ul>
+<p><strong><br /></strong><em>connect()</em></p>
+<p style="margin-left: 30.0px;">Initialize RTDE connection to host.</p>
+<p style="margin-left: 30.0px;">Return value:</p>
+<ul>
+<li>success (boolean)</li>
+</ul>
+<p><em>disconnect()</em></p>
+<p style="margin-left: 30.0px;">Close the RTDE connection.</p>
+<p><em>is_connected()</em></p>
+<p style="margin-left: 30.0px;">Returns True if the connection is open.</p>
+<p style="margin-left: 30.0px;">Return value:</p>
+<ul>
+<li>open (boolean)</li>
+</ul>
+<p><em>get_controller_version()</em></p>
+<p style="margin-left: 30.0px;">Returns the software version of the robot controller running the RTDE server.</p>
+<p style="margin-left: 30.0px;">Return values:</p>
+<ul>
+<li>major (int)</li>
+<li>minor (int)</li>
+<li>bugfix (int)</li>
+<li>build (int)</li>
+</ul>
+<p><em>negotiate_protocol_version(protocol)</em></p>
+<p style="margin-left: 30.0px;">Negotiate the protocol version with the server. Returns True if the controller supports the specified protocol version. We recommend that you use this to ensure full compatibility between your application and future versions of the robot controller.</p>
+<p style="margin-left: 30.0px;">Input parameters:</p>
+<ul>
+<li>protocol (int): protocol version number</li>
+</ul>
+<p style="margin-left: 30.0px;">Return value:</p>
+<ul>
+<li>success (boolean)</li>
+</ul>
+<p><em>send_input_setup(variables, types)</em></p>
+<p style="margin-left: 30.0px;">Configure an input package that the external application will send to the robot controller. An input package is a collection of input variables that the external application will provide to the robot controller in a single update. Variables is a list of variable names and should be a subset of the names supported as input by the RTDE interface.The list of types is optional, but if any types are provided it should have the same length as the variables list. The provided types will be matched with the types that the RTDE interface expects and the function returns None if they are not equal. Multiple input packages can be configured. The returned InputObject has a reference to the recipe id which is used to identify the specific input format when sending an update.</p>
+<p style="margin-left: 30.0px;">Input parameters:</p>
+<ul>
+<li>variables (array&lt;string&gt;): Variable names from the list of possible RTDE inputs</li>
+<li>types (array&lt;string&gt;): [Optional] Types matching the variables</li>
+</ul>
+<p style="margin-left: 30.0px;">Return value:</p>
+<ul>
+<li>input_data (DataObject): Empty object with member variables matching the names of the configured RTDE variables</li>
+</ul>
+<p><em>send_output_setup(variables, types)</em></p>
+<p style="margin-left: 30.0px;">Configure an output package that the robot controller will send to the external application at the control frequency. Variables is a list of variable names and should be a subset of the names supported as output by the RTDE interface. The list of types is optional, but if any types are provided it should have the same length as the variables list. The provided types will be matched with the types that the RTDE interface expects and the function returns False if they are not equal. Only one output package format can be specified and hence no recipe id is used for output.</p>
+<p style="margin-left: 30.0px;">Input parameters:</p>
+<ul>
+<li>variables (array&lt;string&gt;): Variable names from the list of possible RTDE outputs</li>
+<li>types (array&lt;string&gt;): [Optional] Types matching the variables</li>
+</ul>
+<p style="margin-left: 30.0px;">Return value:</p>
+<ul>
+<li>success (boolean)</li>
+</ul>
+<p><em>send_start()</em></p>
+<p style="margin-left: 30.0px;">Sends a start command to the RTDE server to initiate the actual synchronization. Setup of all inputs and outputs should be done before starting the synchronization.</p>
+<p style="margin-left: 30.0px;">Return value:</p>
+<ul>
+<li>success (boolean)</li>
+</ul>
+<p><em>send_pause()</em></p>
+<p style="margin-left: 30.0px;">Sends a pause command to the RTDE server to pause the synchronization. When paused it is possible to change the input and output configurations and start the synchronization again.</p>
+<p style="margin-left: 30.0px;">Return value:</p>
+<ul>
+<li>success (boolean)</li>
+</ul>
+<p><em>send(input_data)</em></p>
+<p style="margin-left: 30.0px;">Send the contents of a DataObject as input to the RTDE server. Returns True if successful.</p>
+<p style="margin-left: 30.0px;">Input parameters:</p>
+<ul>
+<li>input_data (DataObject): object with member variables matching the names of the configured RTDE variables</li>
+</ul>
+<p style="margin-left: 30.0px;">Return value:</p>
+<ul>
+<li>success (boolean)</li>
+</ul>
+<p><em>receive()</em></p>
+<p style="margin-left: 30.0px;">Blocking call to receive next output DataObject from RTDE server.</p>
+<p style="margin-left: 30.0px;">Return value:<em><br /></em></p>
+<ul>
+<li>output_data (DataObject): object with member variables matching the names of the configured RTDE variables</li>
+</ul>
+</div>
+<p> </p>
+					
+							<div class="hidden-print">
+								<h3>Attached files</h3>
+								<ul>
+										<li><a href="https://s3-eu-west-1.amazonaws.com/ur-support-site/22229/rtde_client.zip">rtde_client.zip</a></li>
+								</ul>
+							</div>
+
+                </section>
+                <!--/.rte-container -->
+
+		
+                <section class="l-blue-articles hidden-print">
+					<div class="row">
+		
+					</row>
+				</section>
+
+            </div>
+
+        </div>
+        <!--/.page -->
+
+    </main>
+
+    <footer id="footer" class="hidden-print">
+        <div class="container">
+            <ul class="list-unstyled list-inline">
+                <li>©Universal Robots A/S 2015 All rights reserved</li>
+                <li><a href="">Cookie Policy</a></li>
+                <li><a href="">Site Disclaimer</a></li>
+                <li><a href="">Privacy Policy</a></li>
+            </ul>
+        </div>
+    </footer>
+    <!--/#footer -->
+
+    <script src="/scripts/vendor/support_bootstrap.min.js"></script>
+    <script src="/scripts/plugins/chosen.jquery.min.js"></script>
+    <script src="/scripts/plugins/icheck.min.js"></script>
+				
+    <script>
+		$('#filters-content .panel-heading').on('click', function () {
+			$($(this).data('target')).collapse('toggle');
+		});
+			
+        $("select.form-control").chosen({
+            disable_search: true
+        });
+			
+		if (!navigator.userAgent.match(/iPad|iPhone|Android|BlackBerry|Windows Phone|webOS/i)) {
+        	$(".checkbox--filter").iCheck();
+		}
+							
+        $(".rte-container table").wrap("<div class='scrollable-content' />");
+
+		$(".rte-container img").removeAttr('width').removeAttr('height');
+		
+							$(".subscribe-news").submit(function() {
+								var form = $(this);
+								var promise = $.post('/umbraco/surface/SupportSite/SubscribeNewsletter', form.serialize());
+								promise.done(function() {
+									alert('You are now subscribed to our newsletter');
+								});
+								promise.fail(function() {
+									alert('Something went wrong. Please check your e-mail and try again.');
+								});
+								return false;
+							});
+							
+							if ("SupportSiteHowTo" == "SupportSiteHowTo")
+							{
+								setTimeout(function() {
+									$.post('/umbraco/surface/SupportSite/RegisterView', { page: 22229 });
+								}, 10000);
+							}
+    </script>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-7462214-1', 'auto');
+  ga('send', 'pageview');
+</script>
+	<script type='text/javascript'>
+window.__lo_site_id = 86037;
+ 
+                           (function() {
+                                                      var wa = document.createElement('script'); wa.type = 'text/javascript'; wa.async = true;
+                                                      wa.src = 'https://d10lpsik1i8c69.cloudfront.net/w.js';
+                                                      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(wa, s);
+                             })();
+                           </script>		
+
+</body>
+</html>

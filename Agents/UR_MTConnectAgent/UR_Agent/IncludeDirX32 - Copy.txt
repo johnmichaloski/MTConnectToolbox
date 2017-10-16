@@ -1,0 +1,7 @@
+-I"D:\Program Files\NIST\src\boost_1_54_0"
+-I.
+-I"D:\michalos\My Work\MTConnect\UR_MTConnectAgent\MTConnectAgent\agent"
+-I"D:\michalos\My Work\MTConnect\UR_MTConnectAgent\MTConnectAgent\lib"
+-I"D:\michalos\My Work\MTConnect\UR_MTConnectAgent\MTConnectAgent\win32\libxml2-2.7.7\include"
+-I"D:\michalos\My Work\MTConnect\UR_MTConnectAgent\MTConnectAgent"
+-I"D:\michalos\My Work\MTConnect\UR_MTConnectAgent"

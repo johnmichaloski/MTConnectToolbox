@@ -1,0 +1,532 @@
+
+Mon 10/16/2017_12:40:04.54  
+
+<Events>
+<AssetChanged dataItemId="UR5_urdf_asset" timestamp="2017-10-16T16:38:37.0700Z" name="avail" sequence="291" assetType="AVAILABLE">AVAILABLE</AssetChanged>
+<Availability dataItemId="UR5avail" timestamp="2017-10-16T16:35:49.0326Z" name="avail" sequence="2">UNAVAILABLE</Availability>
+<Message dataItemId="UR5version" timestamp="2017-10-16T16:35:59.0809Z" name="version" sequence="206" nativeCode="3.400000">3.400000</Message>
+</Events>
+
+Mon 10/16/2017_12:30:06.54  
+mutex BOOST_THREAD_NO_COPYABLE because when you do an assignment,
+it is like a write? and only 1 thread should be allowed to do it.
+http://boost.cppll.jp/BDTJ_1_30/libs/thread/doc/faq.html#question5
+
+Desire to add estop. Studying, estop is an event. It is either armed or triggered. It
+has its own type: 
+
+<DataItem category="EVENT" id="estop" type="EMERGENCY_STOP"/>
+			<DataItem category="CONDITION" id="clp" type="LOGIC_PROGRAM"/>
+			<DataItem category="CONDITION" id="motion" type="MOTION_PROGRAM"/>
+EmergencyStop is either ARMED or TRIGGERED.
+
+This is what conditions look like in device data definitions:
+<DataItem category="CONDITION" id="Zloadc" type="LOAD"/>
+<DataItem category="CONDITION" id="Zsystem" type="SYSTEM"/>
+<DataItem category="CONDITION" id="clp" type="LOGIC_PROGRAM"/>
+<DataItem category="CONDITION" id="motion" type="MOTION_PROGRAM"/>
+<DataItem category="CONDITION" id="system" type="SYSTEM"/>
+
+      <ComponentStream component="Controller" name="controller" componentId="cn1">
+        <Events>
+          <EmergencyStop dataItemId="estop" timestamp="2017-10-15T21:07:34.373693" sequence="3970487441">ARMED</EmergencyStop>
+          <Message dataItemId="msg" timestamp="2017-03-28T06:07:14.731817Z" sequence="35">UNAVAILABLE</Message>
+        </Events>
+        <Condition>
+          <Normal dataItemId="clp" timestamp="2017-10-15T21:07:34.374965" sequence="3970487451" type="LOGIC_PROGRAM"/>
+          <Unavailable dataItemId="motion" timestamp="2017-03-28T06:07:14.731817Z" sequence="34" type="MOTION_PROGRAM"/>
+          <Unavailable dataItemId="system" timestamp="2017-03-28T06:07:14.731817Z" sequence="38" type="SYSTEM"/>
+        </Condition>
+      </ComponentStream>
+
+Sun 10/15/17 04:05:25 PM
+https://github.com/mtconnect/cppagent/issues/3
+I have gotten mingw to compile
+
+Sun 10/15/17 04:01:59 PM
+Handling bad file ostream
+https://stackoverflow.com/questions/8243743/is-there-a-null-stdostream-implementation-in-c-or-libraries
+
+Sun 10/15/17 03:50:33 PM
+
+    // ur_message_t  msg = mUrComm.primary_socket();
+    // if(msg.size()>0)
+    // {
+    //	_ur_version_message.read(&msg[5]); // skip packet size and type
+    //	GLogger.Fatal(StdStringFormat("UR Version = %f", _ur_version_message.getVersion() ));
+    // }
+
+Sun 10/15/17 09:57:28 AM
+#ifdef TEST
+        ur_configuration_data ur_config;
+        write_ur_configuration_data(ur_config);
+        std::cout << ur_config.print( );
+
+        // convert_bin_telnet_Cpp(File.ExeDirectory( )+"urport2.txt");
+        read_ur_configuration_data(ur_config);
+        std::cout << ur_config.print( );
+#endif
+
+Fri 10/13/17 09:57:35 AM
+replace logging with ROS adapted one, but much simpler.
+dlib logger had issues so did not use
+#define ROSCONSOLE_DEFINE_LOCATION(cond, level, name) \
+  ROSCONSOLE_AUTOINIT; \
+  static ::ros::console::LogLocation __rosconsole_define_location__loc = {false, false, ::ros::console::levels::Count, 0}; /* Initialized at compile-time */ \
+  if (ROS_UNLIKELY(!__rosconsole_define_location__loc.initialized_)) \
+  { \
+    initializeLogLocation(&__rosconsole_define_location__loc, name, level); \
+  } \
+  if (ROS_UNLIKELY(__rosconsole_define_location__loc.level_ != level)) \
+  { \
+    setLogLocationLevel(&__rosconsole_define_location__loc, level); \
+    checkLogLocationEnabled(&__rosconsole_define_location__loc); \
+  } \
+  bool __rosconsole_define_location__enabled = __rosconsole_define_location__loc.logger_enabled_ && (cond);
+
+/**
+ * \brief Log to a given named logger at a given verbosity level, only the first time it is hit when enabled, with printf-style formatting
+ *
+ * \param level One of the levels specified in ::ros::console::levels::Level
+ * \param name Name of the logger.  Note that this is the fully qualified name, and does NOT include "ros.<package_name>".  Use ROSCONSOLE_DEFAULT_NAME if you would like to use the default name.
+ */
+#define ROS_LOG_STREAM_ONCE(level, name, args) \
+  do \
+  { \
+    ROSCONSOLE_DEFINE_LOCATION(true, level, name); \
+    static bool __ros_log_stream_once__hit__ = false; \
+    if (ROS_UNLIKELY(__rosconsole_define_location__enabled) && ROS_UNLIKELY(!__ros_log_stream_once__hit__)) \
+    { \
+      __ros_log_stream_once__hit__ = true; \
+      ROSCONSOLE_PRINT_STREAM_AT_LOCATION(args); \
+    } \
+  } while(false)
+
+/**
+ * \brief Log to a given named logger at a given verbosity level, limited to a specific rate of printing, with printf-style formatting
+ *
+ * \param level One of the levels specified in ::ros::console::levels::Level
+ * \param name Name of the logger.  Note that this is the fully qualified name, and does NOT include "ros.<package_name>".  Use ROSCONSOLE_DEFAULT_NAME if you would like to use the default name.
+ * \param rate The rate it should actually trigger at
+ */
+#define ROS_LOG_THROTTLE(rate, level, name, ...) \
+  do \
+  { \
+    ROSCONSOLE_DEFINE_LOCATION(true, level, name); \
+    static double last_hit = 0.0; \
+    ::ros::Time now = ::ros::Time::now(); \
+    if (ROS_UNLIKELY(__rosconsole_define_location__enabled) && ROS_UNLIKELY(last_hit + rate <= now.toSec())) \
+    { \
+      last_hit = now.toSec(); \
+      ROSCONSOLE_PRINT_AT_LOCATION(__VA_ARGS__); \
+    } \
+  } while(false)
+
+
+Thu 10/12/2017_16:55:50.05  
+
+error : xmlEncodeEntitiesReentrant : input not UTF-8
+
+Thu 10/12/2017_14:03:28.94  
+Problem decoding version information  because of two char arrays :(
+03A84B40: 00 00 00 38  14 FF FF FF  FF FF FF FF  FF FE 03 09  ...8............
+03A84B50: 55 52 43 6F  6E 74 72 6F  6C 03 04 00  00 00 04 00  URControl.......
+03A84B60: 00 01 B6 53  65 70 20 31  34 20 32 30  31 37 2C 20  ...Sep.14.2017,.
+03A84B70: 31 32 3A 31  34 3A 34 34                            12:14:44
+
+
+Wed 10/11/17 02:59:23 PM
+ur_configuration_data:
+        joint min,max,maxvel,maxacc
+         0 = 1.000000:1.000000:-1.000000:2.000000
+         1 = 3.000000:3.000000:-3.000000:4.000000
+         2 = 5.000000:5.000000:-5.000000:6.000000
+         3 = 7.000000:7.000000:-7.000000:8.000000
+         4 = 9.000000:9.000000:-9.000000:10.000000
+         5 = 11.000000:11.000000:-11.000000:12.000000
+        vJointDefault=1.000000
+        aJointDefault=10.000000
+        vToolDefault=1.000000
+        aToolDefault=5.000000
+        eqRadius=2.000000
+        DHa=1.000000:2.000000:3.000000:4.000000:5.000000:6.000000:
+        DHd=6.000000:5.000000:4.000000:3.000000:2.000000:1.000000:
+        DHalpha=1.000000:10.000000:100.000000:100.000000:10.000000:1.000000:
+        DHtheta=3.141593:1.570796:0.785398:0.785398:1.570796:3.141593:
+        masterboardVersion=2
+        controllerBoxType=99
+        robotType=3
+        robotSubType=3
+        motorType=1:2:3:4:5:6:
+ur_configuration_data:
+        joint min,max,maxvel,maxacc
+         0 = 1.000000:1.000000:-1.000000:2.000000
+         1 = 3.000000:3.000000:-3.000000:4.000000
+         2 = 5.000000:5.000000:-5.000000:6.000000
+         3 = 7.000000:7.000000:-7.000000:8.000000
+         4 = 9.000000:9.000000:-9.000000:10.000000
+         5 = 11.000000:11.000000:-11.000000:12.000000
+        vJointDefault=1.000000
+        aJointDefault=10.000000
+        vToolDefault=1.000000
+        aToolDefault=5.000000
+        eqRadius=2.000000
+        DHa=1.000000:2.000000:3.000000:4.000000:5.000000:6.000000:
+        DHd=6.000000:5.000000:4.000000:3.000000:2.000000:1.000000:
+        DHalpha=1.000000:10.000000:100.000000:100.000000:10.000000:1.000000:
+        DHtheta=3.141593:1.570796:0.785398:0.785398:1.570796:3.141593:
+        masterboardVersion=2
+        controllerBoxType=99
+        robotType=3
+        robotSubType=3
+        motorType=1:2:3:4:5:6:
+
+
+
+Windows PowerShell
+Copyright (C) 2009 Microsoft Corporation. All rights reserved.
+
+PS C:\Users\john> gc -encoding byte -TotalCount 100 "D:\michalos\My Work\MTConne
+ct\UR_MTConnectAgent\UR_Agent\Win32\Debug\urport2save.txt" |% {write-host ("{0:x
+}" -f $_) -noNewline " "}; write-host
+38  14  ff  ff  ff  ff  fe  3  20  20  20  20  20  20  20  20  55  52  43  6f  6
+e  74  72  6f  6c  3  4  4  1  b6  53  65  70  20  31  34  20  32  30  31  37  2
+c  20  31  32  3a  31  34  3a  34  34  14  ff  ff  ff  ff  fe  d  a  20  20  20
+ 20  20  20  20  20  20  20  20  20  20  20  20  20  20  20  20  20  20  20  20
+ 20  20  20  20  20  20  20  20  20  20  20  20  20  20  20  20  20  20
+PS C:\Users\john>
+
+
+
+http://tangentsoft.net/wskfaq/
+
+2741 (WSAEADDRNOTAVAIL)	The specified address is not available from the local machine.
+boost::this_thread::sleep(boost::posix_time::milliseconds(100)); // sleeping 100 millisecond!
+
+#include <iostream>
+#include <winsock2.h>
+
+using namespace std;
+
+int main()
+{
+    WSADATA WSAData;
+    SOCKET server;
+    SOCKADDR_IN addr;
+
+    WSAStartup(MAKEWORD(2,0), &WSAData);
+    server = socket(AF_INET, SOCK_STREAM, 0);
+
+    addr.sin_addr.s_addr = inet_addr("192.168.0.8"); // replace the ip with your futur server ip address. If server AND client are running on the same computer, you can use the local ip 127.0.0.1
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(5555);
+
+    connect(server, (SOCKADDR *)&addr, sizeof(addr));
+    cout << "Connected to server!" << endl;
+
+    char buffer[1024]={'h', 'e', 'l', 'l', 'o', '.'};
+    send(server, buffer, sizeof(buffer), 0);
+    cout << "Message sent!" << endl;
+
+    closesocket(server);
+    WSACleanup();
+    cout << "Socket closed." << endl << endl;
+}
+
+BY_HANDLE_FILE_INFORMATION fInfo = {0};
+GetFileInformationByHandle(hFile, &fInfo);
+if(fInfo.dwFileAttributes && FILE_FLAG_DELETE_ON_CLOSE)
+{
+    std::cout << "Attributes say this file is deleted." << std::endl;
+}
+
+
+sc create Agent  binPath="UR_Agent.exe"
+
+cd /d %~dp0
+cacls . /t  /c  /GRANT Everyone:F
+pause
+
+
+sc.exe create Agent  binPath= 
+
+sc.exe stop Agent
+sc.exe delete Agent
+
+Remove trailing \n
+	//std::string msg = (errmsg.rfind("\n") != std::string::npos) ? errmsg.substr(0,errmsg.size()-1) : errmsg;
+
+Last time File was modified:
+#include <sys/stat.h>
+	
+#include <unistd.h>	
+#include <time.h>
+	
+struct tm* clock;				// create a time structure	
+struct stat attrib;			// create a file attribute structure        
+stat("afile.txt", &attrib);		// get the attributes of afile.txt	
+clock = gmtime(&(attrib.st_mtime));
+--------------------------------
+COleDateTime GetDateTime (std::string s)
+{
+	std::string::size_type delimPos = s.find_first_of("\t", 0);
+
+	if ( std::string::npos != delimPos )
+	{
+		s = s.substr(0, delimPos);
+	}
+
+	// parse 2012/11/03 Skip time
+	int Year, Month, Day;
+
+	if ( sscanf(s.c_str( ), "%4d-%02d-%02d", &Year, &Month, &Day) == 3 )
+	{ }
+	else
+	{
+		throw std::exception("Unrecognized date-time format\n");
+	}
+
+	return COleDateTime(Year, Month, Day, 0, 0, 0);
+}
+---------------------
+CFile::GetStatus(CFileStatus &rStatus)
+
+CFileStatus structure components
+
+
+CTime m_ctime - creation
+CTime m_mtime - last modification
+CTime m_atime - last accessed
+long m_size - logical size in bytes
+byte m_attribute - attribute byte of the file
+char m_szFullName[_MaxSize] absolute filename
+
+/////////////////////////////////////////////
+ULONGLONG GetFileSizeEx( CString strPath )
+{  
+   WIN32_FIND_DATA FindData = { 0 };
+   //gets a file search handle
+   HANDLE hFirstFile = FindFirstFile( strPath, &FindData );  
+  
+   //if the handle is valid
+   if( hFirstFile != INVALID_HANDLE_VALUE )
+   {
+      //closes the file search handle
+      FindClose( hFirstFile );
+     
+      ULONGLONG FileSize = FindData.nFileSizeHigh;
+      FileSize <<= sizeof( FindData.nFileSizeHigh ) * 8; // Push by count of bits
+      FileSize |= FindData.nFileSizeLow;
+     
+      return FileSize;
+   }
+  
+   return 0; // File not found
+}
+
+
+
+		std::vector<std::string> keys = config.getkeys(tagdefs);
+		if(tags.size() < 1 || keys.size() < 1 )
+			throw std::exception(StdStringFormat("Error: No [%s] Section or Keys?\n", tagdefs.c_str()).c_str());
+
+		for(int i=0; i<keys.size(); i++)
+		{
+			Item * item = new Item();
+			item->_alias=keys[i];
+
+			// make sure its is an OPC Tag
+			if(item->_alias.find(_T("Tag.")) == 0)
+			{
+				item->_alias=ReplaceOnce(item->_alias, _T("Tag."), _T(""));
+				item->vt=VT_BSTR;
+			}
+			if(item->_alias.find(_T("Enum."))==0)
+			{
+				item->_type=_T("Enum");
+				item->mSubtype="Enumeration";
+				item->mValue=item->mLastvalue= config.GetSymbolValue(tagdefs+"."+ keys[i]).c_str();
+				//item->_tagname No tagname
+				items.push_back(item);
+				continue;
+			}
+			else if(item->_alias.find(_T("Const."))==0)
+			{
+				item->_alias=ReplaceOnce(item->_alias,_T("Const."), _T(""));
+				item->vt= VT_USERDEFINED;
+				item->mSubtype="Constant";
+			}
+
+			// THese must be DDE lookup
+			if(item->_alias.find(_T("Sample."))==0)
+			{
+				item->_alias=ReplaceOnce(item->_alias,_T("Sample."), _T(""));
+				item->_type=_T("Sample");
+			}
+			else if(item->_alias.find(_T("Event."))==0)
+			{
+				item->_alias=ReplaceOnce(item->_alias,_T("Event."), _T(""));
+				item->_type=_T("Event");
+			}
+			else if(item->_alias.find(_T("DDE."))==0)  // reads opc values does not send to MT Connect
+			{
+				item->_alias=ReplaceOnce(item->_alias, _T("DDE."), _T(""));  // OPC value for scripting
+				item->_type=_T("DDE");
+			}
+			else if(item->_alias.find(_T("Condition."))==0)
+			{
+				item->_alias=ReplaceOnce(item->_alias,_T("Condition."), _T(""));
+				item->_type="Condition";
+			}
+			std::string tmp= config.GetSymbolValue(tagdefs+"."+ keys[i]).c_str();
+			item->_tagname=tmp;
+			items.push_back(item);
+		}
+		for(int i = 0 ; i < items.size(); i++)
+		{
+			//if(items[i]->_type==_T("Event") || items[i]->_type==_T("Sample"))
+			//	items[i]->_event= new Event(items[i]->_tagname.c_str());
+		}
+
+		// SLOW SLOW SLOW
+		//std::string contents;
+		//ReadFile(::ExeDirectory()+"ProductionLog.csv",contents);
+		//std::vector<std::string> lines = TrimmedTokenize(contents,"\n");
+		/*for(int i=0; i< lines.size(); i++)
+		{
+			std::vector<std::string> tokens = TrimmedTokenize(lines[i],";");
+			COleDateTime timestamp;
+			if(tokens.size()<=0)
+				continue;
+			timestamp=GetDateTime(tokens[0]);
+			timestamp=COleDateTime(timestamp.GetYear(), timestamp.GetMonth(), timestamp.GetDay(), 0, 0, 0);
+			if(timestamp == today)
+			{
+				for(int j=1; j< tokens.size(); j++);
+			}
+		}*/
+
+
+			//// Read and skip lines till current day
+			//while ( getline(data,line) )
+			//{
+			//	COleDateTime timestamp=GetDateTime(line.c_str());
+			//	timestamp=COleDateTime(timestamp.GetYear(), timestamp.GetMonth(), timestamp.GetDay(), 0, 0, 0);
+			//	if(timestamp == today)
+			//	{
+			//		break;
+			//	}
+			//}
+
+	
+	
+	#if 0
+		HANDLE hFile = CreateFile(filename.c_str(),
+                          GENERIC_READ, // access (read) mode
+                          FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE, // share mode
+                          NULL, // pointer to security attributes
+                          OPEN_EXISTING, // how to create
+                          FILE_ATTRIBUTE_NORMAL,// file attributes
+                          NULL); // handle to file with attributes to copy
+		if (hFile == INVALID_HANDLE_VALUE)    // did we succeed?
+		{
+			// possibly call GetLastError() to get a hint what failed
+			// and terminate (it is useless to continue if we can’t connect to Direct I/O)
+		}
+		BY_HANDLE_FILE_INFORMATION fInfo = {0};
+		GetFileInformationByHandle(hFile, &fInfo);
+		DWORD dwRead = (fInfo.nFileSizeHigh * (MAXDWORD+1)) + fInfo.nFileIndexLow;
+		DWORD dwNewSize;
+		void * readBuffer = malloc(dwRead);
+		// read the original file byte in the buffer
+		ReadFile(hFile, readBuffer, dwRead, &dwNewSize, NULL );
+
+		HANDLE hNewFile = CreateFile( tofilename.c_str(), 
+			GENERIC_WRITE, 
+			 FILE_SHARE_READ|FILE_SHARE_WRITE, 
+			NULL, 
+			CREATE_ALWAYS, 
+			FILE_ATTRIBUTE_NORMAL,
+			NULL );
+		// write this buffer to the new file
+		DWORD dwWritten;
+		WriteFile( hNewFile, readBuffer, dwNewSize, &dwWritten, NULL );
+		free readBuffer;
+#endif
+
+	//fseek(stream, 0, SEEK_END);
+		//size_t fileSize = ftell(stream);
+		//rewind(stream);
+		//char *data = (char*) calloc(sizeof(char), fileSize + 20); // free(data);
+		//fseek(stream, 0, SEEK_END);
+		//size_t fileSize = ftell(stream);
+		//rewind(stream);
+		//char *data = (char*) calloc(sizeof(char), fileSize + 20); // free(data);
+
+
+			#if 0
+		//CopyFileEx(filename.c_str(), tofilename.c_str(), NULL/*callback ptr*/, NULL, FALSE, COPY_FILE_OPEN_SOURCE_FOR_WRITE);
+		//CopyFile(filename.c_str(), tofilename.c_str(), false);
+		std::ifstream in(tofilename, std::ios::in | std::ios::binary);
+		if (!in.is_open())
+		{
+			DebugMessage(StdStringFormat("Local File could not open for device %s\n", mDevice.c_str()));
+			return E_FAIL;
+		}
+		std::vector<std::string> lines;
+		std:: string line;
+		if(filesize==_lastfilesize && _lastfilesize != 0 )
+			return S_OK; // No new events
+
+		if(filesize>_lastfilesize && _lastfilesize != 0 )
+		{	
+			// Skip file until new lines
+			in.seekg(_lastfilesize);			
+		}
+		else
+		{
+			// Read and skip lines till current day
+			while ( getline (in,line) )
+			{
+				COleDateTime timestamp=GetDateTime(line);
+				timestamp=COleDateTime(timestamp.GetYear(), timestamp.GetMonth(), timestamp.GetDay(), 0, 0, 0);
+				if(timestamp == today)
+				{
+					break;
+				}
+			}
+		}
+		while ( getline (in,line) )
+			lines.push_back(line);
+#endif
+
+
+	/*	while ((numread= fread( pAddr, 1, ulFileSize, stream )) < ulFileSize)
+		{
+			if(numread==0)
+			{
+				DebugMessage(StdStringFormat("numread File %s is zero for device %s\n", filename.c_str(), mDevice.c_str()));
+				return E_FAIL;
+			}
+			pAddr = &data[numread];
+			ulFileSize-=numread;
+		}*/
+
+
+Mon 02/06/2017_11:54:12.86  
+============================
+Removed:
+
+COleDateTime     now          = COleDateTime::GetCurrentTime( );
+COleDateTimeSpan tilnextreset = COleDateTimeSpan(0, 1, 0, 0);
+GLogger.Fatal(StdStringFormat("Agent will Reset from now  %8.4f\n", ( tilnextreset.GetTotalSeconds( ) / 3600.00 ) ) );
+
+_resetthread.Initialize( );
+
+_resetthread.AddTimer(
+	(long) tilnextreset.GetTotalSeconds( ) * 1000,
+	&_ResetThread,
+	( DWORD_PTR ) this,
+	&_ResetThread._hTimer        /
+	/ stored newly created timer handle
+	);
