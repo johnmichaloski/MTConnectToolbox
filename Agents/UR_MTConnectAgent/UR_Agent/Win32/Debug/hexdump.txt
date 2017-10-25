@@ -1,1 +1,0 @@
-gc -encoding byte -TotalCount 100 "D:\michalos\My Work\MTConnect\UR_MTConnectAgent\UR_Agent\Win32\Debug\urport2save.txt" |% {write-host ("{0:x}" -f $_) -noNewline " "}; write-host  
