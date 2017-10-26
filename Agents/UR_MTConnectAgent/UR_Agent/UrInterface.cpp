@@ -27,10 +27,10 @@ int ur::numjoints = 6;
 ///////////////////////////////////////////////////
 void ur_version_message::decode (char *buf, int len)
 {
-#ifdef _DEBUG
-    assert(len > 0);
-    std::cout << NIST::HexDump(buf, len);
-#endif
+//#ifdef _DEBUG
+//    assert(len > 0);
+//    std::cout << Nist::HexDump(buf, len);
+//#endif
     size_t offset = 0;
 
     offset += bscopy((char *) &messageSize, buf + offset, sizeof( messageSize ));
@@ -327,7 +327,7 @@ void test2_robot_state ( )
     // std::cout
     // <<
     // hdr.dump();
-    std::cout << NIST::HexDump(&hdr, 16);
+    std::cout << Nist::HexDump(&hdr, 16);
 
     //
     // std::cout
@@ -523,6 +523,25 @@ void read_ur_configuration_data (ur_configuration_data & config)
     config.read(buffer + 5);
 }
 ////////////////////////////////////////////////////////////////////
+
+ur_robot_state::ur_robot_state()
+{
+	setVersion(3.0);
+}
+void  ur_robot_state::setVersion(float ver)
+{
+	 _ur_message_header.mVersion=ver;              
+	 _ur_robot_mode_data.mVersion=ver;            
+	 _ur_tool_data.mVersion=ver;                       
+	 _ur_version_message.mVersion=ver;            
+	 _ur_masterboard_data.mVersion=ver;          
+	 _ur_cartesian_info.mVersion=ver;             
+	_ur_force_mode_data.mVersion=ver;            
+	 _ur_additional_info.mVersion=ver;
+	 _ur_configuration_data.mVersion=ver; 
+}
+
+
 void ur_robot_state::unpack (uint8_t *buf, unsigned int buf_length)
 {
     unsigned int      offset = 0;
@@ -622,8 +641,6 @@ void ur_robot_state::unpackRobotState (uint8_t *buf, unsigned int offset,
         case package_types::CONFIGURATION_DATA:
             {
                 _ur_configuration_data.read((char *) &buf[offset + hdr.msglength( )]);
-
-                // ErrorMessage ("package_types::CONFIGURATION_DATA not implemented\n");
             }
             break;
 
@@ -641,7 +658,7 @@ void ur_robot_state::unpackRobotState (uint8_t *buf, unsigned int offset,
 
         case package_types::CALIBRATION_DATA:
             {
-                LOG_ONCE(logDebug("package_types::CALIBRATION_DATA skipped\n"));
+                logDebug("package_types::CALIBRATION_DATA skipped\n");
             }
             break;
 
