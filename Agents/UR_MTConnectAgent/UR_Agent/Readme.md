@@ -1,17 +1,20 @@
 
-# README 
+# Source Code Documentation 
 ----
 
-Friday, October 27, 2017
-# Source Code Documentation
-This document describes some of the in-house developed source code used in deploying the UR MTConnect agent. The code was developed and compiled using Microsoft Visual C++ 2010. Since MSVC 2010 predates hte C11 standard, many useful programming primitives (bind, mutex, thread) relied on the boost 1.54 library instead of the std library in C11.  The rationale for keeping MSVC 2010 is the support of the MSI deployment project, so that after the UR Agent was coded and tested, it could be packaged and deployed as a MSI install script.
-Some caveats are in order. The release build did not operate correctly, although the Debug build operated correctly. In order to fix this, ALL optimization flags were turned off in the Release build and this fixed the problems. These  optimizations flags appear in the C++/C Optimization properties and include: 
- - /GL  Turnn off whgole program optimization
+Tuesday, October 31, 2017
+This document describes some of the in-house developed source code used in deploying the UR MTConnect agent. The code was developed and compiled using Microsoft Visual C++ 2010. Since MSVC 2010 predates the C11 standard, many useful programming primitives (bind, mutex, thread) relied on the boost 1.54 library instead of the std library in C11.  The rationale for keeping MSVC 2010 is its support of the MSI deployment project, so that after the UR Agent was coded and tested, it could be packaged and deployed as a MSI install script. An MSI script is helpful in that you can download and install any runtime libraries that may be required by the application (for example, the C++ runtime for each version of MSVC).
+Some caveats are in order. The release build did not operate correctly, although the Debug build operated correctly. In order to fix this, ALL optimization flags were turned off in the Release build and this fixed the problems. These optimization flags appear in the C++/C Optimization properties and include: 
+ - /GL  Turn off whole program optimization
  - /O2 /Oy- which optimized the code for speed, size etc were changed to none.
 
-## Struct Decoder
-The struct decoder performs conversions between network byte arrays and C++ structs. This intended for use in handling binary data from network connections. First, all the structure variables are declared. Then, preprocessor macros are used to define the size and order of the byte stream associated with this C++ struct. It assumes the struct is packed with no padding between variable elements.  g each entry so they can easily be read/write/print including byte swapping if required.  Implicit in this encoding process is the determination of the byte order of the host machine versus the prevailing network byte order (Big Endian), to determine whether byte swapping is necessary. If the byte order is not the same as network byte order, bytes are swapped to accommodate network byte order.
-The struct_decoder struct is useful for reading/writing network byte streams. It uses the preprocessor definition to define a property table describing. The struct_decoder relies a printf specifier to format the variable for output, which conforms to the following table:
+Table of Contents
+** 
+
+# Struct Decoder
+A common approach for real-time data communication is to use read/write of a TCP/IP socket which will be streaming raw data. Raw binary data is most efficient as it typically is a 1:1 representation.  Unfortunately handling binary data from network connections requires an understanding of the layout and elements of the destination buffer. Each element within the buffer need to be handled individually, as the element may require "byte swapping" to realize its true value.  There are many approaches to handling this serialization and deserialization of stream buffers. What is required for communication with a robot across a network is a socket streaming communication interface, a buffering technique, a deserialization from a stream into buffer elements and vice versa, where the deserialization may require byte swapping in order to work. In addition, handling of element arrays, dynamic sizing of the arrays, version control of the buffer element definitions, are among other requirements that would increase the utility of the streaming process.
+The struct decoder performs streaming conversions between network byte arrays and C++ structs. The approach is straightforward as it relies on declaration macros in each buffer class and uses an inherited class to handle the decoding and other functions. First, all the structure variables are declared. Then, several preprocessor macros are used to define the size and order of the byte stream associated with this C++ struct so they can easily be read/write/print including byte swapping if required. It assumes the struct is packed with no padding between variable elements.   Implicit in this encoding process is the determination of the byte order of the host machine versus the prevailing network byte order (Big Endian. If the host byte order is not the same as network byte order, bytes are swapped to match network byte order.
+The struct_decoder struct is useful for reading/writing network byte streams. It uses the preprocessor definition to define a property table describing order, printable name, size, printing format, array, array size pointer and minimum and maximum version compliance. The struct_decoder relies a printf specifier to format the variable for output, which conforms to the following table:
 <TABLE>
 <TR>
 <TD>Format<BR></TD>
@@ -118,22 +121,37 @@ The struct_decoder struct is useful for reading/writing network byte streams. It
 </TABLE>
 
 Array serial properties use these printf to format each element in the array.
-The "Curiously Recurring Template" pattern is used to assist in decoding by allowing access to the outermost serial property map. Thus, each structure that uses the serialization decoding mechanism, inherits from "struct_decoder" template class, but provides itself as the template type. This is useful if the  structure inherits from a structure that itself has a serial property map.
+The "Curiously Recurring Template" pattern is used to assist in decoding by allowing access to the outermost serial property map. Thus, each structure that uses the serialization macro mechanism, inherits from "struct_decoder" template class, but provides itself as the template type. This is useful if the structure inherits from a structure that itself has a serial property map.
 
 	struct ur_cartesian_info : public struct_decoder<ur_cartesian_info>
 
-The "Curiously Recurring Template" is useful when you need to access the outer class variables or methods. This is used to get the outer serial property map defined in the class, as shown in the struct_decoder base class:
+The "Curiously Recurring Template" is useful when you need to access the outer class variables or methods. This is used to get the outer serial property map defined in the class, as shown in the struct_decoder base class:For ou
 
 	template <class T> struct struct_decoder 
 	{
 	. . .
 	
-	PropertyMap *props = static_cast<T *>(this)->GetPropertyMap();
+	T * t = static_cast<T *>(this;
+For the streaming utilities, access to the outer definition of the property map relies on the "Curiously Recurring Template". 
+
+	PropertyMap *props = static_cast<T *>(this)->GetPropertyMap();
+	
 
 There are a collection of C++ macros that handle the building of the property map that are used by the  "Curiously Recurring Template"  struct_decoder. These include:
- - BEGIN_SERIAL_PROP_MAP (X) marks the beginning of the classes' serial property map. It creates a msgname class to return ASCII string containing the message  name  (denoted by the preprocessor X). It also declares a the beginning of a static method  GetPropertyMap(), which gives a reference pointer to the embedded static table of serialization variables.
+ - BEGIN_SERIAL_PROP_MAP (X) marks the beginning of the classes' serial property map. It creates a msgname class to return ASCII string containing the message  name  (denoted by the preprocessor X). It also declares a the beginning of a static method  GetPropertyMap(), which gives a reference pointer to the embedded static table of serialization variables, as defined below:
+ 	- property type - type of element definition
+ 	- Name -  name of element 
+ 	- offset of element in class hierarchy
+ 	- positive size of element either single or array
+ 	- flag to indicate array, where 1 is yes.
+ 	- size of one element in array
+ 	- string representing format of printing element
+ 	- pointer to int containing size of array
+ 	- min version where this element is defined
+ 	- max version where this element is defined
+
  - PROP_SERIAL_ENTRY (mName, pformat) defines a preprocessor macro that inserts an entry into the serial property map table. It expects an existing class member variable name, and uses the mName to save the name, sizeof, and offset of the variable from beginning of the class definition (including any inherited classes definitions). Pformat defines a printf like formatting string for use in the print struct_decoder method.
- - PROP_SERIAL_ENTRY_VERSION(mName, pformat,min,max)    defines a preprocessor macro that inserts an entry into the serial property map table, much like   PROP_SERIAL_ENTRY. However, this time it also enter a min and max version number in floating point (e.g., 3.4) into the serial property table. VMAX and VMIN are macros to indicate the limits of the versioning in either direction.
+ - PROP_SERIAL_ENTRY_VERSION(mName, pformat, min, max)    defines a preprocessor macro that inserts an entry into the serial property map table, much like   PROP_SERIAL_ENTRY. However, this time it also enter a min and max version number in floating point (e.g., 3.4) into the serial property table. VMAX and VMIN are macros to indicate the limits of the versioning in either direction.
  - PROP_SERIAL_ENTRY_VARARRAY(mName, mSize, pformat, var) defines a preprocessor macro that inserts an array entry into the serial property map table. mName and pformat are used as int PROP_SERIAL_ENTRY. mSize defines the size of each element in the array, will the var entry defining a pointer to the variable defining the actual size of the array. For example, below DHa is the name of the variable, and element size is the sizeof(double), the format is "%lf" for a double, and the pointer to the defining array size is given by &numjoints. 
 
 	PROP_SERIAL_ENTRY_VARARRAY(DHa, sizeof( double ), "%lf", &numjoints)
@@ -142,8 +160,8 @@ There are a collection of C++ macros that handle the building of the property ma
 			double                       DHa[8];
 
  
- - END_SERIAL_PROP_MAP()  marks the end of the serial property map.
- - PROP_SERIAL_ENTRY_BASE(mName) allows the current structure to reference an inherited structure with a serial property map of its variables. It is no used in the UR Agent implementation.
+ - END_SERIAL_PROP_MAP()  marks the end of the serial property map. The end is signaled by having a null name pointer.
+ - PROP_SERIAL_ENTRY_BASE(mName) allows the current structure to reference an inherited structure with a serial property map of its variables. It is not used in the UR Agent implementation.
  
 For example, the class ur_cartesian_info illustrates the use of the  inheritance, range of applicability using minimum and maximum verion numbers, use of pragma to insure variables are packed,  
 
@@ -182,11 +200,11 @@ For example, the class ur_cartesian_info illustrates the use of the  inheritance
 		END_SERIAL_PROP_MAP( )
 	} ;
 
-The defines the structure and uses the 
+The defines the ur_cartesian_info structure and uses the stream buffering elements and related serialization information.  As mentioned, the macros to define the streaming information rely on the struct_decoder class to understand and interpret the definition. This association is done in C++ at the class declaration time by inheriting from the struct_decoder class and providing the current class as a template parameter:
 
 	struct ur_cartesian_info : public struct_decoder<ur_cartesian_info>
 	{
-The mVersion variable must be inserted into every outer class so that multiple instances of the ur_cartesian_info struct can support multiple versions of the interface.  It is manually inserted so that programmers are aware that versioning is being done, and the version must be specified. Thus a 3.0 UR robot and a 3.4 UR robot can each use the ur_cartesian_info definition, and by putting in either 3.0 or 3.4 different interfaces are supported during decoding.
+The mVersion variable must be inserted into every outer class so that multiple instances of the ur_cartesian_info struct can support multiple versions of the interface.  It is manually inserted so that programmers are aware that versioning is being done, and the version must be specified. Thus a 3.0 UR robot and a 3.4 UR robot can each use the ur_cartesian_info definition, and by putting in either 3.0 or 3.4, different interfaces are supported during decoding.
 
 		float mVersion;
 
@@ -208,7 +226,7 @@ Changes due to versioning in the ur_cartesian_info struct occur in version 3.1 S
 
 	PROP_SERIAL_ENTRY(X, "%lf")
 
-Below the TCPOffsetX variable is declared in the preprocessor macro PROP_SERIAL_ENTRY_VERSION  to be viable from version 3.1 on:
+Below the TCPOffsetX variable is declared in the preprocessor macro PROP_SERIAL_ENTRY_VERSION to be viable from version 3.1 on:
 
 	PROP_SERIAL_ENTRY_VERSION(TCPOffsetX, "%lf",3.1,VMAX)
 
@@ -291,7 +309,7 @@ There is a C++ macro LOG_ONCE(X) to limit the logging output to only once. For e
 	                         logDebug("\tAdapter %s Server Rate=%d\n", mDevice.c_str(), mServerRate);
 	                       )
 	. . .
-There is also a  LOG_THROTTLE(secs, X) based on the ROS filtering methodology, this macro will limit the output to a log on a periodic basis, with the rate determined in seconds. Thus, in the example below, the diagnostic message output will be throttled to once per minute.  If the time between logging outputs is greater than 60 seconds, then this log message will be output, and the logging timer will be reset.
+There is also a  LOG_THROTTLE(secs, X) based on the ROS filtering strategies, this macro will limit the output to a log on a periodic basis, with the rate determined in seconds. Thus, in the example below, the diagnostic message output will be throttled to once per minute.  If the time between logging outputs is greater than 60 seconds, then this log message will be output, and the logging timer will be reset.
 
 	#include "NIST/Logger.h"
 	. . .
@@ -307,8 +325,7 @@ In order to access the logging facility, at the beginning of the program a small
 			GLogger.Timestamping()=true;
 
 In this case, the output file name is found in the exe folder and named debug.txt. The default logging level is 5, although it was overridden  later by a config file value. Likewise timestamping is enabled. Note, the use of method access to modify the flags (ie.e., ()). This is due to the fact that all these accessors pass a reference to the actual logger flag. Historically, this was done because it is easier to override a method than a variable in C++.
-
-## Ini File Software
+# Ini File Software
 The UR Agent relies on some in-house INI configuration file management that is not typical of normal MTConnect installations, which rely on YAML.  As an aside, if MTConnect had relied on JSON to provide configuration details, boost has a nice library. However, JSON is a compliant with YAML but not vice versa.
 The INI file format is an informal standard for configuration based historically on the Microsoft. INI files are simple text files with a basic structure composed of sections, key/properties/tags, and values.
 The basic element contained in an INI file is the key or property. Every key has a name and a value, delimited by an equals sign (=). The name appears to the left of the equals sign.
@@ -350,8 +367,8 @@ The Config file also has the method to parse a token list (e.g., comma separated
 
 	        mDevices = mConfig.GetTokens("GLOBALS.MTConnectDevice", ",");
 The Config class is simplistic way of dealing with configuration data, but only requires a modest amount of code, and most every programmer is familiar with ini files.
-## Reset at Midnight 
-MTConnect Agents are expected to operate continually 24/7 without fault. Because some underlying software technology may leak or consume memory with garbage collection so that performance degrades, it became apparent that have the capability to reset the agent at midnight requiring a few seconds of down time, every night, cleared the system of the potential software downsides. 
+# Reset at Midnight 
+MTConnect Agents are expected to operate continually 24/7 without fault. Because some underlying software technology may be problematics, e.g., memory leaks or consume memory with garbage collection so that performance degrades, it became apparent that the capability to reset the agent at midnight requiring a few seconds of down time, every night, cleared the system of the potential software downsides and was helpful in enhancing reliability. 
 The CResetAtMidnightThread class was coded to handle the reset at midnight behavior. It uses the Microsoft CWorkerThread template from the ATL, which is a  class that creates a worker thread, waits on one or more kernel object handles, and executes a specified client function when one of the handles is signaled. The condition that the CWorkerThread waits on is a timer which expires at midnight. Upon expiring, the CWorkerThread runs and contains code to spawn a Process which reset the service (as given by the service name in the configuration file).
 
 The heart of the WorkerThread declaration is given below:
@@ -453,9 +470,20 @@ A string is built to execute in the process which starts with the cmd or DOS she
 	std::string cmd = StdStringFormat("cmd /c net stop \"%s\" & net start \"%s\"", service->name(), service->name()); 
 This brief stop and start takes only seconds, however, seems to rid the system of software memory leaks, insistent memory consumption,  as well as general software malaise  at no real cost to the agent operation. This coding strategy can be used on Windows for exe application as well. Of note, a similar construct was not found in Linux. 
 
-
-
-## Versioning
+If you manually enter the reset at midnight command for agent.exe alone you get this exchange in a DOS command window:
+
+	Microsoft Windows [Version 6.1.7601]
+	Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+	
+	C:\Users\michalos>cmd /c taskkill /F /IM "agent.exe" & "C:\Users\michalos\Documents
+	\GitHub\Agents\MTConnectAgentFromShdr\MTConnectAgentFromShdr\x64\Debug\agent.exe
+	" debug
+	SUCCESS: Sent termination signal to the process "agent.exe" with PID 11528.
+	
+	C:\Users\michalos>
+Be careful, the agent says success and restarts a new agent. Note, the use of the /F force kill option. The use of the /T option kills the child processes which include the reset process – so don't use!
+Please note that if you have enabled reset at midnight for an app exe agemt, after one reset you will need to manually kill the task (or you could change the ResetAtMidnight in the Config.ini but this is not suggested).
+# MTConnect Software Versioning
 There is a class CProductVersion to handle version identification for archival purposes. It is rather primitive.  CProductVersion  is class used by UR Agent that generates a string based on all constituent  components used in this agent.  The version information is useful for archiving what components were used to generated the code, if the source code is not available, or compatibilities issues arise.  The output of the version information is displayed as an extension in the MTConnect core agent. You would access the version information with the following sample URL (assuming you are on the agent machine and the agent port is listening to port 5000): http://127.0.0.1:5000/version. The following non-XML but HTML table would be returned:
 <TABLE>
 <TR>
@@ -487,8 +515,368 @@ There is a class CProductVersion to handle version identification for archival p
 </TR>
 </TABLE>
 
+Incorporating the version information into the MTConnect agent requires overloading the virtual functions handleCall  and handleExtensionCall of the core Agent. (Did this require some modification to the Agent code also?)
+
+	 class AgentConfiguration : public MTConnectService {
+	. . .
+	  Agent *getAgent() { return mAgent; }
+	  void setAgent( Agent * agent) { mAgent=agent; }
+
+
+
+	class AgentEx : public Agent
+	{
+	public:
+	    AgentEx( ) { }
+	protected:
+	    CProductVersion version;
+	#ifdef HANDLECALL
+	    virtual std::string handleCall (ostream & out, const string & path,
+	                                    const key_value_map & queries,
+	                                    const string & call, const string & device)
+	#else
+	    virtual std::string handleExtensionCall (const std::string & call,
+	                                             const std::string & device)
+	#endif
+	    {
+	        if ( call == "version" )
+	        {
+	            std::string html;
+	            std::string v = "<versions><version>" + getVersionString( );
+	            ReplaceAll(v, "\n", "</version>\n<version>");
+	            v = v.substr(0, v.size( ) - std::string("<version>").size( ));
+	            v = v + "</versions>";
+	            logTrace(v.c_str( ));
+	            html = version.GenerateVersionTable(v);
+	
+	            return html;
+	        }
+	        else if ( call == "documentation" )
+	        {
+	            std::string html = version.GenerateXSLTVersion(
+	                "<versions><version>" + version.GenerateVersionDocument( )
+	                + "</version></versions>");
+	            return html;
+	        }
+	#ifdef HANDLECALL
+	        return Agent::handleCall(out, path, queries, call, device);
+	#else
+	        return "";
+	#endif
+	    }
+	
+	    std::string getVersionString ( )
+	    {
+	        std::string str;
+	
+	        str += StdStringFormat(
+	            "MTConnect Core Agent Version %d.%d.%d.%d - built on " __TIMESTAMP__
+	            "\n",
+	            AGENT_VERSION_MAJOR, AGENT_VERSION_MINOR, AGENT_VERSION_PATCH,
+	            AGENT_VERSION_BUILD);
+	#ifdef WIN64
+	        std::string compilearch = "64 bit";
+	#else
+	        std::string compilearch = "32 bit";
+	#endif
+	        str += StdStringFormat("UR_ Agent Extensions  %s Platform Version %s - "
+	                               "built on  " __TIMESTAMP__ "\n",
+	                               compilearch.c_str( ), STRPRODUCTVER);
+	        str += StdStringFormat(
+	            "UR_ Agent MSI Install Version %s  \n",
+	            version
+	                .GetUR_InstallVersion(
+	                "C:\\Users\\michalos\\Documents\\GitHub\\Agents\\UR_"
+	                "MTConnectAgent\\UR_SetupX64\\UR_SetupX64.vdproj")
+	                .c_str( ));
+	        str += StdStringFormat("Windows Version : %s\n",
+	                               version.GetOSDisplayString( ).c_str( ));
+	        str += StdStringFormat("Microsoft Visual C++ Version %s\n",
+	                               version.GetMSVCVersion(_MSC_VER));
+	
+	        //		str+=StdStringFormat("Dlib version %d.%d dated %s \n",
+	        // DLIB_MAJOR_VERSION , DLIB_MINOR_VERSION,DLIB_DATE);
+	        // str+=StdStringFormat("Dlib version %d.%d\n", 17,47);
+	        str += StdStringFormat("XML Lib version %s \n", LIBXML_DOTTED_VERSION);
+			str += StdStringFormat("Boost libraries %d.%d.%d \n",
+				BOOST_VERSION / 100000    ,
+				BOOST_VERSION / 100 % 1000 ,  // min. version
+				BOOST_VERSION % 100   );        // patch version
+	        str += StdStringFormat("UR_ Devices = %s\n", getAllDevices( ).c_str( ));
+	        return str;
+	    }
+	
+	    // This is here becuase the mDeviceMap variable member of Agent is protected,
+	    // and its easier to just access here than in CProductVersion
+		std::string getAllDevices ( )
+		{
+			std::string d;
+			for(size_t i=0; i < mDevices.size() ; i++)
+			{
+				if (i>0)
+				{
+					d += ",";
+				}
+				d += mDevices[i]->getName();
+			}
+			return d;
+		}
+	};
+	
+
+# Visual Studio Versioning
+Unfortunately, Microsoft Visual C++ (among other IDEs) does not have an option to auto increment the build version of each compile. So an in-house solution was coded up based on many suggestions, hints, insights found on the Internet. So this section describes a build  macro that is integrated into Visual Studio  2010 that automatically increments the build integer of a version.  The solution is not very slick, as there are better, larger, more complex solutions on the internet. So,  it is still incumbent on the programmer to manually edit the major, minor and release version numbers.
+In this approach the version information which must dovetail into MSVC rc file which contains version information that is embedded into exe, dll or lib. The version information includes the variables: FILEVERSION, PRODUCTVERSION, STRFILEVER, and STRPRODUCTVER. The first two variables are comma separated ascii numbers while the last two are period separated combination of version variables into a string. Thus, the file MTConnectAgentFromShdr.rc contains:
+
+	VS_VERSION_INFO VERSIONINFO
+	 FILEVERSION 1, 3, 0, 60
+	 PRODUCTVERSION 1, 3, 0, 60
+	 . . .
+	            VALUE "FileVersion", "1.3.0.60\0"
+	 . . . 
+	            VALUE "ProductVersion", "1.3.0.60\0"
 
 
+The first step is to replace the hard-coded version numbers and string with macro variables:
+
+	VS_VERSION_INFO VERSIONINFO
+	 FILEVERSION FILEVER
+	 PRODUCTVERSION PRODUCTVER
+	 . . .
+	            VALUE "FileVersion", STRFILEVER
+	 . . . 
+	            VALUE "ProductVersion", STRPRODUCTVER
+Then we could use a file with #define of these macros to modify the version numbers.
+
+	#define FILEVER          1, 3, 0, 60
+	#define PRODUCTVER       1, 3, 0, 60
+	#define STRFILEVER       "1.3.0.60\0"
+	#define STRPRODUCTVER    "1.3.0.60\0"
+
+Instead, a file Version_info.h is created that contains more macros and the ability to generate all the version information dynamically when loaded into the rc file.
+
+	
+	#define VERSION_MAJOR 1
+	#define VERSION_MINOR 3
+	#define VERSION_REVISION 0
+	#define VERSION_BUILD 151
+	#ifdef _UNICODE
+	#define _T(x)      L ## x
+	#else
+	#define _T(x)      x
+	#endif 
+	#define STRINGIZE2(s) _T(#s)
+	#define STRINGIZE(s) STRINGIZE2(s)
+	#define PRODUCTNAME     "MTConnect Agent\0"
+	#define PRODUCTVER      VERSION_MAJOR, VERSION_MINOR, VERSION_REVISION, VERSION_BUILD
+	#define FILEVER         PRODUCTVER
+	#define STRPRODUCTVER        STRINGIZE(VERSION_MAJOR)            \
+	                      _T(".") STRINGIZE(VERSION_MINOR)    \
+	                       _T(".") STRINGIZE(VERSION_REVISION) \
+	                        _T(".") STRINGIZE(VERSION_BUILD)    
+	#define STRFILEVER      STRPRODUCTVER
+
+At the same time, the rc file (e.g., MTConnectAgentFromShdr.rc) now has the following include file at the beginning of the file, that uses the dynamically created variables: FILEVERSION, PRODUCTVERSION, STRFILEVER, and STRPRODUCTVER.
+
+
+	// Microsoft Visual C++ generated resource script.
+	//
+	#include "version_info.h"  // Generated above
+	#define APSTUDIO_READONLY_SYMBOLS
+	/////////////////////////////////////////////////////////////////////////////
+	//
+	// Generated from the TEXTINCLUDE 2 resource.
+	//
+	#include "afxres.h"
+	
+	/////////////////////////////////////////////////////////////////////////////
+	#undef APSTUDIO_READONLY_SYMBOLS
+	
+	/////////////////////////////////////////////////////////////////////////////
+	// English (United States) resources
+	
+	#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+	LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+	
+	/////////////////////////////////////////////////////////////////////////////
+	//
+	// Version
+	//
+	
+	VS_VERSION_INFO VERSIONINFO
+	 FILEVERSION FILEVER
+	 PRODUCTVERSION PRODUCTVER
+	 FILEFLAGSMASK 0x3fL
+	#ifdef _DEBUG
+	 FILEFLAGS 0x1L
+	#else
+	 FILEFLAGS 0x0L
+	#endif
+	 FILEOS 0x40004L
+	 FILETYPE 0x1L
+	 FILESUBTYPE 0x0L
+	BEGIN
+	    BLOCK "StringFileInfo"
+	    BEGIN
+	        BLOCK "040904b0"
+	        BEGIN
+	            VALUE "CompanyName", "NIST Adaptation of MTConnect Institute Open Source Agent"
+	            VALUE "FileDescription", "Agent Resource File with Version Information"
+	            VALUE "FileVersion", STRFILEVER
+	            VALUE "InternalName", "Agent.exe\0"
+	            VALUE "\0"
+	            VALUE "MTConnectAgent", "agent.exe\0"
+	            VALUE "ProductName", PRODUCTNAME
+	            VALUE "ProductVersion", STRPRODUCTVER
+	        END
+	    END
+	    BLOCK "VarFileInfo"
+	    BEGIN
+	        VALUE "Translation", 0x409, 1200
+	    END
+	END
+	
+	#endif    // English (United States) resources
+
+There is a batch file that will read and modify the version_info.h file, called BuildUpdate.vbs. It is a vb script and can be run as a command line without elevated privileges.  The script starts a vbs scripting file object to read the version_info.h file (supplied as a command line argument or must be hard-coded as shown below in italic font to a physical location on the disk). The script reads the file and searches for the "define VERSION_BUILD" string and then reads the following number as an integer, increments the number and writes the new number as a string. At the end, the every line is appended to the filestring variable. When done reading the file, filestring is written to the file version_info.h for future use in the rc file.
+
+	dim objFS, objArgs, strFile, objFile, line, buildno, filestring
+	
+	Set objFS = CreateObject("Scripting.FileSystemObject")
+	
+	if WScript.Arguments.Count > 0 then
+	               Set objArgs = WScript.Arguments
+	               strFile= objArgs(0)
+	else
+	               strFile = "C:\Users\michalos\Documents\GitHub\MTConnectSolutions\MTConnectAgentFromShdr\MTConnectAgentFromShdr\version_info.h"
+	end if
+	
+	Set objFile = objFS.OpenTextFile(strFile)
+	
+	do while not objFile.AtEndOfStream 
+	    line =  objFile.ReadLine()
+	
+	   if instr(1, line, "define VERSION_BUILD") then
+	       line = Trim(Mid(line, Len("#define VERSION_BUILD") + 1))
+	       buildno = CInt(line) +1 
+	       line = "#define VERSION_BUILD " & CStr(buildno)
+	    end if 
+	
+	      filestring = filestring & line & vbCRLF
+	loop
+	
+	objFile.Close
+	
+	'' Output file with updated version number
+	
+	set objFile = objFS.CreateTextFile(strFile, 2)
+	objFile.Write filestring 
+	objFile.Close
+Then you integrate the vbs script into MSVC IDE in the Build Event Configuration Properties. This is done by done by modifying the Configuration Property: Configuration->Build Event-> Pre-build Event to now run the following command line:
+
+	$(ProjectDire)\Buildupdate.vbs Version_info.h 
+The following screen shot shows in more detail the inclusion of the BuildUpdate.vbs  (found in the same directory as the vcxproj file) as:
+
+![Figure1](./images/UR_AgentSourceCodeDoc_image1.gif)
+
+
+Admittedly, this is not a very good solution. This is a standalone kludgy solution,  and not even integrated into the install script. Other solutions exist on the internet, for example, an SVN solution can be found here: https://stackoverflow.com/questions/638053/how-to-increment-visual-studio-build-number-using-c#638100 .But SVN wasn't used in my development process.
+The documentation is useful only for the fact that it shows where the various components of an automated versioning system would be required to modify.
+
+# Agent Singleton
+One of the more pernious problems that can happen to a MTConnect deployer, is the occasion where two agents are running at the same time. This circumstance can happen easily especially if one uses the RunAgent.bat command file and click X to terminate the command window, and expect the agent running inside the shell to also be terminated. However, often this is not the case. So two agents can end of up running and the symptoms are often hard to detect, especially as integration of a remote adapter, through a firewall may mislead a user into thinking the root cause of the error might be the device adapter, as opposed to multiple running agents.
+The symptoms of multiple agents manisfest similar to an unconnected agent to an adapter – all data items read UNAVAILABLE. There are a few tricks you can do to determine if the cause of the all UNAVAILABLES are from the adapter if it's a SHDR. You can open ta telnet session and open 127.0.0.1 7878 (assuming you installed telnet on your windows PC) and see if SHDR data updates are streaming to the telnet window. If you do see data, and still get all UNAVAILABLES, you most likely have multiple agents running with one agent handling the Http requests, but unable to read the SHDR. You would think multiple agents could read the SHDR, and in fact should, but often problems occur.
+
+If you add the MTConnectSingleton class to the derived AgentConfigurationEx declaration, you can easily test for and remove other agents with the same process name and agent port (you could have multiple processes running with different HTTP ports that should not collide in any regard).  Below illustrates a simple inclusion of the  MTConnectSingleton  to the inheritance tree:
+class AgentConfigurationEx :
+public AgentConfiguration
+, public MTConnectSingleton<AgentConfigurationEx>
+{
+Then adding a configuration flag in the Config.ini file allows  toggling of the singleton detection capability:
+
+	config.bSingleton= cfg.GetSymbolValue("GLOBALS.Singleton", "0").toNumber<int>();
+	if(config.bSingleton)
+	  config.KillAllOtherInstances();
+If you indeed wish to detect multiple agents colliding, you can set the flag to one and the method  KillAllOtherInstances will terminate any colliding agents using the same Http.
+The KillAllOtherInstances  handles the collation of the pids for matching process names to the agnet (but not to agents with different names as this would require further configuration information to detect). The  routine first gets the pid of the current agent, its port number from the agent.cfg using a Yaml parser, and then checks each matching running  process for a module name match and the same http  If so, the pid is used to terminate the offending agent process. A very engaging message is logged as to the termination activity, but no other notification is provided. It is a bit like trading evils.
+
+	void KillAllOtherInstances()
+	{
+		if(!bSingleton)
+			return;
+		std::vector<std::string>  filepaths;
+		DWORD  pid = GetPid();
+		std::string modulename = File.ExeDirectory();  // f
+		std::string modulepath = File.ExePath();;
+		std::string processname  = File.Filename(modulepath);
+		std::vector<DWORD> pids = GetModules(processname,  filepaths);
+		int portnum = GetPortNum(modulename);
+		for(size_t i=0; i<pids.size(); i++)
+		{
+			if(pid == pids[i])
+				continue;
+			bool b = IsSameAgent(filepaths[i], portnum);
+			if(b)
+			{
+	                // Extreme log file notice.
+			   logStatus("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");                        
+	                logStatus("Conflict with another MTConnect Agent ... same http port nmber\n");
+		         logStatus("Terminated process %s\n", filepaths[i].c_str());
+	                logStatus("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+	
+			   TerminateAgentProcess(pids[i], 0);
+			}
+		}
+	}
+
+# YAML Reader
+A YAML reader was coded based on boost property tree to read MTConnect agent configuration files. This was required to read the port number so that an executing agent could be determined to be a singleton if its process name (exe) and port number were unique. If not, in the singleton model, the duplicated agent process was killed.
+YAML (Yet another markup language) is a human-readable data serialization language. It is commonly used for configuration files, and in fact,  agent configuration file within the MTConnect Institute open source agent uses YAML format. A sample Agent yaml configuration file is:
+
+	Devices = Devices.xml 
+	ServiceName = UR_Agent
+	Port = 5000
+	CheckpointFrequency=10000
+	AllowPut=true
+	Adapters 
+	{
+	 Mazak_1 
+	 { 
+	    Device = Mazak101
+	    Host =  192.168.0.11
+	    Port = 7878 
+	  } 
+	  
+	Mazak_2 
+	 { 
+	    Device = Mazak102
+	    Host =  192.168.0.12
+	    Port = 7878
+	  } 
+	  
+	}
+	logger_config
+	{
+		logging_level = debug
+		output = cout
+	}
+The YAML configuration file is a tree that has numerous implementation, but is not quite JSON, so it requires its own library or other mechanism to parse and retrieve settings. (No writing of YAML files was considered.) Dlib has the a Yaml parsing mechanism, but requires all of dlib be included, while YamlReader is standalone – if you consider boost standalone!  So, the class YamlRead was developed that reads and parses an MTConnect agent configuration file (typically agent.cfg) using Boost spirit classic.  If you have a syntax tree (which was found), translating  the syntax tree into boost spirit is not difficult. 
+Users will parse an MTConnect agent cfg file into an object oriented (OO) naming scheme (e.g., GLOBAL.section1.key). The uppermost section (assumes no section has been declared) is called GLOBAL. Each section under the GLOBAL is GLOBAL.section1, GLOBAL.section2, etc. Embedded sections within a section are OO concatenated (e.g., GLOBAL.section1.section11). 
+Parsing an agent.cfg file is straightforward. One declares a YamlRead, and then loads the yaml configuration from file:
+
+	YamlReader  yaml;
+	
+	std::string filename = "Agent.cfg";
+	yaml.LoadFromFile(filename);
+After parsing the tree, access to elements uses the object oriented tree naming strategy described above, so that to find the agent port number one uses the name  "GLOBAL.Port" 
+
+	std::string sportnum = yaml.Find("GLOBAL.Port");
+For convenience, YamlReader also has a conversion utility to help in string conversions. For example, below the port number string is converted into an integer, with a default value supplied as zero:
+
+	Int portnum= yaml.Convert<int>( sportnum,0);
+	
+This source has not been thoroughly tested.
+# DISCLAIMER
 ## Use of NIST Information
 This document is provided as a public service by the National Institute of Standards and Technology (NIST). With the exception of material marked as copyrighted, information presented on these pages is considered public information and may be distributed or copied. Use of appropriate byline/photo/image credits is requested.
 ## Software Disclaimer
