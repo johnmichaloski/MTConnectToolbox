@@ -1,0 +1,137 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOGEX 0, 0, 239, 174
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_TOPMOST
+CAPTION "Configuration"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,103,141,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,171,141,50,14
+    GROUPBOX        "Remote CNC",IDC_STATIC,5,4,222,40
+    CONTROL         "",IDC_IPADDRESS1,"SysIPAddress32",WS_TABSTOP,56,20,100,15
+    LTEXT           "IP Address",IDC_STATIC,15,22,36,8
+    EDITTEXT        IDC_PORTEDIT,57,65,94,14,ES_AUTOHSCROLL | ES_NUMBER
+    RTEXT           "Port Number",IDC_STATIC,9,66,41,8
+    GROUPBOX        "Adapter",IDC_STATIC,5,50,212,80
+    COMBOBOX        IDC_RATECOMBO,58,83,97,26,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Rate \r\n(secs)",IDC_STATIC,11,84,38,17
+    COMBOBOX        IDC_DEBUGCOMBO,56,107,97,24,CBS_DROPDOWN | WS_VSCROLL | WS_TABSTOP
+    RTEXT           "Debug",IDC_STATIC,11,108,40,8
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 232
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 167
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog Info
+//
+
+IDD_DIALOG1 DLGINIT
+BEGIN
+    IDC_RATECOMBO, 0x403, 2, 0
+0x0031, 
+    IDC_RATECOMBO, 0x403, 2, 0
+0x0032, 
+    IDC_RATECOMBO, 0x403, 2, 0
+0x0035, 
+    IDC_RATECOMBO, 0x403, 4, 0
+0x3031, 0x0020, 
+    IDC_DEBUGCOMBO, 0x403, 6, 0
+0x6166, 0x6174, 0x006c, 
+    IDC_DEBUGCOMBO, 0x403, 6, 0
+0x7265, 0x6f72, 0x0072, 
+    IDC_DEBUGCOMBO, 0x403, 5, 0
+0x6177, 0x6e72, "\000" 
+    IDC_DEBUGCOMBO, 0x403, 5, 0
+0x6e69, 0x6f66, "\000" 
+    IDC_DEBUGCOMBO, 0x403, 6, 0
+0x6564, 0x7562, 0x0067, 
+    0
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

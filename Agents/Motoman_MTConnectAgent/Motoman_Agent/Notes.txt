@@ -1,0 +1,147 @@
+Todo:
+get urdf and use as asset
+clean up non-existant tags
+
+
+Wed 11/01/17 08:08:16 PM
+Decided to move   but then must lock access to interface buffer
+when adapter wants them to copy.
+Use boost mutex with lock/unlock
+"boost/thread/mutex.hpp
+	class Lock
+	{
+		pthread_mutex_t & m;
+	public:
+		explicit Lock(pthread_mutex_t & _m) : m(_m) { pthread_mutex_lock(&m); }
+		~Lock() { pthread_mutex_unlock(&m); }
+	};
+
+Wed 11/01/17 07:32:42 PM
+Adapter is not fast enough to keep with the stream data.
+Can either speed up adapter or put all communication/decoding into one thread
+and update a robot model, which is acyclically read by adatper.
+
+struct robot_info
+{
+    std::string name;
+    /* items to be sent out as robot status */
+    int drives_powered;
+    int e_stopped;
+    int error_code;
+    int in_error;
+    int in_motion;
+    int mode;
+    int motion_possible;
+
+
+    /* items to be sent out as joint trajectory information */
+    joint_info joint[JOINT_MAX];
+    unsigned int joint_number;
+
+    /* Cartesian pose */
+    float x, y, z, qx, qy, qz, qw;
+
+    robot_info(unsigned int j = JOINT_MAX) {
+        drives_powered = 0;
+        e_stopped = 0;
+        error_code = 0;
+        in_error = 0;
+        in_motion = 0;
+        mode = ROBOT_MODE_AUTO;
+        motion_possible = 0;
+        joint_number = j;
+        x = 0, y = 0, z = 0;
+        qx = 0, qy = 0, qz = 0, qw = 1;
+    }
+	// there's a lot more accessor and print methods
+};
+struct moto_robot_info: public robot_info
+{
+    moto_robot_info(int n) : robot_info(n)
+    {
+        traj_started_state=0;
+    }
+    // additional motoman specific fields
+    int traj_started_state;
+    int alarm_on;
+    int queue_count;
+    int servos_on;
+    int motion_ready;
+    int is_connected;
+    virtual std::string print_robot_status(const char *prefix = "") {
+        std::string tmp;
+        tmp+=robot_info::print_robot_status(prefix);
+        tmp+=StrFormat("%sTraj Started State %d\n", prefix, (int) traj_started_state);
+        return tmp;
+    }
+};
+
+Wed 11/01/17 03:24:08 PM
+Basically need changeable byte order - since Simple Message is network LITTLE ENDIAN!
+Moto Decoder:
+008A95E0: 28 00 00 00  0D 00 00 00  01 00 00 00  00 00 00 00  (...............
+008A95F0: 01 00 00 00  00 00 00 00  7C 49 9C 6B  00 00 00 00  ........|I.k....
+008A9600: 00 00 00 00  02 00 00 00  01 00 00 00  
+
+>>>>>    38 00 00 00  ............8...
+008A9610: 0A 00 00 00  01 00 00 00  00 00 00 00  6C FE 42 17  ............l.B.
+008A9620: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00  ................
+008A9630: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00  ................
+008A9640: 00 00 00 00  00 00 00 00                            ........
+
+SIMULATOR:
+
+1742FE30: 38 00 00 00  0A 00 00 00  01 00 00 00  00 00 00 00  6C FE 42 17  8...............l.B.
+1742FE44: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00  ....................
+1742FE58: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00  ....................
+
+
+Debug.txt:
+2017-11-01 15:23:08.0566 
+008A95E0: 28 00 00 00  0D 00 00 00  01 00 00 00  00 00 00 00  (...............
+008A95F0: 01 00 00 00  00 00 00 00  7C 49 9C 6B  00 00 00 00  ........|I.k....
+008A9600: 00 00 00 00  02 00 00 00  01 00 00 00  38 00 00 00  ............8...
+008A9610: 0A 00 00 00  01 00 00 00  00 00 00 00  6C FE 42 17  ............l.B.
+008A9620: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00  ................
+008A9630: 00 00 00 00  00 00 00 00  00 00 00 00  00 00 00 00  ................
+008A9640: 00 00 00 00  00 00 00 00               
+
+Missing so much?
+
+Tue 10/31/2017_16:09:58.22  
+
+MOTOMAN SIA 20d OPERATION 
+To operate:
+1.	Undo ESTOP
+2.	Set TEACH MODE key
+3.	JOINT W PENDANT must have deadman switch on side of TP ½ way down
+4.	SPEEED: LOW MED HIGH
+5.	COORD put button joint (robot skeleton) World (3 axis (0,0,0) ) or Tool (gripper outline )
+BUTTON PLAY – PUSH SERVO ON (light should go on) THEN SWTCIH KEY TO AUTO
+
+
+!!!!
+The controller acts as a server for all connections. All types are 32 bit types (floats and integers, byte order is "Little Endian" (see bug write up for more information).
+
+
+enum {INBUF_LEN = 1024};
+		char inbuf[INBUF_LEN];
+		char *ptr;
+		int nchars;
+
+Tue 10/31/2017_13:25:51.98  
+
+[Motoman]
+joints=joint_s,joint_l,joint_e,joint_u,joint_r,joint_b,joint_t
+ip=192.168.1.33
+byteswap=1
+cmdport=50240 
+statport=50241
+
+jointmaxs=3.1416,1.91,2.96,2.26,3.1416,1.91,3.1416
+jointmins=-3.1416,-1.91,-2.96,-2.26,-3.1416,-1.91,-3.1416
+velocitymaxs=2.26,2.26,2.96,2.96,3.48,3.48,6.97
+effortmaxs=100,100,100,100,100,100,100
+
+Tue 10/31/2017_13:25:51.98  
+converted UR mtconnect agent into motoman agent

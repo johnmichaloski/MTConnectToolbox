@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2017-11-02T00:31:47" sender="local" version="1.1"/>
+<Devices>
+		<Device id="Moto1id" uuid="Moto1xxx" name="Moto1">
+			<Description>moto_Moto1</Description>
+			<DataItems>
+				<DataItem id="Moto1avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+				<DataItem id="Moto1version" name="version"  type="MESSAGE" category="EVENT"/>
+				<DataItem id="Moto1motherboard_temp" name="motherboard_temp" type="TEMPERATURE" category="SAMPLE"/>
+				<DataItem id="Moto1_urdf_asset"  type="ASSET_CHANGED" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="Moto1a1" name="base">
+					<Components>
+						<Rotary id="Moto1d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="Moto1_joint_s_actpos_id" category="SAMPLE" name="joint_s_actpos"  units="RADIANS" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="Moto1d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="Moto1_joint_l_actpos_id" category="SAMPLE" name="joint_l_actpos"  units="RADIANS" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="Moto1d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="Moto1_joint_e_actpos_id" category="SAMPLE" name="joint_e_actpos"  units="RADIANS" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="Moto1d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="Moto1_joint_u_actpos_id" category="SAMPLE" name="joint_u_actpos"  units="RADIANS" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="Moto1d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="Moto1_joint_r_actpos_id" category="SAMPLE" name="joint_r_actpos"  units="RADIANS" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="Moto1d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="Moto1_joint_b_actpos_id" category="SAMPLE" name="joint_b_actpos"  units="RADIANS" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="Moto1d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="Moto1_joint_t_actpos_id" category="SAMPLE" name="joint_t_actpos"  units="RADIANS" />
+							</DataItems>
+						</Rotary>
+					</Components>
+				</Axes>
+				<Controller id="Moto1cont" name="controller">
+					<DataItems>
+						<DataItem category="EVENT" id="Moto1estop" name="estop" type="EMERGENCY_STOP"/>
+						<DataItem category="CONDITION" id="Moto1system" type="SYSTEM"/>
+					</DataItems>
+					<Components>
+						<Path id="Moto1path1" name="path">
+							<DataItems>
+								<DataItem type="PATH_POSITION" id="Moto1pp" category="SAMPLE" name="pose" subType="ACTUAL" />
+								<DataItem type="PATH_FEEDRATE" id="Moto1pfr" category="SAMPLE" name="velocity" subType="ACTUAL" />
+								<DataItem type="PROGRAM" id="Moto1pgm" category="EVENT" name="program"/>
+								<DataItem type="EXECUTION" id="Moto1exec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="Moto1robotmode" category="EVENT" name="robotmode"/>
+								<DataItem type="CONTROLLER_MODE" id="Moto1controlmode" category="EVENT" name="controlmode"/>
+								<DataItem type="PATH_FEEDRATE" id="Moto1pfo1" category="SAMPLE" name="fovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+								<DataItem type="PATH_FEEDRATE" id="Moto1pfr1" category="SAMPLE" name="frt" />
+								<DataItem category="EVENT"  id="Moto1heartbeat"  name="heartbeat" type="CODE"></DataItem>
+							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="Moto1systems" name="systems">
+					<Components>
+						<Electric name="electric" id="Moto1elec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="Moto1pwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+</Devices>
+</MTConnectDevices>
