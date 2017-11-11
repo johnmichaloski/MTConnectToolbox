@@ -407,7 +407,7 @@ HRESULT Moto_Adapter::decodeMotoState ( )
 		items.setTag(this->mDevice+"system", "NORMAL");
 
         // Power
-        if ( mMotoData.robot_status.drives_powered )
+        if ( mMotoDataCopy.robot_status.drives_powered )
         {
             items.setTag("power", "ON");
         }
