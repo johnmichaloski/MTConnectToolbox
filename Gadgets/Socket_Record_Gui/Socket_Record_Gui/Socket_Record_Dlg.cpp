@@ -1,80 +1,29 @@
 
 //
-// Socket_Replay_Dlg.cpp
+// Socket_Record_Dlg.cpp
 //
 
 #include "StdAfx.h"
 
-#include <boost/bind.hpp>
-#include <boost/function.hpp>
-
 #include <Commdlg.h>
-#include "Socket_Replay_Dlg.h"
-#define TIMER1    1051
-extern std::string             ExeDirectory;
-extern boost::asio::io_service _io_service;
+#include "Socket_Record_Dlg.h"
+#include <StrSafe.h>
 
-Socket_Replay_Dlg::Socket_Replay_Dlg(void) : mParser(mBackend)
+#define TIMER1    1051
+extern std::string ExeDirectory;
+
+Socket_Record_Dlg::Socket_Record_Dlg(void)  : recorder(this)
 {
-    mCountdown     = 100;
     dTimeMultipler = 1.0;
     mStreamFlag    = false;
 }
-Socket_Replay_Dlg::~Socket_Replay_Dlg(void)
+Socket_Record_Dlg::~Socket_Record_Dlg(void)
 { }
-void Socket_Replay_Dlg::halt ( )
+void Socket_Record_Dlg::halt ( )
 {
-    mStreamFlag = false;
-    mBackend.Quit( );
+    recorder.halt( );
 }
-void Socket_Replay_Dlg::stream_loop ( )
-{
-    int    nSleep = mCountdown;
-    double delay  = 0;
-
-    try
-    {
-        mStreamFlag = true;
-
-        while ( mStreamFlag )
-        {
-            if ( ( mBackend.Count( ) < 1 ) && bOptionWait )
-            {
-                nSleep = mCountdown;
-            }
-            else
-            {
-                if ( delay < 0 )
-                {
-                    delay = (long) mParser.ProcessStream( ) * dTimeMultipler;
-
-                    if ( delay < 0 )
-                    {
-                        break;                             // should only get here if no repeat
-                    }
-                    mBackend.StoreSocketString(mParser.GetLatestMsg( ));
-
-                    // this->screen_msg(mParser.GetLatestBuffer()+"\r\n"); // GUI slow down
-                    buffer_queue.AddMsgQueue(mParser.GetLatestBuffer( ) + "\r\n");
-                }
-                else
-                {
-                    delay -= mCountdown;
-                }
-            }
-            Timing::Sleep(nSleep);
-        }
-
-        mBackend.Quit( );
-        Timing::Sleep(2000);
-    }
-    catch ( std::exception err )
-    {
-        std::string errmsg = StrFormat("Exception in file %s at line %d %s\n", mFilename.c_str( ), mParser.LineNumber( ), err.what( ));
-        this->fatal_msg(errmsg);
-    }
-}
-BOOL Socket_Replay_Dlg::CenterWindow (HWND hwndWindow)
+BOOL Socket_Record_Dlg::CenterWindow (HWND hwndWindow)
 {
     HWND hwndParent;
     RECT rectWindow, rectParent;
@@ -128,65 +77,69 @@ BOOL Socket_Replay_Dlg::CenterWindow (HWND hwndWindow)
 
     return FALSE;
 }
-char *Socket_Replay_Dlg::SelectFile (HWND hwnd, const char *folder)
+char *Socket_Record_Dlg::SelectFile (HWND hwnd, const char *folder)
 {
     OPENFILENAME ofn;                                      // common dialog box structure
-
-    szFile[0] = 0;
+    char         szFileName[MAX_PATH] = "";
 
     // Initialize OPENFILENAME
     ZeroMemory(&ofn, sizeof( ofn ));
     ofn.lStructSize = sizeof( ofn );
     ofn.hwndOwner   = hwnd;
-    strncpy(szFile, folder, strlen(folder));
-    ofn.lpstrFile = szFile;
+    ofn.lpstrFile   = szFile;
 
     // Set lpstrFile[0] to '\0' so that GetOpenFileName does not
     // use the contents of szFile to initialize itself.
-    ofn.lpstrFile[0]    = '\0';
-    ofn.nMaxFile        = sizeof( szFile );
-    ofn.lpstrFilter     = "All\0*.*\0Text\0*.TXT\0";
-    ofn.nFilterIndex    = 1;
-    ofn.lpstrFileTitle  = NULL;
-    ofn.nMaxFileTitle   = 0;
+    ofn.lpstrFile[0]   = '\0';
+    ofn.nMaxFile       = MAX_PATH;
+    ofn.lpstrFilter    = "All\0*.*\0Text\0*.txt\0";
+    ofn.nFilterIndex   = 1;
+    ofn.lpstrFileTitle = NULL;
+    ofn.nMaxFileTitle  = 0;
+
     ofn.lpstrInitialDir = folder;
-    ofn.Flags           = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;
+    ofn.Flags           = OFN_EXPLORER | OFN_FILEMUSTEXIST | OFN_HIDEREADONLY;
+    ofn.lpstrDefExt     = "txt";
 
     // Display the Open dialog box.
 
-    if ( GetOpenFileName(&ofn) == TRUE )
+    if ( GetSaveFileName(&ofn) == TRUE )
     {
+        // hf = CreateFile(ofn.lpstrFile,
+        // GENERIC_READ,
+        // 0,
+        // (LPSECURITY_ATTRIBUTES) NULL,
+        // OPEN_EXISTING,
+        // FILE_ATTRIBUTE_NORMAL,
+        // (HANDLE) NULL);
+
         strncpy(szFile, ofn.lpstrFile, strlen(ofn.lpstrFile));
     }
     return szFile;
 }
-HWND Socket_Replay_Dlg::Create (HINSTANCE hInst, int nCmdShow)
+HWND Socket_Record_Dlg::Create (HINSTANCE hInst, int nCmdShow)
 {
-    hDlg      = CreateDialogParam(hInst, MAKEINTRESOURCE(IDD_DIALOG1), 0, Socket_Replay_Dlg::DialogProc, 0);
+    hDlg      = CreateDialogParam(hInst, MAKEINTRESOURCE(IDD_DIALOG1), 0, Socket_Record_Dlg::DialogProc, 0);
     port_hwnd = GetDlgItem(hDlg, IDC_PORT);
     edit_hwnd = GetDlgItem(hDlg, IDC_STATUSEDIT);
-#ifdef WIN64
-    SetWindowLongPtr(hDlg, GWLP_USERDATA, (LONG) this);
-#else
     SetWindowLongPtr(hDlg, GWL_USERDATA, (LONG) this);
-#endif
     ShowWindow(hDlg, nCmdShow);
     return hDlg;
 }
-void Socket_Replay_Dlg::fatal_msg (std::string str)
+void Socket_Record_Dlg::fatal_msg (std::string str)
 {
     ::PostMessage(edit_hwnd, WM_SETTEXT, NULL, (LPARAM) str.c_str( ));
 }
-void Socket_Replay_Dlg::screen_msg (std::string str)
+void Socket_Record_Dlg::screen_msg (std::string str)
 {
     // Thanks to https://www.codeproject.com/Articles/2739/Quick-positioning-of-the-caret-at-the-end-of-the-t
     SendDlgItemMessage(hDlg, IDC_STATUSEDIT, EM_SETSEL, 0, -1);
     SendDlgItemMessage(hDlg, IDC_STATUSEDIT, EM_SETSEL, -1, -1);
     SendDlgItemMessage(hDlg, IDC_STATUSEDIT, EM_REPLACESEL, 0, (long) str.c_str( ));
 }
-INT_PTR CALLBACK Socket_Replay_Dlg::DialogProc (HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
+INT_PTR CALLBACK Socket_Record_Dlg::DialogProc (HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-    Socket_Replay_Dlg *pThis = Socket_Replay_Dlg::GetObjectFromWindow(hDlg);
+    Socket_Record_Dlg *pThis = Socket_Record_Dlg::GetObjectFromWindow(hDlg);
 
     switch ( uMsg )
     {
@@ -215,9 +168,12 @@ INT_PTR CALLBACK Socket_Replay_Dlg::DialogProc (HWND hDlg, UINT uMsg, WPARAM wPa
             {
             case IDCANCEL:
                 {
-                    // STOP COMMAND
+                    pThis->mStreamFlag = false;
                     KillTimer(hDlg, TIMER1);
-                    pThis->halt( );
+                    pThis->recorder.halt( );
+
+                    // STOP COMMAND
+                    // SendMessage(hDlg, WM_CLOSE, 0, 0);
                     return TRUE;
                 }
 
@@ -228,15 +184,34 @@ INT_PTR CALLBACK Socket_Replay_Dlg::DialogProc (HWND hDlg, UINT uMsg, WPARAM wPa
                     {
                         return TRUE;
                     }
+                    pThis->mStreamFlag = true;
+
                     BOOL  fError;
-                    TCHAR filename[256];
-                    int   port = GetDlgItemInt(hDlg, IDC_PORT, &fError, false /* no minus*/);
-                    UINT  m    = GetDlgItemText(hDlg, IDC_FILENAMEEDIT, filename, 256);
-                    pThis->mFilename = filename;
-                    pThis->mBackend.Init("127.0.0.1", port);
-                    pThis->mParser.Init(filename);
+                    TCHAR buffer[256];
+
+                    // Filename
+                    UINT m = GetDlgItemText(hDlg, IDC_FILENAMEEDIT, buffer, 256);
+                    pThis->mFilename = buffer;
+
+                    // Port
+                    m            = GetDlgItemText(hDlg, IDC_PORT, buffer, 256);
+                    pThis->mPort = buffer;
+
+                    // IP
+                    HWND  hWndIPAddress = GetDlgItem(hDlg, IDC_IPADDRESS1);
+                    DWORD dwAddr;
+                    int   iCount = (int) SendMessage(hWndIPAddress, IPM_GETADDRESS, 0, (LPARAM) &dwAddr);
+                    StringCchPrintf(buffer, _countof(buffer), "%ld.%ld.%ld.%ld",
+                                    FIRST_IPADDRESS(dwAddr),
+                                    SECOND_IPADDRESS(dwAddr),
+                                    THIRD_IPADDRESS(dwAddr),
+                                    FOURTH_IPADDRESS(dwAddr));
+                    pThis->mIP = buffer;
+
                     SetTimer(hDlg, TIMER1, 100, NULL);     // no timer callback
-                    boost::thread t(boost::bind(&Socket_Replay_Dlg::stream_loop, pThis));
+
+                    pThis->recorder.init(pThis->mIP, pThis->mPort, pThis->mFilename);
+                    pThis->recorder.start( );
                 }
                 return TRUE;
 
@@ -252,7 +227,7 @@ INT_PTR CALLBACK Socket_Replay_Dlg::DialogProc (HWND hDlg, UINT uMsg, WPARAM wPa
         }
 
     case WM_CLOSE:
-        {
+        {                                                  /* there are more things to go here, */
             // stop
             PostQuitMessage(0);
             return TRUE;                                   /* just continue reading on... */
@@ -267,10 +242,17 @@ INT_PTR CALLBACK Socket_Replay_Dlg::DialogProc (HWND hDlg, UINT uMsg, WPARAM wPa
     case WM_INITDIALOG:
         {
             // center dialog
-            Socket_Replay_Dlg::CenterWindow(hDlg);
+            Socket_Record_Dlg::CenterWindow(hDlg);
             SetWindowText(hDlg, "Socket_replay");
+
             HWND port_hwnd = GetDlgItem(hDlg, IDC_PORT);
-            SetWindowText(port_hwnd, "50241");
+            SetWindowText(port_hwnd, "7878");
+
+            HWND hWndIPAddress = GetDlgItem(hDlg, IDC_IPADDRESS1);
+            SendMessage(hWndIPAddress, IPM_SETADDRESS, 0, MAKEIPADDRESS(127, 0, 0, 1));
+
+            HWND hWndFile = GetDlgItem(hDlg, IDC_FILENAMEEDIT);
+            SetWindowText(hWndFile, ( ExeDirectory + "log.txt" ).c_str( ));
         }
         break;
     }

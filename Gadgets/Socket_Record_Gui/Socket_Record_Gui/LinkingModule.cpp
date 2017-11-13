@@ -27,7 +27,7 @@
 
 #pragma comment(lib, "ComCtl32.lib")
 
-#if 0
+#if 1
 #define BOOSTLIBPATH32(X) \
     "D:\\Program Files\\NIST\\src\\boost_1_54_0\\stageX32\\lib\\" ## X
 #else

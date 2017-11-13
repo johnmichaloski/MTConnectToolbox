@@ -1,5 +1,6 @@
 //
-// SocketBackEnd.h 
+
+// SocketBackEnd.h
 //
 
 /*
@@ -26,47 +27,102 @@
 #include "boost/date_time/posix_time/posix_time.hpp"
 
 #include "Timing.h"
-typedef std::vector<uint8_t> raw_message_t;
-
+typedef std::vector<uint8_t>                              raw_message_t;
 
 using boost::asio::ip::tcp;
-typedef boost::shared_ptr<boost::asio::ip::tcp::socket> socket_ptr;
-
+typedef boost::shared_ptr<boost::asio::ip::tcp::socket>   socket_ptr;
 
 /**
 * \brief Background thread to accept connections to read shdr data.
 */
-class  SocketBackEnd 
+class SocketBackEnd
 {
 public:
-	SocketBackEnd();
-	void							HandleAsyncAccept(const boost::system::error_code& error);
-	void							StartAsyncAccept();
-	void							StopAsyncAccept();
-	void 							Init(std::string domain, LONG portnumber);
-	void 							StoreSocketString(raw_message_t str);
-	void                            Quit(void);
-	void                            Reset(void);
-	std::string &                   Ip(){ return _domainname; }
-	UINT &                          Port(){ return _ipport; }
-//	std::string &                   Device(){ return _deviceName; }
-	int &                           Count(){ return nCount; }
-	/////////////////////////////////////////////////////////////////////
-	void							session(socket_ptr sock);
-	void							server(boost::asio::io_service& io_service, short port);
-	/////////////////////////////////////////////////////////////////////
-	static boost::asio::io_service	_io_service;
-	static int                       nCount;
-	static bool                      bRunning;
+    SocketBackEnd( );
 
+    /**
+     * @brief HandleAsyncAccept is asio callback to accept replay connection and start thread
+     * to service connection.
+     * @param error if connection had problem.
+     */
+    void HandleAsyncAccept (const boost::system::error_code & error);
+
+    /**
+     * @brief StartAsyncAccept starts listening for aychronous connection.
+     */
+    void StartAsyncAccept ( );
+
+    /**
+     * @brief StopAsyncAccept stops listening for aychronous connection.
+     */
+    void StopAsyncAccept ( );
+
+    /**
+     * @brief Init sets up asio for asynchronous connection and communication.
+     * @param domain ip address to listen on
+     * @param portnumber  port number ot listen for connection.
+     */
+    void Init (std::string domain, LONG portnumber);
+
+    /**
+     * @brief StoreSocketString raw array to send to all clients.
+     * @param str raw byte array to send to listening clients.
+     */
+    void StoreSocketString (raw_message_t str);
+
+    /**
+     * @brief Quit stop all the communication.
+     */
+    void Quit (void);
+
+    /**
+     * @brief Reset changes flag to not inited.
+     */
+    void Reset (void);
+
+    /**
+     * @brief Ip return TCP/IP host that communication occurs on.
+     * @return host name as ipv4 address.
+     */
+    std::string & Ip ( ) { return _domainname; }
+
+    /**
+     * @brief Port return TCP/IP port number that communication occurs on.
+     * @return  port number as integer
+     */
+    UINT & Port ( ) { return _ipport; }
+
+    /**
+     * @brief Count number of communication connections listening to replay.
+     * @return integer count.
+     */
+    int & Count ( ) { return nCount; }
+
+    /**
+     * @brief session is a separate communication thread to each listening client.
+     * This thread sends raw messages to the listener.
+     * @param sock pointer to the socket that is listening.
+     */
+    void session (socket_ptr sock);
+
+    /**
+     * @brief server thread that listens for connection.
+     * @param io_service asio service that handles asychronous communication
+     * @param port TCP/IP port number to listen for connections.
+     */
+    void server (boost::asio::io_service & io_service, short port);
+
+    /////////////////////////////////////////////////////////////////////=
 protected:
- 	size_t                          _nbuffers; /**< n of last buffer string */
-	raw_message_t                   _buffer;    /**< latest */
-	bool							_bInited;
-	std::vector<raw_message_t>		_all_bufferssofar;
-	tcp::acceptor *					_pAcceptor;
-	socket_ptr						_pSocket; /**< thread socket to client */
-	std::string						_portnumber; /**< striong of TCP/IP socket port number */
-	std::string						_domainname; /**< TCP/IP ip or domain name */
-	UINT							_ipport; /**<  inteter TCP/IP socket port number */
+    static int nCount;                                     /**< count of connections */
+    static bool bRunning;                                  /**< thread(s) listening and connected running flag */
+    size_t _nbuffers;                                      /**< n of last buffer string */
+    raw_message_t _buffer;                                 /**< latest */
+    bool _bInited;                                         /**< class instance inited flag */
+    std::vector<raw_message_t> _all_bufferssofar;          /**< all raw messages sent so far */
+    tcp::acceptor *_pAcceptor;                             /**<  boost asio TCP acceptor type */
+    socket_ptr _pSocket;                                   /**< thread socket to client */
+    std::string _portnumber;                               /**< striong of TCP/IP socket port number */
+    std::string _domainname;                               /**< TCP/IP ip or domain name */
+    UINT _ipport;                                          /**<  inteter TCP/IP socket port number */
 };

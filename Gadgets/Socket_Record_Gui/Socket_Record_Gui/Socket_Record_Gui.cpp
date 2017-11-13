@@ -1,18 +1,21 @@
 
 #include "stdafx.h"
-#include "SocketParser.h"
-#include "SocketBackEnd.h"
 #include <iostream>
-#include "Timing.h"
+#include <boost/asio.hpp>
+
 #include "Config.h"
 #include "Strsafe.h"
-#include "Socket_Replay_Dlg.h"
+#include "Socket_Record_Dlg.h"
 
 #include "Logger.h"
 
-extern boost::asio::io_service _io_service;
+extern boost::asio::io_service io_service;
 
 std::string ExeDirectory;
+inline std::string ExtractDirectory (const std::string & path)
+{
+    return path.substr(0, path.find_last_of('\\') + 1);
+}
 int WINAPI _tWinMain (HINSTANCE hInst, HINSTANCE h0, LPTSTR lpCmdLine, int nCmdShow)
 {
     HWND hDlg;
@@ -21,20 +24,16 @@ int WINAPI _tWinMain (HINSTANCE hInst, HINSTANCE h0, LPTSTR lpCmdLine, int nCmdS
 
     ExeDirectory             = ExtractDirectory(__argv[0]);
     GLogger.Timestamping( )  = true;
-    GLogger.DebugString( )   = "socket_replay";
+    GLogger.DebugString( )   = "Socket_Record";
     GLogger.OutputConsole( ) = true;
     GLogger.Open(ExeDirectory + "Debug.txt");
     GLogger.DebugLevel( ) = 0;
 
     InitCommonControls( );
-    Socket_Replay_Dlg dlg;
-
-    dlg.mParser.Repeat( ) = true;
-    dlg.bOptionWait       = true;
+    Socket_Record_Dlg dlg;
 
     hDlg = dlg.Create(hInst, nCmdShow);
 
-//	while((ret = GetMessage(&msg, 0, 0, 0)) != 0)
     while ( true )
     {
         if ( ret = PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) )
@@ -54,7 +53,7 @@ int WINAPI _tWinMain (HINSTANCE hInst, HINSTANCE h0, LPTSTR lpCmdLine, int nCmdS
         }
         else
         {
-            _io_service.run_one( );
+            io_service.run_one( );
         }
     }
 

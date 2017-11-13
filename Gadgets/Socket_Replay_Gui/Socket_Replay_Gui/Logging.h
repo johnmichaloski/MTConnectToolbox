@@ -15,13 +15,14 @@
 #define LOGONCE    static long nLog ## __LINE__ = 0; if ( 0 == nLog ## __LINE__++ )
 #endif
 
-inline std::string LineName(std::string file, int line)
-{ 
+inline std::string LineName (std::string file, int line)
+{
     char buffer[32];
-    sprintf(buffer,"%d", line);
-    return file+buffer;
+
+    sprintf(buffer, "%d", line);
+    return file + buffer;
 }
-#define LOGNAME(F,L) LineName(F, L)
+#define LOGNAME(F, L)    LineName(F, L)
 #include <map>
 
 class ALogger
@@ -33,6 +34,7 @@ public:
         DebugLevel( ) = 0;
         this->filename.clear( );
     }
+
     std::map<std::string, std::string> properties;
     void Close ( )
     {
@@ -49,7 +51,7 @@ public:
             opMode |= std::fstream::app;
         }
         this->filename = filename;
-        DebugFile.open(filename.c_str( ), opMode); // , OF_SHARE_DENY_NONE);
+        DebugFile.open(filename.c_str( ), opMode);         // , OF_SHARE_DENY_NONE);
     }
 
     int LogMessage (std::string filename, std::string msg, int level = -1)
@@ -60,15 +62,22 @@ public:
 
     int LogMessage (std::string msg, int level = -1)
     {
-        static char * levels[] = {"[FATAL]","[ERROR]","[WARNING]","[INFO]","[DEBUG]","[STATUS]"};
-        char * mylevel;
-        if(level<0)
-            mylevel="[STATUS]";
-        else if(level>=4)
-            mylevel="[DEBUG]";
+        static char *levels[] = { "[FATAL]", "[ERROR]", "[WARNING]", "[INFO]", "[DEBUG]", "[STATUS]" };
+        char *       mylevel;
+
+        if ( level < 0 )
+        {
+            mylevel = "[STATUS]";
+        }
+        else if ( level >= 4 )
+        {
+            mylevel = "[DEBUG]";
+        }
         else
-            mylevel=levels[level];
-        
+        {
+            mylevel = levels[level];
+        }
+
         if ( level > DebugLevel( ) )
         {
             return level;
@@ -76,7 +85,7 @@ public:
 #if 0
         if ( OutputConsole( ) )
         {
-            OutputDebugString(msg.c_str( ) );
+            OutputDebugString(msg.c_str( ));
         }
 #endif
 
@@ -89,13 +98,14 @@ public:
         {
             DebugFile << Timestamp( );
         }
-        DebugFile << mylevel << " " ;
+        DebugFile << mylevel << " ";
         DebugFile << msg;
         DebugFile.flush( );
         return level;
     }
 
-    unsigned int LogFormatMessage(const char *fmt, ...) {
+    unsigned int LogFormatMessage (const char *fmt, ...)
+    {
         va_list argptr;
 
         va_start(argptr, fmt);
@@ -103,6 +113,7 @@ public:
         va_end(argptr);
         return LogMessage(str);
     }
+
     static inline std::string StrFormat (const char *fmt, ...)
     {
         va_list argptr;
@@ -115,7 +126,8 @@ public:
 
     static inline std::string FormatString (const char *fmt, va_list ap)
     {
-        int         m, n = (int) strlen(fmt) + 1028;
+        int m, n = (int) strlen(fmt) + 1028;
+
         std::string tmp(n, '0');
 
         while ( ( m = vsnprintf(&tmp[0], n - 1, fmt, ap) ) < 0 )
@@ -136,12 +148,13 @@ public:
         Tm    = localtime(&ltime);
         std::string stime = StrFormat("%4d-%02d-%0dT%02d:%02d:%02d",
 #ifndef  _WINDOWS
-                                      Tm->tm_year+1900,Tm->tm_mon+1,
+                                      Tm->tm_year + 1900, Tm->tm_mon + 1,
 #else
                                       Tm->tm_year, Tm->tm_mon,
 #endif
                                       Tm->tm_mday, Tm->tm_hour, Tm->tm_min, Tm->tm_sec);
 #ifndef  WIN32
+
         // Add milliseconds to end of time
         struct timeval detail_time;
         gettimeofday(&detail_time, NULL);
@@ -200,17 +213,18 @@ public:
     }
 
     // private:
-    int           _debuglevel;
-    bool          _bTimestamp;
+    int _debuglevel;
+    bool _bTimestamp;
     std::ofstream DebugFile;
-    int           _nOutputConsole;
-    std::string   filename;
+    int _nOutputConsole;
+    std::string filename;
 };
-//__declspec(selectany) ALogger Logger;
+
+// __declspec(selectany) ALogger Logger;
 //
-//inline std::ostream & operator << (std::ostream & os, const std::string & str)
-//{
+// inline std::ostream & operator << (std::ostream & os, const std::string & str)
+// {
 //    Logger.LogMessage(str);
 //    return os;
-//}
+// }
 extern ALogger Logger;

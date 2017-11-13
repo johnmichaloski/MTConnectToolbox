@@ -1,6 +1,6 @@
 // stdafx.cpp : source file that includes just the standard includes
 
-// Socket_Replay_Gui.pch will be the pre-compiled header
+// Socket_Record_Gui.pch will be the pre-compiled header
 // stdafx.obj will contain the pre-compiled type information
 
 #include "stdafx.h"

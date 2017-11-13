@@ -45,6 +45,12 @@
     <ClInclude Include="Socket_Replay_Dlg.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RCSMsgQueue.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="StdStringFcn.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
