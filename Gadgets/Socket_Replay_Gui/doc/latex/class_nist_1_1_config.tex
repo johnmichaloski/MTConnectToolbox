@@ -1,0 +1,47 @@
+\hypertarget{class_nist_1_1_config}{}\section{Nist\+:\+:Config Class Reference}
+\label{class_nist_1_1_config}\index{Nist\+::\+Config@{Nist\+::\+Config}}
+
+
+{\ttfamily \#include $<$Config.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_nist_1_1_config_a7b7e16987717f5cf8013d98f400798f4}{}std\+::vector$<$ std\+::string $>$ {\bfseries Get\+Sections} ()\label{class_nist_1_1_config_a7b7e16987717f5cf8013d98f400798f4}
+
+\item 
+\hypertarget{class_nist_1_1_config_ad2c086f4d661b720a55a6c3c47cf6243}{}std\+::string {\bfseries trim} (std\+::string source, std\+::string delims=\char`\"{} \textbackslash{}t\textbackslash{}r\textbackslash{}n\char`\"{})\label{class_nist_1_1_config_ad2c086f4d661b720a55a6c3c47cf6243}
+
+\item 
+\hypertarget{class_nist_1_1_config_ac89a47a9988ebcbb657c74d6c9e3940d}{}std\+::vector$<$ std\+::string $>$ {\bfseries getkeys} (std\+::string section)\label{class_nist_1_1_config_ac89a47a9988ebcbb657c74d6c9e3940d}
+
+\item 
+\hypertarget{class_nist_1_1_config_ae845797e2ed12d96ba4bab21d781ffc7}{}bool {\bfseries load} (const std\+::string filename)\label{class_nist_1_1_config_ae845797e2ed12d96ba4bab21d781ffc7}
+
+\item 
+\hypertarget{class_nist_1_1_config_a572d2e28f2c2652f11ae8a301fed8021}{}const \hyperlink{class_nist_1_1_string_variant}{String\+Variant} \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (const std\+::string \&key\+Name) const \label{class_nist_1_1_config_a572d2e28f2c2652f11ae8a301fed8021}
+
+\item 
+\hypertarget{class_nist_1_1_config_aab9962ecf966f8ef500b093517695fc1}{}\hyperlink{class_nist_1_1_string_variant}{String\+Variant} {\bfseries Get\+Symbol\+Value} (std\+::string key\+Name, \hyperlink{class_nist_1_1_string_variant}{String\+Variant} sz\+Default=\hyperlink{class_nist_1_1_string_variant}{String\+Variant}())\label{class_nist_1_1_config_aab9962ecf966f8ef500b093517695fc1}
+
+\item 
+\hypertarget{class_nist_1_1_config_abf58c97a029cb986a054aa806a3b3450}{}bool {\bfseries Is\+Symbol} (std\+::string key\+Name)\label{class_nist_1_1_config_abf58c97a029cb986a054aa806a3b3450}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_nist_1_1_config}{Config} class can be used to load simple key/value pairs from a file.
+
+\begin{DoxyNote}{Note}
+An example of syntax\+: // An example of a comment username= Bob gender= male hair-\/color= black // inline comments are also allowed level= 42
+
+An example of usage\+: \hyperlink{class_nist_1_1_config}{Config} config; config.\+load(\char`\"{}my\+File.\+txt\char`\"{});
+\end{DoxyNote}
+std\+::string username = config\mbox{[}\char`\"{}username\char`\"{}\mbox{]}.str(); int level = config\mbox{[}\char`\"{}level\char`\"{}\mbox{]}.to\+Number$<$int$>$();
+
+\hyperlink{class_nist_1_1_config}{Config} config; config.\+load(inifile); Output\+Debug\+String(config.\+Get\+Symbol\+Value(\char`\"{}\+F\+A\+N\+U\+C.\+I\+N\+C\+H\+E\+S\char`\"{}, L\char`\"{}\+I\+N\+C\+H\+E\+S\char`\"{}).c\+\_\+str()); Output\+Debug\+String(Str\+Format(\char`\"{}\%f\textbackslash{}n\char`\"{}, config.\+Get\+Symbol\+Value(\char`\"{}\+M\+A\+I\+N.\+M\+A\+X\+R\+P\+M\char`\"{}, \char`\"{}9000\char`\"{}).to\+Number$<$double$>$())); 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/michalos/\+Documents/\+Git\+Hub/\+M\+T\+Connect\+Solutions/\+Socket\+\_\+\+Replay\+\_\+\+Gui/\+Socket\+\_\+\+Replay\+\_\+\+Gui/Config.\+h\end{DoxyCompactItemize}

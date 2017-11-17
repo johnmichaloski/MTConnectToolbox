@@ -43,12 +43,13 @@ public:
     static BOOL             CenterWindow (HWND hwndWindow);
 
     /**
-     * @brief DialogProc
-     * @param hDlg
-     * @param uMsg
-     * @param wParam
-     * @param lParam
-     * @return
+     * @brief DialogProc callback function that processes messages sent 
+	 * to the dialog box.
+     * @param hDlg handle to the dialog window
+     * @param uMsg  type of windows message (WM_XXX)
+     * @param wParam  a message parameter whose value depends on uMsg.
+     * @param lParam a message parameter whose value depends on uMsg.
+     * @return TRUE if handled, FALSE if not.
      */
     static INT_PTR CALLBACK DialogProc (HWND hDlg, UINT uMsg, WPARAM wParam, LPARAM lParam);
 

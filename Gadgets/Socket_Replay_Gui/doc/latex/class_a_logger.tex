@@ -1,0 +1,88 @@
+\hypertarget{class_a_logger}{}\section{A\+Logger Class Reference}
+\label{class_a_logger}\index{A\+Logger@{A\+Logger}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_logger_a21af98bd1c9fdbde4098d2b242cb9ea9}{}void {\bfseries Close} ()\label{class_a_logger_a21af98bd1c9fdbde4098d2b242cb9ea9}
+
+\item 
+\hypertarget{class_a_logger_aecec26cddee0a644ae8ac096b2c016ca}{}void {\bfseries Open} (std\+::string filename, int b\+Append=false)\label{class_a_logger_aecec26cddee0a644ae8ac096b2c016ca}
+
+\item 
+\hypertarget{class_a_logger_a55589cb378e3623a35c6057613b818a3}{}int {\bfseries Log\+Message} (std\+::string filename, std\+::string msg, int level=-\/1)\label{class_a_logger_a55589cb378e3623a35c6057613b818a3}
+
+\item 
+\hypertarget{class_a_logger_a791e035a97c7d5f4ea809288290d43ec}{}int {\bfseries Log\+Message} (std\+::string msg, int level=-\/1)\label{class_a_logger_a791e035a97c7d5f4ea809288290d43ec}
+
+\item 
+\hypertarget{class_a_logger_a551f07b441d91d7f4cad8b9b87fa66ed}{}unsigned int {\bfseries Log\+Format\+Message} (const char $\ast$fmt,...)\label{class_a_logger_a551f07b441d91d7f4cad8b9b87fa66ed}
+
+\item 
+\hypertarget{class_a_logger_a040e23b0907c20b1bc33ad438eeae387}{}int {\bfseries Fatal} (std\+::string msg)\label{class_a_logger_a040e23b0907c20b1bc33ad438eeae387}
+
+\item 
+\hypertarget{class_a_logger_a6a5eae7afd2d2ecb285094695ef7412e}{}int {\bfseries Error} (std\+::string msg)\label{class_a_logger_a6a5eae7afd2d2ecb285094695ef7412e}
+
+\item 
+\hypertarget{class_a_logger_a222284c08bb2192d0ec9d1746fe248dc}{}int {\bfseries Warning} (std\+::string msg)\label{class_a_logger_a222284c08bb2192d0ec9d1746fe248dc}
+
+\item 
+\hypertarget{class_a_logger_a9b3186e34f76917f8eed4f789f160f8d}{}int {\bfseries Info} (std\+::string msg)\label{class_a_logger_a9b3186e34f76917f8eed4f789f160f8d}
+
+\item 
+\hypertarget{class_a_logger_a5f55d3c517fd61412af827229fdc1bf7}{}int {\bfseries Debug} (std\+::string msg)\label{class_a_logger_a5f55d3c517fd61412af827229fdc1bf7}
+
+\item 
+\hypertarget{class_a_logger_af08cbc4a4e317bfe9907baa3aceb8485}{}int {\bfseries Status} (std\+::string msg)\label{class_a_logger_af08cbc4a4e317bfe9907baa3aceb8485}
+
+\item 
+\hypertarget{class_a_logger_a1c9a40f9a8b0067adbb5fc795e3bd5b5}{}int \& {\bfseries Debug\+Level} ()\label{class_a_logger_a1c9a40f9a8b0067adbb5fc795e3bd5b5}
+
+\item 
+\hypertarget{class_a_logger_acabf9035c4ee58fbe49b251bfc245650}{}bool \& {\bfseries Timestamping} ()\label{class_a_logger_acabf9035c4ee58fbe49b251bfc245650}
+
+\item 
+\hypertarget{class_a_logger_aff003fac697a2418e34d9edee7cb2d3d}{}int \& {\bfseries Output\+Console} ()\label{class_a_logger_aff003fac697a2418e34d9edee7cb2d3d}
+
+\item 
+\hypertarget{class_a_logger_a48c1c2a99a7d0926316740f70e0efff7}{}{\bfseries operator std\+::ostream \&} ()\label{class_a_logger_a48c1c2a99a7d0926316740f70e0efff7}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_logger_a5f0ed1de31db92774d8f5f5cea732e3a}{}static std\+::string {\bfseries Str\+Format} (const char $\ast$fmt,...)\label{class_a_logger_a5f0ed1de31db92774d8f5f5cea732e3a}
+
+\item 
+\hypertarget{class_a_logger_a3efd1ed767373348bda6cbe68073f51b}{}static std\+::string {\bfseries Format\+String} (const char $\ast$fmt, va\+\_\+list ap)\label{class_a_logger_a3efd1ed767373348bda6cbe68073f51b}
+
+\item 
+\hypertarget{class_a_logger_a9d2a8dec435a8bb54a3929aaa33795cf}{}static std\+::string {\bfseries Timestamp} ()\label{class_a_logger_a9d2a8dec435a8bb54a3929aaa33795cf}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_a_logger_a92c40eee23bd69472b83955a4367d2f5}{}std\+::map$<$ std\+::string, std\+::string $>$ {\bfseries properties}\label{class_a_logger_a92c40eee23bd69472b83955a4367d2f5}
+
+\item 
+\hypertarget{class_a_logger_a680c94f43da91fdd9644cdcd3ed62f46}{}int {\bfseries \+\_\+debuglevel}\label{class_a_logger_a680c94f43da91fdd9644cdcd3ed62f46}
+
+\item 
+\hypertarget{class_a_logger_a08e8858325f740fd3b6c27bb5f794e63}{}bool {\bfseries \+\_\+b\+Timestamp}\label{class_a_logger_a08e8858325f740fd3b6c27bb5f794e63}
+
+\item 
+\hypertarget{class_a_logger_ac794719a08e041b2adf5cad4449ba08e}{}std\+::ofstream {\bfseries Debug\+File}\label{class_a_logger_ac794719a08e041b2adf5cad4449ba08e}
+
+\item 
+\hypertarget{class_a_logger_a0b227d33030ccce4b5a0cbad3ce2aa9e}{}int {\bfseries \+\_\+n\+Output\+Console}\label{class_a_logger_a0b227d33030ccce4b5a0cbad3ce2aa9e}
+
+\item 
+\hypertarget{class_a_logger_a963caefa4b53d7fc416744c0150257af}{}std\+::string {\bfseries filename}\label{class_a_logger_a963caefa4b53d7fc416744c0150257af}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/michalos/\+Documents/\+Git\+Hub/\+M\+T\+Connect\+Solutions/\+Socket\+\_\+\+Replay\+\_\+\+Gui/\+Socket\+\_\+\+Replay\+\_\+\+Gui/Logging.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,246 @@
+\hypertarget{class_socket_back_end}{}\section{Socket\+Back\+End Class Reference}
+\label{class_socket_back_end}\index{Socket\+Back\+End@{Socket\+Back\+End}}
+
+
+Background thread to accept connections to read shdr data.  
+
+
+
+
+{\ttfamily \#include $<$Socket\+Back\+End.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{class_socket_back_end_a35e3d5444f229bbc20e8258d96142fcd}{Handle\+Async\+Accept} (const boost\+::system\+::error\+\_\+code \&error)
+\begin{DoxyCompactList}\small\item\em Handle\+Async\+Accept is asio callback to accept replay connection and start thread to service connection. \end{DoxyCompactList}\item 
+\hypertarget{class_socket_back_end_add5a2d229fd8fd5fbf9f0dfcad570281}{}void \hyperlink{class_socket_back_end_add5a2d229fd8fd5fbf9f0dfcad570281}{Start\+Async\+Accept} ()\label{class_socket_back_end_add5a2d229fd8fd5fbf9f0dfcad570281}
+
+\begin{DoxyCompactList}\small\item\em Start\+Async\+Accept starts listening for aychronous connection. \end{DoxyCompactList}\item 
+\hypertarget{class_socket_back_end_a4834fef4e9faaa0f17b48735d3fa4244}{}void \hyperlink{class_socket_back_end_a4834fef4e9faaa0f17b48735d3fa4244}{Stop\+Async\+Accept} ()\label{class_socket_back_end_a4834fef4e9faaa0f17b48735d3fa4244}
+
+\begin{DoxyCompactList}\small\item\em Stop\+Async\+Accept stops listening for aychronous connection. \end{DoxyCompactList}\item 
+void \hyperlink{class_socket_back_end_a3a8201e3fa13bc5b728fe5578e902864}{Init} (std\+::string domain, L\+O\+N\+G portnumber)
+\begin{DoxyCompactList}\small\item\em Init sets up asio for asynchronous connection and communication. \end{DoxyCompactList}\item 
+void \hyperlink{class_socket_back_end_ae133caf8c2d35a7831df044fd31f353e}{Store\+Socket\+String} (raw\+\_\+message\+\_\+t str)
+\begin{DoxyCompactList}\small\item\em Store\+Socket\+String raw array to send to all clients. \end{DoxyCompactList}\item 
+\hypertarget{class_socket_back_end_ae2b65ea98340dd75a0b9ebcf67d9fb1e}{}void \hyperlink{class_socket_back_end_ae2b65ea98340dd75a0b9ebcf67d9fb1e}{Quit} (void)\label{class_socket_back_end_ae2b65ea98340dd75a0b9ebcf67d9fb1e}
+
+\begin{DoxyCompactList}\small\item\em Quit stop all the communication. \end{DoxyCompactList}\item 
+\hypertarget{class_socket_back_end_a556ce8aa96a5cfae2e3aec068e64d919}{}void \hyperlink{class_socket_back_end_a556ce8aa96a5cfae2e3aec068e64d919}{Reset} (void)\label{class_socket_back_end_a556ce8aa96a5cfae2e3aec068e64d919}
+
+\begin{DoxyCompactList}\small\item\em Reset changes flag to not inited. \end{DoxyCompactList}\item 
+std\+::string \& \hyperlink{class_socket_back_end_a0d76ca4f61c999209cf291f85eb58ba1}{Ip} ()
+\begin{DoxyCompactList}\small\item\em Ip return T\+C\+P/\+I\+P host that communication occurs on. \end{DoxyCompactList}\item 
+U\+I\+N\+T \& \hyperlink{class_socket_back_end_a7b313c5bcfba01c8594974e2c882d75a}{Port} ()
+\begin{DoxyCompactList}\small\item\em Port return T\+C\+P/\+I\+P port number that communication occurs on. \end{DoxyCompactList}\item 
+int \& \hyperlink{class_socket_back_end_ac36c4edf7bb2fa8551db4a55e3c34d72}{Count} ()
+\begin{DoxyCompactList}\small\item\em Count number of communication connections listening to replay. \end{DoxyCompactList}\item 
+void \hyperlink{class_socket_back_end_a4dfd8989e98bed1bd71e70272ae0f960}{session} (socket\+\_\+ptr sock)
+\begin{DoxyCompactList}\small\item\em session is a separate communication thread to each listening client. This thread sends raw messages to the listener. \end{DoxyCompactList}\item 
+void \hyperlink{class_socket_back_end_ac81e94ba59eaa60d9e64ba8eaae77691}{server} (boost\+::asio\+::io\+\_\+service \&io\+\_\+service, short port)
+\begin{DoxyCompactList}\small\item\em server thread that listens for connection. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \hyperlink{class_socket_back_end_af669743bdc45984e4eae5d96ba4789fc}{\+\_\+nbuffers}
+\item 
+raw\+\_\+message\+\_\+t \hyperlink{class_socket_back_end_adb8b76cd34f2670231b0114f7692069e}{\+\_\+buffer}
+\item 
+bool \hyperlink{class_socket_back_end_a4b7b3da1325fa2eba9448d4589dcb0b2}{\+\_\+b\+Inited}
+\item 
+std\+::vector$<$ raw\+\_\+message\+\_\+t $>$ \hyperlink{class_socket_back_end_a9184c33f2e64fae646fed3a115a65943}{\+\_\+all\+\_\+bufferssofar}
+\item 
+tcp\+::acceptor $\ast$ \hyperlink{class_socket_back_end_a7c776294a4bb5a58510e64e7d53cc014}{\+\_\+p\+Acceptor}
+\item 
+socket\+\_\+ptr \hyperlink{class_socket_back_end_ad1378d92058b61576590bf220b8ee43e}{\+\_\+p\+Socket}
+\item 
+std\+::string \hyperlink{class_socket_back_end_a94686a8ef210b5e12c1233d297094e5b}{\+\_\+portnumber}
+\item 
+std\+::string \hyperlink{class_socket_back_end_ac4e76a3a0a99347d8f10a1e40ca615a0}{\+\_\+domainname}
+\item 
+U\+I\+N\+T \hyperlink{class_socket_back_end_ad2c45ca1c46d2fb1cb9166d3c4d44f56}{\+\_\+ipport}
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \hyperlink{class_socket_back_end_a4c78e1cdf4cf31d732861f26744618c7}{n\+Count} = 0
+\item 
+static bool \hyperlink{class_socket_back_end_ae3ab62a2f4fe7fed700b875f9f7ff30c}{b\+Running} = true
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Background thread to accept connections to read shdr data. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_socket_back_end_ac36c4edf7bb2fa8551db4a55e3c34d72}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!Count@{Count}}
+\index{Count@{Count}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{Count()}]{\setlength{\rightskip}{0pt plus 5cm}int\& Socket\+Back\+End\+::\+Count (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_socket_back_end_ac36c4edf7bb2fa8551db4a55e3c34d72}
+
+
+Count number of communication connections listening to replay. 
+
+\begin{DoxyReturn}{Returns}
+integer count. 
+\end{DoxyReturn}
+\hypertarget{class_socket_back_end_a35e3d5444f229bbc20e8258d96142fcd}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!Handle\+Async\+Accept@{Handle\+Async\+Accept}}
+\index{Handle\+Async\+Accept@{Handle\+Async\+Accept}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{Handle\+Async\+Accept(const boost\+::system\+::error\+\_\+code \&error)}]{\setlength{\rightskip}{0pt plus 5cm}void Socket\+Back\+End\+::\+Handle\+Async\+Accept (
+\begin{DoxyParamCaption}
+\item[{const boost\+::system\+::error\+\_\+code \&}]{error}
+\end{DoxyParamCaption}
+)}\label{class_socket_back_end_a35e3d5444f229bbc20e8258d96142fcd}
+
+
+Handle\+Async\+Accept is asio callback to accept replay connection and start thread to service connection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em error} & if connection had problem. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_socket_back_end_a3a8201e3fa13bc5b728fe5578e902864}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!Init@{Init}}
+\index{Init@{Init}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{Init(std\+::string domain, L\+O\+N\+G portnumber)}]{\setlength{\rightskip}{0pt plus 5cm}void Socket\+Back\+End\+::\+Init (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{domain, }
+\item[{L\+O\+N\+G}]{portnumber}
+\end{DoxyParamCaption}
+)}\label{class_socket_back_end_a3a8201e3fa13bc5b728fe5578e902864}
+
+
+Init sets up asio for asynchronous connection and communication. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em domain} & ip address to listen on \\
+\hline
+{\em portnumber} & port number ot listen for connection. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_socket_back_end_a0d76ca4f61c999209cf291f85eb58ba1}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!Ip@{Ip}}
+\index{Ip@{Ip}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{Ip()}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string\& Socket\+Back\+End\+::\+Ip (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_socket_back_end_a0d76ca4f61c999209cf291f85eb58ba1}
+
+
+Ip return T\+C\+P/\+I\+P host that communication occurs on. 
+
+\begin{DoxyReturn}{Returns}
+host name as ipv4 address. 
+\end{DoxyReturn}
+\hypertarget{class_socket_back_end_a7b313c5bcfba01c8594974e2c882d75a}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!Port@{Port}}
+\index{Port@{Port}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{Port()}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T\& Socket\+Back\+End\+::\+Port (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_socket_back_end_a7b313c5bcfba01c8594974e2c882d75a}
+
+
+Port return T\+C\+P/\+I\+P port number that communication occurs on. 
+
+\begin{DoxyReturn}{Returns}
+port number as integer 
+\end{DoxyReturn}
+\hypertarget{class_socket_back_end_ac81e94ba59eaa60d9e64ba8eaae77691}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!server@{server}}
+\index{server@{server}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{server(boost\+::asio\+::io\+\_\+service \&io\+\_\+service, short port)}]{\setlength{\rightskip}{0pt plus 5cm}void Socket\+Back\+End\+::server (
+\begin{DoxyParamCaption}
+\item[{boost\+::asio\+::io\+\_\+service \&}]{io\+\_\+service, }
+\item[{short}]{port}
+\end{DoxyParamCaption}
+)}\label{class_socket_back_end_ac81e94ba59eaa60d9e64ba8eaae77691}
+
+
+server thread that listens for connection. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em io\+\_\+service} & asio service that handles asychronous communication \\
+\hline
+{\em port} & T\+C\+P/\+I\+P port number to listen for connections. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_socket_back_end_a4dfd8989e98bed1bd71e70272ae0f960}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!session@{session}}
+\index{session@{session}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{session(socket\+\_\+ptr sock)}]{\setlength{\rightskip}{0pt plus 5cm}void Socket\+Back\+End\+::session (
+\begin{DoxyParamCaption}
+\item[{socket\+\_\+ptr}]{sock}
+\end{DoxyParamCaption}
+)}\label{class_socket_back_end_a4dfd8989e98bed1bd71e70272ae0f960}
+
+
+session is a separate communication thread to each listening client. This thread sends raw messages to the listener. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em sock} & pointer to the socket that is listening. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_socket_back_end_ae133caf8c2d35a7831df044fd31f353e}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!Store\+Socket\+String@{Store\+Socket\+String}}
+\index{Store\+Socket\+String@{Store\+Socket\+String}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{Store\+Socket\+String(raw\+\_\+message\+\_\+t str)}]{\setlength{\rightskip}{0pt plus 5cm}void Socket\+Back\+End\+::\+Store\+Socket\+String (
+\begin{DoxyParamCaption}
+\item[{raw\+\_\+message\+\_\+t}]{str}
+\end{DoxyParamCaption}
+)}\label{class_socket_back_end_ae133caf8c2d35a7831df044fd31f353e}
+
+
+Store\+Socket\+String raw array to send to all clients. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & raw byte array to send to listening clients. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_socket_back_end_a9184c33f2e64fae646fed3a115a65943}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!\+\_\+all\+\_\+bufferssofar@{\+\_\+all\+\_\+bufferssofar}}
+\index{\+\_\+all\+\_\+bufferssofar@{\+\_\+all\+\_\+bufferssofar}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{\+\_\+all\+\_\+bufferssofar}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$raw\+\_\+message\+\_\+t$>$ Socket\+Back\+End\+::\+\_\+all\+\_\+bufferssofar\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_back_end_a9184c33f2e64fae646fed3a115a65943}
+all raw messages sent so far \hypertarget{class_socket_back_end_a4b7b3da1325fa2eba9448d4589dcb0b2}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!\+\_\+b\+Inited@{\+\_\+b\+Inited}}
+\index{\+\_\+b\+Inited@{\+\_\+b\+Inited}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{\+\_\+b\+Inited}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+Back\+End\+::\+\_\+b\+Inited\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_back_end_a4b7b3da1325fa2eba9448d4589dcb0b2}
+class instance inited flag \hypertarget{class_socket_back_end_adb8b76cd34f2670231b0114f7692069e}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!\+\_\+buffer@{\+\_\+buffer}}
+\index{\+\_\+buffer@{\+\_\+buffer}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{\+\_\+buffer}]{\setlength{\rightskip}{0pt plus 5cm}raw\+\_\+message\+\_\+t Socket\+Back\+End\+::\+\_\+buffer\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_back_end_adb8b76cd34f2670231b0114f7692069e}
+latest \hypertarget{class_socket_back_end_ac4e76a3a0a99347d8f10a1e40ca615a0}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!\+\_\+domainname@{\+\_\+domainname}}
+\index{\+\_\+domainname@{\+\_\+domainname}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{\+\_\+domainname}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Socket\+Back\+End\+::\+\_\+domainname\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_back_end_ac4e76a3a0a99347d8f10a1e40ca615a0}
+T\+C\+P/\+I\+P ip or domain name \hypertarget{class_socket_back_end_ad2c45ca1c46d2fb1cb9166d3c4d44f56}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!\+\_\+ipport@{\+\_\+ipport}}
+\index{\+\_\+ipport@{\+\_\+ipport}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{\+\_\+ipport}]{\setlength{\rightskip}{0pt plus 5cm}U\+I\+N\+T Socket\+Back\+End\+::\+\_\+ipport\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_back_end_ad2c45ca1c46d2fb1cb9166d3c4d44f56}
+inteter T\+C\+P/\+I\+P socket port number \hypertarget{class_socket_back_end_af669743bdc45984e4eae5d96ba4789fc}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!\+\_\+nbuffers@{\+\_\+nbuffers}}
+\index{\+\_\+nbuffers@{\+\_\+nbuffers}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{\+\_\+nbuffers}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t Socket\+Back\+End\+::\+\_\+nbuffers\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_back_end_af669743bdc45984e4eae5d96ba4789fc}
+n of last buffer string \hypertarget{class_socket_back_end_a7c776294a4bb5a58510e64e7d53cc014}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!\+\_\+p\+Acceptor@{\+\_\+p\+Acceptor}}
+\index{\+\_\+p\+Acceptor@{\+\_\+p\+Acceptor}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{\+\_\+p\+Acceptor}]{\setlength{\rightskip}{0pt plus 5cm}tcp\+::acceptor$\ast$ Socket\+Back\+End\+::\+\_\+p\+Acceptor\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_back_end_a7c776294a4bb5a58510e64e7d53cc014}
+boost asio T\+C\+P acceptor type \hypertarget{class_socket_back_end_a94686a8ef210b5e12c1233d297094e5b}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!\+\_\+portnumber@{\+\_\+portnumber}}
+\index{\+\_\+portnumber@{\+\_\+portnumber}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{\+\_\+portnumber}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Socket\+Back\+End\+::\+\_\+portnumber\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_back_end_a94686a8ef210b5e12c1233d297094e5b}
+striong of T\+C\+P/\+I\+P socket port number \hypertarget{class_socket_back_end_ad1378d92058b61576590bf220b8ee43e}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!\+\_\+p\+Socket@{\+\_\+p\+Socket}}
+\index{\+\_\+p\+Socket@{\+\_\+p\+Socket}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{\+\_\+p\+Socket}]{\setlength{\rightskip}{0pt plus 5cm}socket\+\_\+ptr Socket\+Back\+End\+::\+\_\+p\+Socket\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_back_end_ad1378d92058b61576590bf220b8ee43e}
+thread socket to client \hypertarget{class_socket_back_end_ae3ab62a2f4fe7fed700b875f9f7ff30c}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!b\+Running@{b\+Running}}
+\index{b\+Running@{b\+Running}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{b\+Running}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+Back\+End\+::b\+Running = true\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}\label{class_socket_back_end_ae3ab62a2f4fe7fed700b875f9f7ff30c}
+thread(s) listening and connected running flag \hypertarget{class_socket_back_end_a4c78e1cdf4cf31d732861f26744618c7}{}\index{Socket\+Back\+End@{Socket\+Back\+End}!n\+Count@{n\+Count}}
+\index{n\+Count@{n\+Count}!Socket\+Back\+End@{Socket\+Back\+End}}
+\subsubsection[{n\+Count}]{\setlength{\rightskip}{0pt plus 5cm}int Socket\+Back\+End\+::n\+Count = 0\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}\label{class_socket_back_end_a4c78e1cdf4cf31d732861f26744618c7}
+count of connections 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/michalos/\+Documents/\+Git\+Hub/\+M\+T\+Connect\+Solutions/\+Socket\+\_\+\+Replay\+\_\+\+Gui/\+Socket\+\_\+\+Replay\+\_\+\+Gui/Socket\+Back\+End.\+h\item 
+C\+:/\+Users/michalos/\+Documents/\+Git\+Hub/\+M\+T\+Connect\+Solutions/\+Socket\+\_\+\+Replay\+\_\+\+Gui/\+Socket\+\_\+\+Replay\+\_\+\+Gui/Socket\+Back\+End.\+cpp\end{DoxyCompactItemize}

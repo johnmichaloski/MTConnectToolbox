@@ -1,0 +1,255 @@
+\hypertarget{class_socket___replay___dlg}{}\section{Socket\+\_\+\+Replay\+\_\+\+Dlg Class Reference}
+\label{class_socket___replay___dlg}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+
+
+The \hyperlink{class_socket___replay___dlg}{Socket\+\_\+\+Replay\+\_\+\+Dlg} class is a simple win32 class that does not need A\+T\+L/\+W\+T\+L or M\+F\+C to present a dialog for the user to replay a saved stream file. It only works on win32 P\+Cs! The user inputs a socket port number and a full path filename using the win32 file control dialog, and when you click the Start button, the file will be replaid, once there is at least one connection to localhost and port number. If the use wishes to stop the replay, the S\+T\+O\+P button is clicked. To exit the application the close button on the top right window corner (i.\+e., \mbox{[}x\mbox{]}) is clicked.  
+
+
+
+
+{\ttfamily \#include $<$Socket\+\_\+\+Replay\+\_\+\+Dlg.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_socket___replay___dlg_a50bdd69b73fc5125b309d58515a30723}{Socket\+\_\+\+Replay\+\_\+\+Dlg} (void)
+\begin{DoxyCompactList}\small\item\em \hyperlink{class_socket___replay___dlg}{Socket\+\_\+\+Replay\+\_\+\+Dlg} constructor for replay dialog handler. \end{DoxyCompactList}\item 
+H\+W\+N\+D \hyperlink{class_socket___replay___dlg_a2332d912d2b026e3b612fae49c879436}{Create} (H\+I\+N\+S\+T\+A\+N\+C\+E h\+Inst, int n\+Cmd\+Show)
+\begin{DoxyCompactList}\small\item\em Create creates the replay dialog window using resource id. \end{DoxyCompactList}\item 
+char $\ast$ \hyperlink{class_socket___replay___dlg_a0b1190f805e22ef291252434037a8604}{Select\+File} (H\+W\+N\+D hwnd, const char $\ast$folder)
+\begin{DoxyCompactList}\small\item\em Select\+File uses win32 control to select exiting file. \end{DoxyCompactList}\item 
+\hypertarget{class_socket___replay___dlg_a010246f8405deaddacc4e1ea54f91ebd}{}void \hyperlink{class_socket___replay___dlg_a010246f8405deaddacc4e1ea54f91ebd}{halt} ()\label{class_socket___replay___dlg_a010246f8405deaddacc4e1ea54f91ebd}
+
+\begin{DoxyCompactList}\small\item\em halt stops the streaming loop thread \end{DoxyCompactList}\item 
+\hypertarget{class_socket___replay___dlg_a0820d0da37c941f6efed13c4516125c7}{}void \hyperlink{class_socket___replay___dlg_a0820d0da37c941f6efed13c4516125c7}{fatal\+\_\+msg} (std\+::string)\label{class_socket___replay___dlg_a0820d0da37c941f6efed13c4516125c7}
+
+\begin{DoxyCompactList}\small\item\em fatal\+\_\+msg logs a message to the text edit window. Clears screen first. \end{DoxyCompactList}\item 
+\hypertarget{class_socket___replay___dlg_a9d790347b3788cf3c1511e1a977df8ff}{}void \hyperlink{class_socket___replay___dlg_a9d790347b3788cf3c1511e1a977df8ff}{screen\+\_\+msg} (std\+::string)\label{class_socket___replay___dlg_a9d790347b3788cf3c1511e1a977df8ff}
+
+\begin{DoxyCompactList}\small\item\em screen\+\_\+msg logs a message to the text edit window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static B\+O\+O\+L \hyperlink{class_socket___replay___dlg_a82d1271e0908b3a8c52d7236d969429a}{Center\+Window} (H\+W\+N\+D hwnd\+Window)
+\begin{DoxyCompactList}\small\item\em Center\+Window centers window on screen, from M\+S and web. \end{DoxyCompactList}\item 
+static I\+N\+T\+\_\+\+P\+T\+R C\+A\+L\+L\+B\+A\+C\+K \hyperlink{class_socket___replay___dlg_ac989be1d141455b41d68992e7540fbb4}{Dialog\+Proc} (H\+W\+N\+D \hyperlink{class_socket___replay___dlg_a00afcf609f06368bbe64cf31546736d0}{h\+Dlg}, U\+I\+N\+T u\+Msg, W\+P\+A\+R\+A\+M w\+Param, L\+P\+A\+R\+A\+M l\+Param)
+\begin{DoxyCompactList}\small\item\em Dialog\+Proc. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_socket___replay___dlg_a2f5d345ed86ec71d60e51b5583cda8b3}{b\+Option\+Wait}
+\item 
+\hyperlink{class_socket_back_end}{Socket\+Back\+End} \hyperlink{class_socket___replay___dlg_ad87d846ca29a78c8f1bda66c8dc1a48a}{m\+Backend}
+\item 
+\hyperlink{class_socket_parser}{Socket\+Parser} \hyperlink{class_socket___replay___dlg_a6d2cb27043d1247d1368b594c43759ea}{m\+Parser}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_socket___replay___dlg_a21732c4312380f9078c9182f3a883cac}{}void \hyperlink{class_socket___replay___dlg_a21732c4312380f9078c9182f3a883cac}{stream\+\_\+loop} ()\label{class_socket___replay___dlg_a21732c4312380f9078c9182f3a883cac}
+
+\begin{DoxyCompactList}\small\item\em stream\+\_\+loop is thread that parses a playback file and outputs the next packet to a socket. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_socket___replay___dlg}{Socket\+\_\+\+Replay\+\_\+\+Dlg} $\ast$ \hyperlink{class_socket___replay___dlg_af6e2f42dcc3163aa721a51e2e7dcdfeb}{Get\+Object\+From\+Window} (H\+W\+N\+D h\+Wnd)
+\begin{DoxyCompactList}\small\item\em Get\+Object\+From\+Window returns a pointer the window (stored as the Window\+Long) useful for threading to get the class instance associated with a handle to window. From \href{https://www.codeproject.com/articles/2556/a-simple-win-window-wrapper-class}{\tt https\+://www.\+codeproject.\+com/articles/2556/a-\/simple-\/win-\/window-\/wrapper-\/class}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_r_c_s_1_1_c_message_queue}{R\+C\+S\+::\+C\+Message\+Queue}$<$ std\+::string $>$ \hyperlink{class_socket___replay___dlg_abd2145fb90191384c2c5928d72e9d379}{buffer\+\_\+queue}
+\item 
+bool \hyperlink{class_socket___replay___dlg_a8cd78cb4dff6ecf4e8dd28f594a576d5}{m\+Stream\+Flag}
+\item 
+int \hyperlink{class_socket___replay___dlg_a14e128197a6d5df0e693de4d6bac4861}{m\+Countdown}
+\item 
+double \hyperlink{class_socket___replay___dlg_a8e885816d205a4d5546284fb776fb6a9}{d\+Time\+Multipler}
+\item 
+std\+::string \hyperlink{class_socket___replay___dlg_ab9d98b70c4ae758d9c9e22c707873188}{m\+Filename}
+\item 
+char \hyperlink{class_socket___replay___dlg_abe629565b9f82aff477a8e1b9c605073}{sz\+File} \mbox{[}260\mbox{]}
+\item 
+H\+W\+N\+D \hyperlink{class_socket___replay___dlg_a00afcf609f06368bbe64cf31546736d0}{h\+Dlg}
+\item 
+H\+W\+N\+D \hyperlink{class_socket___replay___dlg_ad75481e9b07fe142613fa5a03939498e}{port\+\_\+hwnd}
+\item 
+H\+W\+N\+D \hyperlink{class_socket___replay___dlg_a6f6192476df2dab219666f4bf716631e}{edit\+\_\+hwnd}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+The \hyperlink{class_socket___replay___dlg}{Socket\+\_\+\+Replay\+\_\+\+Dlg} class is a simple win32 class that does not need A\+T\+L/\+W\+T\+L or M\+F\+C to present a dialog for the user to replay a saved stream file. It only works on win32 P\+Cs! The user inputs a socket port number and a full path filename using the win32 file control dialog, and when you click the Start button, the file will be replaid, once there is at least one connection to localhost and port number. If the use wishes to stop the replay, the S\+T\+O\+P button is clicked. To exit the application the close button on the top right window corner (i.\+e., \mbox{[}x\mbox{]}) is clicked. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_socket___replay___dlg_a50bdd69b73fc5125b309d58515a30723}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{Socket\+\_\+\+Replay\+\_\+\+Dlg(void)}]{\setlength{\rightskip}{0pt plus 5cm}Socket\+\_\+\+Replay\+\_\+\+Dlg\+::\+Socket\+\_\+\+Replay\+\_\+\+Dlg (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\label{class_socket___replay___dlg_a50bdd69b73fc5125b309d58515a30723}
+
+
+\hyperlink{class_socket___replay___dlg}{Socket\+\_\+\+Replay\+\_\+\+Dlg} constructor for replay dialog handler. 
+
+
+\begin{DoxyItemize}
+\item Must create, center and then Uses Dialog\+Proc in combination with Get\+Object\+From\+Window to get appropriate this pointer to an instance of this class. 
+\end{DoxyItemize}
+
+\subsection{Member Function Documentation}
+\hypertarget{class_socket___replay___dlg_a82d1271e0908b3a8c52d7236d969429a}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!Center\+Window@{Center\+Window}}
+\index{Center\+Window@{Center\+Window}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{Center\+Window(\+H\+W\+N\+D hwnd\+Window)}]{\setlength{\rightskip}{0pt plus 5cm}B\+O\+O\+L Socket\+\_\+\+Replay\+\_\+\+Dlg\+::\+Center\+Window (
+\begin{DoxyParamCaption}
+\item[{H\+W\+N\+D}]{hwnd\+Window}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_socket___replay___dlg_a82d1271e0908b3a8c52d7236d969429a}
+
+
+Center\+Window centers window on screen, from M\+S and web. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hwnd\+Window} & handle of window to center. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if done, false if failed. 
+\end{DoxyReturn}
+\hypertarget{class_socket___replay___dlg_a2332d912d2b026e3b612fae49c879436}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!Create@{Create}}
+\index{Create@{Create}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{Create(\+H\+I\+N\+S\+T\+A\+N\+C\+E h\+Inst, int n\+Cmd\+Show)}]{\setlength{\rightskip}{0pt plus 5cm}H\+W\+N\+D Socket\+\_\+\+Replay\+\_\+\+Dlg\+::\+Create (
+\begin{DoxyParamCaption}
+\item[{H\+I\+N\+S\+T\+A\+N\+C\+E}]{h\+Inst, }
+\item[{int}]{n\+Cmd\+Show}
+\end{DoxyParamCaption}
+)}\label{class_socket___replay___dlg_a2332d912d2b026e3b612fae49c879436}
+
+
+Create creates the replay dialog window using resource id. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h\+Inst} & handle to the applicaiton instance. \\
+\hline
+{\em n\+Cmd\+Show} & show type from command line \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+handle to dialog window 
+\end{DoxyReturn}
+\hypertarget{class_socket___replay___dlg_ac989be1d141455b41d68992e7540fbb4}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!Dialog\+Proc@{Dialog\+Proc}}
+\index{Dialog\+Proc@{Dialog\+Proc}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{Dialog\+Proc(\+H\+W\+N\+D h\+Dlg, U\+I\+N\+T u\+Msg, W\+P\+A\+R\+A\+M w\+Param, L\+P\+A\+R\+A\+M l\+Param)}]{\setlength{\rightskip}{0pt plus 5cm}I\+N\+T\+\_\+\+P\+T\+R C\+A\+L\+L\+B\+A\+C\+K Socket\+\_\+\+Replay\+\_\+\+Dlg\+::\+Dialog\+Proc (
+\begin{DoxyParamCaption}
+\item[{H\+W\+N\+D}]{h\+Dlg, }
+\item[{U\+I\+N\+T}]{u\+Msg, }
+\item[{W\+P\+A\+R\+A\+M}]{w\+Param, }
+\item[{L\+P\+A\+R\+A\+M}]{l\+Param}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\label{class_socket___replay___dlg_ac989be1d141455b41d68992e7540fbb4}
+
+
+Dialog\+Proc. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h\+Dlg} & \\
+\hline
+{\em u\+Msg} & \\
+\hline
+{\em w\+Param} & \\
+\hline
+{\em l\+Param} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_socket___replay___dlg_af6e2f42dcc3163aa721a51e2e7dcdfeb}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!Get\+Object\+From\+Window@{Get\+Object\+From\+Window}}
+\index{Get\+Object\+From\+Window@{Get\+Object\+From\+Window}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{Get\+Object\+From\+Window(\+H\+W\+N\+D h\+Wnd)}]{\setlength{\rightskip}{0pt plus 5cm}static {\bf Socket\+\_\+\+Replay\+\_\+\+Dlg}$\ast$ Socket\+\_\+\+Replay\+\_\+\+Dlg\+::\+Get\+Object\+From\+Window (
+\begin{DoxyParamCaption}
+\item[{H\+W\+N\+D}]{h\+Wnd}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}, {\ttfamily [protected]}}\label{class_socket___replay___dlg_af6e2f42dcc3163aa721a51e2e7dcdfeb}
+
+
+Get\+Object\+From\+Window returns a pointer the window (stored as the Window\+Long) useful for threading to get the class instance associated with a handle to window. From \href{https://www.codeproject.com/articles/2556/a-simple-win-window-wrapper-class}{\tt https\+://www.\+codeproject.\+com/articles/2556/a-\/simple-\/win-\/window-\/wrapper-\/class}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em h\+Wnd} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\hypertarget{class_socket___replay___dlg_a0b1190f805e22ef291252434037a8604}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!Select\+File@{Select\+File}}
+\index{Select\+File@{Select\+File}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{Select\+File(\+H\+W\+N\+D hwnd, const char $\ast$folder)}]{\setlength{\rightskip}{0pt plus 5cm}char $\ast$ Socket\+\_\+\+Replay\+\_\+\+Dlg\+::\+Select\+File (
+\begin{DoxyParamCaption}
+\item[{H\+W\+N\+D}]{hwnd, }
+\item[{const char $\ast$}]{folder}
+\end{DoxyParamCaption}
+)}\label{class_socket___replay___dlg_a0b1190f805e22ef291252434037a8604}
+
+
+Select\+File uses win32 control to select exiting file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hwnd} & handle to parent window \\
+\hline
+{\em folder} & starting folder to find replay file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+full path of replay filename or empty 
+\end{DoxyReturn}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_socket___replay___dlg_a2f5d345ed86ec71d60e51b5583cda8b3}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!b\+Option\+Wait@{b\+Option\+Wait}}
+\index{b\+Option\+Wait@{b\+Option\+Wait}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{b\+Option\+Wait}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+\_\+\+Replay\+\_\+\+Dlg\+::b\+Option\+Wait}\label{class_socket___replay___dlg_a2f5d345ed86ec71d60e51b5583cda8b3}
+wait before replaying until connection \hypertarget{class_socket___replay___dlg_abd2145fb90191384c2c5928d72e9d379}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!buffer\+\_\+queue@{buffer\+\_\+queue}}
+\index{buffer\+\_\+queue@{buffer\+\_\+queue}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{buffer\+\_\+queue}]{\setlength{\rightskip}{0pt plus 5cm}{\bf R\+C\+S\+::\+C\+Message\+Queue}$<$std\+::string$>$ Socket\+\_\+\+Replay\+\_\+\+Dlg\+::buffer\+\_\+queue\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket___replay___dlg_abd2145fb90191384c2c5928d72e9d379}
+mutex queue of output \hypertarget{class_socket___replay___dlg_a8e885816d205a4d5546284fb776fb6a9}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!d\+Time\+Multipler@{d\+Time\+Multipler}}
+\index{d\+Time\+Multipler@{d\+Time\+Multipler}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{d\+Time\+Multipler}]{\setlength{\rightskip}{0pt plus 5cm}double Socket\+\_\+\+Replay\+\_\+\+Dlg\+::d\+Time\+Multipler\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket___replay___dlg_a8e885816d205a4d5546284fb776fb6a9}
+replay timing multiplier (to slow down or speed up) \hypertarget{class_socket___replay___dlg_a6f6192476df2dab219666f4bf716631e}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!edit\+\_\+hwnd@{edit\+\_\+hwnd}}
+\index{edit\+\_\+hwnd@{edit\+\_\+hwnd}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{edit\+\_\+hwnd}]{\setlength{\rightskip}{0pt plus 5cm}H\+W\+N\+D Socket\+\_\+\+Replay\+\_\+\+Dlg\+::edit\+\_\+hwnd\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket___replay___dlg_a6f6192476df2dab219666f4bf716631e}
+win32 handle to status output edit window \hypertarget{class_socket___replay___dlg_a00afcf609f06368bbe64cf31546736d0}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!h\+Dlg@{h\+Dlg}}
+\index{h\+Dlg@{h\+Dlg}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{h\+Dlg}]{\setlength{\rightskip}{0pt plus 5cm}H\+W\+N\+D Socket\+\_\+\+Replay\+\_\+\+Dlg\+::h\+Dlg\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket___replay___dlg_a00afcf609f06368bbe64cf31546736d0}
+win32 handle to dlg window \hypertarget{class_socket___replay___dlg_ad87d846ca29a78c8f1bda66c8dc1a48a}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!m\+Backend@{m\+Backend}}
+\index{m\+Backend@{m\+Backend}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{m\+Backend}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Socket\+Back\+End} Socket\+\_\+\+Replay\+\_\+\+Dlg\+::m\+Backend}\label{class_socket___replay___dlg_ad87d846ca29a78c8f1bda66c8dc1a48a}
+handles asio socket connections \hypertarget{class_socket___replay___dlg_a14e128197a6d5df0e693de4d6bac4861}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!m\+Countdown@{m\+Countdown}}
+\index{m\+Countdown@{m\+Countdown}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{m\+Countdown}]{\setlength{\rightskip}{0pt plus 5cm}int Socket\+\_\+\+Replay\+\_\+\+Dlg\+::m\+Countdown\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket___replay___dlg_a14e128197a6d5df0e693de4d6bac4861}
+this is the countdown \hypertarget{class_socket___replay___dlg_ab9d98b70c4ae758d9c9e22c707873188}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!m\+Filename@{m\+Filename}}
+\index{m\+Filename@{m\+Filename}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{m\+Filename}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Socket\+\_\+\+Replay\+\_\+\+Dlg\+::m\+Filename\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket___replay___dlg_ab9d98b70c4ae758d9c9e22c707873188}
+this is the replay filename \hypertarget{class_socket___replay___dlg_a6d2cb27043d1247d1368b594c43759ea}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!m\+Parser@{m\+Parser}}
+\index{m\+Parser@{m\+Parser}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{m\+Parser}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Socket\+Parser} Socket\+\_\+\+Replay\+\_\+\+Dlg\+::m\+Parser}\label{class_socket___replay___dlg_a6d2cb27043d1247d1368b594c43759ea}
+parses a replay file and calculates timing \hypertarget{class_socket___replay___dlg_a8cd78cb4dff6ecf4e8dd28f594a576d5}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!m\+Stream\+Flag@{m\+Stream\+Flag}}
+\index{m\+Stream\+Flag@{m\+Stream\+Flag}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{m\+Stream\+Flag}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+\_\+\+Replay\+\_\+\+Dlg\+::m\+Stream\+Flag\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket___replay___dlg_a8cd78cb4dff6ecf4e8dd28f594a576d5}
+this is the streaming thread flag \hypertarget{class_socket___replay___dlg_ad75481e9b07fe142613fa5a03939498e}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!port\+\_\+hwnd@{port\+\_\+hwnd}}
+\index{port\+\_\+hwnd@{port\+\_\+hwnd}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{port\+\_\+hwnd}]{\setlength{\rightskip}{0pt plus 5cm}H\+W\+N\+D Socket\+\_\+\+Replay\+\_\+\+Dlg\+::port\+\_\+hwnd\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket___replay___dlg_ad75481e9b07fe142613fa5a03939498e}
+win32 handle to port edit window \hypertarget{class_socket___replay___dlg_abe629565b9f82aff477a8e1b9c605073}{}\index{Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}!sz\+File@{sz\+File}}
+\index{sz\+File@{sz\+File}!Socket\+\_\+\+Replay\+\_\+\+Dlg@{Socket\+\_\+\+Replay\+\_\+\+Dlg}}
+\subsubsection[{sz\+File}]{\setlength{\rightskip}{0pt plus 5cm}char Socket\+\_\+\+Replay\+\_\+\+Dlg\+::sz\+File\mbox{[}260\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket___replay___dlg_abe629565b9f82aff477a8e1b9c605073}
+win32 buffer for dlg file name 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/michalos/\+Documents/\+Git\+Hub/\+M\+T\+Connect\+Solutions/\+Socket\+\_\+\+Replay\+\_\+\+Gui/\+Socket\+\_\+\+Replay\+\_\+\+Gui/Socket\+\_\+\+Replay\+\_\+\+Dlg.\+h\item 
+C\+:/\+Users/michalos/\+Documents/\+Git\+Hub/\+M\+T\+Connect\+Solutions/\+Socket\+\_\+\+Replay\+\_\+\+Gui/\+Socket\+\_\+\+Replay\+\_\+\+Gui/Socket\+\_\+\+Replay\+\_\+\+Dlg.\+cpp\end{DoxyCompactItemize}

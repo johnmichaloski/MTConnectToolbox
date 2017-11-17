@@ -1,0 +1,26 @@
+\hypertarget{namespace_timing}{}\section{Timing Namespace Reference}
+\label{namespace_timing}\index{Timing@{Timing}}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_timing_a57bc8e0e4215527dcf959ae6b353dab5}{}boost\+::posix\+\_\+time\+::ptime {\bfseries Now} ()\label{namespace_timing_a57bc8e0e4215527dcf959ae6b353dab5}
+
+\item 
+\hypertarget{namespace_timing_ac1c9edcc14a668527d8f6efef74519ae}{}void {\bfseries Sleep} (long milliseconds\+\_\+to\+\_\+sleep)\label{namespace_timing_ac1c9edcc14a668527d8f6efef74519ae}
+
+\item 
+\hypertarget{namespace_timing_ad156562286ba463256e864eb0435718c}{}std\+::string {\bfseries To\+String} (boost\+::posix\+\_\+time\+::ptime ts)\label{namespace_timing_ad156562286ba463256e864eb0435718c}
+
+\item 
+\hypertarget{namespace_timing_a68b2243bee8c0da56da11fd526b1411b}{}std\+::string \hyperlink{namespace_timing_a68b2243bee8c0da56da11fd526b1411b}{Get\+Date\+Time\+String} (boost\+::posix\+\_\+time\+::ptime ts)\label{namespace_timing_a68b2243bee8c0da56da11fd526b1411b}
+
+\begin{DoxyCompactList}\small\item\em Return string using date and time in M\+S format . \end{DoxyCompactList}\item 
+\hypertarget{namespace_timing_a686560c767a653d76c33535b24d01ade}{}boost\+::posix\+\_\+time\+::ptime {\bfseries Get\+Date\+Time} (std\+::string s)\label{namespace_timing_a686560c767a653d76c33535b24d01ade}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+boost\+::posix\+\_\+time\+::ptime pt = Timing\+::\+Now(); std\+::string ts0 = Timing\+::\+Get\+Date\+Time\+String( pt);
+
+std\+::string ts = Timing\+::\+To\+String(pt); boost\+::posix\+\_\+time\+::ptime pt1 = Timing\+::\+Get\+Date\+Time(ts); std\+::string ts1 = Timing\+::\+To\+String(pt1); 

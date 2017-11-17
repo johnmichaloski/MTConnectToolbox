@@ -1,0 +1,196 @@
+\hypertarget{class_socket_parser}{}\section{Socket\+Parser Class Reference}
+\label{class_socket_parser}\index{Socket\+Parser@{Socket\+Parser}}
+
+
+Class provides a simple file replay parser.  
+
+
+
+
+{\ttfamily \#include $<$Socket\+Parser.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_socket_parser_ad5c4798924ba150c3ad51d0368cfe721}{}\hyperlink{class_socket_parser_ad5c4798924ba150c3ad51d0368cfe721}{Socket\+Parser} (\hyperlink{class_socket_back_end}{Socket\+Back\+End} \&back\+End)\label{class_socket_parser_ad5c4798924ba150c3ad51d0368cfe721}
+
+\begin{DoxyCompactList}\small\item\em Constructor that turn repeat of file off, set first time and captures current time. Todo\+: the clock resolution is only second level, and M\+T\+Connect easily has millisecond Socket updates. \end{DoxyCompactList}\item 
+\hypertarget{class_socket_parser_a755c7d07e7ac04c609456118c53fe85d}{}void \hyperlink{class_socket_parser_a755c7d07e7ac04c609456118c53fe85d}{Reset} (void)\label{class_socket_parser_a755c7d07e7ac04c609456118c53fe85d}
+
+\begin{DoxyCompactList}\small\item\em Reset is done before the beginning of a file. Either first or each repeated time. \end{DoxyCompactList}\item 
+void \hyperlink{class_socket_parser_a738dd19a09e24169691222238832f37f}{split} (std\+::string str, raw\+\_\+message\+\_\+t \&msg)
+\begin{DoxyCompactList}\small\item\em split inputs a comma separated 2 digit hex string, and returns a raw binary message. \end{DoxyCompactList}\item 
+double \hyperlink{class_socket_parser_ac454e27dbe6d937aae2a2978e055256e}{Process\+Stream} ()
+\begin{DoxyCompactList}\small\item\em Processes a line from the given Socket file. Extracts timestamp (first field until $\vert$ delimiter) and computes how long from last timestamp. If the repeat flag is set, will repeat Socket file from start, resetting all timestamp value to new current time. \end{DoxyCompactList}\item 
+void \hyperlink{class_socket_parser_a830a4da374464796409fb1533083f259}{Init} (std\+::string filename)
+\begin{DoxyCompactList}\small\item\em Attempts to open Socket file for echoing, throw execption if unable to open file. \end{DoxyCompactList}\item 
+bool \& \hyperlink{class_socket_parser_ab38f2baf9998a5db15c98f3363765828}{Repeat} ()
+\begin{DoxyCompactList}\small\item\em Flag to determine replaying of file. True replay. False one-\/time play. \end{DoxyCompactList}\item 
+\hypertarget{class_socket_parser_a3c74873b4424df3edad77afb80d4f16c}{}std\+::string \& \hyperlink{class_socket_parser_a3c74873b4424df3edad77afb80d4f16c}{Get\+Latest\+Buffer} ()\label{class_socket_parser_a3c74873b4424df3edad77afb80d4f16c}
+
+\begin{DoxyCompactList}\small\item\em Get latest hex buffer from file. \end{DoxyCompactList}\item 
+\hypertarget{class_socket_parser_a21562743a825b3e6fc9664db3111fa75}{}raw\+\_\+message\+\_\+t \& \hyperlink{class_socket_parser_a21562743a825b3e6fc9664db3111fa75}{Get\+Latest\+Msg} ()\label{class_socket_parser_a21562743a825b3e6fc9664db3111fa75}
+
+\begin{DoxyCompactList}\small\item\em Get latest raw binary message from file. \end{DoxyCompactList}\item 
+std\+::string \& \hyperlink{class_socket_parser_afed1c5b3b8588dffabf0963b4d499349}{Get\+Latest\+Timestamp} ()
+\begin{DoxyCompactList}\small\item\em Get latest timestamp read from file. \end{DoxyCompactList}\item 
+\hypertarget{class_socket_parser_ab6c3be35c9e8398fb7da138b63284fb4}{}size\+\_\+t \& \hyperlink{class_socket_parser_ab6c3be35c9e8398fb7da138b63284fb4}{Line\+Number} ()\label{class_socket_parser_ab6c3be35c9e8398fb7da138b63284fb4}
+
+\begin{DoxyCompactList}\small\item\em Get latest Line Number. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+boost\+::posix\+\_\+time\+::ptime \hyperlink{class_socket_parser_a62a7a4fab1e5fd28f03d84b50a12ad94}{\+\_\+realtimetime}
+\item 
+boost\+::posix\+\_\+time\+::ptime \hyperlink{class_socket_parser_a2a4fdde47af625d6ecb471529b64a896}{\+\_\+currenttime}
+\item 
+boost\+::posix\+\_\+time\+::ptime \hyperlink{class_socket_parser_ac6c26c2ff2af1aae99641a00ee5ffe59}{\+\_\+lasttime}
+\item 
+boost\+::posix\+\_\+time\+::time\+\_\+duration \hyperlink{class_socket_parser_a2ad0ff35350e4a1624d895554902b7dd}{\+\_\+duration}
+\item 
+std\+::string \hyperlink{class_socket_parser_ab01ef675f49307a6e53230370e7087a5}{\+\_\+timestamp}
+\item 
+std\+::string \hyperlink{class_socket_parser_ac7450e06ee955973ca119c23b4e561c7}{\+\_\+buffer}
+\item 
+raw\+\_\+message\+\_\+t \hyperlink{class_socket_parser_ae24e2dee6193c39465ec0f1326d62f8a}{\+\_\+msg}
+\item 
+std\+::string \hyperlink{class_socket_parser_ab0ede591a09aea0a188448374b32623a}{\+\_\+binaryfilename}
+\item 
+bool \hyperlink{class_socket_parser_a53078737346e16dedb484081796bfc08}{\+\_\+b\+Repeat}
+\item 
+bool \hyperlink{class_socket_parser_a8f60d419bee68bb8aa83e27f18ccb5ec}{\+\_\+b\+First\+Time}
+\item 
+std\+::ifstream \hyperlink{class_socket_parser_ace4efb971e7adbd8f3053eb06f23d0e8}{in}
+\item 
+size\+\_\+t \hyperlink{class_socket_parser_afd07458ad5df143cfe01dde2f3669272}{\+\_\+linenum}
+\item 
+\hypertarget{class_socket_parser_a28a4003d4b00b53033fa08bf732317e6}{}\hyperlink{class_socket_back_end}{Socket\+Back\+End} \& {\bfseries \+\_\+back\+End}\label{class_socket_parser_a28a4003d4b00b53033fa08bf732317e6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class provides a simple file replay parser. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_socket_parser_afed1c5b3b8588dffabf0963b4d499349}{}\index{Socket\+Parser@{Socket\+Parser}!Get\+Latest\+Timestamp@{Get\+Latest\+Timestamp}}
+\index{Get\+Latest\+Timestamp@{Get\+Latest\+Timestamp}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{Get\+Latest\+Timestamp()}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string\& Socket\+Parser\+::\+Get\+Latest\+Timestamp (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_socket_parser_afed1c5b3b8588dffabf0963b4d499349}
+
+
+Get latest timestamp read from file. 
+
+\begin{DoxyReturn}{Returns}
+string containing timestamp. 
+\end{DoxyReturn}
+\hypertarget{class_socket_parser_a830a4da374464796409fb1533083f259}{}\index{Socket\+Parser@{Socket\+Parser}!Init@{Init}}
+\index{Init@{Init}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{Init(std\+::string filename)}]{\setlength{\rightskip}{0pt plus 5cm}void Socket\+Parser\+::\+Init (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_socket_parser_a830a4da374464796409fb1533083f259}
+
+
+Attempts to open Socket file for echoing, throw execption if unable to open file. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & is the Socket filename including path \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_socket_parser_ac454e27dbe6d937aae2a2978e055256e}{}\index{Socket\+Parser@{Socket\+Parser}!Process\+Stream@{Process\+Stream}}
+\index{Process\+Stream@{Process\+Stream}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{Process\+Stream()}]{\setlength{\rightskip}{0pt plus 5cm}double Socket\+Parser\+::\+Process\+Stream (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_socket_parser_ac454e27dbe6d937aae2a2978e055256e}
+
+
+Processes a line from the given Socket file. Extracts timestamp (first field until $\vert$ delimiter) and computes how long from last timestamp. If the repeat flag is set, will repeat Socket file from start, resetting all timestamp value to new current time. 
+
+\begin{DoxyReturn}{Returns}
+amount of time to delay in seconds given shdr. 
+\end{DoxyReturn}
+\hypertarget{class_socket_parser_ab38f2baf9998a5db15c98f3363765828}{}\index{Socket\+Parser@{Socket\+Parser}!Repeat@{Repeat}}
+\index{Repeat@{Repeat}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{Repeat()}]{\setlength{\rightskip}{0pt plus 5cm}bool\& Socket\+Parser\+::\+Repeat (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_socket_parser_ab38f2baf9998a5db15c98f3363765828}
+
+
+Flag to determine replaying of file. True replay. False one-\/time play. 
+
+\begin{DoxyReturn}{Returns}
+reference to replay flag. 
+\end{DoxyReturn}
+\hypertarget{class_socket_parser_a738dd19a09e24169691222238832f37f}{}\index{Socket\+Parser@{Socket\+Parser}!split@{split}}
+\index{split@{split}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{split(std\+::string str, raw\+\_\+message\+\_\+t \&msg)}]{\setlength{\rightskip}{0pt plus 5cm}void Socket\+Parser\+::split (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{str, }
+\item[{raw\+\_\+message\+\_\+t \&}]{msg}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_socket_parser_a738dd19a09e24169691222238832f37f}
+
+
+split inputs a comma separated 2 digit hex string, and returns a raw binary message. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & hex comma separated string to translate into raw form. \\
+\hline
+{\em msg} & reference to unsigned char array in which to store raw binary data. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Data Documentation}
+\hypertarget{class_socket_parser_a8f60d419bee68bb8aa83e27f18ccb5ec}{}\index{Socket\+Parser@{Socket\+Parser}!\+\_\+b\+First\+Time@{\+\_\+b\+First\+Time}}
+\index{\+\_\+b\+First\+Time@{\+\_\+b\+First\+Time}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{\+\_\+b\+First\+Time}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+Parser\+::\+\_\+b\+First\+Time\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_parser_a8f60d419bee68bb8aa83e27f18ccb5ec}
+first time flag for deciphering timestamps \hypertarget{class_socket_parser_ab0ede591a09aea0a188448374b32623a}{}\index{Socket\+Parser@{Socket\+Parser}!\+\_\+binaryfilename@{\+\_\+binaryfilename}}
+\index{\+\_\+binaryfilename@{\+\_\+binaryfilename}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{\+\_\+binaryfilename}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Socket\+Parser\+::\+\_\+binaryfilename\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_parser_ab0ede591a09aea0a188448374b32623a}
+string with Socket filename incl path \hypertarget{class_socket_parser_a53078737346e16dedb484081796bfc08}{}\index{Socket\+Parser@{Socket\+Parser}!\+\_\+b\+Repeat@{\+\_\+b\+Repeat}}
+\index{\+\_\+b\+Repeat@{\+\_\+b\+Repeat}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{\+\_\+b\+Repeat}]{\setlength{\rightskip}{0pt plus 5cm}bool Socket\+Parser\+::\+\_\+b\+Repeat\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_parser_a53078737346e16dedb484081796bfc08}
+repeat Socket flag \hypertarget{class_socket_parser_ac7450e06ee955973ca119c23b4e561c7}{}\index{Socket\+Parser@{Socket\+Parser}!\+\_\+buffer@{\+\_\+buffer}}
+\index{\+\_\+buffer@{\+\_\+buffer}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{\+\_\+buffer}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Socket\+Parser\+::\+\_\+buffer\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_parser_ac7450e06ee955973ca119c23b4e561c7}
+string with raw data as hex ascii \hypertarget{class_socket_parser_a2a4fdde47af625d6ecb471529b64a896}{}\index{Socket\+Parser@{Socket\+Parser}!\+\_\+currenttime@{\+\_\+currenttime}}
+\index{\+\_\+currenttime@{\+\_\+currenttime}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{\+\_\+currenttime}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::posix\+\_\+time\+::ptime Socket\+Parser\+::\+\_\+currenttime\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_parser_a2a4fdde47af625d6ecb471529b64a896}
+shdr current timestamps \hypertarget{class_socket_parser_a2ad0ff35350e4a1624d895554902b7dd}{}\index{Socket\+Parser@{Socket\+Parser}!\+\_\+duration@{\+\_\+duration}}
+\index{\+\_\+duration@{\+\_\+duration}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{\+\_\+duration}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::posix\+\_\+time\+::time\+\_\+duration Socket\+Parser\+::\+\_\+duration\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_parser_a2ad0ff35350e4a1624d895554902b7dd}
+duration between last and current shdr timestamps \hypertarget{class_socket_parser_ac6c26c2ff2af1aae99641a00ee5ffe59}{}\index{Socket\+Parser@{Socket\+Parser}!\+\_\+lasttime@{\+\_\+lasttime}}
+\index{\+\_\+lasttime@{\+\_\+lasttime}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{\+\_\+lasttime}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::posix\+\_\+time\+::ptime Socket\+Parser\+::\+\_\+lasttime\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_parser_ac6c26c2ff2af1aae99641a00ee5ffe59}
+last shdr current timestamps \hypertarget{class_socket_parser_afd07458ad5df143cfe01dde2f3669272}{}\index{Socket\+Parser@{Socket\+Parser}!\+\_\+linenum@{\+\_\+linenum}}
+\index{\+\_\+linenum@{\+\_\+linenum}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{\+\_\+linenum}]{\setlength{\rightskip}{0pt plus 5cm}size\+\_\+t Socket\+Parser\+::\+\_\+linenum\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_parser_afd07458ad5df143cfe01dde2f3669272}
+current line number in file useful for exceptions \hypertarget{class_socket_parser_ae24e2dee6193c39465ec0f1326d62f8a}{}\index{Socket\+Parser@{Socket\+Parser}!\+\_\+msg@{\+\_\+msg}}
+\index{\+\_\+msg@{\+\_\+msg}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{\+\_\+msg}]{\setlength{\rightskip}{0pt plus 5cm}raw\+\_\+message\+\_\+t Socket\+Parser\+::\+\_\+msg\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_parser_ae24e2dee6193c39465ec0f1326d62f8a}
+buffer with raw binary data \hypertarget{class_socket_parser_a62a7a4fab1e5fd28f03d84b50a12ad94}{}\index{Socket\+Parser@{Socket\+Parser}!\+\_\+realtimetime@{\+\_\+realtimetime}}
+\index{\+\_\+realtimetime@{\+\_\+realtimetime}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{\+\_\+realtimetime}]{\setlength{\rightskip}{0pt plus 5cm}boost\+::posix\+\_\+time\+::ptime Socket\+Parser\+::\+\_\+realtimetime\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_parser_a62a7a4fab1e5fd28f03d84b50a12ad94}
+now + elapsed Socket time \hypertarget{class_socket_parser_ab01ef675f49307a6e53230370e7087a5}{}\index{Socket\+Parser@{Socket\+Parser}!\+\_\+timestamp@{\+\_\+timestamp}}
+\index{\+\_\+timestamp@{\+\_\+timestamp}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{\+\_\+timestamp}]{\setlength{\rightskip}{0pt plus 5cm}std\+::string Socket\+Parser\+::\+\_\+timestamp\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_parser_ab01ef675f49307a6e53230370e7087a5}
+string with updated timestamp Socket \hypertarget{class_socket_parser_ace4efb971e7adbd8f3053eb06f23d0e8}{}\index{Socket\+Parser@{Socket\+Parser}!in@{in}}
+\index{in@{in}!Socket\+Parser@{Socket\+Parser}}
+\subsubsection[{in}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ifstream Socket\+Parser\+::in\hspace{0.3cm}{\ttfamily [protected]}}\label{class_socket_parser_ace4efb971e7adbd8f3053eb06f23d0e8}
+input filestream 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/michalos/\+Documents/\+Git\+Hub/\+M\+T\+Connect\+Solutions/\+Socket\+\_\+\+Replay\+\_\+\+Gui/\+Socket\+\_\+\+Replay\+\_\+\+Gui/Socket\+Parser.\+h\end{DoxyCompactItemize}

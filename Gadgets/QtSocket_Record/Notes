@@ -1,0 +1,56 @@
+
+Thu 11/16/2017_13:03:30.67
+
+QHostInfo really only looks up host name from ip address.
+no connection
+//    // Check to see if host exists
+//    QHostInfo info = QHostInfo::fromName(mHost.c_str());
+
+//    if ( info.HostNotFound)
+//    {
+//        return Globals::StrFormat("ERROR, unknown host %s\n", mHost.c_str( ));
+//    }
+
+Thu 11/16/2017_12:36:58.23
+
+This is the signal way to setup GUI status:
+
+void QtSocketThreadBase::SendMessage(std::string str)
+{
+    QString s;
+    s=QString::fromStdString(str);
+    emit  CmdMessageEmitted(s);
+}
+
+
+SendMessage(Globals.StrFormat("Status Connecting to %s::%d\n", mIP.toStdString().c_str(),  mPort),STATUS);
+
+signals:
+    void CmdMessageEmitted(QString);
+
+connect(this, SIGNAL(CmdMessageEmitted(QString)),
+      mainwin, SLOT(CmdMessage(QString)));
+
+MainWindow.{h,cpp}
+In public slots:
+void CmdMessage(QString str);
+
+void MainWindow::CmdMessage(QString str)
+{
+    if(Globals.bQuitting)
+        return;
+    if(str.isEmpty())
+        ui->plainTextEdit->clear();
+    else
+        ui->plainTextEdit_cmd->appendPlainText (str);
+}
+
+
+
+
+Thu 11/16/2017_ 9:45:33.52
+
+socket->readDatagram(buffer.data(), buffer.size(),&sender, &senderPort);
+   StringBuffer=buffer.toHex();
+__int8_t array[1000];
+   memcpy(array,buffer.data(),100);

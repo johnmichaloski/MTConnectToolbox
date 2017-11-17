@@ -1,0 +1,76 @@
+\hypertarget{struct_logging_1_1_c_logger}{}\section{Logging\+:\+:C\+Logger Struct Reference}
+\label{struct_logging_1_1_c_logger}\index{Logging\+::\+C\+Logger@{Logging\+::\+C\+Logger}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a4d26b49ac9018acbd07c257f634fe515}{}int \& {\bfseries Debug\+Level} ()\label{struct_logging_1_1_c_logger_a4d26b49ac9018acbd07c257f634fe515}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_ab1aa58d025e099bd24bfd5a1d093f092}{}bool \& {\bfseries Timestamping} ()\label{struct_logging_1_1_c_logger_ab1aa58d025e099bd24bfd5a1d093f092}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_ac07ce3cc0b1eb6266b7d2ca1536ee741}{}std\+::string \& {\bfseries Debug\+String} ()\label{struct_logging_1_1_c_logger_ac07ce3cc0b1eb6266b7d2ca1536ee741}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a2d3c12d0f7c9790eddc7efc9fe8d82c3}{}int \& {\bfseries Output\+Console} ()\label{struct_logging_1_1_c_logger_a2d3c12d0f7c9790eddc7efc9fe8d82c3}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_aca4b48a0215731bd596673f919942c20}{}std\+::ofstream \& {\bfseries operator()} (void)\label{struct_logging_1_1_c_logger_aca4b48a0215731bd596673f919942c20}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_ae7d35f75b131a06873cb5e461f1f4b4b}{}void {\bfseries Close} ()\label{struct_logging_1_1_c_logger_ae7d35f75b131a06873cb5e461f1f4b4b}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_af70865f429e2ba89331bd33dd39356be}{}void {\bfseries Open} (std\+::string filename, int b\+Append=false)\label{struct_logging_1_1_c_logger_af70865f429e2ba89331bd33dd39356be}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a9fe8b3b0e47f81003c484f309b724d05}{}void {\bfseries Open} (int b\+Append=0)\label{struct_logging_1_1_c_logger_a9fe8b3b0e47f81003c484f309b724d05}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a3f57dc5b4d526f10aad88ea05f1143f9}{}void {\bfseries Message} (std\+::string msg)\label{struct_logging_1_1_c_logger_a3f57dc5b4d526f10aad88ea05f1143f9}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a17391263ef5a00c76f0235ae42c98a3f}{}void {\bfseries logmessage} (const char $\ast$file, int line, Log\+Level level, const char $\ast$fmt,...)\label{struct_logging_1_1_c_logger_a17391263ef5a00c76f0235ae42c98a3f}
+
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a942e0b8000052ed65461b83aaaf55d8f}{}static std\+::string {\bfseries Exe\+Directory} ()\label{struct_logging_1_1_c_logger_a942e0b8000052ed65461b83aaaf55d8f}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_af9cc14ae6b96de411a590dd750ddff5d}{}static std\+::string {\bfseries Timestamp} ()\label{struct_logging_1_1_c_logger_af9cc14ae6b96de411a590dd750ddff5d}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a39bc9c140ad1edab493e21a8f041d2f4}{}std\+::ofstream {\bfseries Debug\+File}\label{struct_logging_1_1_c_logger_a39bc9c140ad1edab493e21a8f041d2f4}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a67ca0c7dd10ea47165866add980a7f20}{}int {\bfseries \+\_\+debuglevel}\label{struct_logging_1_1_c_logger_a67ca0c7dd10ea47165866add980a7f20}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a7ff1bc9d706572877c39bc05f68b9c70}{}bool {\bfseries b\+Timestamp}\label{struct_logging_1_1_c_logger_a7ff1bc9d706572877c39bc05f68b9c70}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a347743d6e98110209271779aec9739dc}{}std\+::string {\bfseries s\+Debug\+String}\label{struct_logging_1_1_c_logger_a347743d6e98110209271779aec9739dc}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a14ba10122ca9867f85da0e9da3850f14}{}int {\bfseries n\+Output\+Console}\label{struct_logging_1_1_c_logger_a14ba10122ca9867f85da0e9da3850f14}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a8c1376b11177d8c7222481eb5d363cc0}{}int {\bfseries n\+Debug\+Reset}\label{struct_logging_1_1_c_logger_a8c1376b11177d8c7222481eb5d363cc0}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_a8139721c43896d2bd418a304dcaeec7a}{}std\+::string {\bfseries filename}\label{struct_logging_1_1_c_logger_a8139721c43896d2bd418a304dcaeec7a}
+
+\item 
+\hypertarget{struct_logging_1_1_c_logger_aaf2d37e1e0fec2ee9cb9331f77bb0426}{}int {\bfseries \+\_\+n\+Counter}\label{struct_logging_1_1_c_logger_aaf2d37e1e0fec2ee9cb9331f77bb0426}
+
+\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/michalos/\+Documents/\+Git\+Hub/\+M\+T\+Connect\+Solutions/\+Socket\+\_\+\+Replay\+\_\+\+Gui/\+Socket\+\_\+\+Replay\+\_\+\+Gui/Logger.\+h\end{DoxyCompactItemize}

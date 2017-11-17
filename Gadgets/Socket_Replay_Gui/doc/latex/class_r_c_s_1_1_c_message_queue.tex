@@ -1,0 +1,177 @@
+\hypertarget{class_r_c_s_1_1_c_message_queue}{}\section{R\+C\+S\+:\+:C\+Message\+Queue$<$ T $>$ Class Template Reference}
+\label{class_r_c_s_1_1_c_message_queue}\index{R\+C\+S\+::\+C\+Message\+Queue$<$ T $>$@{R\+C\+S\+::\+C\+Message\+Queue$<$ T $>$}}
+
+
+The \hyperlink{class_r_c_s_1_1_c_message_queue}{C\+Message\+Queue} offers a mutexed front to a S\+T\+L/std deque. The queue is a L\+I\+F\+O data structure. Useful for safely sharing data between multiple threads.  
+
+
+
+
+{\ttfamily \#include $<$R\+C\+S\+Msg\+Queue.\+h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_r_c_s_1_1_c_message_queue_a272ec6240c0ae616f66e71a033326e28}{}typedef std\+::deque$<$ T $>$ {\bfseries xml\+\_\+message\+\_\+queue}\label{class_r_c_s_1_1_c_message_queue_a272ec6240c0ae616f66e71a033326e28}
+
+\item 
+\hypertarget{class_r_c_s_1_1_c_message_queue_aa229add119e43aa53229252b6dffb691}{}typedef std\+::deque$<$ T $>$\+::iterator {\bfseries xml\+\_\+message\+\_\+queue\+\_\+iterator}\label{class_r_c_s_1_1_c_message_queue_aa229add119e43aa53229252b6dffb691}
+
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_r_c_s_1_1_c_message_queue_a1fbabdd6e6aaf02572a93531ed871559}{}void \hyperlink{class_r_c_s_1_1_c_message_queue_a1fbabdd6e6aaf02572a93531ed871559}{Clear\+Msg\+Queue} ()\label{class_r_c_s_1_1_c_message_queue_a1fbabdd6e6aaf02572a93531ed871559}
+
+\begin{DoxyCompactList}\small\item\em Clear\+Msg\+Queue clears all contents in message queue. T. \end{DoxyCompactList}\item 
+\hypertarget{class_r_c_s_1_1_c_message_queue_a7929c4ce871eab3dfb8dfabd5bf4bdb9}{}size\+\_\+t \hyperlink{class_r_c_s_1_1_c_message_queue_a7929c4ce871eab3dfb8dfabd5bf4bdb9}{Size\+Msg\+Queue} ()\label{class_r_c_s_1_1_c_message_queue_a7929c4ce871eab3dfb8dfabd5bf4bdb9}
+
+\begin{DoxyCompactList}\small\item\em Size\+Msg\+Queue returns number of items in message queue. \end{DoxyCompactList}\item 
+T \hyperlink{class_r_c_s_1_1_c_message_queue_afbde6b0fa4044557ba5f990c69d52ff7}{Pop\+Front\+Msg\+Queue} ()
+\begin{DoxyCompactList}\small\item\em Pop\+Front\+Msg\+Queue mutex pop of front item of message queue. \end{DoxyCompactList}\item 
+T \hyperlink{class_r_c_s_1_1_c_message_queue_a1c01196dadf55e07e7507a552b94a452}{Peek\+Front\+Msg\+Queue} ()
+\begin{DoxyCompactList}\small\item\em Peek\+Front\+Msg\+Queue mutex peeks at front item of message queue. \end{DoxyCompactList}\item 
+T \hyperlink{class_r_c_s_1_1_c_message_queue_a5d669a3cecd23be9113567421f2b06a1}{Back\+Msg\+Queue} ()
+\begin{DoxyCompactList}\small\item\em Back\+Msg\+Queue mutex retrieves back item of message queue. Does not pop queue. \end{DoxyCompactList}\item 
+void \hyperlink{class_r_c_s_1_1_c_message_queue_a1f23fdbd7b3c7c3861abea8fb0899288}{Add\+Msg\+Queue} (T t)
+\begin{DoxyCompactList}\small\item\em Add\+Msg\+Queue mutex push to back an item onto message queue. \end{DoxyCompactList}\item 
+void \hyperlink{class_r_c_s_1_1_c_message_queue_a975b0dc0f762f129fb6bd9297cbb3a3d}{Add\+Back\+Msg\+Queue} (T t)
+\begin{DoxyCompactList}\small\item\em Add\+Msg\+Queue mutex push to back an item onto message queue. \end{DoxyCompactList}\item 
+void \hyperlink{class_r_c_s_1_1_c_message_queue_a4da04a657574f94d654898fd0bfc5983}{Add\+Front\+Msg\+Queue} (T t)
+\begin{DoxyCompactList}\small\item\em Add\+Msg\+Queue mutex push to front an item onto message queue. \end{DoxyCompactList}\item 
+void \hyperlink{class_r_c_s_1_1_c_message_queue_ab9a9aa2c8e05c74bd0b67dc2b576850f}{Insert\+Front\+Msg\+Queue} (T t)
+\begin{DoxyCompactList}\small\item\em Insert\+Front\+Msg\+Queue mutex push to front an item onto message queue. \end{DoxyCompactList}\item 
+\hypertarget{class_r_c_s_1_1_c_message_queue_ae8f0f317fd57acac619797badad88be2}{}xml\+\_\+message\+\_\+queue\+\_\+iterator {\bfseries end} ()\label{class_r_c_s_1_1_c_message_queue_ae8f0f317fd57acac619797badad88be2}
+
+\item 
+\hypertarget{class_r_c_s_1_1_c_message_queue_aba32094584981f8b425660cb3ee4cf50}{}xml\+\_\+message\+\_\+queue\+\_\+iterator {\bfseries begin} ()\label{class_r_c_s_1_1_c_message_queue_aba32094584981f8b425660cb3ee4cf50}
+
+\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_r_c_s_1_1_c_message_queue_a8dbd36f86fd6f9adf1c27042d74735ff}{}msgq\+::mutex {\bfseries m}\label{class_r_c_s_1_1_c_message_queue_a8dbd36f86fd6f9adf1c27042d74735ff}
+
+\item 
+\hypertarget{class_r_c_s_1_1_c_message_queue_aa699f0b2f9f057242c5f0d3882f14ecb}{}xml\+\_\+message\+\_\+queue {\bfseries xml\+\_\+msgs}\label{class_r_c_s_1_1_c_message_queue_aa699f0b2f9f057242c5f0d3882f14ecb}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class R\+C\+S\+::\+C\+Message\+Queue$<$ T $>$}
+
+The \hyperlink{class_r_c_s_1_1_c_message_queue}{C\+Message\+Queue} offers a mutexed front to a S\+T\+L/std deque. The queue is a L\+I\+F\+O data structure. Useful for safely sharing data between multiple threads. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_r_c_s_1_1_c_message_queue_a975b0dc0f762f129fb6bd9297cbb3a3d}{}\index{R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}!Add\+Back\+Msg\+Queue@{Add\+Back\+Msg\+Queue}}
+\index{Add\+Back\+Msg\+Queue@{Add\+Back\+Msg\+Queue}!R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}}
+\subsubsection[{Add\+Back\+Msg\+Queue(\+T t)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf R\+C\+S\+::\+C\+Message\+Queue}$<$ T $>$\+::Add\+Back\+Msg\+Queue (
+\begin{DoxyParamCaption}
+\item[{T}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_r_c_s_1_1_c_message_queue_a975b0dc0f762f129fb6bd9297cbb3a3d}
+
+
+Add\+Msg\+Queue mutex push to back an item onto message queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T} & item to place in back of message queue. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_r_c_s_1_1_c_message_queue_a4da04a657574f94d654898fd0bfc5983}{}\index{R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}!Add\+Front\+Msg\+Queue@{Add\+Front\+Msg\+Queue}}
+\index{Add\+Front\+Msg\+Queue@{Add\+Front\+Msg\+Queue}!R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}}
+\subsubsection[{Add\+Front\+Msg\+Queue(\+T t)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf R\+C\+S\+::\+C\+Message\+Queue}$<$ T $>$\+::Add\+Front\+Msg\+Queue (
+\begin{DoxyParamCaption}
+\item[{T}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_r_c_s_1_1_c_message_queue_a4da04a657574f94d654898fd0bfc5983}
+
+
+Add\+Msg\+Queue mutex push to front an item onto message queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T} & item to place in front of message queue. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_r_c_s_1_1_c_message_queue_a1f23fdbd7b3c7c3861abea8fb0899288}{}\index{R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}!Add\+Msg\+Queue@{Add\+Msg\+Queue}}
+\index{Add\+Msg\+Queue@{Add\+Msg\+Queue}!R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}}
+\subsubsection[{Add\+Msg\+Queue(\+T t)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf R\+C\+S\+::\+C\+Message\+Queue}$<$ T $>$\+::Add\+Msg\+Queue (
+\begin{DoxyParamCaption}
+\item[{T}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_r_c_s_1_1_c_message_queue_a1f23fdbd7b3c7c3861abea8fb0899288}
+
+
+Add\+Msg\+Queue mutex push to back an item onto message queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T} & item to place in back of message queue. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_r_c_s_1_1_c_message_queue_a5d669a3cecd23be9113567421f2b06a1}{}\index{R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}!Back\+Msg\+Queue@{Back\+Msg\+Queue}}
+\index{Back\+Msg\+Queue@{Back\+Msg\+Queue}!R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}}
+\subsubsection[{Back\+Msg\+Queue()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T {\bf R\+C\+S\+::\+C\+Message\+Queue}$<$ T $>$\+::Back\+Msg\+Queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_r_c_s_1_1_c_message_queue_a5d669a3cecd23be9113567421f2b06a1}
+
+
+Back\+Msg\+Queue mutex retrieves back item of message queue. Does not pop queue. 
+
+\begin{DoxyReturn}{Returns}
+T returns back item from message queue. 
+\end{DoxyReturn}
+\hypertarget{class_r_c_s_1_1_c_message_queue_ab9a9aa2c8e05c74bd0b67dc2b576850f}{}\index{R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}!Insert\+Front\+Msg\+Queue@{Insert\+Front\+Msg\+Queue}}
+\index{Insert\+Front\+Msg\+Queue@{Insert\+Front\+Msg\+Queue}!R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}}
+\subsubsection[{Insert\+Front\+Msg\+Queue(\+T t)}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf R\+C\+S\+::\+C\+Message\+Queue}$<$ T $>$\+::Insert\+Front\+Msg\+Queue (
+\begin{DoxyParamCaption}
+\item[{T}]{t}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_r_c_s_1_1_c_message_queue_ab9a9aa2c8e05c74bd0b67dc2b576850f}
+
+
+Insert\+Front\+Msg\+Queue mutex push to front an item onto message queue. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em T} & item to place in front of message queue. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_r_c_s_1_1_c_message_queue_a1c01196dadf55e07e7507a552b94a452}{}\index{R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}!Peek\+Front\+Msg\+Queue@{Peek\+Front\+Msg\+Queue}}
+\index{Peek\+Front\+Msg\+Queue@{Peek\+Front\+Msg\+Queue}!R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}}
+\subsubsection[{Peek\+Front\+Msg\+Queue()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T {\bf R\+C\+S\+::\+C\+Message\+Queue}$<$ T $>$\+::Peek\+Front\+Msg\+Queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_r_c_s_1_1_c_message_queue_a1c01196dadf55e07e7507a552b94a452}
+
+
+Peek\+Front\+Msg\+Queue mutex peeks at front item of message queue. 
+
+\begin{DoxyReturn}{Returns}
+T returns front item from message queue. 
+\end{DoxyReturn}
+\hypertarget{class_r_c_s_1_1_c_message_queue_afbde6b0fa4044557ba5f990c69d52ff7}{}\index{R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}!Pop\+Front\+Msg\+Queue@{Pop\+Front\+Msg\+Queue}}
+\index{Pop\+Front\+Msg\+Queue@{Pop\+Front\+Msg\+Queue}!R\+C\+S\+::\+C\+Message\+Queue@{R\+C\+S\+::\+C\+Message\+Queue}}
+\subsubsection[{Pop\+Front\+Msg\+Queue()}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T {\bf R\+C\+S\+::\+C\+Message\+Queue}$<$ T $>$\+::Pop\+Front\+Msg\+Queue (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}\label{class_r_c_s_1_1_c_message_queue_afbde6b0fa4044557ba5f990c69d52ff7}
+
+
+Pop\+Front\+Msg\+Queue mutex pop of front item of message queue. 
+
+\begin{DoxyReturn}{Returns}
+T returns front item from message queue. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/michalos/\+Documents/\+Git\+Hub/\+M\+T\+Connect\+Solutions/\+Socket\+\_\+\+Replay\+\_\+\+Gui/\+Socket\+\_\+\+Replay\+\_\+\+Gui/R\+C\+S\+Msg\+Queue.\+h\end{DoxyCompactItemize}

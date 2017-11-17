@@ -7,9 +7,9 @@
 
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
-
 #include <Commdlg.h>
 #include "Socket_Replay_Dlg.h"
+
 #define TIMER1    1051
 extern std::string             ExeDirectory;
 extern boost::asio::io_service _io_service;
@@ -70,7 +70,9 @@ void Socket_Replay_Dlg::stream_loop ( )
     }
     catch ( std::exception err )
     {
-        std::string errmsg = StrFormat("Exception in file %s at line %d %s\n", mFilename.c_str( ), mParser.LineNumber( ), err.what( ));
+        std::string errmsg = StrFormat("Exception in file %s at line %d %s\n", 
+			mFilename.c_str( ), 
+			mParser.LineNumber( ), err.what( ));
         this->fatal_msg(errmsg);
     }
 }
@@ -138,7 +140,6 @@ char *Socket_Replay_Dlg::SelectFile (HWND hwnd, const char *folder)
     ZeroMemory(&ofn, sizeof( ofn ));
     ofn.lStructSize = sizeof( ofn );
     ofn.hwndOwner   = hwnd;
-    strncpy(szFile, folder, strlen(folder));
     ofn.lpstrFile = szFile;
 
     // Set lpstrFile[0] to '\0' so that GetOpenFileName does not
@@ -271,6 +272,7 @@ INT_PTR CALLBACK Socket_Replay_Dlg::DialogProc (HWND hDlg, UINT uMsg, WPARAM wPa
             SetWindowText(hDlg, "Socket_replay");
             HWND port_hwnd = GetDlgItem(hDlg, IDC_PORT);
             SetWindowText(port_hwnd, "50241");
+			return TRUE;
         }
         break;
     }

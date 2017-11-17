@@ -1,0 +1,6 @@
+
+
+Fri 11/17/2017_11:39:51.04
+
+QObject::connect(this, SIGNAL(aboutToQuit()), &loop, SLOT(quit()));
+for main.cpp console application to recieve signal about to end
