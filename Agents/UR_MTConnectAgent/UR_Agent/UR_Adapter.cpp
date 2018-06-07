@@ -46,6 +46,16 @@ static void trans_func (unsigned int u, EXCEPTION_POINTERS *pExp)
     OutputDebugString(errmsg.c_str( ));
     throw std::exception(errmsg.c_str( ), pExp->ExceptionRecord->ExceptionCode);
 }
+
+static const std::string CondLevels[] =
+{
+    "normal",
+    "warning",
+    "fault",
+    "unavailable"
+};
+
+
 /////////////////////////////////////////////////////////////////////
 
 AdapterT::AdapterT(AgentConfigurationEx *mtcagent,         // mtconnect agent
@@ -59,6 +69,53 @@ AdapterT::AdapterT(AgentConfigurationEx *mtcagent,         // mtconnect agent
     mQueryServerPeriod = 10000;
 }
 void AdapterT::doStop ( ) { mRunning = false; }
+bool AdapterT::isValidCondition(std::string val)
+{
+	std::transform(val.begin( ), val.end( ), val.begin( ), tolower);
+
+	for(size_t i=0; i < sizeof(CondLevels) / sizeof(CondLevels[0]); i++)
+	{
+		if(val == CondLevels[i])
+			return true;
+	}
+	return false;
+}
+
+// NORMAL, WARNING, FAULT, or UNAVAILABLE
+void AdapterT::setMTCConditionValue (std::string tag, std::string value)
+{
+	items.setTag(tag, value);
+
+	Agent *agent = mAgentconfig->getAgent( );
+
+	if ( agent == NULL )
+	{
+		logError("AdapterT::setMTCTagValue for %s NULL Agent Pointer\n",
+			mDevice.c_str( ));
+		return;
+	}
+
+	Device *pDev = agent->getDeviceByName(mDevice);
+
+	if ( pDev == NULL )
+	{
+		logError("AdapterT::setMTCTagValue for %s NULL Device Pointer\n",
+			mDevice.c_str( ));
+		return;
+	}
+	DataItem *di = pDev->getDeviceDataItem(tag);
+
+	if ( di != NULL )
+	{
+		std::string time = getCurrentTime(GMT_UV_SEC);
+		agent->addToBuffer(di, value, time);
+	}
+	else
+	{
+		logError(" (%s) Could not find condition data item: %s  \n", mDevice.c_str( ),
+			tag.c_str( ));
+	}
+}
 void AdapterT::setMTCTagValue (std::string tag, std::string value)
 {
     items.setTag(tag, value);
@@ -130,13 +187,14 @@ void AdapterT::resetOn ( )
     setMTCTagValue("avail", "AVAILABLE");
     setMTCTagValue("power", "ON");
 }
-void UR_Adapter::createItem (std::string tag, std::string type)
+UR_Adapter::Item * UR_Adapter::createItem (std::string tag, std::string type)
 {
     Item *item = new Item( );
 
     item->mType    = _T("Event");
     item->mTagname = tag;
     items.push_back(item);
+	return item;
 }
 std::string UR_Adapter::dumpHeader ( )
 {
@@ -167,17 +225,27 @@ void UR_Adapter::doConfig ( )
     std::string cfgfile = Globals.mInifile;
     try
     {
-        mServerRate
-            = mConfig.GetSymbolValue(mDevice + ".ServerRate", Globals.mServerRate)
-                  .toNumber<int>( );
+         mConfig.load(cfgfile);
+         mServerRate
+            = mConfig.GetSymbolValue<int>(mDevice + ".ServerRate", Globals.mServerRate);
         mQueryServerPeriod
-            = mConfig.GetSymbolValue(mDevice + ".QueryServer", Globals.mQueryServer)
-                  .toNumber<int>( );
-        mIp         = mConfig.GetSymbolValue(mDevice + ".IP", "129.6.33.123").c_str( );
+            = mConfig.GetSymbolValue<int>(mDevice + ".QueryServer", Globals.mQueryServer);
+        mIp         = mConfig.GetSymbolValue<std::string>(mDevice + ".ip", "127.0.0.1");
+		mPort       = mConfig.GetSymbolValue<std::string>(mDevice + ".port", "30002");
         mJointnames = mConfig.GetTokens(mDevice + ".jointnames", ",");
         mUrdfFile
-            = mConfig.GetSymbolValue(mDevice + "urdf", "Urdf/ur5.urdf").c_str( );
-    }
+            = mConfig.GetSymbolValue<std::string>(mDevice + ".urdf", "ur3.urdf");
+		mUrVersion
+            = mConfig.GetSymbolValue<float>(mDevice + ".Version", "3.2");
+		mUrData.setVersion(mUrVersion);
+
+		logDebug("Device %s\n", mDevice.c_str());
+		logDebug("\tAdapter %s Server Rate=%d\n", mDevice.c_str(), mServerRate);
+		logDebug("\tAdapter %s Reconnect Rate=%d\n", mDevice.c_str(), mQueryServerPeriod);
+		logDebug("\tAdapter %s IP=%s\n", mDevice.c_str(), mIp.c_str());
+		logDebug("\tAdapter %s Urdf=%s\n", mDevice.c_str(), mUrdfFile.c_str());
+		logDebug("\tAdapter %s Version=%f\n", mDevice.c_str(), mUrVersion);
+	}
     catch ( std::exception errmsg )
     {
         logAbort("Could not find ini file for device %s\n", mDevice.c_str( ));
@@ -199,28 +267,30 @@ void UR_Adapter::doCycle ( )
     mCycleCnt = 0;
 
     _set_se_translator(trans_func);                        // correct thread?
-    MSVC::SetPriorityClass(GetCurrentProcess( ), ABOVE_NORMAL_PRIORITY_CLASS);
-
+ 
     // The universal robot communication connection to this adapter is inited.
-    mUrComm.init(this, mIp);
+    mUrComm.init(this, mIp, mPort);
 
     // There was a query to the primay socket, but was removed.
     // Only read version info, which is supplied in the second socket.
 
-    // Start the universal robot communication connection to this adapter.
-    mUrComm.start( );
 
-    // Create tagnames to communicate with agent (only sample and event)
-    mTagnames = mAgentconfig->mTagnames[mDevice];
+	// Create tagnames to communicate with agent (only sample and event)
+	mTagnames = mAgentconfig->mTagnames[mDevice];
+	mConditionTags= mAgentconfig->mConditionTags[mDevice];
 
     for ( size_t i = 0; i < mTagnames.size( ); i++ )
-    {
         createItem(mTagnames[i]);
-    }
 
+   for ( size_t i = 0; i < mConditionTags.size( ); i++ )
+   {
+            Item *item = createItem(mConditionTags[i]);
+			item->mType="Condition";
+   }
+    
     // Send this robot URDF to agent to cache as  asset
     // It is read from a file, not retrieved directly from ROS
-    std::ifstream fin(( File.ExeDirectory( ) + mUrdfFile ).c_str( ));
+    std::ifstream fin(( File.ExeDirectory( )  + "URDF\\" + mUrdfFile ).c_str( ));
 
     if ( fin.is_open( ) )
     {
@@ -232,25 +302,29 @@ void UR_Adapter::doCycle ( )
     // Heartbeat indicates that the adapter process is cycling and not dead.
     int nHeartbeat = 0;
 
-#ifdef _DEBUG
-
-    // If in debug mode save all tag updates to csv file. This sets up header.
-    tagfile.open(File.ExeDirectory( ) + "tags.csv", std::ofstream::out);
-
-    if ( !tagfile.is_open( ) )
-    {
-        logWarn("tagfile.open failed");
-
-        // This should prevent any exceptions or other stuff.
-        tagfile.setstate(std::ios_base::badbit);
-    }
-
-    // Unclear what happens if tagfile creation fails, and we try to write to it.
-    tagfile << dumpHeader( ).c_str( );
-#endif
+//#ifdef _DEBUG
+//
+//    // If in debug mode save all tag updates to csv file. This sets up header.
+//    tagfile.open(File.ExeDirectory( ) + "tags.csv", std::ofstream::out);
+//
+//    if ( !tagfile.is_open( ) )
+//    {
+//        logWarn("tagfile.open failed");
+//
+//        // This should prevent any exceptions or other stuff.
+//        tagfile.setstate(std::ios_base::badbit);
+//    }
+//
+//    // Unclear what happens if tagfile creation fails, and we try to write to it.
+//    tagfile << dumpHeader( ).c_str( );
+//#endif
 
     mRunning = true;
     resetOff( );
+
+    // Start the universal robot communication connection to this adapter.
+    mUrComm.start( );
+	::Sleep(100);
 
     while ( mRunning )
     {
@@ -287,36 +361,67 @@ HRESULT UR_Adapter::gatherDeviceData ( )
     COleDateTime      today;
     try
     {
-        if ( !mUrComm.mConnected.get() )
+        //if ( mUrComm.mConnected.get() == 0)
+        if ( mUrComm.mConnected == false)
         {
-            // mUrQMsgs.ClearMsgQueue();
+             mUrQMsgs.ClearMsgQueue();
             LOG_ONCE(
-                logError("%s UR device: socket not connected\n", mDevice.c_str( )));
+                logError("%s UR device: socket not connected\n", mDevice.c_str( ))
+				);
             return E_FAIL;
         }
 
         while ( mUrQMsgs.SizeMsgQueue( ) > 0 )
         {
-            mCycleCnt++;
-            std::vector<uint8_t> msg = mUrQMsgs.PopFrontMsgQueue( );
-            hdr.read(&msg[0]);
+			std::vector<uint8_t> msg = mUrQMsgs.PopFrontMsgQueue( );
+			hdr.read(&msg[0]);
+ 
+			if ( mCycleCnt == 0 )
+			{
+				mCycleCnt++;
+				char *pMsg = (char *) &msg[0];
+				mUrData._ur_version_message.decode(pMsg, msg.size( ));
 
-            if ( mCycleCnt == 1 )
-            {
-                char *pMsg = (char *) &msg[0];
-                mUrData._ur_version_message.decode(pMsg, msg.size( ));
-
-                logStatus("Version = %f\n", mUrData._ur_version_message.getVersion( ));
-                logStatus(mUrData._ur_version_message.print( ).c_str( ));
+				logStatus("Version = %f\n", mUrData._ur_version_message.getVersion( ));
+				logStatus(mUrData._ur_version_message.print( ).c_str( ));
+				// Revise version info for this adapter...
+				//mUrData.setVersion(mUrData._ur_version_message.getVersion( ));
             }
             else
             {
+				//logDebug(Nist::HexDump (&msg[0], 32).c_str());
                 mUrData.unpack(&msg[0], msg.size( ));
-                logDebug(mUrData.dump( ).c_str( ));
+                //logDebug(mUrData.dump( ).c_str( ));
+				 decodeUrState ( );
             }
-        }
+		}
+	}
+	catch ( std::exception e )
+	{
+		logError("Exception in %s - UR_Adapter::GatherDeviceData() %s\n",
+			mDevice.c_str( ), (LPCSTR) e.what( ));
+		resetOff( );
+		doDisconnect( );
+		hr = E_FAIL;
+	}
+	catch ( ... )
+	{
+		logError("Exception in %s - UR_Adapter::GatherDeviceData()\n",
+			mDevice.c_str( ));
+		resetOff( );
+		doDisconnect( );
+		hr = E_FAIL;
+	}
+	return hr;
+}
+HRESULT UR_Adapter::decodeUrState ( )
+{
+    HRESULT           hr = S_OK;
+	try {
+		// Now you need to store the values into the tags
 
-        // Now you need to store the values into the tags
+		// First do system condition - name attribute only id
+		items.setTag(this->mDevice+"system", "NORMAL");
 
         // Power
         if ( mUrData._ur_robot_mode_data.isPowerOnRobot )
@@ -385,14 +490,12 @@ HRESULT UR_Adapter::gatherDeviceData ( )
                 items.setTag(mJointnames[i] + "_actvel",
                              StdStringFormat("%f", mUrData._ur_joint_data[i].qd_actual));
 
-                // items.setTag(mJointnames[i]+"_actacc",
-                // StdStringFormat("%f",_ur_joint_data[i].q_actual));
             }
         }
-#ifdef _DEBUG
-        tagfile << dumpDataItems( );
-        tagfile.flush( );
-#endif
+//#ifdef _DEBUG
+//        tagfile << dumpDataItems( );
+//        tagfile.flush( );
+//#endif
 
         for ( int i = 0; i < items.size( ); i++ )
         {
@@ -405,8 +508,16 @@ HRESULT UR_Adapter::gatherDeviceData ( )
                     items[i]->mLastvalue = items[i]->mValue;
                 }
             }
+			else if (  items[i]->mType == _T("Condition") )
+			{
+                if ( items[i]->mValue != items[i]->mLastvalue )
+                {
+                    this->setMTCConditionValue(items[i]->mTagname, items[i]->mValue);
+                    items[i]->mLastvalue = items[i]->mValue;
+                }
+
+			}
         }
-        ::Sleep(500);
     }
     catch ( std::exception e )
     {

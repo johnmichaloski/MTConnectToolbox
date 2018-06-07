@@ -1,278 +1,259 @@
+
 // **************************************************************************
-// Logger.h 
+// Logger.h
 //
-// Description:
+// Description: basic logging macro with sharedable log file. Only 1 log file.
 //
 // DISCLAIMER:
 // This software was developed by U.S. Government employees as part of
-// their official duties and is not subject to copyright. No warranty implied 
+// their official duties and is not subject to copyright. No warranty implied
 // or intended.
 // **************************************************************************
 #pragma once
-#include "atlstr.h"
 #include <fstream>
 #include <iostream>
-#include <atlcomtime.h>
-#include "StdStringFcn.h"
+#include <stdarg.h>
+#include <string>
+#include <time.h>       /* time_t, struct tm, difftime, time, mktime */
 
-#define LOGLISTENERS
+// Based on ROS Console
+// https://github.com/ros/console_bridge/blob/master/include/console_bridge/console.h
+// Interesting C++ Logging filtering macros here:
+// https://github.com/ros/ros_comm/blob/4383f8fad9550836137077ed1a7120e5d3e745de/tools/rosconsole/include/ros/console.h
 
-#ifdef LOGLISTENERS
-// This is for notifying listeners to logged messages - mnany to many relationship
-#include <boost/function.hpp> 
-#include <boost/function_equal.hpp> 
-typedef boost::function<void (const TCHAR * msg)> FcnLognotify;
-#include <vector>
-#endif
-
-// This is useful for preventing endless repeated error messages 
-#define LOGONCE  static long nLog##__LINE__=0; if( 0 == nLog##__LINE__++) 
-//#define LOGONCE  
-
-/** Allow redirected of std::cout to vc console output
-std::cout.rdbuf(&Logger);
-std::cout << "Hello World\n";
-std::cout.flush();
-*/
-class basic_debugbuf : public std::streambuf
+namespace Logging
 {
-public:
-	std::vector<FcnLognotify> listeners;
-	basic_debugbuf(int bufferSize=1000) 
-	{
-		if (bufferSize)
-		{
-			char *ptr = new char[bufferSize];
-			setp(ptr, ptr + bufferSize);
-		}
-		else
-			setp(0, 0);
-	}
-	virtual ~basic_debugbuf() 
-	{
-		sync();
-		delete[] pbase();
-	}
+/** \brief The set of priorities for message logging */
+    enum LogLevel
+    {
+        LOG_DEBUG = 4,
+        LOG_INFO  = 3,
+        LOG_WARN  = 2,
+        LOG_ERROR = 1,
+        LOG_NONE  = 0,
+        LOG_FATAL = -1
+    };
+    struct CLogger
+    {
+        std::string        ExeDirectory ( )
+        {
+            char buf[1000];
 
-	virtual void writeString(const std::string &str)
-	{
-		for(int i=0; i< listeners.size(); i++)
-			listeners[i](str.c_str());
-		OutputDebugString(str.c_str());
-	}
-private:
-	int	overflow(int c)
-	{
-		sync();
-		if (c != EOF)
-		{
-			if (pbase() == epptr())
-			{
-				std::string temp;
-				temp += char(c);
-				writeString(temp);
-			}
-			else
-				sputc(c);
-		}
-		return 0;
-	}
-	int	sync()
-	{
-		if (pbase() != pptr())
-		{
-			int len = int(pptr() - pbase());
-			std::string temp(pbase(), len);
-			writeString(temp);
-			setp(pbase(), epptr());
-		}
-		return 0;
-	}
-};
+            GetModuleFileName(NULL, buf, 1000);
+            std::string path(buf);
+            path = path.substr(0, path.find_last_of('\\') + 1);
+            return path;
+        }
 
-struct CDebugLevel
-{
-	CDebugLevel(int n, char * name) : _debug(n), _name(name) {}
-	int operator ()() { return _debug; }
-	operator int () { return _debug; }
-	operator std::string () { return _name; }
-	int _debug;
-	std::string _name;
-};
+        static std::string Timestamp ( )
+        {
+            SYSTEMTIME st;
 
-__declspec(selectany)  	  CDebugLevel ENTRY      (0, "ENTRY");
-__declspec(selectany)  	  CDebugLevel FMTConnectCmdSimL      (-1, "FMTConnectCmdSimL");
-__declspec(selectany)  	  CDebugLevel LOWERROR   (1, "ERROR");
-__declspec(selectany)  	  CDebugLevel WARNING    (2, "WARN ");
-__declspec(selectany)  	  CDebugLevel INFO       (3, "INFO ");
-__declspec(selectany)  	  CDebugLevel DBUG       (4, "DEBUG");
-__declspec(selectany)  	  CDebugLevel DETAILED   (5, "DETAIL ");
-__declspec(selectany)  	  CDebugLevel HEAVYDEBUG (5, "HDEBUG ");
+            GetLocalTime(&st);
+            char buffer[256];
+            sprintf(buffer, "%4d-%02d-%02d %02d:%02d:%02d.%04d ", st.wYear, st.wMonth,
+                    st.wDay, st.wHour, st.wMinute, st.wSecond, st.wMilliseconds);
+            return buffer;
+        }
 
+        CLogger( )
+        {
+            DebugLevel( ) = 7;
+            filename      = ExeDirectory( ) + "debug.txt";
+            OutputConsole( ) = 0;
+            Timestamping( )  = 0;
+            sDebugString     = "";
+            _nCounter        = 1;
+        }
 
+        ~CLogger( )
+        {
+            if ( DebugFile.is_open( ) )
+            {
+                DebugFile.close( );
+            }
+        }
 
-/**
-Sample use:
-CLogger logger;
-logger.DebugString()=true;
-logger << FMTConnectCmdSimL << "FMTConnectCmdSiml Message1\n"; 
-logger << FMTConnectCmdSimL << "FMTConnectCmdSiml Message2\n"; 
-logger.DebugString()=false;
-logger.Open(::ExeDirectory() + "debug.txt");
-logger << FMTConnectCmdSimL << "FMTConnectCmdSiml Message\n"; 
-logger << DETAILED << "DETAILED Message\n"; 
-logger << INFO << "INFO Message\n"; 
-logger().close();
-*/
+        int &              DebugLevel ( ) { return _debuglevel; }
+        bool &             Timestamping ( ) { return bTimestamp; }
+        std::string &      DebugString ( ) { return sDebugString; }
+        int &              OutputConsole ( ) { return nOutputConsole; }
+        std::ofstream & operator () (void) { return this->DebugFile; }
+        void               Close ( ) { DebugFile.close( ); }
+        void               Open (std::string filename, int bAppend = false)
+        {
+            this->filename = filename;
+            Open(bAppend);
+        }
 
-class CLogger : public basic_debugbuf
-{
-	struct nullstream: std::fstream {
-		nullstream(): std::ios(0),  std::fstream((_Filet *) NULL) {}
-	};
-public:
-	std::string ExeDirectory()
-	{
-		TCHAR buf[1000];
-		GetModuleFileName(NULL, buf, 1000);
-		std::string path(buf);
-		path=path.substr( 0, path.find_last_of( '\\' ) +1 );
-		return path;
-	}
-	CLogger() 
-	{
-		DebugLevel()=7;
-		filename=ExeDirectory() + "debug.txt";
-		//std::cout.rdbuf(&_outputdebugstream);
-		//std::cerr.rdbuf(&_outputdebugstream);
-		OutputConsole()=0;
-		Timestamping()=0;
-		sDebugString="";
-		_nCounter=1;
-	}
-	~CLogger()
-	{
-		if(DebugFile.is_open())
-			DebugFile.close();
-	}
-	
-	int & DebugLevel()				{ return _debuglevel; }
-	bool & Timestamping()			{ return  bTimestamp; }
-	std::string & DebugString()		{ return  sDebugString; }
-	int & OutputConsole()			{ return  nOutputConsole; }
-	std::ofstream & operator()(void) { return this->DebugFile; }
+        void               Open (int bAppend = 0)
+        {
+            int opMode = std::fstream::out;
 
-	void Open(std::string filename, int bAppend=false)
-	{
-		this->filename=filename;
-		Open(bAppend);
-	}
-	void Open(int bAppend=0)
-	{	
-		int opMode = std::fstream::out;
-		if(bAppend)
-			opMode |= std::fstream::app;
+            if ( bAppend )
+            {
+                opMode |= std::fstream::app;
+            }
 
-		DebugFile.open(filename.c_str(), opMode, OF_SHARE_DENY_NONE);
-	}
+            DebugFile.open(filename.c_str( ), opMode, OF_SHARE_DENY_NONE);
+        }
 
-	std::ostream  &operator<<( CDebugLevel level) 
-	{ 
-		std::fstream tmp;
-
-		if( DebugLevel() < (int) level)
-			return this->devnull;
-		if(Timestamping())
-		{
-			return PrintTimestamp(std::cout,level );
-		}
-		//return PrintTimestamp(std::ostream(static_cast<std::streambuf*>( &_outputdebugstream)) ,level);
-
-#if ( _MSC_VER >= 1600)   // 2010
-		return PrintTimestamp(std::ostream(static_cast<std::streambuf*>( &_outputdebugstream)) ,level);
+        void               Message (std::string msg)
+        {
+            if ( OutputConsole( ) )
+            {
+#ifdef WINDOWS
+                OutputDebugString(msg.c_str( ));
 #else
-		return PrintTimestamp(this->DebugFile,level);
+				std::cout << msg.cstr();
 #endif
-	}
-	std::ostream  & PrintTimestamp(std::ostream  & s, CDebugLevel level)
-	{
-		if(Timestamping())
-		{
-			s << Timestamp() << ": ";
-			if(!sDebugString.empty())
-				s << sDebugString << ": ";
+            }
 
-			s << (std::string) level <<  " [" << (int ) _nCounter++ <<  "] ";
-		}
-		return s;
-	} 
-	int LogMessage(std::string msg, int level=-1)
-	{
-		if(level > DebugLevel() )
-			return level;
+            if ( !DebugFile.is_open( ) )
+            {
+                return;
+            }
 
-		if(OutputConsole())
-			OutputDebugString(msg.c_str());
+            if ( Timestamping( ) )
+            {
+                DebugFile << Timestamp( );
+            }
+            DebugFile << msg;
+            DebugFile.flush( );
+        }
 
-		if(!DebugFile.is_open())
-			return level;
-		if(Timestamping())
-			DebugFile << Timestamp();
-		DebugFile << msg;
-		// LOGLISTENERS is for notifying windows or other listeners
-#ifdef LOGLISTENERS
-		for(int i=0; i< listeners.size(); i++)
-			listeners[i](msg.c_str());
+        void               logmessage (const char *file, int line, LogLevel level, const char *fmt,
+                                       ...)
+        {
+            if ( level > DebugLevel( ) )
+            {
+                return;
+            }
+
+            va_list ap;
+            va_start(ap, fmt);
+
+            int         m;
+            int         n = strlen(fmt) + 1028;
+            std::string tmp(n, '0');
+
+            // Kind of a bogus way to insure that we don't
+            // exceed the limit of our buffer
+            while ( ( m = _vsnprintf(&tmp[0], n - 1, fmt, ap) ) < 0 )
+            {
+                n = n + 1028;
+                tmp.resize(n, '0');
+            }
+
+            va_end(ap);
+            tmp = tmp.substr(0, m);
+
+            if ( OutputConsole( ) )
+            {
+#ifdef WINDOWS
+                OutputDebugString(tmp.c_str( ));
+#else
+				std::cout << tmp.cstr();
 #endif
-		DebugFile.flush();
-		return level;
-	}
-	int Fatal(std::string msg){ return LogMessage(msg,FMTConnectCmdSimL); }
-	int Error(std::string msg){ return LogMessage(msg,LOWERROR); }
-	int Warning(std::string msg){return LogMessage(msg,WARNING); }
-	int Info(std::string msg){ return LogMessage(msg,INFO); }
-	int Status(std::string msg){return LogMessage(msg,FMTConnectCmdSimL); }
+			}
 
-	/////////////////////////////////////////////////////////////////////////////
-	//2012-12-22T03:06:56.0984Z
-	static std::string Timestamp()
-	{
-		SYSTEMTIME st;
-		GetLocalTime(&st);
-	
-		return StdStringFormat("%4d-%02d-%02d %02d:%02d:%02d.%04d ", st.wYear, st.wMonth, st.wDay, st.wHour, 
-			st.wMinute, st.wSecond, st.wMilliseconds);
-		//return (LPCSTR) COleDateTime::GetCurrentTime().Format();
-	}
-public:
-	basic_debugbuf _outputdebugstream;
-	std::ofstream DebugFile;
+            if ( !DebugFile.is_open( ) )
+            {
+                return;
+            }
+
+            if ( Timestamping( ) )
+            {
+                DebugFile << Timestamp( );
+            }
+            DebugFile << tmp;
+            DebugFile.flush( );
+        }
+
 protected:
-	int _debuglevel;
-	bool bTimestamp;
-	std::string sDebugString; 
-	int nOutputConsole;
-	int nDebugReset;
-	std::string filename;
-	nullstream devnull;
-	int _nCounter;
+        std::ofstream      DebugFile;
+        int                _debuglevel;
+        bool               bTimestamp;
+        std::string        sDebugString;
+        int                nOutputConsole;
+        int                nDebugReset;
+        std::string        filename;
+        int                _nCounter;
+    };
+}
+__declspec(selectany) Logging::CLogger GLogger;
 
-#ifdef LOGLISTENERS
-	/** 
-	void CMainFrame::MutexStep(std::string s)
-	{
-		OutputDebugString(s.c_str());
-	}
-	...
-		m_view.AddListener("Step", boost::bind(&CMainFrame::MutexStep, this,_1))
-	*/
-	public:
-	void AddListener(FcnLognotify notify)
-	{
-		_outputdebugstream.listeners.push_back(notify);
-	}
-#endif
-};
-__declspec(selectany)  CLogger GLogger;
+#define logAbort(fmt, ...)                                            \
+    ::GLogger.logmessage(__FILE__, __LINE__, Logging::LOG_FATAL, fmt, \
+                         ## __VA_ARGS__);                             \
+    ExitProcess(-1)
+
+#define logFatal(fmt, ...)                                            \
+    ::GLogger.logmessage(__FILE__, __LINE__, Logging::LOG_FATAL, fmt, \
+                         ## __VA_ARGS__)
+
+#define logStatus(fmt, ...)                                           \
+    ::GLogger.logmessage(__FILE__, __LINE__, Logging::LOG_FATAL, fmt, \
+                         ## __VA_ARGS__)
+
+#define logError(fmt, ...)                                            \
+    ::GLogger.logmessage(__FILE__, __LINE__, Logging::LOG_ERROR, fmt, \
+                         ## __VA_ARGS__)
+
+#define logWarn(fmt, ...)                                            \
+    ::GLogger.logmessage(__FILE__, __LINE__, Logging::LOG_WARN, fmt, \
+                         ## __VA_ARGS__)
+
+#define logInform(fmt, ...)                                          \
+    ::GLogger.logmessage(__FILE__, __LINE__, Logging::LOG_INFO, fmt, \
+                         ## __VA_ARGS__)
+
+#define logDebug(fmt, ...)                                            \
+    ::GLogger.logmessage(__FILE__, __LINE__, Logging::LOG_DEBUG, fmt, \
+                         ## __VA_ARGS__)
+
+// logTrace is only used in debugging mode
+//#ifdef DEBUG
+#define logTrace(fmt, ...)                                            \
+    ::GLogger.logmessage(__FILE__, __LINE__, Logging::LOG_FATAL, fmt, \
+                         ## __VA_ARGS__)
+
+//#else
+//#define logTrace(fmt, ...)
+//#endif
+#define LOG_ONCE(X)                                   \
+    {                                                 \
+        static bool __log_stream_once__hit__ = false; \
+        if ( !__log_stream_once__hit__ ) {            \
+            __log_stream_once__hit__ = true;          \
+            X;                                        \
+        }                                             \
+    }
+// Throttle logging has not been tested. 
+// Especially now as seconds from epoch.
+// seconds since 0,0,2000 
+inline double getNow()
+{
+
+  time_t timer;
+  struct tm y2k = {0};
+
+  y2k.tm_hour = 0;   y2k.tm_min = 0; y2k.tm_sec = 0;
+  y2k.tm_year = 100; y2k.tm_mon = 0; y2k.tm_mday = 1;
+
+  time(&timer);  /* get current time; same as: timer = time(NULL)  */
+
+  return difftime(timer,mktime(&y2k)); // in seconds
+
+}
 
 
+#define LOG_THROTTLE(secs, X)                                   \
+    {                                                 \
+	    static double last_hit = 0.0;                 \
+        static double now = getNow(); \
+        if (last_hit + secs <= now)) {            \
+            last_hit = now;                    \
+            X;                                        \
+        }                                             \
+    }

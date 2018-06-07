@@ -1,0 +1,31 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MTCFanucAdapter", "MTCFanucAgent.vcxproj", "{A1F3E73D-1B1C-41AF-BF07-7F865768029B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyCustomAction", "MyCustomAction\MyCustomAction.vcxproj", "{1BB01C0A-177C-475D-AB2F-223C8FB22E87}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "FanucLanAdapterSetup", "FanucLanAdapterSetup\FanucLanAdapterSetup.vdproj", "{D9CB420E-55BE-4A42-949B-ED37DEF164D2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1F3E73D-1B1C-41AF-BF07-7F865768029B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A1F3E73D-1B1C-41AF-BF07-7F865768029B}.Debug|Win32.Build.0 = Debug|Win32
+		{A1F3E73D-1B1C-41AF-BF07-7F865768029B}.Release|Win32.ActiveCfg = Release|Win32
+		{A1F3E73D-1B1C-41AF-BF07-7F865768029B}.Release|Win32.Build.0 = Release|Win32
+		{1BB01C0A-177C-475D-AB2F-223C8FB22E87}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1BB01C0A-177C-475D-AB2F-223C8FB22E87}.Debug|Win32.Build.0 = Debug|Win32
+		{1BB01C0A-177C-475D-AB2F-223C8FB22E87}.Release|Win32.ActiveCfg = Release|Win32
+		{1BB01C0A-177C-475D-AB2F-223C8FB22E87}.Release|Win32.Build.0 = Release|Win32
+		{D9CB420E-55BE-4A42-949B-ED37DEF164D2}.Debug|Win32.ActiveCfg = Debug
+		{D9CB420E-55BE-4A42-949B-ED37DEF164D2}.Debug|Win32.Build.0 = Debug
+		{D9CB420E-55BE-4A42-949B-ED37DEF164D2}.Release|Win32.ActiveCfg = Release
+		{D9CB420E-55BE-4A42-949B-ED37DEF164D2}.Release|Win32.Build.0 = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

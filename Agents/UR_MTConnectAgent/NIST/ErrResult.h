@@ -3,14 +3,12 @@
 #include <boost/filesystem.hpp>
 #include <string>
 
-//
 
 /**
  * @brief The E class in conjunction with a C++ preprocessor macro
  * is a class that throws a run_time expection, if an HRESULT failed.
  * So, it checks every integer result and throws an error string if the result
- * is
- * not zero (or S_OK in MSVC).
+ * is not zero (or S_OK in MSVC).
  *
  * This is useful as it is often hard to check each line of code for an error.
  * This can be especially helful if you are in a debugger that can break on
@@ -46,17 +44,17 @@ public:
         if ( hr != S_OK )
         {
             std::string myerror = strprintf<HRESULT>("%x:", hr) + error_str;
-#ifdef _DEBUG
-            OutputDebugString(myerror.c_str( ));
-            assert(0);
-#else
-            throw std::runtime_error(myerror_str.c_str( ));
-#endif
+//#ifdef _DEBUG
+//            OutputDebugString(myerror.c_str( ));
+//            assert(0);
+//#else
+//            throw std::runtime_error(myerror_str.c_str( ));
+//#endif
         }
     }
 
 protected:
-    std::string error_str;                                 // !< full error string
+    std::string error_str;                                 //!< full error string
 
     /**
      * @brief strprintf bogus way of printing out a number.

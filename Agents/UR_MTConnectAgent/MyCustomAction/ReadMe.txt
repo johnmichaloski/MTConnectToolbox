@@ -1,4 +1,32 @@
 
+Fri 10/20/2017_11:15:05.47  
+
+Agent crashes
+  C:\Users\michalos\Documents\GitHub\Agents\UR_MTConnectAgent\MTConnectAgent\agent\agent.cpp(75):        sLogger << LFATAL << "Error loading xml configuration: " + configXmlPath;
+  C:\Users\michalos\Documents\GitHub\Agents\UR_MTConnectAgent\MTConnectAgent\agent\agent.cpp(76):        sLogger << LFATAL << "Error detail: " << e.what( );
+  C:\Users\michalos\Documents\GitHub\Agents\UR_MTConnectAgent\MTConnectAgent\agent\agent.cpp(186):                sLogger << LFATAL << "Duplicate DataItem id " << d->getId( )
+                sLogger << LFATAL << "Duplicate DataItem id " << d->getId( )
+                        << " for device: " << ( *device )->getName( ) << " and data item name: "
+                        << d->getName( );
+                exit(1);  
+ C:\Users\michalos\Documents\GitHub\Agents\UR_MTConnectAgent\MTConnectAgent\agent\agent.cpp(219):        sLogger << LFATAL << "Cannot start server: " << e.what( );
+				\        sLogger << LFATAL << "Cannot start server: " << e.what( );
+        exit(1);
+
+  C:\Users\michalos\Documents\GitHub\Agents\UR_MTConnectAgent\MTConnectAgent\agent\config.cpp(138):        sLogger << LFATAL << "Agent failed to load: " << e.what( );
+       configureLogger( );
+        ifstream file(mConfigFile.c_str( ));
+        loadConfig(file);
+    }
+    catch ( std::exception & e )
+    {
+        OutputDebugString("Agent failed to load");
+        OutputDebugString(e.what( ));
+
+        sLogger << LFATAL << "Agent failed to load: " << e.what( );
+
+
+
 $Type=[BUTTON1]$IpValue=[EDITA1]$HttpPort=[EDITA2]$Target=[TARGETDIR]$Config=[EDITA3]
 
 C:\Users\michalos\AppData\Local\MTConnect\Ata\ATA_4_Status.tsv
@@ -112,3 +140,45 @@ public:
 	WriteFile(path+"MTCFanucAgent.ini",contents);
 
 	status="Read agent.cfg";
+
+					// holds address info for socket to connect to
+				struct addrinfo *result = NULL;
+				struct addrinfo	*ptr = NULL;
+				struct addrinfo	hints;
+
+				// set address info
+				ZeroMemory( &hints, sizeof(hints) );
+				hints.ai_family = AF_UNSPEC;
+				hints.ai_socktype = SOCK_STREAM;
+				hints.ai_protocol = IPPROTO_TCP;  //TCP connection!!!
+
+				//resolve server address and port
+				iResult = getaddrinfo(mHost.c_str( ), 30002, &hints, &result);
+
+				// Attempt to connect to an address until one succeeds
+				for(ptr=result; ptr != NULL ;ptr=ptr->ai_next) {
+
+					// Create a SOCKET for connecting to server
+					server = socket(ptr->ai_family, ptr->ai_socktype,
+						ptr->ai_protocol);
+
+					if (server == INVALID_SOCKET) {
+						printf("socket failed with error: %ld\n", WSAGetLastError());
+					}
+
+					// Connect to server.
+					iResult = connect( server, ptr->ai_addr, (int)ptr->ai_addrlen);
+					if (iResult == SOCKET_ERROR)
+					{
+						closesocket(server);
+						int errnum = WSAGetLastError( );
+						logError("Error %s connecting to host %s\n",
+							WhatIsWSAError(errnum).c_str( ), mHost.c_str( ));
+
+					}
+					else
+					{
+						mConnected.set(true);
+					}
+				}
+#if 0

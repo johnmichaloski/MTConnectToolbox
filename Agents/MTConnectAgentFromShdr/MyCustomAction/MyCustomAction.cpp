@@ -237,7 +237,7 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 		RunSynchronousProcessUAC("sc.exe", " delete "+ ServiceName, "");
 
 		SetFilePermission(path+"Agent.log") ;
-		SetFilePermission(path+"Agent.exe") ;
+		SetFilePermission(path+"agent.exe") ;
 		SetFilePermission(path+"Agent.cfg") ;
 		SetFilePermission(path+"Config.ini") ;
 		SetFilePermission(path+"debug.txt") ;
@@ -260,6 +260,7 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 		}
 		*/
 
+#if 0
 		std::vector<std::string> ips=TrimmedTokenize(ipaddr,",");
 		std::vector<std::string> devs=TrimmedTokenize(devices,",");
 		std::vector<std::string> ports=TrimmedTokenize(shdrports,",");
@@ -274,7 +275,7 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 		_xmlconfig.WriteDevicesFile("Devices.xml", path, xmldevices );
 
 		_xmlconfig.WriteAgentCfgFile("Agent.cfg", "Devices.xml", path, httpPort,	devs, ips,  ports,ServiceName);
-		
+#endif
 		//::MessageBox(NULL,(path+"superuser.bat").c_str(), "ALERT", MB_OK);
 		//RunSynchronousProcess(path+"superuser.bat","");
 //		::Sleep(4000);
@@ -285,7 +286,10 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 		//RunSynchronousProcess(path+"Agent.exe", " install");
 		//RunSynchronousProcessUAC("Agent.exe", " install", path);
 		//RunSynchronousProcessUAC("Install.bat", "", path);
-		RunSynchronousProcessUAC("sc.exe", " create "+ ServiceName + " start= auto binpath= \"" + path+"Agent.exe\"", "");
+
+		// This works
+		//RunSynchronousProcessUAC("sc.exe", " create "+ ServiceName + " start= auto binpath= \"" + path+"Agent.exe\"", "");
+
 		//RunSynchronousProcess(path+"Install.bat","");
 		DbgOut("sc start MTCAgent \n");
 		//RunSynchronousProcess("sc.exe", " start MTCAgent");

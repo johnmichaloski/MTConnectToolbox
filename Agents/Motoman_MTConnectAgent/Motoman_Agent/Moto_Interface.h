@@ -34,12 +34,6 @@ BODY
 
 namespace moto
 {
-	struct simple_message_header ;
-	struct joint_traj_pt_state_message ;
-	struct robot_status_message ;
-	struct joint_feedback_message;
-
-
 	// Used to determine how many joint values to read per loop
 	extern int numjoints;
 

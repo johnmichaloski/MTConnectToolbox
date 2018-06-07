@@ -22,22 +22,22 @@
 class CGlobals
 {
 public:
-    int & mDebug;                                          // !<  reference to logging debug level
-    int mQueryServer;                                      // !<  global query rate of client device in milliseconds,
+    int & mDebug;                                          //!<  reference to logging debug level
+    int mQueryServer;                                      //!<  global query rate of client device in milliseconds,
                                                            // !can be overriden
-    int mServerRate;                                       // !<  global rate of each adapter in milliseconds, can be
+    int mServerRate;                                       //!<  global rate of each adapter in milliseconds, can be
                                                            // !overriden
     std::string
-        mInifile;                                          // !< path of ini file to read for agent/adapter extensions
+        mInifile;                                          //!< path of ini file to read for agent/adapter extensions
     std::string
-        mCfgFile;                                          // !<  name of agent configuration file (typically agent.cfg)
-    std::string mDevicesFile;                              // !<  name of devices file (typically devices.xml)
-    std::string mHttpPort;                                 // !<  port that agent listens to for http gets
-    double mVersion;                                       // !<  version of the ur controller e.g., 1.8 3.1 3.4
-    std::string mServerName;                               // !<  name of service for Windows SCM
-    std::string msNewConfig;                               // !< flag read from config.ini to determine if new
+        mCfgFile;                                          //!<  name of agent configuration file (typically agent.cfg)
+    std::string mDevicesFile;                              //!<  name of devices file (typically devices.xml)
+    std::string mHttpPort;                                 //!<  port that agent listens to for http gets
+    double mVersion;                                       //!<  version of the ur controller e.g., 1.8 3.1 3.4
+    std::string mServerName;                               //!<  name of service for Windows SCM
+    std::string msNewConfig;                               //!< flag read from config.ini to determine if new
                                                            // !device.xml file to ge generated.
-    int mbResetAtMidnight;                                 // !<  flag to determine if agent will reset at midnight
+    bool mbResetAtMidnight;                                //!<  flag to determine if agent will reset at midnight
 
     /**
      * @brief CGlobals initializes most variables.
@@ -54,7 +54,7 @@ public:
 
         // This works becuase File does not use argc/argv for path
         mInifile     = File.ExeDirectory( ) + "Config.ini";
-        mCfgFile     = File.ExeDirectory( ) + "Afgent.cfg";
+        mCfgFile     = File.ExeDirectory( ) + "Agent.cfg";
         mDevicesFile = File.ExeDirectory( ) + "Devices.xml";
     }
 };

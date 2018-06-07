@@ -15,9 +15,10 @@ See NIST Administration Manual 4.09.07 b and Appendix I.
 */
 
 #pragma once
+#ifndef #ifdef C11
+#error Only C11 support for RCSTimer.h
+#endif
 
-// #include <boost/chrono.hpp>
-// #include <boost/thread.hpp>
 #include <chrono>
 #include <condition_variable>
 #include <mutex>

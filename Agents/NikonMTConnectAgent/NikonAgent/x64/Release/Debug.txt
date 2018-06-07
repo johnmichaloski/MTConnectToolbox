@@ -1,4 +1,6 @@
-2016-11-17 16:49:29.0923 Start Nikon Agent
-2016-11-17 16:49:29.0938 Main
-2016-11-17 16:49:29.0946 Return Main
-2016-11-17 16:49:29.0948 Abnormal exception end to  Nikon Agent
+2017-02-07 14:44:33.0249 Start Nikon Agent
+2017-02-07 14:44:33.0264 Main
+2017-02-07 14:44:33.0265 initialize
+2017-02-07 14:44:33.0413 Start
+2017-02-07 14:44:33.0413 Agent will Reset at  Wednesday, February 08, 2017 00:00:01
+2017-02-07 14:44:33.0413 Agent will Reset   9.2578 hours::min from now

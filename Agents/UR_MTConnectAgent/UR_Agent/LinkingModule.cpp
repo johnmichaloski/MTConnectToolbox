@@ -34,7 +34,7 @@
 #define MTCLIBPATH(X)                                     \
     "C:\\Users\\michalos\\Documents\\GitHub\\Agents\\UR_MTConnectAgent\\MTConnectAgent\\win32\\libxml2-2.7.7\\lib\\" ## X
 #define BOOSTLIBPATH(X) \
-    "C:\\Program Files\\NIST\\src\\boost_1_54_0\\vc10\\stagex64\\lib\\" ## X
+    "C:\\Program Files\\NIST\\src\\boost_1_54_0\\vc10\\stagex64\\lib\\"##X
 #endif
 
 #if defined( WIN64 ) && defined( _DEBUG )
@@ -42,12 +42,16 @@
 #pragma comment(lib, MTCLIBPATH("libxml2_64d.lib"))
 #pragma comment(lib, "libboost_system-vc100-mt-sgd-1_54.lib")
 #pragma comment(lib, "libboost_thread-vc100-mt-sgd-1_54.lib")
+#pragma comment(lib, BOOSTLIBPATH("libboost_date_time-vc100-mt-sgd-1_54.lib"))
+#pragma comment(lib, BOOSTLIBPATH("libboost_regex-vc100-mt-sgd-1_54.lib"))
 
 #elif !defined( _DEBUG ) && defined( WIN64 )
 #pragma message("RELEASE x64")
 #pragma comment(lib, MTCLIBPATH("libxml2_64.lib"))
-#pragma comment(lib, "libboost_thread-vc100-mt-s-1_54.lib")
-#pragma comment(lib, "libboost_system-vc100-mt-s-1_54.lib")
+#pragma comment(lib, BOOSTLIBPATH("libboost_thread-vc100-mt-s-1_54.lib"))
+#pragma comment(lib, BOOSTLIBPATH("libboost_system-vc100-mt-s-1_54.lib"))
+#pragma comment(lib, BOOSTLIBPATH("libboost_date_time-vc100-mt-sgd-1_54.lib"))
+#pragma comment(lib, BOOSTLIBPATH("libboost_regex-vc100-mt-sgd-1_54.lib"))
 
 #elif defined( _DEBUG ) && defined( WIN32 )
 #pragma message("DEBUG x32")

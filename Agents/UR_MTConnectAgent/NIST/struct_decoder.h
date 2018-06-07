@@ -10,6 +10,7 @@
 // or intended.
 
 #include <stdarg.h>
+#include <algorithm>
 #define USE_MATH_DEFINES
 #include <math.h>
 #include <limits>
@@ -34,43 +35,39 @@ typedef boost::mutex MUTEX;
 //#define SCOPED_LOCK   boost::mutex::scoped_lock lock(*(the_mutex.get()));
 #define SCOPED_LOCK
 
+#define STR(x) #x
+
+/////////////////////////////////////////
 enum MESSAGE_MAP_TYPE { MESSAGE_MAP_THIS = 1, MESSAGE_MAP_BASE = 2 };
 #define INFINITY std::numeric_limits<float>::infinity()
 #define VMAX  std::numeric_limits<float>::infinity()
 #define VMIN  (-std::numeric_limits<float>::infinity())
 
 struct PropertyMap {
-	MESSAGE_MAP_TYPE type;
-	char *mName;
-	size_t mOffset;
-	int mSize;
-	bool bIsArray;
-	int mElementSize;
-	char *mFormat;
-	// Used for reference to base class...
+	MESSAGE_MAP_TYPE type; //!< type of  element definition
+	char *mName; //!< name  of  element 
+	size_t mOffset; //!< offset of  elementin class hierarchy
+	size_t mSize; //!< positive size of  element either single or array
+	bool bIsArray;  //!< flag to indicate array, where 1 is yes.
+	size_t mElementSize; //!< size of one element in array
+	char *mFormat; //!< format of printing element
 #ifdef C11
 	std::function<PropertyMap *()> mfPtrPropMap;
 #else
 	boost::function<PropertyMap *()> mfPtrPropMap;
 #endif
-	int *mArraySize;
+	int *mArraySize; //!< pointer to int containing size of array
 #ifdef C11
 	std::function<std::string(int)> mfEnumDecode;
 #else
 	boost::function<std::string(int)> mfEnumDecode;
 #endif
-	float mMinVer;
-	float mMaxVer;
-	//PropertyMap()
-	//{
-	//	type=MESSAGE_MAP_THIS;
-	//	mMinVer=-INFINITY;
-	//	mMaxVer=INFINITY;
-	//}
+	float mMinVer; //!<  min vesion where this element is defined
+	float mMaxVer; //!< max vesion where this element is defined
 
+	// FYI Cannot have constructor for static initialization
 };
 
-#define Q(x) #x
 
 // https://stackoverflow.com/questions/13180842/how-to-calculate-offset-of-a-class-member-at-compile-time
 //  offsetOf(&X::c);
@@ -79,7 +76,7 @@ template <typename T, typename U> size_t offsetOf(U T::*member) {
 }
 
 #define BEGIN_SERIAL_PROP_MAP(X)                                               \
-	static const char *msgname() { return Q(X); }                                \
+	static const char *msgname() { return STR(X); }                                \
 	PropertyMap *GetPropertyMap() \
 {                                           \
 	typedef X MyClass;                                                         \
@@ -88,14 +85,14 @@ template <typename T, typename U> size_t offsetOf(U T::*member) {
 
 #define PROP_SERIAL_ENTRY(mName, pformat)                                      \
 	\
-{MESSAGE_MAP_THIS, Q(mName), offsetOf(&MyClass::mName),                        \
+{MESSAGE_MAP_THIS, STR(mName), offsetOf(&MyClass::mName),                        \
 	sizeof(mName),    0,        0,                                           \
 	pformat,          0,        0,\
 	0,               -INFINITY, INFINITY},
 
 #define PROP_SERIAL_ENTRY_VERSION(mName, pformat,min,max)                                      \
 	\
-{MESSAGE_MAP_THIS, Q(mName), offsetOf(&MyClass::mName),                        \
+{MESSAGE_MAP_THIS, STR(mName), offsetOf(&MyClass::mName),                        \
 	sizeof(mName),    0,        0,                                           \
 	pformat,          0,        0,\
 	0,         (float) min,  (float)  max},
@@ -104,14 +101,14 @@ template <typename T, typename U> size_t offsetOf(U T::*member) {
 // Divde sizeof by size to get size of item
 #define PROP_SERIAL_ENTRY_ARRAY(mName, mSize, pformat)                         \
 	\
-{MESSAGE_MAP_THIS, Q(mName), offsetOf(&MyClass::mName),                        \
+{MESSAGE_MAP_THIS, STR(mName), offsetOf(&MyClass::mName),                        \
 	sizeof(mName),    1,        mSize,                                       \
 	pformat,          0,        0,\
 	0,               -INFINITY, INFINITY},
 
 #define PROP_SERIAL_ENTRY_VARARRAY(mName, mSize, pformat, var)                 \
 	\
-{MESSAGE_MAP_THIS, Q(mName), offsetOf(&MyClass::mName),                        \
+{MESSAGE_MAP_THIS, STR(mName), offsetOf(&MyClass::mName),                        \
 	sizeof(mName),    1,        mSize,                                       \
 	pformat,          0,        var,\
 	0,               -INFINITY, INFINITY},
@@ -119,7 +116,7 @@ template <typename T, typename U> size_t offsetOf(U T::*member) {
 #define PROP_SERIAL_ENTRY_BASE(mName)                                          \
 	\
 {MESSAGE_MAP_BASE,                                                             \
-	Q(mName),                                                                \
+	STR(mName),                                                                \
 	0,                                                                       \
 	0,                                                                       \
 	0,                                                                       \
@@ -137,13 +134,13 @@ template <typename T, typename U> size_t offsetOf(U T::*member) {
 	return pPropMap;                                                             \
 	\
 }
-
+namespace Util
+{
 /**
-\brief printf like string formatting
-
-\param[in] *fmt : format of printf
-\param[in]  varargs
-\result     formatted string
+@brief printf like string formatting
+@param[in] *fmt : format of printf
+@param[in]  varargs
+@result     formatted string
 */
 inline std::string StrFormat(const char *fmt, ...) {
 	va_list argptr;
@@ -158,40 +155,17 @@ inline std::string StrFormat(const char *fmt, ...) {
 	va_end(argptr);
 	return tmp.substr(0, m);
 }
-
+}
 inline bool is_bigendian() {
 	static const int bsti = 1; // Byte swap test integer
 	return ((*(char *)&bsti) == 0);
 }
-/**
-\brief In-place swapping of bytes
+void *swapbytes(void *_object, size_t _size);
 
-\param[in/out] *object : memory to swap in-place
-\param[in]     _size   : length in bytes
-*/
-inline void *swapbytes(void *_object, size_t _size) {
-	long abcd = 0xabcd;
-	// network order is big endian
-	if (is_bigendian())
-		return _object; // no swap necessary?
-	unsigned char *start, *end;
-
-	if (_size == 1)
-		return _object;
-
-	for (start = (unsigned char *)_object, end = start + _size - 1; start < end;
-		++start, --end) {
-			unsigned char swap = *start;
-			*start = *end;
-			*end = swap;
-	}
-	return _object;
-}
 
 /**
 * @brief bscopy byte copy from to given size. Will swap bytes from network byte
-* order
-* into local byte order
+* order into local byte order
 * @param to  char address of to
 * @param from char address of from
 * @param mSize in chars of bytes to copy
@@ -206,41 +180,41 @@ inline size_t bscopy(char *to, char *from, size_t size) {
 // https://en.wikipedia.org/wiki/Curiously_recurring_template_pattern
 /**
 * @brief The struct_decoder struct is useful for reading/writing network byte
-* streams.
-* It uses the preprocessor definition to define a property table describing
-* each
-* entry so they can easily be read/write/print including byte swapping if
-* required.
-* Uses the Curiously recurring template pattern to handle accessing the
-* outermost property
-* table.
+* streams.It uses the preprocessor definition to define a property table 
+* describing each entry so they can easily be read/write/print including
+* byte swapping if required. Uses the Curiously recurring template pattern
+* to handle accessing the outermost property table.
 */
 template <class T> struct struct_decoder 
 {
 //	boost::shared_mutex  mMutex; 	//!<  pointer to mutex to make read/write bytes thread safe
 	bool bHasData; //!< flag to indicate that byte stream has been read
-	static float & version() {
-		static float sversion = 0.0;
-		return sversion;
+	float mVersion;
+	//static bool bIgnoreSwapFlag;
+	float  version() 
+	{
+		T *pOuterThis = static_cast<T *>(this);
+		return pOuterThis->mVersion;
 	}
 	/**
 	* @brief struct_decoder<T> empty constructor that creates mutex and set has
-	* data to false.
-	* Does not intialize any data.
+	* data to false. Does not intialize any data.
 	*/
 	struct_decoder<T>()
 	{
+		mVersion=3.4f;
 		bHasData = false;
+		//bIgnoreSwapFlag=false;
 	}
 	/**
 	* @brief msglength scans through property table to dynamically compute
-	* message size.
+	* message size. Skips  elements out within version range.
 	* @return  size
 	*/
 	size_t	msglength()
 	{
 //			boost::shared_lock< boost::shared_mutex > lock(mMutex);
-			int length = 0;
+			size_t length = 0;
 			PropertyMap *props = static_cast<T *>(this)->GetPropertyMap();
 			for (size_t i = 0; props[i].mName != NULL; i++) 
 			{
@@ -253,13 +227,38 @@ template <class T> struct struct_decoder
 			}
 			return length;
 	}
-
+	/**
+	* @brief isValid scans through property table to find matching name.
+	* If found, checks to see if  element is valid given a  version.
+	* If valid at given version, return true.
+	* If not found returns false.
+	* @param name  name of property to check
+	* @param versionnum  version number to check against
+	* @return  true if valid
+	*/
+	bool	isValid(std::string name, float versionnum)
+	{
+			PropertyMap *props = static_cast<T *>(this)->GetPropertyMap();
+			for (size_t i = 0; props[i].mName != NULL; i++) 
+			{
+				// Assume character case significant
+				if(name == props[i].mName)
+				{
+					if(props[i].mMinVer<= versionnum &&   versionnum <= props[i].mMaxVer)
+						return true;
+					return false;
+				}
+			}
+			// Could not find name
+			return false;
+	}
 	/**
 	* @brief read transfers the buffer contents into the items as defined by
 	* the property table for the contained structure.
 	* @param inbuf  a signed or unsigned character array of bytes
 	*/
-	template <typename U> void read(U inbuf) 
+	template <typename U> 
+	void read(U inbuf) 
 	{
 //		boost::shared_lock< boost::shared_mutex > lock(mMutex);
 		bHasData = true;
@@ -298,6 +297,10 @@ template <class T> struct struct_decoder
 					// This is actual size of array, not max amount
 					// Should check less that allocated array
 					m = (*props[i].mArraySize) * props[i].mElementSize;
+
+					// Check less that allocated array
+					//m=std::min<size_t>(m, props[i].mSize); // assume not vector pointer
+
 					bVector = true;
 				}
 
@@ -335,7 +338,7 @@ template <class T> struct struct_decoder
 	{
 //		boost::unique_lock< boost::shared_mutex > lock(mMutex);
 
-		// FIXME: add lenth of outbuf and assert length>msglength
+		// FIXME: add length of outbuf and assert length>msglength
 
 		char *pThis = (char *)this; // assume consecutive ordering classes
 		PropertyMap *props = static_cast<T *>(this)->GetPropertyMap();
@@ -403,26 +406,26 @@ template <class T> struct struct_decoder
 		std::string format = p.mFormat;
 		if (format == "%d") {
 			int32_t *dptr = (int32_t *)ptr;
-			return StrFormat("%d", *dptr);
+			return Util::StrFormat("%d", *dptr);
 		} else if (format == "%x") {
 			int32_t *dptr = (int32_t *)ptr;
-			return StrFormat("0x%x", *dptr);
+			return Util::StrFormat("0x%x", *dptr);
 		} else if (format == "%f") {
 			float *fptr = (float *)ptr;
-			return StrFormat("%f", *fptr);
+			return Util::StrFormat("%f", *fptr);
 		} else if (format == "%lf") {
 			double *fptr = (double *)ptr;
-			return StrFormat("%f", *fptr);
+			return Util::StrFormat("%f", *fptr);
 		} else if (format == "%c") {
 			char *fptr = (char *)ptr;
-			return StrFormat("%d", (int)*fptr);
+			return Util::StrFormat("%d", (int)*fptr);
 		} else if (format == "%s") {
 			std::string s((char *)ptr, p.mSize); // maynot have zero terminator
 			// char * fptr = (char *) ptr;
-			return StrFormat("%s", s.c_str());
+			return Util::StrFormat("%s", s.c_str());
 		} else if (format == "%llu") {
 			uint64_t *fptr = (uint64_t *)ptr;
-			return StrFormat("%llu", *fptr);
+			return Util::StrFormat("%llu", *fptr);
 		}
 		return "";
 	}
@@ -440,7 +443,7 @@ template <class T> struct struct_decoder
 		PropertyMap *props = static_cast<T *>(this)->GetPropertyMap();
 		char *pThis = (char *)this;
 		std::string tmp;
-		tmp += StrFormat("%s\n", static_cast<T *>(this)->msgname());
+		tmp += Util::StrFormat("%s\n", static_cast<T *>(this)->msgname());
 		for (size_t i = 0; props[i].mName != NULL; i++) 
 		{
 			// Skip this entry if not contained in the assigned version
@@ -448,7 +451,7 @@ template <class T> struct struct_decoder
 				continue;
 
 
-			tmp += StrFormat("\t%s = ", props[i].mName);
+			tmp += Util::StrFormat("\t%s = ", props[i].mName);
 			if (!props[i].bIsArray) {
 				tmp += get_value(props[i], pThis + props[i].mOffset);
 			} else {
@@ -463,8 +466,11 @@ template <class T> struct struct_decoder
 
 				if (props[i].mArraySize != NULL) {
 					// This is actual size of array, not max amount
-					// Should check less that allocated array
 					m = (*props[i].mArraySize) * props[i].mElementSize;
+
+					// Check less that allocated array
+					//m=std::min<size_t>(m, props[i].mSize);
+
 					bVector = true;
 				}
 				for (size_t j = 0; j < m; j = j + n) {
@@ -485,11 +491,51 @@ template <class T> struct struct_decoder
 		PropertyMap *props = static_cast<T *>(this)->GetPropertyMap();
 		std::string tmp;
 		for (size_t i = 0; props[i].mName != NULL; i++) {
-			tmp += StrFormat("Name = %s Addr=0x%d Size = %d\n", props[i].mName,
-				props[i].mOffset, props[i].mSize);
+			tmp += Util::StrFormat("Name = %s Addr=0x%d Size = %d MinVer=%4.2f  MaxVer=%4.2f\n", props[i].mName,
+				props[i].mOffset, props[i].mSize,props[i].mMinVer,props[i].mMaxVer);
 		}
 		return tmp;
 	}
+	static bool bIgnoreSwapFlag;
 };
+
+// Special class definition to override NON Network endianess
+template <class T> 
+__declspec(selectany) bool struct_decoder<T>::bIgnoreSwapFlag=false;
+class byteorder_decoder: public struct_decoder<byteorder_decoder>{};
+//extern bool & skip_swap();
+// bool & skip_swap() { 
+//	static bool bSkip=is_bigendian();
+//	return bSkip; 
+//}
+
+
+/**
+@brief In-place swapping of bytes
+@param[in/out] *object : memory to swap in-place
+@param[in]     _size   : length in bytes
+*/
+inline void *swapbytes(void *_object, size_t _size) {
+	long abcd = 0xabcd;
+
+	// network order is big endian
+	//bool bSkipSwap = byteorder_decoder::bIgnoreSwapFlag;
+	if (byteorder_decoder::bIgnoreSwapFlag)
+		return _object; // no swap necessary?
+
+	unsigned char *start, *end;
+
+	if (_size == 1)
+		return _object;
+
+	for (start = (unsigned char *)_object, end = start + _size - 1; start < end;
+		++start, --end) {
+			unsigned char swap = *start;
+			*start = *end;
+			*end = swap;
+	}
+	return _object;
+}
+
 #pragma pop_macro("SCOPED_LOCK")
 #endif // MACROS_H

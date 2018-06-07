@@ -32,12 +32,11 @@
 #include <atlstr.h>
 #include <comdef.h>
 #include <string>
-#include <atlapp.h>
-#include <atldlgs.h>
+//#include <atlapp.h>
+//#include <atldlgs.h>
+
 extern DWORD FindProcessId(std::string processName);
 
-// This preprocessor definition enables constructs Siemens alarms and sends as conditions to Agent
-// FIXME: potential bug
-// #define ALARMS
 
-std::string ErrorFormatMessage(HRESULT dwLastErr );
+
+#define MSVC

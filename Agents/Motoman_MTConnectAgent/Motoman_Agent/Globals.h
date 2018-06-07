@@ -55,12 +55,34 @@ public:
         mHttpPort         = "5000";
         mServerName       = "Moto_Agent";
         mbResetAtMidnight = 0;
+		//bHexdump=true;
 
         // This works becuase File does not use argc/argv for path
         mInifile     = File.ExeDirectory( ) + "Config.ini";
         mCfgFile     = File.ExeDirectory( ) + "Agent.cfg";
         mDevicesFile = File.ExeDirectory( ) + "Devices.xml";
     }
+	template<typename T>
+	T convert (std::string data ) const
+	{
+		T result;
+		try {
+			std::istringstream stream(data);
+
+			if ( stream >> result )
+			{
+				return result;
+			}
+			//else if ( ( data == "yes" ) || ( data == "true" ) )
+			//{
+			//	return 1;
+			//}
+		}
+		catch(...)
+		{
+		}
+		return T();
+	}
 };
 
 __declspec(selectany) CGlobals Globals;

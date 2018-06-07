@@ -1,8 +1,15 @@
+
 //
-//
+// FilPermission.h
 //
 
-#pragma oncde
+// DISCLAIMER:
+// This software was developed by U.S. Government employees as part of
+// their official duties and is not subject to copyright. No warranty implied 
+// or intended.
+
+#ifndef __FILEPERMISSION_H__
+#define __FILEPERMISSION_H__
 
 #define DbgOut OutputDebugString
 #include "Aclapi.h"
@@ -70,3 +77,5 @@ static void SetFilePermission(std::string szFilename)
 	if (pSD) 
 		LocalFree(pSD); 
 }
+
+#endif

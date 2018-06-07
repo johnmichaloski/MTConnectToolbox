@@ -19,6 +19,8 @@
 #include "NIST/struct_decoder.h"
 #include "UrEnums.h"
 
+#define  __Declaration__ ) __pragma( push, 1) ) __Declaration__ __pragma( pop) )
+
 namespace ur
 {
 	// Additional interface insight:
@@ -53,16 +55,21 @@ namespace ur
 
 	struct ur_message_header : public struct_decoder<ur_message_header>
 	{
+#pragma pack(push, 1)
+		float mVersion;
 		uint32_t packageSize;
 		uint8_t  packageType;
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_message_header)
 			PROP_SERIAL_ENTRY(packageSize, "%d")
 			PROP_SERIAL_ENTRY(packageType, "%c")
 		END_SERIAL_PROP_MAP( )
-	};
+	}; 
 
-	struct ur_robot_mode_data : public struct_decoder<ur_robot_mode_data>
+	 struct ur_robot_mode_data : public struct_decoder<ur_robot_mode_data>
 	{
+#pragma pack(push, 1)
+		float mVersion;
 		uint32_t      packageSize;
 		int8_t        packageType;                         // 0 robot mode data subtype
 		uint64_t      timestamp;
@@ -80,6 +87,7 @@ namespace ur
 		double        targetSpeedFractionLimit;
 		double        speedFraction;
 		bool          isProectiveStopped;
+#pragma pack(pop)
 
 		BEGIN_SERIAL_PROP_MAP(ur_robot_mode_data)
 			PROP_SERIAL_ENTRY(timestamp, "%llu")
@@ -98,10 +106,12 @@ namespace ur
 			PROP_SERIAL_ENTRY_VERSION(speedScaling, "%lf",3.0,VMAX)
 			PROP_SERIAL_ENTRY_VERSION(targetSpeedFractionLimit, "%lf",3.2,VMAX)
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
 
-	struct ur_joint_data : public struct_decoder<ur_joint_data>
+	 struct ur_joint_data : public struct_decoder<ur_joint_data>
 	{
+#pragma pack(push, 1)
+		float mVersion;
 		double        q_actual;
 		double        q_target;
 		double        qd_actual;
@@ -110,7 +120,7 @@ namespace ur
 		float         T_motor;
 		float         T_micro;
 		unsigned char jointMode;                           ///< The "jointMode" field is a code for the joint
-		///status (shown on the initialisation screen):
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_joint_data)
 			PROP_SERIAL_ENTRY(q_actual, "%lf")
 			PROP_SERIAL_ENTRY(q_target, "%lf")
@@ -121,26 +131,28 @@ namespace ur
 			PROP_SERIAL_ENTRY(T_micro, "%f")
 			PROP_SERIAL_ENTRY(jointMode, "%c")
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
 
-
-	struct ur_cartesian_info : public struct_decoder<ur_cartesian_info>
+	 struct ur_cartesian_info : public struct_decoder<ur_cartesian_info>
 	{
+		float mVersion;
 		uint32_t packageSize;
 		int8_t   packageType;                              // = CARTESIAN_INFO = 4
+#pragma pack(push, 1)
 		double   X;
 		double   Y;
 		double   Z;
 		double   Rx;
 		double   Ry;
 		double   Rz;
+
 		double TCPOffsetX;
 		double TCPOffsetY;
 		double TCPOffsetZ;
 		double TCPOffsetRx;
 		double TCPOffsetRy;
-		double TCPOffsetRz;	
-
+		double TCPOffsetRz;
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_cartesian_info)
 			PROP_SERIAL_ENTRY(X, "%lf")
 			PROP_SERIAL_ENTRY(Y, "%lf")
@@ -161,10 +173,12 @@ namespace ur
 			ss << X << " " << Y << " " << Z << " " << Rx << " " << Ry << " " << Rz;
 			return ss.str( );
 		}
-	};
+	} ;
 
-	struct ur_masterboard_data : public struct_decoder<ur_masterboard_data>
+	 struct ur_masterboard_data : public struct_decoder<ur_masterboard_data>
 	{
+#pragma pack(push, 1)
+		float mVersion;
 		uint32_t      digitalInputBits;
 		uint32_t      digitalOutputBits;
 		int8_t        analogInputRange0;
@@ -189,6 +203,7 @@ namespace ur
 		uint32_t  ur_internal;
 		uint8_t operationalModeSelectorInput;
 		uint8_t threePositionEnablingDeviceInput;
+#pragma pack(pop)
 
 		BEGIN_SERIAL_PROP_MAP(ur_masterboard_data)
 			PROP_SERIAL_ENTRY(digitalInputBits, "%d")
@@ -217,10 +232,12 @@ namespace ur
 			PROP_SERIAL_ENTRY_VERSION(operationalModeSelectorInput, "%c",3.2,VMAX)
 			PROP_SERIAL_ENTRY_VERSION(threePositionEnablingDeviceInput, "%lf",3.2,VMAX)
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
 
-	struct ur_tool_data : public struct_decoder<ur_tool_data>
+	 struct ur_tool_data : public struct_decoder<ur_tool_data>
 	{
+#pragma pack(push, 1)
+		float mVersion;
 		uint32_t      packageSize;
 		unsigned char packageType;                         // = TOOL_DATA = 2
 		int8_t        analogInputRange2;
@@ -232,6 +249,7 @@ namespace ur
 		float         toolCurrent;
 		float         toolTemperature;
 		int8_t        toolMode;
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_tool_data)
 			PROP_SERIAL_ENTRY(analogInputRange2, "%c")
 			PROP_SERIAL_ENTRY(analogInputRange3, "%c")
@@ -243,15 +261,18 @@ namespace ur
 			PROP_SERIAL_ENTRY(toolTemperature, "%f")
 			PROP_SERIAL_ENTRY(toolMode, "%c")
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
 
-	struct ur_robot_message : public struct_decoder<ur_robot_message>
+	 struct ur_robot_message : public struct_decoder<ur_robot_message>
 	{
+		float mVersion;
+#pragma pack(push, 1)
 		uint32_t packageSize;
 		int8_t   packageType;                              // = TOOL_DATA = 2
 		uint64_t timestamp;
 		int8_t   source;
 		int8_t   robot_message_type;
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_robot_message)
 			PROP_SERIAL_ENTRY(packageSize, "%d")
 			PROP_SERIAL_ENTRY(packageType, "%c")
@@ -259,12 +280,13 @@ namespace ur
 			PROP_SERIAL_ENTRY(source, "%c")
 			PROP_SERIAL_ENTRY(robot_message_type, "%c")
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
 
 	// This is the first package sent on both the primary and secondary client
 	// interfaces. This package it not part of the robot state message.
-	struct ur_version_message : public struct_decoder<ur_version_message>
+	 struct ur_version_message : public struct_decoder<ur_version_message>
 	{
+#pragma pack(push, 1)
 		int           messageSize;
 		unsigned char messageType;                         // = ROBOT_MESSAGE = 20
 		uint64_t      timestamp;
@@ -279,6 +301,7 @@ namespace ur
 		int           bugfixVersion;
 		int           buildNumber;
 		char          build_date[25];
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_version_message)
 			PROP_SERIAL_ENTRY(messageSize, "%d")
 			PROP_SERIAL_ENTRY(messageType, "%c")
@@ -296,18 +319,21 @@ namespace ur
 		END_SERIAL_PROP_MAP( )
 		void   decode (char *buf, int len);
 		double getVersion ( );
-	};
+	} ;
 
 	struct ur_security_message : public struct_decoder<ur_security_message>
 	{
+		float mVersion;
 		uint32_t messageSize;
 		uint8_t  messageType;                              // = ROBOT_MESSAGE = 20
+#pragma pack(push, 1)
 		uint64_t timestamp;
 		char     source;
 		char     robotMessageType;                         // = ROBOT_MESSAGE_SECURITY = 5
 		int      robotMessageCode;
 		int      robotMessageArgument;
 		char     textMessage[256];                         // ?????????
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_security_message)
 			PROP_SERIAL_ENTRY(timestamp, "%llu")
 			PROP_SERIAL_ENTRY(source, "%c")
@@ -316,18 +342,21 @@ namespace ur
 			PROP_SERIAL_ENTRY(robotMessageArgument, "%d")
 			PROP_SERIAL_ENTRY_ARRAY(textMessage, 1, "%c")
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
 
-	struct ur_robot_comm_message : public struct_decoder<ur_robot_comm_message>
+	 struct ur_robot_comm_message : public struct_decoder<ur_robot_comm_message>
 	{
+		float mVersion;
 		uint32_t messageSize;
 		uint8_t  messageType;                              // = ROBOT_MESSAGE = 20
+#pragma pack(push, 1)
 		uint64_t timestamp;
 		uint8_t  source;
 		uint8_t  robotMessageType;                         // = ROBOT_MESSAGE_ERROR_CODE = 6
 		uint32_t robotMessageCode;
 		uint32_t robotMessageArgument;
 		char     textMessage[256];                         // FIXME!!!!!!
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_robot_comm_message)
 			PROP_SERIAL_ENTRY(timestamp, "%llu")
 			PROP_SERIAL_ENTRY(source, "%c")
@@ -336,10 +365,12 @@ namespace ur
 			PROP_SERIAL_ENTRY(robotMessageArgument, "%d")
 			PROP_SERIAL_ENTRY_ARRAY(textMessage, 1, "%c")
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
 
-	struct ur_key_message : public struct_decoder<ur_key_message>
+	 struct ur_key_message : public struct_decoder<ur_key_message>
 	{
+		float mVersion;
+#pragma pack(push, 1)
 		int           messageSize;
 		unsigned char messageType;                         // = ROBOT_MESSAGE = 20
 		uint64_t      timestamp;
@@ -350,6 +381,7 @@ namespace ur
 		unsigned char titleSize;
 		char          messageTitle[256];
 		char          textMessage[256];
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_key_message)
 			PROP_SERIAL_ENTRY(messageSize, "%d")
 			PROP_SERIAL_ENTRY(messageType, "%c")
@@ -362,17 +394,20 @@ namespace ur
 			PROP_SERIAL_ENTRY_ARRAY(messageTitle, 1, "%c")
 			PROP_SERIAL_ENTRY_ARRAY(textMessage, 1, "%c")
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
 
-	struct ur_label_message : public struct_decoder<ur_label_message>
+	 struct ur_label_message : public struct_decoder<ur_label_message>
 	{
+		float mVersion;
 		int           messageSize;
 		unsigned char messageType;                         // = ROBOT_MESSAGE = 20
+#pragma pack(push, 1)
 		uint64_t      timestamp;
 		char          source;
 		char          robotMessageType;                    // = ROBOT_MESSAGE_PROGRAM_LABEL = 1
 		int           id;
 		char *        textMessage;
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_label_message)
 
 			// PROP_SERIAL_ENTRY(messageSize,"%d")
@@ -385,8 +420,9 @@ namespace ur
 		END_SERIAL_PROP_MAP( )
 	};
 
-	struct ur_popup_message : public struct_decoder<ur_label_message>
+	 struct ur_popup_message : public struct_decoder<ur_label_message>
 	{
+		float mVersion;
 		int           messageSize;
 		unsigned char messageType;                         // = ROBOT_MESSAGE = 20
 		uint64_t      timestamp;
@@ -397,11 +433,12 @@ namespace ur
 		unsigned char titleSize;
 		char *        messageTitle;
 		char *        textMessage;
-	};
+	} ;
 
-	struct ur_request_value_message
+	 struct ur_request_value_message
 		: public struct_decoder<ur_request_value_message>
 	{
+		float mVersion;
 		int           messageSize;
 		unsigned char messageType;                         // = ROBOT_MESSAGE = 20
 		uint64_t      timestamp;
@@ -413,12 +450,15 @@ namespace ur
 
 	struct ur_text_message : public struct_decoder<ur_text_message>
 	{
+		float mVersion;
 		int           messageSize;
 		unsigned char messageType;                         // = ROBOT_MESSAGE = 20
+#pragma pack(push, 1)
 		uint64_t      timestamp;
 		char          source;
 		char          robotMessageType;                    // = ROBOT_MESSAGE_TEXT = 0
 		char *        textMessage;
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_text_message)
 
 			// PROP_SERIAL_ENTRY(messageSize,"%d")
@@ -428,9 +468,10 @@ namespace ur
 			PROP_SERIAL_ENTRY(robotMessageType, "%c")
 			PROP_SERIAL_ENTRY(textMessage, "%c")
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
 	struct ur_var_message : public struct_decoder<ur_var_message>
 	{
+		float mVersion;
 		int           messageSize;
 		unsigned char messageType;                         // = ROBOT_MESSAGE = 20
 		uint64_t      timestamp;
@@ -441,19 +482,22 @@ namespace ur
 		unsigned char titleSize;
 		char *        messageTitle;
 		char *        messageText;
-	};
+	} ;
 
 	struct ur_runtime_exception_message
 		: public struct_decoder<ur_runtime_exception_message>
 	{
+		float mVersion;
 		int           messageSize;
 		unsigned char messageType;                         // = ROBOT_MESSAGE = 20
+#pragma pack(push, 1)
 		uint64_t      timestamp;
 		char          source;
 		char          robotMessageType;                    // = ROBOT_MESSAGE_RUNTIME_EXCEPTION = 10
 		uint32_t      lineNumber;
 		uint32_t      columnNumber;
 		char          textMessage;                         // this is an array ?
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_runtime_exception_message)
 
 			// PROP_SERIAL_ENTRY(messageSize,"%d")
@@ -465,13 +509,17 @@ namespace ur
 			PROP_SERIAL_ENTRY(columnNumber, "%d")
 			PROP_SERIAL_ENTRY(textMessage, "%c")
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
+
 	struct ur_additional_info : public struct_decoder<ur_additional_info>
 	{
+		float mVersion;
 		int           messageSize;
 		unsigned char messageType;                         // = DDITIONAL_INFO = 8
+#pragma pack(push, 1)
 		bool          teachButtonPressed;
 		bool          teachButtonEnabled;
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_additional_info)
 
 			// PROP_SERIAL_ENTRY(messageSize,"%d")
@@ -479,9 +527,9 @@ namespace ur
 			PROP_SERIAL_ENTRY(teachButtonPressed, "%c")
 			PROP_SERIAL_ENTRY(teachButtonEnabled, "%c")
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
 
-	struct ur_joint_limits
+	 struct ur_joint_limits
 	{
 		double min_limit;
 		double max_limit;
@@ -491,7 +539,7 @@ namespace ur
 		//	 min_limit=min;
 		//	 max_limit=max;
 		// }
-	};
+	} ;
 	struct ur_joint_maxs
 	{
 		double max_speed;
@@ -502,15 +550,17 @@ namespace ur
 		//	 max_speed=vel;
 		//	 max_acceleration=acc;
 		// }
-	};
+	} ;
 #if 1
-	struct ur_configuration_data : public struct_decoder<ur_configuration_data>
+	 struct ur_configuration_data : public struct_decoder<ur_configuration_data>
 	{
+		float mVersion;
 		int                          packageSize;
 		unsigned char                packageType;          // = CONFIGURATION_DATA = 6
 
 		std::vector<ur_joint_limits> _joint_limits;
 		std::vector<ur_joint_maxs>   _joint_maxes;
+#pragma pack(push, 1)
 		double                       vJointDefault;
 		double                       aJointDefault;
 		double                       vToolDefault;
@@ -525,6 +575,7 @@ namespace ur
 		int                          robotType;
 		int                          robotSubType;
 		int                          motorType[8];
+#pragma pack(pop)
 
 		// class struct as type - not handled so have to build special case
 		size_t      msglength ( );
@@ -553,13 +604,15 @@ namespace ur
 			PROP_SERIAL_ENTRY(robotSubType, "%d")
 			PROP_SERIAL_ENTRY_VARARRAY(motorType, sizeof( int ), "%d", &numjoints)
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
 #endif
-	struct ur_force_mode_data : public struct_decoder<ur_force_mode_data>
+	 struct ur_force_mode_data : public struct_decoder<ur_force_mode_data>
 	{
+		float mVersion;
 		int           packageSize;
 		unsigned char packageType;                         // = FORCE_MODE_DATA = 7
 
+#pragma pack(push, 1)
 		double        X;
 		double        Y;
 		double        Z;
@@ -567,6 +620,7 @@ namespace ur
 		double        Ry;
 		double        Rz;
 		double        robotDexterity;
+#pragma pack(pop)
 		BEGIN_SERIAL_PROP_MAP(ur_force_mode_data)
 
 			// PROP_SERIAL_ENTRY(messageSize,"%d")
@@ -579,10 +633,12 @@ namespace ur
 			PROP_SERIAL_ENTRY(Rz, "%lf")
 			PROP_SERIAL_ENTRY(robotDexterity, "%lf")
 		END_SERIAL_PROP_MAP( )
-	};
+	} ;
 
 	struct ur_robot_state
 	{
+
+		ur_robot_state();
 		/**
 		* @brief unpack decodes one and potential submessage in buffer.
 		* @param buf pointer to char buffer string to decode
@@ -612,27 +668,25 @@ namespace ur
 		*/
 		std::string     dump ( );
 		double      getVersion ( );
+		void        setVersion(float ver);
 
 		////////////////////////////////////
 		bool                       new_data_available_;    // to avoid spurious wakes
 		unsigned char              robot_mode_running_;
 
 		// UR message decoded data
-		ur::ur_message_header _ur_message_header;              // !< ur message hdr (size/type)
-		ur::ur_robot_mode_data _ur_robot_mode_data;            // !< mode data
-		ur::ur_tool_data _ur_tool_data;                        // !< tooling data
-		ur::ur_version_message _ur_version_message;            // !< verions data of controller
-		ur::ur_masterboard_data _ur_masterboard_data;          // !< motherboard information
-		ur::ur_cartesian_info _ur_cartesian_info;              // !< cartesian pose
+		ur::ur_message_header _ur_message_header;              //!< ur message hdr (size/type)
+		ur::ur_robot_mode_data _ur_robot_mode_data;            //!< mode data
+		ur::ur_tool_data _ur_tool_data;                        //!< tooling data
+		ur::ur_version_message _ur_version_message;            //!< verions data of controller
+		ur::ur_masterboard_data _ur_masterboard_data;          //!< motherboard information
+		ur::ur_cartesian_info _ur_cartesian_info;              //!< cartesian pose
 		std::vector<ur::ur_joint_data>
-			_ur_joint_data;                                        // !< data for each joint as vector
-		ur::ur_force_mode_data _ur_force_mode_data;            // !< force data
+			_ur_joint_data;                                        //!< data for each joint as vector
+		ur::ur_force_mode_data _ur_force_mode_data;            //!< force data
 		ur::ur_additional_info _ur_additional_info;
-		ur::ur_configuration_data _ur_configuration_data;      // !< configuration of robot
+		ur::ur_configuration_data _ur_configuration_data;      //!< configuration of robot
 
-		ur_robot_state( )
-		{
-		}
 		/**
 		* @brief setDisconnected ur method to signal robot communication disconnected
 		*/

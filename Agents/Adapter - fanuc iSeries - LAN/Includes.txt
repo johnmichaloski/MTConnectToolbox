@@ -1,0 +1,5 @@
+-I"C:\Program Files\NIST\src\wtl81\Include" 
+-I"C:\Program Files\NIST\src\boost_1_54_0"
+-I.
+-I"C:\Users\michalos\Documents\GitHub\Fanuc\Adapter - fanuc iSeries - LAN\Adapter"
+-I"C:\Program Files\NIST\src\Fanuc\Fwlib\e1"

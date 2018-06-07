@@ -40,7 +40,7 @@
 #include "globals.hpp"
 
 using namespace dlib;
-
+extern bool bAbortHeartbeat;
 class Connector
 {
 public:

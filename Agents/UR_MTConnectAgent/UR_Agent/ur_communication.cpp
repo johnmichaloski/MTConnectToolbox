@@ -350,7 +350,7 @@ HRESULT ur_communication::init (UR_Adapter *ur_adapter, std::string host)
     }
 
     mConnected.set(false);
-    mKeepalive = false;
+    mKeepalive.set(true);
     return S_OK;
 }
 ur_message_t ur_communication::primary_socket ( )
@@ -405,13 +405,13 @@ ur_message_t ur_communication::primary_socket ( )
 }
 bool ur_communication::start ( )
 {
-    mKeepalive  = true;
+    mKeepalive.set(true);
     mCommThread = ur_comm::thread(&ur_communication::run, this);
     return true;
 }
 void ur_communication::halt ( )
 {
-    mKeepalive = false;
+    mKeepalive.set(false);
     mCommThread.join( );
 }
 void ur_communication::run ( )
@@ -421,16 +421,17 @@ void ur_communication::run ( )
     uint8_t     buf[2048];
     int         bytes_read;
 
+	
     mConnected.set(false);
-    mKeepalive = true;
+    mKeepalive.set(true);
 
     try
     {
-        while ( mKeepalive )
+        while ( mKeepalive.get() )
         {
             ::Sleep(10);
 
-            while ( mConnected.get() && mKeepalive )
+            while ( mConnected.get() && mKeepalive.get() )
             {
                 ::Sleep(10);
 
@@ -452,10 +453,14 @@ void ur_communication::run ( )
                 }
             }
 
-            if ( mKeepalive )
-            {
-                // reconnect
-                server = socket(AF_INET, SOCK_STREAM, 0);
+            if ( mKeepalive.get() )
+			{
+				// reconnect
+				server = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
+				if(server==INVALID_SOCKET)
+				{
+					logError("Socket creation failed.\n");
+				}
 
                 addr.sin_addr.s_addr = inet_addr(mHost.c_str( ));
                 addr.sin_family      = AF_INET;
@@ -463,14 +468,16 @@ void ur_communication::run ( )
 
                 if ( connect(server, (SOCKADDR *) &addr, sizeof( addr )) < 0 )
                 {
+					closesocket(server);
                     int errnum = WSAGetLastError( );
-                    logError("Error %x connecting to host %s\n",
+                    logError("Error %s connecting to host %s\n",
                              WhatIsWSAError(errnum).c_str( ), mHost.c_str( ));
                 }
                 else
                 {
                     mConnected.set(true);// = true;
                 }
+
             }
         }
     }

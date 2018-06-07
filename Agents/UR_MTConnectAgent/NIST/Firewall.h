@@ -9,6 +9,7 @@
 #include <objbase.h>
 #include <oleauto.h>
 #include <stdio.h>
+#include "Logging.h"
 
 #pragma comment(lib, "ole32.lib")
 #pragma comment(lib, "oleaut32.lib")
@@ -33,7 +34,7 @@ public:
 
         if ( FAILED(hr) )
         {
-            printf("CoCreateInstance failed: 0x%08lx\n", hr);
+            logFatal("WindowsFirewall CoCreateInstance failed: 0x%08lx\n", hr);
             goto error;
         }
 
@@ -42,7 +43,7 @@ public:
 
         if ( FAILED(hr) )
         {
-            printf("get_LocalPolicy failed: 0x%08lx\n", hr);
+            logFatal("WindowsFirewall get_LocalPolicy failed: 0x%08lx\n", hr);
             goto error;
         }
 
@@ -51,7 +52,7 @@ public:
 
         if ( FAILED(hr) )
         {
-            printf("get_CurrentProfile failed: 0x%08lx\n", hr);
+            logFatal("WindowsFirewall get_CurrentProfile failed: 0x%08lx\n", hr);
             goto error;
         }
 
@@ -84,7 +85,7 @@ error:
 
         if ( FAILED(hr) )
         {
-            printf("get_FirewallEnabled failed: 0x%08lx\n", hr);
+            logFatal("WindowsFirewall get_FirewallEnabled failed: 0x%08lx\n", hr);
             goto error;
         }
 
@@ -92,11 +93,11 @@ error:
         if ( fwEnabled != VARIANT_FALSE )
         {
             *fwOn = TRUE;
-            printf("The firewall is on.\n");
+            logFatal("WindowsFirewall The firewall is on.\n");
         }
         else
         {
-            printf("The firewall is off.\n");
+            logFatal("WindowsFirewall The firewall is off.\n");
         }
 
 error:
@@ -124,7 +125,7 @@ error:
 
         if ( FAILED(hr) )
         {
-            printf("get_GloballyOpenPorts failed: 0x%08lx\n", hr);
+            logFatal("WindowsFirewall get_GloballyOpenPorts failed: 0x%08lx\n", hr);
             goto error;
         }
 
@@ -138,7 +139,7 @@ error:
 
             if ( FAILED(hr) )
             {
-                printf("get_Enabled failed: 0x%08lx\n", hr);
+                logFatal("WindowsFirewall get_Enabled failed: 0x%08lx\n", hr);
                 goto error;
             }
 
@@ -147,11 +148,11 @@ error:
                 // The globally open port is enabled.
                 *fwPortEnabled = TRUE;
 
-                printf("Port %ld is open in the firewall.\n", portNumber);
+                logFatal("Port %ld is open in the firewall.\n", portNumber);
             }
             else
             {
-                printf("Port %ld is not open in the firewall.\n", portNumber);
+                logFatal("Port %ld is not open in the firewall.\n", portNumber);
             }
         }
         else
@@ -159,7 +160,7 @@ error:
             // The globally open port was not in the collection.
             hr = S_OK;
 
-            printf("Port %ld is not open in the firewall.\n", portNumber);
+            logFatal("Port %ld is not open in the firewall.\n", portNumber);
         }
 
 error:
@@ -199,7 +200,7 @@ error:
 
         if ( FAILED(hr) )
         {
-            printf("WindowsFirewallPortIsEnabled failed: 0x%08lx\n", hr);
+            logFatal("WindowsFirewallPortIsEnabled failed: 0x%08lx\n", hr);
             goto error;
         }
 
@@ -211,7 +212,7 @@ error:
 
             if ( FAILED(hr) )
             {
-                printf("get_GloballyOpenPorts failed: 0x%08lx\n", hr);
+                logFatal("WindowsFirewall get_GloballyOpenPorts failed: 0x%08lx\n", hr);
                 goto error;
             }
 
@@ -221,7 +222,7 @@ error:
 
             if ( FAILED(hr) )
             {
-                printf("CoCreateInstance failed: 0x%08lx\n", hr);
+                logFatal("WindowsFirewall CoCreateInstance failed: 0x%08lx\n", hr);
                 goto error;
             }
 
@@ -230,7 +231,7 @@ error:
 
             if ( FAILED(hr) )
             {
-                printf("put_Port failed: 0x%08lx\n", hr);
+                logFatal("WindowsFirewall put_Port failed: 0x%08lx\n", hr);
                 goto error;
             }
 
@@ -239,7 +240,7 @@ error:
 
             if ( FAILED(hr) )
             {
-                printf("put_Protocol failed: 0x%08lx\n", hr);
+                logFatal("WindowsFirewall put_Protocol failed: 0x%08lx\n", hr);
                 goto error;
             }
 
@@ -249,7 +250,7 @@ error:
             if ( SysStringLen(fwBstrName) == 0 )
             {
                 hr = E_OUTOFMEMORY;
-                printf("SysAllocString failed: 0x%08lx\n", hr);
+                logFatal("WindowsFirewall SysAllocString failed: 0x%08lx\n", hr);
                 goto error;
             }
 
@@ -258,7 +259,7 @@ error:
 
             if ( FAILED(hr) )
             {
-                printf("put_Name failed: 0x%08lx\n", hr);
+                logFatal("WindowsFirewall put_Name failed: 0x%08lx\n", hr);
                 goto error;
             }
 
@@ -267,10 +268,10 @@ error:
 
             if ( FAILED(hr) )
             {
-                printf("Add failed: 0x%08lx\n", hr);
+                logFatal("WindowsFirewall Add port firewall failed: 0x%08lx\n", hr);
                 goto error;
             }
-            printf("Port %ld is now open in the firewall.\n", portNumber);
+            logFatal("WindowsFirewall Port %ld is now open in the firewall.\n", portNumber);
         }
 error:
 
@@ -381,4 +382,55 @@ error:
         return 0;
     }
 #endif
+	static void CheckFirewall(int port=7878, BOOL & fwOn)
+	{
+
+		HRESULT hr ;
+		CComPtr<INetFwProfile> fwProfile ;
+		fwOn=false;
+		// Initialize COM.
+		WindowsFirewall firewall;
+		try 
+		{
+			//long mPort = ::GetPrivateProfileInt(_T("GLOBALS"), _T("port"), 7878, (ExeDirectory() + "Config.ini").c_str());
+
+			hr=firewall.WindowsFirewallInitialize(&fwProfile);
+			hr=firewall.WindowsFirewallIsOn(fwProfile,&fwOn);
+			if(SUCCEEDED(hr) && fwOn)
+			{
+				//EventLogger.LogEvent(PROVIDER_NAME + std::string("Firewall ON"));
+				logFatal((PROVIDER_NAME + std::string("Firewall ON\n"))..c_str());
+				hr=firewall.WindowsFirewallPortIsEnabled(fwProfile,port,NET_FW_IP_PROTOCOL_TCP , &fwOn);
+				if(SUCCEEDED(hr) && fwOn)
+				{
+					logFatal("%s Firewall ON Port %x BLOCKED\n",PROVIDER_NAME , port);
+
+					if(SUCCEEDED(firewall.WindowsFirewallPortAdd(fwProfile,port,NET_FW_IP_PROTOCOL_TCP,L"MTConnect SHDR")))
+					{
+						logFatal("%s Firewall ON Port %x MADE UNBLOCKED\n",PROVIDER_NAME , port);
+					}
+				}
+				else
+				{
+					logFatal("%s Firewall ON Port %x NOT BLOCKED\n",PROVIDER_NAME , port);
+				}
+
+			}
+			else
+			{
+				logFatal((PROVIDER_NAME + std::string(" Firewall returns OFF\n")).c_str());
+			}
+		} 
+		catch (std::exception errmsg)
+		{
+			logFatal(errmsg.what());
+
+		}
+		catch (...)
+		{
+			logFatal("Fatal Application Exception in DDE Adapter");
+
+		}
+
+	}
 };

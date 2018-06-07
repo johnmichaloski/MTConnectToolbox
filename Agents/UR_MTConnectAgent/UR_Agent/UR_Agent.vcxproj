@@ -151,14 +151,15 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
-      <Optimization>MaxSpeed</Optimization>
+      <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
-      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <IntrinsicFunctions>false</IntrinsicFunctions>
       <PreprocessorDefinitions>_WINDOWS;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>@IncludeDirX32.txt %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <PrecompiledHeaderOutputFile>$(IntDir)\$(TargetName).pch</PrecompiledHeaderOutputFile>
       <ExceptionHandling>Async</ExceptionHandling>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -203,6 +204,8 @@
     <ClInclude Include="..\NIST\Config.h" />
     <ClInclude Include="..\NIST\ErrResult.h" />
     <ClInclude Include="..\NIST\File.h" />
+    <ClInclude Include="..\NIST\Firewall.h" />
+    <ClInclude Include="..\NIST\hexdump.h" />
     <ClInclude Include="..\NIST\InMemLog.h" />
     <ClInclude Include="..\NIST\Logger.h" />
     <ClInclude Include="..\NIST\RCSMsgQueue.h" />
@@ -210,9 +213,7 @@
     <ClInclude Include="..\NIST\RCSTimer.h" />
     <ClInclude Include="..\NIST\StdStringFcn.h" />
     <ClInclude Include="..\NIST\struct_decoder.h" />
-    <ClInclude Include="..\NIST\WinSingleton.h" />
     <ClInclude Include="..\NIST\WinTricks.h" />
-    <ClInclude Include="..\NIST\YamlReader.h" />
     <ClInclude Include="DevicesXML.h" />
     <ClInclude Include="UrEnums.h" />
     <ClInclude Include="UrInterface.h" />
@@ -249,8 +250,6 @@
     <ClCompile Include="..\MTConnectAgent\agent\version.cpp" />
     <ClCompile Include="..\MTConnectAgent\agent\xml_parser.cpp" />
     <ClCompile Include="..\MTConnectAgent\agent\xml_printer.cpp" />
-    <ClCompile Include="..\NIST\WinTricks.cpp" />
-    <ClCompile Include="..\NIST\YamlReader.cpp" />
     <ClCompile Include="DevicesXML.cpp" />
     <ClCompile Include="LinkingModule.cpp" />
     <ClCompile Include="UrInterface.cpp" />
@@ -269,7 +268,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="ur_communication.cpp" />
+    <ClCompile Include="ur_communication.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="ur_communication_2.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

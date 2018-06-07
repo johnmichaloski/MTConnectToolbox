@@ -269,6 +269,8 @@
     <ClCompile Include="..\MTConnectAgent\agent\xml_printer.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="..\NIST\YamlReader.cpp" />
+    <ClCompile Include="LinkingModule.cpp" />
     <ClCompile Include="MTConnectAgentFromShdr.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -301,17 +303,21 @@
     <ClInclude Include="..\NIST\Config.h" />
     <ClInclude Include="..\NIST\File.h" />
     <ClInclude Include="..\NIST\Logger.h" />
+    <ClInclude Include="..\NIST\ResetAtMidnightThread.h" />
     <ClInclude Include="..\NIST\StdStringFcn.h" />
+    <ClInclude Include="..\NIST\WinSingleton.h" />
+    <ClInclude Include="..\NIST\YamlReader.h" />
     <ClInclude Include="ExceptionHandler.h" />
-    <ClInclude Include="ResetAtMidniteThread.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="Version_info.h" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\src\Agent\agent\agent.cfg" />
+    <None Include="BuildNumAutoInc.txt" />
+    <None Include="Changelog.txt" />
     <None Include="Notes.txt" />
     <None Include="ReadMe.txt" />
+    <None Include="Todo.txt" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="MTConnectAgentFromShdr.rc" />

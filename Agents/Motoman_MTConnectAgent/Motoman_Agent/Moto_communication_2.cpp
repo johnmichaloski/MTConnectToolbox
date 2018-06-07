@@ -67,6 +67,7 @@ void moto_communication::halt ( )
 	mKeepalive.set(false);
 	mCommThread.join( );
 }
+
 void moto_communication::run ( )
 {
 	mConnected=false;
@@ -111,7 +112,9 @@ void moto_communication::run ( )
 
 				// The boost::asio::buffer() function automatically determines 
 				// the size of the array to help prevent buffer overruns.
-				size_t len = socket.read_some(boost::asio::buffer(buf), error);
+
+				//size_t len = socket.read_some(boost::asio::buffer(buf), error);
+				size_t len = socket.read_some(boost::asio::buffer(buf,2048), error);
 				logDebug("read_some %s Len=%d\n", _Moto_Adapter->mDevice.c_str(), len);
 
 
@@ -119,7 +122,8 @@ void moto_communication::run ( )
 				// the ip::tcp::socket::read_some() function will exit with the boost::asio::error::eof error, 
 				// which is how we know to exit the loop.
 				if (error == boost::asio::error::eof)
-					break; // Connection closed cleanly by peer.
+					//break; // Connection closed cleanly by peer.
+					throw boost::system::system_error(error); // Some other error.
 				else if (error)
 					throw boost::system::system_error(error); // Some other error.
 				// Save raw socket stream
@@ -129,13 +133,15 @@ void moto_communication::run ( )
 					rawSocketFile <<  Nist::RawDump (&buffer[0], len, "%02X,");
 				}
 
-				buffer.insert(buffer.begin(), buf.data(), buf.data() + len) ; 
+				buffer.insert(buffer.end(), buf.data(), buf.data() + len) ; 
+				//logDebug(Nist::HexDump(&buffer[0], buffer.size(), 16).c_str());
 				//logDebug(Nist::HexDump (&msg[0], 32).c_str());
 				_Moto_Adapter-> mMotoData.mutex.lock();
 				size_t n = _Moto_Adapter->mMotoData.unpack((uint8_t *) &buffer[0], buffer.size( ));
 				_Moto_Adapter-> mMotoData.mutex.unlock();
 				logDebug("Decode n=%d buffer size=%d\n", n, buffer.size());
 				buffer=buffer.substr(n);
+				//logDebug(Nist::HexDump(&buffer[0], buffer.size(), 16).c_str());
 
 			}
 		}
@@ -143,6 +149,12 @@ void moto_communication::run ( )
 		catch (std::exception& e)
 		{
 			logError("moto_communication::run() Exception=%s\n", e.what());
+			::Sleep(2000); // needs to rest to let listener come up
+		}
+		catch(...)
+		{
+			logError("moto_communication::run() Exception\n");
+
 		}
 		//mConnected.set(false); 
 		mConnected=false;

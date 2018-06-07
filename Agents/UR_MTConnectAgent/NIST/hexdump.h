@@ -5,7 +5,7 @@
 // their official duties and is not subject to copyright. No warranty implied
 // or intended.
 
-namespace NIST
+namespace Nist
 {
     inline std::string StrFormat (const char *format, ...)
     {

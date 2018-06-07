@@ -8,6 +8,8 @@
 #include "NIST/StdStringFcn.h"
 #include <atltrace.h>
 #include <sstream>
+#include <boost/version.hpp>
+
 #define ErrMessage    ATLTRACE
 
 #pragma comment(lib, "Version.lib")

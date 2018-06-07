@@ -15,219 +15,143 @@
 
 #include "agent.hpp"
 #include "config.hpp"
-#include "ResetAtMidniteThread.h"
-#include "NIST\Config.h"
 
-#pragma comment(lib, "Ws2_32.lib")
+#include "NIST\ResetAtMidnightThread.h"
+#include "NIST\Config.h"
+#include "NIST\Logger.h"
+#include "NIST\WinSingleton.h"
+
 static const char INI_FILENAME[] = "agent.cfg";
 
-#define RESETATMIDNITE
-#define NISTADDITIONS
-
-
-#define MTCLIBPATH(X)    "C:\\Users\\michalos\\Documents\\GitHub\\Agents\\MTConnectAgentFromShdr\\MTConnectAgent\\win32\\libxml2-2.7.7\\lib\\" ## X
-
-
-#if defined(WIN64) && defined( _DEBUG) 
-#pragma message( "DEBUG x64" )
-//#pragma comment(lib, "C:\\Users\\michalos\\Documents\\GitHub\\MTConnectSolutions\\MTConnectAgentFromShdr\\MTConnectAgentFromShdr\\x64\\Debug\\libiconv_a_debug.lib")
-#pragma comment(lib, MTCLIBPATH("libxml2_64d.lib"))
-#pragma comment(lib, "libboost_system-vc100-mt-sgd-1_54.lib")
-#pragma comment(lib, "libboost_thread-vc100-mt-sgd-1_54.lib")
-
-#elif !defined( _DEBUG) && defined(WIN64)
-#pragma message( "RELEASE x64" )
-#pragma comment(lib,  MTCLIBPATH("libxml2_64.lib"))
-//#pragma comment(lib, "C:\\Users\\michalos\\Documents\\GitHub\\MTConnectSolutions\\MTConnectAgentFromShdr\\MTConnectAgentFromShdr\\x64\\Release\\libiconv_a.lib")
-#pragma comment(lib, "libboost_thread-vc100-mt-s-1_54.lib")
-#pragma comment(lib, "libboost_system-vc100-mt-s-1_54.lib")
-
-#elif defined(_DEBUG) && defined(WIN32)
-#pragma message( "DEBUG x32" )
-#pragma comment(lib, "C:\\Users\\michalos\\Documents\\GitHub\\MTConnectSolutions\\MTConnectAgentFromShdr\\MTConnectAgentFromShdr\\Win32\\Debug\\libiconv_a_debug.lib")
-#pragma comment(lib, "libboost_thread-vc100-mt-sgd-1_54.lib")
-#pragma comment(lib, "libboost_system-vc100-mt-sgd-1_54.lib")
-#elif !defined( _DEBUG) && defined(WIN32)
-#pragma message( "RELEASE x32" )
-#pragma comment(lib, "C:\\Users\\michalos\\Documents\\GitHub\\MTConnectSolutions\\MTConnectAgentFromShdr\\MTConnectAgentFromShdr\\Win32\\Release\\libiconv_a.lib")
-#pragma comment(lib, "libboost_thread-vc100-mt-s-1_54.lib")
-#pragma comment(lib, "libboost_system-vc100-mt-s-1_54.lib")
-#endif
 static void ErrMessage(std::string errmsg)
 {
-	ATLTRACE2(errmsg.c_str());
-}
-#include <strsafe.h>
-void ReportError(LPTSTR lpszFunction) 
-{ 
-	// Retrieve the system error message for the last-error code
-
-	LPVOID lpMsgBuf;
-	LPVOID lpDisplayBuf;
-	DWORD dw = GetLastError(); 
-
-	FormatMessage(
-		FORMAT_MESSAGE_ALLOCATE_BUFFER | 
-		FORMAT_MESSAGE_FROM_SYSTEM |
-		FORMAT_MESSAGE_IGNORE_INSERTS,
-		NULL,
-		dw,
-		MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
-		(LPTSTR) &lpMsgBuf,
-		0, NULL );
-
-	// Display the error message and exit the process
-
-	lpDisplayBuf = (LPVOID)LocalAlloc(LMEM_ZEROINIT, 
-		(lstrlen((LPCTSTR)lpMsgBuf) + lstrlen((LPCTSTR)lpszFunction) + 40) * sizeof(TCHAR)); 
-	StringCchPrintf((LPTSTR)lpDisplayBuf, 
-		LocalSize(lpDisplayBuf) / sizeof(TCHAR),
-		TEXT("%s failed with error %d: %s"), 
-		lpszFunction, dw, lpMsgBuf); 
-
-	ErrMessage(StdStringFormat("%s\n", lpDisplayBuf ));
-
-	LocalFree(lpMsgBuf);
-	LocalFree(lpDisplayBuf);
-	ExitProcess(dw); 
+	logError(errmsg.c_str());
 }
 
 extern SERVICE_STATUS          gSvcStatus; 
 extern VOID ReportSvcStatus( DWORD dwCurrentState, //    The current state (see SERVICE_STATUS)
-							DWORD dwWin32ExitCode, //   The system error code
-							DWORD dwWaitHint); //    Estimated time for pending operation, 
+	DWORD dwWin32ExitCode, //   The system error code
+	DWORD dwWaitHint); //    Estimated time for pending operation, 
 
 
 static void trans_func( unsigned int u, EXCEPTION_POINTERS* pExp )
 {
-	ErrMessage( StdStringFormat("AgentConfigurationEx::In trans_func - Code = 0x%x\n",  pExp->ExceptionRecord->ExceptionCode).c_str() );
+	logError("AgentConfigurationEx::In trans_func - Code = 0x%x\n",  pExp->ExceptionRecord->ExceptionCode );
 #ifdef DEBUG
 	DebugBreak();
 #endif
 	throw std::exception();
 }
-#ifdef NISTADDITIONS
+
 class AgentConfigurationEx :
 	public AgentConfiguration
-#ifdef RESETATMIDNITE
-	, public CResetAtMidniteThread<AgentConfigurationEx>
-#endif
+	, public CResetAtMidnightThread<AgentConfigurationEx>
+	, public MTConnectSingleton<AgentConfigurationEx>
 {
 public:
 	AgentConfigurationEx()
 	{
 	}
 
-	  //CWorkerThread<> _resetthread;
-	  //struct CResetThread : public IWorkerThreadClient
-	  //{
-		 // HRESULT Execute(DWORD_PTR dwParam, HANDLE hObject);
-		 // HRESULT CloseHandle(HANDLE){ ::CloseHandle(_hTimer); return S_OK; }
-		 // HANDLE _hTimer;
-	  //} _ResetThread;
 
+	virtual void start()
+	{
+		logStatus( "MTConnect Agent Service Start %s\n" , COleDateTime::GetCurrentTime().Format() );
+		try{
 
-	  virtual void start()
-	  {
-		  ErrMessage(StdStringFormat( "MTConnect Agent Service Start %s\n" , COleDateTime::GetCurrentTime().Format() ).c_str());
-		  try{
+			if(bResetAtMidnight)
+				CResetAtMidnightThread<AgentConfigurationEx>::Start();
 
-			  std::string cfgfile = File.ExeDirectory()+"Config.ini"; 
+			//Handles Win32 exceptions (C structured exceptions) as C++ typed exceptions
+			_set_se_translator( trans_func ); 
 
+			// Start the server. This blocks until the server stops.
+			AgentConfiguration::start();
 
-			  //_bResetAtMidnight = ConvertString<bool>(reader.block("OPCSERVER")["ResetAtMidnight"], true);
-#ifdef RESETATMIDNITE
-			  CResetAtMidniteThread<AgentConfigurationEx>::Start();
-#endif
+		}
+		catch(std::exception e)
+		{
+			logFatal("AgentConfigurationEx::start() failed - %s\n", e.what());
+			throw e;
+		}
+		catch(...)
+		{
+			ReportSvcStatus(SERVICE_STOP, 0, 0);
+		}
 
-			  //Handles Win32 exceptions (C structured exceptions) as C++ typed exceptions
-			  _set_se_translator( trans_func ); 
+	}
 
-			  // Start the server. This blocks until the server stops.
-			  AgentConfiguration::start();
+	virtual void stop()
+	{
+		int nWaitTime = 5000;
+		ReportSvcStatus(SERVICE_STOP_PENDING, 0, 15000);
+		StopAll();
+		ReportSvcStatus(SERVICE_STOP, 0, 0);
+	}
 
-		  }
-		  catch(std::exception e)
-		  {
-			   ErrMessage(StdStringFormat("AgentConfigurationEx::start() failed - %s\n", e.what()).c_str());
-			  throw e;
-		  }
-		  catch(...)
-		  {
-		  ReportSvcStatus(SERVICE_STOP, 0, 0);
-		  
-		  }
+	void StopAll()
+	{
+		try {
+			ErrMessage(StdStringFormat( "MTConnect Agent Service Stopped %s\n", COleDateTime::GetCurrentTime().Format() ).c_str());
 
-	  }
+			if(CResetAtMidnightThread<AgentConfigurationEx>::bResetAtMidnight)
+				CResetAtMidnightThread<AgentConfigurationEx>::Stop();
 
-	  virtual void stop()
-	  {
+			AgentConfiguration::stop();
 
-		  int nWaitTime = 5000;
-		  ReportSvcStatus(SERVICE_STOP_PENDING, 0, 15000);
-		  StopAll();
-		  ReportSvcStatus(SERVICE_STOP, 0, 0);
-	  }
+		}
+		catch(...)
+		{
+			ErrMessage(StdStringFormat( "MTConnect Agent Service Stop Aborted %s\n", COleDateTime::GetCurrentTime().Format() ).c_str());
+		}
 
-	  void StopAll()
-	  {
-		  try {
-			   ErrMessage(StdStringFormat( "MTConnect Agent Service Stopped %s\n", COleDateTime::GetCurrentTime().Format() ).c_str());
-#ifdef RESETATMIDNITE
-			   CResetAtMidniteThread<AgentConfigurationEx>::Stop();
-#endif
-
-			  AgentConfiguration::stop();
-
-		  }
-		  catch(...)
-		  {
-			   ErrMessage(StdStringFormat( "MTConnect Agent Service Stop Aborted %s\n", COleDateTime::GetCurrentTime().Format() ).c_str());
-		  }
-
-	  }
-		  ////////////////////////////////////////////////////////////////////
-	  //bool _bResetAtMidnight;
-	  CHandle _hThread;
-	  unsigned int _threadID;
-	  COleDateTime now ;
-	  NIST::Config cfg;
+	}
+	////////////////////////////////////////////////////////////////////
+	COleDateTime now ;
+	NIST::Config cfg;
 };
 
-#else
-typedef AgentConfiguration AgentConfigurationEx;
-#endif
 
 #pragma comment(linker, "/SUBSYSTEM:WINDOWS")
 //#pragma warning(disable: 4247) //warning C4297: 'WinMain' : function assumed not to throw an exception but does
 
 int APIENTRY WinMain(HINSTANCE hInstance,
-					 HINSTANCE hPrevInstance,
-					 LPTSTR    lpCmdLine,
-					 int       nCmdShow)
- {
+	HINSTANCE hPrevInstance,
+	LPTSTR    lpCmdLine,
+	int       nCmdShow)
+{
 	try 
 	{	
-		ErrMessage(StdStringFormat( "MTConnect Agent Service Entered %s\n" , nowtimestamp().c_str() ).c_str());
 		AgentConfigurationEx config;
+		//config.bTestReset=true;  // turn this on for 2 minute resets
 
-#ifdef NISTADDITIONS
- 
+		// Set up local logging to debug.txt. 
 		GLogger.Open(File.ExeDirectory() + "debug.txt");
 		GLogger.DebugLevel()=5;
 		GLogger.Timestamping()=true;
+		ErrMessage(StdStringFormat( "MTConnect Agent Service Entered %s\n" , nowtimestamp().c_str()));
+
+		/**
+		* This code reads the tagname and enumeration remappings. They are substituted into static variables
+		* so that all adapters use the substitutions.
+		*/
 		NIST::Config cfg;
-
-
 		if(cfg.load(File.ExeDirectory() + "Config.ini"))
 		{
-#ifdef RESETATMIDNITE
-				  config.CResetAtMidniteThread<AgentConfigurationEx>::_bResetAtMidnight = cfg.GetSymbolValue("GLOBALS.ResetAtMidnight", "0").toNumber<int>();
-#endif
-				   GLogger.DebugLevel() = cfg.GetSymbolValue("GLOBALS.Debug", "0").toNumber<int>();
-				   
-				   std::map<std::string, std::string> tagrenames = cfg.getmap("TAGRENAMES");
+			config.bResetAtMidnight = cfg.GetSymbolValue("GLOBALS.ResetAtMidnight", "0").toNumber<int>();
+			config.bSingleton= cfg.GetSymbolValue("GLOBALS.Singleton", "0").toNumber<int>();
+			if(config.bSingleton)
+				config.KillAllOtherInstances();
+
+			GLogger.DebugLevel() = cfg.GetSymbolValue("GLOBALS.Debug", "0").toNumber<int>();
+			Adapter::rpmEntries= cfg.GetTokens("GLOBALS.RPMTAGS", ",");
+			Adapter::nLogUpdates = cfg.GetSymbolValue("GLOBALS.LogUpdates", "1").toNumber<int>();
+			bAbortHeartbeat = cfg.GetSymbolValue("GLOBALS.AbortHeartbeat", "0").toNumber<int>();
+
+
+			std::map<std::string, std::string> tagrenames = cfg.getmap("TAGRENAMES"); //TAGRENAMES is a [section]
 			std::map<std::string, std::string> enumrenames = cfg.getmap("ENUMREMAPPING");
+
 			for(std::map<std::string, std::string>::iterator it= tagrenames.begin(); it!= tagrenames.end(); it++)
 			{
 				Adapter::keymapping.insert(std::make_pair<std::string, std::string>( (*it).first, (*it).second));
@@ -237,7 +161,6 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 				Adapter::enummapping.insert(std::make_pair<std::string, std::string>( (*it).first, (*it).second));
 			}
 		}
-#endif
 
 
 #ifdef _WINDOWS
@@ -276,13 +199,13 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 	}
 	catch(std::exception e)
 	{
-		 ErrMessage(e.what());
+		ErrMessage(e.what());
 	}
 	catch(...)
 	{
-		 ErrMessage("Service terminated abnormally in main\n");
+		ErrMessage("Service terminated abnormally in main\n");
 	}
 	::CoUninitialize();
-	 ErrMessage(StdStringFormat( "MTConnect Agent Service Ended %s\n" , nowtimestamp().c_str()).c_str());
+	ErrMessage(StdStringFormat( "MTConnect Agent Service Ended %s\n" , nowtimestamp().c_str()).c_str());
 	return -1;
 }

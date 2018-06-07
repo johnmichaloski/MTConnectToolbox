@@ -78,28 +78,28 @@ std::string CDevicesXML::ConfigureRobotDeviceXml (std::string                dev
         tmp += "\t\t\t\t\t\t<Rotary id=\"####d1\" name=\"JOINT\">\n"
                "\t\t\t\t\t\t\t<DataItems>\n";
         tmp += StdStringFormat("\t\t\t\t\t\t\t\t<DataItem type=\"POSITION\" "
-                               "subType=\"ACTUAL\" id=\"%s_actpos_id\" "
+                               "subType=\"ACTUAL\" id=\"####_%s_actpos_id\" "
                                "category=\"SAMPLE\" name=\"%s_actpos\"  "
                                "units=\"RADIANS\" />\n",
                                jointnames[i].c_str( ), jointnames[i].c_str( ));
         tmp += StdStringFormat("\t\t\t\t\t\t\t\t<DataItem type=\"MESSAGE\"  "
-                               "id=\"%s_mode_id\" category=\"EVENT\" "
+                               "id=\"####_%s_mode_id\" category=\"EVENT\" "
                                "name=\"%s_mode\" />\n",
                                jointnames[i].c_str( ), jointnames[i].c_str( ));
         tmp
             += StdStringFormat("\t\t\t\t\t\t\t\t<DataItem type=\"ELECTRICAL_ENERGY\"  "
-                               "id=\"%s_I_id\" category=\"SAMPLE\" name=\"%s_I\" />\n",
+                               "id=\"####_%s_I_id\" category=\"SAMPLE\" name=\"%s_I\" />\n",
                                jointnames[i].c_str( ), jointnames[i].c_str( ));
         tmp
             += StdStringFormat("\t\t\t\t\t\t\t\t<DataItem type=\"VOLTAGE\"  "
-                               "id=\"%s_V_id\" category=\"SAMPLE\" name=\"%s_V\" />\n",
+                               "id=\"####_%s_V_id\" category=\"SAMPLE\" name=\"%s_V\" />\n",
                                jointnames[i].c_str( ), jointnames[i].c_str( ));
         tmp
             += StdStringFormat("\t\t\t\t\t\t\t\t<DataItem type=\"TORQUE\"  "
-                               "id=\"%s_T_id\" category=\"SAMPLE\" name=\"%s_T\" />\n",
+                               "id=\"####_%s_T_id\" category=\"SAMPLE\" name=\"%s_T\" />\n",
                                jointnames[i].c_str( ), jointnames[i].c_str( ));
         tmp += StdStringFormat("\t\t\t\t\t\t\t\t<DataItem type=\"VELOCITY\" "
-                               "subType=\"ACTUAL\" id=\"%s_actvel_id\" "
+                               "subType=\"ACTUAL\" id=\"####_%s_actvel_id\" "
                                "category=\"SAMPLE\" name=\"%s_actvel\"  "
                                "units=\"RADIANS PER SECOND\" />\n",
                                jointnames[i].c_str( ), jointnames[i].c_str( ));

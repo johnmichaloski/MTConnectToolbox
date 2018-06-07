@@ -36,6 +36,8 @@
 
 #include <string>
 #include <sstream>
+#include <map>
+#include <vector>
 
 #include "dlib/sockets.h"
 #include "dlib/threads.h"
@@ -53,8 +55,11 @@ class Adapter : public Connector, public threaded_object
 {
 public:
 	// jlmichaloski added
-	static std::map<std::string, std::string> Adapter::keymapping; 
-	static std::map<std::string, std::string> Adapter::enummapping; 
+	static std::map<std::string, std::string> keymapping; 
+	static std::map<std::string, std::string> enummapping; 
+	static std::vector<std::string> rpmEntries;
+	static std::map<std::string, std::vector<std::string>> keymultimapping; 
+	static int nLogUpdates;
 
   /* Associate adapter with a device & connect to the server & port */
   Adapter(const std::string& device,
@@ -90,7 +95,7 @@ public:
 
   /* For the additional devices associated with this adapter */
   void addDevice(std::string &aDevice);
-  void CheckAlias(std::string &key, std::string &value);
+  void CheckAlias(Device *device, std::string &key, std::string &value);
 protected:
   /* Pointer to the agent */
   Agent *mAgent;

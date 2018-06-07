@@ -1,0 +1,2 @@
+MTCFanucAgent.exe debug
+pause

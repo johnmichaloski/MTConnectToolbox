@@ -46,7 +46,7 @@ loopamt = 10000
 
 
 
-strComputer = Inputbox ("Machine that you would like monitor:", "Machine", "127.0.0.1:5000")
+strComputer = Inputbox ("Machine that you would like monitor:", "Machine", "127.0.0.1:5001")
 if strComputer = ""  Then
 	Wscript.Quit(0)
 End if

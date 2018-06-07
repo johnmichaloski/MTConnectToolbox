@@ -1,0 +1,9 @@
+
+Fri 10/20/2017_16:40:08.24  
+
+Check singleton - again problem with bat file not kill running agent
+Is agent midnight thread cuasing a hang
+
+Add singleton check before starting.
+
+Problem with p1 versus p2

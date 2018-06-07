@@ -84,17 +84,16 @@ void AgentConfigurationEx::initialize (int aArgc, const char *aArgv[])
     {
         mConfig.load(cfgfile);
         Globals.msNewConfig
-            = mConfig.GetSymbolValue("GLOBALS.Config", "OLD").c_str( );
+            = mConfig.GetSymbolValue<std::string>("GLOBALS.Config", "OLD");
         Globals.msNewConfig = MakeUpper(Globals.msNewConfig);
 
         Globals.mServerName
-            = mConfig.GetSymbolValue("GLOBALS.ServiceName", Globals.mServerName)
-                  .c_str( );
-        MTConnectService::setName(Globals.mServerName);
+            = mConfig.GetSymbolValue<std::string>("GLOBALS.ServiceName", Globals.mServerName);
+         MTConnectService::setName(Globals.mServerName);
         Globals.mQueryServer
-            = mConfig.GetSymbolValue("GLOBALS.QueryServer", 10000).toNumber<int>( );
+            = mConfig.GetSymbolValue<int>("GLOBALS.QueryServer", 10000);
         Globals.mServerRate
-            = mConfig.GetSymbolValue("GLOBALS.ServerRate", 2000).toNumber<int>( );
+            = mConfig.GetSymbolValue<int>("GLOBALS.ServerRate", 2000);
 
         // std::string sLevel = config.GetSymbolValue("GLOBALS.logging_level",
         // "FATAL").c_str();
@@ -102,15 +101,15 @@ void AgentConfigurationEx::initialize (int aArgc, const char *aArgv[])
         // Globals.Debug  = (sLevel=="FATAL")? 0 : (sLevel=="ERROR") ? 1 :
         // (sLevel=="WARN") ? 2 : (sLevel=="INFO")? 3 : 5;
         Globals.mDebug
-            = mConfig.GetSymbolValue("GLOBALS.Debug", "0").toNumber<int>( );
+            = mConfig.GetSymbolValue<int>("GLOBALS.Debug", "0");
         Globals.mHttpPort
-            = mConfig.GetSymbolValue("GLOBALS.HttpPort", "5000").c_str( );
+            = mConfig.GetSymbolValue<std::string>("GLOBALS.HttpPort", "5000");
         Globals.mbResetAtMidnight
-            = mConfig.GetSymbolValue("GLOBALS.ResetAtMidnight", "0").toNumber<int>( );
+            = mConfig.GetSymbolValue<bool>("GLOBALS.ResetAtMidnight", "0");
         GLogger.OutputConsole( )
-            = mConfig.GetSymbolValue("GLOBALS.OutputConsole", "0").toNumber<int>( );
+            = mConfig.GetSymbolValue<int>("GLOBALS.OutputConsole", "0");
         Globals.mVersion
-            = mConfig.GetSymbolValue("GLOBALS.Version", "0").toNumber<double>( );
+            = mConfig.GetSymbolValue<double>("GLOBALS.Version", "3.3");
 
         mDevices = mConfig.GetTokens("GLOBALS.MTConnectDevice", ",");
 

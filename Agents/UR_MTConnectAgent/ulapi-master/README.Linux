@@ -1,0 +1,47 @@
+Quick Start Guide to building and demoing Ulapi for Linux
+-------------------------------------------------------------
+The INSTALL file has general instructions for compiling software built
+using Autotools, as Ulapi has been. A summary, and more specific
+instructions, follow here.
+
+1. Obtain and unpack the Ulapi distribution, which you have
+probably already done if you're reading this README. This would have
+been something like this:
+
+you> tar xzvf ulapi-1.X.tar.gz
+you> cd ulapi-1.X
+you> ./configure
+you> make
+you> make install prefix=/usr/local/ulapi
+
+2. Run the test:
+
+you> cd ulapi-1.X
+you> bin/ultest
+
+You should see diagnostics output similar to this:
+
+ultest timer passed
+ultest shared memory test passed
+waiter 0 waiting for condition...
+waiter 1 waiting for condition...
+waiter 2 waiting for condition...
+working on condition...
+working on condition...
+working on condition...
+working on condition...
+broadcasting condition
+waiter 1 condition met
+waiter 2 condition met
+waiter 0 condition met
+ultest condition variable test passed
+ultest gethostname test passed
+
+3. Your own application code that uses the Ulapi functions will need
+to be compiled with the path to Ulapi, e.g., 
+
+   gcc yourfile.c -I/usr/local/ulapi/include -L/usr/local/ulapi/lib -lulapi
+
+4. See the HTML documentation in doxygen-doc/html/index.html for many
+more details on the software.
+

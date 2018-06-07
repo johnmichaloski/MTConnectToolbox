@@ -60,6 +60,10 @@
     <ClCompile Include="..\MTConnectAgent\agent\cutting_tool.cpp">
       <Filter>Agent</Filter>
     </ClCompile>
+    <ClCompile Include="LinkingModule.cpp" />
+    <ClCompile Include="..\NIST\YamlReader.cpp">
+      <Filter>NIST</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -128,7 +132,6 @@
     <ClInclude Include="..\MTConnectAgent\agent\cutting_tool.hpp">
       <Filter>Agent</Filter>
     </ClInclude>
-    <ClInclude Include="ResetAtMidniteThread.h" />
     <ClInclude Include="..\NIST\Config.h">
       <Filter>NIST</Filter>
     </ClInclude>
@@ -143,11 +146,22 @@
     </ClInclude>
     <ClInclude Include="resource.h" />
     <ClInclude Include="Version_info.h" />
+    <ClInclude Include="..\NIST\ResetAtMidnightThread.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\WinSingleton.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\YamlReader.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <None Include="..\..\src\Agent\agent\agent.cfg" />
     <None Include="ReadMe.txt" />
     <None Include="Notes.txt" />
+    <None Include="Todo.txt" />
+    <None Include="Changelog.txt" />
+    <None Include="BuildNumAutoInc.txt" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Agent">

@@ -57,13 +57,13 @@ class AgentConfigurationT : public AgentConfiguration
 {
 public:
     std::map<std::string, std::vector<std::string> >
-    mTagnames;                                             // !< map of tagnames per device
+    mTagnames;                                             //!< map of tagnames per device
     std::map<std::string, std::vector<std::string> >
-    mConditionTags;                                        // !< map of condition ids per device
-    Nist::Config mConfig;                                  // !< ini configuration handler.
+    mConditionTags;                                        //!< map of condition ids per device
+    Nist::Config mConfig;                                  //!< ini configuration handler.
     boost::thread_group
-        mGroup;                                            // !< thread pool to manage all the adapter threads.
-    std::vector<std::string> mDevices;                     // !< names of the adapter devices
+        mGroup;                                            //!< thread pool to manage all the adapter threads.
+    std::vector<std::string> mDevices;                     //!< names of the adapter devices
 
     AgentConfigurationT( ) { }
 
@@ -100,7 +100,7 @@ class AgentConfigurationEx : public AgentConfigurationT
 {
 public:
     std::vector<UR_Adapter *>
-    mAdapterHandlers;                                      // !< list of adapter instances (to start,stop, etc).
+    mAdapterHandlers;                                      //!< list of adapter instances (to start,stop, etc).
 
     /**
      * @brief start sets up all adapter, starts their threads, and

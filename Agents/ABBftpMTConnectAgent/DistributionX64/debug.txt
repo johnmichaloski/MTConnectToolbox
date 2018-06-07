@@ -1,0 +1,5 @@
+2016-08-05 12:16:02.0005 Start ABB Agent
+2016-08-05 12:16:02.0005 AgentConfigurationT::main
+2016-08-05 12:16:02.0006 AgentConfigurationEx::initialize
+2016-08-05 12:16:02.0038 AgentConfigurationEx::start
+2016-08-05 12:16:02.0040  (M1) Could not find data item: heartbeat  

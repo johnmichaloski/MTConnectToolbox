@@ -1,0 +1,256 @@
+BY_HANDLE_FILE_INFORMATION fInfo = {0};
+GetFileInformationByHandle(hFile, &fInfo);
+if(fInfo.dwFileAttributes && FILE_FLAG_DELETE_ON_CLOSE)
+{
+    std::cout << "Attributes say this file is deleted." << std::endl;
+}
+
+
+sc create Agent  binPath="AgfmAgent.exe"
+
+cd /d %~dp0
+cacls . /t  /c  /GRANT Everyone:F
+pause
+
+
+sc.exe create Agent  binPath= 
+
+sc.exe stop Agent
+sc.exe delete Agent
+
+Remove trailing \n
+	//std::string msg = (errmsg.rfind("\n") != std::string::npos) ? errmsg.substr(0,errmsg.size()-1) : errmsg;
+
+Last time File was modified:
+#include <sys/stat.h>
+	
+#include <unistd.h>	
+#include <time.h>
+	
+struct tm* clock;				// create a time structure	
+struct stat attrib;			// create a file attribute structure        
+stat("afile.txt", &attrib);		// get the attributes of afile.txt	
+clock = gmtime(&(attrib.st_mtime));
+---------------------
+CFile::GetStatus(CFileStatus &rStatus)
+
+CFileStatus structure components
+
+
+CTime m_ctime - creation
+CTime m_mtime - last modification
+CTime m_atime - last accessed
+long m_size - logical size in bytes
+byte m_attribute - attribute byte of the file
+char m_szFullName[_MaxSize] absolute filename
+
+/////////////////////////////////////////////
+ULONGLONG GetFileSizeEx( CString strPath )
+{  
+   WIN32_FIND_DATA FindData = { 0 };
+   //gets a file search handle
+   HANDLE hFirstFile = FindFirstFile( strPath, &FindData );  
+  
+   //if the handle is valid
+   if( hFirstFile != INVALID_HANDLE_VALUE )
+   {
+      //closes the file search handle
+      FindClose( hFirstFile );
+     
+      ULONGLONG FileSize = FindData.nFileSizeHigh;
+      FileSize <<= sizeof( FindData.nFileSizeHigh ) * 8; // Push by count of bits
+      FileSize |= FindData.nFileSizeLow;
+     
+      return FileSize;
+   }
+  
+   return 0; // File not found
+}
+
+
+
+		std::vector<std::string> keys = config.getkeys(tagdefs);
+		if(tags.size() < 1 || keys.size() < 1 )
+			throw std::exception(StdStringFormat("Error: No [%s] Section or Keys?\n", tagdefs.c_str()).c_str());
+
+		for(int i=0; i<keys.size(); i++)
+		{
+			Item * item = new Item();
+			item->_alias=keys[i];
+
+			// make sure its is an OPC Tag
+			if(item->_alias.find(_T("Tag.")) == 0)
+			{
+				item->_alias=ReplaceOnce(item->_alias, _T("Tag."), _T(""));
+				item->vt=VT_BSTR;
+			}
+			if(item->_alias.find(_T("Enum."))==0)
+			{
+				item->_type=_T("Enum");
+				item->_subtype="Enumeration";
+				item->_value=item->_lastvalue= config.GetSymbolValue(tagdefs+"."+ keys[i]).c_str();
+				//item->_tagname No tagname
+				items.push_back(item);
+				continue;
+			}
+			else if(item->_alias.find(_T("Const."))==0)
+			{
+				item->_alias=ReplaceOnce(item->_alias,_T("Const."), _T(""));
+				item->vt= VT_USERDEFINED;
+				item->_subtype="Constant";
+			}
+
+			// THese must be DDE lookup
+			if(item->_alias.find(_T("Sample."))==0)
+			{
+				item->_alias=ReplaceOnce(item->_alias,_T("Sample."), _T(""));
+				item->_type=_T("Sample");
+			}
+			else if(item->_alias.find(_T("Event."))==0)
+			{
+				item->_alias=ReplaceOnce(item->_alias,_T("Event."), _T(""));
+				item->_type=_T("Event");
+			}
+			else if(item->_alias.find(_T("DDE."))==0)  // reads opc values does not send to MT Connect
+			{
+				item->_alias=ReplaceOnce(item->_alias, _T("DDE."), _T(""));  // OPC value for scripting
+				item->_type=_T("DDE");
+			}
+			else if(item->_alias.find(_T("Condition."))==0)
+			{
+				item->_alias=ReplaceOnce(item->_alias,_T("Condition."), _T(""));
+				item->_type="Condition";
+			}
+			std::string tmp= config.GetSymbolValue(tagdefs+"."+ keys[i]).c_str();
+			item->_tagname=tmp;
+			items.push_back(item);
+		}
+		for(int i = 0 ; i < items.size(); i++)
+		{
+			//if(items[i]->_type==_T("Event") || items[i]->_type==_T("Sample"))
+			//	items[i]->_event= new Event(items[i]->_tagname.c_str());
+		}
+
+		// SLOW SLOW SLOW
+		//std::string contents;
+		//ReadFile(::ExeDirectory()+"ProductionLog.csv",contents);
+		//std::vector<std::string> lines = TrimmedTokenize(contents,"\n");
+		/*for(int i=0; i< lines.size(); i++)
+		{
+			std::vector<std::string> tokens = TrimmedTokenize(lines[i],Globals.Delimiter);
+			COleDateTime timestamp;
+			if(tokens.size()<=0)
+				continue;
+			timestamp=GetDateTime(tokens[0]);
+			timestamp=COleDateTime(timestamp.GetYear(), timestamp.GetMonth(), timestamp.GetDay(), 0, 0, 0);
+			if(timestamp == today)
+			{
+				for(int j=1; j< tokens.size(); j++);
+			}
+		}*/
+
+
+			//// Read and skip lines till current day
+			//while ( getline(data,line) )
+			//{
+			//	COleDateTime timestamp=GetDateTime(line.c_str());
+			//	timestamp=COleDateTime(timestamp.GetYear(), timestamp.GetMonth(), timestamp.GetDay(), 0, 0, 0);
+			//	if(timestamp == today)
+			//	{
+			//		break;
+			//	}
+			//}
+
+	
+	
+	#if 0
+		HANDLE hFile = CreateFile(filename.c_str(),
+                          GENERIC_READ, // access (read) mode
+                          FILE_SHARE_READ|FILE_SHARE_WRITE|FILE_SHARE_DELETE, // share mode
+                          NULL, // pointer to security attributes
+                          OPEN_EXISTING, // how to create
+                          FILE_ATTRIBUTE_NORMAL,// file attributes
+                          NULL); // handle to file with attributes to copy
+		if (hFile == INVALID_HANDLE_VALUE)    // did we succeed?
+		{
+			// possibly call GetLastError() to get a hint what failed
+			// and terminate (it is useless to continue if we can’t connect to Direct I/O)
+		}
+		BY_HANDLE_FILE_INFORMATION fInfo = {0};
+		GetFileInformationByHandle(hFile, &fInfo);
+		DWORD dwRead = (fInfo.nFileSizeHigh * (MAXDWORD+1)) + fInfo.nFileIndexLow;
+		DWORD dwNewSize;
+		void * readBuffer = malloc(dwRead);
+		// read the original file byte in the buffer
+		ReadFile(hFile, readBuffer, dwRead, &dwNewSize, NULL );
+
+		HANDLE hNewFile = CreateFile( tofilename.c_str(), 
+			GENERIC_WRITE, 
+			 FILE_SHARE_READ|FILE_SHARE_WRITE, 
+			NULL, 
+			CREATE_ALWAYS, 
+			FILE_ATTRIBUTE_NORMAL,
+			NULL );
+		// write this buffer to the new file
+		DWORD dwWritten;
+		WriteFile( hNewFile, readBuffer, dwNewSize, &dwWritten, NULL );
+		free readBuffer;
+#endif
+
+	//fseek(stream, 0, SEEK_END);
+		//size_t fileSize = ftell(stream);
+		//rewind(stream);
+		//char *data = (char*) calloc(sizeof(char), fileSize + 20); // free(data);
+		//fseek(stream, 0, SEEK_END);
+		//size_t fileSize = ftell(stream);
+		//rewind(stream);
+		//char *data = (char*) calloc(sizeof(char), fileSize + 20); // free(data);
+
+
+			#if 0
+		//CopyFileEx(filename.c_str(), tofilename.c_str(), NULL/*callback ptr*/, NULL, FALSE, COPY_FILE_OPEN_SOURCE_FOR_WRITE);
+		//CopyFile(filename.c_str(), tofilename.c_str(), false);
+		std::ifstream in(tofilename, std::ios::in | std::ios::binary);
+		if (!in.is_open())
+		{
+			DebugMessage(StdStringFormat("Local File could not open for device %s\n", _device.c_str()));
+			return E_FAIL;
+		}
+		std::vector<std::string> lines;
+		std:: string line;
+		if(filesize==_lastfilesize && _lastfilesize != 0 )
+			return S_OK; // No new events
+
+		if(filesize>_lastfilesize && _lastfilesize != 0 )
+		{	
+			// Skip file until new lines
+			in.seekg(_lastfilesize);			
+		}
+		else
+		{
+			// Read and skip lines till current day
+			while ( getline (in,line) )
+			{
+				COleDateTime timestamp=GetDateTime(line);
+				timestamp=COleDateTime(timestamp.GetYear(), timestamp.GetMonth(), timestamp.GetDay(), 0, 0, 0);
+				if(timestamp == today)
+				{
+					break;
+				}
+			}
+		}
+		while ( getline (in,line) )
+			lines.push_back(line);
+#endif
+
+
+	/*	while ((numread= fread( pAddr, 1, ulFileSize, stream )) < ulFileSize)
+		{
+			if(numread==0)
+			{
+				DebugMessage(StdStringFormat("numread File %s is zero for device %s\n", filename.c_str(), _device.c_str()));
+				return E_FAIL;
+			}
+			pAddr = &data[numread];
+			ulFileSize-=numread;
+		}*/

@@ -1,15 +1,17 @@
-$(ProjectDir)
-==========================================================
-@echo off
-for /f %%a in (buildid.txt) do (
-  echo %%a
-  set /a num=%%a
-)
-echo %num%
-set /a num += 1
-echo %num% > buildid.txt
-echo int buildid = %num%; > buildid.c
 
+
+Mon 10/22/2017_14:12:36.09  
+resolve multiple spindle operation.
+
+Fri 10/20/2017_4:23:55.09  
+Webex to see what's wrong with Shdr Agent - AGAIN 2+ agents running at same time
+
+Fri 10/20/2017_10:12:36.09  
+Revolve new TechSolve long list of tags to 0.9 version,
+no advanced MSI. Just load files, MSVC runtime, and set privileges.
+
+
+Thu 3/10/2016_9:32:12.44  
 Techsolve Name	0.9 Name	Comments
 sspeed	Srpm	
 SSovr	Sovr	
@@ -23,8 +25,8 @@ execution	execution	Enums change
 toolid	Tool_number	
 pcount	PartCountAct	
 
-
-Fanuc:
+* Fri 10/24/14 11:45:00 AM
+Fanuc SHDR:
 2014-10-21T12:53:55.0099Z|power|OFF|avail|UNAVAILABLE|block|UNAVAILABLE|line|UNA
 VAILABLE|program|UNAVAILABLE|controllermode|UNAVAILABLE|execution|UNAVAILABLE|Xa
 bs|UNAVAILABLE|Yabs|UNAVAILABLE|Zabs|UNAVAILABLE|Aabs|UNAVAILABLE|Babs|UNAVAILAB
@@ -35,7 +37,7 @@ BLE|heartbeat|UNAVAILABLE
                                                               2014-10-21T12:53:5
 9.0896Z|heartbeat|2
                    2014-10-21T12:54:04.0747Z|heartbeat|3
-
+Tag List:
 power
 avail
 block
@@ -58,22 +60,6 @@ Sovr
 heartbeat
 
 
-	 GLogger.Fatal(StdStringFormat( "MTConnect AgentStartServiceCtrlDispatcher\n").c_str());
-
-
-		//try
-		//{
-		//	if(_nPingTimeout <=0)
-		//		throw StdStringFormat( _T("WARNING: Couldn't negative ping %d machine=%s"),_nPingTimeout, _opcservermachine.c_str());
-		//	boost::asio::io_service io_service;
-		//	pinger p(io_service, _opcservermachine.c_str());
-		//	io_service.run();
-		//}
-		//catch (std::exception& e)
-		//{
-		//	throw StdStringFormat( _T("WARNING: Couldn't ping machine=%s error %s"), _opcservermachine.c_str(), e.what());
-		//}
-
 * Fri 04/26/13 11:45:00 AM
 
 - now agent has initial conditions - no default or empty constructor :(
@@ -83,51 +69,4 @@ UPSHOT - removed setAgent(new AgentEx()); and handleExtensionCall force webserve
 - for Windows 7 removed srpm2, fake rpm with lag, and any alaram stuff - ouch
 
 
-// Connect socket
-if  (WSAConnect(SocketPrimary, (struct sockaddr *)&ServerAddr, sizeof(ServerAddr), NULL, NULL, NULL, NULL) == SOCKET_ERROR)
-{
-    int Result = WSAGetLastError();
-    if (Result != WSAEWOULDBLOCK)
-    {
-        LogToEventLog(EVENTLOG_WARNING_TYPE, EVENTID_WINSOCK_ERROR, _T("Primary server connection failed -  to connect to server with error %ld"), Result);
-        Close(SocketPrimary, TRUE);
-        return false;
-    }
 
-    // Wait for connect (use select as the socket is non-blocking at this time)
-    fd_set WriteFDS, ErrorFDS;
-    FD_ZERO(&WriteFDS);
-    FD_ZERO(&ErrorFDS);
-    FD_SET(SocketPrimary, &WriteFDS);
-
-    TIMEVAL Timeout;
-    Timeout.tv_sec = ConnectTimeOut / 1000;
-    Timeout.tv_usec = (ConnectTimeOut % 1000) * 1000;
-
-    Result = select(0, NULL, &WriteFDS, &ErrorFDS, &Timeout);
-    if (Result == SOCKET_ERROR)
-    {
-        LogToEventLog(EVENTLOG_WARNING_TYPE, EVENTID_WINSOCK_ERROR, _T(" Primary server connection failed - a select call with error %ld"), WSAGetLastError());
-        Close(SocketPrimary, TRUE);
-        return false;
-    }
-
-    if (Result == 0)
-    {
-        LogToEventLog(EVENTLOG_WARNING_TYPE, EVENTID_WINSOCK_ERROR, _T(" Primary server connection failed -  timeout to connect..."));
-        Close(SocketPrimary, TRUE);
-        return false;
-    }
-
-    if (FD_ISSET(SocketPrimary, &ErrorFDS))
-    {
-        DWORD SocketError;
-        getsockopt(SocketPrimary, SOL_SOCKET, SO_ERROR, (char*)&SocketError, sizeof(SocketError));
-
-        LogToEventLog(EVENTLOG_WARNING_TYPE, EVENTID_WINSOCK_ERROR, _T(" Primary server connection failed - to connect to server with error %u"), SocketError);
-        Close(SocketPrimary, TRUE);
-        return false;
-    }
-}
-
-// connected ...

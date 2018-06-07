@@ -132,9 +132,6 @@ void AgentConfiguration::initialize (int aArgc, const char *aArgv[])
     }
     catch ( std::exception & e )
     {
-        OutputDebugString("Agent failed to load");
-        OutputDebugString(e.what( ));
-
         sLogger << LFATAL << "Agent failed to load: " << e.what( );
 
         // optionList.usage();

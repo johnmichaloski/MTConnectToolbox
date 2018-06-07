@@ -1,0 +1,22 @@
+2017-11-09T20:00:24.0335ZMTConnect Adapter  Configure Thu Nov 09 15:00:24 2017
+
+2017-11-09T20:00:24.0358ZDeviceName=
+2017-11-09T20:00:24.0360ZServiceName=MTConnectFanucAdapter
+2017-11-09T20:00:24.0360ZDebugLevel=5
+2017-11-09T20:00:24.0361ZProtocol=LAN
+2017-11-09T20:00:24.0362ZCycleSleep=1000
+2017-11-09T20:00:24.0363ZFanucPort=8193
+2017-11-09T20:00:24.0363ZResetAtMidnight=0
+2017-11-09T20:00:24.0364ZAlarmFlag=1
+2017-11-09T20:00:24.0365ZAxesLoadFlag=0
+2017-11-09T20:00:24.0365ZToolingFlag=0
+2017-11-09T20:02:37.0606ZiSeries::connect Using Protocol=LAN
+2017-11-09T20:02:37.0607ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=8193
+2017-11-09T20:02:47.0638ZiSeries::connect cnc_allclibhndl Result:fffffff0
+2017-11-09T20:02:47.0639ZiSeries::connect cnc_allclibhndl3 failed 2017-11-09T20:02:47.0639ZiSeries::connect FAILED Power = OFF
+2017-11-09T20:02:47.0641ZiSeries::disconnect Using Protocol=LAN
+2017-11-09T20:02:47.0642ZConnect fail 2017-11-09T20:02:47.0642ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=8193
+2017-11-09T20:02:57.0667ZiSeries::connect cnc_allclibhndl Result:fffffff0
+2017-11-09T20:02:57.0667ZiSeries::connect cnc_allclibhndl3 failed 2017-11-09T20:02:57.0669ZConnect fail 2017-11-09T20:02:58.0671ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=8193
+2017-11-09T20:03:08.0698ZiSeries::connect cnc_allclibhndl Result:fffffff0
+2017-11-09T20:03:08.0699ZiSeries::connect cnc_allclibhndl3 failed 2017-11-09T20:03:08.0701ZConnect fail 

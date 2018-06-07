@@ -1,3 +1,4 @@
-"C:\Program Files\NIST\proj\MTConnect\Nist\MTConnectGadgets\MTConnectAgentFromShdr\MTConnectAgentFromShdr\Win32\Debug\MTConnectAgentFromShdr.exe" debug 
-pause
+cd /d %~dp0
+echo %DATE%_%TIME%
+.\Agent.exe debug
 

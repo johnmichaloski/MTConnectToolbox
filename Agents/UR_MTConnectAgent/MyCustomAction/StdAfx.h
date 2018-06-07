@@ -6,21 +6,12 @@
 #pragma once
 
 // Insert your headers here
-//#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
+#define WIN32_LEAN_AND_MEAN		// Exclude rarely-used stuff from Windows headers
 
 #include <windows.h>
 #include <msi.h>
 #include <msiquery.h>
-
-
-//#include <atlbase.h>
-//#include <atlwin.h>
-//#include <atlapp.h>
-//#include <atlctrls.h>
-//#include <atldlgs.h>
-//#include <comdef.h>
-
-//#include <stdio.h>
+#include <comdef.h>
 
 #pragma warning(disable: 4800) //warning C4800: forcing value to bool 'true' or 'false' (performance warning)
 #pragma warning(disable: 4018) //warning C4018: '<' : signed/unsigned mismatch

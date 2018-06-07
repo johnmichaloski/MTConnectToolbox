@@ -2,14 +2,8 @@
 //
 
 #include "stdafx.h"
-//#include "MSI_Logging.h"
 #include "StdStringFcn.h"
-//#include "RunProcess.h"
-//#include "FilPermission.h"
-
-//#include "atlstr.h"
 #include "Config.h"
-#include "DevicesXML.h"
 #include <sstream>
 #include <algorithm>
 #include <numeric>  
@@ -27,6 +21,39 @@ static std::string SanitizeDeviceName(std::string name)
 	return name;
 }
 //////////////////////////////////////////////////////////////////////////////////////
+
+LRESULT WriteAgentCfgFile (std::string ServerName,
+                                        std::string HttpPort,
+                                        std::string cfgfile, 
+										std::string xmlFile,
+                                        std::string destFolder)
+{
+    // Generate agent.cfg file with all devices in it.
+    std::string cfg;
+
+    cfg  = "Devices = " + xmlFile + "\n";
+    cfg += "ServiceName = " + ServerName + "\n";           // MTConnectAgent\n";
+    cfg += "Port = " + HttpPort + "\n";
+
+    cfg += "CheckpointFrequency=10000\n";
+    cfg += "AllowPut=true\n";
+
+    cfg += "Adapters \n{\n";
+    cfg += "}\n";
+
+    cfg += "# Logger Configuration\n";
+    cfg += "logger_config\n";
+    cfg += "{\n";
+    cfg += "\tlogging_level = debug\n";
+    cfg += "\toutput = cout\n";
+    cfg += "}\n";
+
+    if ( !cfgfile.empty( ) )
+    {
+        WriteFile(destFolder + cfgfile, cfg);
+    }
+    return 0;
+}
 
 BOOL APIENTRY DllMain( HANDLE hModule, 
 					  DWORD  ul_reason_for_call, 
@@ -156,17 +183,21 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 {
 
 	HRESULT hRes = ::CoInitialize(NULL);
-	std::string path,agentport,devices,servicename,logfiles;
+	std::string path;   // $TARGET
+	std::string servicename,agentport;
+	std::string devices,ip, model,version;
 	std::string status;
 	std::string keylist;
 
 	try {
 
 		// Asssign defaults
-		devices="M1";
-		logfiles="";
 		servicename="UR_Agent";
 		agentport="5000";
+		devices="M1";
+		ip="";
+		model="";
+		version="";
 
 		TCHAR szBuffer1[MAX_PATH] = {'0'};
 		DWORD dwLen = MAX_PATH;
@@ -177,7 +208,9 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 		std::vector<std::string> symbols = TrimmedTokenize(std::string(szBuffer1), "$");
 
 		// Custom action parameterization
-		// $ServiceName=[EDITA1]$AgentPort=[EDITA2]$Devices=[EDITA3]$LogFiles=[EDITA4]$Target=[TARGETDIR]
+		// $ServiceName=[EDITA1]$AgentPort=[EDITA2]$
+		// $Devices=[EDITB1]$IP=[EDITB2]$Model=[EDITB3]$Version=[EDITB4]
+		// $Target=[TARGETDIR]
 		status="Parse symbols";
 		for(size_t i=0 ; i< symbols.size() ; i++)
 		{
@@ -192,31 +225,37 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 				agentport=tokens[1];
 			if(tokens[0]=="ServiceName") // default UR_Agent
 				servicename=tokens[1];    
- 			if(tokens[0]=="Devices") // comma separated list of machine names
+ 			if(tokens[0]=="Devices") // csv list of machine names
 				devices=tokens[1];    
-			if(tokens[0]=="LogFiles") // comma separated list of UNC log files
-				logfiles=tokens[1];    
- 
+			if(tokens[0]=="IP") // csv list of ips
+				ip=tokens[1];    
+			if(tokens[0]=="Model") // csv list of models (ur3,ur5,ur10)
+				model=tokens[1];    
+ 			if(tokens[0]=="Version") // csv list of versions(1.8,1.9,3.0,3.1,..3.4)
+				version=tokens[1];    
+
 		}
 		std::vector<std::string> keys = TrimmedTokenize(devices, ",");
-		std::vector<std::string> logs = TrimmedTokenize(logfiles, ",");
+		std::vector<std::string> ips = TrimmedTokenize(ip, ",");
+		std::vector<std::string> models = TrimmedTokenize(model, ",");
+		std::vector<std::string> versions = TrimmedTokenize(version, ",");
+
 		for(size_t i=0; i< keys.size(); i++)
 		{
 			keys[i]=SanitizeDeviceName(keys[i]);
 		}
+
 		for(size_t i=0 ; i< keys.size() ; i++)
 			keylist+=keys[i]+",";
 		keylist=keylist.substr(0,keylist.size()-1); // remove trailing comma
-		//std::string keylist = std::accumulate( keys.begin(), keys.end(), std::string("") );; // need comma separator
 
-		if(keys.size() != logs.size())
+		if(keys.size() != ips.size())
 		{
 			return ERROR_BAD_ARGUMENTS;
 		}
 
 		RunSynchronousProcess("sc.exe", " stop " + servicename);
-		::Sleep(2000);
-		RunSynchronousProcess("sc.exe", " delete " + servicename);
+
 
 		status = "SetFilePermission \n";
 		SetFilePermission(path+"debug.txt") ;
@@ -226,6 +265,8 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 		SetFilePermission(path+"Agent.cfg") ;
 		SetFilePermission(path+"Devices.xml") ;
 		SetFilePermission(path+"Config.ini") ;
+		SetFilePermission(path+"InstallAgent.bat") ;
+		SetFilePermission(path+"tags.csv") ;
 
 		status = "Done SetFilePermission \n";
 
@@ -233,16 +274,22 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 		WritePrivateProfileString("GLOBALS", "ServiceName", servicename.c_str(), (path+"Config.ini").c_str());
 		WritePrivateProfileString("GLOBALS", "MTConnectDevice", keylist.c_str(), (path+"Config.ini").c_str());
 
+		// This ensures that a devices.xml will be generated upon first app or service execution
+		WritePrivateProfileString("GLOBALS", "Config", "NEW", (path+"Config.ini").c_str());
+
+		std::string jointnames = "shoulder_pan_joint,shoulder_lift_joint,elbow_joint,wrist_1_joint,wrist_2_joint,wrist_3_joint";
 		for(size_t i=0; i< keys.size(); i++)
 		{
-			WritePrivateProfileString(keys[i].c_str(), "ProductionLog", logs[i].c_str(), (path+"Config.ini").c_str());
+			WritePrivateProfileString(keys[i].c_str(), "IP", ips[i].c_str(), (path+"Config.ini").c_str());
+			WritePrivateProfileString(keys[i].c_str(), "urdf", (models[i]+".urdf").c_str(), (path+"Config.ini").c_str());
+			WritePrivateProfileString(keys[i].c_str(), "version", versions[i].c_str(), (path+"Config.ini").c_str());
+			WritePrivateProfileString(keys[i].c_str(), "jointnames", jointnames.c_str(), (path+"Config.ini").c_str());
 
 		}
 		DbgOut("Create service with UR_Agent.exe");
 
-
-		CDevicesXML::WriteAgentCfgFile(servicename, agentport, "Agent.cfg", "Devices.xml", path);
-		CDevicesXML::WriteDevicesFile(keys, CDevicesXML::ProbeDeviceXml(),  "Devices.xml",path);
+		WriteAgentCfgFile(servicename, agentport, "Agent.cfg", "Devices.xml", path);
+		//CDevicesXML::WriteDevicesFile(keys, CDevicesXML::ProbeDeviceXml(),  "Devices.xml",path);
 		
 
 		// This can be a problem - since registry access is issue

@@ -68,16 +68,18 @@ public:
     ur_communication( );
     bool         start ( );
     void         halt ( );
-    HRESULT      init (UR_Adapter *, std::string host);
+    HRESULT      init (UR_Adapter *, std::string host,std::string port);
     ur_message_t primary_socket ( );
-    RCS::MutexVariable<bool> mConnected;
-    bool mKeepalive;
+   bool mConnected;
+   // RCS::MutexVariable<bool> mConnected;
+    RCS::MutexVariable<bool> mKeepalive;
 private:
     void         run ( );                                  /// thread
     UR_Adapter *_ur_adapter;
     struct hostent *mServer;
     ur_comm::thread mCommThread;
     std::string mHost;
+	std::string mPort;
 };
 
 #endif                                                     /* UR_COMMUNICATION_H_ */

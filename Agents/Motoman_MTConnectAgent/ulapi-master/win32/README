@@ -1,0 +1,16 @@
+This is the Windows implementation of Ulapi.
+
+To build, open 'ulapi.sln' in Microsoft Visual C++. The project was
+set up with VC++ Express 2010 and may be converted by more recent VC++
+versions. 
+
+Do a "Build" in VC++. The executables end up in the Debug folder. 
+
+Install it to C:\Program Files\ulapi by running the 'install.bat'
+script.
+
+Put "C:Program Files\ulapi\bin" in the PATH variable in your Windows
+environment, by right-clicking on "My Computer" -> "Properties", or
+something similar depending your your version of windows, and then
+looking for environment variables under advanced settings.
+

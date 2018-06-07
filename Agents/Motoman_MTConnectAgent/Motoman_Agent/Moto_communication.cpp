@@ -1,5 +1,5 @@
 /*
-* ur_communication.cpp
+* moto_communication.cpp
 *
 * Copyright 2015 Thomas Timm Andersen
 *
@@ -15,9 +15,13 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+#include <SDKDDKVer.h>
+#include "Moto_communication.h"
+#include "Moto_Adapter.h"
+#include "NIST/hexdump.h"
+#include "NIST/Logger.h"  // exedirectory, strformat, 
 
-#include "ur_communication.h"
-#include "UR_Adapter.h"
+#define SOCKET_READ_TIMEOUT_SEC 30
 
 #ifdef _DEBUG
 #define print_info(X)       OutputDebugString(X)
@@ -33,427 +37,411 @@
 
 std::string WhatIsWSAError (int code)
 {
-    switch ( code )
-    {
-    case 0:
-        {
-            return "";
-        }
+	switch ( code )
+	{
+	case 0:
+		{
+			return "";
+		}
 
-    case WSANOTINITIALISED:
-        {
-            return "A successful WSAStartup call must occur before using this "
-                   "function.";
-        }
+	case WSANOTINITIALISED:
+		{
+			return "A successful WSAStartup call must occur before using this "
+				"function.";
+		}
 
-    case WSAENETDOWN:
-        {
-            return "The network subsystem has failed.";
-        }
+	case WSAENETDOWN:
+		{
+			return "The network subsystem has failed.";
+		}
 
-    case WSAEFAULT:
-        {
-            return "The buffer pointed to by the optval parameter is not in a valid "
-                   "part of the process address space or the optlen parameter is too "
-                   "small.";
-        }
+	case WSAEFAULT:
+		{
+			return "The buffer pointed to by the optval parameter is not in a valid "
+				"part of the process address space or the optlen parameter is too "
+				"small.";
+		}
 
-    case WSAEINPROGRESS:
-        {
-            return "A blocking Windows Sockets 1.1 call is in progress, or the service "
-                   "provider is still processing a callback function.";
-        }
+	case WSAEINPROGRESS:
+		{
+			return "A blocking Windows Sockets 1.1 call is in progress, or the service "
+				"provider is still processing a callback function.";
+		}
 
-    case WSAEINVAL:
-        {
-            return "The level parameter is not valid, or the information in the buffer "
-                   "pointed to by the optval parameter is not valid.";
-        }
+	case WSAEINVAL:
+		{
+			return "The level parameter is not valid, or the information in the buffer "
+				"pointed to by the optval parameter is not valid.";
+		}
 
-    case WSAENETRESET:
-        {
-            return "The connection has timed out when SO_KEEPALIVE is set.";
-        }
+	case WSAENETRESET:
+		{
+			return "The connection has timed out when SO_KEEPALIVE is set.";
+		}
 
-    case WSAENOPROTOOPT:
-        {
-            return "The option is unknown or unsupported for the specified provider or "
-                   "socket (see SO_GROUP_PRIORITY limitations: ";
-        }
+	case WSAENOPROTOOPT:
+		{
+			return "The option is unknown or unsupported for the specified provider or "
+				"socket (see SO_GROUP_PRIORITY limitations: ";
+		}
 
-    case WSAENOTCONN:
-        {
-            return "The connection has been reset when SO_KEEPALIVE is set.";
-        }
+	case WSAENOTCONN:
+		{
+			return "The connection has been reset when SO_KEEPALIVE is set.";
+		}
 
-    case WSAENOTSOCK:
-        {
-            return "The descriptor is not a socket.";
-        }
+	case WSAENOTSOCK:
+		{
+			return "The descriptor is not a socket.";
+		}
 
-    case WSAEINTR:
-        {
-            return "The (blocking:  call was canceled via WSACancelBlockingCall(: ";
-        }
+	case WSAEINTR:
+		{
+			return "The (blocking:  call was canceled via WSACancelBlockingCall(: ";
+		}
 
-    case WSAEBADF:
-        {
-            return "The socket descriptor is not valid.";
+	case WSAEBADF:
+		{
+			return "The socket descriptor is not valid.";
 
-            //	case WSAEFAULT:  return "An invalid argument was supplied to the Windows
-            // Sockets API.";
-            //	case WSAEINVAL:  return "An invalid call was made to the Windows Sockets
-            // API.";
-        }
+			//	case WSAEFAULT:  return "An invalid argument was supplied to the Windows
+			// Sockets API.";
+			//	case WSAEINVAL:  return "An invalid call was made to the Windows Sockets
+			// API.";
+		}
 
-    case WSAEMFILE:
-        {
-            return "No more file descriptors are available.";
-        }
+	case WSAEMFILE:
+		{
+			return "No more file descriptors are available.";
+		}
 
-    case WSAEWOULDBLOCK:
-        {
-            return "The socket is marked as non-blocking and no connections are "
-                   "present to be accepted.";
+	case WSAEWOULDBLOCK:
+		{
+			return "The socket is marked as non-blocking and no connections are "
+				"present to be accepted.";
 
-            //	case WSAEINPROGRESS:  return "A blocking Windows Sockets call is in
-            // progress.";
-        }
+			//	case WSAEINPROGRESS:  return "A blocking Windows Sockets call is in
+			// progress.";
+		}
 
-    case WSAEALREADY:
-        {
-            return "The asynchronous routine being canceled has already completed.";
+	case WSAEALREADY:
+		{
+			return "The asynchronous routine being canceled has already completed.";
 
-            //	case WSAENOTSOCK:  return "The descriptor is not a socket.";
-        }
+			//	case WSAENOTSOCK:  return "The descriptor is not a socket.";
+		}
 
-    case WSAEDESTADDRREQ:
-        {
-            return "A destination address is required.";
-        }
+	case WSAEDESTADDRREQ:
+		{
+			return "A destination address is required.";
+		}
 
-    case WSAEMSGSIZE:
-        {
-            return "The datagram was too large to fit into the specified buffer and "
-                   "was truncated.";
-        }
+	case WSAEMSGSIZE:
+		{
+			return "The datagram was too large to fit into the specified buffer and "
+				"was truncated.";
+		}
 
-    case WSAEPROTOTYPE:
-        {
-            return "The specified protocol is the wrong type for this socket.";
+	case WSAEPROTOTYPE:
+		{
+			return "The specified protocol is the wrong type for this socket.";
 
-            //	case WSAENOPROTOOPT:  return "The option is unknown or unsupported.";
-        }
+			//	case WSAENOPROTOOPT:  return "The option is unknown or unsupported.";
+		}
 
-    case WSAEPROTONOSUPPORT:
-        {
-            return "The specified protocol is not supported.";
-        }
+	case WSAEPROTONOSUPPORT:
+		{
+			return "The specified protocol is not supported.";
+		}
 
-    case WSAESOCKTNOSUPPORT:
-        {
-            return "The specified socket type is not supported in this address family.";
-        }
+	case WSAESOCKTNOSUPPORT:
+		{
+			return "The specified socket type is not supported in this address family.";
+		}
 
-    case WSAEOPNOTSUPP:
-        {
-            return "The referenced socket is not a type that supports "
-                   "connection-oriented service.";
-        }
+	case WSAEOPNOTSUPP:
+		{
+			return "The referenced socket is not a type that supports "
+				"connection-oriented service.";
+		}
 
-    case WSAEPFNOSUPPORT:
-        {
-            return "WSAEPFNOSUPPORT ";
-        }
+	case WSAEPFNOSUPPORT:
+		{
+			return "WSAEPFNOSUPPORT ";
+		}
 
-    case WSAEAFNOSUPPORT:
-        {
-            return "The specified address family is not supported by this protocol.";
-        }
+	case WSAEAFNOSUPPORT:
+		{
+			return "The specified address family is not supported by this protocol.";
+		}
 
-    case WSAEADDRINUSE:
-        {
-            return "The specified address is already in use.";
-        }
+	case WSAEADDRINUSE:
+		{
+			return "The specified address is already in use.";
+		}
 
-    case WSAEADDRNOTAVAIL:
-        {
-            return "The specified address is not available from the local machine.";
+	case WSAEADDRNOTAVAIL:
+		{
+			return "The specified address is not available from the local machine.";
 
-            //	case WSAENETDOWN:  return "The Windows Sockets implementation has
-            // detected that the network subsystem has failed. Usually displayed by Glink
-            // as 'NET FAILURE'.";
-        }
+			//	case WSAENETDOWN:  return "The Windows Sockets implementation has
+			// detected that the network subsystem has failed. Usually displayed by Glink
+			// as 'NET FAILURE'.";
+		}
 
-    case WSAENETUNREACH:
-        {
-            return "The network address can't be reached from this host. There is "
-                   "probably a problem in the way you have set up TCP/IP routing for "
-                   "your PC most likely you have not defined a default router: ";
+	case WSAENETUNREACH:
+		{
+			return "The network address can't be reached from this host. There is "
+				"probably a problem in the way you have set up TCP/IP routing for "
+				"your PC most likely you have not defined a default router: ";
 
-            //	case WSAENETRESET:  return "The connection must be reset because the
-            // Windows Sockets implementation dropped it.";
-        }
+			//	case WSAENETRESET:  return "The connection must be reset because the
+			// Windows Sockets implementation dropped it.";
+		}
 
-    case WSAECONNABORTED:
-        {
-            return "The connection has been closed.";
-        }
+	case WSAECONNABORTED:
+		{
+			return "The connection has been closed.";
+		}
 
-    case WSAECONNRESET:
-        {
-            return "  ";
-        }
+	case WSAECONNRESET:
+		{
+			return "  ";
+		}
 
-    case WSAENOBUFS:
-        {
-            return "Not enough buffers available, or too many connections.";
-        }
+	case WSAENOBUFS:
+		{
+			return "Not enough buffers available, or too many connections.";
+		}
 
-    case WSAEISCONN:
-        {
-            return "The socket is already connected.";
+	case WSAEISCONN:
+		{
+			return "The socket is already connected.";
 
-            //	case WSAENOTCONN:  return "The socket is not connected.";
-        }
+			//	case WSAENOTCONN:  return "The socket is not connected.";
+		}
 
-    case WSAESHUTDOWN:
-        {
-            return "The socket has been shutdown";
-        }
+	case WSAESHUTDOWN:
+		{
+			return "The socket has been shutdown";
+		}
 
-    case WSAETOOMANYREFS:
-        {
-            return "WSAETOOMANYREFS ";
-        }
+	case WSAETOOMANYREFS:
+		{
+			return "WSAETOOMANYREFS ";
+		}
 
-    case WSAETIMEDOUT:
-        {
-            return "Attempt to connect timed out without establishing a connection. "
-                   "Usually displayed by Glink as 'Connection to host timed out'.";
-        }
+	case WSAETIMEDOUT:
+		{
+			return "Attempt to connect timed out without establishing a connection. "
+				"Usually displayed by Glink as 'Connection to host timed out'.";
+		}
 
-    case WSAECONNREFUSED:
-        {
-            return "The attempt to connect was forcefully rejected. Usually displayed "
-                   "by Glink as 'Connection refused by host'.";
-        }
+	case WSAECONNREFUSED:
+		{
+			return "The attempt to connect was forcefully rejected. Usually displayed "
+				"by Glink as 'Connection refused by host'.";
+		}
 
-    case WSAELOOP:
-        {
-            return "Too many symbolic links were encountered in translating the path "
-                   "name.";
-        }
+	case WSAELOOP:
+		{
+			return "Too many symbolic links were encountered in translating the path "
+				"name.";
+		}
 
-    case WSAENAMETOOLONG:
-        {
-            return "WSAENAMETOOLONG ";
-        }
+	case WSAENAMETOOLONG:
+		{
+			return "WSAENAMETOOLONG ";
+		}
 
-    case WSAEHOSTDOWN:
-        {
-            return "The host machine is out of service. Usually displayed by Glink as "
-                   "'Host machine is down'.";
-        }
+	case WSAEHOSTDOWN:
+		{
+			return "The host machine is out of service. Usually displayed by Glink as "
+				"'Host machine is down'.";
+		}
 
-    case WSAEHOSTUNREACH:
-        {
-            return "The host machine is unreachable. Usually displayed by Glink as "
-                   "'Host is unreachable'.";
-        }
+	case WSAEHOSTUNREACH:
+		{
+			return "The host machine is unreachable. Usually displayed by Glink as "
+				"'Host is unreachable'.";
+		}
 
-    case WSAENOTEMPTY:
-        {
-            return "WSAENOTEMPTY ";
-        }
+	case WSAENOTEMPTY:
+		{
+			return "WSAENOTEMPTY ";
+		}
 
-    case WSAEPROCLIM:
-        {
-            return "WSAEPROCLIM ";
-        }
+	case WSAEPROCLIM:
+		{
+			return "WSAEPROCLIM ";
+		}
 
-    case WSAEUSERS:
-        {
-            return "WSAEUSERS ";
-        }
+	case WSAEUSERS:
+		{
+			return "WSAEUSERS ";
+		}
 
-    case WSAEDQUOT:
-        {
-            return "WSAEDQUOT ";
-        }
+	case WSAEDQUOT:
+		{
+			return "WSAEDQUOT ";
+		}
 
-    case WSAESTALE:
-        {
-            return "WSAESTALE ";
-        }
+	case WSAESTALE:
+		{
+			return "WSAESTALE ";
+		}
 
-    case WSAEREMOTE:
-        {
-            return "WSAEREMOTE";
-        }
+	case WSAEREMOTE:
+		{
+			return "WSAEREMOTE";
+		}
 
-    case WSASYSNOTREADY:
-        {
-            return "Indicates that the underlying network subsystem is not ready for "
-                   "network communication.";
-        }
+	case WSASYSNOTREADY:
+		{
+			return "Indicates that the underlying network subsystem is not ready for "
+				"network communication.";
+		}
 
-    case WSAVERNOTSUPPORTED:
-        {
-            return "The version of Windows Sockets API support requested is not "
-                   "provided by this particular Windows Sockets implementation.";
+	case WSAVERNOTSUPPORTED:
+		{
+			return "The version of Windows Sockets API support requested is not "
+				"provided by this particular Windows Sockets implementation.";
 
-            //	case WSANOTINITIALISED:  return "A successful WSAStartup:  return " must
-            // occur before using this API.";
-        }
+			//	case WSANOTINITIALISED:  return "A successful WSAStartup:  return " must
+			// occur before using this API.";
+		}
 
-    case WSAHOST_NOT_FOUND:
-        {
-            return "Authoritative answer host not found. Usually displayed by Glink as "
-                   "'Host not found''.";
-        }
+	case WSAHOST_NOT_FOUND:
+		{
+			return "Authoritative answer host not found. Usually displayed by Glink as "
+				"'Host not found''.";
+		}
 
-    case WSATRY_AGAIN:
-        {
-            return "Non-authoritative answer host not found, or SERVERFAIL. Usually "
-                   "displayed by Glink as 'Server not responding'.";
-        }
+	case WSATRY_AGAIN:
+		{
+			return "Non-authoritative answer host not found, or SERVERFAIL. Usually "
+				"displayed by Glink as 'Server not responding'.";
+		}
 
-    case WSANO_RECOVERY:
-        {
-            return "Non-recoverable errors, FORMERR, REFUSED, NOTIMP. Usually "
-                   "displayed by Glink as 'Server not responding'.";
-        }
+	case WSANO_RECOVERY:
+		{
+			return "Non-recoverable errors, FORMERR, REFUSED, NOTIMP. Usually "
+				"displayed by Glink as 'Server not responding'.";
+		}
 
-    case WSANO_DATA:
-        {
-            return "Valid name, no data record of requested type. Usually displayed by "
-                   "Glink as 'Unknown host name'.";
-        }
+	case WSANO_DATA:
+		{
+			return "Valid name, no data record of requested type. Usually displayed by "
+				"Glink as 'Unknown host name'.";
+		}
 
-    default:
-        return "Unknown code";
-    }
+	default:
+		return "Unknown code";
+	}
 }
-ur_communication::ur_communication( ) { }
-HRESULT ur_communication::init (UR_Adapter *ur_adapter, std::string host)
-{
-    mHost       = host;
-    _ur_adapter = ur_adapter;                              // original code used conditional variable to wake
-
-    mServer = gethostbyname(host.c_str( ));
-
-    if ( mServer == NULL )
-    {
-        logError("ERROR, unknown host %s\n", mHost.c_str( ));
-        return E_FAIL;
-    }
-
-    mConnected.set(false);
-    mKeepalive.set(true);
-    return S_OK;
+moto_communication::moto_communication( )
+{ 
+	mbRawDump=false;
 }
-ur_message_t ur_communication::primary_socket ( )
+HRESULT moto_communication::init (Moto_Adapter *moto_adapter, std::string host, std::string port)
 {
-    SOCKET      server;
-    SOCKADDR_IN addr;
-    uint8_t     buf[512];
-    int         bytes_read;
+	nPort=Globals.convert<int>(port);
+	mHost       = host;
+	_Moto_Adapter = moto_adapter;                              // original code used conditional variable to wake
 
-    server = socket(AF_INET, SOCK_STREAM, 0);
+	mServer = gethostbyname(host.c_str( ));
 
-    addr.sin_addr.s_addr = inet_addr(mHost.c_str( ));
-    addr.sin_family      = AF_INET;
-    addr.sin_port        = htons(30001);
+	if ( mServer == NULL )
+	{
+		logError("ERROR, unknown host %s\n", mHost.c_str( ));
+		return E_FAIL;
+	}
 
-    if ( connect(server, (SOCKADDR *) &addr, sizeof( addr )) < 0 )
-    {
-        int errnum = WSAGetLastError( );
-        logError("Error %x connecting to host %s\n", WhatIsWSAError(errnum).c_str( ),
-                 mHost.c_str( ));
-        return ur_message_t( );
-    }
+	mConnected=false;
+	//mConnected.set(false);
+	if(mbRawDump)
+		rawSocketFile.open((Logging::CLogger::ExeDirectory() + "status_dump.txt").c_str( ), std::fstream::out, OF_SHARE_DENY_NONE);
+	return S_OK;
 
-#ifdef _WINDOWS
-    unsigned long ulValue = 1;
-
-//  ioctlsocket (server, FIONBIO, &ulValue);
-#else
-    iValue  = fcntl(m_hSocket, F_GETFL);
-    iValue |= O_NONBLOCK;
-    fcntl(sec_sockfd_, F_SETFL, O_NONBLOCK);
-#endif
-
-    bytes_read = recv(server, (char *) buf, 512, 0);
-
-    if ( bytes_read < 0 )
-    {
-        return ur_message_t( );
-    }
-
-#ifdef _WINDOWS
-
-//	::Sleep(500);
-#else
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
-#endif
-
-    // windows uses closesocket not close
-    closesocket(server);
-
-    return ur_message_t(buf, buf + bytes_read);
 }
-bool ur_communication::start ( )
+moto_message_t moto_communication::primary_socket ( )
 {
-    mKeepalive.set(true);
-    mCommThread = ur_comm::thread(&ur_communication::run, this);
-    return true;
+	//    SOCKET      server;
+	//    SOCKADDR_IN addr;
+	    uint8_t     buf[512];
+	//    int         bytes_read;
+	//
+	//    server = socket(AF_INET, SOCK_STREAM, 0);
+	//
+	//    addr.sin_addr.s_addr = inet_addr(mHost.c_str( ));
+	//    addr.sin_family      = AF_INET;
+	//    addr.sin_port        = htons(30001);
+	//
+	//    if ( connect(server, (SOCKADDR *) &addr, sizeof( addr )) < 0 )
+	//    {
+	//        int errnum = WSAGetLastError( );
+	//        logError("Error %x connecting to host %s\n", WhatIsWSAError(errnum).c_str( ),
+	//                 mHost.c_str( ));
+	//        return ur_message_t( );
+	//    }
+	//
+	//#ifdef _WINDOWS
+	//    unsigned long ulValue = 1;
+	//
+	////  ioctlsocket (server, FIONBIO, &ulValue);
+	//#else
+	//    iValue  = fcntl(m_hSocket, F_GETFL);
+	//    iValue |= O_NONBLOCK;
+	//    fcntl(sec_sockfd_, F_SETFL, O_NONBLOCK);
+	//#endif
+	//
+	//    bytes_read = recv(server, (char *) buf, 512, 0);
+	//
+	//    if ( bytes_read < 0 )
+	//    {
+	//        return ur_message_t( );
+	//    }
+	//
+	//#ifdef _WINDOWS
+	//
+	////	::Sleep(500);
+	//#else
+	//    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+	//#endif
+	//
+	//    // windows uses closesocket not close
+	//    closesocket(server);
+
+	return moto_message_t(buf, buf + 1);
 }
-void ur_communication::halt ( )
+bool moto_communication::start ( )
 {
-    mKeepalive.set(false);
-    mCommThread.join( );
+	mKeepalive.set(true);
+	mCommThread = moto_comm::thread(&moto_communication::run, this);
+	return true;
 }
-void ur_communication::run ( )
+void moto_communication::halt ( )
 {
-    SOCKET      server;
-    SOCKADDR_IN addr;
-    uint8_t     buf[2048];
-    int         bytes_read;
+	mKeepalive.set(false);
+	mCommThread.join( );
+}
+void moto_communication::run ( )
+{
+	SOCKET      server;
+	SOCKADDR_IN addr;
+	uint8_t     buf[2048];
+	int         len;
+	std::string buffer; // this is the communication buffer
 
-	
-    mConnected.set(false);
-    mKeepalive.set(true);
 
-    try
-    {
-        while ( mKeepalive.get() )
-        {
-            ::Sleep(10);
+	mConnected=false;
+	mKeepalive.set(true);
+	while ( mKeepalive.get() )
+	{
 
-            while ( mConnected.get() && mKeepalive.get() )
-            {
-                ::Sleep(10);
-
-                // No delay in read - skipping timeout
-                unsigned long ulValue = 1;
-                // ioctlsocket (server, FIONBIO, &ulValue);
-
-                bytes_read = recv(server, (char *) buf, 2048, 0);
-
-                if ( bytes_read > 0 )
-                {
-                    _ur_adapter->mUrQMsgs.AddMsgQueue(
-                        ur_message_t(buf, buf + bytes_read));
-                }
-                else
-                {
-                    mConnected.set(false); // = false;
-                    closesocket(server);
-                }
-            }
-
-            if ( mKeepalive.get() )
+		try
+		{
+			while(mConnected==false)
 			{
 				// reconnect
 				server = socket(AF_INET, SOCK_STREAM, IPPROTO_TCP);
@@ -462,35 +450,77 @@ void ur_communication::run ( )
 					logError("Socket creation failed.\n");
 				}
 
-                addr.sin_addr.s_addr = inet_addr(mHost.c_str( ));
-                addr.sin_family      = AF_INET;
-                addr.sin_port        = htons(30002);
+				addr.sin_addr.s_addr = inet_addr(mHost.c_str( ));
+				addr.sin_family      = AF_INET;
+				addr.sin_port        = htons(nPort);
 
-                if ( connect(server, (SOCKADDR *) &addr, sizeof( addr )) < 0 )
-                {
+				if ( connect(server, (SOCKADDR *) &addr, sizeof( addr )) < 0 )
+				{
 					closesocket(server);
-                    int errnum = WSAGetLastError( );
-                    logError("Error %s connecting to host %s\n",
-                             WhatIsWSAError(errnum).c_str( ), mHost.c_str( ));
-                }
-                else
-                {
-                    mConnected.set(true);// = true;
-                }
+					int errnum = WSAGetLastError( );
+					logError("Error %s connecting to host %s\n",
+						WhatIsWSAError(errnum).c_str( ), mHost.c_str( ));
+				}
+				else
+				{
+					mConnected=true;
+				}
+				::Sleep(1000);
+			}
+			buffer.clear();
+			for (  ; mConnected && mKeepalive.get(); )
+			{
+				::Sleep(10);
 
-            }
-        }
-    }
-    catch ( ... )
-    {
-        logError("ur_communication::run() Exception\n");
-    }
+				// No delay in read - skipping timeout
+				unsigned long ulValue = 1;
+#ifdef WIN32
+				// WINDOWS
+				DWORD timeout = SOCKET_READ_TIMEOUT_SEC * 1000;
+				setsockopt(server, SOL_SOCKET, SO_RCVTIMEO, (const char*)&timeout, sizeof(timeout));
 
-// wait for some traffic so the UR socket doesn't die in version 3.1.
-#ifdef _WINDOWS
-    ::Sleep(500);
 #else
-    std::this_thread::sleep_for(std::chrono::milliseconds(500));
+				// LINUX
+				struct timeval tv;
+				tv.tv_sec = 30;  /* 30 Secs Timeout */
+				tv.tv_usec = 0;  // Not init'ing this can cause strange errors
+				setsockopt(sockfd, SOL_SOCKET, SO_RCVTIMEO, (const char*)&tv,sizeof(struct timeval));
 #endif
-    closesocket(server);
+
+				// ioctlsocket (server, FIONBIO, &ulValue);
+
+				len = recv(server, (char *) buf, 2048, 0);
+
+				if ( len > 0 )
+				{
+					buffer.insert(buffer.end(), buf, buf + len) ; 
+					//logDebug(Nist::HexDump(&buffer[0], buffer.size(), 16).c_str());
+					//logDebug(Nist::HexDump (&msg[0], 32).c_str());
+					_Moto_Adapter-> mMotoData.mutex.lock();
+					size_t n = _Moto_Adapter->mMotoData.unpack((uint8_t *) &buffer[0], buffer.size( ));
+					_Moto_Adapter-> mMotoData.mutex.unlock();
+					logDebug("Decode n=%d buffer size=%d\n", n, buffer.size());
+					buffer=buffer.substr(n);
+
+				}
+				else
+				{
+					mConnected=false; 
+					closesocket(server);
+				}
+			}
+		}
+		catch ( ... )
+		{
+			logError("moto_communication::run() Exception\n");
+		}
+	}
+
+	// wait for some traffic so the UR socket doesn't die in version 3.1.
+#ifdef _WINDOWS
+	::Sleep(500);
+#else
+	std::this_thread::sleep_for(std::chrono::milliseconds(500));
+#endif
+	closesocket(server);
 }

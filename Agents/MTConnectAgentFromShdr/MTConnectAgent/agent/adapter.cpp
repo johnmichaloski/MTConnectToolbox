@@ -35,7 +35,7 @@
 #include "adapter.hpp"
 #include "device.hpp"
 #include "dlib/logger.h"
-
+#include "Logger.h"
 using namespace std;
 
 static dlib::logger sLogger("input.adapter");
@@ -43,6 +43,11 @@ static dlib::logger sLogger("input.adapter");
 // jlmichaloski added
 std::map<std::string, std::string> Adapter::keymapping; 
 std::map<std::string, std::string> Adapter::enummapping; 
+std::vector<std::string> Adapter::rpmEntries; 
+int  Adapter::nLogUpdates;
+
+std::map<std::string, std::vector<std::string>> Adapter::keymultimapping;
+#include <algorithm>
 
 /* Adapter public methods */
 Adapter::Adapter(const string& device,
@@ -133,16 +138,32 @@ NumberType toNumber(std::string data)
 	throw std::runtime_error("Bad number conversion");
 }
 
-void Adapter::CheckAlias(std::string &key, std::string &value)
+void Adapter::CheckAlias(Device *device, std::string &key, std::string &value)
 {
 	//if(key == "execution")
 	//{
 	//	DebugBreak();
 	//}
 
+#if 0
+	if(keymultimapping.find(key) != keymultimapping.end())
+	{
+		std::vector<std::string> multimap = keymultimapping[key];
+		for(size_t i=0; i<  multimap.size() ; i++)
+		{
+			DataItem *dataItem;
+			if (device == NULL) 
+				continue;
+			dataItem = device->getDeviceDataItem(multimap[i]);  
+			mAgent->addToBuffer(dataItem, toUpperCase(value), time);
+			// can't figure out how to get latest value
+			// get largest valueW
+		}
+	}
+#endif
 	////////////////////////////////////////////////////////////////////////////////
 	// Michaloski hack - if srpm2 is > 0 assign it to Srpm 
-	if(key.find("rpm")!= std::string::npos)
+	if(std::find(rpmEntries.begin(), rpmEntries.end(), key)!= rpmEntries.end())
 	{
 		try {
 			int rpm;
@@ -159,20 +180,23 @@ void Adapter::CheckAlias(std::string &key, std::string &value)
 		}
 
 	}
-#if 1
+
 	//////////////////////////////
 	// Change enumerations
 	if(enummapping.find(key+"."+value)!= enummapping.end())
 	{
 		value=enummapping[key+"."+value];
 	}
-#endif
+
 	// Map  shdr key (e.g., mode) into new key (controllermode) 
 	if(keymapping.find(key)!= keymapping.end())
 	{
 		key=keymapping[key];
 	}
 	///////////////////////////////////////////////////////////////////
+	if(nLogUpdates)
+		logStatus("Update Tag %s = Value %s\n", key.c_str(), value.c_str());;
+
 }
 void Adapter::processData(const string& data)
 {
@@ -213,7 +237,7 @@ void Adapter::processData(const string& data)
 	}
 	////////////////////////////////////////////////////////////////////////////////
 	// Michaloski hack - if srpm2 is > 0 assign it to Srpm 
-	CheckAlias(key, value);
+	CheckAlias(device, key, value);
 
 	////////////////////////////////////////////////////////////////////////////////
 	if (key == "@ASSET@") {
@@ -330,7 +354,7 @@ void Adapter::processData(const string& data)
 
 		////////////////////////////////////////////////////////////////////////////////
 		// Michaloski hack - if srpm2 is > 0 assign it to Srpm 
-		CheckAlias(key, value);
+		CheckAlias(device, key, value);
 
 		dataItem = device->getDeviceDataItem(key);    
 		if (dataItem == NULL)

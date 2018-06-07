@@ -211,18 +211,19 @@ template <class T> struct struct_decoder
 	* message size. Skips  elements out within version range.
 	* @return  size
 	*/
-	size_t	msglength()
+	int32_t	msglength()
 	{
 //			boost::shared_lock< boost::shared_mutex > lock(mMutex);
-			size_t length = 0;
+			int32_t length = 0;
 			PropertyMap *props = static_cast<T *>(this)->GetPropertyMap();
 			for (size_t i = 0; props[i].mName != NULL; i++) 
 			{
 				if(!(props[i].mMinVer<= version() &&   version() <= props[i].mMaxVer))
 					continue;
 				if (props[i].bIsArray && props[i].mArraySize != NULL)
-					length = (*props[i].mArraySize) * props[i].mElementSize;
+					length += (*props[i].mArraySize) * props[i].mElementSize;
 				else
+
 					length += props[i].mSize;
 			}
 			return length;

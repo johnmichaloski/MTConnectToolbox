@@ -20,11 +20,7 @@ See NIST Administration Manual 4.09.07 b and Appendix I.
 //#include <boost/shared_ptr.hpp>
 #include <boost/thread/thread.hpp>
 
-/**
-* there is a problem with boost mutex:
-* error : xmlEncodeEntitiesReentrant : input not UTF-8
-*
-*/
+
 namespace RCS
 {
 	template <typename T=bool>
@@ -34,7 +30,7 @@ namespace RCS
 		MutexVariable() 
 		{ 
 			mVar=0; 
-			//mMutex= new boost::shared_mutex();
+//			mMutex= new boost::shared_mutex();
 		}
 
 		void set(T val=1)

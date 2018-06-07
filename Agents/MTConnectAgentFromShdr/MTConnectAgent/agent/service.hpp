@@ -20,13 +20,14 @@ public:
   // jlm added
   std::string &configfile() { return mConfigFile; }
   void install();
+  bool mIsService;
+  bool mIsDebug;
 
 protected:
   std::string mName;
   std::string mConfigFile;
   std::string mPidFile;
-  bool mIsService;
-  bool mIsDebug;
+
   
   void remove();
   

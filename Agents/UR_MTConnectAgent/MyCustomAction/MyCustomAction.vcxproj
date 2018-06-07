@@ -257,7 +257,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DevicesXML.cpp" />
     <ClCompile Include="MSI_Logging.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -279,7 +278,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Config.h" />
-    <ClInclude Include="DevicesXML.h" />
     <ClInclude Include="FilPermission.h" />
     <ClInclude Include="MSI_Logging.h" />
     <ClInclude Include="resource.h" />

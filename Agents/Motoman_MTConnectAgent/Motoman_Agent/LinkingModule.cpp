@@ -25,27 +25,16 @@
 #pragma comment(lib, "Netapi32.lib")
 
 
-#define PCNAME  1 // "moutaineer"
-//#define PCNAME  2 // "agility"
-//#define PCNAME  3 // "micfamily"
-
-#if PCNAME == 3
+#if 0
 #define MTCLIBPATH(X)                                                         \
     "D:\\michalos\\My Work\\MTConnect\\motoman_MTConnectAgent\\MTConnectAgent\\win32\\libxml2-2.7.7\\lib\\" ## X
 #define BOOSTLIBPATH(X) \
     "D:\\Program Files\\NIST\\src\\boost_1_54_0\\stageX32\\lib\\" ## X
-#elif PCNAME == 1
-#define MTCLIBPATH(X)                                     \
-    "C:\\Users\\michalos\\Documents\\GitHub\\Agents\\motoman_MTConnectAgent\\MTConnectAgent\\win32\\libxml2-2.7.7\\lib\\" ## X
-#define BOOSTLIBPATH(X) \
-    "C:\\Program Files\\NIST\\src\\boost_1_54_0\\vc10\\stagex64\\lib\\"##X
-#elif PCNAME == 2
-#define MTCLIBPATH(X)                                     \
-    "C:\\Users\\michalos\\Documents\\Motoman_MTConnectAgent\\MTConnectAgent\\win32\\libxml2-2.7.7\\lib\\" ## X
-#define BOOSTLIBPATH(X) \
-    "C:\\Program Files\\NIST\\src\\boost_1_54_0\\vc10\\stagex64\\lib\\"##X
 #else
-#error no link library macros defined
+#define MTCLIBPATH(X)                                     \
+    "C:\\Users\\michalos\\Documents\\GitHub\\Robots\\Motoman_MTConnectAgent\\MTConnectAgent\\win32\\libxml2-2.7.7\\lib\\" ## X
+#define BOOSTLIBPATH(X) \
+    "C:\\Program Files\\NIST\\src\\boost_1_54_0\\vc10\\stagex64\\lib\\"##X
 #endif
 
 #if defined( WIN64 ) && defined( _DEBUG )

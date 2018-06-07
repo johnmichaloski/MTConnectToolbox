@@ -118,7 +118,7 @@ So, your choices are to upgrade your project to Visual Studio 2012 (from the mai
 		}
 #endif
 
-			  //if(_bResetAtMidnight)
+			  //if(bResetAtMidnight)
 			  //{
 				 // GLogger.Fatal("Agent will Reset At Midnight\n");
 
@@ -138,7 +138,7 @@ So, your choices are to upgrade your project to Visual Studio 2012 (from the mai
 			  //}
 
 
-			  //if(_bResetAtMidnight)
+			  //if(bResetAtMidnight)
 				 // _resetthread.Shutdown();
 			  // Check if invoked from SCM as opposed to midnite reset.
 

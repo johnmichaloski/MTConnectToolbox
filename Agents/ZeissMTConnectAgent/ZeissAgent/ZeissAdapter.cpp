@@ -230,7 +230,7 @@ void ZeissAdapter::Cycle ( )
   CreateItem("Yabs");
   CreateItem("Zabs");
   CreateItem("last_update");
-  CreateItem("path_feedrate");
+ // CreateItem("path_feedrate");
 
   Off( );
 
@@ -569,7 +569,7 @@ HRESULT ZeissAdapter::GatherDeviceData ( )
     long         m           = (long) data.size( ) - 1;
     COleDateTime beginningts = now - COleDateTimeSpan(7, 0, 0, 0); // 1 week ago
 
-    size_t n = 0;
+	size_t n = 0;
 	std::string line1("Measurement Plan Name:");
 	std::string line2("Run Speed:");
 	std::string line3("Measurement Start Time:");
@@ -652,15 +652,15 @@ HRESULT ZeissAdapter::GatherDeviceData ( )
   catch ( std::exception e )
   {
     GLogger.LogMessage(StdStringFormat("COpcAdapter Exception in %s - COpcAdapter::GatherDeviceData() %s\n", _device.c_str( ), (LPCSTR) e.what( ) ), LOWERROR);
-    Off( );
-    Disconnect( );
+    //Off( );
+    //Disconnect( );
     hr = E_FAIL;
   }
   catch ( ... )
   {
     GLogger.LogMessage(StdStringFormat("COpcAdapter Exception in %s - COpcAdapter::GatherDeviceData()\n", _device.c_str( ) ), LOWERROR);
-    Off( );
-    Disconnect( );
+    //Off( );
+    //Disconnect( );
     hr = E_FAIL;
   }
   _lastfilesize = filesize;

@@ -1,5 +1,6 @@
-2016-06-27 16:14:23.0444 Start Zeiss Agent
-2016-06-27 16:14:23.0455 Main
-2016-06-27 16:14:23.0456 initialize
-2016-06-27 16:14:23.0609 Start
-2016-06-27 16:14:23.0620  (BPQ449) Could not find data item: path_feedrate  
+2017-11-17 16:11:08.0094 Start Zeiss Agent
+2017-11-17 16:11:08.0116 Main Zeiss Agent
+2017-11-17 16:11:08.0116 Zeiss Agent initialize
+2017-11-17 16:11:08.0340 Start Zeiss Agent
+2017-11-17 16:11:08.0340 Zeiss Agent will Reset at  Saturday, November 18, 2017 00:00:01
+2017-11-17 16:11:08.0340 Zeiss Agent will Reset   7.8147 hours::min from now

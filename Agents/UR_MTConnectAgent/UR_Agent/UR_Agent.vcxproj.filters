@@ -124,16 +124,7 @@
     <ClInclude Include="VersionNo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="DevicesXML.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\NIST\WinTricks.h">
-      <Filter>NIST</Filter>
-    </ClInclude>
-    <ClInclude Include="..\NIST\WinSingleton.h">
-      <Filter>NIST</Filter>
-    </ClInclude>
-    <ClInclude Include="..\NIST\YamlReader.h">
       <Filter>NIST</Filter>
     </ClInclude>
     <ClInclude Include="UrEnums.h">
@@ -161,6 +152,15 @@
       <Filter>NIST</Filter>
     </ClInclude>
     <ClInclude Include="..\NIST\struct_decoder.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="DevicesXML.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\hexdump.h">
+      <Filter>NIST</Filter>
+    </ClInclude>
+    <ClInclude Include="..\NIST\Firewall.h">
       <Filter>NIST</Filter>
     </ClInclude>
   </ItemGroup>
@@ -237,15 +237,6 @@
     <ClCompile Include="ProductVersion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="DevicesXML.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\NIST\WinTricks.cpp">
-      <Filter>NIST</Filter>
-    </ClCompile>
-    <ClCompile Include="..\NIST\YamlReader.cpp">
-      <Filter>NIST</Filter>
-    </ClCompile>
     <ClCompile Include="UrInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -253,6 +244,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="LinkingModule.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DevicesXML.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ur_communication_2.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

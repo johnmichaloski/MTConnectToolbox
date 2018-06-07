@@ -8,6 +8,7 @@ End if
 
 Set WshShell = WScript.CreateObject("WScript.Shell")
 WshShell.Run "sc.exe stop" & strService 
+wscript.sleep 2000
 
 WshShell.Run "sc.exe delete " & strService 
 wscript.sleep 1000

@@ -407,7 +407,7 @@ HRESULT Moto_Adapter::decodeMotoState ( )
 		items.setTag(this->mDevice+"system", "NORMAL");
 
         // Power
-        if ( mMotoDataCopy.robot_status.drives_powered )
+        if ( mMotoData.robot_status.drives_powered )
         {
             items.setTag("power", "ON");
         }
@@ -459,7 +459,7 @@ HRESULT Moto_Adapter::decodeMotoState ( )
 		for ( size_t i = 0; i < mJointnames.size( ); i++ )
 		{
 			items.setTag(mJointnames[i] + "_actpos",
-				StdStringFormat("%f", mMotoDataCopy.jnt_feedback.pos[i]));
+				StdStringFormat("%8.4f", mMotoDataCopy.jnt_feedback.pos[i]));
 
 		}
 

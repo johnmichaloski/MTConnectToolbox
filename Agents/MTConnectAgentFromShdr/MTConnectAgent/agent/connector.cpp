@@ -34,7 +34,7 @@
 
 #include "connector.hpp"
 #include "dlib/logger.h"
-
+bool bAbortHeartbeat;
 using namespace std;
 
 static dlib::logger sLogger("input.connector");
@@ -248,8 +248,9 @@ void Connector::startHeartbeats(const string &aArg)
     }
     else
     {
-      sLogger << LERROR << "startHeartbeats: Bad heartbeat command " << aArg;
-      close();
+		sLogger << LERROR << "startHeartbeats: Bad heartbeat command " << aArg;
+		if(bAbortHeartbeat)
+			close();
     }
   }
 }

@@ -1,0 +1,132 @@
+# all, KERNEL_SOURCE_DIR are in here, plus many other symbols
+include Makefile
+
+UTS = $(shell uname -a)
+UTS_OS = $(shell uname -s)
+UTS_RELEASE = $(shell uname -r | cut -f 1,2 -d .)
+UTS_MAJOR = $(shell uname -r | cut -f 1 -d .)
+UTS_MINOR = $(shell uname -r | cut -f 2 -d .)
+
+ifeq ($(UTS_OS), Linux) 
+
+ifeq ($(UTS_RELEASE), 2.4)
+
+ifeq (x$(RTAI_DIR), x)
+
+# can't make modules
+modules :
+	@ echo Can\'t make modules on $(UTS)
+
+modules_clean :
+	@ echo Can\'t make modules_clean on $(UTS)
+
+modules_install :
+	@ echo Can\'t make modules_install on $(UTS)
+
+else 
+
+# here's how we make Linux kernel modules
+modules :
+	(cd rtlib && ./SETUP)
+	$(MAKE) -C $(KERNEL_SOURCE_DIR) SUBDIRS=$(shell pwd)/rtlib modules
+
+modules_clean :
+	(cd rtlib && rm -f *.o)
+
+modules_install :
+	$(MAKE) -C $(KERNEL_SOURCE_DIR) SUBDIRS=$(shell pwd)/rtlib modules_install
+
+endif
+
+else
+
+ifeq ($(UTS_MAJOR), 2)
+
+ifeq (x$(RTAI_DIR), x)
+
+# can't make modules
+modules :
+	@ echo Can\'t make modules on $(UTS)
+
+modules_clean :
+	@ echo Can\'t make modules_clean on $(UTS)
+
+modules_install :
+	@ echo Can\'t make modules_install on $(UTS)
+
+else 
+
+# here's how we make Linux kernel modules
+modules :
+	(cd rtlib && ./SETUP)
+	$(MAKE) -C /lib/modules/`uname -r`/build SUBDIRS=$(shell pwd)/rtlib modules
+
+modules_clean :
+	(cd rtlib && rm -f *.o *.ko)
+
+modules_install :
+	$(MAKE) -C $(KERNEL_SOURCE_DIR) SUBDIRS=$(shell pwd)/rtlib modules_install
+
+endif
+
+else
+
+ifeq ($(UTS_MAJOR), 3)
+
+ifeq (x$(RTAI_DIR), x)
+
+# can't make modules
+modules :
+	@ echo Can\'t make modules on $(UTS)
+
+modules_clean :
+	@ echo Can\'t make modules_clean on $(UTS)
+
+modules_install :
+	@ echo Can\'t make modules_install on $(UTS)
+
+else 
+
+# here's how we make Linux kernel modules
+modules :
+	(cd rtlib && ./SETUP)
+	$(MAKE) -C /lib/modules/`uname -r`/build SUBDIRS=$(shell pwd)/rtlib modules
+
+modules_clean :
+	(cd rtlib && rm -f *.o *.ko)
+
+modules_install :
+	$(MAKE) -C $(KERNEL_SOURCE_DIR) SUBDIRS=$(shell pwd)/rtlib modules_install
+
+endif
+
+else 
+
+# can't make modules
+modules :
+	@ echo Can\'t make modules on $(UTS)
+
+modules_clean :
+	@ echo Can\'t make modules_clean on $(UTS)
+
+modules_install :
+	@ echo Can\'t make modules_install on $(UTS)
+
+endif
+
+endif
+
+endif
+
+else
+# not Linux, ignore
+
+modules modules_clean modules_install :
+	@ echo ignoring modules for $(UTS_OS)
+
+endif
+
+# add this dependency to the Autotools built-in clean rule
+clean : modules_clean
+
+.PHONY : modules modules_clean modules_install all clean install

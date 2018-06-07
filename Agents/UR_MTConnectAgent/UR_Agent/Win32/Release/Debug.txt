@@ -1,0 +1,2 @@
+2017-10-18 12:08:41.0575 Start UR_ Agent
+2017-10-18 12:08:41.0606 Runtime win32 C structured exception=

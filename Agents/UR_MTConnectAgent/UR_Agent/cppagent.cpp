@@ -84,8 +84,6 @@ WITHOUT
 #include "version.h"
 #include "versionno.h"
 
-// #include "YamlReader.h"  // Dont need
-
 #include "NIST/AppEventLog.h"
 #include "NIST/Config.h"
 #include "NIST/Logger.h"
@@ -172,28 +170,29 @@ protected:
         // DLIB_MAJOR_VERSION , DLIB_MINOR_VERSION,DLIB_DATE);
         // str+=StdStringFormat("Dlib version %d.%d\n", 17,47);
         str += StdStringFormat("XML Lib version %s \n", LIBXML_DOTTED_VERSION);
-        str += StdStringFormat("Boost libraries not used \n");
+		str += StdStringFormat("Boost libraries %d.%d.%d \n",
+			BOOST_VERSION / 100000    ,
+			BOOST_VERSION / 100 % 1000 ,  // min. version
+			BOOST_VERSION % 100   );        // patch version
         str += StdStringFormat("UR_ Devices = %s\n", getAllDevices( ).c_str( ));
         return str;
     }
 
     // This is here becuase the mDeviceMap variable member of Agent is protected,
     // and its easier to just access here than in CProductVersion
-    std::string getAllDevices ( )
-    {
-        std::string d;
-
-        for ( std::map<std::string, Device *>::iterator it = mDeviceMap.begin( );
-              it != mDeviceMap.end( ); it++ )
-        {
-            if ( it != mDeviceMap.begin( ) )
-            {
-                d += ",";
-            }
-            d += ( *it ).first;
-        }
-        return d;
-    }
+	std::string getAllDevices ( )
+	{
+		std::string d;
+		for(size_t i=0; i < mDevices.size() ; i++)
+		{
+			if (i>0)
+			{
+				d += ",";
+			}
+			d += mDevices[i]->getName();
+		}
+		return d;
+	}
 };
 
 // Handles Win32 exceptions (C structured exceptions) as C++ typed exceptions
@@ -217,7 +216,7 @@ int main (int argc, char *argv[])
         GLogger.Open(File.ExeDirectory( ) + "Debug.txt");
         GLogger.DebugLevel( ) = 0;
         logStatus("Start UR_ Agent\n");
-		ur::ur_robot_mode_data::version() = 3.4;
+		//ur::ur_robot_mode_data::mVersion = 3.4;
 
 #ifdef _WINDOWS
 
@@ -226,12 +225,12 @@ int main (int argc, char *argv[])
         _set_se_translator(trans_func);
 
         // Handle initialization of winsock, although dlib does also
-        WSADATA wsaData;
+        //WSADATA wsaData;
 
-        if ( MSVC::WSAStartup(MAKEWORD(2, 0), &wsaData) != 0 )
-        {
-            logAbort("WSAStartup UR_ Agent failed\n");
-        }
+        //if ( MSVC::WSAStartup(MAKEWORD(2, 0), &wsaData) != 0 )
+        //{
+        //    logAbort("WSAStartup UR_ Agent failed\n");
+        //}
 
         // MICHALOSKI ADDED
         // This sets up the proper folder for the agent to find agent.cfg, etc.

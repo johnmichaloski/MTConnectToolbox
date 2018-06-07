@@ -1,0 +1,17 @@
+MTConnect Agent Service Started Fri Jun 07 15:52:35 2013
+MTConnect Agent Service Started Fri Jun 07 15:52:35 2013
+2013-06-07T19:52:35.0387Z: FATAL [1] DebugLevel=0
+2013-06-07T19:52:35.0387Z: FATAL [2] Protocol=LAN
+2013-06-07T19:52:35.0387Z: FATAL [3] ScanDelay=1000
+2013-06-07T19:52:35.0387Z: FATAL [4] FanucPort=0
+2013-06-07T19:52:35.0387Z: FATAL [5] FocasDelay=1000
+2013-06-07T19:52:35.0387Z: FATAL [6] ResetAtMidnight=1
+2013-06-07T19:52:35.0794Z: FATAL [7] Agent will Reset from now    1.0000 
+2013-06-07T19:52:35.0794Z: FATAL [8] CCmdHandler::Cycle()
+2013-06-07T19:52:37.0793ZiSeries::connect Using Protocol=LAN
+2013-06-07T19:52:37.0793ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-06-07T19:52:47.0788Z: FATAL [9] iSeries::connect cnc_allclibhndl Result: -16
+2013-06-07T19:52:47.0788ZiSeries::connect cnc_allclibhndl3 failed  Error on machine 127.0.0.1 : EW_SOCKET - Windows socket error 
+2013-06-07T19:52:47.0788ZiSeries::connect FAILED Power = OFF
+2013-06-07T19:52:58.0783ZiSeries::connect LAN cnc_allclibhndl3 IP=127.0.0.1  Port=0
+2013-06-07T19:53:08.0856Z: FATAL [10] iSeries::connect cnc_allclibhndl Result: -16

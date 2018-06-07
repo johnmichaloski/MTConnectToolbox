@@ -1,0 +1,30 @@
+1.6	12 February 2016
+	Integrated getopt as ulapi_getopt, eliminating extra code and
+	header; changed ulapi_process_start to use ulapi_to_argv
+
+1.5	9 May 2014
+	Handled getopt and dl so that they are built by default for Unix,
+	and inhibited with NEED_GETOPT and NO_DL.
+
+1.4	7 May 2014
+	Removed fifo functions, since no one ever used them and they were
+	unimplemented; added serial baud rate
+
+1.3	29 January 2013
+	Moved ulselect.c to unix_ulapi_common.c
+	Changed ulapi_system in ulselect.c to shift the return value
+	before comparison to error as 127.
+	Added ulapi_process_xxx functions.
+	Added rtapi_strncpy.
+
+1.2	20 May 2011
+	Added rtapi_snprintf counterparts to ulapi_snprintf functions;
+	Updated to Visual C++ Express 2010
+
+1.1	22 April 2010
+	Fixed some of the autoconf and Makefiles.am to make Windows
+	zipping easier, and select/deselect Doxygen
+
+1.0	Initial version, extracted from the original Go Motion code base
+	for use by other projects.
+

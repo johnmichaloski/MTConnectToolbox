@@ -1,0 +1,45 @@
+Quick Start Guide to building and demoing Ulapi for Windows
+-------------------------------------------------------------
+The INSTALL file has general instructions for compiling software built
+using Autotools for Linux. Those instructions do not apply here. The
+Windows parts are found in ulapi\win32api.
+
+1. Obtain and unzip the Ulapi distribution, which you have
+probably already done if you're reading this README.
+
+2. There is no Install Shield script -- this is the full source code
+distribution so you'll need to compile it yourself using Microsoft
+Visual C++ Express 2010. This is free. Install this if you haven't.
+
+3. Go into the ulapi\win32api folder and double-click the "ulapi.sln"
+file to launch Microsoft Visual C++ Express 2010. Build the solution.
+
+4. Run the test by going into the Debug folder and running
+ultest.exe. You should see diagnostics output similar to this:
+
+ultest timer passed
+ultest shared memory test passed
+waiter 0 waiting for condition...
+waiter 1 waiting for condition...
+waiter 2 waiting for condition...
+working on condition...
+working on condition...
+working on condition...
+working on condition...
+broadcasting condition
+waiter 1 condition met
+waiter 2 condition met
+waiter 0 condition met
+ultest condition variable test passed
+ultest gethostname test passed
+
+4. Install the resulting files by running the "install.bat" file. This
+puts the header files and library in C:\Program Files\ulapi.
+
+5. Your own application code that uses the Ulapi functions will need
+to be compiled with the path to Ulapi, so in your own solution, make
+sure to add the include path and library path to C:\Program
+Files\ulapi\include and \lib.
+
+6. See the HTML documentation in doxygen-doc/html/index.html for many
+more details on the software.

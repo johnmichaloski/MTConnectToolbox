@@ -1,6 +1,12 @@
+
 //
+// File.h
 //
-//
+
+// DISCLAIMER:
+// This software was developed by U.S. Government employees as part of
+// their official duties and is not subject to copyright. No warranty implied 
+// or intended.
 
 #pragma once
 #include <vector>
@@ -29,7 +35,7 @@ BY_HANDLE_FILE_INFORMATION GetFileInformation(std::string filename)
 
 		if (hFile == INVALID_HANDLE_VALUE)    // did we succeed?
 		{
-			GLogger.Warning(StdStringFormat("File::Size INVALID_HANDLE_VALUE File \"%s\" \n", filename.c_str()));
+			logWarn("File::Size INVALID_HANDLE_VALUE File \"%s\" \n", filename.c_str());
 			return fInfo;
 		}
 		GetFileInformationByHandle(hFile, &fInfo);
@@ -156,6 +162,12 @@ public:
 		std::string path(buf);
 		path=path.substr( 0, path.find_last_of( '\\' ) +1 );
 		return path;
+	}
+	std::string ExePath()
+	{
+		TCHAR buf[1000];
+		GetModuleFileName(NULL, buf, 1000);
+		return buf;
 	}
 	std::string Filename(std::string path)
 	{

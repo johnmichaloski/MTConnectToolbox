@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2017-10-18T21:38:15" sender="local" version="1.1"/>
+<Devices>
+		<Device id="Ur5id" uuid="Ur5xxx" name="Ur5">
+			<Description>UR_Ur5</Description>
+			<DataItems>
+				<DataItem id="Ur5avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+				<DataItem id="Ur5version" name="version"  type="MESSAGE" category="EVENT"/>
+				<DataItem id="Ur5motherboard_temp" name="motherboard_temp" type="TEMPERATURE" category="SAMPLE"/>
+				<DataItem id="Ur5_urdf_asset"  type="ASSET_CHANGED" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="Ur5a1" name="base">
+					<Components>
+						<Rotary id="Ur5d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="shoulder_pan_joint_actpos_id" category="SAMPLE" name="shoulder_pan_joint_actpos"  units="RADIANS" />
+								<DataItem type="MESSAGE"  id="shoulder_pan_joint_mode_id" category="EVENT" name="shoulder_pan_joint_mode" />
+								<DataItem type="ELECTRICAL_ENERGY"  id="shoulder_pan_joint_I_id" category="SAMPLE" name="shoulder_pan_joint_I" />
+								<DataItem type="VOLTAGE"  id="shoulder_pan_joint_V_id" category="SAMPLE" name="shoulder_pan_joint_V" />
+								<DataItem type="TORQUE"  id="shoulder_pan_joint_T_id" category="SAMPLE" name="shoulder_pan_joint_T" />
+								<DataItem type="VELOCITY" subType="ACTUAL" id="shoulder_pan_joint_actvel_id" category="SAMPLE" name="shoulder_pan_joint_actvel"  units="RADIANS PER SECOND" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="Ur5d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="shoulder_lift_joint_actpos_id" category="SAMPLE" name="shoulder_lift_joint_actpos"  units="RADIANS" />
+								<DataItem type="MESSAGE"  id="shoulder_lift_joint_mode_id" category="EVENT" name="shoulder_lift_joint_mode" />
+								<DataItem type="ELECTRICAL_ENERGY"  id="shoulder_lift_joint_I_id" category="SAMPLE" name="shoulder_lift_joint_I" />
+								<DataItem type="VOLTAGE"  id="shoulder_lift_joint_V_id" category="SAMPLE" name="shoulder_lift_joint_V" />
+								<DataItem type="TORQUE"  id="shoulder_lift_joint_T_id" category="SAMPLE" name="shoulder_lift_joint_T" />
+								<DataItem type="VELOCITY" subType="ACTUAL" id="shoulder_lift_joint_actvel_id" category="SAMPLE" name="shoulder_lift_joint_actvel"  units="RADIANS PER SECOND" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="Ur5d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="elbow_joint_actpos_id" category="SAMPLE" name="elbow_joint_actpos"  units="RADIANS" />
+								<DataItem type="MESSAGE"  id="elbow_joint_mode_id" category="EVENT" name="elbow_joint_mode" />
+								<DataItem type="ELECTRICAL_ENERGY"  id="elbow_joint_I_id" category="SAMPLE" name="elbow_joint_I" />
+								<DataItem type="VOLTAGE"  id="elbow_joint_V_id" category="SAMPLE" name="elbow_joint_V" />
+								<DataItem type="TORQUE"  id="elbow_joint_T_id" category="SAMPLE" name="elbow_joint_T" />
+								<DataItem type="VELOCITY" subType="ACTUAL" id="elbow_joint_actvel_id" category="SAMPLE" name="elbow_joint_actvel"  units="RADIANS PER SECOND" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="Ur5d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="wrist_1_joint_actpos_id" category="SAMPLE" name="wrist_1_joint_actpos"  units="RADIANS" />
+								<DataItem type="MESSAGE"  id="wrist_1_joint_mode_id" category="EVENT" name="wrist_1_joint_mode" />
+								<DataItem type="ELECTRICAL_ENERGY"  id="wrist_1_joint_I_id" category="SAMPLE" name="wrist_1_joint_I" />
+								<DataItem type="VOLTAGE"  id="wrist_1_joint_V_id" category="SAMPLE" name="wrist_1_joint_V" />
+								<DataItem type="TORQUE"  id="wrist_1_joint_T_id" category="SAMPLE" name="wrist_1_joint_T" />
+								<DataItem type="VELOCITY" subType="ACTUAL" id="wrist_1_joint_actvel_id" category="SAMPLE" name="wrist_1_joint_actvel"  units="RADIANS PER SECOND" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="Ur5d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="wrist_2_joint_actpos_id" category="SAMPLE" name="wrist_2_joint_actpos"  units="RADIANS" />
+								<DataItem type="MESSAGE"  id="wrist_2_joint_mode_id" category="EVENT" name="wrist_2_joint_mode" />
+								<DataItem type="ELECTRICAL_ENERGY"  id="wrist_2_joint_I_id" category="SAMPLE" name="wrist_2_joint_I" />
+								<DataItem type="VOLTAGE"  id="wrist_2_joint_V_id" category="SAMPLE" name="wrist_2_joint_V" />
+								<DataItem type="TORQUE"  id="wrist_2_joint_T_id" category="SAMPLE" name="wrist_2_joint_T" />
+								<DataItem type="VELOCITY" subType="ACTUAL" id="wrist_2_joint_actvel_id" category="SAMPLE" name="wrist_2_joint_actvel"  units="RADIANS PER SECOND" />
+							</DataItems>
+						</Rotary>
+						<Rotary id="Ur5d1" name="JOINT">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="wrist_3_joint_actpos_id" category="SAMPLE" name="wrist_3_joint_actpos"  units="RADIANS" />
+								<DataItem type="MESSAGE"  id="wrist_3_joint_mode_id" category="EVENT" name="wrist_3_joint_mode" />
+								<DataItem type="ELECTRICAL_ENERGY"  id="wrist_3_joint_I_id" category="SAMPLE" name="wrist_3_joint_I" />
+								<DataItem type="VOLTAGE"  id="wrist_3_joint_V_id" category="SAMPLE" name="wrist_3_joint_V" />
+								<DataItem type="TORQUE"  id="wrist_3_joint_T_id" category="SAMPLE" name="wrist_3_joint_T" />
+								<DataItem type="VELOCITY" subType="ACTUAL" id="wrist_3_joint_actvel_id" category="SAMPLE" name="wrist_3_joint_actvel"  units="RADIANS PER SECOND" />
+							</DataItems>
+						</Rotary>
+					</Components>
+				</Axes>
+				<Controller id="Ur5cont" name="controller">
+					<DataItems>
+						<DataItem category="EVENT" id="Ur5estop" name="estop" type="EMERGENCY_STOP"/>
+						<DataItem category="CONDITION" id="Ur5system" type="SYSTEM"/>
+					</DataItems>
+					<Components>
+						<Path id="Ur5path1" name="path">
+							<DataItems>
+								<DataItem type="PATH_POSITION" id="Ur5pp" category="SAMPLE" name="pose" subType="ACTUAL" />
+								<DataItem type="PATH_FEEDRATE" id="Ur5pfr" category="SAMPLE" name="velocity" subType="ACTUAL" />
+								<DataItem type="PROGRAM" id="Ur5pgm" category="EVENT" name="program"/>
+								<DataItem type="EXECUTION" id="Ur5exec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="Ur5robotmode" category="EVENT" name="robotmode"/>
+								<DataItem type="CONTROLLER_MODE" id="Ur5controlmode" category="EVENT" name="controlmode"/>
+								<DataItem type="PATH_FEEDRATE" id="Ur5pfo1" category="SAMPLE" name="fovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+								<DataItem type="PATH_FEEDRATE" id="Ur5pfr1" category="SAMPLE" name="frt" />
+								<DataItem category="EVENT"  id="Ur5heartbeat"  name="heartbeat" type="CODE"></DataItem>
+							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="Ur5systems" name="systems">
+					<Components>
+						<Electric name="electric" id="Ur5elec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="Ur5pwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+</Devices>
+</MTConnectDevices>
