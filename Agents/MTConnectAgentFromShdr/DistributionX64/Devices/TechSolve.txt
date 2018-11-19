@@ -1,0 +1,131 @@
+      <Device id="####id" uuid="####xxx" name="NNNNNN">
+            <DataItems>
+                <DataItem category="EVENT" id="####availability" name="availability" type="AVAILABILITY" />
+                <DataItem category="EVENT" id="####message" name="message" type="MESSAGE" />
+            </DataItems>
+            <Components>
+                <Axes id="####ax" name="Axes">
+                    <Components>
+                        <Linear id="####x" name="X">
+                            <DataItems>
+                                <DataItem category="SAMPLE" id="####x_pos_act" name="Xabs" type="POSITION" subType="ACTUAL" units="MILLIMETER" />
+                                <DataItem category="SAMPLE" id="####x_pos_cmd" name="X_command" type="POSITION" subType="COMMANDED" units="MILLIMETER" />
+                                <DataItem category="SAMPLE" id="####x_load" name="X_load" type="LOAD" units="PERCENT" />
+                                <DataItem category="CONDITION" id="####x_travel" name="X_travel" type="POSITION" />
+                                <DataItem category="CONDITION" id="####x_overheat" name="X_overheat" type="TEMPERATURE" />
+                                <DataItem category="CONDITION" id="####x_servo" name="X_servo" type="LOAD" />
+                            </DataItems>
+                        </Linear>
+                        <Linear id="####y" name="Y">
+                            <DataItems>
+                                <DataItem category="SAMPLE" id="####y_pos_act" name="Yabs" type="POSITION" subType="ACTUAL" units="MILLIMETER" />
+                                <DataItem category="SAMPLE" id="####y_pos_cmd" name="Y_command" type="POSITION" subType="COMMANDED" units="MILLIMETER" />
+                                <DataItem category="SAMPLE" id="####y_load" name="Y_load" type="LOAD" units="PERCENT" />
+                                <DataItem category="CONDITION" id="####y_travel" name="Y_travel" type="POSITION" />
+                                <DataItem category="CONDITION" id="####y_overheat" name="Y_overheat" type="TEMPERATURE" />
+                                <DataItem category="CONDITION" id="####y_servo" name="Y_servo" type="LOAD" />
+                            </DataItems>
+                        </Linear>
+                        <Linear id="####z" name="Z">
+                            <DataItems>
+                                <DataItem category="SAMPLE" id="####z_pos_act" name="Zabs" type="POSITION" subType="ACTUAL" units="MILLIMETER" />
+                                <DataItem category="SAMPLE" id="####z_pos_cmd" name="Z_command" type="POSITION" subType="COMMANDED" units="MILLIMETER" />
+                                <DataItem category="SAMPLE" id="####z_load" name="Z_load" type="LOAD" units="PERCENT" />
+                                <DataItem category="CONDITION" id="####z_travel" name="Z_travel" type="POSITION" />
+                                <DataItem category="CONDITION" id="####z_overheat" name="Z_overheat" type="TEMPERATURE" />
+                                <DataItem category="CONDITION" id="####z_servo" name="Z_servo" type="LOAD" />
+                            </DataItems>
+                        </Linear>
+                        <Rotary id="####c" name="C">
+                            <DataItems>
+                                <DataItem category="SAMPLE" id="####c_pos_act" name="C_actual" type="ANGLE" subType="ACTUAL" units="DEGREE" />
+                                <DataItem category="SAMPLE" id="####c_pos_cmd" name="C_command" type="ANGLE" subType="COMMANDED" units="DEGREE" />
+                                <DataItem category="SAMPLE" id="####c_load" name="C_load" type="LOAD" units="PERCENT" />
+                                <DataItem category="CONDITION" id="####c_travel" name="C_travel" type="POSITION" />
+                                <DataItem category="CONDITION" id="####c_overheat" name="C_overheat" type="TEMPERATURE" />
+                                <DataItem category="CONDITION" id="####c_servo" name="C_servo" type="LOAD" />
+                                <DataItem category="EVENT" id="####c_mode" name="C_mode" type="ROTARY_MODE">
+                                    <Constraints>
+                                        <Value>INDEX</Value>
+                                    </Constraints>
+                                </DataItem>
+                            </DataItems>
+                        </Rotary>
+                        <Rotary id="####a" name="A">
+                            <DataItems>
+                                <DataItem category="SAMPLE" id="####a_pos_act" name="A_actual" type="ANGLE" subType="ACTUAL" units="DEGREE" />
+                                <DataItem category="SAMPLE" id="####a_pos_cmd" name="A_command" type="ANGLE" subType="COMMANDED" units="DEGREE" />
+                                <DataItem category="SAMPLE" id="####a_load" name="A_load" type="LOAD" units="PERCENT" />
+                                <DataItem category="CONDITION" id="####a_travel" name="A_travel" type="POSITION" />
+                                <DataItem category="CONDITION" id="####a_overheat" name="A_overheat" type="TEMPERATURE" />
+                                <DataItem category="CONDITION" id="####a_servo" name="A_servo" type="LOAD" />
+                                <DataItem category="EVENT" id="####a_mode" name="A_mode" type="ROTARY_MODE">
+                                    <Constraints>
+                                        <Value>INDEX</Value>
+                                    </Constraints>
+                                </DataItem>
+                            </DataItems>
+                        </Rotary>
+                        <Rotary id="####p1s1" name="P1S1">
+                            <DataItems>
+                                <DataItem category="SAMPLE" id="####p1s1_speed_act" name="Srpm" type="ROTARY_VELOCITY" subType="ACTUAL" units="REVOLUTION/MINUTE" />
+                                <DataItem category="SAMPLE" id="####p1s1_speed_com" name="P1S1_speed_com" type="ROTARY_VELOCITY" subType="COMMANDED" units="REVOLUTION/MINUTE" />
+                                <DataItem category="SAMPLE" id="####p1s1_spindle_load" name="P1S1_load" type="LOAD" units="PERCENT" />
+                                <DataItem category="CONDITION" id="####p1s1_servo" name="P1S1_servo" type="LOAD" />
+                                <DataItem category="EVENT" id="####p1s1_spindle_mode" name="P1S1_mode" type="ROTARY_MODE">
+                                    <Constraints>
+                                        <Value>SPINDLE</Value>
+                                        <Value>INDEX</Value>
+                                    </Constraints>
+                                </DataItem>
+                            </DataItems>
+                        </Rotary>
+                    </Components>
+                </Axes>
+                <Controller id="####controller1" name="cn1">
+                    <DataItems>
+                        <DataItem category="SAMPLE" id="####lp_coolant_pressure" name="lp_coolant_pressure" type="x:LP_COOLANT_PRESSURE" />
+                        <DataItem category="SAMPLE" id="####hp_coolant_pressure" name="hp_coolant_pressure" type="x:HP_COOLANT_PRESSURE" />
+                        <DataItem category="EVENT" id="####optional_stop" name="optional_stop" type="CONTROLLER_MODE_OVERRIDE" subType="OPTIONAL_STOP" />
+                        <DataItem category="EVENT" id="####dry_run" name="dry_run" type="CONTROLLER_MODE_OVERRIDE" subType="DRY_RUN" />
+                        <DataItem category="EVENT" id="####single_block" name="single_block" type="CONTROLLER_MODE_OVERRIDE" subType="SINGLE_BLOCK" />
+                        <DataItem category="EVENT" id="####machine_axis_lock" name="machine_axis_lock" type="CONTROLLER_MODE_OVERRIDE" subType="MACHINE_AXIS_LOCK" />
+                        <DataItem category="EVENT" id="####estop" name="estop" type="EMERGENCY_STOP" />
+                    </DataItems>
+                    <Components>
+                        <Path id="####path1" name="p1">
+                            <DataItems>
+                                <DataItem category="EVENT" id="####path1_mode" name="controllermode" type="CONTROLLER_MODE" />
+                                <DataItem category="EVENT" id="####path1_execution" name="execution" type="EXECUTION" />
+                                <DataItem category="EVENT" id="####path1_part_count" name="p1_part_count" type="PART_COUNT" />
+                                <DataItem category="EVENT" id="####path1_program" name="program" type="PROGRAM" />
+                                <DataItem category="EVENT" id="####path1_tool_number" name="p1_tool_number" type="TOOL_NUMBER" />
+                                <DataItem category="EVENT" id="####path1_tool_group" name="p1_tool_group" type="TOOL_GROUP" />
+                                <DataItem category="CONDITION" id="####path1_condition_system" name="p1_system" type="SYSTEM" />
+                                <DataItem category="CONDITION" id="####path1_condition_servo" name="p1_servo" type="HARDWARE" />
+                                <DataItem category="CONDITION" id="####path1_condition_logic" name="p1_logic" type="LOGIC_PROGRAM" />
+                                <DataItem category="CONDITION" id="####path1_condition_motion" name="p1_motion" type="MOTION_PROGRAM" />
+                                <DataItem category="CONDITION" id="####path1_communications" name="p1_comms" type="COMMUNICATIONS" />
+                                <DataItem category="EVENT" id="####path1_line" name="p1_line" type="LINE" />
+                                <DataItem category="EVENT" id="####path1_block" name="p1_block" type="BLOCK" />
+                                <DataItem category="EVENT" id="####path1_comment" name="p1_comment" type="PROGRAM_COMMENT" />
+                                <DataItem category="EVENT" id="####path1_feedrate_ovr" name="path_feedrateovr" type="PATH_FEEDRATE_OVERRIDE" subType="PROGRAMMED" units="PERCENT" />
+                                <DataItem category="EVENT" id="####path1_rapid_ovr" name="p1_rapid_override" type="PATH_FEEDRATE_OVERRIDE" subType="RAPID" units="PERCENT" />
+                                <DataItem category="EVENT" id="####path1_spindle_ovr" name="Sovr" type="ROTARY_VELOCITY_OVERRIDE" units="PERCENT" />
+                                <DataItem category="SAMPLE" id="####path1_feedrate_act" name="path_feedratefrt" type="PATH_FEEDRATE" subType="ACTUAL" units="MILLIMETER/SECOND" />
+                                <DataItem category="SAMPLE" id="####path1_feedrate_com" name="p1_feedrate_com" type="PATH_FEEDRATE" subType="COMMANDED" units="MILLIMETER/SECOND" />
+                                <DataItem category="SAMPLE" id="####path1_x_axis_motor_temperature" name="p1_x_axis_motor_temperature" type="x:X_AXIS_MOTOR_TEMPERATURE" />
+                                <DataItem category="SAMPLE" id="####path1_y_axis_motor_temperature" name="p1_y_axis_motor_temperature" type="x:Y_AXIS_MOTOR_TEMPERATURE" />
+                                <DataItem category="SAMPLE" id="####path1_z_axis_motor_temperature" name="p1_z_axis_motor_temperature" type="x:Z_AXIS_MOTOR_TEMPERATURE" />
+                                <DataItem category="SAMPLE" id="####path1_x_pulse_code_temperature" name="p1_x_pulse_code_temperature" type="x:X_PULSE_CODE_TEMPERATURE" />
+                                <DataItem category="SAMPLE" id="####path1_y_pulse_code_temperature" name="p1_y_pulse_code_temperature" type="x:Y_PULSE_CODE_TEMPERATURE" />
+                                <DataItem category="SAMPLE" id="####path1_z_pulse_code_temperature" name="p1_z_pulse_code_temperature" type="x:Z_PULSE_CODE_TEMPERATURE" />
+                                <DataItem category="SAMPLE" id="####path1_spindle_motor_temperature" name="p1_spindle_motor_temperature" type="x:SPINDLE_MOTOR_TEMPERATURE" />
+                                <DataItem category="SAMPLE" id="####path1_diagnostic_spindle_load" name="p1_diagnostic_spindle_load" type="x:DIAGNOSTIC_SPINDLE_LOAD" />
+                                <DataItem category="SAMPLE" id="####path1_diagnostic_spindle_speed" name="p1_diagnostic_spindle_speed" type="x:DIAGNOSTIC_SPINDLE_SPEED" />
+                            </DataItems>
+                        </Path>
+                    </Components>
+                </Controller>
+            </Components>
+        </Device>

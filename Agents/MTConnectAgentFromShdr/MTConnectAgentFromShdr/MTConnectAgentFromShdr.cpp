@@ -4,7 +4,9 @@
 #include "stdafx.h"
 #include <string>
 #include <exception>
+#include <vector>
 #include <tchar.h>
+#include <algorithm>
 
 #include "NIST/StdStringFcn.h"
 #include "NIST/File.h"
@@ -15,17 +17,32 @@
 
 #include "agent.hpp"
 #include "config.hpp"
+#include <boost/assign/list_of.hpp>
+
+#include "DeviceXml.h"
+#include "YamlReader.h"
 
 #include "NIST\ResetAtMidnightThread.h"
 #include "NIST\Config.h"
 #include "NIST\Logger.h"
 #include "NIST\WinSingleton.h"
 
+#pragma comment(lib, "comsuppw.lib")
+#pragma comment(lib, "Ws2_32.lib")
+#pragma comment(lib, "Iphlpapi.lib")
+
+
+
 static const char INI_FILENAME[] = "agent.cfg";
 
 static void ErrMessage(std::string errmsg)
 {
 	logError(errmsg.c_str());
+}
+static std::string SanitizeDeviceName (std::string name)
+{
+	std::replace( name.begin(), name.end(), ' ', '_');
+	return name;
 }
 
 extern SERVICE_STATUS          gSvcStatus; 
@@ -108,12 +125,20 @@ public:
 	}
 	////////////////////////////////////////////////////////////////////
 	COleDateTime now ;
-	NIST::Config cfg;
+	Nist::Config cfg;
 };
 
 
 #pragma comment(linker, "/SUBSYSTEM:WINDOWS")
 //#pragma warning(disable: 4247) //warning C4297: 'WinMain' : function assumed not to throw an exception but does
+
+//std::string Trim(std::string str)
+//{
+//	str.erase(str.find_last_not_of(" \n\r\t")+1);
+//	str.erase(0,str.find_first_not_of(" \n\r\t"));
+//	return str;
+//}
+
 
 int APIENTRY WinMain(HINSTANCE hInstance,
 	HINSTANCE hPrevInstance,
@@ -135,22 +160,107 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 		* This code reads the tagname and enumeration remappings. They are substituted into static variables
 		* so that all adapters use the substitutions.
 		*/
-		NIST::Config cfg;
-		if(cfg.load(File.ExeDirectory() + "Config.ini"))
+		Nist::Config cfg;
+		std::string sNewConfig;
+		std::string HttpPort;
+		std::string ServiceName;
+		if(cfg.LoadFile(File.ExeDirectory() + "Config.ini"))
 		{
-			config.bResetAtMidnight = cfg.GetSymbolValue("GLOBALS.ResetAtMidnight", "0").toNumber<int>();
-			config.bSingleton= cfg.GetSymbolValue("GLOBALS.Singleton", "0").toNumber<int>();
+			sNewConfig = cfg.GetSymbolValue<std::string>("GLOBALS.Config", "OLD");
+			std::transform(sNewConfig.begin(), sNewConfig.end(), sNewConfig.begin(), ::toupper);
+			HttpPort =  cfg.GetSymbolValue<std::string>("GLOBALS.HttpPort", "5000");
+			ServiceName = cfg.GetSymbolValue<std::string>("GLOBALS.ServiceName", "MTConnectAgent");
+
+			config.bResetAtMidnight = cfg.GetSymbolValue<int>("GLOBALS.ResetAtMidnight", "0");
+			config.bSingleton= cfg.GetSymbolValue<int>("GLOBALS.Singleton", "0");
 			if(config.bSingleton)
 				config.KillAllOtherInstances();
 
-			GLogger.DebugLevel() = cfg.GetSymbolValue("GLOBALS.Debug", "0").toNumber<int>();
-			Adapter::rpmEntries= cfg.GetTokens("GLOBALS.RPMTAGS", ",");
-			Adapter::nLogUpdates = cfg.GetSymbolValue("GLOBALS.LogUpdates", "1").toNumber<int>();
-			bAbortHeartbeat = cfg.GetSymbolValue("GLOBALS.AbortHeartbeat", "0").toNumber<int>();
+			GLogger.DebugLevel() = cfg.GetSymbolValue<int>("GLOBALS.Debug", "0");
+			Adapter::nLogUpdates = cfg.GetSymbolValue<int>("GLOBALS.LogUpdates", "0");
+			bAbortHeartbeat = cfg.GetSymbolValue<int>("GLOBALS.AbortHeartbeat", "0");
+			Adapter::rpmEntries= cfg.GetTokens<std::string>("GLOBALS.RPMTAGS", ",");
+			Adapter::bAllFakeSpindle = cfg.GetSymbolValue<int>("GLOBALS.AllFakeSpindle", "0");
+
+			if ( sNewConfig == "NEW" )
+			{
+				// This specifies how agent.cfg and devices.xml will be laid out if new configuration is specified
+				std::vector<std::string>_devices = cfg.GetTokens<std::string>("GLOBALS.MTConnectDevice", ",");
+				std::vector<std::string>_types = cfg.GetTokens<std::string>("GLOBALS.DeviceType", ",");
+				std::vector<std::string>_ips = cfg.GetTokens<std::string>("GLOBALS.Ip", ",");
+				std::vector<std::string>_ports = cfg.GetTokens<std::string>("GLOBALS.Port", ",");
+				std::vector<std::string> fakespindle_types = cfg.GetTokens<std::string>("GLOBALS.FakeSpindleTypes", ",");
+
+				// Handles agent.cfg and devices.xml file generation
+				CDeviceXml agent_cfg;
+
+				try
+				{
+					// if types.size()==1 push back same entry till size matches
+					if(_devices.size() != _types.size() ||
+						_ips.size() != _types.size() ||
+						_ports.size() != _types.size() )
+						throw StdStringFormat(" Mismatched ini parameter csv list sizes" );
+
+					for ( size_t i = 0; i < _devices.size( ); i++ )
+					{
+						// std::for_each(v.begin(), v.end(),  boost::bind(&boost::trim<std::string>,_1, std::locale() ));
+						_devices[i]=SanitizeDeviceName(Trim(_devices[i] ));
+						_types[i]=Trim(_types[i] );
+						_ips[i]=Trim(_ips[i] );
+						_ports[i]=Trim(_ports[i] );
+
+						// check if type needs fake spindle
+						if(std::find(fakespindle_types.begin(), fakespindle_types.end(), _types[i])!=fakespindle_types.end())
+							Adapter::bDeviceFakeSpindle[_devices[i]]=1;
+						else
+							Adapter::bDeviceFakeSpindle[_devices[i]]=0;
+
+					}
+
+					std::string devicesXML = agent_cfg.WriteDevicesFileXML(_devices,_types);
+					if(devicesXML.empty())
+						throw StdStringFormat(" Empty Devices.xml" );
+
+					WriteFile(File.ExeDirectory() + "Devices.xml"  , devicesXML);
+					agent_cfg.WriteAgentCfgFile("Agent.cfg", "Devices.xml", File.ExeDirectory(), HttpPort,
+						_devices,  _types, _ips,  _ports, ServiceName);
+
+					// now add tag remapping and enum mapping from device.ini file
+					cfg.DeleteSection("TAGRENAMES");
+					cfg.DeleteSection("ENUMREMAPPING");
+					for(size_t j=0; j< _types.size(); j++)
+					{
+						Nist::Config ini;
+						ini.LoadFile(File.ExeDirectory() + StdStringFormat("Devices/%s.ini", _types[j].c_str()));
+						std::map<std::string, std::string> renames=ini.GetMap("TAGRENAMES");
+						cfg.MergeKeys("TAGRENAMES", renames);
+						std::map<std::string, std::string> enums=ini.GetMap("ENUMREMAPPING");
+						cfg.MergeKeys("ENUMREMAPPING", enums);
+					}
+					// Save updated configuration ini file
+					std::vector<std::string> order=boost::assign::list_of("GLOBALS")( "TAGRENAMES")("ENUMREMAPPING");
+					cfg.Save(order);			
+
+					// Reread ini file since it has been modified.
+					cfg.Clear();
+					cfg.LoadFile(File.ExeDirectory() + "Config.ini");
+
+					// Everything went ok so reset ini file flag
+#ifndef DEBUG
+					WritePrivateProfileString("GLOBALS", "Config", "UPDATED", ( File.ExeDirectory( ) + "Config.ini" ).c_str( ) );
+#endif
+				}
+				catch(std::string errmsg)
+				{
+					WritePrivateProfileString("GLOBALS", "Config", ("ERROR-"+errmsg).c_str(), ( File.ExeDirectory( ) + "Config.ini" ).c_str( ) );
+				}
+			}
 
 
-			std::map<std::string, std::string> tagrenames = cfg.getmap("TAGRENAMES"); //TAGRENAMES is a [section]
-			std::map<std::string, std::string> enumrenames = cfg.getmap("ENUMREMAPPING");
+			// Now we will read ini file for tag renames and enum mappings
+			std::map<std::string, std::string> tagrenames = cfg.GetMap("TAGRENAMES"); //TAGRENAMES is a [section]
+			std::map<std::string, std::string> enumrenames = cfg.GetMap("ENUMREMAPPING");
 
 			for(std::map<std::string, std::string>::iterator it= tagrenames.begin(); it!= tagrenames.end(); it++)
 			{
@@ -160,6 +270,10 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 			{
 				Adapter::enummapping.insert(std::make_pair<std::string, std::string>( (*it).first, (*it).second));
 			}
+
+
+
+
 		}
 
 

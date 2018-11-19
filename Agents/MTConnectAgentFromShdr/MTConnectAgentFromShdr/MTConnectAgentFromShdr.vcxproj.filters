@@ -64,6 +64,7 @@
     <ClCompile Include="..\NIST\YamlReader.cpp">
       <Filter>NIST</Filter>
     </ClCompile>
+    <ClCompile Include="DeviceXml.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -155,6 +156,7 @@
     <ClInclude Include="..\NIST\YamlReader.h">
       <Filter>NIST</Filter>
     </ClInclude>
+    <ClInclude Include="DeviceXml.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ReadMe.txt" />

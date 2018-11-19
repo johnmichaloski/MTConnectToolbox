@@ -335,6 +335,8 @@ protected:
   
   // For debugging
   bool mLogStreamData;
+
+  friend Adapter;
 };
 
 #endif

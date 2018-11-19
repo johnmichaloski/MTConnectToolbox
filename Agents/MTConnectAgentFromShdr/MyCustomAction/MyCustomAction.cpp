@@ -2,13 +2,15 @@
 //
 
 #include "stdafx.h"
+//#include "atlstr.h"
+
+// Embedded in this cpp file
 //#include "MSI_Logging.h"
-#include "StdStringFcn.h"
 //#include "RunProcess.h"
 //#include "FilPermission.h"
 
-//#include "atlstr.h"
-#include "DeviceXml.h"
+#include "StdStringFcn.h"
+#include "YamlReader.h"
 
 #pragma comment(lib, "msi.lib") 
 static void trans_func( unsigned int u, EXCEPTION_POINTERS* pExp )
@@ -186,24 +188,24 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 {
 
 	HRESULT hRes = ::CoInitialize(NULL);
-	std::string path,ipaddr,type,config,httpPort,devices,shdrports;
-	std::string aAxis,bAxis,cAxis;
+	std::string path;
+	std::string devices,types,ipaddr,shdrports;
 	std::string status;
 	std::string ServiceName="MTConnectAgent";
-	CDeviceXml _xmlconfig;
+	std::string httpPort="5000";
+
 	try {
-		ipaddr="0";
-		type="1";
+		ipaddr="127.0.0.1";
 
 		TCHAR szBuffer1[MAX_PATH] = {'0'};
 		DWORD dwLen = MAX_PATH;
-		DbgOut("MsiGetProperty");
+
 		// Returns ERROR_SUCCESS, ERROR_MORE_DATA, ERROR_INVALID_HANDLE, ERROR_BAD_ARGUMENTS
 		hRes = MsiGetProperty(hInstall, "CustomActionData", szBuffer1, &dwLen);
 		std::vector<std::string> symbols = TrimmedTokenize(std::string(szBuffer1), "$");
 
 
-		//$Devices=[EDITA1]$Ips=[EDITA2]$Ports=[EDITA2]$HttpPort=[EDITA4]$Target=[TARGETDIR]
+		//$Devices=[EDITA1]$Types=[EDITA2]$Ips=[EDITA3]$Ports=[EDITA4]$ServiceName=[EDITB1]$HttpPort=[EDITB2]$Target=[TARGETDIR]
 		DbgOut("Parse symbols");
 		for(int i=0 ; i< symbols.size() ; i++)
 		{
@@ -217,24 +219,21 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 				httpPort=tokens[1];     
 			if(tokens[0]=="Ips") 
 				ipaddr=tokens[1];      
+			if(tokens[0]=="Types") 
+				types=tokens[1];   
 			if(tokens[0]=="Devices") 
 				devices=tokens[1];    
 			if(tokens[0]=="Ports") 
 				shdrports=tokens[1];    
 			if(tokens[0]=="ServiceName") 
 				ServiceName=tokens[1]; 
-			if(tokens[0]=="A") 
-				aAxis=tokens[1]; 
-			if(tokens[0]=="B") 
-				bAxis=tokens[1]; 
-			if(tokens[0]=="C") 
-				cAxis=tokens[1]; 		
+		
 		}
 		//RunSynchronousProcess("sc.exe", " stop MTConnectAgent");
 		//RunSynchronousProcess("sc.exe", " delete MTConnectAgent");
-		RunSynchronousProcessUAC("sc.exe", " stop "+ ServiceName, "");
-		::Sleep(3000);
-		RunSynchronousProcessUAC("sc.exe", " delete "+ ServiceName, "");
+		//RunSynchronousProcessUAC("sc.exe", " stop "+ ServiceName, "");
+		//::Sleep(3000);
+		//RunSynchronousProcessUAC("sc.exe", " delete "+ ServiceName, "");
 
 		SetFilePermission(path+"Agent.log") ;
 		SetFilePermission(path+"agent.exe") ;
@@ -251,54 +250,52 @@ extern "C" UINT __stdcall Install(MSIHANDLE hInstall)
 
 		DbgOut( "Done SetFilePermission \n");
 
-		std::string contents; 
-		/* Adapters { 
-		Mazak381
-		{ Host = localhost 
-		Port = 7878
-		} 
-		}
-		*/
-
-#if 0
+#if 1
 		std::vector<std::string> ips=TrimmedTokenize(ipaddr,",");
 		std::vector<std::string> devs=TrimmedTokenize(devices,",");
 		std::vector<std::string> ports=TrimmedTokenize(shdrports,",");
+		std::vector<std::string> dtypes=TrimmedTokenize(types,",");
 
-		if(ips.size() != devs.size())
+		if(ips.size() != devs.size()||
+			ports.size() != devs.size()||
+			dtypes.size() != devs.size())
 		{
-			::MessageBox(NULL, "Mismatched # ips and devices", "Error", MB_OK);
+			std::string s = StdStringFormat("Mismatched # ips types port and/or devices: ips = %d  devs = %d", ips.size(), devs.size());
+			::MessageBox(NULL, s.c_str(), "Error", MB_OK);
 			return  ERROR_INSTALL_USEREXIT;
 		}
+#endif
+		WritePrivateProfileString("GLOBALS", "Config", "NEW", (path + "Config.ini" ).c_str( ) );
+		WritePrivateProfileString("GLOBALS", "MTConnectDevice", devices.c_str(), (path + "Config.ini" ).c_str( ) );
+		WritePrivateProfileString("GLOBALS", "DeviceType", types.c_str(), (path + "Config.ini" ).c_str( ) );
+		WritePrivateProfileString("GLOBALS", "Port", shdrports.c_str(), (path + "Config.ini" ).c_str( ) );
+		WritePrivateProfileString("GLOBALS", "Ip", ipaddr.c_str(), (path + "Config.ini" ).c_str( ) );
+		WritePrivateProfileString("GLOBALS", "HttpPort", httpPort.c_str(), (path + "Config.ini" ).c_str( ) );
+		WritePrivateProfileString("GLOBALS", "ServiceName", ServiceName.c_str(), (path + "Config.ini" ).c_str( ) );
 
+#if 0
 		std::string xmldevices = _xmlconfig.WriteDevicesFileXML(devs);
 		_xmlconfig.WriteDevicesFile("Devices.xml", path, xmldevices );
 
 		_xmlconfig.WriteAgentCfgFile("Agent.cfg", "Devices.xml", path, httpPort,	devs, ips,  ports,ServiceName);
+		// Make all files read writable by everyone - assumes installatino by administrator
+		RunSynchronousProcess(path+"superuser.bat","");
 #endif
-		//::MessageBox(NULL,(path+"superuser.bat").c_str(), "ALERT", MB_OK);
-		//RunSynchronousProcess(path+"superuser.bat","");
-//		::Sleep(4000);
-//		::MessageBox(NULL,"Create service with MTCAgent.exe", "ALERT", MB_OK);
-		
-		// Install and start service  
-		DbgOut("Create service with sc.exe and UAC");
+		// Install rvice  
 		//RunSynchronousProcess(path+"Agent.exe", " install");
 		//RunSynchronousProcessUAC("Agent.exe", " install", path);
 		//RunSynchronousProcessUAC("Install.bat", "", path);
 
 		// This works
-		//RunSynchronousProcessUAC("sc.exe", " create "+ ServiceName + " start= auto binpath= \"" + path+"Agent.exe\"", "");
+		RunSynchronousProcessUAC("sc.exe", " create "+ ServiceName + " start= auto binpath= \"" + path+"Agent.exe\"", "");
 
-		//RunSynchronousProcess(path+"Install.bat","");
-		DbgOut("sc start MTCAgent \n");
-		//RunSynchronousProcess("sc.exe", " start MTCAgent");
+		// Start service  
 		//RunSynchronousProcessUAC("sc.exe", " start "+ ServiceName, "");
 
 	}
 	catch(...)
 	{
-		Trace(("Custom install exception\n"+status).c_str());
+		::MessageBox(NULL,("Custom install exception\n"+status).c_str(), "Error", MB_OK);
 	}
 	::CoUninitialize();
 
@@ -316,20 +313,19 @@ extern "C" UINT __stdcall Commit(MSIHANDLE hInstall)
 //////////////////////////////////////////////////////////////////////////////////////
 extern "C" UINT __stdcall Uninstall (MSIHANDLE hInstall)
 {
-	//_set_se_translator( trans_func );  // correct thread?
-	std::string ServiceName="MTConnectAgent";
 
 	HRESULT hRes = ::CoInitialize(NULL);
+
 	std::string path;
-	std::string status;
+	std::string ServiceName="MTConnectAgent";
 
 	TCHAR szBuffer1[MAX_PATH] = {'0'};
 	DWORD dwLen = MAX_PATH;
-	// Returns ERROR_SUCCESS, ERROR_MORE_DATA, ERROR_INVALID_HANDLE, ERROR_BAD_ARGUMENTS
+
 	hRes = MsiGetProperty(hInstall, "CustomActionData", szBuffer1, &dwLen);
 	std::vector<std::string> symbols = TrimmedTokenize(std::string(szBuffer1), "/");
-	//	MessageBox(NULL, std::string(szBuffer1).c_str(), "Info", MB_OK);
-	//	DebugBreak();
+
+	// Parse msi properties - guesss they are preserved?
 	for(int i=0 ; i< symbols.size() ; i++)
 	{
 		std::vector<std::string> tokens=Tokenize(symbols[i],"=");
@@ -340,27 +336,26 @@ extern "C" UINT __stdcall Uninstall (MSIHANDLE hInstall)
 		if(tokens[0]=="ServiceName") 
 			ServiceName=tokens[1]; 
 	}
-	DbgOut(("Uninstall ServiceName "+ServiceName).c_str());
 
-	// Returns ERROR_SUCCESS, ERROR_MORE_DATA, ERROR_INVALID_HANDLE, ERROR_BAD_ARGUMENTS
-
-	//	MessageBox(NULL, ("Rollback" + path+"adapter.ini").c_str(), "0", MB_OK);
-#if 1
 	try{
 		std::string str;
-		RunSynchronousProcessUAC("sc.exe", " stop "+ServiceName, "");
-		//RunSynchronousProcess("sc.exe", " stop MTCAgent");
-		::Sleep(3000);
-		RunSynchronousProcessUAC("sc.exe", " delete "+ServiceName, "");
-		//RunSynchronousProcess("sc.exe", " delete MTCAgent");
+		YamlReader yaml;
+		yaml.LoadFromFile(path+"Agent.cfg");
+		ServiceName=yaml.Find("ROOT.ServiceName");
+		if(!ServiceName.empty())
+		{
+			RunSynchronousProcessUAC("sc.exe", " stop "+ServiceName, "");
+			::Sleep(3000);
+			RunSynchronousProcessUAC("sc.exe", " delete "+ServiceName, "");
+		}
 	}
 	catch(...)
 	{
-		Trace(("Custom uninstall exception\n"+status).c_str());
-
+		::MessageBox(NULL,"Custom uninstall exception\n", "Error", MB_OK);
 	}
-#endif
+
 	::CoUninitialize();
+	// Returns ERROR_SUCCESS, ERROR_MORE_DATA, ERROR_INVALID_HANDLE, ERROR_BAD_ARGUMENTS
 	return ERROR_SUCCESS;
 }
 extern "C" UINT __stdcall Rollback(MSIHANDLE hInstall)

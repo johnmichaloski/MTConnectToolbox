@@ -1,5 +1,10 @@
 
 
+
+In windows 10 to start service control manager:
+services.msc
+
+
 	// jlmichaloski added
 	static std::map<std::string, std::string> Adapter::keymapping; 
 	static std::map<std::string, std::string> Adapter::enummapping; 
@@ -78,8 +83,23 @@ void Adapter::processData(const string& data)
 		value=enummapping[key+"."+value];
 	}
 
-
-
+Yaml Reader - unnecessary all config now in ini file
+				/*
+				ROOT.Adapters.MakinoT4.Host=192.168.1.200
+				ROOT.Adapters.MakinoT4.Port=7870
+				ROOT.AllowPut=true
+				ROOT.CheckpointFrequency=10000
+				ROOT.Devices=Devices.xml
+				ROOT.Port=5001
+				ROOT.ServiceName=MTConnectAgent_T4
+				ROOT.logger_config.logging_level=fatal
+				ROOT.logger_config.output=cout
+				*/
+				YamlReader yaml;
+				std::string filename = File.ExeDirectory()+ "\\Agent.cfg";
+				yaml.LoadFromFile(filename);
+				std::string HttpPort = yaml.Find("GLOBAL.Port");
+				std::string ServiceName = yaml.Find("GLOBAL.ServiceName");
 
 
 

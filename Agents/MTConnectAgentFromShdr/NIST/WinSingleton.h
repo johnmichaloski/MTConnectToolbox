@@ -122,7 +122,7 @@ struct MTConnectSingleton
 		std::string exefolder = ExtractDirectory(exepath);
 		std::string filename = exefolder + "\\Agent.cfg";
 		yaml.LoadFromFile(filename);
-		std::string portnum2 = yaml.Find("GLOBAL.Port");
+		std::string portnum2 = yaml.Find("ROOT.Port");
 		return yaml.Convert<int>(portnum2,0);
 	}
 	bool IsSameAgent(std::string exepath, int portnum)

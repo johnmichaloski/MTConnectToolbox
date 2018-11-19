@@ -122,53 +122,58 @@ namespace Logging
             DebugFile.flush( );
         }
 
-        void               logmessage (const char *file, int line, LogLevel level, const char *fmt,
-                                       ...)
-        {
-            if ( level > DebugLevel( ) )
-            {
-                return;
-            }
+		void               logmessage (const char *file, int line, LogLevel level, const char *fmt,
+			...)
+		{
 
-            va_list ap;
-            va_start(ap, fmt);
+			va_list ap;
+			va_start(ap, fmt);
 
-            int         m;
-            int         n = strlen(fmt) + 1028;
-            std::string tmp(n, '0');
+			logmessage (file,  line,  level, fmt, ap);
+			va_end(ap);
+		}
+		void               logmessage (const char *file, int line, LogLevel level, const char *fmt,va_list ap)
+		{
 
-            // Kind of a bogus way to insure that we don't
-            // exceed the limit of our buffer
-            while ( ( m = _vsnprintf(&tmp[0], n - 1, fmt, ap) ) < 0 )
-            {
-                n = n + 1028;
-                tmp.resize(n, '0');
-            }
+			if ( level > DebugLevel( ) )
+			{
+				return;
+			}
+			int         m;
+			int         n = strlen(fmt) + 1028;
+			std::string tmp(n, '0');
 
-            va_end(ap);
-            tmp = tmp.substr(0, m);
+			// Kind of a bogus way to insure that we don't
+			// exceed the limit of our buffer
+			while ( ( m = _vsnprintf(&tmp[0], n - 1, fmt, ap) ) < 0 )
+			{
+				n = n + 1028;
+				tmp.resize(n, '0');
+			}
 
-            if ( OutputConsole( ) )
-            {
+			tmp = tmp.substr(0, m);
+
+			if ( OutputConsole( ) )
+			{
 #ifdef WINDOWS
-                OutputDebugString(tmp.c_str( ));
+				OutputDebugString(tmp.c_str( ));
 #else
 				std::cout << tmp.cstr();
 #endif
 			}
 
-            if ( !DebugFile.is_open( ) )
-            {
-                return;
-            }
+			if ( !DebugFile.is_open( ) )
+			{
+				return;
+			}
 
-            if ( Timestamping( ) )
-            {
-                DebugFile << Timestamp( );
-            }
-            DebugFile << tmp;
-            DebugFile.flush( );
-        }
+			if ( Timestamping( ) )
+			{
+				DebugFile << Timestamp( );
+			}
+			DebugFile << tmp;
+			DebugFile.flush( );
+		}
 
 protected:
         std::ofstream      DebugFile;
@@ -212,6 +217,8 @@ __declspec(selectany) Logging::CLogger GLogger;
     ::GLogger.logmessage(__FILE__, __LINE__, Logging::LOG_DEBUG, fmt, \
                          ## __VA_ARGS__)
 
+
+
 // logTrace is only used in debugging mode
 //#ifdef DEBUG
 #define logTrace(fmt, ...)                                            \
@@ -246,14 +253,26 @@ inline double getNow()
   return difftime(timer,mktime(&y2k)); // in seconds
 
 }
-
-
-#define LOG_THROTTLE(secs, X)                                   \
+#define LOG_THROTTLE(secs, level, fmt, ...)                                       \
     {                                                 \
 	    static double last_hit = 0.0;                 \
         static double now = getNow(); \
-        if (last_hit + secs <= now)) {            \
+        if (last_hit + secs <= now) {            \
             last_hit = now;                    \
-            X;                                        \
+            ::GLogger.logmessage(__FILE__, __LINE__, level, fmt, ## __VA_ARGS__);            \
         }                                             \
     }
+
+inline void LogThrottleDebug(int secs, char * fmt, ...)   
+{
+	static double last_hit = 0.0;                 
+	static double now = getNow(); 
+	if (last_hit + secs <= now)
+	{            
+		last_hit = now;                    
+		va_list args;
+		va_start(args, fmt);
+		::GLogger.logmessage(__FILE__, __LINE__, Logging::LOG_DEBUG, fmt, args);
+		va_end(args);
+	} 
+}

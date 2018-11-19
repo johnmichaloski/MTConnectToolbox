@@ -48,6 +48,8 @@ Device::Device(std::map<std::string, std::string> attributes)
   } else {
     mIso841Class = -1;
   }
+
+  mLag=0;
 }
 
 Device::~Device()

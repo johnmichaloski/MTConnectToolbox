@@ -1,0 +1,1002 @@
+0 [New Run Started     JOB: W:\932-0009]    957.326831    00:15:57
+0 [/// StartTheFeeder]    976.635631    00:16:16
+0 [Feeder Has Stopped - Checking Run Result...]    1011.855231    00:16:51
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    1012.245231    00:16:52
+0 [The Run Finished OK]    1012.245231    00:16:52
+0 [New Run Started     JOB: W:\932-0009]    1012.838031    00:16:52
+0 [/// StartTheFeeder]    1028.925231    00:17:08
+0 [Feeder Has Stopped - Checking Run Result...]    1121.361231    00:18:41
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    1121.766831    00:18:41
+0 [The Run Finished OK]    1121.766831    00:18:41
+0 [New Run Started     JOB: W:\932-0009]    1122.312831    00:18:42
+0 [/// StartTheFeeder]    1139.772831    00:18:59
+0 [Feeder Has Stopped - Checking Run Result...]    1180.936831    00:19:40
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    1181.311231    00:19:41
+0 [The Run Finished OK]    1181.311231    00:19:41
+0 [New Run Started     JOB: W:\932-0009]    1181.950831    00:19:41
+0 [/// StartTheFeeder]    1194.377631    00:19:54
+0 [Feeder Has Stopped - Checking Run Result...]    1384.818831    00:23:04
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    1385.208831    00:23:05
+0 [The Run Finished OK]    1385.208831    00:23:05
+0 [New Run Started     JOB: W:\932-0009]    1385.739231    00:23:05
+0 [/// StartTheFeeder]    1395.170831    00:23:15
+0 [Feeder Has Stopped - Checking Run Result...]    1412.166031    00:23:32
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    1413.117631    00:23:33
+0 [The Run Finished OK]    1413.117631    00:23:33
+0 [New Run Started     JOB: W:\932-0009]    1413.741631    00:23:33
+0 [/// StartTheFeeder]    1427.754031    00:23:47
+0 [Feeder Has Stopped - Checking Run Result...]    1643.842031    00:27:23
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    1644.762431    00:27:24
+0 [The Run Finished OK]    1644.762431    00:27:24
+0 [New Run Started     JOB: W:\932-0009]    1645.261631    00:27:25
+0 [/// StartTheFeeder]    1657.766431    00:27:37
+0 [Feeder Has Stopped - Checking Run Result...]    1671.302431    00:27:51
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    1671.692431    00:27:51
+0 [The Run Finished OK]    1671.692431    00:27:51
+0 [New Run Started     JOB: W:\932-0009]    1672.238431    00:27:52
+0 [/// StartTheFeeder]    1684.353231    00:28:04
+0 [Feeder Has Stopped - Checking Run Result...]    1696.366831    00:28:16
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    1696.756831    00:28:16
+0 [The Run Finished OK]    1696.756831    00:28:16
+0 [New Run Started     JOB: W:\932-0009]    1697.302831    00:28:17
+0 [/// StartTheFeeder]    1710.628831    00:28:30
+0 [Feeder Has Stopped - Checking Run Result...]    1801.673231    00:30:01
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    1802.078831    00:30:02
+0 [The Run Finished OK]    1802.078831    00:30:02
+0 [New Run Started     JOB: W:\932-0009]    1802.624831    00:30:02
+0 [/// StartTheFeeder]    1813.610831    00:30:13
+0 [Feeder Has Stopped - Checking Run Result...]    1835.244831    00:30:35
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    1836.134031    00:30:36
+0 [The Run Finished OK]    1836.134031    00:30:36
+0 [New Run Started     JOB: W:\932-0009]    1836.648831    00:30:36
+0 [/// StartTheFeeder]    1899.744431    00:31:39
+0 [Feeder Has Stopped - Checking Run Result...]    1915.294431    00:31:55
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    1916.214831    00:31:56
+0 [The Run Finished OK]    1916.214831    00:31:56
+0 [New Run Started     JOB: W:\932-0009]    1916.745231    00:31:56
+0 [/// StartTheFeeder]    1928.563631    00:32:08
+0 [Feeder Has Stopped - Checking Run Result...]    1940.099231    00:32:20
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    1941.050831    00:32:21
+0 [The Run Finished OK]    1941.050831    00:32:21
+0 [New Run Started     JOB: W:\932-0009]    1941.581231    00:32:21
+0 [/// StartTheFeeder]    1984.048031    00:33:04
+0 [Feeder Has Stopped - Checking Run Result...]    2009.299631    00:33:29
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    2010.251231    00:33:30
+0 [The Run Finished OK]    2010.251231    00:33:30
+0 [New Run Started     JOB: W:\932-0009]    2010.859631    00:33:30
+0 [/// StartTheFeeder]    2041.382431    00:34:01
+0 [Feeder Has Stopped - Checking Run Result...]    2252.130831    00:37:32
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    2253.082431    00:37:33
+0 [The Run Finished OK]    2253.082431    00:37:33
+0 [New Run Started     JOB: W:\932-0009]    2253.581631    00:37:33
+0 [/// StartTheFeeder]    2263.247231    00:37:43
+0 [Feeder Has Stopped - Checking Run Result...]    2298.997231    00:38:18
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    2299.402831    00:38:19
+0 [The Run Finished OK]    2299.402831    00:38:19
+0 [New Run Started     JOB: W:\932-0009]    2300.104831    00:38:20
+0 [/// StartTheFeeder]    2312.609631    00:38:32
+0 [Feeder Has Stopped - Checking Run Result...]    2651.119631    00:44:11
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    2651.525231    00:44:11
+0 [The Run Finished OK]    2651.525231    00:44:11
+0 [New Run Started     JOB: W:\932-0009]    2652.086831    00:44:12
+0 [/// StartTheFeeder]    2661.335631    00:44:21
+0 [Feeder Has Stopped - Checking Run Result...]    2672.518431    00:44:32
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    2673.438831    00:44:33
+0 [The Run Finished OK]    2673.454431    00:44:33
+0 [New Run Started     JOB: W:\932-0009]    2674.031631    00:44:34
+0 [/// StartTheFeeder]    2684.118431    00:44:44
+0 [Feeder Has Stopped - Checking Run Result...]    2701.205631    00:45:01
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    2702.110431    00:45:02
+0 [The Run Finished OK]    2702.110431    00:45:02
+0 [New Run Started     JOB: W:\932-0009]    2702.640831    00:45:02
+0 [/// StartTheFeeder]    2712.821231    00:45:12
+0 [Feeder Has Stopped - Checking Run Result...]    2720.519231    00:45:20
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    2720.909231    00:45:20
+0 [The Run Finished OK]    2720.909231    00:45:20
+0 [New Run Started     JOB: W:\932-0009]    2721.517631    00:45:21
+0 [/// StartTheFeeder]    2754.364831    00:45:54
+0 [Feeder Has Stopped - Checking Run Result...]    2770.958431    00:46:10
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    2771.379631    00:46:11
+0 [The Run Finished OK]    2771.379631    00:46:11
+0 [New Run Started     JOB: W:\932-0009]    2771.925631    00:46:11
+0 [/// StartTheFeeder]    2817.970431    00:46:57
+0 [Feeder Has Stopped - Checking Run Result...]    2879.062031    00:47:59
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    2879.982431    00:47:59
+0 [The Run Finished OK]    2879.982431    00:47:59
+0 [New Run Started     JOB: W:\932-0009]    2880.512831    00:48:00
+0 [/// StartTheFeeder]    2896.106431    00:48:16
+0 [Feeder Has Stopped - Checking Run Result...]    3174.076031    00:52:54
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    3175.012031    00:52:55
+0 [The Run Finished OK]    3175.012031    00:52:55
+0 [New Run Started     JOB: W:\932-0009]    3175.620431    00:52:55
+0 [/// StartTheFeeder]    3186.112831    00:53:06
+0 [Feeder Has Stopped - Checking Run Result...]    3263.902431    00:54:23
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    3264.807231    00:54:24
+0 [The Run Finished OK]    3264.807231    00:54:24
+0 [New Run Started     JOB: W:\932-0009]    3265.322031    00:54:25
+0 [/// StartTheFeeder]    3276.064031    00:54:36
+0 [Feeder Has Stopped - Checking Run Result...]    3285.425631    00:54:45
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    3286.346031    00:54:46
+0 [The Run Finished OK]    3286.346031    00:54:46
+0 [New Run Started     JOB: W:\932-0009]    3286.892031    00:54:46
+0 [/// StartTheFeeder]    3302.443231    00:55:02
+0 [Feeder Has Stopped - Checking Run Result...]    3363.052431    00:56:03
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    3364.004031    00:56:04
+0 [The Run Finished OK]    3364.004031    00:56:04
+0 [New Run Started     JOB: W:\932-0009]    3364.534431    00:56:04
+0 [/// StartTheFeeder]    3378.083231    00:56:18
+0 [Feeder Has Stopped - Checking Run Result...]    3391.695231    00:56:31
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    3392.631231    00:56:32
+0 [The Run Finished OK]    3392.631231    00:56:32
+0 [New Run Started     JOB: W:\932-0009]    3393.302031    00:56:33
+0 [/// StartTheFeeder]    3518.704031    00:58:38
+0 [Feeder Has Stopped - Checking Run Result...]    3526.341231    00:58:46
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    3526.731231    00:58:46
+0 [The Run Finished OK]    3526.746831    00:58:46
+0 [New Run Started     JOB: W:\932-0009]    3527.246031    00:58:47
+0 [/// StartTheFeeder]    3542.465231    00:59:02
+0 [Feeder Has Stopped - Checking Run Result...]    3554.978031    00:59:14
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    3555.399231    00:59:15
+0 [The Run Finished OK]    3555.399231    00:59:15
+0 [New Run Started     JOB: W:\932-0009]    3555.945231    00:59:15
+0 [/// StartTheFeeder]    3569.874031    00:59:29
+0 [Feeder Has Stopped - Checking Run Result...]    3859.899231    01:04:19
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    3860.819631    01:04:20
+0 [The Run Finished OK]    3860.819631    01:04:20
+0 [New Run Started     JOB: W:\932-0009]    3861.350031    01:04:21
+0 [/// StartTheFeeder]    4077.824831    01:07:57
+0 [Feeder Has Stopped - Checking Run Result...]    4454.557231    01:14:14
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    4455.477631    01:14:15
+0 [The Run Finished OK]    4455.477631    01:14:15
+0 [New Run Started     JOB: W:\932-0009]    4456.008031    01:14:16
+0 [/// StartTheFeeder]    4471.112431    01:14:31
+0 [Feeder Has Stopped - Checking Run Result...]    4536.849231    01:15:36
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    4537.785231    01:15:37
+0 [The Run Finished OK]    4537.785231    01:15:37
+0 [New Run Started     JOB: W:\932-0009]    4538.471631    01:15:38
+0 [/// StartTheFeeder]    4550.758031    01:15:50
+0 [Feeder Has Stopped - Checking Run Result...]    4563.438431    01:16:03
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    4564.390031    01:16:04
+0 [The Run Finished OK]    4564.390031    01:16:04
+0 [New Run Started     JOB: W:\932-0009]    4564.920431    01:16:04
+0 [/// StartTheFeeder]    4578.829231    01:16:18
+0 [Feeder Has Stopped - Checking Run Result...]    4780.900031    01:19:40
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    4781.804831    01:19:41
+0 [The Run Finished OK]    4781.804831    01:19:41
+0 [New Run Started     JOB: W:\932-0009]    4782.335231    01:19:42
+0 [/// StartTheFeeder]    4796.706431    01:19:56
+0 [Feeder Has Stopped - Checking Run Result...]    4908.238431    01:21:48
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    4909.720431    01:21:49
+0 [The Run Finished OK]    4909.720431    01:21:49
+0 [New Run Started     JOB: W:\932-0009]    4910.235231    01:21:50
+0 [/// StartTheFeeder]    4935.313631    01:22:15
+0 [Feeder Has Stopped - Checking Run Result...]    4982.970831    01:23:02
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    4983.376431    01:23:03
+0 [The Run Finished OK]    4983.376431    01:23:03
+0 [New Run Started     JOB: W:\932-0009]    4983.906831    01:23:03
+0 [/// StartTheFeeder]    5102.725631    01:25:02
+0 [Feeder Has Stopped - Checking Run Result...]    5121.499231    01:25:21
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    5121.904831    01:25:21
+0 [The Run Finished OK]    5121.904831    01:25:21
+0 [New Run Started     JOB: W:\932-0009]    5122.450831    01:25:22
+0 [/// StartTheFeeder]    5135.252031    01:25:35
+0 [Feeder Has Stopped - Checking Run Result...]    5165.439231    01:26:05
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    5166.359631    01:26:06
+0 [The Run Finished OK]    5166.359631    01:26:06
+0 [New Run Started     JOB: W:\932-0009]    5167.061631    01:26:07
+0 [/// StartTheFeeder]    5215.134431    01:26:55
+0 [Feeder Has Stopped - Checking Run Result...]    5269.316431    01:27:49
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    5270.782831    01:27:50
+0 [The Run Finished OK]    5270.782831    01:27:50
+0 [New Run Started     Single Section]    6054.2032285    01:40:54
+0 [/// StartTheFeeder]    6085.1302372    01:41:25
+0 [Feeder Has Stopped - Checking Run Result...]    6141.6964896    01:42:21
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    6142.6480469    01:42:22
+0 [The Run Finished OK]    6142.6480469    01:42:22
+0 [New Run Started     JOB: W:\933-0002]    8594.3511716    02:23:14
+0 [New Run Started     JOB: W:\933-0002]    8647.6415716    02:24:07
+0 [New Run Started     Single Section]    8720.7207716    02:25:20
+0 [New Run Started     Single Section]    8821.2971716    02:27:01
+0 [/// StartTheFeeder]    8839.6463716    02:27:19
+0 [Feeder Has Stopped - Checking Run Result...]    8854.0779716    02:27:34
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    8854.4835716    02:27:34
+0 [The Run Finished OK]    8854.4835716    02:27:34
+0 [New Run Started     JOB: W:\933-0002]    11885.6331716    03:18:05
+0 [New Run Started     JOB: W:\933-0002]    11936.4959716    03:18:56
+0 [New Run Started     JOB: W:\933-0002]    11999.1099716    03:19:59
+0 [New Run Started     JOB: W:\933-0002]    12031.8999716    03:20:31
+0 [New Run Started     JOB: W:\933-0002]    12337.6403349    03:25:37
+0 [/// StartTheFeeder]    12358.9564655    03:25:58
+0 [Feeder Has Stopped - Checking Run Result...]    12473.2640322    03:27:53
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    12474.1837301    03:27:54
+0 [The Run Finished OK]    12474.1993182    03:27:54
+0 [New Run Started     JOB: W:\933-0002]    12474.7137255    03:27:54
+0 [/// StartTheFeeder]    12484.9643031    03:28:04
+0 [Feeder Has Stopped - Checking Run Result...]    12495.3128113    03:28:15
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    12496.7780927    03:28:16
+0 [The Run Finished OK]    12496.7780927    03:28:16
+0 [New Run Started     JOB: W:\933-0002]    12497.3080881    03:28:17
+0 [/// StartTheFeeder]    12507.3871966    03:28:27
+0 [Feeder Has Stopped - Checking Run Result...]    12552.9582505    03:29:12
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    12553.8784027    03:29:13
+0 [The Run Finished OK]    12553.8784027    03:29:13
+0 [New Run Started     JOB: W:\933-0002]    12554.3930641    03:29:14
+0 [/// StartTheFeeder]    12567.2999876    03:29:27
+0 [Feeder Has Stopped - Checking Run Result...]    12592.8263125    03:29:52
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    12593.7776563    03:29:53
+0 [The Run Finished OK]    12593.7776563    03:29:53
+0 [New Run Started     JOB: W:\933-0002]    12594.2923177    03:29:54
+0 [/// StartTheFeeder]    12604.8598712    03:30:04
+0 [Feeder Has Stopped - Checking Run Result...]    12618.1490918    03:30:18
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    12619.069244    03:30:19
+0 [The Run Finished OK]    12619.069244    03:30:19
+0 [New Run Started     JOB: W:\933-0002]    12619.615097    03:30:19
+0 [/// StartTheFeeder]    12634.465897    03:30:34
+0 [Feeder Has Stopped - Run was aborted]    12684.3124742    03:31:24
+0 [/// CheckFullBufferRunResult Result is RUN_ABORTED]    12684.3124742    03:31:24
+0 [New Run Started     JOB: W:\933-0002]    12696.148886    03:31:36
+0 [/// StartTheFeeder]    12721.8755571    03:32:01
+0 [Feeder Has Stopped - Checking Run Result...]    12778.6122795    03:32:58
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    12779.0333661    03:32:59
+0 [The Run Finished OK]    12779.0333661    03:32:59
+0 [New Run Started     JOB: W:\933-0002]    12779.6571981    03:32:59
+0 [/// StartTheFeeder]    12912.5008287    03:35:12
+0 [Feeder Has Stopped - Checking Run Result...]    12966.9171546    03:36:06
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    12967.837472    03:36:07
+0 [The Run Finished OK]    12967.837472    03:36:07
+0 [New Run Started     JOB: W:\933-0002]    12968.3990216    03:36:08
+0 [/// StartTheFeeder]    12980.5283329    03:36:20
+0 [Feeder Has Stopped - Checking Run Result...]    13002.1191969    03:36:42
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    13002.5091619    03:36:42
+0 [The Run Finished OK]    13002.5091619    03:36:42
+0 [New Run Started     JOB: W:\933-0002]    13003.1019087    03:36:43
+0 [/// StartTheFeeder]    13013.2969936    03:36:53
+0 [Feeder Has Stopped - Checking Run Result...]    13022.1857957    03:37:02
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    13022.5913593    03:37:02
+0 [The Run Finished OK]    13022.5913593    03:37:02
+0 [New Run Started     JOB: W:\933-0002]    13023.3088949    03:37:03
+0 [/// StartTheFeeder]    13038.4175388    03:37:18
+0 [Feeder Has Stopped - Checking Run Result...]    13134.6020439    03:38:54
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    13135.0076309    03:38:55
+0 [The Run Finished OK]    13135.0076309    03:38:55
+0 [New Run Started     JOB: W:\933-0002]    13135.5380139    03:38:55
+0 [/// StartTheFeeder]    13235.0720257    03:40:35
+0 [Feeder Has Stopped - Checking Run Result...]    13386.506098    03:43:06
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    13386.896073    03:43:06
+0 [The Run Finished OK]    13386.896073    03:43:06
+0 [New Run Started     JOB: W:\933-0002]    13387.41084    03:43:07
+0 [/// StartTheFeeder]    13407.4959467    03:43:27
+0 [Feeder Has Stopped - Checking Run Result...]    13418.0808576    03:43:38
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    13419.0011986    03:43:39
+0 [The Run Finished OK]    13419.0011986    03:43:39
+0 [New Run Started     JOB: W:\933-0002]    13419.6563566    03:43:39
+0 [/// StartTheFeeder]    13467.7828656    03:44:27
+0 [Feeder Has Stopped - Checking Run Result...]    13476.7162819    03:44:36
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    13477.1218559    03:44:37
+0 [The Run Finished OK]    13477.1218559    03:44:37
+0 [New Run Started     JOB: W:\933-0002]    13477.7302169    03:44:37
+0 [/// StartTheFeeder]    13490.7801746    03:44:50
+0 [Feeder Has Stopped - Checking Run Result...]    13502.3670155    03:45:02
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    13503.2873565    03:45:03
+0 [The Run Finished OK]    13503.2873565    03:45:03
+0 [New Run Started     JOB: W:\933-0002]    13503.7865245    03:45:03
+0 [/// StartTheFeeder]    13516.2729189    03:45:16
+0 [Feeder Has Stopped - Run was aborted]    13542.0596605    03:45:42
+0 [/// CheckFullBufferRunResult Result is RUN_ABORTED]    13542.0596605    03:45:42
+0 [New Run Started     JOB: W:\933-0002]    13938.4990235    03:52:18
+0 [/// StartTheFeeder]    13957.5848977    03:52:37
+0 [Feeder Has Stopped - Checking Run Result...]    13992.3850621    03:53:12
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    13992.7750596    03:53:12
+0 [The Run Finished OK]    13992.7750596    03:53:12
+0 [New Run Started     JOB: W:\933-0002]    13993.336656    03:53:13
+0 [/// StartTheFeeder]    14004.5721804    03:53:24
+0 [Feeder Has Stopped - Checking Run Result...]    14054.9622478    03:54:14
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    14055.8982418    03:54:15
+0 [The Run Finished OK]    14055.8982418    03:54:15
+0 [New Run Started     JOB: W:\933-0002]    14056.4598382    03:54:16
+0 [/// StartTheFeeder]    14071.2109401    03:54:31
+0 [Feeder Has Stopped - Checking Run Result...]    14102.7911216    03:55:02
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    14103.1655192    03:55:03
+0 [The Run Finished OK]    14103.1655192    03:55:03
+0 [New Run Started     JOB: W:\933-0002]    14103.7895152    03:55:03
+0 [/// StartTheFeeder]    14114.489043    03:55:14
+0 [Feeder Has Stopped - Checking Run Result...]    14124.4217728    03:55:24
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    14125.3421669    03:55:25
+0 [The Run Finished OK]    14125.3421669    03:55:25
+0 [New Run Started     JOB: W:\933-0002]    14125.8569636    03:55:25
+0 [/// StartTheFeeder]    14135.0265011    03:55:35
+0 [Feeder Has Stopped - Checking Run Result...]    14143.4420439    03:55:43
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    14143.8476413    03:55:43
+0 [The Run Finished OK]    14143.8476413    03:55:43
+0 [New Run Started     JOB: W:\933-0002]    14144.362438    03:55:44
+0 [/// StartTheFeeder]    14181.2031777    03:56:21
+0 [Feeder Has Stopped - Checking Run Result...]    14190.2619777    03:56:30
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    14190.6675777    03:56:30
+0 [The Run Finished OK]    14190.6675777    03:56:30
+0 [New Run Started     JOB: W:\933-0002]    14191.2135777    03:56:31
+0 [/// StartTheFeeder]    14212.5423777    03:56:52
+0 [Feeder Has Stopped - Checking Run Result...]    14238.6427777    03:57:18
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    14239.5163777    03:57:19
+0 [The Run Finished OK]    14239.5163777    03:57:19
+0 [New Run Started     JOB: W:\933-0002]    14240.0623777    03:57:20
+0 [/// StartTheFeeder]    14270.4603777    03:57:50
+0 [Feeder Has Stopped - Checking Run Result...]    14279.1035057    03:57:59
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    14279.4934907    03:57:59
+0 [The Run Finished OK]    14279.4934907    03:57:59
+0 [New Run Started     JOB: W:\933-0002]    14280.1018673    03:58:00
+0 [/// StartTheFeeder]    14292.2006005    03:58:12
+0 [Feeder Has Stopped - Run was aborted]    14356.0053387    03:59:16
+0 [/// CheckFullBufferRunResult Result is RUN_ABORTED]    14356.0053387    03:59:16
+0 [New Run Started     JOB: W:\933-0002]    15082.3657054    04:11:22
+0 [/// StartTheFeeder]    15102.4657054    04:11:42
+0 [Feeder Has Stopped - Checking Run Result...]    15149.7437054    04:12:29
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    15150.1493054    04:12:30
+0 [The Run Finished OK]    15150.1493054    04:12:30
+0 [New Run Started     JOB: W:\933-0002]    15150.6797054    04:12:30
+0 [/// StartTheFeeder]    15168.9721054    04:12:48
+0 [Feeder Has Stopped - Checking Run Result...]    15233.5717054    04:13:53
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    15233.9773054    04:13:53
+0 [The Run Finished OK]    15233.9773054    04:13:53
+0 [New Run Started     JOB: W:\933-0002]    15234.6793054    04:13:54
+0 [New Run Started     JOB: W:\CONTRAST]    15344.0122086    04:15:44
+0 [/// StartTheFeeder]    15361.7269501    04:16:01
+0 [Feeder Has Stopped - Checking Run Result...]    15376.0685684    04:16:16
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    15376.4897576    04:16:16
+0 [The Run Finished OK]    15376.4897576    04:16:16
+0 [New Run Started     JOB: W:\933-0002]    15567.2728656    04:19:27
+0 [/// StartTheFeeder]    15586.7895611    04:19:46
+0 [Feeder Has Stopped - Checking Run Result...]    15598.9392291    04:19:58
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    15599.3448187    04:19:59
+0 [The Run Finished OK]    15599.3604183    04:19:59
+0 [New Run Started     JOB: W:\933-0002]    15599.9688027    04:19:59
+0 [/// StartTheFeeder]    15611.7558989    04:20:11
+0 [Feeder Has Stopped - Checking Run Result...]    15865.8349657    04:24:25
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    15866.7865596    04:24:26
+0 [The Run Finished OK]    15866.7865596    04:24:26
+0 [New Run Started     JOB: W:\933-0002]    15867.3169562    04:24:27
+0 [/// StartTheFeeder]    15877.9028848    04:24:37
+0 [Feeder Has Stopped - Checking Run Result...]    15887.6788187    04:24:47
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    15888.5992128    04:24:48
+0 [The Run Finished OK]    15888.5992128    04:24:48
+0 [New Run Started     JOB: W:\933-0002]    15889.2388087    04:24:49
+0 [/// StartTheFeeder]    15944.4563282    04:25:44
+0 [Feeder Has Stopped - Checking Run Result...]    15957.1283282    04:25:57
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    15957.5339282    04:25:57
+0 [The Run Finished OK]    15957.5339282    04:25:57
+0 [New Run Started     JOB: W:\933-0002]    15958.2515282    04:25:58
+0 [/// StartTheFeeder]    15968.3695282    04:26:08
+0 [Feeder Has Stopped - Checking Run Result...]    15979.7507282    04:26:19
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    15980.1251282    04:26:20
+0 [The Run Finished OK]    15980.1251282    04:26:20
+0 [New Run Started     JOB: W:\933-0002]    15980.8115282    04:26:20
+0 [/// StartTheFeeder]    16008.0895282    04:26:48
+0 [Feeder Has Stopped - Checking Run Result...]    16038.9059282    04:27:18
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16039.3115282    04:27:19
+0 [The Run Finished OK]    16039.3115282    04:27:19
+0 [New Run Started     JOB: W:\933-0002]    16039.8575282    04:27:19
+0 [/// StartTheFeeder]    16052.4715282    04:27:32
+0 [Feeder Has Stopped - Checking Run Result...]    16065.9999282    04:27:45
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16066.9515282    04:27:46
+0 [The Run Finished OK]    16066.9515282    04:27:46
+0 [New Run Started     JOB: W:\933-0002]    16067.5599282    04:27:47
+0 [/// StartTheFeeder]    16081.6903282    04:28:01
+0 [Feeder Has Stopped - Checking Run Result...]    16113.1423282    04:28:33
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16114.0315282    04:28:34
+0 [The Run Finished OK]    16114.0315282    04:28:34
+0 [New Run Started     JOB: W:\933-0002]    16114.5619282    04:28:34
+0 [/// StartTheFeeder]    16175.6451282    04:29:35
+0 [Feeder Has Stopped - Checking Run Result...]    16194.3695282    04:29:54
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16195.3055282    04:29:55
+0 [The Run Finished OK]    16195.3055282    04:29:55
+0 [New Run Started     JOB: W:\933-0002]    16195.8515282    04:29:55
+0 [/// StartTheFeeder]    16205.8503282    04:30:05
+0 [Feeder Has Stopped - Checking Run Result...]    16214.9071282    04:30:14
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16215.2971282    04:30:15
+0 [The Run Finished OK]    16215.2971282    04:30:15
+0 [New Run Started     JOB: W:\933-0002]    16215.9679282    04:30:15
+0 [/// StartTheFeeder]    16257.3639282    04:30:57
+0 [Feeder Has Stopped - Checking Run Result...]    16276.1007282    04:31:16
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16276.4751282    04:31:16
+0 [The Run Finished OK]    16276.4751282    04:31:16
+0 [New Run Started     JOB: W:\933-0002]    16276.9899282    04:31:16
+0 [/// StartTheFeeder]    16288.6055282    04:31:28
+0 [Feeder Has Stopped - Checking Run Result...]    16296.8687282    04:31:36
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16297.8047282    04:31:37
+0 [The Run Finished OK]    16297.8047282    04:31:37
+0 [New Run Started     JOB: W:\933-0002]    16298.3663282    04:31:38
+0 [/// StartTheFeeder]    16308.9935282    04:31:48
+0 [Feeder Has Stopped - Checking Run Result...]    16320.0356859    04:32:00
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16320.4568751    04:32:00
+0 [The Run Finished OK]    16320.4568751    04:32:00
+0 [New Run Started     JOB: W:\933-0002]    16321.0028611    04:32:01
+0 [/// StartTheFeeder]    16331.6141847    04:32:11
+0 [Feeder Has Stopped - Checking Run Result...]    16357.7786987    04:32:37
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16358.6834755    04:32:38
+0 [The Run Finished OK]    16358.6834755    04:32:38
+0 [New Run Started     JOB: W:\933-0002]    16359.3074595    04:32:39
+0 [/// StartTheFeeder]    16376.6166114    04:32:56
+0 [Feeder Has Stopped - Checking Run Result...]    16427.6684737    04:33:47
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16428.0584637    04:33:48
+0 [The Run Finished OK]    16428.0584637    04:33:48
+0 [New Run Started     JOB: W:\933-0002]    16428.6200493    04:33:48
+0 [/// StartTheFeeder]    16443.4588645    04:34:03
+0 [Feeder Has Stopped - Checking Run Result...]    16525.5523225    04:35:25
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16525.9579121    04:35:25
+0 [The Run Finished OK]    16525.9579121    04:35:25
+0 [New Run Started     JOB: W:\933-0002]    16526.5974957    04:35:26
+0 [/// StartTheFeeder]    16669.5157572    04:37:49
+0 [Feeder Has Stopped - Checking Run Result...]    16678.6192921    04:37:58
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16679.0092896    04:37:59
+0 [The Run Finished OK]    16679.0092896    04:37:59
+0 [New Run Started     JOB: W:\933-0002]    16679.5396862    04:37:59
+0 [/// StartTheFeeder]    16689.4548191    04:38:09
+0 [Feeder Has Stopped - Checking Run Result...]    16695.7091725    04:38:15
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16696.6139667    04:38:16
+0 [The Run Finished OK]    16696.6139667    04:38:16
+0 [New Run Started     JOB: W:\933-0002]    16697.2535626    04:38:17
+0 [/// StartTheFeeder]    16707.1418956    04:38:27
+0 [Feeder Has Stopped - Checking Run Result...]    16718.8662139    04:38:38
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16719.2562114    04:38:39
+0 [The Run Finished OK]    16719.2562114    04:38:39
+0 [New Run Started     JOB: W:\933-0002]    16719.9270071    04:38:39
+0 [/// StartTheFeeder]    16758.3743571    04:39:18
+0 [Feeder Has Stopped - Checking Run Result...]    16824.8871053    04:40:24
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16825.2927027    04:40:25
+0 [The Run Finished OK]    16825.2927027    04:40:25
+0 [New Run Started     JOB: W:\933-0002]    16825.8542991    04:40:25
+0 [/// StartTheFeeder]    16837.3394219    04:40:37
+0 [Feeder Has Stopped - Checking Run Result...]    16849.8521384    04:40:49
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    16851.3341289    04:40:51
+0 [The Run Finished OK]    16851.3341289    04:40:51
+0 [New Run Started     JOB: W:\933-0002]    16851.9269251    04:40:51
+0 [/// StartTheFeeder]    16867.1148242    04:41:07
+0 [Feeder Has Stopped - Checking Run Result...]    17345.6241314    04:49:05
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    17346.5289314    04:49:06
+0 [The Run Finished OK]    17346.5289314    04:49:06
+0 [New Run Started     JOB: W:\933-0002]    17347.0749314    04:49:07
+0 [/// StartTheFeeder]    17362.5593314    04:49:22
+0 [Feeder Has Stopped - Checking Run Result...]    17465.6233314    04:51:05
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    17466.5593314    04:51:06
+0 [The Run Finished OK]    17466.5593314    04:51:06
+0 [New Run Started     JOB: W:\933-0002]    17467.2145314    04:51:07
+0 [/// StartTheFeeder]    17536.1913314    04:52:16
+0 [Feeder Has Stopped - Checking Run Result...]    17549.9573314    04:52:29
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    17550.8777314    04:52:30
+0 [The Run Finished OK]    17550.8777314    04:52:30
+0 [New Run Started     JOB: W:\933-0002]    17551.5017314    04:52:31
+0 [/// StartTheFeeder]    17560.9957314    04:52:40
+0 [Feeder Has Stopped - Checking Run Result...]    17571.3649314    04:52:51
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    17572.3009314    04:52:52
+0 [The Run Finished OK]    17572.3009314    04:52:52
+0 [New Run Started     JOB: W:\933-0002]    17572.8625314    04:52:52
+0 [/// StartTheFeeder]    17581.9821314    04:53:01
+0 [Feeder Has Stopped - Checking Run Result...]    17607.9881314    04:53:27
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    17608.9397314    04:53:28
+0 [The Run Finished OK]    17608.9397314    04:53:28
+0 [New Run Started     JOB: W:\933-0002]    17609.5169314    04:53:29
+0 [/// StartTheFeeder]    17621.2261314    04:53:41
+0 [Feeder Has Stopped - Checking Run Result...]    17675.9505314    04:54:35
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    17676.3405314    04:54:36
+0 [The Run Finished OK]    17676.3405314    04:54:36
+0 [New Run Started     JOB: W:\CONTRAST]    20248.095439    05:37:28
+0 [/// StartTheFeeder]    20282.596239    05:38:02
+0 [Feeder Has Stopped - Checking Run Result...]    20303.226239    05:38:23
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    20304.786239    05:38:24
+0 [The Run Finished OK]    20304.786239    05:38:24
+0 [New Run Started     Single Section]    21364.3836049    05:56:04
+0 [/// StartTheFeeder]    21384.1560049    05:56:24
+0 [Feeder Has Stopped - Checking Run Result...]    21403.9752049    05:56:43
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    21404.3652049    05:56:44
+0 [The Run Finished OK]    21404.3652049    05:56:44
+0 [New Run Started     JOB: W:\12]    21641.1201274    06:00:41
+0 [/// StartTheFeeder]    21660.1507195    06:01:00
+0 [Feeder Has Stopped - Checking Run Result...]    21748.2151672    06:02:28
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    21749.1511552    06:02:29
+0 [The Run Finished OK]    21749.1511552    06:02:29
+0 [New Run Started     JOB: W:\12]    21749.5879496    06:02:29
+0 [/// StartTheFeeder]    21764.6977587    06:02:44
+0 [Feeder Has Stopped - Checking Run Result...]    21802.2216915    06:03:22
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    21802.5960867    06:03:22
+0 [The Run Finished OK]    21802.5960867    06:03:22
+0 [New Run Started     JOB: W:\932-0010]    21895.1497001    06:04:55
+0 [/// StartTheFeeder]    22041.3758282    06:07:21
+0 [Feeder Has Stopped - Checking Run Result...]    22061.2653809    06:07:41
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22061.7489809    06:07:41
+0 [The Run Finished OK]    22061.7489809    06:07:41
+0 [New Run Started     JOB: W:\932-0010]    22062.7161809    06:07:42
+0 [/// StartTheFeeder]    22079.0117809    06:07:59
+0 [Feeder Has Stopped - Checking Run Result...]    22086.4561809    06:08:06
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22086.8617809    06:08:06
+0 [The Run Finished OK]    22086.8617809    06:08:06
+0 [New Run Started     JOB: W:\932-0010]    22087.8133809    06:08:07
+0 [/// StartTheFeeder]    22099.1325809    06:08:19
+0 [Feeder Has Stopped - Checking Run Result...]    22113.8833809    06:08:33
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22114.7569809    06:08:34
+0 [The Run Finished OK]    22114.7569809    06:08:34
+0 [New Run Started     JOB: W:\932-0010]    22115.7085809    06:08:35
+0 [/// StartTheFeeder]    22130.3917809    06:08:50
+0 [Feeder Has Stopped - Checking Run Result...]    22161.6005809    06:09:21
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22161.9905809    06:09:21
+0 [The Run Finished OK]    22161.9905809    06:09:21
+0 [New Run Started     JOB: W:\932-0010]    22162.7393809    06:09:22
+0 [/// StartTheFeeder]    22172.0981809    06:09:32
+0 [Feeder Has Stopped - Checking Run Result...]    22187.0757809    06:09:47
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22187.4813809    06:09:47
+0 [The Run Finished OK]    22187.4813809    06:09:47
+0 [New Run Started     JOB: W:\932-0010]    22188.2769809    06:09:48
+0 [/// StartTheFeeder]    22201.9361809    06:10:01
+0 [Feeder Has Stopped - Checking Run Result...]    22226.0697809    06:10:26
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22226.4753809    06:10:26
+0 [The Run Finished OK]    22226.4753809    06:10:26
+0 [New Run Started     JOB: W:\932-0010]    22227.2241809    06:10:27
+0 [/// StartTheFeeder]    22241.2365809    06:10:41
+0 [Feeder Has Stopped - Checking Run Result...]    22274.5813809    06:11:14
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22274.9713809    06:11:14
+0 [The Run Finished OK]    22274.9713809    06:11:14
+0 [New Run Started     JOB: W:\932-0010]    22275.7357809    06:11:15
+0 [/// StartTheFeeder]    22289.5665809    06:11:29
+0 [Feeder Has Stopped - Checking Run Result...]    22344.3173809    06:12:24
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22344.7073809    06:12:24
+0 [The Run Finished OK]    22344.7073809    06:12:24
+0 [New Run Started     JOB: W:\932-0010]    22345.5653809    06:12:25
+0 [/// StartTheFeeder]    22360.8881809    06:12:40
+0 [Feeder Has Stopped - Checking Run Result...]    22434.4243809    06:13:54
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22434.8299809    06:13:54
+0 [The Run Finished OK]    22434.8299809    06:13:54
+0 [New Run Started     JOB: W:\932-0010]    22435.6255809    06:13:55
+0 [/// StartTheFeeder]    22448.2707809    06:14:08
+0 [Feeder Has Stopped - Checking Run Result...]    22461.5314036    06:14:21
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22461.9369932    06:14:21
+0 [The Run Finished OK]    22461.9369932    06:14:21
+0 [New Run Started     JOB: W:\932-0010]    22462.7325728    06:14:22
+0 [/// StartTheFeeder]    22476.1730239    06:14:36
+0 [Feeder Has Stopped - Checking Run Result...]    22640.4415513    06:17:20
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22640.8159417    06:17:20
+0 [The Run Finished OK]    22640.8159417    06:17:20
+0 [New Run Started     JOB: W:\932-0010]    22641.5647225    06:17:21
+0 [/// StartTheFeeder]    22656.627532    06:17:36
+0 [Feeder Has Stopped - Checking Run Result...]    22711.2445128    06:18:31
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22711.665702    06:18:31
+0 [The Run Finished OK]    22711.665702    06:18:31
+0 [New Run Started     JOB: W:\932-0010]    22712.4144828    06:18:32
+0 [/// StartTheFeeder]    22775.7216578    06:19:35
+0 [Feeder Has Stopped - Checking Run Result...]    22914.8871237    06:21:54
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22915.2927211    06:21:55
+0 [The Run Finished OK]    22915.2927211    06:21:55
+0 [New Run Started     JOB: W:\932-0010]    22916.0727161    06:21:56
+0 [/// StartTheFeeder]    22926.2374474    06:22:06
+0 [Feeder Has Stopped - Checking Run Result...]    22978.1719044    06:22:58
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    22978.5619019    06:22:58
+0 [The Run Finished OK]    22978.5619019    06:22:58
+0 [New Run Started     JOB: W:\932-0010]    22979.3418969    06:22:59
+0 [/// StartTheFeeder]    22996.0061865    06:23:16
+0 [Feeder Has Stopped - Checking Run Result...]    23043.3498553    06:24:03
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23043.7398528    06:24:03
+0 [The Run Finished OK]    23043.7398528    06:24:03
+0 [New Run Started     JOB: W:\932-0010]    23044.5042479    06:24:04
+0 [/// StartTheFeeder]    23055.3397784    06:24:15
+0 [Feeder Has Stopped - Checking Run Result...]    23066.3093784    06:24:26
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23067.2453784    06:24:27
+0 [The Run Finished OK]    23067.2453784    06:24:27
+0 [New Run Started     JOB: W:\932-0010]    23068.0565784    06:24:28
+0 [/// StartTheFeeder]    23078.3929784    06:24:38
+0 [Feeder Has Stopped - Checking Run Result...]    23136.1721784    06:25:36
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23136.5777784    06:25:36
+0 [The Run Finished OK]    23136.5777784    06:25:36
+0 [New Run Started     JOB: W:\932-0010]    23137.3265784    06:25:37
+0 [/// StartTheFeeder]    23148.4429784    06:25:48
+0 [Feeder Has Stopped - Checking Run Result...]    23156.1821784    06:25:56
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23156.5721784    06:25:56
+0 [The Run Finished OK]    23156.5721784    06:25:56
+0 [New Run Started     JOB: W:\932-0010]    23157.3365784    06:25:57
+0 [/// StartTheFeeder]    23182.6021784    06:26:22
+0 [Feeder Has Stopped - Checking Run Result...]    23203.4009784    06:26:43
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23203.8221784    06:26:43
+0 [The Run Finished OK]    23203.8221784    06:26:43
+0 [New Run Started     JOB: W:\932-0010]    23204.6333784    06:26:44
+0 [/// StartTheFeeder]    23214.8473784    06:26:54
+0 [Feeder Has Stopped - Checking Run Result...]    23232.7677784    06:27:12
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23233.7193784    06:27:13
+0 [The Run Finished OK]    23233.7193784    06:27:13
+0 [New Run Started     JOB: W:\932-0010]    23234.4681784    06:27:14
+0 [/// StartTheFeeder]    23244.1961784    06:27:24
+0 [Feeder Has Stopped - Checking Run Result...]    23252.6625784    06:27:32
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23253.0993784    06:27:33
+0 [The Run Finished OK]    23253.0993784    06:27:33
+0 [New Run Started     JOB: W:\932-0010]    23253.8481784    06:27:33
+0 [/// StartTheFeeder]    23266.2281784    06:27:46
+0 [Feeder Has Stopped - Checking Run Result...]    23276.0669784    06:27:56
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23276.4725784    06:27:56
+0 [The Run Finished OK]    23276.4725784    06:27:56
+0 [New Run Started     JOB: W:\932-0010]    23277.2525784    06:27:57
+0 [/// StartTheFeeder]    23288.9717784    06:28:08
+0 [Feeder Has Stopped - Checking Run Result...]    23304.9697784    06:28:24
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23305.3597784    06:28:25
+0 [The Run Finished OK]    23305.3597784    06:28:25
+0 [New Run Started     JOB: W:\932-0010]    23306.1397784    06:28:26
+0 [/// StartTheFeeder]    23317.4121784    06:28:37
+0 [Feeder Has Stopped - Checking Run Result...]    23327.8705784    06:28:47
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23328.2761784    06:28:48
+0 [The Run Finished OK]    23328.2761784    06:28:48
+0 [New Run Started     JOB: W:\932-0010]    23329.0717784    06:28:49
+0 [/// StartTheFeeder]    23339.2209784    06:28:59
+0 [Feeder Has Stopped - Checking Run Result...]    23346.4041784    06:29:06
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23347.3245784    06:29:07
+0 [The Run Finished OK]    23347.3245784    06:29:07
+0 [New Run Started     JOB: W:\932-0010]    23348.2605784    06:29:08
+0 [/// StartTheFeeder]    23357.5985784    06:29:17
+0 [Feeder Has Stopped - Checking Run Result...]    23366.9337784    06:29:26
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23367.3393784    06:29:27
+0 [The Run Finished OK]    23367.3393784    06:29:27
+0 [New Run Started     JOB: W:\932-0010]    23368.1661784    06:29:28
+0 [/// StartTheFeeder]    23386.2657784    06:29:46
+0 [Feeder Has Stopped - Checking Run Result...]    23572.4505784    06:32:52
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23572.8405784    06:32:52
+0 [The Run Finished OK]    23572.8405784    06:32:52
+0 [New Run Started     JOB: W:\932-0010]    23573.7297784    06:32:53
+0 [/// StartTheFeeder]    23584.8405784    06:33:04
+0 [Feeder Has Stopped - Checking Run Result...]    23609.1125784    06:33:29
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23609.5181784    06:33:29
+0 [The Run Finished OK]    23609.5181784    06:33:29
+0 [New Run Started     JOB: W:\932-0010]    23610.3293784    06:33:30
+0 [/// StartTheFeeder]    23626.7809784    06:33:46
+0 [Feeder Has Stopped - Checking Run Result...]    23659.4085784    06:34:19
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23659.7829784    06:34:19
+0 [The Run Finished OK]    23659.7829784    06:34:19
+0 [New Run Started     JOB: W:\932-0010]    23660.7033784    06:34:20
+0 [/// StartTheFeeder]    23671.8509784    06:34:31
+0 [Feeder Has Stopped - Checking Run Result...]    23681.0893784    06:34:41
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23681.9629784    06:34:41
+0 [The Run Finished OK]    23681.9785784    06:34:41
+0 [New Run Started     JOB: W:\932-0010]    23682.7741784    06:34:42
+0 [/// StartTheFeeder]    23693.6721784    06:34:53
+0 [Feeder Has Stopped - Checking Run Result...]    23709.1437784    06:35:09
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23709.5337784    06:35:09
+0 [The Run Finished OK]    23709.5337784    06:35:09
+0 [New Run Started     JOB: W:\932-0010]    23710.3137784    06:35:10
+0 [/// StartTheFeeder]    23723.7857784    06:35:23
+0 [Feeder Has Stopped - Checking Run Result...]    23755.3773784    06:35:55
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23755.7673784    06:35:55
+0 [The Run Finished OK]    23755.7673784    06:35:55
+0 [New Run Started     JOB: W:\932-0010]    23756.6409784    06:35:56
+0 [/// StartTheFeeder]    23912.8373784    06:38:32
+0 [Feeder Has Stopped - Checking Run Result...]    23938.5373784    06:38:58
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    23938.9429784    06:38:58
+0 [The Run Finished OK]    23938.9429784    06:38:58
+0 [New Run Started     JOB: W:\932-0010]    23939.7541784    06:38:59
+0 [/// StartTheFeeder]    23957.3601784    06:39:17
+0 [Feeder Has Stopped - Checking Run Result...]    24018.0805784    06:40:18
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24018.4705784    06:40:18
+0 [The Run Finished OK]    24018.4705784    06:40:18
+0 [New Run Started     JOB: W:\932-0010]    24019.3285784    06:40:19
+0 [/// StartTheFeeder]    24029.6025784    06:40:29
+0 [Feeder Has Stopped - Checking Run Result...]    24039.9953784    06:40:39
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24040.4165784    06:40:40
+0 [The Run Finished OK]    24040.4165784    06:40:40
+0 [New Run Started     JOB: W:\932-0010]    24041.1653784    06:40:41
+0 [/// StartTheFeeder]    24057.6481784    06:40:57
+0 [Feeder Has Stopped - Checking Run Result...]    24101.0317784    06:41:41
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24101.4061784    06:41:41
+0 [The Run Finished OK]    24101.4061784    06:41:41
+0 [New Run Started     JOB: W:\932-0010]    24102.1549784    06:41:42
+0 [/// StartTheFeeder]    24111.5497784    06:41:51
+0 [Feeder Has Stopped - Checking Run Result...]    24127.7161784    06:42:07
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24128.6209784    06:42:08
+0 [The Run Finished OK]    24128.6209784    06:42:08
+0 [New Run Started     JOB: W:\932-0010]    24129.4321784    06:42:09
+0 [/// StartTheFeeder]    24142.3425784    06:42:22
+0 [Feeder Has Stopped - Checking Run Result...]    24150.7073784    06:42:30
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24151.0973784    06:42:31
+0 [The Run Finished OK]    24151.0973784    06:42:31
+0 [New Run Started     JOB: W:\932-0010]    24152.0489784    06:42:32
+0 [/// StartTheFeeder]    24161.7189784    06:42:41
+0 [Feeder Has Stopped - Checking Run Result...]    24169.2635784    06:42:49
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24170.2307784    06:42:50
+0 [The Run Finished OK]    24170.2307784    06:42:50
+0 [New Run Started     JOB: W:\932-0010]    24170.9015784    06:42:50
+0 [/// StartTheFeeder]    24180.9415784    06:43:00
+0 [Feeder Has Stopped - Run was aborted]    24197.3815784    06:43:17
+0 [/// CheckFullBufferRunResult Result is RUN_ABORTED]    24197.3815784    06:43:17
+0 [New Run Started     Single Section]    24237.3267784    06:43:57
+0 [/// StartTheFeeder]    24253.8875784    06:44:13
+0 [Feeder Has Stopped - Checking Run Result...]    24306.3647784    06:45:06
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24307.3007784    06:45:07
+0 [The Run Finished OK]    24307.3007784    06:45:07
+0 [New Run Started     JOB: W:\932-0010]    24311.5127784    06:45:11
+0 [/// StartTheFeeder]    24329.0719784    06:45:29
+0 [Feeder Has Stopped - Checking Run Result...]    24338.7767784    06:45:38
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24339.1979784    06:45:39
+0 [The Run Finished OK]    24339.1979784    06:45:39
+0 [New Run Started     JOB: W:\932-0010]    24340.0715784    06:45:40
+0 [/// StartTheFeeder]    24356.1799784    06:45:56
+0 [Feeder Has Stopped - Checking Run Result...]    24368.6007784    06:46:08
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24369.0063784    06:46:09
+0 [The Run Finished OK]    24369.0063784    06:46:09
+0 [New Run Started     JOB: W:\932-0010]    24369.8331784    06:46:09
+0 [/// StartTheFeeder]    24382.5407784    06:46:22
+0 [Feeder Has Stopped - Checking Run Result...]    24407.3343784    06:46:47
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24407.7243784    06:46:47
+0 [The Run Finished OK]    24407.7243784    06:46:47
+0 [New Run Started     JOB: W:\932-0010]    24408.5979784    06:46:48
+0 [/// StartTheFeeder]    24422.5535784    06:47:02
+0 [Feeder Has Stopped - Checking Run Result...]    24435.5311784    06:47:15
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24435.9211784    06:47:15
+0 [The Run Finished OK]    24435.9211784    06:47:15
+0 [New Run Started     JOB: W:\932-0010]    24436.9351784    06:47:16
+0 [/// StartTheFeeder]    24451.8735784    06:47:31
+0 [Feeder Has Stopped - Checking Run Result...]    24469.6579784    06:47:49
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24470.0479784    06:47:50
+0 [The Run Finished OK]    24470.0479784    06:47:50
+0 [New Run Started     JOB: W:\932-0010]    24470.8279784    06:47:50
+0 [/// StartTheFeeder]    24481.6835784    06:48:01
+0 [Feeder Has Stopped - Checking Run Result...]    24490.8495784    06:48:10
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24491.2239784    06:48:11
+0 [The Run Finished OK]    24491.2239784    06:48:11
+0 [New Run Started     JOB: W:\932-0010]    24492.0663784    06:48:12
+0 [/// StartTheFeeder]    24505.8191202    06:48:25
+0 [Feeder Has Stopped - Checking Run Result...]    24523.4803785    06:48:43
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24523.870371    06:48:43
+0 [The Run Finished OK]    24523.870371    06:48:43
+0 [New Run Started     JOB: W:\932-0010]    24524.806353    06:48:44
+0 [/// StartTheFeeder]    24539.8380632    06:48:59
+0 [Feeder Has Stopped - Checking Run Result...]    24549.2618813    06:49:09
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24549.6518738    06:49:09
+0 [The Run Finished OK]    24549.6518738    06:49:09
+0 [New Run Started     JOB: W:\932-0010]    24550.4162591    06:49:10
+0 [/// StartTheFeeder]    24565.3019721    06:49:25
+0 [Feeder Has Stopped - Checking Run Result...]    24574.0198031    06:49:34
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24574.4097956    06:49:34
+0 [The Run Finished OK]    24574.4097956    06:49:34
+0 [New Run Started     JOB: W:\932-0010]    24575.22098    06:49:35
+0 [/// StartTheFeeder]    24589.3167082    06:49:49
+0 [Feeder Has Stopped - Checking Run Result...]    24630.0067234    06:50:30
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24631.4574955    06:50:31
+0 [The Run Finished OK]    24631.4574955    06:50:31
+0 [New Run Started     JOB: W:\932-0010]    24632.3622781    06:50:32
+0 [/// StartTheFeeder]    24642.4832827    06:50:42
+0 [Feeder Has Stopped - Checking Run Result...]    24653.1134762    06:50:53
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24653.5190684    06:50:53
+0 [The Run Finished OK]    24653.5190684    06:50:53
+0 [New Run Started     JOB: W:\932-0010]    24654.3302528    06:50:54
+0 [/// StartTheFeeder]    24666.307623    06:51:06
+0 [Feeder Has Stopped - Checking Run Result...]    24689.2083822    06:51:29
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24689.6139744    06:51:29
+0 [The Run Finished OK]    24689.6139744    06:51:29
+0 [New Run Started     JOB: W:\932-0010]    24690.4719579    06:51:30
+0 [/// StartTheFeeder]    24701.5101449    06:51:41
+0 [Feeder Has Stopped - Checking Run Result...]    24709.7327861    06:51:49
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24710.1383783    06:51:50
+0 [The Run Finished OK]    24710.1383783    06:51:50
+0 [New Run Started     JOB: W:\932-0010]    24710.9183633    06:51:50
+0 [/// StartTheFeeder]    24721.2701635    06:52:01
+0 [Feeder Has Stopped - Checking Run Result...]    24756.1830907    06:52:36
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24756.5886829    06:52:36
+0 [The Run Finished OK]    24756.5886829    06:52:36
+0 [New Run Started     JOB: W:\932-0010]    24757.4310667    06:52:37
+0 [/// StartTheFeeder]    24769.1168414    06:52:49
+0 [Feeder Has Stopped - Checking Run Result...]    24777.7310744    06:52:57
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24778.1054672    06:52:58
+0 [The Run Finished OK]    24778.1210669    06:52:58
+0 [New Run Started     JOB: W:\932-0010]    24779.0726486    06:52:59
+0 [/// StartTheFeeder]    24792.7783843    06:53:12
+0 [Feeder Has Stopped - Checking Run Result...]    24810.3749386    06:53:30
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    24810.7961359    06:53:30
+0 [The Run Finished OK]    24810.7961359    06:53:30
+0 [New Run Started     JOB: W:\932-0010]    24811.7477298    06:53:31
+0 [/// StartTheFeeder]    24842.7619275    06:54:02
+0 [Feeder Has Stopped - Run was aborted]    24844.9303136    06:54:04
+0 [/// CheckFullBufferRunResult Result is RUN_ABORTED]    24844.9303136    06:54:04
+0 [New Run Started     JOB: W:\932-0010]    25634.3012355    07:07:14
+0 [/// StartTheFeeder]    25652.1788355    07:07:32
+0 [Feeder Has Stopped - Checking Run Result...]    25671.0100355    07:07:51
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    25671.4000355    07:07:51
+0 [The Run Finished OK]    25671.4000355    07:07:51
+0 [New Run Started     JOB: W:\932-0010]    25672.2892355    07:07:52
+0 [/// StartTheFeeder]    25680.1360355    07:08:00
+0 [Feeder Has Stopped - Checking Run Result...]    25689.4040355    07:08:09
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    25689.8252355    07:08:09
+0 [The Run Finished OK]    25689.8252355    07:08:09
+0 [New Run Started     JOB: W:\932-0010]    25690.6052355    07:08:10
+0 [/// StartTheFeeder]    25698.7796355    07:08:18
+0 [Feeder Has Stopped - Checking Run Result...]    25720.7384355    07:08:40
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    25721.1284355    07:08:41
+0 [The Run Finished OK]    25721.1284355    07:08:41
+0 [New Run Started     JOB: W:\932-0010]    25722.0332355    07:08:42
+0 [/// StartTheFeeder]    25730.3480355    07:08:50
+0 [Feeder Has Stopped - Checking Run Result...]    25739.6940355    07:08:59
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    25740.0840355    07:09:00
+0 [The Run Finished OK]    25740.0840355    07:09:00
+0 [New Run Started     JOB: W:\932-0010]    25740.9108355    07:09:00
+0 [/// StartTheFeeder]    25750.4892355    07:09:10
+0 [Feeder Has Stopped - Checking Run Result...]    25762.2540355    07:09:22
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    25762.6596355    07:09:22
+0 [The Run Finished OK]    25762.6596355    07:09:22
+0 [New Run Started     JOB: W:\932-0010]    25763.5800355    07:09:23
+0 [/// StartTheFeeder]    25771.7544355    07:09:31
+0 [Feeder Has Stopped - Checking Run Result...]    25789.1848355    07:09:49
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    25790.0740355    07:09:50
+0 [The Run Finished OK]    25790.0740355    07:09:50
+0 [New Run Started     JOB: W:\932-0010]    25790.8852355    07:09:50
+0 [/// StartTheFeeder]    25798.8412355    07:09:58
+0 [Feeder Has Stopped - Checking Run Result...]    25810.5968355    07:10:10
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    25810.9868355    07:10:10
+0 [The Run Finished OK]    25810.9868355    07:10:10
+0 [New Run Started     JOB: W:\932-0010]    25811.7200355    07:10:11
+0 [/// StartTheFeeder]    25820.9396355    07:10:20
+0 [Feeder Has Stopped - Checking Run Result...]    25865.4108355    07:11:05
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    25865.8008355    07:11:05
+0 [The Run Finished OK]    25865.8008355    07:11:05
+0 [New Run Started     JOB: W:\932-0010]    25866.5964355    07:11:06
+0 [/// StartTheFeeder]    25876.2840355    07:11:16
+0 [Feeder Has Stopped - Checking Run Result...]    25893.5480355    07:11:33
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    25893.9536355    07:11:33
+0 [The Run Finished OK]    25893.9536355    07:11:33
+0 [New Run Started     JOB: W:\932-0010]    25894.7180355    07:11:34
+0 [/// StartTheFeeder]    25902.5492355    07:11:42
+0 [Feeder Has Stopped - Checking Run Result...]    25913.2112355    07:11:53
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    25913.6012355    07:11:53
+0 [The Run Finished OK]    25913.6012355    07:11:53
+0 [New Run Started     JOB: W:\932-0010]    25914.4124355    07:11:54
+0 [/// StartTheFeeder]    25923.7256355    07:12:03
+0 [Feeder Has Stopped - Checking Run Result...]    25940.4108355    07:12:20
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    25940.7852355    07:12:20
+0 [The Run Finished OK]    25940.8008355    07:12:20
+0 [New Run Started     JOB: W:\932-0010]    25941.7680355    07:12:21
+0 [/// StartTheFeeder]    25952.0172355    07:12:32
+0 [Feeder Has Stopped - Checking Run Result...]    26012.9100355    07:13:32
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26013.3000355    07:13:33
+0 [The Run Finished OK]    26013.3000355    07:13:33
+0 [New Run Started     JOB: W:\932-0010]    26014.2828355    07:13:34
+0 [/// StartTheFeeder]    26022.7536355    07:13:42
+0 [Feeder Has Stopped - Checking Run Result...]    26035.7148355    07:13:55
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26036.0892355    07:13:56
+0 [The Run Finished OK]    26036.0892355    07:13:56
+0 [New Run Started     JOB: W:\932-0010]    26037.0408355    07:13:57
+0 [/// StartTheFeeder]    26045.3400355    07:14:05
+0 [Feeder Has Stopped - Checking Run Result...]    26065.3676355    07:14:25
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26065.7420355    07:14:25
+0 [The Run Finished OK]    26065.7420355    07:14:25
+0 [New Run Started     JOB: W:\932-0010]    26066.7716355    07:14:26
+0 [/// StartTheFeeder]    26080.3904355    07:14:40
+0 [Feeder Has Stopped - Checking Run Result...]    26137.6296355    07:15:37
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26138.0040355    07:15:38
+0 [The Run Finished OK]    26138.0040355    07:15:38
+0 [New Run Started     JOB: W:\932-0010]    26138.8152355    07:15:38
+0 [/// StartTheFeeder]    26152.5900355    07:15:52
+0 [Feeder Has Stopped - Checking Run Result...]    26254.7372355    07:17:34
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26255.1428355    07:17:35
+0 [The Run Finished OK]    26255.1428355    07:17:35
+0 [New Run Started     JOB: W:\932-0010]    26255.9384355    07:17:35
+0 [/// StartTheFeeder]    26264.1908355    07:17:44
+0 [Feeder Has Stopped - Checking Run Result...]    26297.7180355    07:18:17
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26298.1280355    07:18:18
+0 [The Run Finished OK]    26298.1280355    07:18:18
+0 [New Run Started     JOB: W:\932-0010]    26299.0872355    07:18:19
+0 [/// StartTheFeeder]    26307.9168355    07:18:27
+0 [Feeder Has Stopped - Checking Run Result...]    26321.6232355    07:18:41
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26322.5280355    07:18:42
+0 [The Run Finished OK]    26322.5280355    07:18:42
+0 [New Run Started     JOB: W:\932-0010]    26323.4016355    07:18:43
+0 [/// StartTheFeeder]    26331.6228355    07:18:51
+0 [Feeder Has Stopped - Checking Run Result...]    26344.0416355    07:19:04
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26344.4316355    07:19:04
+0 [The Run Finished OK]    26344.4316355    07:19:04
+0 [New Run Started     JOB: W:\932-0010]    26345.4144355    07:19:05
+0 [/// StartTheFeeder]    26354.6496355    07:19:14
+0 [Feeder Has Stopped - Checking Run Result...]    26364.0652355    07:19:24
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26364.4708355    07:19:24
+0 [The Run Finished OK]    26364.4708355    07:19:24
+0 [New Run Started     JOB: W:\932-0010]    26365.1728355    07:19:25
+0 [/// StartTheFeeder]    26373.5188355    07:19:33
+0 [Feeder Has Stopped - Checking Run Result...]    26382.1004355    07:19:42
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26383.0364355    07:19:43
+0 [The Run Finished OK]    26383.0364355    07:19:43
+0 [New Run Started     JOB: W:\932-0010]    26383.7852355    07:19:43
+0 [/// StartTheFeeder]    26392.4744355    07:19:52
+0 [Feeder Has Stopped - Checking Run Result...]    26401.3368355    07:20:01
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26401.7424355    07:20:01
+0 [The Run Finished OK]    26401.7424355    07:20:01
+0 [New Run Started     JOB: W:\932-0010]    26402.5068355    07:20:02
+0 [/// StartTheFeeder]    26411.8044355    07:20:11
+0 [Feeder Has Stopped - Checking Run Result...]    26431.5604355    07:20:31
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26432.4964355    07:20:32
+0 [The Run Finished OK]    26432.4964355    07:20:32
+0 [New Run Started     JOB: W:\932-0010]    26433.2452355    07:20:33
+0 [/// StartTheFeeder]    26441.6068355    07:20:41
+0 [Feeder Has Stopped - Checking Run Result...]    26450.6564355    07:20:50
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26451.0308355    07:20:51
+0 [The Run Finished OK]    26451.0308355    07:20:51
+0 [New Run Started     JOB: W:\932-0010]    26451.7952355    07:20:51
+0 [/// StartTheFeeder]    26460.4688355    07:21:00
+0 [Feeder Has Stopped - Checking Run Result...]    26476.7456355    07:21:16
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26477.6816355    07:21:17
+0 [The Run Finished OK]    26477.6816355    07:21:17
+0 [New Run Started     JOB: W:\932-0010]    26478.5864355    07:21:18
+0 [/// StartTheFeeder]    26486.4176355    07:21:26
+0 [Feeder Has Stopped - Checking Run Result...]    26499.5848355    07:21:39
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26500.4740355    07:21:40
+0 [The Run Finished OK]    26500.4740355    07:21:40
+0 [New Run Started     JOB: W:\932-0010]    26501.2384355    07:21:41
+0 [/// StartTheFeeder]    26510.9572355    07:21:50
+0 [Feeder Has Stopped - Checking Run Result...]    26526.0580355    07:22:06
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    26526.4480355    07:22:06
+0 [The Run Finished OK]    26526.4480355    07:22:06
+0 [New Run Started     JOB: W:\932-0010]    26527.3372355    07:22:07
+0 [/// StartTheFeeder]    26537.7268355    07:22:17
+0 [Feeder Has Stopped - Checking Run Result...]    27008.4136243    07:30:08
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27008.8036193    07:30:08
+0 [The Run Finished OK]    27008.8192191    07:30:08
+0 [New Run Started     JOB: W:\932-0010]    27009.6148089    07:30:09
+0 [/// StartTheFeeder]    27019.3646839    07:30:19
+0 [Feeder Has Stopped - Checking Run Result...]    27050.0847007    07:30:50
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27050.4746957    07:30:50
+0 [The Run Finished OK]    27050.4746957    07:30:50
+0 [New Run Started     JOB: W:\932-0010]    27051.3794841    07:30:51
+0 [/// StartTheFeeder]    27063.9373231    07:31:03
+0 [Feeder Has Stopped - Checking Run Result...]    27093.0909659    07:31:33
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27093.9957543    07:31:33
+0 [The Run Finished OK]    27093.9957543    07:31:33
+0 [New Run Started     JOB: W:\932-0010]    27094.9161425    07:31:34
+0 [/// StartTheFeeder]    27107.9887749    07:31:47
+0 [Feeder Has Stopped - Checking Run Result...]    27184.11904    07:33:04
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27184.52464    07:33:04
+0 [The Run Finished OK]    27184.52464    07:33:04
+0 [New Run Started     JOB: W:\932-0010]    27185.46064    07:33:05
+0 [/// StartTheFeeder]    27199.12624    07:33:19
+0 [Feeder Has Stopped - Checking Run Result...]    27427.32544    07:37:07
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27427.73104    07:37:07
+0 [The Run Finished OK]    27427.73104    07:37:07
+0 [New Run Started     JOB: W:\932-0010]    27428.60464    07:37:08
+0 [/// StartTheFeeder]    27436.26424    07:37:16
+0 [Feeder Has Stopped - Checking Run Result...]    27535.42584    07:38:55
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27535.81584    07:38:55
+0 [The Run Finished OK]    27535.81584    07:38:55
+0 [New Run Started     JOB: W:\932-0010]    27536.73624    07:38:56
+0 [/// StartTheFeeder]    27547.23504    07:39:07
+0 [Feeder Has Stopped - Checking Run Result...]    27597.97864    07:39:57
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27598.38424    07:39:58
+0 [The Run Finished OK]    27598.38424    07:39:58
+0 [New Run Started     JOB: W:\932-0010]    27599.25784    07:39:59
+0 [/// StartTheFeeder]    27606.83944    07:40:06
+0 [Feeder Has Stopped - Checking Run Result...]    27617.30864    07:40:17
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27617.69864    07:40:17
+0 [The Run Finished OK]    27617.69864    07:40:17
+0 [New Run Started     JOB: W:\932-0010]    27618.60344    07:40:18
+0 [/// StartTheFeeder]    27626.84024    07:40:26
+0 [Feeder Has Stopped - Checking Run Result...]    27634.54264    07:40:34
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27635.43184    07:40:35
+0 [The Run Finished OK]    27635.43184    07:40:35
+0 [New Run Started     JOB: W:\932-0010]    27636.36784    07:40:36
+0 [/// StartTheFeeder]    27647.63104    07:40:47
+0 [Feeder Has Stopped - Checking Run Result...]    27727.69024    07:42:07
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27728.06464    07:42:08
+0 [The Run Finished OK]    27728.06464    07:42:08
+0 [New Run Started     JOB: W:\932-0010]    27728.89144    07:42:08
+0 [/// StartTheFeeder]    27740.06104    07:42:20
+0 [Feeder Has Stopped - Checking Run Result...]    27788.88784    07:43:08
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27789.77704    07:43:09
+0 [The Run Finished OK]    27789.77704    07:43:09
+0 [New Run Started     JOB: W:\932-0010]    27790.71304    07:43:10
+0 [/// StartTheFeeder]    27799.82344    07:43:19
+0 [Feeder Has Stopped - Checking Run Result...]    27861.20544    07:44:21
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27861.59544    07:44:21
+0 [The Run Finished OK]    27861.59544    07:44:21
+0 [New Run Started     JOB: W:\932-0010]    27862.37544    07:44:22
+0 [/// StartTheFeeder]    27870.84624    07:44:30
+0 [Feeder Has Stopped - Checking Run Result...]    27897.92824    07:44:57
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27898.30264    07:44:58
+0 [The Run Finished OK]    27898.30264    07:44:58
+0 [New Run Started     JOB: W:\932-0010]    27899.05144    07:44:59
+0 [/// StartTheFeeder]    27906.97624    07:45:06
+0 [Feeder Has Stopped - Checking Run Result...]    27918.13304    07:45:18
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27918.53864    07:45:18
+0 [The Run Finished OK]    27918.53864    07:45:18
+0 [New Run Started     JOB: W:\932-0010]    27919.33424    07:45:19
+0 [/// StartTheFeeder]    27931.42424    07:45:31
+0 [Feeder Has Stopped - Checking Run Result...]    27987.58984    07:46:27
+0 [/// CheckFullBufferRunResult Result is RUN_OK]    27987.97984    07:46:27
+0 [The Run Finished OK]    27987.97984    07:46:27
+0 [New Run Started     JOB: W:\932-0010]    27988.75984    07:46:28
+0 [/// StartTheFeeder]    28002.50344    07:46:42
+0 [Feeder Has Stopped - Run was aborted]    28024.67264    07:47:04
+0 [/// CheckFullBufferRunResult Result is RUN_ABORTED]    28024.67264    07:47:04

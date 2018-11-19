@@ -168,7 +168,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <OutputFile>$(Platform)\$(Configuration)\$(TargetName)$(TargetExt)</OutputFile>
       <AdditionalLibraryDirectories>C:\Program Files\NIST\proj\MTConnect\Nist\MTConnectGadgets\src\lib;C:\Program Files\NIST\proj\MTConnect\Nist\MTConnectGadgets\src\lib\libxml;C:\Program Files\NIST\proj\MTConnect\Nist\MTConnectGadgets\src\lib\win32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalOptions>/LIBPATH:"C:\Program Files\NIST\src\boost_1_54_0\MSVC10\stageX32\lib"  /LIBPATH:"C:\Users\michalos\Documents\GitHub\MTConnectSolutions\MtcOpcAgent\Agent\win32\libxml2-2.7.7\lib" %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions> /LIBPATH:"C:\Users\michalos\Documents\GitHub\Agents\MtcOpcAgent\Agent\win32\libxml2-2.7.7\lib"  /LIBPATH:"C:\Program Files\NIST\src\boost_1_54_0\vc10\stagex32\lib" %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

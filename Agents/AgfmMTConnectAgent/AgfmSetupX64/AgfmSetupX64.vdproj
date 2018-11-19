@@ -512,9 +512,9 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AgfmSetupX64"
-        "ProductCode" = "8:{A9AB21CC-B23D-472D-A6D0-30603E627AFC}"
-        "PackageCode" = "8:{0D3502AF-CD57-451C-9BA0-007ACBD296AB}"
-        "UpgradeCode" = "8:{075CDE25-8CB3-4A68-84D7-A0B6CE4BAB0D}"
+        "ProductCode" = "8:{DE9FB2D3-E626-40E5-8E0B-9FBD823A4E6C}"
+        "PackageCode" = "8:{AF6245A6-5153-4717-8682-EEE5EAAF6158}"
+        "UpgradeCode" = "8:{4D413CC0-74EA-48E7-904C-29737428AF58}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"

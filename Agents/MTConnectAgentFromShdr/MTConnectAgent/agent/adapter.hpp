@@ -38,6 +38,7 @@
 #include <sstream>
 #include <map>
 #include <vector>
+#include <time.h>
 
 #include "dlib/sockets.h"
 #include "dlib/threads.h"
@@ -60,6 +61,10 @@ public:
 	static std::vector<std::string> rpmEntries;
 	static std::map<std::string, std::vector<std::string>> keymultimapping; 
 	static int nLogUpdates;
+	static int bAllFakeSpindle;
+	static std::map<std::string,int> bDeviceFakeSpindle;
+
+	time_t lastime;
 
   /* Associate adapter with a device & connect to the server & port */
   Adapter(const std::string& device,

@@ -23,9 +23,11 @@
 //#include <stdio.h>
 
 //#define FANUCAGENT
-#define MAZAKAGENT
+//#define MAZAKAGENT
 //#define SIEMENS840DAGENT
 //#define LINUXSOLUTIONLINEAGENT
+#define TECHSOLVE_AGENT
+
 #pragma warning(disable: 4800) //warning C4800: forcing value to bool 'true' or 'false' (performance warning)
 #pragma warning(disable: 4018) //warning C4018: '<' : signed/unsigned mismatch
 #pragma warning(disable: 4244) //warning C4244: 'argument' : conversion from 'double' to 'LPARAM', possible loss of data

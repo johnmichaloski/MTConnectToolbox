@@ -122,7 +122,7 @@ inline bool TestPing1(std::string host, int timeout=75 /*miliseconds*/)
     int iResult = ioctlsocket(sock, FIONBIO, &iMode);
     if (iResult != NO_ERROR)
     {	
-        GLogger.LogMessage(StdStringFormat("ioctlsocket failed with error: %ld\n", iResult));
+        GLogger.Message(StdStringFormat("ioctlsocket failed with error: %ld\n", iResult));
     }
 	    
     if(connect(sock,(struct sockaddr *)&address,sizeof(address))==false)
@@ -135,7 +135,7 @@ inline bool TestPing1(std::string host, int timeout=75 /*miliseconds*/)
     iResult = ioctlsocket(sock, FIONBIO, &iMode);
     if (iResult != NO_ERROR)
     {	
-         GLogger.LogMessage(StdStringFormat("ioctlsocket failed with error: %ld\n", iResult));
+          GLogger.Message(StdStringFormat("ioctlsocket failed with error: %ld\n", iResult));
     }
  
     fd_set Write, Err;

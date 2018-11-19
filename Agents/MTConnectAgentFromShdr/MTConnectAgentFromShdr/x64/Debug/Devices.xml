@@ -1,77 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MTConnectDevices  xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
-  <Header version="1.1" sender="Makino Milling Machines, Inc" creationTime="2010-08-26T19:00:47-07:00" instanceId="1" bufferSize="5000"/>
-  <Devices>  
-    <Device name="MakinoT4" uuid="T4-12" id="MC41" sampleRate="200">
-      <Description manufacturer="Makino Milling Machines, Inc" />
-      <Components>
-        <Controller name="Controller" id="MakinoT4c41">
-          <DataItems>
-            <DataItem category="CONDITION" id="z_41_alarm1" name="condition1" type="SYSTEM" />
-            <DataItem category="CONDITION" id="z_41_alarm2" name="condition2" type="SYSTEM" />
-            <DataItem category="CONDITION" id="z_41_alarm3" name="condition3" type="SYSTEM" />
-            <DataItem category="CONDITION" id="z_41_alarm4" name="condition4" type="SYSTEM" />
-            <DataItem category="CONDITION" id="z_41_alarm5" name="condition5" type="SYSTEM" />
-            <DataItem category="CONDITION" id="z_41_alarm6" name="condition6" type="SYSTEM" />
-            <DataItem category="CONDITION" id="z_41_alarm7" name="condition7" type="SYSTEM" />
-            
-            <DataItem category="EVENT" id="z_41_operatordoor" name="OperatorDoorState" type="DOORSTATE" />
-            <DataItem category="EVENT" id="z_41_toolmagazonrdoor" name="ToolMagazineDoorState" type="DOORSTATE" />
-            <DataItem category="EVENT" id="z_41_atcmagazinedoor" name="ATCMagazineDoorState" type="DOORSTATE" />
-            
-            <DataItem category="EVENT" id="z_41_estop" name="estop" type="EMERGENCY_STOP" />
-            <DataItem category="EVENT" id="z_41_block" name="block" type="BLOCK" />
-            <DataItem category="EVENT" id="z_41_program" name="program" type="PROGRAM" />
-            <DataItem category="EVENT" id="z_41_execution" name="execution" type="EXECUTION" />
-            <DataItem category="EVENT" id="z_41_feedoverride" name="path_feedrateovr" type="PATH_FEEDRATE_OVERRIDE" subType="PROGRAMMED" units="MILLIMETER_SECOND" />
-            <DataItem category="SAMPLE" id="z_41_feedrate" name="path_feedratefrt" type="PATH_FEEDRATE" subType="PROGRAMMED" units="MILLIMETER_SECOND" />
-            <DataItem category="EVENT" id="z_41_functional" name="functional" type="FUNCTIONAL_MODE" />
-            <DataItem category="EVENT" id="z_41_progcomment" name="progcomment" type="PROGRAM_COMMENT" />
-            <DataItem category="EVENT" id="z_41_rapidoverride" name="rapidoverride" type="PATH_FEEDRATE_OVERRIDE" subType="RAPID" units="MILLIMETER_SECOND" />
-            <DataItem category="EVENT" id="z_41_mode" name="controllermode" type="CONTROLLER_MODE" />
-            <DataItem category="EVENT" id="z_41_pallet" name="pallet" type="PALLET_ID" />
-            <DataItem category="EVENT" id="z_41_parts" name="parts" type="PART_COUNT" />
-            <DataItem category="EVENT" id="z_41_direction" name="direction" type="DIRECTION" />
-            <DataItem category="EVENT" id="z_41_spindletool" name="spindletool" type="TOOL_ASSET_ID" />
-            <DataItem category="EVENT" id="z_41_spindleload" name="Srpm" type="LOAD" />
-            <DataItem category="EVENT" id="z_41_spindleoverride" name="Sovr" type="ROTARY_VELOCITY_OVERRIDE" />
-            <DataItem category="EVENT" id="z_41_avail" name="avail" type="AVAILABILITY" />
-            <DataItem category="EVENT" id="z_41_jogovveride" name="jogoverride" type="JOGOVERRIDE" units="PERCENT" />
-            
-            <DataItem category="SAMPLE" id="z_41_fourposition" name="bposition" type="POSITION" units="MILLIMETER" />
-            <DataItem category="SAMPLE" id="z_41_fiveposition" name="cposition" type="POSITION" units="MILLIMETER" />            
-            <DataItem category="SAMPLE" id="z_41_fourcommanded" name="bcommanded" type="POSITION" units="MILLIMETER" />
-            <DataItem category="SAMPLE" id="z_41_fivecommanded" name="ccommanded" type="POSITION" units="MILLIMETER" />            
-            
-            <DataItem category="SAMPLE" id="z_41_xposition" name="Xabs" type="POSITION" units="MILLIMETER" />
-            <DataItem category="SAMPLE" id="z_41_yposition" name="Yabs" type="POSITION" units="MILLIMETER" />
-            <DataItem category="SAMPLE" id="z_41_zposition" name="Zabs" type="POSITION" units="MILLIMETER" />
-            <DataItem category="SAMPLE" id="z_41_xcommanded" name="xcommanded" type="COMMANDED" units="MILLIMETER" />
-            <DataItem category="SAMPLE" id="z_41_ycommanded" name="ycommanded" type="COMMANDED" units="MILLIMETER" />
-            <DataItem category="SAMPLE" id="z_41_zcommanded" name="zcommanded" type="COMMANDED" units="MILLIMETER" />
-            
-            <DataItem category="SAMPLE" id="z_41_load1" name="load1" type="LOAD" units="PERCENT" />
-	    <DataItem category="SAMPLE" id="z_41_load2" name="load2" type="LOAD" units="PERCENT" />
-	    <DataItem category="SAMPLE" id="z_41_load3" name="load3" type="LOAD" units="PERCENT" />
-	    <DataItem category="SAMPLE" id="z_41_load4" name="load4" type="LOAD" units="PERCENT" />
-	    <DataItem category="SAMPLE" id="z_41_load5" name="load5" type="LOAD" units="PERCENT" />
-	    <DataItem category="SAMPLE" id="z_41_load6" name="load6" type="LOAD" units="PERCENT" />
-            
-            <DataItem category="EVENT" id="z_41_macrovariable1" name="macrovariable1" type="PART_ID" />
-            <DataItem category="EVENT" id="z_41_macrovariable2" name="macrovariable2" type="PART_ID" />
-            <DataItem category="EVENT" id="z_41_macrovariable3" name="macrovariable3" type="PART_ID" />
-            <DataItem category="EVENT" id="z_41_macrovariable4" name="macrovariable4" type="PART_ID" />
-            <DataItem category="EVENT" id="z_41_macrovariable5" name="macrovariable5" type="PART_ID" />
-            <DataItem category="EVENT" id="z_41_macrovariable6" name="macrovariable6" type="PART_ID" />
-            <DataItem category="EVENT" id="z_41_macrovariable7" name="macrovariable7" type="PART_ID" />
-            <DataItem category="EVENT" id="z_41_macrovariable8" name="macrovariable8" type="PART_ID" />
-            <DataItem category="EVENT" id="z_41_macrovariable9" name="macrovariable9" type="PART_ID" />
-            <DataItem category="EVENT" id="z_41_macrovariable10" name="macrovariable10" type="PART_ID" />
-            
-          </DataItems>
-        </Controller>
-      </Components>
-    </Device>
-  </Devices>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2018-09-04T13:04:48" sender="local" version="1.1"/>
+<Devices>
+			<Device id="M22id" uuid="M22xxx" name="M22">
+			<Description>MTConnect Siemens 840D Device Using Mazak Shdr as Backend</Description>
+			<DataItems>
+				<DataItem id="M22avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="M22a1" name="base">		
+					<Components>	
+						<Rotary id="M22d1" name="SPINDLE">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="M22cs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+								<DataItem type="SPINDLE_SPEED" id="M22cso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+								<DataItem category="SAMPLE" id="M22cl3" name="Sload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+							</DataItems>
+						</Rotary>
+						<Linear id="M22x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M22xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M22y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M22yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="M22z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="M22zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+					</Components>
+				</Axes>
+				<Controller id="M22cont" name="controller">
+					<Components>
+						<Path id="M22path1" name="path">
+							<DataItems>
+								<DataItem type="PART_COUNT" id="M22pc1" category="EVENT" name="PartCountAct" />
+								<DataItem type="PATH_FEEDRATE" id="M22pf1" category="SAMPLE" name="path_feedratefrt" units="MILLIMETER/SECOND" subType="ACTUAL" coordinateSystem="WORK"/>
+								<DataItem type="TOOL_ID" id="M22tid1" category="EVENT" name="Tool_number"/>
+								<DataItem type="PROGRAM" id="M22pgm" category="EVENT" name="program"/>
+								<DataItem type="EXECUTION" id="M22exec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="M22mode" category="EVENT" name="controllermode"/>
+								<DataItem type="PATH_FEEDRATE" id="M22pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+        							<DataItem category="EVENT"  id="M22fault"  name="fault" type="CODE"></DataItem>
+        							<DataItem category="EVENT"  id="M22heartbeat"  name="heartbeat" type="CODE"></DataItem>
+								<DataItem type="SYSTEM" category="CONDITION" id="M22alarm_cond" name="alarm" />
+ 							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="M22systems" name="systems">
+					<Components>
+						<Electric name="electric" id="M22elec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="M22pwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+</Devices>
 </MTConnectDevices>
-

@@ -1,0 +1,26 @@
+2018-03-07 11:18:39.0061 Start Wiring Agent
+2018-03-07 11:18:39.0063 Main
+2018-03-07 11:18:39.0064 initialize
+2018-03-07 11:18:39.0279 Start
+2018-03-07 11:18:39.0314 Actual Reading File Size 4227648
+2018-03-07 11:19:00.0366 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:19:05.0380 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:19:10.0393 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:19:15.0406 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:19:20.0418 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:19:25.0428 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:19:30.0430 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:19:35.0433 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:19:40.0435 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:19:45.0437 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:19:50.0439 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:19:55.0442 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:20:00.0444 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:20:05.0446 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:20:10.0450 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:20:15.0452 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:20:20.0467 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:20:25.0472 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:20:30.0480 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:20:35.0508 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18
+2018-03-07 11:20:40.0512 File D:\michalos\My Work\MTConnect\Agents\WiringMTConnectAgent\WiringAgent\Win32\Debug\Comlog 07 March 2018.txt Device M1 modtime unchanged 03/07/18 09:18:18

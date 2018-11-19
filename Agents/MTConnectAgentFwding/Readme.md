@@ -1,64 +1,70 @@
 
-#README 
+# README 
 ----
 
-Thursday, November 10, 2016
+Monday, November 19, 2018
 This document presents a brief background on the mechanics of the MTConnect forwarding agent.  This document assumes the reader is familiar with MTConnect operation, and for deeper explanation of MTConnect, please refer to MTConnect URL: http://www.mtconnect.org/ for more information. This document concerns itself with an implementation of a MTConnect Agent XML reader and an embedded web server that only supports "current" MTConnect data queries. Thus, a forwarding agent will read the current status from another MTConnect agent, and serve this XML MTConnect data to the querying client. In addition, the ability to rename tags or details or enums is possible with the python program. Note, if you just forwarding the MTConnect XML you could just use port forwarding, however, this program makes adjustments to the MTConnect XML before forwarding.
-#Background 
+# Background 
 MTConnect is a new standard developed to facilitate the exchange of data on the manufacturing floor. The MTConnect open specification provides for cost effective data acquisition on the manufacturing floor for machine tools and related devices.  MTConnect is based upon prevalent Web technology including XML and HTTP.   Figure 1 shows the MT Connect architecture. An "MTConnect Device" is a piece of equipment – in this case a ABB robot machine tool, which (optionally) includes an MTConnect Adapter so that we can get data from it. The "Agent" is a process that acts as a "bridge" between a device and a factory "Client Application".  To learn more about MTConnect visit: http://www.mtconnect.org/ 
 Figure 1 shows a typical MTConnect forwarding Agent system architecture (note at this time you can only forward one MTConnect XML data at a time). 
 
-<CENTER>
-![Figure1](./images/image1.jpg?raw=true)
-</CENTER>
 
+![Figure1](./images/MTConnectAgentForwarding_image1.gif)
+
+
+The forwarding Agent can also read a local Agent on the same PC and translate and/or interpret the XMl and at the same time provide a Web Service for reading by a remote client. Mazak offers a "Smart" Adapter that can remotely read the status of the CNC and present the data as an Adapter on the local port 7878. The open source MTConnect Agent can read this data and provide a Web Service for clients to read the Mazak XML data. The forwarding Agent acts as a client, and reads the MTConnect Agent, translates some of the tags into another name (configurable) and then another client can remote access this web server to retrieve the Mazak data as a "current" fetch. 
+
+![Figure2](./images/MTConnectAgentForwarding_image2.gif)
+
+
+The forwarding agent is writtenin Python so it is simple and can easily be customized to change tag name, enumeration value or provide simple logic, such as interpreting 3 spindle operation into a single MTConnect srpm data tag.
 This document describes the data gathering from a MTConnect Agent that is served a XML data in another web server. 
-#Installation
+# Installation
 There is an MSI to install and uninstall the MTConnect forwarding agent. Often the install file is exchanged by email with the "msi" extension changed to "msx", and you need to change this back.
 Then double click the msi script:
-<CENTER>
-![Figure2](./images/image2.jpg?raw=true)
-</CENTER>
+
+![Figure3](./images/MTConnectAgentForwarding_image3.gif)
+
 
 Welcome for next.
-<CENTER>
-![Figure3](./images/image3.jpg?raw=true)
-</CENTER>
+
+![Figure4](./images/MTConnectAgentForwarding_image4.gif)
+
 
 See configuration for more details.
-<CENTER>
-![Figure4](./images/image4.jpg?raw=true)
-</CENTER>
 
-<CENTER>
-![Figure5](./images/image5.jpg?raw=true)
-</CENTER>
+![Figure5](./images/MTConnectAgentForwarding_image5.gif)
 
-<CENTER>
-![Figure6](./images/image6.jpg?raw=true)
-</CENTER>
 
-##Removal
+
+![Figure6](./images/MTConnectAgentForwarding_image6.gif)
+
+
+
+![Figure7](./images/MTConnectAgentForwarding_image7.gif)
+
+
+## Removal
 You can run the msi script to remove the application and folder, but you will have to manually stop and remove the Service BEFOREHAND.
  1. Change directory to the installation folder
  2. Run the uninstallService.vbs as administrator
  3. Make sure the input name matches the service name: e.g., MTConnectAgentForwarding
 The install wizard also removes. Double click the msi script and then select uninstall:
-<CENTER>
-![Figure7](./images/image7.jpg?raw=true)
-</CENTER>
+
+![Figure8](./images/MTConnectAgentForwarding_image8.gif)
+
 
 Wait for the UAC administrator rights…
-<CENTER>
-![Figure8](./images/image8.jpg?raw=true)
-</CENTER>
+
+![Figure9](./images/MTConnectAgentForwarding_image9.gif)
+
 
 All done – now remove the service. Check It may be removed.
-<CENTER>
-![Figure9](./images/image9.jpg?raw=true)
-</CENTER>
 
-#Configuration
+![Figure10](./images/MTConnectAgentForwarding_image10.gif)
+
+
+# Configuration
 In the Config.ini file, you can change the ServiceName, Agent port and query times of the log files. These changes will take if you stop/restart the Agent service or reboot the machine.
 
 	[MTCONNECT]
@@ -109,23 +115,29 @@ And changing the ACTIVE value is achieved with the following Config.ini entry in
 	[ENUMS]
 	ACTIVE=EXECUTING
 Note as of this version all ACTIVE text entries in the XML will be changed to EXECUTING.
-#Source Code 
+# Source Code 
 The forwarding agent is written in Python and was debugged using Visual Studio 10 (that supports a Python add in). 
 Pyinstaller was used to create an executable from the Python script to forward code. Embedded in the code is the ability for the application to also serve as a Windows Service. In order to achieve, these windows specific functionality the Python package "Pywin32".
-##Pyinstaller
+## Pyinstaller
 PyInstaller is a program that bundles a Python program into stand-alone executables, under Windows, Linux, Mac OS X, FreeBSD, Solaris and AIX. PyInstaller works with Python 2.7 and 3.3—3.5. Python 2.7 was used to code the forward agent.
 To install Pyinstaller on Windows 7 (assuming python is installed!) merely open a DOS command shell and type:
 
 	C:\Users\michalos>pip install pyinstaller
 
 Then you can bundle the python program into a standalone executable with all the necessary Python packages included. Read https://pyinstaller.readthedocs.io/en/stable/operating-mode.html for more information. 
-To bundle the Python forwarding agent, you need to open a Windows Shell with Command Prompt and run Pyinstaller as in the snippet below:
+To bundle the Python forwarding agent, you need to open a Windows Shell with Command Prompt (naviaget through windows explorer file manager to the project folder, then right click in MTConnectAgentFwding folder and select open command prompt) and run Pyinstaller as in the snippet below:
 
 	C:\Users\michalos\Documents\Visual Studio 2010\Projects\MTConnectAgentFwding\MTC
 	onnectAgentFwding>pyinstaller MTConnectAgentFwding.py
 
 Pyinstaller will create two folders "build" and "dist", of which "dist" will contain the executable and all the dependent Python and C++ compiled code and libraries.
-##Pywin32
+Using windiff to compare  the ./Distribution with the pyinstaller /dist is usefull to insure when redistributing the exe only.
+
+![Figure11](./images/MTConnectAgentForwarding_image11.gif)
+
+
+
+## Pywin32
 
 Pywin32 is Python for Windows Extensions 
 
@@ -218,23 +230,29 @@ To be a service to be installed or a service to be started or an application req
 	    else:
 	        win32serviceutil.HandleCommandLine(Service)
 
-#Troubleshooting
+# Troubleshooting
 This section covers problems that have been encountered using the forwarding agent. 
 The easiest way to test the forwarding agent is to start a web browser on the host machine and enter the URL: http://127.0.0.1:5000/current and see if any MTConnect XML data appears. (This assumes the port 5000 matches the port entered either by the msi install script or by manually configuring the Config.ini file. Start with the local host (127.0.0.1) since the firewall is not involved. Make sure the connection works and the MTConnect data is being refreshed. 
 After this has web connection to the local URL has been established, you can then try a remote web connection. You will need the ip of the PC that is hosting the forwarding agent. Just replace the 127.0.01 with the PC ip address. If this fails, you probably have a firewall blocking the access to the port, see section on Firewall issues.
-##This page can't be displayed
+## This page can't be displayed
 You will attempt to read data from the forwarding agent and you will get a page can't be displayed with a number of potential issues:
-<CENTER>
-![Figure10](./images/image10.jpg?raw=true)
-</CENTER>
+
+![Figure12](./images/MTConnectAgentForwarding_image12.gif)
+
 
 <p align="center">
 _Figure 1 Connection Problem_
 </p>
 This is due to the forwarding agent ONLY handling "/current" requests: i.e., http://ipaddress:xxx/current.
-##Firewall Issues
+## Firewall Issues
 The windows firewall or other firewall can block access to this and any other MTConnect agent URL with a port. So you should check if a firewall is blocking port 5000.  If the Windows firewall is turned off, this shouldn't block access through the port to the forwarding agent. Unfortunately, there can be a hardware or other firewall installed which can block the access.  Whenever possible, turn them off and try to connect. If you can connect, open the port and then restart the firewall.
 See URL: https://support.microsoft.com/en-us/instantanswers/c9955ad9-1239-4cb2-988c-982f851617ed/turn-windows-firewall-on-or-off for explanation of turning off firewall.
+
+64 bit Platform
+Make sure the WIndows platform you are running on is 64 bit – this is a 64-bit executable and will not work on a 32-bit platform.   To find out what you platform is, right click My Computer, select properties,  and under system properties you should see 64-bit Operating System, similar to that shown below:
+
+![Figure13](./images/MTConnectAgentForwarding_image13.gif)
 
 
-Autogenerated from Microsoft Word by [Word2Markdown](https://github.com/johnmichaloski/SoftwareGadgets/tree/master/Word2Markdown)
+
+

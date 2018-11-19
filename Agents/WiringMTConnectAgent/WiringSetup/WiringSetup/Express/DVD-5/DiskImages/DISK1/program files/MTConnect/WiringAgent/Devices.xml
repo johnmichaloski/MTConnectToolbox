@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2012-12-20T20:23:10" sender="local" version="1.1"/>
+<Devices>
+		<Device id="M1d1" uuid="M1xxx" name="M1">
+     			<Description serialNumber="1234">Wiring</Description>
+ 			<DataItems>
+				<DataItem id="M1avail1" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+
+				<Controller id="M1cont1" name="controller">
+					<Components>
+						<Path id="M1path1" name="path">
+							<DataItems>
+								<DataItem type="PROGRAM" id="M1pgm1" category="EVENT" name="program"/>
+								<DataItem type="PATH_FEEDRATE" id="M1pf1" category="SAMPLE" name="path_feedratefrt" units="MILLIMETER/SECOND" subType="ACTUAL" coordinateSystem="WORK"/>
+								<DataItem type="PATH_FEEDRATE" id="M1pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+								<DataItem type="TOOL_ID" id="M1tid1" category="EVENT" name="Tool_number"/>
+								<DataItem type="EXECUTION" id="M1exec1" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="M1mode1" category="EVENT" name="controllermode"/>
+         							<DataItem category="EVENT"  id="M1alarm"  name="alarm" type="CODE"></DataItem>
+ 							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="M1systems1" name="systems">
+					<Components>
+						<Electric name="electric" id="M1elec1">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="M1pwr1" name="power" />
+							</DataItems>
+						</Electric>
+		
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+</Devices>
+</MTConnectDevices>

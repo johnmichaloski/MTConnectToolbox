@@ -8,6 +8,7 @@
 #include "stdafx.h"
 
 
+
 #define MTCLIBPATH(X) "C:\\Users\\michalos\\Documents\\GitHub\\Agents\\MtcOpcAgent\\Agent\\win32\\libxml2-2.7.7\\lib\\"##X
 
 #if defined(WIN64) && defined( _DEBUG) 
@@ -88,6 +89,8 @@ std::string opc_device =
 "							<DataItems>\n"
 "								<DataItem type=\"SPINDLE_SPEED\" id=\"####cs1\" category=\"SAMPLE\" name=\"Srpm\"  units=\"REVOLUTION/MINUTE\" nativeUnits=\"REVOLUTION/MINUTE\"/>\n"
 "								<DataItem type=\"SPINDLE_SPEED\" id=\"####cso1\" category=\"SAMPLE\" name=\"Sovr\" subType=\"OVERRIDE\" units=\"PERCENT\" nativeUnits=\"PERCENT\"/>\n"
+"								<DataItem type=\"SPINDLE_SPEED\" id=\"####cs1a\" category=\"SAMPLE\" name=\"Srpm1\"  units=\"REVOLUTION/MINUTE\" nativeUnits=\"REVOLUTION/MINUTE\"/>\n"
+"								<DataItem type=\"SPINDLE_SPEED\" id=\"####cs2\" category=\"SAMPLE\" name=\"Srpm2\"  units=\"REVOLUTION/MINUTE\" nativeUnits=\"REVOLUTION/MINUTE\"/>\n"
 "								<DataItem category=\"SAMPLE\" id=\"####cl3\" name=\"Slod_percent\" nativeUnits=\"PERCENT\" type=\"LOAD\" units=\"PERCENT\"/>\n"
 "							</DataItems>\n"
 "						</Rotary>\n"
@@ -162,11 +165,11 @@ AgentConfigurationEx::AgentConfigurationEx()
 
 void AgentConfigurationEx::initialize(int aArgc, const char *aArgv[])
 {
-	GLogger.LogMessage(StdStringFormat("AgentConfigurationEx::initialize() \n"),DBUG);
+	LogMessage(StdStringFormat("AgentConfigurationEx::initialize() \n"),DBUG);
 	try{
 		std::string path(File.ExeDirectory()+"MtcOpcAgent.ini");
 		std::string cfgfile = File.ExeDirectory()+"MtcOpcAgent.ini"; // path.substr(0,path.find_last_of(".")) + ".ini";
-		GLogger.LogMessage(StdStringFormat("TConnect Agent Service Read Configuration - %s \n",cfgfile.c_str()), DBUG);
+		LogMessage(StdStringFormat("TConnect Agent Service Read Configuration - %s \n",cfgfile.c_str()), DBUG);
 		if(GetFileAttributesA(cfgfile.c_str())!= INVALID_FILE_ATTRIBUTES)
 		{
 			config.load( cfgfile );
@@ -178,13 +181,14 @@ void AgentConfigurationEx::initialize(int aArgc, const char *aArgv[])
 			Globals.Delay=config.GetSymbolValue("Agent.ScanDelay", 1000).toNumber<int>() ;
 
 			std::string sLevel = config.GetSymbolValue("logger_config.logging_level", "FATAL").c_str();
-			sLevel=MakeUpper(sLevel);
+			sLevel=Trim(MakeUpper(sLevel));
 			Globals.Debug = (sLevel=="FATAL")? 0 : (sLevel=="ERROR") ? 1 : (sLevel=="WARN") ? 2 : (sLevel=="INFO")? 3 : 5;
 			Globals.DbgConsole= config.GetSymbolValue("OPCSERVER.DbgConsole", 0).toNumber<int>() ;
 			Globals.ResetAtMidnight	= config.GetSymbolValue("OPCSERVER.ResetAtMidnight", 0).toNumber<int>() ;
+			Globals.WriteNewDevicesFile	= config.GetSymbolValue("OPCSERVER.WriteNewDevicesFile", 0).toNumber<int>() ;
 
 
-			GLogger.LogMessage(StdStringFormat("MTConnect Agent Service Read OPCSERVER.logging_level %s\n",sLevel.c_str()),DBUG);
+			LogMessage(StdStringFormat("MTConnect Agent Service Read OPCSERVER.logging_level %s\n",sLevel.c_str()),DBUG);
 
 			_ipaddrs = config.GetTokens("OPCSERVER.ServerMachineName", ",");
 			_devices = config.GetTokens("OPCSERVER.MTConnectDevice", ",");
@@ -198,30 +202,32 @@ void AgentConfigurationEx::initialize(int aArgc, const char *aArgv[])
 				throw std::exception("OPC Number of Server IPs does not match number of MTConnect devices or Section Tags" );
 
 			Globals.Dump();
-			GLogger.LogMessage(StdStringFormat("MTConnect Agent Service Read Configuration DONE! \n"),DBUG);
+			LogMessage(StdStringFormat("MTConnect Agent Service Read Configuration DONE! \n"),DBUG);
 
 		}
-#ifdef WRITENEWDEVICESFILE
-		WriteDevicesFile(_devices, opc_device,  "Devices.xml", File.ExeDirectory());
-#endif
+		if(Globals.WriteNewDevicesFile)
+		{
+			WriteDevicesFile(_devices, opc_device,  "Devices.xml", File.ExeDirectory());
+		}
 	}
 	catch(std::exception err) 
 	{
-		GLogger.LogMessage(StdStringFormat("MTConnect Agent Service Configuration Failed %s\n", err.what()));
-
+		GLogger.Abort(StdStringFormat("MTConnect Agent Service Configuration Failed %s\n", err.what()));
+		throw ;
 	}
 	catch(...) 
 	{
-		GLogger.LogMessage(StdStringFormat("MTConnect Agent Service Configuration Failed \n"));
+		GLogger.Abort(StdStringFormat("MTConnect Agent Service Configuration Failed \n"));
+		throw ;
 
 	}
-	GLogger.LogMessage(StdStringFormat("Call MTConnect Agent AgentConfiguration::initialize DONE\n"), DBUG);
+	LogMessage(StdStringFormat("Call MTConnect Agent AgentConfiguration::initialize DONE\n"), DBUG);
 	AgentConfiguration::initialize( aArgc,  aArgv);
 }
 
 int AgentConfigurationEx::main(int aArgc, const char *aArgv[])
 {
-	GLogger.LogMessage(StdStringFormat("MTConnect Agent Service Started\n"), DBUG);
+	LogMessage(StdStringFormat("MTConnect Agent Service Started\n"), DBUG);
 	SetCurrentDirectory(File.ExeDirectory().c_str()); // fixes Agent file lookup issue
 
 	MTConnectService::main( aArgc, (const char **) aArgv);
@@ -231,7 +237,7 @@ int AgentConfigurationEx::main(int aArgc, const char *aArgv[])
 // Start the server. This blocks until the server stops.
 void AgentConfigurationEx::start()
 {
-	GLogger.LogMessage(StdStringFormat("AgentConfigurationEx::start()\n"));
+	LogMessage(StdStringFormat("AgentConfigurationEx::start()\n"), DBUG);
 	getAgent()->set_listening_port(Globals.HttpPort);
 	MTConnectService::setName(Globals.ServerName);
 
@@ -239,10 +245,10 @@ void AgentConfigurationEx::start()
 	{
 		COpcAdapter *  _cmdHandler = new COpcAdapter(this, config, _ipaddrs[i], _devices[i], _tags[i]);
 		_cncHandlers.push_back(_cmdHandler);
-		GLogger.LogMessage(StdStringFormat("AgentConfigurationEx::start COpcAdapter::Cycle() %x\n",_ipaddrs[i]), DBUG);
+		LogMessage(StdStringFormat("AgentConfigurationEx::start COpcAdapter::Cycle() %x\n",_ipaddrs[i]), DBUG);
 		_group.create_thread(boost::bind(&COpcAdapter::Cycle, _cncHandlers[i]));
 	}
-	GLogger.LogMessage(StdStringFormat("Call AgentConfiguration::start() ed \n"));
+	LogMessage(StdStringFormat("Call AgentConfiguration::start() ed \n"), DBUG);
 
 	if(Globals.ResetAtMidnight)
 	{
@@ -258,7 +264,7 @@ void AgentConfigurationEx::start()
 			&_ResetThread._hTimer  // stored newly created timer handle
 			) ;
 
-		GLogger.LogMessage(StdStringFormat("Agent will Reset At Midnight %s \n", (LPCSTR) date2.Format()), DBUG);
+		LogMessage(StdStringFormat("Agent will Reset At Midnight %s \n", (LPCSTR) date2.Format()), DBUG);
 	}
 
 	AgentConfiguration::start(); // does not return
@@ -338,7 +344,7 @@ static void ReportError(LPTSTR lpszFunction)
 		TEXT("%s failed with error %d: %s"), 
 		lpszFunction, dw, lpMsgBuf); 
 
-	GLogger.LogMessage(StdStringFormat("%s\n",(LPCSTR) lpDisplayBuf));
+	LogMessage(StdStringFormat("%s\n",(LPCSTR) lpDisplayBuf), DBUG);
 
 	LocalFree(lpMsgBuf);
 	LocalFree(lpDisplayBuf);
@@ -355,7 +361,7 @@ HRESULT AgentConfigurationEx::CResetThread::Execute(DWORD_PTR dwParam, HANDLE hO
 	//DebugBreak();
 
 	try {
-		GLogger.LogMessage(StdStringFormat("MTConnect adapter Service Start Resetting \n"));
+		GLogger.Fatal(StdStringFormat("MTConnect adapter Service Start Resetting \n"));
 
 		PROCESS_INFORMATION pi;
 		ZeroMemory( &pi, sizeof(pi) );
@@ -385,7 +391,7 @@ HRESULT AgentConfigurationEx::CResetThread::Execute(DWORD_PTR dwParam, HANDLE hO
 	}
 	catch(...)
 	{
-		GLogger.LogMessage(StdStringFormat("Exception  - ResetAtMidnightThread(void *oObject) \n"));
+		GLogger.Fatal(StdStringFormat("Exception  - ResetAtMidnightThread(void *oObject) \n"));
 	}
 	return S_OK;
 }

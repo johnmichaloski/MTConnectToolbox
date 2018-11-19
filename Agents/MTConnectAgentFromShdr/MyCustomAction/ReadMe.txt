@@ -1,5 +1,11 @@
 
-$Type=[BUTTON1]$IpValue=[EDITA1]$HttpPort=[EDITA2]$Target=[TARGETDIR]$Config=[EDITA3]
+Mon 08/20/2018_14:45:39.88  
+To change the one time generation of the devices.xml file TYPE, e.g., JM Fanuc JM Siemens Techsolve
+
+Added techsolve.
+
+Current template variables
+$Devices=[EDITA1]$Ips=[EDITA2]$Ports=[EDITA3]$HttpPort=[EDITA4]$Target=[TARGETDIR]
 
 
 Problem with 

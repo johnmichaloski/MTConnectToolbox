@@ -1,0 +1,74 @@
+
+
+
+<DataItem category="CONDITION" id="Mazak101servo" name="servo_cond" type="ACTUATOR"/>
+<DataItem category="CONDITION" id="Mazak101xt" name="Xtravel" type="POSITION"/>
+<DataItem category="SAMPLE" id="Mazak101xf" name="Xfrt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+<DataItem category="CONDITION" id="Mazak101yt" name="Ytravel" type="POSITION"/>
+<DataItem category="SAMPLE" id="Mazak101yf" name="Yfrt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+<DataItem category="CONDITION" id="Mazak101zt" name="Ztravel" type="POSITION"/>
+<DataItem category="SAMPLE" id="Mazak101zf" name="Zfrt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+<DataItem category="SAMPLE" id="Mazak101bf" name="Bfrt" nativeUnits="DEGREE/MINUTE" type="ANGULAR_VELOCITY" units="DEGREE/SECOND"/>
+<DataItem category="CONDITION" id="Mazak101bt" name="Btravel" type="ANGLE"/>
+<DataItem category="CONDITION" id="Mazak101ct" name="Ctravel" type="ANGLE"/>
+<DataItem category="SAMPLE" id="Mazak101cf" name="Cfrt" nativeUnits="DEGREE/MINUTE" type="ANGULAR_VELOCITY" units="DEGREE/SECOND"/>
+<DataItem category="CONDITION" id="Mazak101spc" name="Sload_cond" type="LOAD"/>
+<DataItem category="CONDITION" id="Mazak101tmp" name="Stemp_cond" type="TEMPERATURE"/>
+<DataItem category="CONDITION" id="Mazak101xt2" name="X2travel" type="POSITION"/>
+<DataItem category="SAMPLE" id="Mazak101xf2" name="X2frt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+<DataItem category="CONDITION" id="Mazak101zt2" name="Z2travel" type="POSITION"/>
+<DataItem category="SAMPLE" id="Mazak101zf2" name="Z2frt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+<DataItem category="CONDITION" id="Mazak101ct2" name="C2travel" type="ANGLE"/>
+<DataItem category="SAMPLE" id="Mazak101cf2" name="C2frt" nativeUnits="DEGREE/MINUTE" type="ANGULAR_VELOCITY" units="DEGREE/SECOND"/>
+<DataItem category="CONDITION" id="Mazak101spc2" name="S2load_cond" type="LOAD"/>
+<DataItem category="CONDITION" id="Mazak101tmp2" name="S2temp_cond" type="TEMPERATURE"/>
+<DataItem category="CONDITION" id="Mazak101ct3" name="C3travel" type="ANGLE"/>
+<DataItem category="SAMPLE" id="Mazak101cf3" name="S3frt" nativeUnits="DEGREE/MINUTE" type="ANGULAR_VELOCITY" units="DEGREE/SECOND"/>
+<DataItem category="CONDITION" id="Mazak101spc3" name="S3load_cond" type="LOAD"/>
+<DataItem category="CONDITION" id="Mazak101tmp3" name="S3temp_cond" type="TEMPERATURE"/>
+<DataItem category="CONDITION" id="Mazak101ct4" name="C4travel" type="ANGLE"/>
+<DataItem category="SAMPLE" id="Mazak101cf4" name="S4frt" nativeUnits="DEGREE/MINUTE" type="ANGULAR_VELOCITY" units="DEGREE/SECOND"/>
+<DataItem category="CONDITION" id="Mazak101spc4" name="S4load_cond" type="LOAD"/>
+<DataItem category="CONDITION" id="Mazak101tmp4" name="S4temp_cond" type="TEMPERATURE"/>
+<DataItem category="CONDITION" id="Mazak101wt" name="Wtravel" type="POSITION"/>
+<DataItem category="SAMPLE" id="Mazak101wf" name="Wfrt" nativeUnits="MILLIMETER/SECOND" type="AXIS_FEEDRATE" units="MILLIMETER/SECOND"/>
+<DataItem category="CONDITION" id="Mazak101ccond" name="comms_cond" type="COMMUNICATIONS"/>
+<DataItem category="CONDITION" id="Mazak101logic" name="logic_cond" type="LOGIC_PROGRAM"/>
+<DataItem category="CONDITION" id="Mazak101system" name="system_cond" type="SYSTEM"/>
+<DataItem category="SAMPLE" coordinateSystem="WORK" id="Fact" name="path_feedratefrt" nativeUnits="FOOT/MINUTE" subType="ACTUAL" type="PATH_FEEDRATE" units="MILLIMETER/SECOND"/>
+<DataItem category="CONDITION" id="Mazak101motion" name="motion_cond" type="MOTION_PROGRAM"/>
+<DataItem category="CONDITION" id="Mazak101path_system" name="path_system" type="SYSTEM"/>
+<DataItem category="SAMPLE" coordinateSystem="WORK" id="Mazak101pf2" name="Fact2" nativeUnits="FOOT/MINUTE" subType="ACTUAL" type="PATH_FEEDRATE" units="MILLIMETER/SECOND"/>
+<DataItem category="CONDITION" id="Mazak101motion2" name="motion_cond2" type="MOTION_PROGRAM"/>
+<DataItem category="CONDITION" id="Mazak101path_system2" name="path_system2" type="SYSTEM"/>
+<DataItem category="CONDITION" id="Mazak101pwrt" name="electric_temp" type="TEMPERATURE"/>
+<DataItem category="CONDITION" id="Mazak101hyd" name="hydra_cond" type="PRESSURE"/>
+<DataItem category="CONDITION" id="Mazak101coolpress" name="coolant_pres" type="PRESSURE"/>
+<DataItem category="CONDITION" id="Mazak101cooltemp" name="coolant_temp" type="TEMPERATURE"/>
+<DataItem category="CONDITION" id="Mazak101coollevel" name="coolant_level" type="LEVEL"/>
+<DataItem category="CONDITION" id="Mazak101pneupress" name="pneu_cond" type="PRESSURE"/>
+
+
+out.txt(2):2016-05-26T20:00:01.616Z|servo_cond|NORMAL||||
+
+out.txt(3):2016-05-26T20:00:01.616Z|comms_cond|NORMAL||||
+out.txt(4):2016-05-26T20:00:01.616Z|logic_cond|NORMAL||||
+out.txt(5):2016-05-26T20:00:01.616Z|system_cond|NORMAL||||
+out.txt(6):2016-05-26T20:00:01.616Z|pneu_cond|NORMAL||||
+out.txt(7):2016-05-26T20:00:01.616Z|hydra_cond|NORMAL||||
+out.txt(24):2016-05-26T20:00:01.616Z|Sload_cond|NORMAL||||
+out.txt(25):2016-05-26T20:00:01.616Z|Stemp_cond|NORMAL||||
+out.txt(27):2016-05-26T20:00:01.616Z|motion_cond|NORMAL||||
+out.txt(29):2016-05-26T20:00:01.616Z|motion_cond2|UNAVAILABLE||||
+out.txt(8):2016-05-26T20:00:01.616Z|coolant_level|NORMAL||||
+out.txt(9):2016-05-26T20:00:01.616Z|coolant_temp|NORMAL||||
+out.txt(10):2016-05-26T20:00:01.616Z|coolant_pres|NORMAL||||
+
+No Match:
+out.txt(31):2016-05-26T20:00:01.616Z|motion_cond3|UNAVAILABLE||||
+out.txt(33):2016-05-26T20:00:01.616Z|motion_cond4|UNAVAILABLE||||
+
+
+
+
+

@@ -1,6 +1,6 @@
 // MtcOpcAgent.cpp : Defines the entry point for the console application.
 //
-
+#define BOOST_ALL_NO_LIB
 #include "stdafx.h"
 #include <string>
 #include <exception>
@@ -13,6 +13,11 @@
 
 #pragma comment(linker, "/SUBSYSTEM:WINDOWS")
 #pragma warning(disable: 4247) //warning C4297: 'WinMain' : function assumed not to throw an exception but does
+
+#define BOOSTLIBPATH64(X) "C:\\Program Files\\NIST\\src\\boost_1_54_0\\vc10\\stagex64\\lib\\"##X
+#define BOOSTLIBPATH32(X) "C:\\Program Files\\NIST\\src\\boost_1_54_0\\vc10\\stagex32\\lib\\"##X
+
+#define MTCONNECTLIBXML(X) "C:\\Users\\michalos\\Documents\\GitHub\\Agents\\MtcOpcAgent\\Agent\\win32\\libxml2-2.7.7\\lib\\"##X
 
 #if defined(WIN64) && defined( _DEBUG) 
 #pragma message( "DEBUG x64" )
@@ -29,13 +34,20 @@
 #elif defined(_DEBUG) && defined(WIN32)
 #pragma message( "DEBUG x32" )
 #pragma comment(lib, "libxml2d.lib")
-#pragma comment(lib, "libboost_thread-vc100-mt-sgd-1_54.lib")
-#pragma comment(lib, "libboost_system-vc100-mt-s-1_54.lib")
+#pragma comment(lib, BOOSTLIBPATH32("libboost_thread-vc100-mt-sgd-1_54.lib"))
+#pragma comment(lib, BOOSTLIBPATH32("libboost_date_time-vc100-mt-sgd-1_54.lib"))
+#pragma comment(lib, BOOSTLIBPATH32("libboost_regex-vc100-mt-sgd-1_54.lib"))
+#pragma comment(lib, BOOSTLIBPATH32("libboost_chrono-vc100-mt-sgd-1_54.lib"))
+#pragma comment(lib, BOOSTLIBPATH32("libboost_system-vc100-mt-sgd-1_54.lib"))
+
 #elif !defined( _DEBUG) && defined(WIN32)
 #pragma message( "RELEASE x32" )
-#pragma comment(lib, "libboost_thread-vc100-mt-s-1_54.lib")
-#pragma comment(lib, "libboost_system-vc100-mt-s-1_54.lib")
-#pragma comment(lib, "libxml2.lib")
+#pragma comment(lib,  BOOSTLIBPATH32("libboost_thread-vc100-mt-s-1_54.lib"))
+#pragma comment(lib,  BOOSTLIBPATH32("libboost_system-vc100-mt-s-1_54.lib"))
+#pragma comment(lib,  BOOSTLIBPATH32("libboost_date_time-vc100-mt-s-1_54.lib"))
+#pragma comment(lib,  BOOSTLIBPATH32("libboost_regex-vc100-mt-s-1_54.lib"))
+#pragma comment(lib,  BOOSTLIBPATH32("libboost_chrono-vc100-mt-s-1_54.lib"))
+#pragma comment(lib,  MTCONNECTLIBXML("libxml2.lib"))
 #endif
 
 int APIENTRY WinMain(HINSTANCE hInstance,

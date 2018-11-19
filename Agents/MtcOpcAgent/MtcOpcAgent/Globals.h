@@ -23,6 +23,7 @@ public:
 	std::string ServerName;
 	int ResetAtMidnight;
 	int & DbgConsole;
+	int WriteNewDevicesFile;
 		
 	int Delay;
 	std::string Version;

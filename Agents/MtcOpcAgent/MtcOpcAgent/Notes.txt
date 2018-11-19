@@ -1,4 +1,7 @@
 
+Tue 09/19/2017_14:53:38.35  
+https://msdn.microsoft.com/en-us/library/windows/desktop/ms680621(v=vs.85).aspx
+
 
 		// If remote and process not running throw exception
 		//if(!_CNCTaskListCmd.empty() && !_gszCncControllerProcessName.empty())

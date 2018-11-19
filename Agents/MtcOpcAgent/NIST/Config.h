@@ -338,14 +338,6 @@ namespace crp
 			return false;
 
 		}
-		/*	std::string Dump()
-		{
-		for(std::map<std::string, StringVariant>::iterator  it = config.inimap.begin(); it != config.inimap.end(); it++)
-		{
-		GLogger << DBUG  << (*it).first << " =" << (*it).second.c_str() << std::endl;
-
-		}
-		}*/
 	};
 };
 

@@ -27,6 +27,9 @@
     <ClCompile Include="DeviceXml.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="YamlReader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="MyCustomAction.def">
@@ -59,6 +62,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="DeviceXml.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="YamlReader.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

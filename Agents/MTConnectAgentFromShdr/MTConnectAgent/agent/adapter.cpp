@@ -36,6 +36,7 @@
 #include "device.hpp"
 #include "dlib/logger.h"
 #include "Logger.h"
+#include <map>
 using namespace std;
 
 static dlib::logger sLogger("input.adapter");
@@ -45,8 +46,11 @@ std::map<std::string, std::string> Adapter::keymapping;
 std::map<std::string, std::string> Adapter::enummapping; 
 std::vector<std::string> Adapter::rpmEntries; 
 int  Adapter::nLogUpdates;
+int Adapter::bAllFakeSpindle;
+std::map<std::string,int> Adapter::bDeviceFakeSpindle;
 
 std::map<std::string, std::vector<std::string>> Adapter::keymultimapping;
+
 #include <algorithm>
 
 /* Adapter public methods */
@@ -58,6 +62,7 @@ Adapter::Adapter(const string& device,
 	mDupCheck(false), mAutoAvailable(false), mIgnoreTimestamps(false),
 	mGatheringAsset(false), mReconnectInterval(10 * 1000)
 {
+	lastime=time(0);
 }
 
 Adapter::~Adapter()
@@ -181,6 +186,7 @@ void Adapter::CheckAlias(Device *device, std::string &key, std::string &value)
 
 	}
 
+
 	//////////////////////////////
 	// Change enumerations
 	if(enummapping.find(key+"."+value)!= enummapping.end())
@@ -194,8 +200,9 @@ void Adapter::CheckAlias(Device *device, std::string &key, std::string &value)
 		key=keymapping[key];
 	}
 	///////////////////////////////////////////////////////////////////
-	if(nLogUpdates)
-		logStatus("Update Tag %s = Value %s\n", key.c_str(), value.c_str());;
+	// this will log all shdr updates to the log file, can get extremely large
+	//if(nLogUpdates)
+	//	logStatus("Update Tag %s = Value %s\n", key.c_str(), value.c_str());;
 
 }
 void Adapter::processData(const string& data)
@@ -220,24 +227,120 @@ void Adapter::processData(const string& data)
 	Device *device;
 
 	getline(toParse, key, '|');
-	string time = key;
+	string shdrtime = key;
+
 
 	// If this function is being used as an API, add the current time in
-	if (mIgnoreTimestamps || time.empty()) {
-		time = getCurrentTime(GMT_UV_SEC);
+	if (mIgnoreTimestamps || shdrtime.empty()) {
+		shdrtime = getCurrentTime(GMT_UV_SEC);
 	}
 
 	getline(toParse, key, '|');
 	getline(toParse, value, '|');
-//	std::cout << "key=" << key << " value = " << value << std::endl;
+	//	std::cout << "key=" << key << " value = " << value << std::endl;
 	if (splitKey(key, dev)) {
 		device = mAgent->getDeviceByName(dev);
 	} else {
 		device = mDevice;
 	}
+
+	// Debugging since life isn't always perfect
+//	LOG_THROTTLE(3, Logging::LOG_INFO, "Device=%s Time=%s Key=%s", device->getName().c_str(), shdrtime.c_str(), key.c_str())
+
 	////////////////////////////////////////////////////////////////////////////////
-	// Michaloski hack - if srpm2 is > 0 assign it to Srpm 
+	// Michaloski hack - remap tag names and enumeration values 
 	CheckAlias(device, key, value);
+
+	// Michaloski hack - fake a spindle in case there is none  
+	// This should be in a separate thread but we'll live
+	// time was overloaded replaced with shdrtime
+	if((bAllFakeSpindle==1 || bDeviceFakeSpindle[device->getName()] == 1) && (difftime( time(0), lastime) > 1.0) )
+	{
+//		LOG_ONCE(logFatal("Fake Spindle Enabled\n")  );
+		// Reset second calculator
+		lastime=time(0);
+
+		try {
+			// First we sample xyz mode/execution feed as often as we can.
+			// We assume xyz will change frequently enough
+			DataItem *sRpmDataItem  = device->getDeviceDataItem("Srpm");    
+			if(sRpmDataItem==NULL)
+				throw(std::string("Null Srpm DeviceDataItem"));
+
+			std::string feed,X, Y, Z, mode,execution;
+			DataItem * dExecution =  device->getDeviceDataItem("execution");
+			DataItem * dMode =  device->getDeviceDataItem("controllermode");
+			DataItem * dXabs =  device->getDeviceDataItem("Xabs");
+			DataItem * dYabs =  device->getDeviceDataItem("Yabs");
+			DataItem * dZabs =  device->getDeviceDataItem("Zabs");
+			DataItem * dFeed =  device->getDeviceDataItem("path_feedratefrt");
+			if(dExecution==NULL || dMode==NULL || dFeed==NULL || dXabs==NULL ||
+				dXabs==NULL || dYabs==NULL || dZabs==NULL )
+				throw(std::string("Null Fake RPM  DeviceDataItem"));
+
+			std::set<string> aFilter ;
+			aFilter.insert(dExecution->getId());
+			aFilter.insert(dMode->getId());
+			aFilter.insert(dXabs->getId());
+			aFilter.insert(dYabs->getId());
+			aFilter.insert(dZabs->getId());
+			aFilter.insert(dFeed->getId());
+			ComponentEventPtrArray events;
+			mAgent->mLatest.getComponentEvents(events, &aFilter);
+
+			// Dubious error check
+			//if(events.size() < 6)
+			//	throw(std::string("Bad Number of Fake ComponentEventsPtr"));
+
+			execution = events[0] ->getValue();
+			mode = events[1] ->getValue();
+			X = events[2] ->getValue();
+			Y = events[3] ->getValue();
+			Z = events[4] ->getValue();
+			feed = events[5] ->getValue();
+
+			// If moving and in auto mode, assume spindle on
+			if(	(mode == "AUTOMATIC" ) &&
+				(execution ==  "EXECUTING" )&&
+				( 
+				device->lastFeed!=feed ||
+				device->lastX!=X ||
+				device->lastY!= Y ||
+				device->lastZ!=Z
+				)
+				)
+			{
+				// Fixme: this should be some time based calculation
+				device->mLag=4; // 3 cycles - 3 seconds
+			}
+			else
+			{
+				device->mLag--;
+			}
+
+			if(device->mLag<0) 
+				device->mLag=0;
+
+			if(device->mLag>0)
+			{
+				// set spindle speed to fake number
+				mAgent->addToBuffer(sRpmDataItem, "99", shdrtime);
+			}
+			else
+			{
+				// set spindle speed to zero
+				mAgent->addToBuffer(sRpmDataItem, "0", shdrtime);
+			}
+		}
+		catch(std::string & errmsg)
+		{
+//			logFatal(errmsg.c_str());
+		}
+		catch(...)
+		{
+
+		}
+	}
 
 	////////////////////////////////////////////////////////////////////////////////
 	if (key == "@ASSET@") {
@@ -256,7 +359,7 @@ void Adapter::processData(const string& data)
 			mAssetDevice = device;
 			mGatheringAsset = true;
 			mTerminator = rest;
-			mTime = time;
+			mTime = shdrtime;
 			mAssetType = type;
 			mAssetId = value;
 			mBody.str("");
@@ -264,7 +367,7 @@ void Adapter::processData(const string& data)
 		}
 		else
 		{
-			mAgent->addAsset(device, value, rest, type, time);
+			mAgent->addAsset(device, value, rest, type, shdrtime);
 		}
 
 		return;
@@ -293,7 +396,7 @@ void Adapter::processData(const string& data)
 					break;
 			} 
 		}
-		mAgent->updateAsset(device, assetId, list, time);
+		mAgent->updateAsset(device, assetId, list, shdrtime);
 		return;
 	}
 
@@ -326,7 +429,7 @@ void Adapter::processData(const string& data)
 			// Check for duplication
 			if (!mDupCheck || !dataItem->isDuplicate(value)) 
 			{
-				mAgent->addToBuffer(dataItem, toUpperCase(value), time);
+				mAgent->addToBuffer(dataItem, toUpperCase(value), shdrtime);
 			} 
 			else if (mDupCheck)
 			{
@@ -368,7 +471,7 @@ void Adapter::processData(const string& data)
 			trim(value);
 			if (!mDupCheck || !dataItem->isDuplicate(value)) 
 			{
-				mAgent->addToBuffer(dataItem, toUpperCase(value), time);
+				mAgent->addToBuffer(dataItem, toUpperCase(value), shdrtime);
 
 			} 
 			else if (mDupCheck)

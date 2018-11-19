@@ -35,6 +35,7 @@
 #define DEVICE_HPP
 
 #include <map>
+#include <string>
 
 #include "component.hpp"
 #include "data_item.hpp"
@@ -64,6 +65,11 @@ public:
   std::vector<Adapter*> mAdapters;
   bool mPreserveUuid;
   bool mAvailabilityAdded;
+
+  // Jlm addition 8-2018 for fake spindle value
+  std::string lastFeed,lastX, lastY, lastZ, lastMode,lastExecution;
+  int mLag;
+
 
 protected:
   /* The iso841Class of the device */

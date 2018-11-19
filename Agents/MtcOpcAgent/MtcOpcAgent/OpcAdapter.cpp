@@ -77,7 +77,7 @@ void COpcAdapter::SetMTCTagValue(std::string tag, std::string value)
 	}
 	else
 	{
-		LOGONCE GLogger.LogMessage(StdStringFormat("(%s) Could not find data item: %s  \n",  _device.c_str(), tag.c_str()));
+		LOGONCE LogMessage(StdStringFormat("(%s) Could not find data item: %s  \n",  _device.c_str(), tag.c_str()), DBUG);
 	}
 
 #endif
@@ -85,14 +85,15 @@ void COpcAdapter::SetMTCTagValue(std::string tag, std::string value)
 void COpcAdapter::ErrorMessage(std::string errmsg) 
 {
 	std::string msg = (errmsg.rfind("\n") != std::string::npos) ? errmsg.substr(0,errmsg.size()-1) : errmsg;
-	GLogger.LogMessage(StdStringFormat("ERROR : %s\n", msg.c_str()));
+	LogMessage(StdStringFormat("ERROR : %s\n", msg.c_str()), LOWERROR);
+#ifdef _DEBUG
 	OutputDebugString(errmsg.c_str());
-
+#endif 
 }
 void COpcAdapter::DebugMessage(std::string errmsg) 
 {
 	std::string msg = (errmsg.rfind("\n") != std::string::npos) ? errmsg.substr(0,errmsg.size()-1) : errmsg;
-	GLogger.LogMessage(StdStringFormat("WARNING: %s\n", msg.c_str(), WARNING));
+	LogMessage(StdStringFormat("WARNING: %s\n", msg.c_str()), WARNING);
 	//OutputDebugString(errmsg.c_str());
 }
 std::string COpcAdapter::GetSymbolValue(std::string section, std::string tag, const char * defaultval) 
@@ -152,25 +153,25 @@ int COpcAdapter::ReadOPCSettings()
 
 		_gServerProgId= GetSymbolValue(_sTagSectionName, "ProgId", ""); // assume no remote task list command
 
-		GLogger.LogMessage(StdStringFormat("CONFIGURATION\n================================\n"));
-		GLogger.LogMessage(StdStringFormat("Device                   = %s           \n", _sTagSectionName.c_str()));
-		GLogger.LogMessage(StdStringFormat("Fake Spindle             = %d   \n", _nFakeSpindle));
-		GLogger.LogMessage(StdStringFormat("Alarms Enabled           = %d  NO EFFECT\n", _nAlarmsEnabled));
-		GLogger.LogMessage(StdStringFormat("Mutliple Spindles        = %d NO EFFECT\n", _nMultiSpindle));
-		GLogger.LogMessage(StdStringFormat("CNCProcessName           = %s\n", _gszCncControllerProcessName.c_str()));
-		GLogger.LogMessage(StdStringFormat("OPCServerName            = %s\n", _gszOPCServerName.c_str()));
-		GLogger.LogMessage(StdStringFormat("CLSID                    = %s\n", _sClsid.c_str()));
-		GLogger.LogMessage(StdStringFormat("AutoConnect              = %d\n", _bAutoConnect));
-		GLogger.LogMessage(StdStringFormat("AutoReconnectMaxAttempts = %d\n", _nMaxAutoReconnects));
-		GLogger.LogMessage(StdStringFormat("QueryServerPeriod        = %d ms (to connect)\n", _nQueryServerPeriod));
-		GLogger.LogMessage(StdStringFormat("ProcessPriority          = %x\n", _nProcessPriority));
-		GLogger.LogMessage(StdStringFormat("SynchronousUpdate        = %d\n", _bSynchronousUpdate));
-		GLogger.LogMessage(StdStringFormat("ServerRate               = %d ms (when connected)\n", _nOPCServerRate));
-		GLogger.LogMessage(StdStringFormat("PingTimeout              = %d ms\n", _nPingTimeout));
-		GLogger.LogMessage(StdStringFormat("Agent Http Port          = %d ms\n", Globals.HttpPort));
+		LogMessage(StdStringFormat("CONFIGURATION\n================================\n"), DBUG);
+		LogMessage(StdStringFormat("Device                   = %s           \n", _sTagSectionName.c_str()), DBUG);
+		LogMessage(StdStringFormat("Fake Spindle             = %d   \n", _nFakeSpindle), DBUG);
+		LogMessage(StdStringFormat("Alarms Enabled           = %d  NO EFFECT\n", _nAlarmsEnabled), DBUG);
+		LogMessage(StdStringFormat("Mutliple Spindles        = %d NO EFFECT\n", _nMultiSpindle), DBUG);
+		LogMessage(StdStringFormat("CNCProcessName           = %s\n", _gszCncControllerProcessName.c_str()), DBUG);
+		LogMessage(StdStringFormat("OPCServerName            = %s\n", _gszOPCServerName.c_str()), DBUG);
+		LogMessage(StdStringFormat("CLSID                    = %s\n", _sClsid.c_str()), DBUG);
+		LogMessage(StdStringFormat("AutoConnect              = %d\n", _bAutoConnect), DBUG);
+		LogMessage(StdStringFormat("AutoReconnectMaxAttempts = %d\n", _nMaxAutoReconnects), DBUG);
+		LogMessage(StdStringFormat("QueryServerPeriod        = %d ms (to connect)\n", _nQueryServerPeriod), DBUG);
+		LogMessage(StdStringFormat("ProcessPriority          = %x\n", _nProcessPriority), DBUG);
+		LogMessage(StdStringFormat("SynchronousUpdate        = %d\n", _bSynchronousUpdate), DBUG);
+		LogMessage(StdStringFormat("ServerRate               = %d ms (when connected)\n", _nOPCServerRate), DBUG);
+		LogMessage(StdStringFormat("PingTimeout              = %d ms\n", _nPingTimeout), DBUG);
+		LogMessage(StdStringFormat("Agent Http Port          = %d ms\n", Globals.HttpPort), DBUG);
 
-		GLogger.LogMessage(Globals.Dump().c_str());
-		GLogger.LogMessage(StdStringFormat("================================\n"));
+		LogMessage(Globals.Dump().c_str(), DBUG);
+		LogMessage(StdStringFormat("================================\n"), DBUG);
 				
 
 		// Now parse the tag information into MTConnect information
@@ -261,14 +262,14 @@ int COpcAdapter::ReadOPCSettings()
 		return E_FAIL;
 
 	}
-	GLogger.LogMessage(StdStringFormat("COpcAdapter::ReadOPCSettings() Done for Device = %s \n",_device.c_str()));
+	LogMessage(StdStringFormat("COpcAdapter::ReadOPCSettings() Done for Device = %s \n",_device.c_str()), DBUG);
 
 	return S_OK;
 }
 
 void COpcAdapter::Cycle()
 {
-	GLogger.LogMessage(StdStringFormat("COpcAdapter::Cycle() for IP = %s\n",_device.c_str()));
+	LogMessage(StdStringFormat("COpcAdapter::Cycle() for IP = %s\n",_device.c_str()), DBUG);
 	HRESULT hr;
 	int nHeartbeat=0;
 
@@ -299,7 +300,7 @@ void COpcAdapter::Cycle()
 
 	_mRunning=true;
 
-	GLogger.LogMessage(StdStringFormat("COpcAdapter::Cycle() Enter Loop for IP = %s\n",_device.c_str()));
+	LogMessage(StdStringFormat("COpcAdapter::Cycle() Enter Loop for IP = %s\n",_device.c_str()), DBUG);
 	while(_mRunning)
 	{
 		try {
@@ -311,11 +312,11 @@ void COpcAdapter::Cycle()
 		}
 		catch(std::exception e)
 		{
-			GLogger.LogMessage(StdStringFormat("COpcAdapter::Cycle() exception - %s \n", e.what()), INFO);
+			LogMessage(StdStringFormat("COpcAdapter::Cycle() exception - %s \n", e.what()), INFO);
 		}
 		catch(...)
 		{
-			GLogger.LogMessage(StdStringFormat("COpcAdapter::Cycle() exception  \n"), INFO);
+			LogMessage(StdStringFormat("COpcAdapter::Cycle() exception  \n"), INFO);
 		}
 	}
 	::CoUninitialize();
@@ -330,14 +331,14 @@ HRESULT COpcAdapter::GatherDeviceData()
 		// Check if connected - this could take too long if 
 		if(!IsConnected() && _bAutoConnect)
 		{
-			GLogger.LogMessage(StdStringFormat("COpcAdapter  %s attempt Connect at %s\n",_opcservermachine.c_str(), (LPCSTR) COleDateTime::GetCurrentTime().Format() ),INFO);
+			LogMessage(StdStringFormat("COpcAdapter  %s attempt Connect at %s\n",_opcservermachine.c_str(), (LPCSTR) COleDateTime::GetCurrentTime().Format() ),INFO);
 			Off();
 			if(FAILED(Connect()))
 			{
 				throw std::exception("Attempt Connect FAILED\n");
 				return E_FAIL;
 			}
-			GLogger.LogMessage(StdStringFormat("COpcAdapter  %s Connected at %s\n",_opcservermachine.c_str(), (LPCSTR) COleDateTime::GetCurrentTime().Format() ),INFO);
+			LogMessage(StdStringFormat("COpcAdapter  %s Connected at %s\n",_opcservermachine.c_str(), (LPCSTR) COleDateTime::GetCurrentTime().Format() ),INFO);
 		}
 
 		if(IsConnected())
@@ -357,7 +358,7 @@ HRESULT COpcAdapter::GatherDeviceData()
 	}
 	catch(std::exception e)
 	{
-		GLogger.LogMessage(StdStringFormat("COpcAdapter Exception in %s - COpcAdapter::GatherDeviceData() %s\n",_device.c_str(), (LPCSTR)  e.what() ),LOWERROR);
+		LogMessage(StdStringFormat("COpcAdapter Exception in %s - COpcAdapter::GatherDeviceData() %s\n",_device.c_str(), (LPCSTR)  e.what() ),LOWERROR);
 		Off();
 		dwInterval=_nQueryServerPeriod;
 		Disconnect();
@@ -365,7 +366,7 @@ HRESULT COpcAdapter::GatherDeviceData()
 	}
 	catch(...)
 	{
-		GLogger.LogMessage(StdStringFormat("COpcAdapter Exception in %s - COpcAdapter::GatherDeviceData()\n",_device.c_str() ),LOWERROR);
+		LogMessage(StdStringFormat("COpcAdapter Exception in %s - COpcAdapter::GatherDeviceData()\n",_device.c_str() ),LOWERROR);
 		Off();
 		dwInterval=_nQueryServerPeriod;
 		Disconnect();

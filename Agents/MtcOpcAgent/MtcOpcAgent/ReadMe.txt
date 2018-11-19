@@ -1,5 +1,18 @@
 
 
+Thu 01/11/2018_11:04:11.49  
+
+Two spindle issues. not working. Possibly wrong OPC tag name for 2nd spindle.
+1) Add new devices xml file with srpm1 srpm2
+
+			Globals.WriteNewDevicesFile	= config.GetSymbolValue("OPCSERVER.WriteNewDevicesFile", 0).toNumber<int>() ;
+
+ 		if(Globals.WriteNewDevicesFile)
+		{
+			WriteDevicesFile(_devices, opc_device,  "Devices.xml", File.ExeDirectory());
+		}
+2) change MTCOpc.ini values for srpm1 and srpm2 so now will be written out if changed
+
 /LIBPATH:"C:\Users\michalos\Documents\GitHub\MTConnect\Agent\libxml" 
 /LIBPATH:"C:\Users\michalos\Documents\GitHub\MTConnect\lib\win64" 
 

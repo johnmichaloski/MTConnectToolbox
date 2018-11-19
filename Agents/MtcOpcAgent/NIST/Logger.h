@@ -9,13 +9,23 @@
 // or intended.
 // **************************************************************************
 #pragma once
-#include "atlstr.h"
+//#include "atlstr.h"
 #include <fstream>
 #include <iostream>
 #include <atlcomtime.h>
 #include "StdStringFcn.h"
 
-#define LOGLISTENERS
+#ifndef _DEBUG
+#pragma comment( user, "NO LOGGING: Compiled on " __DATE__ " at " __TIME__ ) 
+#define LogMessage(X,Y)
+#define LOGONCE 
+#else
+#pragma comment( user, "LOGGING: Compiled on " __DATE__ " at " __TIME__ ) 
+#define LOGONCE  static long nLog##__LINE__=0; if( 0 == nLog##__LINE__++) 
+#define LogMessage(X,Y)  GLogger.Message(X,Y)
+#endif
+
+//#define LOGLISTENERS
 
 #ifdef LOGLISTENERS
 // This is for notifying listeners to logged messages - mnany to many relationship
@@ -25,9 +35,7 @@ typedef boost::function<void (const TCHAR * msg)> FcnLognotify;
 #include <vector>
 #endif
 
-// This is useful for preventing endless repeated error messages 
-#define LOGONCE  static long nLog##__LINE__=0; if( 0 == nLog##__LINE__++) 
-//#define LOGONCE  
+
 
 /** Allow redirected of std::cout to vc console output
 std::cout.rdbuf(&Logger);
@@ -37,7 +45,9 @@ std::cout.flush();
 class basic_debugbuf : public std::streambuf
 {
 public:
+#ifdef LOGLISTENERS
 	std::vector<FcnLognotify> listeners;
+#endif
 	basic_debugbuf(int bufferSize=1000) 
 	{
 		if (bufferSize)
@@ -56,8 +66,10 @@ public:
 
 	virtual void writeString(const std::string &str)
 	{
+#ifdef LOGLISTENERS
 		for(int i=0; i< listeners.size(); i++)
 			listeners[i](str.c_str());
+#endif
 		OutputDebugString(str.c_str());
 	}
 private:
@@ -141,7 +153,7 @@ public:
 	}
 	CLogger() 
 	{
-		DebugLevel()=7;
+		DebugLevel()=0;
 		filename=ExeDirectory() + "debug.txt";
 		//std::cout.rdbuf(&_outputdebugstream);
 		//std::cerr.rdbuf(&_outputdebugstream);
@@ -155,12 +167,20 @@ public:
 		if(DebugFile.is_open())
 			DebugFile.close();
 	}
-	
+
 	int & DebugLevel()				{ return _debuglevel; }
 	bool & Timestamping()			{ return  bTimestamp; }
 	std::string & DebugString()		{ return  sDebugString; }
 	int & OutputConsole()			{ return  nOutputConsole; }
 	std::ofstream & operator()(void) { return this->DebugFile; }
+	std::string Dump()
+	{
+		std::stringstream ss;
+		ss << "Global Logger\n";
+		ss << "Debug Level = " <<  DebugLevel() << std::endl;
+		ss << "DebugLevel = " <<  DebugLevel() << std::endl;
+		return ss.str();
+	}
 
 	void Open(std::string filename, int bAppend=false)
 	{
@@ -206,7 +226,7 @@ public:
 		}
 		return s;
 	} 
-	int LogMessage(std::string msg, int level=-1)
+	int Message(std::string msg, int level=5)
 	{
 		if( DebugLevel() < level)
 			return level;
@@ -227,11 +247,12 @@ public:
 		DebugFile.flush();
 		return level;
 	}
-	int Fatal(std::string msg){ return LogMessage(msg,FATAL); }
-	int Error(std::string msg){ return LogMessage(msg,LOWERROR); }
-	int Warning(std::string msg){return LogMessage(msg,WARNING); }
-	int Info(std::string msg){ return LogMessage(msg,INFO); }
-	int Status(std::string msg){return LogMessage(msg,FATAL); }
+	int Abort(std::string msg){ return Message(msg,FATAL); abort(); }
+	int Fatal(std::string msg){ return Message(msg,FATAL); }
+	int Error(std::string msg){ return Message(msg,LOWERROR); }
+	int Warning(std::string msg){return Message(msg,WARNING); }
+	int Info(std::string msg){ return Message(msg,INFO); }
+	int Status(std::string msg){return Message(msg,FATAL); }
 
 	/////////////////////////////////////////////////////////////////////////////
 	//2012-12-22T03:06:56.0984Z
@@ -260,12 +281,12 @@ protected:
 	/** 
 	void CMainFrame::MutexStep(std::string s)
 	{
-		OutputDebugString(s.c_str());
+	OutputDebugString(s.c_str());
 	}
 	...
-		m_view.AddListener("Step", boost::bind(&CMainFrame::MutexStep, this,_1))
+	m_view.AddListener("Step", boost::bind(&CMainFrame::MutexStep, this,_1))
 	*/
-	public:
+public:
 	void AddListener(FcnLognotify notify)
 	{
 		_outputdebugstream.listeners.push_back(notify);
