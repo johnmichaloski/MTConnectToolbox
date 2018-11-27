@@ -1,0 +1,476 @@
+
+Removed from Config.ini file:
+
+[TAGS]
+mode=controllermode
+Fovr=path_feedrateovr
+Fact=path_feedratefrt
+			
+[ENUMS]
+READY=IDLE
+ACTIVE=EXECUTING
+INTERRUPTED=PAUSED
+STOPPED=PAUSED
+
+[DATAIDS]
+Fovr=path_feedrateovr
+Frt=path_feedratefrt
+
+
+
+        #servers.append(ThreadedHTTPServer((HOST_NAME, int(gPorts[i])), MakeHandlerClassFromArgv(gURLs[i])))
+ 
+        ##t = threading.Thread(target=run_while_true(URL,gPorts[i]))
+        ##t.setDaemon(True)
+        #t = threading.Thread(target=servers[i].run())
+        #t.setDaemon(True)
+        #t.start()
+        #threads.append(t)
+        #servers[i].run()
+
+#        results.append(run_while_true(URL,gPorts[i]))
+
+def run_while_true(URL, port):    
+    """
+    This assumes that keep_running() is a function of no arguments which
+    is tested initially and after each request.  If its return value
+    is true, the server continues.
+    """
+    global bConnected
+    debugfile.write(time.asctime() + " Server Starts - %s:%s\n" % (HOST_NAME, port))
+
+
+    ServerClass = ThreadedHTTPServer((HOST_NAME, int(port)), MakeHandlerClassFromArgv(URL))
+    #while bflag:
+    #    try:
+    #        #if bConnected:
+    #        #    ServerClass.handle_request()
+    #        #    time.sleep(SLEEPAMT)
+    #        #else:
+    #        #    time.sleep(REQUERYAMT)
+    #        ServerClass.handle_request()
+
+    #    except urllib.URLError as e: 
+    #        debugfile.write(time.asctime() + 'cannot get %s - %s' % (szurl,e.reason)) 
+    #    except urllib.HTTPError as e: 
+    #        debugfile.write(time.asctime() + 'cannot get %s - server reply: %d %s' % (szurl,e.code,e.reason)) 
+    #    except (IOError,httplib.BadStatusLine,httplib.HTTPException): 
+    #        debugfile.write(time.asctime() + 'cannot get %s - connection reset by router or firewall' % szurl) 
+    #    except socket.error as msg: 
+    #        debugfile.write(time.asctime() + 'cannot get %s - %s' % (szurl,msg)) 
+
+    #ServerClass.server_close()
+    ##httpd.server_close()
+    #debugfile.write(time.asctime() + "Server Stops - %s:%s\n" % (HOST_NAME, port))
+
+    """ This class allows to handle requests in separated threads.
+        No further content needed, don't touch this. """
+# goes way back: http://www.gossamer-threads.com/lists/python/bugs/278139
+
+Each backend MTConnect Agent has to have a forward port as only 1 agent can be forwarded. No combining.
+
+
+lock = threading.Lock()
+
+C:\Users\michalos>pip install pyinstaller
+Collecting pyinstaller
+  Downloading PyInstaller-3.2.tar.gz (2.8MB)
+    100% |################################| 2.8MB 117kB/s
+Requirement already satisfied (use --upgrade to upgrade): setuptools in c:\users
+\michalos\appdata\local\continuum\anaconda2\lib\site-packages\setuptools-19.6.2-
+py2.7.egg (from pyinstaller)
+Collecting pefile (from pyinstaller)
+  Downloading pefile-2016.3.28.tar.gz (58kB)
+    100% |################################| 61kB 1.4MB/s
+Collecting future (from pefile->pyinstaller)
+  Downloading future-0.16.0.tar.gz (824kB)
+    100% |################################| 827kB 347kB/s
+Building wheels for collected packages: pyinstaller, pefile, future
+  Running setup.py bdist_wheel for pyinstaller ... done
+  Stored in directory: C:\Users\michalos\AppData\Local\pip\Cache\wheels\fc\b3\10
+\006225b1c1baa34750a7b587d3598d47d18114c06b696a8e0e
+  Running setup.py bdist_wheel for pefile ... done
+  Stored in directory: C:\Users\michalos\AppData\Local\pip\Cache\wheels\1f\50\4f
+\f888b12fef6b58381b58446d7fa39a7677123960152181cf19
+  Running setup.py bdist_wheel for future ... done
+  Stored in directory: C:\Users\michalos\AppData\Local\pip\Cache\wheels\c2\50\7c
+\0d83b4baac4f63ff7a765bd16390d2ab43c93587fac9d6017a
+Successfully built pyinstaller pefile future
+Installing collected packages: future, pefile, pyinstaller
+Successfully installed future-0.16.0 pefile-2016.3.28 pyinstaller-3.2
+You are using pip version 8.0.2, however version 9.0.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' comm
+and.
+===========================================================================
+https://pyinstaller.readthedocs.io/en/stable/operating-mode.html
+
+C:\Users\michalos\Documents\Visual Studio 2010\Projects\MTConnectAgentFwding\MTC
+onnectAgentFwding>pyinstaller MTConnectAgentFwding.py
+832 INFO: PyInstaller: 3.2
+834 INFO: Python: 2.7.11
+834 INFO: Platform: Windows-7-6.1.7601-SP1
+842 INFO: wrote C:\Users\michalos\Documents\Visual Studio 2010\Projects\MTConnec
+tAgentFwding\MTConnectAgentFwding\MTConnectAgentFwding.spec
+847 INFO: UPX is not available.
+851 INFO: Extending PYTHONPATH with paths
+['C:\\Users\\michalos\\Documents\\Visual Studio 2010\\Projects\\MTConnectAgentFw
+ding\\MTConnectAgentFwding',
+ 'C:\\Users\\michalos\\Documents\\Visual Studio 2010\\Projects\\MTConnectAgentFw
+ding\\MTConnectAgentFwding']
+851 INFO: checking Analysis
+851 INFO: Building Analysis because out00-Analysis.toc is non existent
+852 INFO: Initializing module dependency graph...
+861 INFO: Initializing module graph hooks...
+1062 INFO: running Analysis out00-Analysis.toc
+1145 INFO: Adding Microsoft.VC90.CRT to dependent assemblies of final executable
+
+  required by c:\users\michalos\appdata\local\continuum\anaconda2\python.exe
+2960 INFO: Found C:\Windows\WinSxS\Manifests\amd64_policy.9.0.microsoft.vc90.crt
+_1fc8b3b9a1e18e3b_9.0.30729.1_none_3da38fdebd0e6822.manifest
+2980 INFO: Found C:\Windows\WinSxS\Manifests\amd64_policy.9.0.microsoft.vc90.crt
+_1fc8b3b9a1e18e3b_9.0.30729.4148_none_acd0e4ffe1daef0a.manifest
+2997 INFO: Found C:\Windows\WinSxS\Manifests\amd64_policy.9.0.microsoft.vc90.crt
+_1fc8b3b9a1e18e3b_9.0.30729.4926_none_accf10dbe1dc8ba2.manifest
+3030 INFO: Found C:\Windows\WinSxS\Manifests\amd64_policy.9.0.microsoft.vc90.crt
+_1fc8b3b9a1e18e3b_9.0.30729.4940_none_acd19a1fe1da248a.manifest
+3065 INFO: Found C:\Windows\WinSxS\Manifests\amd64_policy.9.0.microsoft.vc90.crt
+_1fc8b3b9a1e18e3b_9.0.30729.5570_none_acd49d73e1d76c72.manifest
+3097 INFO: Found C:\Windows\WinSxS\Manifests\amd64_policy.9.0.microsoft.vc90.crt
+_1fc8b3b9a1e18e3b_9.0.30729.6161_none_acd388d7e1d8689f.manifest
+3296 INFO: Searching for assembly amd64_Microsoft.VC90.CRT_1fc8b3b9a1e18e3b_9.0.
+30729.6161_none ...
+3298 INFO: Found manifest C:\Windows\WinSxS\Manifests\amd64_microsoft.vc90.crt_1
+fc8b3b9a1e18e3b_9.0.30729.6161_none_08e61857a83bc251.manifest
+3305 INFO: Searching for file msvcr90.dll
+3305 INFO: Found file C:\Windows\WinSxS\amd64_microsoft.vc90.crt_1fc8b3b9a1e18e3
+b_9.0.30729.6161_none_08e61857a83bc251\msvcr90.dll
+3306 INFO: Searching for file msvcp90.dll
+3316 INFO: Found file C:\Windows\WinSxS\amd64_microsoft.vc90.crt_1fc8b3b9a1e18e3
+b_9.0.30729.6161_none_08e61857a83bc251\msvcp90.dll
+3316 INFO: Searching for file msvcm90.dll
+3335 INFO: Found file C:\Windows\WinSxS\amd64_microsoft.vc90.crt_1fc8b3b9a1e18e3
+b_9.0.30729.6161_none_08e61857a83bc251\msvcm90.dll
+3526 INFO: Found C:\Windows\WinSxS\Manifests\amd64_policy.9.0.microsoft.vc90.crt
+_1fc8b3b9a1e18e3b_9.0.30729.1_none_3da38fdebd0e6822.manifest
+3529 INFO: Found C:\Windows\WinSxS\Manifests\amd64_policy.9.0.microsoft.vc90.crt
+_1fc8b3b9a1e18e3b_9.0.30729.4148_none_acd0e4ffe1daef0a.manifest
+3530 INFO: Found C:\Windows\WinSxS\Manifests\amd64_policy.9.0.microsoft.vc90.crt
+_1fc8b3b9a1e18e3b_9.0.30729.4926_none_accf10dbe1dc8ba2.manifest
+3532 INFO: Found C:\Windows\WinSxS\Manifests\amd64_policy.9.0.microsoft.vc90.crt
+_1fc8b3b9a1e18e3b_9.0.30729.4940_none_acd19a1fe1da248a.manifest
+3535 INFO: Found C:\Windows\WinSxS\Manifests\amd64_policy.9.0.microsoft.vc90.crt
+_1fc8b3b9a1e18e3b_9.0.30729.5570_none_acd49d73e1d76c72.manifest
+3536 INFO: Found C:\Windows\WinSxS\Manifests\amd64_policy.9.0.microsoft.vc90.crt
+_1fc8b3b9a1e18e3b_9.0.30729.6161_none_acd388d7e1d8689f.manifest
+3539 INFO: Adding redirect Microsoft.VC90.CRT version (9, 0, 21022, 8) -> (9, 0,
+ 30729, 6161)
+9115 INFO: Caching module hooks...
+9122 INFO: Analyzing C:\Users\michalos\Documents\Visual Studio 2010\Projects\MTC
+onnectAgentFwding\MTConnectAgentFwding\MTConnectAgentFwding.py
+16259 INFO: Loading module hooks...
+16259 INFO: Loading module hook "hook-httplib.py"...
+16265 INFO: Loading module hook "hook-encodings.py"...
+19115 INFO: Looking for ctypes DLLs
+19131 INFO: Analyzing run-time hooks ...
+19144 INFO: Looking for dynamic libraries
+29378 INFO: Looking for eggs
+29380 INFO: Using Python library c:\users\michalos\appdata\local\continuum\anaco
+nda2\python27.dll
+29381 INFO: Found binding redirects:
+[BindingRedirect(name=u'Microsoft.VC90.CRT', language=None, arch=u'amd64', oldVe
+rsion=(9, 0, 21022, 8), newVersion=(9, 0, 30729, 6161), publicKeyToken=u'1fc8b3b
+9a1e18e3b')]
+29398 INFO: Warnings written to C:\Users\michalos\Documents\Visual Studio 2010\P
+rojects\MTConnectAgentFwding\MTConnectAgentFwding\build\MTConnectAgentFwding\war
+nMTConnectAgentFwding.txt
+29500 INFO: checking PYZ
+29500 INFO: Building PYZ because out00-PYZ.toc is non existent
+29500 INFO: Building PYZ (ZlibArchive) C:\Users\michalos\Documents\Visual Studio
+ 2010\Projects\MTConnectAgentFwding\MTConnectAgentFwding\build\MTConnectAgentFwd
+ing\out00-PYZ.pyz
+30247 INFO: checking PKG
+30249 INFO: Building PKG because out00-PKG.toc is non existent
+30250 INFO: Building PKG (CArchive) out00-PKG.pkg
+30528 INFO: Bootloader c:\users\michalos\appdata\local\continuum\anaconda2\lib\s
+ite-packages\PyInstaller\bootloader\Windows-64bit\run.exe
+30528 INFO: checking EXE
+30529 INFO: Building EXE because out00-EXE.toc is non existent
+30529 INFO: Building EXE from out00-EXE.toc
+30529 INFO: Appending archive to EXE C:\Users\michalos\Documents\Visual Studio 2
+010\Projects\MTConnectAgentFwding\MTConnectAgentFwding\build\MTConnectAgentFwdin
+g\MTConnectAgentFwding.exe
+30635 INFO: checking COLLECT
+30635 INFO: Building COLLECT because out00-COLLECT.toc is non existent
+30637 INFO: Building COLLECT out00-COLLECT.toc
+30694 INFO: Redirecting Microsoft.VC90.CRT version (9, 0, 21022, 8) -> (9, 0, 30
+729, 6161)
+31042 INFO: Redirecting Microsoft.VC90.CRT version (9, 0, 21022, 8) -> (9, 0, 30
+729, 6161)
+31045 INFO: Updating manifest in C:\Users\michalos\AppData\Roaming\pyinstaller\b
+incache00_py27_64bit\python27.dll
+31046 INFO: Updating resource type 24 name 2 language 1033
+31194 INFO: Redirecting Microsoft.VC90.CRT version (9, 0, 21022, 8) -> (9, 0, 30
+729, 6161)
+31196 INFO: Updating manifest in C:\Users\michalos\AppData\Roaming\pyinstaller\b
+incache00_py27_64bit\unicodedata.pyd
+31197 INFO: Updating resource type 24 name 2 language 1033
+31302 INFO: Redirecting Microsoft.VC90.CRT version (9, 0, 21022, 8) -> (9, 0, 30
+729, 6161)
+31303 INFO: Updating manifest in C:\Users\michalos\AppData\Roaming\pyinstaller\b
+incache00_py27_64bit\_hashlib.pyd
+31305 INFO: Updating resource type 24 name 2 language 1033
+31405 INFO: Redirecting Microsoft.VC90.CRT version (9, 0, 21022, 8) -> (9, 0, 30
+729, 6161)
+31407 INFO: Updating manifest in C:\Users\michalos\AppData\Roaming\pyinstaller\b
+incache00_py27_64bit\_ctypes.pyd
+31410 INFO: Updating resource type 24 name 2 language 1033
+31505 INFO: Redirecting Microsoft.VC90.CRT version (9, 0, 21022, 8) -> (9, 0, 30
+729, 6161)
+31506 INFO: Updating manifest in C:\Users\michalos\AppData\Roaming\pyinstaller\b
+incache00_py27_64bit\_ssl.pyd
+31507 INFO: Updating resource type 24 name 2 language 1033
+31707 INFO: Redirecting Microsoft.VC90.CRT version (9, 0, 21022, 8) -> (9, 0, 30
+729, 6161)
+31710 INFO: Updating manifest in C:\Users\michalos\AppData\Roaming\pyinstaller\b
+incache00_py27_64bit\_socket.pyd
+31711 INFO: Updating resource type 24 name 2 language 1033
+31766 INFO: Redirecting Microsoft.VC90.CRT version (9, 0, 21022, 8) -> (9, 0, 30
+729, 6161)
+31769 INFO: Updating manifest in C:\Users\michalos\AppData\Roaming\pyinstaller\b
+incache00_py27_64bit\select.pyd
+31770 INFO: Updating resource type 24 name 2 language 1033
+31822 INFO: Redirecting Microsoft.VC90.CRT version (9, 0, 21022, 8) -> (9, 0, 30
+729, 6161)
+31825 INFO: Updating manifest in C:\Users\michalos\AppData\Roaming\pyinstaller\b
+incache00_py27_64bit\bz2.pyd
+31826 INFO: Updating resource type 24 name 2 language 1033
+31891 INFO: Redirecting Microsoft.VC90.CRT version (9, 0, 21022, 8) -> (9, 0, 30
+729, 6161)
+31894 INFO: Updating manifest in C:\Users\michalos\AppData\Roaming\pyinstaller\b
+incache00_py27_64bit\pywintypes27.dll
+31894 INFO: Updating resource type 24 name 2 language 1033
+
+C:\Users\michalos\Documents\Visual Studio 2010\Projects\MTConnectAgentFwding\MTC
+onnectAgentFwding>
+
+
+OR with a few added options, for example a windowed application as a single-file executable,
+pyinstaller –onefile –windowed myscript.py
+==============================================================
+Using ini file to manage tag, enum and dataid renames:
+
+Bunch of versions:
+
+try:
+    from configparser import ConfigParser
+except ImportError:
+    from ConfigParser import ConfigParser  # ver. < 3.0\
+
+used a dictionary to store items, surely better way:
+tagdictionary = {}
+
+Run doConfig once to read the Config.ini file in the same folder as the
+python script/executable
+def doConfig():
+    try:
+        config = ConfigParser()
+        config.optionxform = str
+        exefolder = sys.path[0]
+        config.read(exefolder + '\\' + 'Config.INI')
+        print config.get('TAGS', 'mode')
+        for section in config.sections():
+            tagdictionary[section] = {}
+            for option in config.options(section):
+                tagdictionary[section][option] = config.get(section, option)
+        print tagdictionary
+    except:
+        print "doConfig exeception"
+        pass 
+
+
+Now replace the tags, etc.
+
+        xmlwebsite = "http://agent.mtconnect.org/current" 
+        toursurl = urllib2.urlopen(xmlwebsite)
+        str = toursurl.read()
+
+        # Perform substitutions
+        section ='TAGS'
+        for option in tagdictionary[section].keys():
+            str=str.replace('name="{}"'.format(option), 'name="{}"'.format(tagdictionary[section][option]))
+
+        # Fixme: this could be a better substitution
+        section ='ENUMS'
+        for option in tagdictionary[section].keys():
+            str=str.replace('{}'.format(option), '{}'.format(tagdictionary[section][option]))
+
+        section ='DATAIDS'
+        for option in tagdictionary[section].keys():
+            str=str.replace('dataItemId="{}"'.format(option), 'dataItemId="{}"'.format(tagdictionary[section][option]))
+
+==============================================================
+Locking the update to the xml string
+import threading
+lock=threading.Lock()
+
+		lock.acquire()
+        agentxml=str
+        lock.release()
+
+
+
+==============================================================
+
+NSSM - the Non-Sucking Service Manager
+
+==============================================================
+
+http://stackoverflow.com/questions/32404/is-it-possible-to-run-a-python-script-as-a-service-in-windows-if-possible-how
+import win32serviceutil
+import win32service
+import win32event
+import servicemanager
+import socket
+
+
+class AppServerSvc (win32serviceutil.ServiceFramework):
+    _svc_name_ = "TestService"
+    _svc_display_name_ = "Test Service"
+
+    def __init__(self,args):
+        win32serviceutil.ServiceFramework.__init__(self,args)
+        self.hWaitStop = win32event.CreateEvent(None,0,0,None)
+        socket.setdefaulttimeout(60)
+
+    def SvcStop(self):
+        self.ReportServiceStatus(win32service.SERVICE_STOP_PENDING)
+        win32event.SetEvent(self.hWaitStop)
+
+    def SvcDoRun(self):
+        servicemanager.LogMsg(servicemanager.EVENTLOG_INFORMATION_TYPE,
+                              servicemanager.PYS_SERVICE_STARTED,
+                              (self._svc_name_,''))
+        self.main()
+
+    def main(self):
+        pass
+
+if __name__ == '__main__':
+    win32serviceutil.HandleCommandLine(AppServerSvc)
+
+
+http://www.gossamer-threads.com/lists/python/python/887431
+	I install Python 2.7 on Windows XP. 
+I try use : 
+
+import win32service 
+import win32serviceutil 
+
+But I got that error : 
+
+ImportError: No module named win32service 
+Where is this module ? 
+It's part of the pywin32 (aka win32all) package 
+
+http://sourceforge.net/projects/pywin32/ 
+
+The latest download for your Python version is 
+https://sourceforge.net/projects/pywin32/files/pywin32/Build%20220/
+
+Make sure you choose the correct pywind32
+======================================================
+Pyinstaller - ImportError: No system module 'pywintypes' (pywintypes27.dll)
+I just copied the DLL pywintypes27.dll in C:\Python27\Lib\site-packages\pywin32_system32.
+I added it in win32/lib.
+
+
+X I had the same problem. The dll, pywintypes27.dll was in C:\Python27\Lib\site-packages\pywin32_system32. I added this directory to my PATH environment variable and py2exe was able to find the DLL. Obviously, setting the path is not the correct solution (and you could possibly do it programatically via os.environ), but, works for me.
+
+UFB: http://stackoverflow.com/questions/18907889/importerror-no-module-named-pywintypes
+WORKS!!!!!!!!!!!!!!!!
+pip install pypiwin32
+C:\Users\michalos\Documents\Visual Studio 2010\Projects\MTConnectAgentFwding\MTC
+onnectAgentFwding>pip install pypiwin32
+Collecting pypiwin32
+  Downloading pypiwin32-219-cp27-none-win_amd64.whl (7.3MB)
+    100% |################################| 7.3MB 46kB/s
+Installing collected packages: pypiwin32
+Successfully installed pypiwin32-219
+You are using pip version 8.0.2, however version 9.0.1 is available.
+You should consider upgrading via the 'python -m pip install --upgrade pip' comm
+and.
+
+C:\Users\michalos\Documents\Visual Studio 2010\Projects\MTConnectAgentFwding\MTC
+onnectAgentFwding>
+
+==================================================
+Attempting to read all rpm and pick largest:
+def do_XML(xmlstr):
+    try:
+        root = ET.fromstring(xmlstr)
+        srpm = root.findall(".//RotaryVelocity[@name='S*rpm*']")
+#        srpm2 = root.findall(".//RotaryVelocity[@name='S2rpm']")
+#        srpm3 = root.findall(".//RotaryVelocity[@name='S3rpm']")
+        d=[]
+
+        d1=0.0
+        d2=0.0
+        d3=0.0
+
+        for r in srpm2:
+            d2=float(r)
+            break
+        for r in srpm3:
+            d3=float(r)
+            break
+        for r in srpm:
+            d1=float(r)
+
+            break    
+           
+    except:
+        pass
+=====================================
+Windows Service headache
+
+Maybe it has to be python and not py2exe
+From: http://www.chrisumbel.com/article/windows_services_in_python
+Service Installation
+
+Now that the service itself is written we can install it as follows:
+
+C:\Dev\Projects\PySvc> python.exe .\PySvc.py install
+Service Control
+
+That's it! The service can now be started from the command line by
+
+C:\Dev\Projects\PySvc> NET START PySvc
+or from the Service Control Manager
+
+THIS WORKS: so wrapping python into exe messes up service handling
+
+====================================================
+https://mail.python.org/pipermail/python-bugs-list/2015-October/283379.html
+https://hg.python.org/cpython/rev/8ec39bfd1f01
+
+
+http://stackoverflow.com/questions/25770873/python-windows-service-pyinstaller-executables-error-1053/25934756#25934756
+if __name__ == '__main__':
+    # Test of XML changes
+    #xmlstr = open(sys.path[0] + '\\' + 'i200ST-sim-current.xml', 'r').read()
+    #do_XML(xmlstr)
+    doConfig()
+    dfile.write( time.asctime()+ str(sys.argv)+"\n")
+
+    if len(sys.argv) == 1 : 
+        sys.argv.extend("start")
+        dfile.write( time.asctime()+ "Enter win32serviceutil \n" )
+        win32serviceutil.HandleCommandLine(Service)
+    elif sys.argv[1:2][0] == 'install':
+        win32serviceutil.HandleCommandLine(Service)
+    elif sys.argv[1:2][0] == 'debug' or sys.argv[1:2][0] == 'run':
+        MyMain()
+    else:
+        sys.argv.extend("start")
+        win32serviceutil.HandleCommandLine(Service)
+#        instart(MyService, SERVICENAME, SERVICENAME)

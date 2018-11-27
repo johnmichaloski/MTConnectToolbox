@@ -1,0 +1,6 @@
+Mon Nov 19 14:15:20 2018doConfig readC:\Users\michalos\Documents\GitHub\Agents\MTConnectAgentFwding\Dictribution\Config.INI
+Mon Nov 19 14:15:20 2018PORT_NUMBER=5010
+Mon Nov 19 14:15:20 2018URL=agent.mtconnect.org:80
+Mon Nov 19 14:15:20 2018SERVICENAME=MTConnectAgentFwd
+Mon Nov 19 14:15:20 2018SLEEPAMT=5.0
+Mon Nov 19 14:15:20 2018debuglevel=0
