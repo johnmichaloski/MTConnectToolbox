@@ -9,7 +9,7 @@ if WScript.Arguments.Count > 0 then
 	Set objArgs = WScript.Arguments
 	strFile= objArgs(0)
 else
-	strFile = "C:\Users\michalos\Documents\GitHub\MTConnectSolutions\MTConnectAgentFromShdr\MTConnectAgentFromShdr\version_info.h"
+	strFile = "C:\Users\michalos\Documents\GitHub\Agent\MTConnectAgentFromShdr\MTConnectAgentFromShdr\version_info.h"
 end if
 
 Set objFile = objFS.OpenTextFile(strFile)
@@ -19,7 +19,7 @@ do while not objFile.AtEndOfStream
 
    if instr(1, line, "define VERSION_BUILD") then
        line = Trim(Mid(line, Len("#define VERSION_BUILD") + 1))
-       MsgBox "match " & line
+       'MsgBox "match " & line
        buildno = CInt(line) +1 
        line = "#define VERSION_BUILD " & CStr(buildno)
     end if 

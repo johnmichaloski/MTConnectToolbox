@@ -1,0 +1,1500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+  version="2014Jul2">
+  <xs:include schemaLocation="DataPrimitives.xsd"/>
+
+  <xs:annotation>
+    <xs:documentation>
+      This ontology models commands written in the canonical robot command
+      language (CRCL). CRCL is a low-level messaging language for telling a
+      robot what to do. CRCL commands are executed by a low-level device
+      controller. The usual source of CRCL commands is a plan/program
+      execution system.
+
+      CRCL is intended for use with devices typically described as
+      industrial robots and for other positionable automated devices such
+      as automated guided vehicles (AGVs). An AGV with a robotic arm
+      attached may be regarded as a single robot responding to a single
+      stream of CRCL commands or as two robots responding to two separate
+      streams of CRCL commands.
+
+      Although CRCL is not a programming language, the commands are in the
+      context of a session consisting of getting ready for activity,
+      performing activities, and becoming quiescent. CRCL commands may be
+      collected in files for testing purposes, but executing such files (by
+      giving the commands in the order they occur in the file) should not
+      be the normal operating mode of a robot.
+
+      The robot model on which the CRCL commands are based has a controlled
+      point and orientation. The speed, and acceleration that are the
+      subject of CRCL commands apply to the controlled point. The positions
+      (Poses) that are the subject of CRCL commands apply to the controlled
+      point and orientation. The coordinate system for Poses in CRCL
+      commands is the coordinate system of the workstation in which the
+      robot is working.
+
+      For a robot designed to use a single end effector, when the robot has
+      an end effector such as a gripper attached, the controlled point is a
+      point designated by the robot system designer that is fixed in the
+      coordinate system of the end effector. For most purposes, that point
+      should be near the place on the end effector where the end effector
+      performs its function (between the jaws of a gripper, for example).
+      The location of the coordinate system of the end effector with
+      respect to the mechanical components of the end effector must be set
+      by the robot system designer. CRCL commands are used to specify
+      orientation by describing where the Z and X axes of the end effector
+      coordinate system should point.
+
+      Also for a robot designed to use a single end effector, when no end
+      effector is attached, the controlled point is a point designated by
+      the robot system designer that is fixed in the coordinate system of
+      the robot component (call it LastLink) to which an end effector may
+      be attached. The location of the coordinate system of LastLink with
+      respect to the mechanical components of LastLink must be set by the
+      robot system designer. CRCL commands may be used to specify
+      orientation of LastLink by describing where the Z and X axes of the
+      LastLink coordinate system should point.
+
+      Attaching or detaching an end effector changes the controlled point.
+
+      Where command arguments are in terms of units, the units are as set
+      by the most recent SetXXXUnits command. If no SetXXXUnits command for
+      a given unit type has been executed since the last InitCanonType
+      command was executed, the following default units apply:
+        length -- meter
+        angle  -- radian
+        force  -- newton
+        torque -- newtonMeter
+
+      For an AGV without an end effector, the controlled point is a point
+      designated by the robot system designer that is fixed in the
+      coordinate system of the AGV. The location of the coordinate system
+      of the AGV with respect to the mechanical components of the AGV must
+      be set by the robot system designer. CRCL commands may be used to
+      specify orientation of the AGV by describing where the Z and X axes
+      of the AGV coordinate system should point.
+
+      If any joint setting or joint status reporting is done, it is assumed
+      that the system sending canonical commands and the system executing
+      them both know the kinematics of the robot and have the same
+      numbering system for the joints, starting with 1. The two systems
+      also have the same understanding of where the zero point is and which
+      direction is positive for each joint.
+
+      In order that this file may be translatable into OWL, all
+      complexTypes in this file include the (optional) Name element,
+      inherited from DataThingType. If an instance file has instances of
+      complex data without names, it will not be translatable into OWL.
+
+      This file uses the term 'single axis rotation' (and similar terms
+      such as 'single axis rotational speed'). When referring to motion
+      from one pose to another. It is always possible to find a single axis
+      and an amount of rotation around that axis that moves from one
+      orientation to another. That rotation is what is meant by 'single
+      axis rotation'.
+
+      A few abbreviations are used in names. They are
+        Accel = Acceleration
+        Trans = Translational
+        Rot   = Rotational
+
+    </xs:documentation>
+    <xs:documentation>owlPrefix=crcl</xs:documentation>
+  </xs:annotation>
+
+  <xs:complexType name="ActuateJointsType">
+    <xs:annotation>
+      <xs:documentation>
+        ActuateJointsType is derived from MiddleCommandType.
+        An instance of ActuateJointsType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          ActuateJoint (multiple).
+
+        Each joint may appear in at most one ActuateJoint element. If
+        a joint appears in no ActuateJoint element, its actuation should
+        be as previously set.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="ActuateJoint"
+            type="ActuateJointType"
+            maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ActuateJointType">
+    <xs:annotation>
+      <xs:documentation>
+        ActuateJointType is derived from DataThingType.
+        An instance of ActuateJointType has the following elements:
+          Name (inherited, optional)
+          JointNumber
+          JointPosition
+          JointDetails.
+
+        JointPosition is the target position for the joint. JointDetails
+        provides either (1) the speed and acceleration to use in getting to
+        the position or (2) the force or torque and rate of change of force
+        or torque to use in getting to the position.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="JointNumber"
+            type="xs:positiveInteger"/>
+          <xs:element name="JointPosition"
+            type="xs:decimal"/>
+          <xs:element name="JointDetails"
+            type="JointDetailsType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CloseToolChangerType">
+    <xs:annotation>
+      <xs:documentation>
+        CloseToolChangerType is derived from MiddleCommandType. 
+        An instance of CloseToolChangerType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited).
+
+        After an instance of CloseToolChangerType is executed, it is
+        understood that if the tool changer was in position to acquire an
+        end effector, the end effector will be mounted on the robot. In
+        that case, the controlled point will change.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ConfigureJointReportsType">
+    <xs:annotation>
+      <xs:documentation>
+        ConfigureJointReportsType is derived from MiddleCommandType. 
+        An instance of ConfigureJointReportsType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          ResetAll
+          ConfigureJointReport (multiple).
+
+        ConfigureJointReportsType is used to specify how the status of the
+        robot joints should be reported. The ConfigureJointReports command
+        may be used more than once during a session to change joint status
+        reporting.
+
+        If ResetAll is set to true, an instance of
+        ConfigureJointReportsType resets the joint reporting of all
+        joints, and, in that case, if there is no ConfigureJointReport
+        element for a joint in the instance, the status of that joint
+        should not be reported. Thus, an instance of
+        ConfigureJointReportsType with ResetAll set to true and no
+        ConfigureJointReport elements turns off all joint reporting.
+
+        If ResetAll is set to false, status reporting is changed for only
+        those joints given in a ConfigureJointReport element. Status
+        reporting for other joints remains the same.
+
+        No joint may appear in more than one ConfigureJointReport element.
+        Joint numbers in ConfigureJointReport elements must be given in
+        increasing order.
+
+        See the in-line documentation of CRCLStatus.xsd for further
+        information.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="ResetAll"
+            type="xs:boolean"/>
+          <xs:element name="ConfigureJointReport"
+            type="ConfigureJointReportType"
+            minOccurs="0"
+            maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ConfigureJointReportType">
+    <xs:annotation>
+      <xs:documentation>
+        ConfigureJointReportType is derived from DataThingType. 
+        An instance of ConfigureJointReportType has the following elements:
+          Name (inherited, optional)
+          JointNumber
+          ReportPosition
+          ReportTorqueOrForce
+          ReportVelocity
+
+        ConfigureJointReportType is used to specify whether and how status
+        reporting should be done for the joint identified by its joint
+        number. For each ReportXXX element, true means XXX data should be
+        reported and false means XXX data should not be reported.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="JointNumber"
+            type="xs:positiveInteger"/>
+          <xs:element name="ReportPosition"
+            type="xs:boolean"/>
+          <xs:element name="ReportTorqueOrForce"
+            type="xs:boolean"/>
+          <xs:element name="ReportVelocity"
+            type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CRCLCommandType"
+    abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+        The abstract CRCLCommandType is derived from DataThingType.
+        An instance of CRCLCommandType has the following elements:
+          Name (inherited, optional)
+          CommandID.
+
+        CRCLCommandType is an abstract type from which all other
+        CRCL commands are derived.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="CommandID"
+            type="xs:positiveInteger"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="DwellType">
+    <xs:annotation>
+      <xs:documentation>
+        DwellType is derived from MiddleCommandType.
+        An instance of DwellType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          DwellTime.
+
+        The DwellTime is an amount of time, in seconds, that the robot
+        should wait before executing the next command.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="DwellTime"
+            type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="EndCanonType">
+    <xs:annotation>
+      <xs:documentation>
+        EndCanonType is derived from CRCLCommandType.
+        An instance of EndCanonType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited).
+
+        An instance of EndCanonType is used to indicate that the robot
+        should not execute any further CRCL commands other than an
+        instance of InitCanonType until an InitCanonType command is
+        received. Other robot-specific actions may be taken in
+        preparation for shutting down.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="CRCLCommandType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="GetStatusType">
+    <xs:annotation>
+      <xs:documentation>
+        GetStatusType is derived from MiddleCommandType.
+        An instance of GetStatusType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited).
+
+        An instance of GetStatusType is used to indicate that the robot
+        should report status immediately. The joint status portion of
+        the status report must be as set by the most recent
+        ConfigureJointReports command.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="InitCanonType">
+    <xs:annotation>
+      <xs:documentation>
+        InitCanonType is derived from CRCLCommandType.
+        An instance of InitCanonType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited).
+
+        An instance of InitCanonType is used to indicate that the robot
+        should be prepared to execute further canonical robot commands.
+        When a robot is ready to execute commands, the first CRCL command
+        it should be sent is an instance of InitCanonType. Any CRCL
+        commands received before an instance of InitCanonType must not be
+        executed. Other robot-specific actions may be taken in preparation
+        for executing CRCL commands.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="CRCLCommandType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="JointDetailsType"
+    abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+        The abstract JointDetailsType is derived from DataThingType.
+        An instance of JointDetailsType has the following elements:
+          Name (inherited, optional)
+          .
+
+        JointDetailsType is an abstract type used as the parent type of:
+          JointSpeedAccelType
+          JointForceTorqueType
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="JointForceTorqueType">
+    <xs:annotation>
+      <xs:documentation>
+        JointForceTorqueType is derived from JointDetailsType.
+        An instance of JointForceTorqueType has the following elements:
+          Name (inherited, optional)
+          Setting (optional)
+          ChangeRate (optional).
+
+        JointForceTorqueType specifies the force or torque and the rate of
+        change of force or torque for a joint. For a translational joint,
+        Setting is in current force units, and ChangeRate is in current
+        force units per second. For a rotational joint, Setting is in
+        current torque units, and ChangeRate is in current torque units per
+        second.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="JointDetailsType">
+        <xs:sequence>
+          <xs:element name="Setting"
+            type="xs:decimal"
+            minOccurs="0"/>
+          <xs:element name="ChangeRate"
+            type="xs:decimal"
+            minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="JointSpeedAccelType">
+    <xs:annotation>
+      <xs:documentation>
+        JointSpeedAccelType is derived from JointDetailsType.
+        An instance of JointSpeedAccelType has the following elements:
+          Name (inherited, optional)
+          JointSpeed (optional)
+          JointAccel (optional).
+
+        JointSpeedAccelType specifies the speed and acceleration for a
+        joint. For a rotational joint, the speed units are the current
+        angle units per second, and the acceleration units are the current
+        angle units per second per second. For a translational joint, the
+        speed units are the current length units per second, and the
+        acceleration units are the current length units per second per
+        second.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="JointDetailsType">
+        <xs:sequence>
+          <xs:element name="JointSpeed"
+            type="xs:decimal"
+            minOccurs="0"/>
+          <xs:element name="JointAccel"
+            type="xs:decimal"
+            minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MessageType">
+    <xs:annotation>
+      <xs:documentation>
+        MessageType is derived from MiddleCommandType.
+        An instance of MessageType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          Message.
+
+        Message is a string that should be displayed by the robot
+        controller.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="Message"
+            type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MiddleCommandType"
+    abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+        The abstract MiddleCommandType is derived from CRCLCommandType.
+        MiddleCommandType has  the following elements:
+          Name (inherited, optional)
+          CommandID (inherited).
+
+        MiddleCommandType is the abstract parent type of specific CRCL
+        command types. Only derived types of MiddleCommandType may be
+        instantiated.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="CRCLCommandType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MoveScrewType">
+    <xs:annotation>
+      <xs:documentation>
+        MoveScrewType is derived from MiddleCommandType.
+        An instance of MoveScrewType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          StartPosition (optional)
+          AxisPoint (optional)
+          AxialDistanceFree (optional)
+          AxialDistanceScrew
+          Turn.
+
+        This command is designed for attaching screws, nuts, and bolts.
+        It might also be used for drilling.
+
+        The command is executed as follows.
+
+        First, if the StartPosition exists, the controlled point and axis
+        are moved to the StartPosition along any convenient trajectory.
+
+        Second, if the AxialDistanceFree exists and is not zero, the
+        controlled point is moved along the axis by the given
+        AxialDistanceFree.
+
+        Third and finally, a screwing motion is made. If there is no
+        AxisPoint (or if an AxisPoint is given that is at the controlled
+        point), the gripper rotates around its axis through the angle given
+        by Turn at a constant rate while simultaneously translating along
+        the axis at a constant rate (the currently set speed) through the
+        AxialDistanceScrew so that the rotation and translation finish at
+        the same time. If there is an AxisPoint and it differs from the
+        location of the controlled point, the controlled point
+        simultaneously (1) rotates as above, (2) revolves around an axis
+        through the AxisPoint parallel to the controlled axis, and (3)
+        translates as above. That makes a helical motion of the controlled
+        point. The motion along the helix is done at the currently set
+        speed.
+
+        A positive value of AxialDistanceFree or AxialDistanceScrew means
+        to move away from the end effector. A negative value means to move
+        toward the end effector.
+
+        A positive value of Turn means to rotate (and possibly revolve) in
+        a counterclockwise sense as viewed from the positive Z axis of the
+        gripper (the region extending away from the gripper).
+
+        The robot must reach the EndPosition within the tolerance
+        established (1) by the tolerance given for the pose in the
+        EndPosition, if there is a tolerance in the EndPosition, or if not
+        (2) by the most recently executed instance of
+        SetEndPoseToleranceType. The speed and acceleration to use are set
+        either in the EndPosition or by previously executed CRCL commands.
+
+        In an instance file, the type of StartPosition may be either
+        PoseType or PoseAndSetType, which is derived from PoseType.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="StartPosition"
+            type="PoseType"
+            minOccurs="0"/>
+          <xs:element name="AxisPoint"
+            type="PointType"
+            minOccurs="0"/>
+          <xs:element name="AxialDistanceFree"
+            type="xs:decimal"
+            minOccurs="0"/>
+          <xs:element name="AxialDistanceScrew"
+            type="xs:decimal"/>
+          <xs:element name="Turn"
+            type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MoveThroughToType">
+    <xs:annotation>
+      <xs:documentation>
+        MoveThroughToType is derived from MiddleCommandType. 
+        An instance of MoveThroughToType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          MoveStraight
+          Waypoint (multiple)
+          NumPositions.
+
+        Each Waypoint before the last is a Pose that the robot should move
+        through. The last Waypoint is the Pose the robot should be in after
+        the command is fully executed. NumPositions is the number of
+        instances of the Waypoint element. The robot must pass each point
+        within the tolerance established (1) by the tolerance given for the
+        pose in the Waypoint, if there is a tolerance in the Waypoint, or
+        if not (2) by the most recently executed instance of
+        SetIntermediatePoseToleranceType (or by SetEndPoseToleranceType for
+        the final Waypoint). The speed and acceleration to use are set
+        either in the Waypoint or by previously executed CRCL commands.
+
+        If the value of MoveStraight is true, the controlled point must be
+        moved in a straight line between Waypoints. If the value of
+        MoveStraight is false, the controlled point may be moved along any
+        convenient trajectory between Waypoints. In either case, there are
+        no restrictions on the values of XAxis and ZAxis between waypoints.
+
+        The type of each Waypoint may be either PoseType or
+        PoseAndSetType, which is derived from PoseType.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="MoveStraight"
+            type="xs:boolean"/>
+          <xs:element name="Waypoint"
+            type="PoseType"
+            minOccurs="2"
+            maxOccurs="unbounded"/>
+          <xs:element name="NumPositions"
+            type="xs:positiveInteger"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="MoveToType">
+    <xs:annotation>
+      <xs:documentation>
+        MoveToType is derived from MiddleCommandType.
+        An instance of MoveToType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          MoveStraight
+          EndPosition.
+
+        EndPosition is a Pose to which the robot will move. If the value of
+        MoveStraight is true, the controlled point must be moved in a
+        straight line. If the value of MoveStraight is false, the
+        controlled point may be moved along any convenient trajectory.
+
+        The robot must reach the EndPosition within the tolerance
+        established (1) by the tolerance given for the pose in the
+        EndPosition, if there is a tolerance in the EndPosition, or if not
+        (2) by the most recently executed instance of
+        SetEndPoseToleranceType. The speed and acceleration to use are set
+        either in the EndPosition or by previously executed CRCL commands.
+
+        The type of EndPosition may be either PoseType or
+        PoseAndSetType, which is derived from PoseType.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="MoveStraight"
+            type="xs:boolean"/>
+          <xs:element name="EndPosition"
+            type="PoseType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="OpenToolChangerType">
+    <xs:annotation>
+      <xs:documentation>
+        OpenToolChangerType is derived from MiddleCommandType. 
+        An instance of OpenToolChangerType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited).
+
+        After an instance of OpenToolChangerType is executed, it is
+        understood that if a gripper was mounted on the robot, the
+        gripper is no longer mounted on the robot. In that case,
+        the controlled point will change.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ParameterSettingType">
+    <xs:annotation>
+      <xs:documentation>
+        ParameterSettingType is derived from DataThingType. 
+        An instance of ParameterSettingType has the following elements:
+          Name (inherited, optional)
+          ParameterName
+          ParameterValue.
+
+        ParameterSettingType is used to set values of parameters. The
+        ParameterName and ParameterValue are both strings. The
+        ParameterValue string may represent a data type known to the
+        receiving system.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="ParameterName"
+            type="xs:token"/>
+          <xs:element name="ParameterValue"
+            type="xs:token"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PoseAndSetType">
+    <xs:annotation>
+      <xs:documentation>
+        PoseAndSetType is derived from PoseType. 
+        An instance of PoseAndSetType has the following elements:
+          Name (inherited, optional)
+          Point (inherited)
+          XAxis (inherited)
+          ZAxis  (inherited)
+          Coordinated
+          TransSpeed (optional)
+          RotSpeed (optional)
+          TransAccel (optional)
+          RotAccel (optional)
+          Tolerance (optional).
+
+        PoseAndSetType is used for waypoints of move commands. The
+        TransSpeed and TransAccel elements are the target translational
+        speed and acceleration for the controlled point as it moves to the
+        given pose. The RotSpeed and RotAccel elements are the target
+        rotational speed and acceleration for the single axis rotation
+        required to move from the initial pose to the target pose. The
+        Tolerance is the tolerance for the given pose. The TransSpeed,
+        TransAccel, RotSpeed, RotAccel, and Tolerance temporarily override
+        any set values. The set values apply again once the given pose is
+        reached. If the Coordinated element is set to true, translation and
+        rotation should finish simultaneously. If Coordinated is false,
+        either translation or rotation may finish first.
+        
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="PoseType">
+        <xs:sequence>
+          <xs:element name="Coordinated"
+            type="xs:boolean"/>
+          <xs:element name="TransSpeed"
+            type="TransSpeedType"
+            minOccurs="0"/>
+          <xs:element name="RotSpeed"
+            type="RotSpeedType"
+            minOccurs="0"/>
+          <xs:element name="TransAccel"
+            type="TransAccelType"
+            minOccurs="0"/>
+          <xs:element name="RotAccel"
+            type="RotAccelType"
+            minOccurs="0"/>
+          <xs:element name="Tolerance"
+            type="PoseToleranceType"
+            minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PoseToleranceType">
+    <xs:annotation>
+      <xs:documentation>
+        PoseToleranceType is derived from DataThingType. 
+        An instance of PoseToleranceType has the following elements:
+          Name (inherited, optional)
+          XPointTolerance (optional)
+          YPointTolerance (optional)
+          ZPointTolerance (optional)
+          XAxisTolerance (optional)
+          ZAxisTolerance (optional).
+
+        The XPointTolerance is the distance along the XAxis in current
+        length units within which the controlled point must come from the X
+        value of the point given in the pose with which the pose tolerance
+        is associated. The YPointTolerance and ZPointTolerance are similar.
+        The XAxisTolerance is the angle in current angle units within which
+        the XAxis must come from the given XAxis. The ZAxisTolerance is
+        similar. All five tolerances must be satisfied at the same instant.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="XPointTolerance"
+            type="xs:decimal"
+            minOccurs="0"/>
+          <xs:element name="YPointTolerance"
+            type="xs:decimal"
+            minOccurs="0"/>
+          <xs:element name="ZPointTolerance"
+            type="xs:decimal"
+            minOccurs="0"/>
+          <xs:element name="XAxisTolerance"
+            type="xs:decimal"
+            minOccurs="0"/>
+          <xs:element name="ZAxisTolerance"
+            type="xs:decimal"
+            minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RotAccelAbsoluteType">
+    <xs:annotation>
+      <xs:documentation>
+        RotAccelAbsoluteType is derived from RotAccelType.
+        An instance of RotAccelAbsoluteType has the following elements:
+          Name (inherited, optional)
+          Setting.
+
+        Setting is a real number that represents the target single axis
+        rotational acceleration for the robot, in current angle units per
+        second per second.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="RotAccelType">
+        <xs:sequence>
+          <xs:element name="Setting"
+            type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RotAccelRelativeType">
+    <xs:annotation>
+      <xs:documentation>
+        RotAccelRelativeType is derived from RotAccelType.
+        An instance of RotAccelRelativeType has the following elements:
+          Name (inherited, optional)
+          Fraction.
+
+        Fraction is a real number that represents the fraction of the
+        robot's maximum rotational acceleration that it should use.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="RotAccelType">
+        <xs:sequence>
+          <xs:element name="Fraction"
+            type="FractionType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RotAccelType"
+    abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+        The abstract RotAccelType is derived from DataThingType.
+        An instance of RotAccelType has the following
+        elements:
+          Name (inherited, optional)
+          .
+
+        RotAccelType is an abstract type used as the parent type of:
+          RotAccelAbsoluteType
+          RotAccelRelativeType.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RotSpeedAbsoluteType">
+    <xs:annotation>
+      <xs:documentation>
+        RotSpeedAbsoluteType is derived from RotSpeedType.
+        An instance of RotSpeedAbsoluteType has the following
+        elements:
+          Name (inherited, optional)
+          Setting.
+
+        Setting is a real number that represents the target single axis
+        rotational speed for the robot, in current angle units per second.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="RotSpeedType">
+        <xs:sequence>
+          <xs:element name="Setting"
+            type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RotSpeedRelativeType">
+    <xs:annotation>
+      <xs:documentation>
+        RotSpeedRelativeType is derived from RotSpeedType.
+        An instance of RotSpeedRelativeType has the following elements:
+          Name (inherited, optional)
+          Fraction.
+
+        Fraction is a real number that represents the fraction of the
+        robot's maximum rotational speed that it should use.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="RotSpeedType">
+        <xs:sequence>
+          <xs:element name="Fraction"
+            type="FractionType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RotSpeedType"
+    abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+        The abstract RotSpeedType is derived from DataThingType.
+        An instance of RotSpeedType has the following
+        elements:
+          Name (inherited, optional)
+          .
+
+        RotSpeedType is an abstract type used as the parent type of: 
+          RotSpeedAbsoluteType
+          RotSpeedRelativeType.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="RunProgramType">
+    <xs:annotation>
+      <xs:documentation>
+        RunProgramType is derived from MiddleCommandType.
+        An instance of RunProgramType has the following
+        elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          ProgramText.
+
+        The RunProgramType is used to instruct the low level controller to
+        run a program written in a non-CRCL language that controller
+        understands. The ProgramText element gives the text of the program.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="ProgramText"
+            type="xs:string"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetAngleUnitsType">
+    <xs:annotation>
+      <xs:documentation>
+        SetAngleUnits is derived from MiddleCommandType.
+        An instance of SetAngleUnits has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          UnitName.
+
+        UnitName is a string that can be only the literals 'radian' or
+        'degree'. This tells the robot that all further commands
+        giving angle values will implicitly use the named unit.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="UnitName"
+            type="AngleUnitEnumType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetEndEffectorParametersType">
+    <xs:annotation>
+      <xs:documentation>
+        SetEndEffectorParametersType is derived from MiddleCommandType.
+        An instance of SetEndEffectorParametersType has the following
+        elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          ParameterSetting (multiple).
+
+        SetEndEffectorParametersType is for setting parameters of end
+        effectors that have parameters. The meaning of the parameter
+        settings is not part of CRCL. It is expected that this command will
+        be used only to send parameter values that can be used by the end
+        effector currently in use.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="ParameterSetting"
+            type="ParameterSettingType"
+            maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetEndEffectorType">
+    <xs:annotation>
+      <xs:documentation>
+        SetEndEffectorType is derived from MiddleCommandType.
+        An instance of SetEndEffectorType has the following
+        elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          Setting.
+
+        SetEndEffectorType is for setting the effectivity of end effectors.
+        If an end effector has multiple control modes, the control mode
+        must be set using a SetEndEffectorParameters command, so that the
+        meaning of SetEndEffector commands is unambiguous.
+
+        For end effectors that have a continuously variable setting, the
+        Setting means a fraction of maximum openness, force, torque, power,
+        etc.
+
+        For end effectors that have only two choices (powered or unpowered,
+        open or closed, on or off), a positive Setting value means powered,
+        open, or on, while a zero Setting value means unpowered, closed, or
+        off.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="Setting"
+            type="FractionType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetEndPoseToleranceType">
+    <xs:annotation>
+      <xs:documentation>
+        SetEndPoseToleranceType is derived from MiddleCommandType.
+        An instance of SetEndPoseToleranceType has the following
+        elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          Tolerance.
+
+        The Tolerance element indicates to the robot the precision with
+        which it must reach its end location.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="Tolerance"
+            type="PoseToleranceType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetForceUnitsType">
+    <xs:annotation>
+      <xs:documentation>
+        SetForceUnitsType is derived from MiddleCommandType.
+        An instance of SetForceUnitsType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          UnitName.
+
+        UnitName is a string that can be only the literals 'newton',
+        'pound', or 'ounce'. This tells the robot that all further commands
+        giving force values will implicitly use the named unit.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="UnitName"
+            type="ForceUnitEnumType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetIntermediatePoseToleranceType">
+    <xs:annotation>
+      <xs:documentation>
+        SetIntermediatePoseToleranceType is derived from MiddleCommandType.
+        An instance of SetIntermediatePoseToleranceType has the following
+        elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          Tolerance.
+
+        The Tolerance element indicates to the robot the precision with
+        which it must reach each intermediate waypoint.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="Tolerance"
+            type="PoseToleranceType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetLengthUnitsType">
+    <xs:annotation>
+      <xs:documentation>
+        SetLengthUnitsType is derived from MiddleCommandType.
+        An instance of SetLengthUnitsType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          UnitName.
+
+        UnitName is a string that can be only the literals 'meter',
+        'millimeter', or 'inch'. This tells the robot that all further
+        commands giving position or length values will implicitly use the
+        named unit. 
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="UnitName"
+            type="LengthUnitEnumType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetMotionCoordinationType">
+    <xs:annotation>
+      <xs:documentation>
+        SetMotionCoordinationType is derived from MiddleCommandType.
+        An instance of SetMotionCoordinationType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          Coordinated.
+
+        Coordinated is a boolean. If the value is true, rotational and
+        translational motion must finish simultaneously in motion commands
+        (including each segment in a multiple segment motion command),
+        except as possibly temporarily overridden in the the motion
+        command. If the value is false, there is no such requirement.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="Coordinated"
+            type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetRobotParametersType">
+    <xs:annotation>
+      <xs:documentation>
+        SetRobotParametersType is derived from MiddleCommandType.
+        An instance of SetRobotParametersType has the following
+        elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          ParameterSetting (multiple).
+
+        SetRobotParametersType is for setting robot parameters that
+        cannot be set by any other CRCL command. The meaning of the
+        parameter settings is not part of CRCL.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="ParameterSetting"
+            type="ParameterSettingType"
+            maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetRotAccelType">
+    <xs:annotation>
+      <xs:documentation>
+        SetRotAccelType is derived from MiddleCommandType.
+        An instance of SetRotAccelType has the following
+        elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          RotAccel.
+
+        RotAccel specifies the rotational acceleration that should
+        be used.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="RotAccel"
+            type="RotAccelType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetRotSpeedType">
+    <xs:annotation>
+      <xs:documentation>
+        SetRotSpeedType is derived from MiddleCommandType.
+        An instance of SetRotSpeedType has the following
+        elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          RotSpeed.
+
+        RotSpeed specifies the rotational speed that should be used.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="RotSpeed"
+            type="RotSpeedType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetTorqueUnitsType">
+    <xs:annotation>
+      <xs:documentation>
+        SetTorqueUnitsType is derived from MiddleCommandType.
+        An instance of SetTorqueUnitsType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          UnitName.
+
+        UnitName is a string that can be only the literals 'newtonMeter'
+        or 'footPound'. This tells the robot that all further commands
+        giving torque values will implicitly use the named unit.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="UnitName"
+            type="TorqueUnitEnumType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetTransAccelType">
+    <xs:annotation>
+      <xs:documentation>
+        The SetTransAccelType is derived from MiddleCommandType.
+        An instance of SetTransAccelType has the following
+        elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          TransAccel.
+
+        TransAccel specifies the translational acceleration that should
+        be used.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="TransAccel"
+            type="TransAccelType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="SetTransSpeedType">
+    <xs:annotation>
+      <xs:documentation>
+        SetTransSpeedType is derived from MiddleCommandType.
+        An instance of SetTransSpeedType has the following
+        elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          TransSpeed.
+
+        TransSpeed specifies the translational speed that should be used.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="TransSpeed"
+            type="TransSpeedType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="StopConditionEnumType">
+    <xs:annotation>
+      <xs:documentation>
+        The StopConditionEnumType enumerates types of commanded stops. Any
+        physical devices or built-in control methods of the robot
+        controller for stopping the robot are in addition to these
+        commanded stop types.
+  
+        Immediate means the robot's drives are deactivated immediately and
+        the brakes are applied. This may result in the controlled point
+        being off the commanded path when the robot stops.
+
+        Fast means the robot and any external axes are brought to a fast,
+        controlled stop. The drives are deactivated after one second, and
+        the brakes are applied. The controlled point must be kept on the
+        on the commanded path as the robot stops.
+
+        Normal means the robot and any external drives are stopped using
+        a normal braking ramp. The drives are not deactivated, and the
+        brakes are not applied. The controlled point must be kept on the
+        on the commanded path as the robot stops.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:token">
+      <xs:enumeration value="Immediate"/>
+      <xs:enumeration value="Fast"/>
+      <xs:enumeration value="Normal"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="StopMotionType">
+    <xs:annotation>
+      <xs:documentation>
+        StopMotionType is derived from MiddleCommandType.
+        An instance of StopMotionType has the following elements:
+          Name (inherited, optional)
+          CommandID (inherited)
+          StopCondition.
+
+        StopCondition is an enumerated value indicating how the stop
+        should occur.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="MiddleCommandType">
+        <xs:sequence>
+          <xs:element name="StopCondition"
+            type="StopConditionEnumType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="TransAccelAbsoluteType">
+    <xs:annotation>
+      <xs:documentation>
+        TransAccelAbsoluteType is derived from TransAccelType.
+        An instance of TransAccelAbsoluteType has the following
+        elements:
+          Name (inherited, optional)
+          Setting.
+
+        Setting is a real number that represents the target
+        translational acceleration for the controlled point, in
+        current length units per second per second.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="TransAccelType">
+        <xs:sequence>
+          <xs:element name="Setting"
+            type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="TransAccelRelativeType">
+    <xs:annotation>
+      <xs:documentation>
+        TransAccelRelativeType is derived from TransAccelType.
+        An instance of TransAccelRelativeType has the following
+        elements:
+          Name (inherited, optional)
+          Fraction.
+        
+        Fraction is a real number that represents the fraction of the
+        robot's maximum translational acceleration that it should use.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="TransAccelType">
+        <xs:sequence>
+          <xs:element name="Fraction"
+            type="FractionType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="TransAccelType"
+    abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+        The abstract TransAccelType is derived from DataThingType.
+        An instance of TransAccelType has the following elements:
+          Name (inherited, optional)
+          .
+
+        TransAccelType is an abstract type used as the parent type of: 
+          TransAccelAbsoluteType
+          TransAccelRelativeType.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="TransSpeedAbsoluteType">
+    <xs:annotation>
+      <xs:documentation>
+        TransSpeedAbsoluteType is derived from TransSpeedType.
+        An instance of TransSpeedAbsoluteType has the following
+        elements:
+          Name (inherited, optional)
+          Setting.
+
+        Setting is a real number that represents the target speed for the
+        controlled point, in current length units per second.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="TransSpeedType">
+        <xs:sequence>
+          <xs:element name="Setting"
+            type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="TransSpeedRelativeType">
+    <xs:annotation>
+      <xs:documentation>
+        TransSpeedRelativeType is derived from TransSpeedType.
+        An instance of TransSpeedRelativeType has the following elements:
+          Name (inherited, optional)
+          Fraction.
+
+        Fraction is a real number that represents the fraction of the
+        robot's maximum translational speed that it should use.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="TransSpeedType">
+        <xs:sequence>
+          <xs:element name="Fraction"
+            type="FractionType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="TransSpeedType"
+    abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+        The abstract TransSpeedType is derived from DataThingType.
+        An instance of TransSpeedType has the following
+        elements:
+          Name (inherited, optional)
+          .
+
+        TransSpeedType is an abstract type used as the parent type of: 
+          TransSpeedAbsoluteType
+          TransSpeedRelativeType.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType"/>
+    </xs:complexContent>
+  </xs:complexType>
+
+</xs:schema>

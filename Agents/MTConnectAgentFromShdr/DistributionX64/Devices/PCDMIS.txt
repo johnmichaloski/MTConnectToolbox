@@ -1,0 +1,74 @@
+		<Device id="####pcdmis1" uuid="1037E1D8-4FF2-4FEC-840E-739DC0BC07E9" name="NNNNNN">
+			<Description>PCDMIS 2010</Description>
+			<DataItems>
+				<DataItem id="####avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="####a1" name="base">		
+					<Components>	
+						<Rotary id="####d1" name="SPINDLE">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="####cs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+								<DataItem type="SPINDLE_SPEED" id="####cso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+							</DataItems>
+						</Rotary>
+						<Linear id="####x1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="####xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="####y1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="####yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="####z1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="####zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+					</Components>
+				</Axes>
+				<Controller id="####cont" name="controller">
+	
+					<Components>
+						<Path id="####path1" name="path">
+							<DataItems>
+								<DataItem type="PATH_FEEDRATE" id="####pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+								<DataItem type="PROGRAM" id="####pgm" category="EVENT" name="program"/>
+								<DataItem type="PART_COUNT" id="####pc" category="EVENT" name="PartCountAct" />
+								<DataItem type="PART_COUNT" id="####pcb" category="EVENT" name="PartCountBad" />
+								<DataItem type="PATH_FEEDRATE" id="####Fact" category="SAMPLE" name="path_feedratefrt" units="MILLIMETER/SECOND" nativeUnits="FOOT/MINUTE" subType="ACTUAL" coordinateSystem="WORK"/>
+								<DataItem type="TOOL_ID" id="####tid" category="EVENT" name="probe"/>
+								<DataItem type="EXECUTION" id="####exec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="####mode" category="EVENT" name="controllermode"/>
+								<DataItem type="EMERGENCY_STOP" id="####estop" category="EVENT" name="estop"/>
+
+								<DataItem type="PART_COUNT"    category="EVENT"  id="####probecnt1" name="probed"/>
+								<DataItem type="PATH_POSITION" category="SAMPLE" subType="PROBE" id="####sp1" name="SetPoint"    units="MILLIMETER" />
+								<DataItem type="PATH_POSITION" category="SAMPLE" subType="PROBE" id="####ap1" name="ActualPoint" units="MILLIMETER" />
+								<DataItem type="DISPLACEMENT"  category="SAMPLE" id="####tol1"      name="Tolerance" units="MILLIMETER" />
+								<DataItem type="DISPLACEMENT"  category="SAMPLE" id="####plustol1"  name="PlusTolerance" units="MILLIMETER"/>
+								<DataItem type="DISPLACEMENT"  category="SAMPLE" id="####mintol1"   name="MinusTolerance" units="MILLIMETER"/>
+								<DataItem type="DISPLACEMENT"  category="SAMPLE" id="####mindev1"   name="MinDeviation" units="MILLIMETER"/>
+								<DataItem type="DISPLACEMENT"  category="SAMPLE" id="####maxdev1"   name="MaxDeviation" units="MILLIMETER"/>
+								<DataItem type="DISPLACEMENT"  category="SAMPLE" id="####dev1"      name="Deviation" units="MILLIMETER"/>
+								<DataItem type="PART_COUNT"    category="EVENT"  id="####outtol1"   name="Outtol"/>
+								<DataItem type="TOOL_ID"       category="EVENT"  id="####pid1"      name="ProbeNumber"/>
+								<DataItem type="PART_ID"       category="EVENT"  id="####chartype1" name="CharacteristicType"/>
+								<DataItem type="PART_ID"       category="EVENT"  id="####featuretype1" name="FeatureType"/>
+							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="####systems" name="systems">
+					<Components>
+ 						<Electric name="electric" id="####elec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="####pwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2019-04-15T15:20:11" sender="local" version="1.1"/>
+<Devices>
+			 <Device id="Mazak_Integrexid" uuid="Mazak_Integrexxxx" name="Mazak_Integrex">
+			<Description>MTConnect Siemens 840D Device Using Mazak Shdr as Backend</Description>
+			<DataItems>
+				<DataItem id="Mazak_Integrexavail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="Mazak_Integrexa1" name="base">
+					<Components>
+						<Rotary id="Mazak_Integrexd1" name="SPINDLE">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="Mazak_Integrexcs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+								<DataItem type="SPINDLE_SPEED" id="Mazak_Integrexcso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+								<DataItem category="SAMPLE" id="Mazak_Integrexcl3" name="Sload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
+							</DataItems>
+						</Rotary>
+						<Linear id="Mazak_Integrexx1" name="X">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="Mazak_Integrexxp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="Mazak_Integrexy1" name="Y">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="Mazak_Integrexyp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+						<Linear id="Mazak_Integrexz1" name="Z">
+							<DataItems>
+								<DataItem type="POSITION" subType="ACTUAL" id="Mazak_Integrexzp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
+							</DataItems>
+						</Linear>
+					</Components>
+				</Axes>
+				<Controller id="Mazak_Integrexcont" name="controller">
+					<Components>
+						<Path id="Mazak_Integrexpath1" name="path">
+							<DataItems>
+								<DataItem type="PART_COUNT" id="Mazak_Integrexpc1" category="EVENT" name="PartCountAct" />
+								<DataItem type="PATH_FEEDRATE" id="Mazak_Integrexpf1" category="SAMPLE" name="path_feedratefrt" units="MILLIMETER/SECOND" subType="ACTUAL" coordinateSystem="WORK"/>
+								<DataItem type="TOOL_ID" id="Mazak_Integrextid1" category="EVENT" name="Tool_number"/>
+								<DataItem type="PROGRAM" id="Mazak_Integrexpgm" category="EVENT" name="program"/>
+								<DataItem type="EXECUTION" id="Mazak_Integrexexec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="Mazak_Integrexmode" category="EVENT" name="controllermode"/>
+								<DataItem type="PATH_FEEDRATE" id="Mazak_Integrexpfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+        							<DataItem category="EVENT"  id="Mazak_Integrexfault"  name="fault" type="CODE"></DataItem>
+        							<DataItem category="EVENT"  id="Mazak_Integrexheartbeat"  name="heartbeat" type="CODE"></DataItem>
+								<DataItem type="SYSTEM" category="CONDITION" id="Mazak_Integrexalarm_cond" name="alarm" />
+ 							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="Mazak_Integrexsystems" name="systems">
+					<Components>
+						<Electric name="electric" id="Mazak_Integrexelec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="Mazak_Integrexpwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+</Devices>
+</MTConnectDevices>

@@ -58,6 +58,11 @@ public:
 	// jlmichaloski added
 	static std::map<std::string, std::string> keymapping; 
 	static std::map<std::string, std::string> enummapping; 
+	static std::map<std::string , std::map<std::string, std::string> > constantdevmapping; 
+	static std::map<std::string , std::map<std::string, std::string> > latestdevvalues; 
+	static std::map<std::string , std::map<std::string, std::string> > mergevalues; 
+
+
 	static std::vector<std::string> rpmEntries;
 	static std::map<std::string, std::vector<std::string>> keymultimapping; 
 	static int nLogUpdates;
@@ -101,6 +106,10 @@ public:
   /* For the additional devices associated with this adapter */
   void addDevice(std::string &aDevice);
   void CheckAlias(Device *device, std::string &key, std::string &value);
+  void CheckConstants(Device *device, std::string shdrtime, std::string &key, std::string &value);
+  void DoConstants(std::string shdrtime);
+  void DoMerges(std::string shdrtime);
+  void SaveKeyValue(Device *device, std::string &key, std::string &value);
 protected:
   /* Pointer to the agent */
   Agent *mAgent;

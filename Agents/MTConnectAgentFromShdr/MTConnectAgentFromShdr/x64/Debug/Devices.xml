@@ -1,67 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
-<Header bufferSize="130000" instanceId="1" creationTime="2018-09-04T13:04:48" sender="local" version="1.1"/>
+<Header bufferSize="130000" instanceId="1" creationTime="2019-08-27T14:37:45" sender="local" version="1.1"/>
 <Devices>
-			<Device id="M22id" uuid="M22xxx" name="M22">
-			<Description>MTConnect Siemens 840D Device Using Mazak Shdr as Backend</Description>
-			<DataItems>
-				<DataItem id="M22avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
-			</DataItems>
-			<Components>
-				<Axes id="M22a1" name="base">		
-					<Components>	
-						<Rotary id="M22d1" name="SPINDLE">
-							<DataItems>
-								<DataItem type="SPINDLE_SPEED" id="M22cs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
-								<DataItem type="SPINDLE_SPEED" id="M22cso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
-								<DataItem category="SAMPLE" id="M22cl3" name="Sload" nativeUnits="PERCENT" type="LOAD" units="PERCENT"/>
-							</DataItems>
-						</Rotary>
-						<Linear id="M22x1" name="X">
-							<DataItems>
-								<DataItem type="POSITION" subType="ACTUAL" id="M22xp1" category="SAMPLE" name="Xabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
-							</DataItems>
-						</Linear>
-						<Linear id="M22y1" name="Y">
-							<DataItems>
-								<DataItem type="POSITION" subType="ACTUAL" id="M22yp1" category="SAMPLE" name="Yabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
-							</DataItems>
-						</Linear>
-						<Linear id="M22z1" name="Z">
-							<DataItems>
-								<DataItem type="POSITION" subType="ACTUAL" id="M22zp1" category="SAMPLE" name="Zabs" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE"/>
-							</DataItems>
-						</Linear>
-					</Components>
-				</Axes>
-				<Controller id="M22cont" name="controller">
-					<Components>
-						<Path id="M22path1" name="path">
-							<DataItems>
-								<DataItem type="PART_COUNT" id="M22pc1" category="EVENT" name="PartCountAct" />
-								<DataItem type="PATH_FEEDRATE" id="M22pf1" category="SAMPLE" name="path_feedratefrt" units="MILLIMETER/SECOND" subType="ACTUAL" coordinateSystem="WORK"/>
-								<DataItem type="TOOL_ID" id="M22tid1" category="EVENT" name="Tool_number"/>
-								<DataItem type="PROGRAM" id="M22pgm" category="EVENT" name="program"/>
-								<DataItem type="EXECUTION" id="M22exec" category="EVENT" name="execution"/>
-								<DataItem type="CONTROLLER_MODE" id="M22mode" category="EVENT" name="controllermode"/>
-								<DataItem type="PATH_FEEDRATE" id="M22pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
-        							<DataItem category="EVENT"  id="M22fault"  name="fault" type="CODE"></DataItem>
-        							<DataItem category="EVENT"  id="M22heartbeat"  name="heartbeat" type="CODE"></DataItem>
-								<DataItem type="SYSTEM" category="CONDITION" id="M22alarm_cond" name="alarm" />
- 							</DataItems>
-						</Path>
-					</Components>
-				</Controller>
-				<Systems id="M22systems" name="systems">
-					<Components>
-						<Electric name="electric" id="M22elec">
-							<DataItems>
-								<DataItem type="POWER_STATE" category="EVENT" id="M22pwr" name="power" />
-							</DataItems>
-						</Electric>
-					</Components>
-				</Systems>
-			</Components>
-		</Device>
+   <Device uuid="{F3BB985F-CA5F-4362-A8E7-B362BD129172}" name="M22" sampleInterval="100.0" id="M22OKUMA.Lathe.182748">
+      <Description manufacturer="OKUMA" serialNumber="182748">Okuma MTConnect Adapter - Lathe</Description>
+      <DataItems>
+        <DataItem category="EVENT" id="Lavail" name="avail" type="AVAILABILITY" />
+      </DataItems>
+      <Components>
+        <Axes name="Axes" id="M22Laxes1">
+          <Components>
+            <!-- Main Spindle-->
+            <Rotary name="C1" nativeName="S1" id="M22Lc1">
+              <DataItems>
+                <DataItem type="ROTARY_VELOCITY" category="SAMPLE" name="Srpm" subType="ACTUAL" units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE" id="M22Sspeed1" />
+                <DataItem type="ROTARY_VELOCITY" category="SAMPLE" name="S1cmd" subType="COMMANDED" units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE" id="M22LS1cmd" />
+                <DataItem type="LOAD" category="SAMPLE" name="S1load" units="PERCENT" nativeUnits="PERCENT" id="M22LS1load" />
+		<DataItem type="SPINDLE_SPEED" id="M22cso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+                <DataItem category="EVENT" id="M22LS1Mode" name="S1Mode" type="ROTARY_MODE">
+                  <Constraints>
+                    <Value>SPINDLE</Value>
+                  </Constraints>
+                </DataItem>
+              </DataItems>
+            </Rotary>
+            <!-- Second Spindle - no spindle load-->
+            <!-- Main Spindle function as C/CA-axis-->
+            <Rotary name="C5" nativeName="CA" id="M22Lc5">
+              <DataItems>
+                <DataItem type="ANGLE" subType="ACTUAL" category="SAMPLE" name="C5actm" units="DEGREE" nativeUnits="DEGREE" coordinateSystem="MACHINE" id="M22LC5actm" />
+                <DataItem type="LOAD" category="SAMPLE" name="C5load" units="PERCENT" nativeUnits="PERCENT" id="M22LC5load" />
+                <DataItem category="EVENT" id="M22LC5Mode" name="C5Mode" type="ROTARY_MODE">
+                  <Constraints>
+                    <Value>INDEX</Value>
+                  </Constraints>
+                </DataItem>
+              </DataItems>
+            </Rotary>
+            <!-- Main Spindle function as CB-axis-->
+            <!-- B Axis -->
+            <!-- Standard Linear X axis respect to A turret-->
+            <Linear name="X1" nativeName="XA" id="M22Lx1">
+              <DataItems>
+                <DataItem type="POSITION" subType="ACTUAL" category="SAMPLE" name="X1actm" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE" id="M22LX1actm" />
+                <DataItem type="LOAD" category="SAMPLE" name="X1load" units="PERCENT" nativeUnits="PERCENT" id="M22LX1load" />
+              </DataItems>
+            </Linear>
+            <!-- Standard Linear X axis respect to B turret-->
+            <!-- Standard Linear Z axis respect to A turret-->
+            <Linear name="Z1" nativeName="ZA" id="Lz1">
+              <DataItems>
+                <DataItem type="POSITION" subType="ACTUAL" category="SAMPLE" name="Z1actm" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE" id="M22LZ1actm" />
+                <DataItem type="LOAD" category="SAMPLE" name="Z1load" units="PERCENT" nativeUnits="PERCENT" id="M22LZ1load" />
+              </DataItems>
+            </Linear>
+            <!-- Standard Linear Z axis respect to B turret-->
+            <Linear name="Z2" nativeName="ZB" id="M22Lz2">
+              <DataItems>
+                <DataItem type="POSITION" subType="ACTUAL" category="SAMPLE" name="Z2actm" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE" id="M22LZ2actm" />
+                <DataItem type="LOAD" category="SAMPLE" name="Z2load" units="PERCENT" nativeUnits="PERCENT" id="M22LZ2load" />
+              </DataItems>
+            </Linear>
+            <!-- Optional Linear W axis respect to A Turret-->
+            <Linear name="Z4" nativeName="WA" id="M22Lz4">
+              <DataItems>
+                <DataItem type="POSITION" subType="ACTUAL" category="SAMPLE" name="Z4actm" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE" id="M22LZ4actm" />
+                <DataItem type="LOAD" category="SAMPLE" name="Z4load" units="PERCENT" nativeUnits="PERCENT" id="M22LZ4load" />
+              </DataItems>
+            </Linear>
+            <!-- Optional Linear W axis respect to B Turret-->
+            <Linear name="Z5" nativeName="WB" id="M22Lz5">
+              <DataItems>
+                <DataItem type="POSITION" subType="ACTUAL" category="SAMPLE" name="Z5actm" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE" id="M22LZ5actm" />
+              </DataItems>
+            </Linear>
+          </Components>
+        </Axes>
+        <Controller name="Controller" id="Lct1">
+          <DataItems>
+            <DataItem type="EMERGENCY_STOP" name="estop" category="EVENT" id="M22estop" />
+            <DataItem type="SYSTEM" category="CONDITION" id="M22system" name="system" />
+            <DataItem type="CONTROLLER_MODE" name="controllermode" category="EVENT" id="M22mode" />
+            <DataItem freq="10" type="PROGRAM" name="program" category="EVENT" id="M22program" />
+            <DataItem type="EXECUTION" name="execution" category="EVENT" id="M22execution" />
+            <DataItem type="PATH_FEEDRATE" subType="OVERRIDE" name="path_feedrateovr" category="SAMPLE" units="PERCENT" nativeUnits="PERCENT" id="M22Fovr" />
+          </DataItems>
+          <Components>
+            <!-- Path 1 related to upper A turret-->
+            <Path id="M22Lp1" name="path">
+              <DataItems>
+                <DataItem type="PATH_FEEDRATE" subType="ACTUAL" name="path_feedratefrt" category="SAMPLE" id="M22Lp1Fact" units="MILLIMETER/SECOND" nativeUnits="MILLIMETER/MINUTE" />
+                <DataItem type="BLOCK" name="p1block" category="EVENT" id="M22Lp1block" />
+                <DataItem type="LINE" name="p1line" category="EVENT" id="M22Lp1line" />
+                <DataItem type="PATH_FEEDRATE" subType="COMMANDED" name="p1Fcmd" category="SAMPLE" id="M22Lp1Fcmd" units="MILLIMETER/SECOND" nativeUnits="MILLIMETER/MINUTE" />
+                <DataItem type="PATH_POSITION" name="p1LPathPos" category="SAMPLE" units="MILLIMETER_3D" nativeUnits="MILLIMETER_3D" coordinateSystem="WORK" id="M22PathPos1" />
+              </DataItems>
+            </Path>
+            <!-- Path 2 related to lower B turret-->
+            <Path id="M22Lp2" name="path2">
+              <DataItems>
+                <DataItem type="PATH_FEEDRATE" subType="ACTUAL" name="p2Fact" category="SAMPLE" id="M22Lp2Fact" units="MILLIMETER/SECOND" nativeUnits="MILLIMETER/MINUTE" />
+                <DataItem type="BLOCK" name="p2block" category="EVENT" id="M22Lp2block" />
+                <DataItem type="LINE" name="p2line" category="EVENT" id="M22Lp2line" />
+                <DataItem type="PATH_FEEDRATE" subType="COMMANDED" name="p2Fcmd" category="SAMPLE" id="M22Lp2Fcmd" units="MILLIMETER/SECOND" nativeUnits="MILLIMETER/MINUTE" />
+                <DataItem type="PATH_POSITION" name="p2LPathPos" category="SAMPLE" units="MILLIMETER_3D" nativeUnits="MILLIMETER_3D" coordinateSystem="WORK" id="M22PathPos2" />
+              </DataItems>
+            </Path>
+          </Components>
+        </Controller>
+      </Components>
+    </Device>
 </Devices>
 </MTConnectDevices>

@@ -1,0 +1,150 @@
+
+Built  macro in Visual Studio  2010 to incrementa build integer. 
+
+
+VersionNo.h
+#define FILEVER          1, 3, 0, 60
+#define PRODUCTVER       1, 3, 0, 60
+#define STRFILEVER       "1.3.0.60\0"
+#define STRPRODUCTVER    "1.3.0.60\0"
+==========================================================
+Version_info.h
+
+#define VERSION_MAJOR 1
+#define VERSION_MINOR 3
+#define VERSION_REVISION 0
+#define VERSION_BUILD 151
+#ifdef _UNICODE
+#define _T(x)      L ## x
+#else
+#define _T(x)      x
+#endif 
+#define STRINGIZE2(s) _T(#s)
+#define STRINGIZE(s) STRINGIZE2(s)
+#define PRODUCTNAME     "MTConnect Agent\0"
+#define PRODUCTVER      VERSION_MAJOR, VERSION_MINOR, VERSION_REVISION, VERSION_BUILD
+#define FILEVER         PRODUCTVER
+#define STRPRODUCTVER        STRINGIZE(VERSION_MAJOR)            \
+                      _T(".") STRINGIZE(VERSION_MINOR)    \
+                       _T(".") STRINGIZE(VERSION_REVISION) \
+                        _T(".") STRINGIZE(VERSION_BUILD)    
+#define STRFILEVER      STRPRODUCTVER
+==========================================================
+#include "version_info.h" is include in MTConnectAgentFromShdr.rc:
+// Microsoft Visual C++ generated resource script.
+//
+#include "version_info.h"  // Generated above
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION FILEVER
+ PRODUCTVERSION PRODUCTVER
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "NIST Adaptation of MTConnect Institute Open Source Agent"
+            VALUE "FileDescription", "Agent Resource File with Version Information"
+            VALUE "FileVersion", STRFILEVER
+            VALUE "InternalName", "Agent.exe\0"
+            VALUE "\0"
+            VALUE "MTConnectAgent", "agent.exe\0"
+            VALUE "ProductName", PRODUCTNAME
+            VALUE "ProductVersion", STRPRODUCTVER
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+This is a standalone solution, 
+SVN solution can be found here: https://stackoverflow.com/questions/638053/how-to-increment-visual-studio-build-number-using-c#638100
+
+$(ProjectDir)
+==========================================================
+@echo off
+for /f %%a in (buildid.txt) do (
+  echo %%a
+  set /a num=%%a
+)
+echo %num%
+set /a num += 1
+echo %num% > buildid.txt
+echo int buildid = %num%; > buildid.c
+
+
+
+To use:
+in: Configuration->Build Event-> Pre-build Event
+add: $(ProjectDir)\Buildupdate.vbs $(ProjectDir)\Version_info.h
+
+BuildUpdate.vbs:
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+dim objFS, objArgs, strFile, objFile, line, buildno, filestring
+
+Set objFS = CreateObject("Scripting.FileSystemObject")
+
+if WScript.Arguments.Count > 0 then
+               Set objArgs = WScript.Arguments
+               strFile= objArgs(0)
+else
+               strFile = "C:\Users\michalos\Documents\GitHub\Agent\MTConnectAgentFromShdr\MTConnectAgentFromShdr\version_info.h"
+end if
+
+Set objFile = objFS.OpenTextFile(strFile)
+
+do while not objFile.AtEndOfStream 
+    line =  objFile.ReadLine()
+
+   if instr(1, line, "define VERSION_BUILD") then
+       line = Trim(Mid(line, Len("#define VERSION_BUILD") + 1))
+       MsgBox "match " & line
+       buildno = CInt(line) +1 
+       line = "#define VERSION_BUILD " & CStr(buildno)
+    end if 
+
+      filestring = filestring & line & vbCRLF
+loop
+
+objFile.Close
+
+'' Output file with updated version number
+
+set objFile = objFS.CreateTextFile(strFile, 2)
+objFile.Write filestring 
+objFile.Close
+

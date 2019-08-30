@@ -1,0 +1,9 @@
+-I"D:\Program Files\NIST\src\boost_1_54_0"
+-I.
+-I"D:\michalos\My Work\MTConnect\CrclMTConnectAgent\MTConnectAgent\agent"
+-I"D:\michalos\My Work\MTConnect\CrclMTConnectAgent\MTConnectAgent\lib"
+-I"D:\michalos\My Work\MTConnect\CrclMTConnectAgent\MTConnectAgent\win32\libxml2-2.7.7\include"
+-I"D:\michalos\My Work\MTConnect\CrclMTConnectAgent\MTConnectAgent"
+-I"D:\michalos\My Work\MTConnect\CrclMTConnectAgent\NIST"
+-I"D:\michalos\My Work\MTConnect\CrclMTConnectAgent\crcl"
+-I"D:\Program Files\CodeSynthesis XSD 4.0\include"

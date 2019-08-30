@@ -31,10 +31,11 @@ CDeviceXml::~CDeviceXml(void)
 static std::string ReadConfigFile(std::string name)
 {
 	std::string contents;
+	// FIXME: make all cap all small or capitalized - should not matter with windows...
 	std::string filename(File.ExeDirectory() + "Devices\\" + name + ".txt");
 	if(!File.Exists(filename))
 	{
-		throw StdStringFormat("Type %s device type does not exist\n");
+		throw StdStringFormat("Type %s device type does not exist\n",name.c_str());
 	}
 	ReadFile(filename,contents);
 	return contents;

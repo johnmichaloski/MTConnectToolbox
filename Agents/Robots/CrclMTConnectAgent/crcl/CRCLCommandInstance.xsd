@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+  version="2014Jul2">
+  <xs:include schemaLocation="CRCLCommands.xsd"/>
+
+  <xs:annotation>
+    <xs:documentation>
+      This ontology models a single command written in the canonical robot
+      command language (CRCL).
+    </xs:documentation>
+    <xs:documentation>owlPrefix=crc</xs:documentation>
+  </xs:annotation>
+
+  <xs:element name="CRCLCommandInstance"
+    type="CRCLCommandInstanceType">
+    <xs:annotation>
+      <xs:documentation>
+        The global CRCLCommandInstance element may be used as the root
+        element of a CRCL instance file containing a single CRCL
+        command.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:complexType name="CRCLCommandInstanceType">
+    <xs:annotation>
+      <xs:documentation>
+        CRCLCommandInstanceType is derived from DataThingType.
+        An instance of CRCLCommandInstanceType has the following elements:
+          Name (inherited, optional)
+          CRCLCommand.
+
+        CRCLCommandInstanceType contains a single CRCL command.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="CRCLCommand"
+            type="CRCLCommandType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+</xs:schema>

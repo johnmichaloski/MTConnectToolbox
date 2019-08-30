@@ -1,0 +1,108 @@
+   <Device uuid="{F3BB985F-CA5F-4362-A8E7-B362BD129172}" name="NNNNNN" sampleInterval="100.0" id="####OKUMA.Lathe.182748">
+      <Description manufacturer="OKUMA" serialNumber="182748">Okuma MTConnect Adapter - Lathe</Description>
+      <DataItems>
+        <DataItem category="EVENT" id="Lavail" name="avail" type="AVAILABILITY" />
+      </DataItems>
+      <Components>
+        <Axes name="Axes" id="####Laxes1">
+          <Components>
+            <!-- Main Spindle-->
+            <Rotary name="C1" nativeName="S1" id="####Lc1">
+              <DataItems>
+                <DataItem type="ROTARY_VELOCITY" category="SAMPLE" name="Srpm" subType="ACTUAL" units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE" id="####Sspeed1" />
+                <DataItem type="ROTARY_VELOCITY" category="SAMPLE" name="S1cmd" subType="COMMANDED" units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE" id="####LS1cmd" />
+                <DataItem type="LOAD" category="SAMPLE" name="S1load" units="PERCENT" nativeUnits="PERCENT" id="####LS1load" />
+		<DataItem type="SPINDLE_SPEED" id="####cso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+                <DataItem category="EVENT" id="####LS1Mode" name="S1Mode" type="ROTARY_MODE">
+                  <Constraints>
+                    <Value>SPINDLE</Value>
+                  </Constraints>
+                </DataItem>
+              </DataItems>
+            </Rotary>
+            <!-- Second Spindle - no spindle load-->
+            <!-- Main Spindle function as C/CA-axis-->
+            <Rotary name="C5" nativeName="CA" id="####Lc5">
+              <DataItems>
+                <DataItem type="ANGLE" subType="ACTUAL" category="SAMPLE" name="C5actm" units="DEGREE" nativeUnits="DEGREE" coordinateSystem="MACHINE" id="####LC5actm" />
+                <DataItem type="LOAD" category="SAMPLE" name="C5load" units="PERCENT" nativeUnits="PERCENT" id="####LC5load" />
+                <DataItem category="EVENT" id="####LC5Mode" name="C5Mode" type="ROTARY_MODE">
+                  <Constraints>
+                    <Value>INDEX</Value>
+                  </Constraints>
+                </DataItem>
+              </DataItems>
+            </Rotary>
+            <!-- Main Spindle function as CB-axis-->
+            <!-- B Axis -->
+            <!-- Standard Linear X axis respect to A turret-->
+            <Linear name="X1" nativeName="XA" id="####Lx1">
+              <DataItems>
+                <DataItem type="POSITION" subType="ACTUAL" category="SAMPLE" name="X1actm" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE" id="####LX1actm" />
+                <DataItem type="LOAD" category="SAMPLE" name="X1load" units="PERCENT" nativeUnits="PERCENT" id="####LX1load" />
+              </DataItems>
+            </Linear>
+            <!-- Standard Linear X axis respect to B turret-->
+            <!-- Standard Linear Z axis respect to A turret-->
+            <Linear name="Z1" nativeName="ZA" id="Lz1">
+              <DataItems>
+                <DataItem type="POSITION" subType="ACTUAL" category="SAMPLE" name="Z1actm" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE" id="####LZ1actm" />
+                <DataItem type="LOAD" category="SAMPLE" name="Z1load" units="PERCENT" nativeUnits="PERCENT" id="####LZ1load" />
+              </DataItems>
+            </Linear>
+            <!-- Standard Linear Z axis respect to B turret-->
+            <Linear name="Z2" nativeName="ZB" id="####Lz2">
+              <DataItems>
+                <DataItem type="POSITION" subType="ACTUAL" category="SAMPLE" name="Z2actm" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE" id="####LZ2actm" />
+                <DataItem type="LOAD" category="SAMPLE" name="Z2load" units="PERCENT" nativeUnits="PERCENT" id="####LZ2load" />
+              </DataItems>
+            </Linear>
+            <!-- Optional Linear W axis respect to A Turret-->
+            <Linear name="Z4" nativeName="WA" id="####Lz4">
+              <DataItems>
+                <DataItem type="POSITION" subType="ACTUAL" category="SAMPLE" name="Z4actm" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE" id="####LZ4actm" />
+                <DataItem type="LOAD" category="SAMPLE" name="Z4load" units="PERCENT" nativeUnits="PERCENT" id="####LZ4load" />
+              </DataItems>
+            </Linear>
+            <!-- Optional Linear W axis respect to B Turret-->
+            <Linear name="Z5" nativeName="WB" id="####Lz5">
+              <DataItems>
+                <DataItem type="POSITION" subType="ACTUAL" category="SAMPLE" name="Z5actm" units="MILLIMETER" nativeUnits="MILLIMETER" coordinateSystem="MACHINE" id="####LZ5actm" />
+              </DataItems>
+            </Linear>
+          </Components>
+        </Axes>
+        <Controller name="Controller" id="Lct1">
+          <DataItems>
+            <DataItem type="EMERGENCY_STOP" name="estop" category="EVENT" id="####estop" />
+            <DataItem type="SYSTEM" category="CONDITION" id="####system" name="system" />
+            <DataItem type="CONTROLLER_MODE" name="controllermode" category="EVENT" id="####mode" />
+            <DataItem freq="10" type="PROGRAM" name="program" category="EVENT" id="####program" />
+            <DataItem type="EXECUTION" name="execution" category="EVENT" id="####execution" />
+            <DataItem type="PATH_FEEDRATE" subType="OVERRIDE" name="path_feedrateovr" category="SAMPLE" units="PERCENT" nativeUnits="PERCENT" id="####Fovr" />
+          </DataItems>
+          <Components>
+            <!-- Path 1 related to upper A turret-->
+            <Path id="####Lp1" name="path">
+              <DataItems>
+                <DataItem type="PATH_FEEDRATE" subType="ACTUAL" name="path_feedratefrt" category="SAMPLE" id="####Lp1Fact" units="MILLIMETER/SECOND" nativeUnits="MILLIMETER/MINUTE" />
+                <DataItem type="BLOCK" name="p1block" category="EVENT" id="####Lp1block" />
+                <DataItem type="LINE" name="p1line" category="EVENT" id="####Lp1line" />
+                <DataItem type="PATH_FEEDRATE" subType="COMMANDED" name="p1Fcmd" category="SAMPLE" id="####Lp1Fcmd" units="MILLIMETER/SECOND" nativeUnits="MILLIMETER/MINUTE" />
+                <DataItem type="PATH_POSITION" name="p1LPathPos" category="SAMPLE" units="MILLIMETER_3D" nativeUnits="MILLIMETER_3D" coordinateSystem="WORK" id="####PathPos1" />
+              </DataItems>
+            </Path>
+            <!-- Path 2 related to lower B turret-->
+            <Path id="####Lp2" name="path2">
+              <DataItems>
+                <DataItem type="PATH_FEEDRATE" subType="ACTUAL" name="p2Fact" category="SAMPLE" id="####Lp2Fact" units="MILLIMETER/SECOND" nativeUnits="MILLIMETER/MINUTE" />
+                <DataItem type="BLOCK" name="p2block" category="EVENT" id="####Lp2block" />
+                <DataItem type="LINE" name="p2line" category="EVENT" id="####Lp2line" />
+                <DataItem type="PATH_FEEDRATE" subType="COMMANDED" name="p2Fcmd" category="SAMPLE" id="####Lp2Fcmd" units="MILLIMETER/SECOND" nativeUnits="MILLIMETER/MINUTE" />
+                <DataItem type="PATH_POSITION" name="p2LPathPos" category="SAMPLE" units="MILLIMETER_3D" nativeUnits="MILLIMETER_3D" coordinateSystem="WORK" id="####PathPos2" />
+              </DataItems>
+            </Path>
+          </Components>
+        </Controller>
+      </Components>
+    </Device>

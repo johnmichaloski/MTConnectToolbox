@@ -57,6 +57,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_3E86FD21E8464F1783604EE23985B6FA"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_422EFA69A5C1474F83FE43560D154DE5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_4DCC3F62F1684389ABBE9DF959273427"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -76,6 +88,12 @@
         "Entry"
         {
         "MsmKey" = "8:_7775DEC9D043402C9AEDB1FD2A2AE817"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7A70A3642C5540009420C2B768448AA5"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -112,6 +130,12 @@
         "Entry"
         {
         "MsmKey" = "8:_BD9CD25900434453963A07384A21510F"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_C4FB91434F2D443D9DBD06BC841458EB"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -292,7 +316,7 @@
                 {
                 "Name" = "8:.NET Framework"
                 "Message" = "8:[VSDNETMSG]"
-                "FrameworkVersion" = "8:3.5.21022                          "
+                "FrameworkVersion" = "8:3.5.21022                              "
                 "AllowLaterVersions" = "11:FALSE"
                 "InstallUrl" = "8:http://go.microsoft.com/fwlink/?LinkId=76617"
                 }
@@ -440,6 +464,46 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_3E86FD21E8464F1783604EE23985B6FA"
+            {
+            "SourcePath" = "8:..\\DistributionX64\\Devices\\PCDMIS.txt"
+            "TargetName" = "8:PCDMIS.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_B2F9D62393CD4CF2AD15FB0EDE5239C9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_422EFA69A5C1474F83FE43560D154DE5"
+            {
+            "SourcePath" = "8:..\\DistributionX64\\Devices\\Okuma.ini"
+            "TargetName" = "8:Okuma.ini"
+            "Tag" = "8:"
+            "Folder" = "8:_B2F9D62393CD4CF2AD15FB0EDE5239C9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_4DCC3F62F1684389ABBE9DF959273427"
             {
             "SourcePath" = "8:..\\DistributionX64\\Devices\\Mazak.ini"
@@ -484,6 +548,26 @@
             {
             "SourcePath" = "8:..\\DistributionX64\\Devices\\Fanuc.txt"
             "TargetName" = "8:Fanuc.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_B2F9D62393CD4CF2AD15FB0EDE5239C9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7A70A3642C5540009420C2B768448AA5"
+            {
+            "SourcePath" = "8:..\\DistributionX64\\Devices\\PCDMIS.ini"
+            "TargetName" = "8:PCDMIS.ini"
             "Tag" = "8:"
             "Folder" = "8:_B2F9D62393CD4CF2AD15FB0EDE5239C9"
             "Condition" = "8:"
@@ -604,6 +688,26 @@
             {
             "SourcePath" = "8:..\\DistributionX64\\Devices\\TechSolve.txt"
             "TargetName" = "8:TechSolve.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_B2F9D62393CD4CF2AD15FB0EDE5239C9"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C4FB91434F2D443D9DBD06BC841458EB"
+            {
+            "SourcePath" = "8:..\\DistributionX64\\Devices\\Okuma.txt"
+            "TargetName" = "8:Okuma.txt"
             "Tag" = "8:"
             "Folder" = "8:_B2F9D62393CD4CF2AD15FB0EDE5239C9"
             "Condition" = "8:"
@@ -841,15 +945,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:MTCAgentShdrTagRemapper"
-        "ProductCode" = "8:{09D17AD5-B5A8-420C-B026-44DAF88BAC88}"
-        "PackageCode" = "8:{C9B9795D-D063-45DC-8BF0-262F16D7AC4E}"
-        "UpgradeCode" = "8:{5E11603C-B174-492C-9389-9217E2F6CC2F}"
+        "ProductCode" = "8:{8A312F6A-A608-4B09-9F57-996BE6E626DB}"
+        "PackageCode" = "8:{B5C9C6C2-0025-43F2-9882-52AA7C0BD6EC}"
+        "UpgradeCode" = "8:{2DBFBE81-3A06-42A8-99FC-98FE7331D998}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:1.1.0"
+        "ProductVersion" = "8:1.2.0"
         "Manufacturer" = "8:MTConnect"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1425,7 +1529,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:Types: Mazak,Fanuc,TechSolve,MakinoT4"
+                            "Value" = "8:Types: Mazak,Fanuc,TechSolve,MakinoT4,PCDMIS,Okuma"
                             "DefaultValue" = "8:#1247"
                             "UsePlugInResources" = "11:TRUE"
                             }

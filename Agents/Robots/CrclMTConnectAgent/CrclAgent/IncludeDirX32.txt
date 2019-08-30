@@ -1,0 +1,9 @@
+-I"C:\Program Files\NIST\src\boost_1_54_0"
+-I.
+-I"C:\Users\michalos\Documents\GitHub\Robots\CrclMTConnectAgent\MTConnectAgent\agent"
+-I"C:\Users\michalos\Documents\GitHub\Robots\CrclMTConnectAgent\MTConnectAgent\lib"
+-I"C:\Users\michalos\Documents\GitHub\Robots\CrclMTConnectAgent\MTConnectAgent\win32\libxml2-2.7.7\include"
+-I"C:\Users\michalos\Documents\GitHub\Robots\CrclMTConnectAgent\MTConnectAgent"
+-I"C:\Users\michalos\Documents\GitHub\Robots\CrclMTConnectAgent"
+-I"C:\Users\michalos\Documents\GitHub\Robots\CrclMTConnectAgent\crcl"
+-I"C:\Program Files (x86)\CodeSynthesis XSD 4.0\include"

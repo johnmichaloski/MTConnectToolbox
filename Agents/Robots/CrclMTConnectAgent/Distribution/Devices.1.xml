@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MTConnectDevices xmlns="urn:mtconnect.org:MTConnectDevices:1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:mtconnect.org:MTConnectDevices:1.1 http://www.mtconnect.org/schemas/MTConnectDevices_1.1.xsd">
+<Header bufferSize="130000" instanceId="1" creationTime="2013-11-01T01:25:37" sender="local" version="1.1"/>
+<Devices>
+			 <Device id="M1id" uuid="M1xxx" name="M1">
+			<Description>Crcl</Description>
+			<DataItems>
+				<DataItem id="M1avail" name="avail"  type="AVAILABILITY" category="EVENT"/>
+			</DataItems>
+			<Components>
+				<Axes id="M1a1" name="base">
+					<Components>					
+						<Rotary id="M1d1" name="D">
+							<DataItems>
+								<DataItem type="SPINDLE_SPEED" id="M1cs1" category="SAMPLE" name="Srpm"  units="REVOLUTION/MINUTE" nativeUnits="REVOLUTION/MINUTE"/>
+								<DataItem type="SPINDLE_SPEED" id="M1cso1" category="SAMPLE" name="Sovr" subType="OVERRIDE" units="PERCENT" nativeUnits="PERCENT"/>
+							</DataItems>
+						</Rotary>
+					</Components>
+				</Axes>
+
+				<Controller id="M1cont" name="controller">
+					<Components>
+						<Path id="M1path1" name="path">
+							<DataItems>
+								<DataItem type="CODE" id="M1alarm" category="EVENT" name="alarm"/>
+								<DataItem type="PROGRAM" id="M1pgm" category="EVENT" name="program"/>
+								<DataItem type="EXECUTION" id="M1exec" category="EVENT" name="execution"/>
+								<DataItem type="CONTROLLER_MODE" id="M1mode" category="EVENT" name="controllermode"/>
+								<DataItem type="PATH_FEEDRATE" id="M1pfo1" category="SAMPLE" name="path_feedrateovr" units="PERCENT" nativeUnits="PERCENT" subType="OVERRIDE" />
+        							<DataItem category="EVENT"  id="M1alarm"  name="alarm" type="CODE"></DataItem>
+        							<DataItem category="EVENT"  id="M1operator"  name="operator" type="CODE"></DataItem>
+ 							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+				<Systems id="M1systems" name="systems">
+					<Components>
+						<Electric name="electric" id="M1elec">
+							<DataItems>
+								<DataItem type="POWER_STATE" category="EVENT" id="M1pwr" name="power" />
+							</DataItems>
+						</Electric>
+					</Components>
+				</Systems>
+			</Components>
+		</Device>
+
+</Devices>
+</MTConnectDevices>

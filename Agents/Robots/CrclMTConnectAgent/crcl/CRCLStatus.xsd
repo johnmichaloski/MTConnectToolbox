@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+  version="2014Jul2">
+  <xs:include schemaLocation="DataPrimitives.xsd"/>
+
+  <xs:element name="CRCLStatus"
+    type="CRCLStatusType">
+    <xs:annotation>
+      <xs:documentation>
+        Root element
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+
+  <xs:annotation>
+    <xs:documentation>
+      This ontology models a status message from a low-level robot
+      controller to a controller sending commands to the low-level
+      controller. The messages are designed to work with the canonical
+      robot command language (CRCL).
+
+      If any joint status reporting is done, it is assumed that the system
+      sending canonical commands and the system executing them both know
+      the kinematics of the robot and have the same numbering system for
+      the joints, starting with 1. The two systems also have the same
+      understanding of where the zero point is and which direction is
+      positive for each joint.
+
+      Status items for joints must be configured using a
+      ConfigureJointReports command. 
+      For each joint for which anything is to be reported,
+      ConfigureJointReports specifies:
+        - whether joint position should be reported
+        - whether joint torque or force should be reported
+        - whether joint velocity should be reported
+
+      During a CRCL session, until a ConfigureJointReports command has
+      been executed that sets the reporting status for a joint, no joint
+      status should be reported for that joint. The ConfigureJointReports
+      command may be used more than once during a session to change joint
+      status reporting.
+
+      The units used in a status report are the following, where linear
+      units are set by a SetLinearUnits command, and angular units are set
+      by a SetAngularUnits command.
+        distance - linear units
+        angle - angular units
+        linear speed - linear units per second
+        angular speed - angular units per second
+        linear acceleration - linear units per second per second
+        angular acceleration - angular units per second per second
+        force - as set by a SetForceUnits command
+        torque - as set by a SetTorqueUnits command
+
+      If reporting a joint status requires a unit, the units are as
+      set by the most recent SetXXXUnits command. If no SetXXXUnits
+      command for a given unit type has been executed since the last
+      InitCanonType command was executed, the following default units
+      apply:
+        length -- meter
+        angle  -- radian
+        force  -- newton
+        torque -- newtonMeter
+
+      In order that this file may be translateable into OWL, all
+      complexTypes in this file include the (optional) Name element,
+      inherited from DataThingType. If an instance file has instances of
+      complex data without names, it will not be translateable into OWL.
+
+      See the in-line documentation of ConfigureJointReportsType in
+      CRCL.xsd for further information.
+    </xs:documentation>
+    <xs:documentation>owlPrefix=stat</xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="CommandStateEnumType">
+    <xs:annotation>
+      <xs:documentation>
+        CommandStateEnumType enumerates the command states that may be used
+        to describe command status.
+
+        CRCL_Done means that the most recent command is done.
+
+        CRCL_Error means that the most recent command resulted in an error
+        of some sort.
+
+        CRCL_Working means that the most recent command is being executed,
+        and no error has occurred so far, but execution of the command
+        is not yet done.
+
+        CRCL_Ready means that the robot is ready to receive commands but
+        has not yet received a command.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CRCL_Done"/>
+      <xs:enumeration value="CRCL_Error"/>
+      <xs:enumeration value="CRCL_Working"/>
+      <xs:enumeration value="CRCL_Ready"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="CommandStatusType">
+    <xs:annotation>
+      <xs:documentation>
+        CommandStatusType is derived from DataThingType.
+        An instance of CommandStatusType has the following elements:
+          Name (inherited, optional)
+          CommandID
+          StatusID
+          CommandState
+          StateDescription (optional).
+
+        The CommandStatusType relates the execution status of the
+        currently executing command (or the most recently executed
+        command, if there is no current command).
+          CommandID echoes the command id from the received command to
+            which the status message applies
+          StatusID is an ID associated with this particular status
+             message.
+          StateDescription is an optional brief description of the state
+          such as "Joint 3 at -171.0 less than limit -170.0" or "Waiting for Operator".
+        The combination of StatusID and CommandID must be unique
+        within a session.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="CommandID"
+            type="xs:nonNegativeInteger"/>
+          <xs:element name="StatusID"
+            type="xs:positiveInteger"/>
+          <xs:element name="CommandState"
+            type="CommandStateEnumType"/>
+          <xs:element name="StateDescription"
+            type="xs:string"
+            minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CRCLStatusType">
+    <xs:annotation>
+      <xs:documentation>
+        CRCLStatusType is derived from DataThingType.
+        An instance of CRCLStatusType has the following elements:
+          Name (inherited, optional)
+          CommandStatus
+          JointStatuses (optional)
+          PoseStatus (optional)
+          GripperStatus (optional).
+
+        Status is returned periodically by the controller.
+
+        See notes at the beginning of this file regarding configuring
+        CRCL status messages.
+
+        GripperStatus should not be reported when there is no gripper
+        and should be reported when there is a gripper.
+
+        The coordinate system in which the Pose is reported is always
+        robot coordinates.
+
+        If CRCL status is being reported on separate channels for both
+        a robot and a gripper, the status reported on the robot
+        channel should include a Pose, while the status reported on the
+        gripper channel should not include a Pose.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="CommandStatus"
+            type="CommandStatusType"/>
+          <xs:element name="JointStatuses"
+            type="JointStatusesType"
+            minOccurs="0"/>
+          <xs:element name="PoseStatus"
+            type="PoseStatusType"
+            minOccurs="0"/>
+          <xs:element name="GripperStatus"
+            type="GripperStatusType"
+            minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="GripperStatusType"
+    abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+        The abstract GripperStatusType is derived from DataThingType.
+        An instance of GripperStatusType has the following elements:
+          Name (inherited, optional)
+          GripperName.
+ 
+        GripperStatusType is an abstract type from which more specialized
+        types of gripper status are derived.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="GripperName"
+            type="xs:NMTOKEN"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="JointStatusesType">
+    <xs:annotation>
+      <xs:documentation>
+        JointStatusesType is derived from DataThingType.
+        An instance of JointStatusesType has the following elements:
+          Name (inherited, optional)
+          JointStatus (multiple).
+ 
+        Each JointStatus element gives the status of one joint. No
+        joint may be reported more than once in an instance of
+        JointStatusesType. See notes at the beginning of this file
+        regarding configuring joint status.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="JointStatus"
+            type="JointStatusType"
+            maxOccurs="unbounded"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="JointStatusType">
+    <xs:annotation>
+      <xs:documentation>
+        JointStatusType is derived from DataThingType.
+        JointStatusType reports the status of one joint.
+        An instance of JointStatusType has the following elements:
+          Name (inherited, optional)
+          JointNumber
+          JointPosition (optional)
+          JointTorqueOrForce (optional)
+          JointVelocity (optional).
+
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="JointNumber"
+            type="xs:positiveInteger"/>
+          <xs:element name="JointPosition"
+            type="xs:decimal"
+            minOccurs="0"/>
+          <xs:element name="JointTorqueOrForce"
+            type="xs:decimal"
+            minOccurs="0"/>
+          <xs:element name="JointVelocity"
+            type="xs:decimal"
+            minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ParallelGripperStatusType">
+    <xs:annotation>
+      <xs:documentation>
+        "ParallelGripperStatusType is derived from GripperStatusType.
+        An instance of ParallelGripperStatusType has the following elements:
+          Name (inherited, optional)
+          GripperName (inherited)
+          Separation.
+ 
+        ParallelGripperStatusType gives gripper status for a parallel
+        jaw gripper. The Separation element gives the distance between
+        the jaws in length units.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="GripperStatusType">
+        <xs:sequence>
+          <xs:element name="Separation"
+            type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PoseStatusType">
+    <xs:annotation>
+      <xs:documentation>
+        PoseStatusType is derived from DataThingType.
+        An instance of PoseStatusType has the following elements:
+          Name (inherited, optional)
+          Pose
+          Twist (optional)
+          Wrench (optional).
+
+        PoseStatusType provides a Cartesian counterpart to
+        JointStatusesType, representing the generalized
+        position/orientation, velocities, and forces.
+        of a reference frame.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="Pose"
+            type="PoseType"/>
+          <xs:element name="Twist"
+            type="TwistType"
+            minOccurs="0"/>
+          <xs:element name="Wrench"
+            type="WrenchType"
+            minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="ThreeFingerGripperStatusType">
+    <xs:annotation>
+      <xs:documentation>
+        ThreeFingerGripperStatusType is derived from GripperStatusType.
+        An instance of ThreeFingerGripperStatusType has the following elements:
+          Name (inherited, optional)
+          GripperName (inherited)
+          Finger1Position (optional)
+          Finger2Position (optional)
+          Finger3Position (optional)
+          Finger1Force (optional)
+          Finger2Force (optional)
+          Finger3Force (optional).
+ 
+        ThreeFingerGripperStatusType gives gripper status for a three
+        finger gripper. The fingers are assumed to be non-articulated.
+        Finger position is 0.0 at fully closed and 1.0 at fully open and
+        linear in either angle or distance for rotating fingers or
+        sliding fingers, respectively. All elements are optional, but
+        typically all three positions will be used if any one of
+        them is used, and similarly for the three forces.
+
+        Force units are as set by the most recent SetForceUnits command.
+        The system sending CRCL commands and the system executing them
+        must agree on which fingers are Finger1, Finger2,and Finger3.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="GripperStatusType">
+        <xs:sequence>
+          <xs:element name="Finger1Position"
+            type="FractionType"
+            minOccurs="0"/>
+          <xs:element name="Finger2Position"
+            type="FractionType"
+            minOccurs="0"/>
+          <xs:element name="Finger3Position"
+            type="FractionType"
+            minOccurs="0"/>
+          <xs:element name="Finger1Force"
+            type="xs:decimal"
+            minOccurs="0"/>
+          <xs:element name="Finger2Force"
+            type="xs:decimal"
+            minOccurs="0"/>
+          <xs:element name="Finger3Force"
+            type="xs:decimal"
+            minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="VacuumGripperStatusType">
+    <xs:annotation>
+      <xs:documentation>
+        "VacuumGripperStatusType is derived from GripperStatusType.
+        An instance of VacuumGripperStatusType has the following elements:
+          Name (inherited, optional)
+          GripperName (inherited)
+          IsPowered.
+ 
+        VacuumGripperStatusType gives gripper status for a vacuum
+        gripper. The IsPowered element is true if a vacuum is being
+        applied and is false if not.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="GripperStatusType">
+        <xs:sequence>
+          <xs:element name="IsPowered"
+            type="xs:boolean"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+</xs:schema>

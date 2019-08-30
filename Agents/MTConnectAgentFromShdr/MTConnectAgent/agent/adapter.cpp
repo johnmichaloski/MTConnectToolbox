@@ -44,6 +44,11 @@ static dlib::logger sLogger("input.adapter");
 // jlmichaloski added
 std::map<std::string, std::string> Adapter::keymapping; 
 std::map<std::string, std::string> Adapter::enummapping; 
+std::map<std::string , std::map<std::string, std::string>> Adapter::constantdevmapping; 
+std::map<std::string , std::map<std::string, std::string> > Adapter::latestdevvalues; 
+std::map<std::string , std::map<std::string, std::string> > Adapter::mergevalues; 
+
+
 std::vector<std::string> Adapter::rpmEntries; 
 int  Adapter::nLogUpdates;
 int Adapter::bAllFakeSpindle;
@@ -142,49 +147,142 @@ NumberType toNumber(std::string data)
 		return result;
 	throw std::runtime_error("Bad number conversion");
 }
+void Adapter::SaveKeyValue(Device *device, std::string &key, std::string &value)
+{
 
+	std::map<std::string, std::string > & keyvalues = latestdevvalues[device->getName()];
+	// problem need type!
+	keyvalues[key]=value;
+
+}
+#include <boost/algorithm/string.hpp>
+void Adapter::DoMerges(std::string shdrtime)
+{
+	typedef std::map<std::string , std::map<std::string, std::string> > ::iterator DEVIT;
+	// for each device see if there is any merge key/value pairs
+	for(DEVIT it = mergevalues.begin(); it!=mergevalues.end(); it++)
+	{
+		std::string dev=(*it).first;
+		Device * device = mAgent->getDeviceByName(dev);
+
+		if(device==NULL)
+			continue;
+
+		std::map<std::string, std::string > keyvalues = latestdevvalues[dev];
+		std::map<std::string, std::string > merges = mergevalues[dev];
+
+		for(std::map<std::string, std::string >::iterator it= merges.begin(); it!= merges.end(); it++)
+		{
+			// (*it).first should contain the device.xml name value to store
+			std::string s((*it).second); // this is key of key/value pair
+			std::vector<std::pair<std::string::const_iterator,std::string::const_iterator> > tokens;
+			boost::split(tokens, s, boost::is_any_of(","));
+
+			// Keys should contain: key1, key2, key3 assume type is numeric or no reason. int can be doubles.
+			std::vector<std::string> keys;
+			for(auto beg=tokens.begin(); beg!=tokens.end();++beg){
+				keys.push_back(std::string(beg->first,beg->second) );
+				trim(keys.back());
+			}
+
+			size_t i=0;
+			size_t index=-1;
+			double best=-99.;
+			double d;
+			for(; i< keys.size(); i++)
+			{
+				if(keyvalues.find(keys[i]) == keyvalues.end())
+					continue;
+				try
+				{
+					if(keyvalues[keys[i]]=="UNAVAILABLE")
+						d=0;
+					else
+						d = toNumber<double>(keyvalues[keys[i]]) ;
+					if(d>best)
+					{
+						best=d;
+						index=i;
+					}
+				}
+				catch(...)
+				{
+				}
+
+			}
+			if(index<0)
+				continue;
+			DataItem *dataItem;
+			std::string mergekey = (*it).first;
+			{
+				dataItem = device->getDeviceDataItem(mergekey);    
+				dataItem->setDataSource(this);
+				if(keyvalues[keys[index]]=="UNAVAILABLE")
+					mAgent->addToBuffer(dataItem, "0", shdrtime);
+
+				else
+					mAgent->addToBuffer(dataItem, toUpperCase(keyvalues[keys[index]]), shdrtime);
+			}
+		}
+	}
+}
+void Adapter::DoConstants(std::string shdrtime)
+{
+	typedef std::map<std::string , std::map<std::string, std::string> > ::iterator DEVIT;
+	// for each device see if there is any merge key/value pairs
+	for(DEVIT it = constantdevmapping.begin(); it!=constantdevmapping.end(); it++)
+	{
+		std::string dev=(*it).first;	// name of the device
+		if(constantdevmapping[dev].size()== 0)
+			continue;
+
+		Device * device = mAgent->getDeviceByName(dev);
+		if(device==NULL)
+			continue;
+
+
+		std::map<std::string, std::string > consts = constantdevmapping[dev];
+		for(std::map<std::string, std::string >::iterator it= consts.begin(); it!= consts.end(); it++)
+		{
+			DataItem *dataItem;
+			std::string constkey = (*it).first;
+			{
+				dataItem = device->getDeviceDataItem(constkey);    
+				dataItem->setDataSource(this);
+				mAgent->addToBuffer(dataItem, toUpperCase((*it).second), shdrtime);
+				// check to see if this is the same key as the shdr key if no give it the constant value
+			}
+		}
+
+	}
+}
+
+void Adapter::CheckConstants(Device *device, std::string shdrtime, std::string &key, std::string &value)
+{
+	// Handle constants if any for this device - EVERY TIME
+	if(device && constantdevmapping[device->getName()].size() >0)
+	{
+		std::map<std::string, std::string > consts = constantdevmapping[device->getName()];
+		size_t cnt=0;
+		for(std::map<std::string, std::string >::iterator it= consts.begin(); it!= consts.end(); it++)
+		{
+			DataItem *dataItem;
+			std::string constkey = (*it).first;
+			if(constkey==key)
+			{
+				// remap key's value to the constant value 
+				value = toUpperCase((*it).second);
+				cnt++;
+			}
+		}
+	}
+}
 void Adapter::CheckAlias(Device *device, std::string &key, std::string &value)
 {
 	//if(key == "execution")
 	//{
 	//	DebugBreak();
 	//}
-
-#if 0
-	if(keymultimapping.find(key) != keymultimapping.end())
-	{
-		std::vector<std::string> multimap = keymultimapping[key];
-		for(size_t i=0; i<  multimap.size() ; i++)
-		{
-			DataItem *dataItem;
-			if (device == NULL) 
-				continue;
-			dataItem = device->getDeviceDataItem(multimap[i]);  
-			mAgent->addToBuffer(dataItem, toUpperCase(value), time);
-			// can't figure out how to get latest value
-			// get largest valueW
-		}
-	}
-#endif
-	////////////////////////////////////////////////////////////////////////////////
-	// Michaloski hack - if srpm2 is > 0 assign it to Srpm 
-	if(std::find(rpmEntries.begin(), rpmEntries.end(), key)!= rpmEntries.end())
-	{
-		try {
-			int rpm;
-			try {
-				rpm = toNumber<int>(value);
-			}
-			catch(...){ rpm=0; }
-			if(rpm>0)
-				key="Srpm";
-		}
-		catch(...)
-		{
-			// bummer conversion didn't work
-		}
-
-	}
 
 
 	//////////////////////////////
@@ -193,7 +291,6 @@ void Adapter::CheckAlias(Device *device, std::string &key, std::string &value)
 	{
 		value=enummapping[key+"."+value];
 	}
-
 	// Map  shdr key (e.g., mode) into new key (controllermode) 
 	if(keymapping.find(key)!= keymapping.end())
 	{
@@ -244,12 +341,17 @@ void Adapter::processData(const string& data)
 		device = mDevice;
 	}
 
+
+
+
 	// Debugging since life isn't always perfect
 //	LOG_THROTTLE(3, Logging::LOG_INFO, "Device=%s Time=%s Key=%s", device->getName().c_str(), shdrtime.c_str(), key.c_str())
 
 	////////////////////////////////////////////////////////////////////////////////
 	// Michaloski hack - remap tag names and enumeration values 
 	CheckAlias(device, key, value);
+	CheckConstants(device, shdrtime, key, value);
+	SaveKeyValue(device, key, value);
 
 	// Michaloski hack - fake a spindle in case there is none  
 	// This should be in a separate thread but we'll live
@@ -458,6 +560,8 @@ void Adapter::processData(const string& data)
 		////////////////////////////////////////////////////////////////////////////////
 		// Michaloski hack - if srpm2 is > 0 assign it to Srpm 
 		CheckAlias(device, key, value);
+		CheckConstants(device, shdrtime, key, value);
+		SaveKeyValue(device, key, value);
 
 		dataItem = device->getDeviceDataItem(key);    
 		if (dataItem == NULL)
@@ -480,6 +584,9 @@ void Adapter::processData(const string& data)
 			}
 		}
 	}
+	DoConstants(shdrtime);
+	DoMerges(shdrtime);
+
 }
 
 void Adapter::protocolCommand(const std::string& data)

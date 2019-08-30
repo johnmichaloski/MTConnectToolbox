@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- see http://www.oasis-open.org/committees/entity/spec.html -->
+<!DOCTYPE catalog PUBLIC "-//OASIS//DTD Entity Resolution XML Catalog V1.0//EN"
+         "http://www.oasis-open.org/committees/entity/release/1.0/catalog.dtd">
+
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">                
+
+    <!-- TODO fill real entries instead of sample one. -->
+    <system  systemId="../xmlSchemas/CRCLCommandInstance.xsd" uri="file:CRCLCommandInstance.xsd"/>
+    <system  systemId="../xmlSchemas/CRCLProgramInstance.xsd" uri="file:CRCLProgramInstance.xsd"/>
+    <system  systemId="../xmlSchemas/CRCLCommands.xsd" uri="file:CRCLCommands.xsd"/>
+    <system  systemId="../xmlSchemas/DataPrimitives.xsd" uri="file:DataPrimitives.xsd"/>
+    <system  systemId="../xmlSchemas/CRCLStatus.xsd" uri="file:CRCLStatus.xsd"/>
+    
+    <!-- For XML schemas the <uri> element is recommended 
+    to specify the resource, e.g: -->
+    <!--
+    <uri name="http://org.company/xml/schemas" uri="file:/path/schema.xsd"/>
+    -->
+        
+    <!-- If xsi:schemaLocation is specified in XML document e.g.
+    xsi:schemaLocation="http://org.company/xml/schemas http://org.company/xml/schemas/schema.xsd"
+    the <system> element can be used to specify the local resource, e.g: -->
+    <!--
+    <system systemId="http://org.company/xml/schemas/schema.xsd" uri="file:/path/schema.xsd"/>
+    -->
+</catalog>

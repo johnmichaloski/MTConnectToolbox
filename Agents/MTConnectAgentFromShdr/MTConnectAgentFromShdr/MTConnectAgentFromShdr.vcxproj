@@ -211,9 +211,12 @@
       </IgnoreSpecificDefaultLibraries>
     </Link>
     <PreBuildEvent>
+      <Command>$(ProjectDir)\Buildupdate.vbs $(ProjectDir)\Version_info.h</Command>
+    </PreBuildEvent>
+    <CustomBuildStep>
       <Command>
       </Command>
-    </PreBuildEvent>
+    </CustomBuildStep>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\MTConnectAgent\agent\adapter.cpp">

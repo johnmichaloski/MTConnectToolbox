@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema
+  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified"
+  attributeFormDefault="unqualified"
+  version="2014Jul2">
+
+  <xs:annotation>
+    <xs:documentation>
+      This ontology models primitive types useful for building
+      information models for automated manufacturing.
+    </xs:documentation>
+    <xs:documentation>
+      In order that models using this file may be translateable into
+      OWL, all complexTypes in this file include the Name element. This
+      is done by putting the Name element in the top-level data type,
+      DataThingType and having all other complexTypes be descended
+      directly or indirectly from DataThingType.
+
+      In order that models using this file are not required to assign
+      a name to each complex data instance, the Name element of
+      DataThingType is optional. If an instance file has instances of
+      complex data without names, it will not be translateable into
+      OWL.
+    </xs:documentation>
+    <xs:documentation>owlPrefix=prim</xs:documentation>
+  </xs:annotation>
+
+  <xs:simpleType name="AngleUnitEnumType">
+    <xs:annotation>
+      <xs:documentation>
+        AngleUnitEnumType enumerates angle units. This might be used,
+        for example, in a command that sets angle units.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="degree"/>
+      <xs:enumeration value="radian"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="DataThingType"
+    abstract="true">
+    <xs:annotation>
+      <xs:documentation>
+        An instance of DataThingType has the following elements:
+          Name (optional)
+          .
+
+        DataThingType is an abstract type from which more specific types
+        of data thing are derived. That includes all complex data
+        types such as Vector, PoseType, etc.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="Name"
+        type="xs:ID"
+        minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="ForceUnitEnumType">
+    <xs:annotation>
+      <xs:documentation>
+        ForceUnitEnumType enumerates force units. This might be used,
+        for example, in a command that sets force units.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="newton"/>
+      <xs:enumeration value="pound"/>
+      <xs:enumeration value="ounce"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="FractionType">
+    <xs:annotation>
+      <xs:documentation>
+        FractionType is a number between zero and 1 representing a fraction.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0.0"/>
+      <xs:maxInclusive value="1.0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="LengthUnitEnumType">
+    <xs:annotation>
+      <xs:documentation>
+        LengthUnitEnumType enumerates length units. This might be used,
+        for example, in a command that sets length units.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="meter"/>
+      <xs:enumeration value="millimeter"/>
+      <xs:enumeration value="inch"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="PointType">
+    <xs:annotation>
+      <xs:documentation>
+        PointType is derived from DataThingType.
+        An instance of PointType has the following elements:
+          Name (inherited, optional)
+          X
+          Y
+          Z.
+ 
+        X, Y, and Z are the Cartesian coordinates of the Point.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="X"
+            type="xs:decimal"/>
+          <xs:element name="Y"
+            type="xs:decimal"/>
+          <xs:element name="Z"
+            type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="PoseType">
+    <xs:annotation>
+      <xs:documentation>
+        PoseType is derived from DataThingType.
+        An instance of PoseType has the following elements:
+          Name (inherited, optional)
+          Point
+          XAxis
+          ZAxis.
+ 
+        The Point locates the origin of a coordinate system. The XAxis and
+        ZAxis give the orientation of the coordinate system. The data for
+        the Point, the ZAxis and the XAxis are expressed relative to another
+        coordinate system.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="Point"
+            type="PointType"/>
+          <xs:element name="XAxis"
+            type="VectorType"/>
+          <xs:element name="ZAxis"
+            type="VectorType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:simpleType name="PositiveDecimalType">
+    <xs:restriction base="xs:decimal">
+      <xs:minExclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="TorqueUnitEnumType">
+    <xs:annotation>
+      <xs:documentation>
+        TorqueUnitEnumType enumerates torque units. This might be used,
+        for example in a command that sets torque units.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:NMTOKEN">
+      <xs:enumeration value="newtonMeter"/>
+      <xs:enumeration value="footPound"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:complexType name="TwistType">
+    <xs:annotation>
+      <xs:documentation>
+        TwistType is derived from DataThingType.
+        An instance of TwistType has the following elements:
+          Name (inherited, optional)
+          LinearVelocity
+          AngularVelocity.
+
+        A TwistType object represents the velocity of a
+        rigid object in SE(3).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="LinearVelocity"
+            type="VectorType"/>
+          <xs:element name="AngularVelocity"
+            type="VectorType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="VectorType">
+    <xs:annotation>
+      <xs:documentation>
+        VectorType is derived from DataThingType.
+        An instance of VectorType has the following elements:
+          Name (inherited, optional)
+          I
+          J
+          K.
+ 
+        I, J, and K represent the usual i, j, and k components of a 3D
+        vector.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="I"
+            type="xs:decimal"/>
+          <xs:element name="J"
+            type="xs:decimal"/>
+          <xs:element name="K"
+            type="xs:decimal"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="WrenchType">
+    <xs:annotation>
+      <xs:documentation>
+        WrenchType is derived from DataThingType.
+        An instance of WrenchType has the following elements:
+          Name (inherited, optional)
+          Force
+          Moment.
+
+        A WrenchType object represents generalized forces and torques on a
+        rigid object in SE(3).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DataThingType">
+        <xs:sequence>
+          <xs:element name="Force"
+            type="VectorType"/>
+          <xs:element name="Moment"
+            type="VectorType"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+</xs:schema>

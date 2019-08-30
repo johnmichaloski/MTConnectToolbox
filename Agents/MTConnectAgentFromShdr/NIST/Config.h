@@ -17,6 +17,8 @@
 #include <algorithm>
 #include <typeinfo>
 #include <iomanip>
+#include <algorithm>
+
 #include <boost/algorithm/string/replace.hpp>
 // #define CASE_SENSITIVE
 
@@ -349,6 +351,23 @@ namespace Nist
 				mapping[keys[i]] = GetSymbolValue<std::string>(section + "." + keys[i]);
 			}
 			return mapping;
+		}
+
+		std::vector<std::string> GetSectionBranch (std::string section)
+		{
+			std::vector<std::string> branches;
+			std::vector<std::string> keys ;
+			for(SectionMap::iterator it=sections.begin(); it!= sections.end(); it++)
+				keys.push_back((*it).first);
+
+			for ( size_t j = 0; j < keys.size( ); j++ )
+			{
+				if(keys[j].find(section) != std::string::npos)
+				{
+					branches.push_back(keys[j]);
+				}
+			}
+			return branches;
 		}
 
 		bool CreateSection(std::string section)

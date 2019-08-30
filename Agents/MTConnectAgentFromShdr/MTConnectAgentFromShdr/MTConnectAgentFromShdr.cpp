@@ -229,6 +229,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 					// now add tag remapping and enum mapping from device.ini file
 					cfg.DeleteSection("TAGRENAMES");
 					cfg.DeleteSection("ENUMREMAPPING");
+					std::vector<std::string> order=boost::assign::list_of("GLOBALS")( "TAGRENAMES")("ENUMREMAPPING");
 					for(size_t j=0; j< _types.size(); j++)
 					{
 						Nist::Config ini;
@@ -237,9 +238,24 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 						cfg.MergeKeys("TAGRENAMES", renames);
 						std::map<std::string, std::string> enums=ini.GetMap("ENUMREMAPPING");
 						cfg.MergeKeys("ENUMREMAPPING", enums);
+
+						// this is based on the type to define a section FOR ONE DEVICE NOT ALL
+						std::map<std::string, std::string> consts=ini.GetMap("CONSTANTS");
+						if(consts.size()>0)
+						{
+							cfg.MergeKeys(StdStringFormat("%s", _devices[j].c_str())+".CONSTANTS", consts);
+							order.push_back(StdStringFormat("%s", _devices[j].c_str())+".CONSTANTS");
+						}
+
+						std::map<std::string, std::string> merges=ini.GetMap("MERGES");
+						if(consts.size()>0)
+						{
+							cfg.MergeKeys(StdStringFormat("%s", _devices[j].c_str())+".MERGES", merges);
+							order.push_back(StdStringFormat("%s", _devices[j].c_str())+".MERGES");
+						}
+
 					}
 					// Save updated configuration ini file
-					std::vector<std::string> order=boost::assign::list_of("GLOBALS")( "TAGRENAMES")("ENUMREMAPPING");
 					cfg.Save(order);			
 
 					// Reread ini file since it has been modified.
@@ -254,6 +270,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 				catch(std::string errmsg)
 				{
 					WritePrivateProfileString("GLOBALS", "Config", ("ERROR-"+errmsg).c_str(), ( File.ExeDirectory( ) + "Config.ini" ).c_str( ) );
+					// FIXME: should we abort after writing error string.
 				}
 			}
 
@@ -271,6 +288,57 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 				Adapter::enummapping.insert(std::make_pair<std::string, std::string>( (*it).first, (*it).second));
 			}
 
+			// clear all device named value remappings
+			Adapter::constantdevmapping.clear();
+
+			// get a vector of all DEVICE.CONSTANTS sections
+			std::vector<std::string> constantsections = cfg. GetSectionBranch (".CONSTANTS");
+
+			// For each device constant section
+			for(size_t j=0; j< constantsections.size(); j++)
+			{
+				// Search for the Device name that preceeds the .
+				size_t fnd =  constantsections[j].find(".");
+				
+				// If not found, this should be an error, but we just continue
+				if(fnd == std::string::npos) 
+					continue; // should not be
+
+				// Get the device name.
+				std::string devicename=constantsections[j].substr(0,fnd);
+
+				// Get the constants (tap/const value) map associated with this device
+				std::map<std::string, std::string> constassigns= cfg.GetMap(constantsections[j]);
+
+				// Assign this map to this device
+				Adapter::constantdevmapping[devicename]= constassigns;
+			}
+
+			// clear all device named value remappings
+			Adapter::mergevalues.clear();
+
+			// get a vector of all DEVICE.CONSTANTS sections
+			std::vector<std::string> mergesections = cfg. GetSectionBranch (".MERGES");
+
+			// For each device constant section
+			for(size_t j=0; j< mergesections.size(); j++)
+			{
+				// Search for the Device name that preceeds the .
+				size_t fnd =  mergesections[j].find(".");
+				
+				// If not found, this should be an error, but we just continue
+				if(fnd == std::string::npos) 
+					continue; // should not be
+
+				// Get the device name.
+				std::string devicename=mergesections[j].substr(0,fnd);
+
+				// Get the constants (tap/const value) map associated with this device
+				std::map<std::string, std::string> mergeassigns= cfg.GetMap(mergesections[j]);
+
+				// Assign this map to this device
+				Adapter::mergevalues[devicename]= mergeassigns;
+			}
 
 
 
@@ -284,6 +352,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,
 		std::string path(buf);
 		path=path.substr( 0, path.find_last_of( '\\' ) +1 );
 		SetCurrentDirectory(path.c_str());
+		ErrMessage(StdStringFormat( "MTConnect Agent= %s\n" , buf).c_str());
 #endif	
 
 		ErrMessage(StdStringFormat( "MTConnect Agent Service Started %s\n" , nowtimestamp().c_str() ).c_str());

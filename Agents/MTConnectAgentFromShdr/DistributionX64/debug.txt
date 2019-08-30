@@ -1,1 +1,2 @@
-2018-09-06 14:08:41.0607 MTConnect Agent Service Entered 2018-09-06T18:08:41.0607
+2019-07-10 16:44:41.0875 MTConnect Agent Service Entered 2019-07-10T20:44:41.0875
+2019-07-10 16:44:42.0921 MTConnect Agent Service Start 7/10/2019 4:44:42 PM

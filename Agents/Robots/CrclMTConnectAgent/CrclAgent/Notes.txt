@@ -1,0 +1,166 @@
+
+
+Boost book:
+https://theboostcpplibraries.com/boost.assign
+
+Is the  CRCL server automatically send polling status or not by default?
+Can it be set?
+What do the joint values relate to?
+Maybe try Will's client connected to motorola port. I be he has conversion hidden in there somewhere.
+
+Fri 12/08/2017_15:34:04.48  
+Is the XML Queue being drained? YES.
+std::string msg=xmlClient.LatestMsgQueue(); // This clears the queue and gives the latest entry
+
+Fri 12/08/2017_13:03:00.73  
+test on actual robot CRCL servers. Works with improvements possible.
+- execution
+- error-> alarm
+
+Fri 12/08/2017_11:00:08.92  
+ Removed:
+// FIXME: this needs to be fixed. Not used but still.
+void CrclInterface::SerializeCRCLStatus(std::string filename)
+{
+	CRCLStatusType stat(CommandStatusType(  2,1,"Working"));
+
+	//cmd->JointStatuses(::xsd::qif2::JointStatuses_type()); //
+	stat.PoseStatus(::PoseStatusType(::PoseType(::PointType(1.2,0.0, 0.2),VectorType(1.0,0.0,0.0), VectorType(1.0,0.0,0.0) ))); 
+	//cmd->GripperStatus (::xsd::qif2::GripperStatus_type());
+
+	xml_schema::namespace_infomap map;
+
+	//map[""].name = "http://www.w3.org/2001/XMLSchema";
+	//map[""].schema = "http://www.w3.org/2001/XMLSchema ../CRCLStatus.xsd";
+	std::ofstream ofs(filename, std::ofstream::app);
+	CRCLStatus (ofs, //std::cout,
+		stat,
+		map,
+		"UTF-8",
+		xml_schema::flags::dont_initialize);
+	ofs.close();
+
+}
+
+Fri 12/08/2017_09:00:08.92  
+Fix inverted RPY: its Y=ZxX not Y=XxZ
+X: 1:0:0
+Z: 0:-0.965926:-0.258819
+RPY:  105 0 0 
+MTC:  -1.8326 -0.0000 0.0000   sign wrong
+MTC:  -105.0000 -0.0000 0.0000 
+MTC:  105.0000 -0.0000 0.0000 w/ Y=ZxX not XxZ!!!
+Radians
+joint_1_actpos 0.0838 
+joint_2_actpos 0.0000 
+joint_3_actpos 0.0000 
+joint_4_actpos 1.8326 
+joint_5_actpos -0.0000 
+joint_6_actpos 0.0000 
+Degrees - correct
+joint_1_actpos 4.8000 
+joint_2_actpos 0.0000 
+joint_3_actpos 0.0000 
+joint_4_actpos 105.0000 
+joint_5_actpos -0.0000 
+joint_6_actpos 0.0000 
+
+
+Thu 12/07/2017_16:10:12.21  
+parsing CRCL status (should be easy peasy)
+unexpected enumerator encountered
+
+Thu 12/07/2017_11:11:36.93  
+
+Replace with slightly more flexible joint:
+std::string crcl_device = 
+	"			 <Device id=\"####id\" uuid=\"####xxx\" name=\"NNNNNN\">\n"
+	"			<Description>Crcl</Description>\n"
+	"			<DataItems>\n"
+	"				<DataItem id=\"####avail\" name=\"avail\"  type=\"AVAILABILITY\" category=\"EVENT\"/>\n"
+	"			</DataItems>\n"
+	"			<Components>\n"
+	"				<Axes id=\"####a1\" name=\"base\">\n"		
+	"					<Components>\n"	
+	"						<Linear id=\"####x1\" name=\"J1\">\n"
+	"							<DataItems>\n"
+	"								<DataItem type=\"POSITION\" subType=\"ACTUAL\" id=\"####xp1\" category=\"SAMPLE\" name=\"j1\" units=\"MILLIMETER\" nativeUnits=\"MILLIMETER\" coordinateSystem=\"MACHINE\"/>\n"
+	"							</DataItems>\n"
+	"						</Linear>\n"
+	"					</Components>\n"
+	"				</Axes>\n"
+	"				<Controller id=\"####cont\" name=\"controller\">\n"
+	"					<Components>\n"
+	"						<Path id=\"####path1\" name=\"path\">\n"
+	"							<DataItems>\n"
+	"								<DataItem type=\"CODE\" id=\"####alarm\" category=\"EVENT\" name=\"alarm\"/>\n"
+	"								<DataItem type=\"PROGRAM\" id=\"####pgm\" category=\"EVENT\" name=\"program\"/>\n"
+	"								<DataItem type=\"EXECUTION\" id=\"####exec\" category=\"EVENT\" name=\"execution\"/>\n"
+	"								<DataItem type=\"CONTROLLER_MODE\" id=\"####mode\" category=\"EVENT\" name=\"controllermode\"/>\n"
+	"								<DataItem type=\"PATH_POSITION\" id=\"####position\" category=\"SAMPLE\" name=\"position\"  />\n"
+	"								<DataItem type=\"PATH_POSITION\" id=\"####xorient\" category=\"SAMPLE\" name=\"xorient\"  />\n"
+	"								<DataItem type=\"PATH_POSITION\" id=\"####zorient\" category=\"SAMPLE\" name=\"zorient\"  />\n"
+	"        							<DataItem category=\"EVENT\"  id=\"####alarm\"  name=\"alarm\" type=\"CODE\"></DataItem>\n"
+	"        							<DataItem category=\"EVENT\"  id=\"####heartbeat\"  name=\"heartbeat\" type=\"CODE\"></DataItem>\n"
+	"        							<DataItem category=\"EVENT\"  id=\"####last_update\"  name=\"last_update\" type=\"CODE\"></DataItem>\n"
+	" 							</DataItems>\n"
+	"						</Path>\n"
+	"					</Components>\n"
+	"				</Controller>\n"
+	"				<Systems id=\"####systems\" name=\"systems\">\n"
+	"					<Components>\n"
+	"						<Electric name=\"electric\" id=\"####elec\">\n"
+	"							<DataItems>\n"
+	"								<DataItem type=\"POWER_STATE\" category=\"EVENT\" id=\"####pwr\" name=\"power\" />\n"
+	"							</DataItems>\n"
+	"						</Electric>\n"
+	"					</Components>\n"
+	"				</Systems>\n"
+	"			</Components>\n"
+	"		</Device>\n";
+
+Wed 12/06/17 06:02:15 PM
+
+http://www.boost.org/doc/libs/1_64_0/libs/math/example/root_finding_example.cpp
+interesting polynomial root finding in boost
+
+Wed 12/06/17 01:49:45 PM
+
+Attempting to read each joint status, and use rpy for orientation status
+
+    // CRCLStatusType::JointStatuses & jointStatuses(cmd.JointStatuses());
+    CRCLStatusType::JointStatuses_type jointStatuses;
+    jointStatuses.JointStatus(wm->_CurrentJoints);
+    cmd.JointStatuses(jointStatuses);
+
+    cmd.PoseStatus(wm->_CurrentPose);
+
+
+    crclinterface->crclwm.Update((RCS::Pose&) statusmsg->statuspose);
+    crclinterface->crclwm.Update((JointState&) statusmsg->statusjoints);
+    crclinterface->crclwm.Gripper().Position() = statusmsg->eepercent;
+
+
+    typedef ::JointStatusesType::JointStatus_sequence JointStatusSequence;
+	in crcl.h
+
+	    /*!
+     * \brief Convert converts codesynthesis status actuator joint sequence into ROS JointState.(Fills position).
+     * \param  codesynthesis sequence of status joints.
+     * \param  conversion factor for each joint (e.g., degree to radian).
+     * \return ROS JointState with Joint positions filled.
+     */
+    sensor_msgs::JointState Convert(Crcl::JointStatusSequence jointStatusSeq, double angleConversion = 1.0);
+sensor_msgs::JointState Convert(Crcl::JointStatusSequence jout, double angleConversion) {
+    JointState joint;
+    for (unsigned int i = 0; i < jout.size(); i++) {
+        //::JointStatusType  jointstatus(jout[i ].JointNumber());
+        double pos = jout[i].JointPosition().present() ? jout[i].JointPosition().get(): 0.0;
+        //std::cout << "Joint[" << i << "]=" << pos << std::endl;
+        joint.position.push_back(pos); // *(jout[i].JointPosition()) * angleConversion);
+        // FIXME: how do you determine if there are values for velocity and force/torque
+        //joint.velocity.push_back(*(jout[i].JointVelocity()));
+        joint.effort.push_back(0.0);
+    }
+    return joint;
+}
