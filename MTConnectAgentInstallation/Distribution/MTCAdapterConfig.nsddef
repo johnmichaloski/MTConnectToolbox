@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!--
+This file was created by NSISDialogDesigner 1.3.1.0
+http://coolsoft.altervista.org/nsisdialogdesigner
+Do not edit manually!
+-->
+<Dialog Name="MTCAdapterConfig" Title="Adapter(s) Configuration" Subtitle="Parameter Settings" onBack="CustomButtonPushed">
+  <CreateFunctionCustomScript>Call ConfigPreCreate</CreateFunctionCustomScript>
+  <GroupBox Name="GroupBox1" Location="12, 12" Size="343, 204" TabIndex="0">
+    <Label Name="Label16" Location="10, 100" Size="84, 23" Text="Machine Config" TabIndex="0" />
+    <DropList Name="DropList7" Location="106, 164" Size="221, 21" TabIndex="1" SelectedItem="1">
+      <Items>
+        <value>0</value>
+        <value>1</value>
+        <value>2</value>
+      </Items>
+    </DropList>
+    <Label Name="Label11" Location="10, 166" Size="84, 17" Text="Num Spindles" TabIndex="2" />
+    <DropList Name="DropList8" Location="108, 128" Size="217, 21" TabIndex="3" SelectedItem="Generic">
+      <Items>
+        <value>Generic</value>
+        <value>Mazak</value>
+        <value>Okuma</value>
+        <value>Fanuc</value>
+        <value>Siemens</value>
+      </Items>
+    </DropList>
+    <Label Name="Label12" Location="4, 131" Size="91, 19" Text="Machine Type" TabIndex="4" />
+    <DropList Name="DropList9" Location="108, 96" Size="219, 21" TabIndex="5" SelectedItem="3 Axis">
+      <Items>
+        <value>3 Axis</value>
+        <value>4 Axis</value>
+        <value>5 Axis AC</value>
+        <value>5 Axis BC</value>
+        <value>5 Axis AC</value>
+      </Items>
+    </DropList>
+    <Label Name="Label13" Location="39, 37" Size="56, 22" Text="IP" TabIndex="6" />
+    <TextBox Name="TextBox5" Location="108, 40" Size="217, 20" TabIndex="7" />
+    <TextBox Name="TextBox8" Location="108, 67" Size="220, 20" Text="7878" TabIndex="8" />
+    <Label Name="Label14" Location="23, 73" Size="72, 22" Text="Adapter Port" TabIndex="9" />
+    <TextBox Name="TextBox1" Location="108, 14" Size="219, 20" Text=" MTConnectsAdapter" TabIndex="10" />
+    <Label Name="Label15" Location="14, 17" Size="81, 20" Text="Device Name" TabIndex="11" />
+  </GroupBox>
+</Dialog>

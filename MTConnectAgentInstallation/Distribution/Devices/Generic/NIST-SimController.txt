@@ -1,0 +1,24 @@
+		<Device id="####dev" iso841Class="6" name="NNNNNN" sampleRate="10" 
+			uuid="139146F5-B8B1-4ed9-ACE2-827C4DEACD17">
+			<Description manufacturer="NIST">NIST-SimController</Description>
+			<DataItems>
+				<DataItem category="EVENT" id="####avail" name="availability" type="AVAILABILITY"/>
+			</DataItems>
+			<Components>
+				<Controller id="####cn1" name="controller">
+					<DataItems>
+						<DataItem type="SYSTEM" category="CONDITION" id="####system" name="condition" />
+						<DataItem category="EVENT" id="####heartbeat1" name="heartbeat" type="LINE"/>
+					</DataItems>
+					<Components>
+						<Path id="####pth" name="path">
+							<DataItems>
+								<DataItem category="EVENT"  id="####pgm"        name="program"   type="PROGRAM"  />
+								<DataItem category="SAMPLE" id="####position1"  name="position"  nativeUnits="MILLIMETER_3D" subType="ACTUAL" type="PATH_POSITION" units="MILLIMETER_3D"/>
+								<DataItem category="EVENT"  id="####execution1" name="execution" type="LINE"/>								
+							</DataItems>
+						</Path>
+					</Components>
+				</Controller>
+			</Components>
+		</Device>

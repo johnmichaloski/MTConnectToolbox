@@ -1,3 +1,0 @@
-2017-09-19T17:28:17.0626ZMTConnect Agent Service Started
-2017-09-19T17:28:17.0626ZAgentConfigurationEx::initialize() 
-2017-09-19T17:28:17.0627ZTConnect Agent Service Read Configuration - C:\Users\michalos\Documents\GitHub\Agents\MtcOpcAgent\MtcOpcAgent\x64\Debug\MtcOpcAgent.ini 
