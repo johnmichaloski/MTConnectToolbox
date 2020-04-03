@@ -295,6 +295,7 @@ void WiringAdapter::Cycle ( )
 	CreateItem("program");
 	CreateItem("controllermode");
 	CreateItem("execution");
+	CreateItem("oee");
 	CreateItem("power");
 	CreateItem("avail");
 	CreateItem("error");
@@ -639,18 +640,26 @@ HRESULT WiringAdapter::GatherDeviceData ( )
 				std::string prog;
 				prog= extract(line, "JOB:", "]");
 				items.SetTag("program", prog);
+
+				items.SetTag("oee", "IDLE");
 			}
 			else if ( line.find("StartTheFeeder") != std::string::npos   )
 			{
 				items.SetTag("controllermode", "AUTOMATIC");
 				items.SetTag("execution", "EXECUTING");
 				items.SetTag("error", "");
+
+				items.SetTag("oee", "EXECUTING");
+
 			}
 			else if ( line.find("ASL START") != std::string::npos   )
 			{
 				items.SetTag("controllermode", "MANUAL");
 				items.SetTag("execution", "PAUSED");
 				items.SetTag("error", "");
+
+				// new oee idle extensions
+				items.SetTag("oee", "IDLE-PAUSED");
 			}
 			//else if ( line.find("ASL STOP") != std::string::npos   )
 			//{
@@ -663,6 +672,8 @@ HRESULT WiringAdapter::GatherDeviceData ( )
 				items.SetTag("controllermode", "MANUAL");
 				items.SetTag("execution", "IDLE");
 				items.SetTag("error", "");
+				// new oee idle extensions
+				items.SetTag("oee", "IDLE");
 			}
 			else if ( line.find("Feeder Has Stopped") != std::string::npos  )
 			{
@@ -670,6 +681,9 @@ HRESULT WiringAdapter::GatherDeviceData ( )
 				items.SetTag("execution", "IDLE");
 				items.SetTag("error", "");
 				items.SetTag("program", "");
+
+				// new oee idle extensions
+				items.SetTag("oee", "IDLE");
 			}
 			else if ( line.find("The Run Finished") != std::string::npos  )
 			{
@@ -677,6 +691,34 @@ HRESULT WiringAdapter::GatherDeviceData ( )
 				items.SetTag("execution", "IDLE");
 				items.SetTag("error", "");
 				items.SetTag("program", "");
+
+				// new oee idle extensions
+				items.SetTag("oee", "IDLE");
+
+			}
+			else if ( line.find("UP1A [User Prompt Displayed Group]") != std::string::npos  )
+			{
+				// new oee idle extensions
+				items.SetTag("oee", "IDLE-Group code change");
+			}
+			else if ( line.find("UP2A [User Prompt Displayed Effectivity]") != std::string::npos  )
+			{
+				items.SetTag("oee", "IDLE-EFF CHANGE");
+			}
+			else if ( line.find("UP3A [User Prompt Displayed Bundle No]") != std::string::npos  )
+			{
+				items.SetTag("oee", "IDLE-Bundle No. Change");
+			}
+			else if ( line.find("[PA1A [User Pause Start]]") != std::string::npos  )
+			{
+				items.SetTag("oee", "IDLE-PAUSED");
+			}
+			else if ( line.find("UP1B [User Prompt Cleared]") != std::string::npos 
+				|| line.find("UP2B [User Prompt Cleared]") != std::string::npos 
+				|| line.find("UP3B [User Prompt Cleared]") != std::string::npos
+				|| line.find("[PA1B [User Pause Stop]]") != std::string::npos)
+			{
+				items.SetTag("oee", "IDLE");
 			}
 
 #ifdef _DEBUG

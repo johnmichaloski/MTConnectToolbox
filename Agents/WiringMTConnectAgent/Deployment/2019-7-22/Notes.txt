@@ -1,0 +1,33 @@
+New wiring agent.exe that is basically the same, only added the tag “oeetag” with differentiation of different IDLE submodes.  To effect the change follow directions below. Eventually the new submodes could be added to the MTConnect “execution” tag.
+
+
+
+===================================================================
+
+1) Stop the agent. Reconfigure the Confie.ini file so that it will generate a new devices.xml file. In Config.ini located int he installation directory (C:\Program Files\MTConnect\WiringAgent)
+modify [GLOBALS] section Config variable to NEW. Restart the agent.
+
+
+[GLOBALS]
+Config=NEW
+
+
+2) When you run the MTConnectPage-1.4.vbs to view the tags, you should now see oeetag with different variations on IDLE and EXECUTING when running. 
+Eventually different submodes of IDLE should be possible after a leading "IDLE-"
+
+
+Mon 07/22/2019 11:43:46.25 
+
+mismatch between oee and oeetag in devices.xml and adapter resolved to oee tag, so no need to run Config=NEW in config.ini.
+
+The idea to handle the new IDLE substates under the execution tag is to first test with a new MTConnect tag: called oee.
+Then, new IDLE substates are added  after IDLE using a hypen, e.g., IDLE-PAUSED.  You could use a starts with string search to see if its in IDLE for non-conforming agents, or if hyphen exists add new submode after the hypen.
+This leaves the oee tag with the following states:
+EXECUTING
+IDLE
+IDLE-PAUSE
+IDLE-PLANNED SETUP
+IDLE-EFF CHANGE
+IDLE-Bundle No. Change
+
+when the dialogs for the idle changes are discontinued, the executing state goes back to idle.

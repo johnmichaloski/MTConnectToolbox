@@ -1,4 +1,16 @@
 
+
+
+Mon 07/22/2019 10:05:18.77 
+Added oeetag to represent additional IDLE modes.
+
+Skipped for now:
+[/// SOFTWARE STARTUP \\\]    20042.9039404    5:34:02 AM {4862471.345}
+0 [Computer Name: A5733664]    20042.9539125    5:34:02 AM {24.9868}
+0 [User Name    : ]    20042.9569102    5:34:02 AM {3.9971}
+0 [OS Full Name : Microsoft Windows 10 Enterprise]    20043.0428622    5:34:03 AM {85.9514}
+0 [OS Version   : 6.2.9200.0]    20043.0468594    5:34:03 AM {2.9984}
+
 Wed 02/07/18 10:01:17 AM
 concatenate string
 					std::ostringstream os;

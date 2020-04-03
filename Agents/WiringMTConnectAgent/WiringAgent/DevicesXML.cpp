@@ -78,6 +78,7 @@ std::string CDevicesXML::ProbeDeviceXml (void)
 		"								<DataItem type=\"MESSAGE\" id=\"####last_update\" category=\"EVENT\" name=\"last_update\"/>\n"
 		"								<DataItem type=\"PROGRAM\" id=\"####pgm\" category=\"EVENT\" name=\"program\"/>\n"
 		"								<DataItem type=\"EXECUTION\" id=\"####exec\" category=\"EVENT\" name=\"execution\"/>\n"
+	"								<DataItem type=\"OEE\" id=\"####oee\" category=\"EVENT\" name=\"oee\"/>\n"
 		"								<DataItem type=\"CONTROLLER_MODE\" id=\"####mode\" category=\"EVENT\" name=\"controllermode\"/>\n"
 		"								<DataItem type=\"PATH_FEEDRATE\" id=\"####pfo1\" category=\"SAMPLE\" name=\"path_feedrateovr\" units=\"PERCENT\" nativeUnits=\"PERCENT\" subType=\"OVERRIDE\" />\n"
 		"                                 <DataItem category=\"EVENT\"  id=\"####operator\"  name=\"operator\" type=\"CODE\"></DataItem>\n"
